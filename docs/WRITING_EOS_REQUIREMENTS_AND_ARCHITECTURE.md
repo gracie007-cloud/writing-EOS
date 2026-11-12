@@ -2,11 +2,11 @@
 
 | | |
 |---|---|
-| **Version** | 0.27 · router, registry and order-of-work corrections from the November 2026 audit; the app follows the database through a command in the repository; a readiness report |
+| **Version** | 0.28 · consolidation pass: one statement of each routing rule (experts, routes, lanes, mature content), the wording from before D27–D30 removed |
 | **Date** | 2026-10-21 |
 | **Owner** | The Author |
 | **Builder** | Claude Code, as the single build agent |
-| **Status** | Requirements, architecture and decisions agreed. Phase 0 under way: harness phases 1 (runs) and 2 (automatic scoring) built 2026-10-17; audit bugs B1–B3 and B7–B9 fixed 2026-10-18 (harness: 73 tests); app engine started 2026-10-18 (`eos-app/`: Story Blueprint formula engine, from 2026-10-19 Humanize, from 2026-10-21 the workflow engine and the shared library, with the Author's eight pools imported; 194 tests) |
+| **Status** | Requirements, architecture and decisions agreed. Phase 0 under way: harness phases 1 (runs) and 2 (automatic scoring) built 2026-10-17; audit bugs B1–B3 and B7–B9 fixed 2026-10-18 (harness: 73 tests); app engine started 2026-10-18 (`eos-app/`: Story Blueprint formula engine, from 2026-10-19 Humanize, from 2026-10-21 the workflow engine and the shared library, with the Author's eight pools imported; from 2026-10-22 the model registry and router; from 2026-11-12 the corrections of the November audit, the database sync and the readiness report; 260 tests). **The app does not run yet:** nothing sends a prompt to a model or shows a screen; the first real run is Group D of `FIXES_IMPLEMENTATION_PLAN_2026-11-11.md` |
 
 **Sources this document is built from**
 1. The design canvas *Writing EOS App* (9 screens): https://claude.ai/artifact/HL7wfJWnqk7QcLaBFjdUGZ
@@ -19,7 +19,9 @@
 8. An independent audit report (2026-10-18) comparing v0.3 with four other studio plans it names Scriptorium v1–v2 and Storyloom v1–v2. This document relies on the audit's account of those plans; the plans themselves were not available. Its nine bug findings were checked against the code: all nine were real, and B2 could not happen at run time because the prompt builder already refuses Section D for models that are not mature_ok.
 9. The open-source repository *gracie007-cloud/ai-humanizer-app* (GitHub, commit ace01f0, reviewed 2026-10-19): an AI-text humanizer with strength levels, multiple passes, an English-variant rule, plain-text clean-up, rhythm and vocabulary measures and settings suggested from the text. It has no licence file, so Writing EOS uses its approach only: none of its code or prompt text is copied. Its stated aim, passing AI detectors, is not adopted (D16).
 
-**Changes in v0.27 (2026-11-12), corrections from the audit (`FIXES_IMPLEMENTATION_PLAN_2026-11-11.md`):** no new decision; the code now does what D18, D22 and D27 already say. (1) **Gates are enforced by the queue** (FR-FLOW-3): nothing after an Author gate in the Flow Order is offered until that gate is approved; the recipe gate applies only when a recipe was built. Chapters keep their own progress, planning may run ahead, and drafting waits for the previous chapter's lock (FR-GEN-5, FR-FLOW-4). (2) **Routes** (D22): a model listed in the roster under two providers has two routes, and on an outage the router tries the same model's other route before the next expert. P8 compares models by roster name, so a checker never judges its own model through another provider. (3) **A model with no provider model ID is never chosen.** (4) **The prose lane keeps its safety net:** a tagged genre fine-tune leads, and the component's own experts stay behind it (mature prose unchanged, P10). (5) **Lane provider lists are enforced**, and a media component takes only models that make what it makes. (6) **Expert slots are named for their place in the line:** `primary`, `comparable`, `fallback` in `components.yaml` (the Notion columns keep their names). (7) **The app follows the database by a command in the repository** (FR-NM-1): `python -m eos_app.sync` builds `components.yaml` from a Notion export joined with `config/component_inputs.yaml`, the app-owned table of inputs, code parts, judged components and media kinds (Q13 stands: an Inputs column in Notion is still the Author's call). (8) **Readiness report:** `python -m eos_app.readiness` says which components could run today, what an outage of each provider would stop, and what is open. **Still stale in this document and waiting for the consolidation pass (fixes plan C1):** the places that speak of model *families* (FR-CD-7, FR-CH-3, FR-ML-6, FR-WS-2, FR-AU-5, FR-AU-6, FR-FN-5, FR-SW-1, FR-SW-3, §6.4, §6.7, Appendix B) are superseded by D27 and P8 as written in §2; read them as *another expert, never the writer's own model*.
+**Changes in v0.28 (2026-11-12), consolidation pass (fixes plan C1):** no new decision. Every place that still described routing as it stood before D27–D30 now says what those decisions say: P7 and P10; the glossary entries *Task type* and *Slots*; FR-CD-7, FR-CH-3, FR-ML-4, FR-ML-6, FR-WS-2 and the Workshop Chat row, FR-AU-5, FR-AU-6, FR-FN-5, FR-SW-1, FR-SW-3, NFR-1; the architecture diagram (§6.1), the model router (§6.4, rewritten) and the agent definition example (§6.7); Appendix A (now the 123 components by phase, generated from `config/components.yaml`) and Appendix B (now clearly the bake-off harness's candidate pools). The decision table (§9) is history and is left as written. **Left for the Author:** the four quality tiers (glossary, FR-ML-5, FR-GEN-1, FR-PRJ-2) are unchanged and marked *under review*; the router does not use them (fixes plan, decision 3).
+
+**Changes in v0.27 (2026-11-12), corrections from the audit (`FIXES_IMPLEMENTATION_PLAN_2026-11-11.md`):** no new decision; the code now does what D18, D22 and D27 already say. (1) **Gates are enforced by the queue** (FR-FLOW-3): nothing after an Author gate in the Flow Order is offered until that gate is approved; the recipe gate applies only when a recipe was built. Chapters keep their own progress, planning may run ahead, and drafting waits for the previous chapter's lock (FR-GEN-5, FR-FLOW-4). (2) **Routes** (D22): a model listed in the roster under two providers has two routes, and on an outage the router tries the same model's other route before the next expert. P8 compares models by roster name, so a checker never judges its own model through another provider. (3) **A model with no provider model ID is never chosen.** (4) **The prose lane keeps its safety net:** a tagged genre fine-tune leads, and the component's own experts stay behind it (mature prose unchanged, P10). (5) **Lane provider lists are enforced**, and a media component takes only models that make what it makes. (6) **Expert slots are named for their place in the line:** `primary`, `comparable`, `fallback` in `components.yaml` (the Notion columns keep their names). (7) **The app follows the database by a command in the repository** (FR-NM-1): `python -m eos_app.sync` builds `components.yaml` from a Notion export joined with `config/component_inputs.yaml`, the app-owned table of inputs, code parts, judged components and media kinds (Q13 stands: an Inputs column in Notion is still the Author's call). (8) **Readiness report:** `python -m eos_app.readiness` says which components could run today, what an outage of each provider would stop, and what is open. The consolidation pass followed in v0.28.
 
 **Changes in v0.26 (2026-10-22), decision D31 extended:** a scaffolding pool is **under development**. Research completes it, and the Author marks it complete by moving its file out of the *Brainstorming Scaffolding Documents* folder; only then does the app change its `source_folder` and drop `standing: scaffolding`. All five character reference pools stay under development (the Author doubts even Character Flaws is complete). Each pool's reader is now the one component whose Notion page shows it doing that job: Traits and Strengths and Animal Traits → Personality Type (trait inference; its Temperament framework), Flaws → Character Polish, Clothing → Character Voice Guide (the Style Bible's Fashion Designer layer). No page names epithets, so the epithet words have no reader until the Author assigns one.
 
@@ -137,10 +139,10 @@ These are requirements, not preferences. Every module must honour them.
 | P4 | **Source first, build second.** Every role is matched against the Character Pool before a character is created. | Governing Rule 3 | Character Selector |
 | P5 | **No creativity wasted.** Every unchosen name, concept, option or seed goes to the Creative Reserve with origin and critique. | Governing Rule 4 | Gate handler (§6.6) |
 | P6 | **Revisions travel upstream.** A later stage never patches earlier work; it sends the work back, and everything after it re-runs. | Story Blueprint rule 6 | Stale propagation (§6.6) |
-| P7 | **Best-fit model per agent.** The model registry is the only source of model assignments; names written on agent pages are hypotheses. | Canonical CD page | Router (§6.4) |
+| P7 | **Best-fit model per component.** The *Narrative Components* database assigns each component its line of experts (Primary, Comparable, Fallback; D18, D27); the model registry holds the facts about each model. Model names written anywhere else are suggestions. | Canonical CD page; D18, D27 | Router (§6.4) |
 | P8 | **A checker never judges its own model's work.** An evaluation component never runs on the same model that wrote the text it judges; independence comes from the Author's line of experts per component (Primary, Comparable, Fallback: a Mixture of Experts), not from grouping models into families (D27). Each evaluation component lists the components it judges. | Harness rule 7; CD charter §6; D27 | Router |
 | P9 | **Counting is code.** Scores with formulas, schema checks, verbatim citations, word counts, collision checks, knowledge tables and reveal order are computed by code, not by a model. | Design blueprint | Code checks library (§6.5) |
-| P10 | **Mature content stays in the mature tier.** Mature material goes only to models flagged `mature_ok`; a refusal falls back to the other mature_ok endpoint, never to a general model. | Harness rule 6 | Router guard |
+| P10 | **Mature content stays in the mature tier.** A model is `mature_ok` when its Uncensored box is ticked and it is hosted by a mature provider (Featherless AI). Mature text is written only by a mature_ok model, and a refusal moves to another mature_ok model, never to a general one. Mature media is made only by an open-weight model on a provider whose terms allow it (Comfy Cloud; Featherless AI for narration). An evaluation component tries its own experts first and, for mature work they refuse, its Mature Fallback (D27, D29). | Harness rule 6; D27, D29 | Router guard |
 | P11 | **Canon status on every field.** `CANON` · `PROVISIONAL` · `UNKNOWN` · `OPTION` · `AUTHOR DECISION REQUIRED`. Agents cite only CANON; only the Author promotes. | CD charter §8; Creation Mode Clause | Store schema |
 | P12 | **Fail loudly, keep everything.** Failed calls are recorded, retried at most twice, never dropped; outputs are saved verbatim; nothing is deleted. | Harness rule 8 | Run log |
 | P13 | **Secrets and keys stay in `.env`.** Never printed, logged or committed. | Harness rule 3 | Config loader |
@@ -155,9 +157,9 @@ These are requirements, not preferences. Every module must honour them.
 | Term | Meaning |
 |---|---|
 | **Agent** | One job in a pipeline, with a declared task type, inputs, output schema, checks and loops. Runs on one model chosen by the router. |
-| **Task type** | Extraction · Synthesis · Prose · Verdict · Mature prose · Code · Author. Determines the candidate pool a model is tested in. |
-| **Slots** | Each agent's Primary and Fallback model (and mature tier where needed), assigned by the Model Lab. |
-| **Quality tier** | Basic · Excellent (default) · Premium · Advanced. Changes which writer models fill the slots; never changes checkers or the mature tier. |
+| **Task type** | Extraction · Synthesis · Ideation · Prose · Verdict · Media · Code. What kind of job a component does. In the bake-off harness it also decides which candidates a model is tested against. |
+| **Slots** | A component's line of experts, in the order the router tries them: **Primary**, **Comparable**, **Fallback** (a Mixture of Experts, D27), set in the *Narrative Components* database. An evaluation component also has a **Mature Fallback**. The slot says the model's place in the line, not what kind of model it is: a cheaper comparable model can be the Primary (D29). |
+| **Quality tier** | Basic · Excellent (default) · Premium · Advanced. Changes which writer models fill the slots; never changes checkers or the mature tier. *Under review (fixes plan, decision 3): the router does not use tiers; each component's line of experts already orders its writers.* |
 | **Gate** | A point where work stops until the Author answers a pitch. |
 | **Conflict Core** | One of nine: Internal, Interpersonal, Systemic, Cultural, Technological, Environmental, Unknown, Existential, Creational. |
 | **Modifier axes** | Scale, Temporal Root, Inevitability, Novelty, Intensity, Pillars. |
@@ -285,7 +287,7 @@ The canonical order from the Notion page of 2026-10-16, as specified in the F: v
 | FR-CD-4 | **Gates** G1 (pool match or creation; tier), G2 (name), G3 (OPTIONS), G4 (08b decision), G5 (roster and canon promotion). |
 | FR-CD-5 | **Return channels** R1 clarification, R2 type reflection (max 2 cycles), R3 name–voice (one cycle), R4 escalation, R5 state deviation from the chapter pipeline, **R6 role discovered (D25)**: when Character Profile or the Mirror Map establishes a relationship the character needs with someone not yet cast (a deputy, a rival, a mentor), the role goes back to Cast Roles and Character Pool Match, so it is filled from the pool, and developed, before anyone new is created. Code finds them (`uncast_roles`). |
 | FR-CD-6 | Ghost and Lie produced here are **candidates**; Story Blueprint Stage 2 confirms or revises them. |
-| FR-CD-7 | **Code checks:** schema validation (C4, C5), verbatim citations, embodiment categories, source traces, name blocklist and collisions, coherence threshold ≥ 90 (scored by another family), distinct names across the run. |
+| FR-CD-7 | **Code checks:** schema validation (C4, C5), verbatim citations, embodiment categories, source traces, name blocklist and collisions, coherence threshold ≥ 90 (scored by another expert, never the model that wrote the profile), distinct names across the run. |
 | FR-CD-8 | **Pool Write** splits Core (portable psychology) from Skin (name, culture, appearance, setting history, register) and writes the character into the shared library's Character Pool at gate G5 (FR-LIB-6); the match index the Selector scores is rebuilt from the library. |
 | FR-CD-9 | Existing characters (for example the Bible v1.2 cast) can enter in Profiling Mode at stage 03 with their Bible text as evidence. |
 | FR-CD-10 | **A complete profile before G5 (code; D24).** Gate G5 (roster and canon promotion) opens only when the developed profile has every required field: name, age, gender, species, appearance, role, personality, flaws, root fear, Ghost, Lie, want, need, backstory, voice and relationships (`profile_required` in the library map). Each gap is sent back to the stage that owns it (for example age to the Character Sheet, Ghost and Lie to Inner Life). For a character adapted from the pool, G5 also waits until no Skin field still reads word for word as on the card, unless the Author keeps it (as with a name approved at G2). |
@@ -317,7 +319,7 @@ One chapter runs through these 17 agents in order (decision D3).
 | 7 | Character Scene Brief (X2) | Character Notes | Synthesis | — |
 | 8 | Chronology Check · brief | Timeline Check | Verdict | **Gate:** contradiction → back to Brief Writer; candidate false alarms → Author |
 | 9 | First Draft | First Draft | Prose | Auto-fail flag → Rewrite (max 2) |
-| 10 | Mature Tier scenes | First Draft (mature scenes) | Mature prose | Refusal → other mature_ok endpoint only |
+| 10 | Mature Tier scenes | First Draft (mature scenes) | Mature prose | Refusal → another mature_ok model only (P10) |
 | 11 | Continuity and Knowledge Check | Continuity Check | Verdict + challenger + code | Breach → Rewrite (max 2) |
 | 12 | Style, Tone and Arc Check | Voice and Style Check | Verdict | Voice, drift, slider or beat miss → Rewrite (max 2) |
 | 13 | Rewrite | Rewrite | Prose | Back through checks 11–12 |
@@ -330,7 +332,7 @@ One chapter runs through these 17 agents in order (decision D3).
 |---|---|
 | FR-CH-1 | Each chapter inherits from the outline: GANT beat per POV character, scheduled reveals, tension/dread/pacing, and the gated rules active at that point. |
 | FR-CH-2 | **Auto-fail checks (code)** run on every draft before the Author sees it: forbidden terms, gated phrases, naming-arc rules, emotion words attached to the POV in narration, slop phrases and repeated openings (lists from the Bible's check lists; harness `slop.yaml` is the seed). |
-| FR-CH-3 | **Verifier + challenger:** the continuity verifier and a challenger from another family both review; code checks dates, ages and identifiers; only surviving findings reach the Author, each with canon rule, manuscript evidence, classification, severity, confidence and recommended action. |
+| FR-CH-3 | **Verifier + challenger:** the continuity verifier and a challenger both review, each on a different model and neither on the model that wrote the draft (P8); code checks dates, ages and identifiers; only surviving findings reach the Author, each with canon rule, manuscript evidence, classification, severity, confidence and recommended action. |
 | FR-CH-4 | **Knowledge check:** any character acting on a secret they do not know as of this chapter is a finding. |
 | FR-CH-5 | Character State Delta records, per character per meaningful event: before-state, changes (magnitude, type, evidence), causal explanation, after-state, across nine dimensions including narrative knowledge. It records what the text earned, not what the outline intended. |
 | FR-CH-6 | Prose Refinement shows a diff against the previous version; any changed fact is rejected. |
@@ -367,9 +369,9 @@ One chapter runs through these 17 agents in order (decision D3).
 | FR-ML-1 | **Registry**: `config/models.yaml`, built by `python -m eos_app.registry` from an export of the Notion roster *LLM Identifier* in Notion's CSV layout. For each model with a provider (Concentrate AI, OpenRouter, Featherless AI, Hugging Face or Unsloth Desktop): key, name, provider model ID, the Frontier, Open-Weights, Uncensored and Can Run Locally boxes, the Comparable Equivalent and Fallback models, and the Genre a fine-tune serves. Rows without a provider belong to other uses of the roster and are left out. Duplicate IDs and names that disagree with their IDs are reported, never guessed. Model IDs live in this file only. |
 | FR-ML-2 | **Rounds** (bake-offs): same test pack, every candidate, three runs each; records cost, latency, tokens, status; blind IDs; automatic scoring where possible. Run 01 = the six harness steps; Run 02 = new chapter agents; Run 03 = Develop and Editor agents. |
 | FR-ML-3 | Scoring: extraction starts at 10, −2 per missing item, −3 per invented or forbidden item; verdict = (caught ÷ planted × 9) + 1 − 1 per confirmed false alarm; prose per FR-RV-2. Refusal or truncation scores 0; more than one in three runs disqualifies. |
-| FR-ML-4 | **Assignment rule:** Primary = highest average (a cheaper model within 5% takes it); Fallback = best open-weight model within 15% of Primary, preferring one on a different provider from the Primary so an outage never takes both; Mature tier = best mature_ok model on the mature brief, plus a second mature_ok model on another provider for refusals (P10). **Abliterated models** are eligible for the mature tier only, never as a Primary or Fallback for general work, and only after passing the mature brief like any other candidate (D22). |
-| FR-ML-5 | **Quality tiers:** Basic (cheapest tested within 15% of best), Excellent (assignment rule), Premium (best average, cost ignored), Advanced (new or untested models, pitches and drafts only, outputs marked experimental). Tiers change writers only. |
-| FR-ML-6 | **Judge independence:** a judge's family differs from the producer's; in Run 01, no `anthropic` or `qwen` judges. |
+| FR-ML-4 | **Assignment rule.** The Author assigns each component's Primary, Comparable and Fallback in the *Narrative Components* database (D18, D27). A cheaper model that is comparable for the job goes first, for the Primary and for the Fallback (D29). The Model Lab's rounds are the evidence for those choices: a round ranks the candidates for a step, and the Author moves a model up or down the line on that evidence. Where a model is listed in the roster under a second provider it has a second route, so an outage of one provider does not stop the component (D22). The mature tier follows P10. |
+| FR-ML-5 | **Quality tiers** (*under review: fixes plan, decision 3*)**:** Basic (cheapest tested within 15% of best), Excellent (assignment rule), Premium (best average, cost ignored), Advanced (new or untested models, pitches and drafts only, outputs marked experimental). Tiers change writers only. |
+| FR-ML-6 | **Judge independence:** a judge never runs on the model that produced what it judges, whichever provider serves that model (P8). In Run 01, no `anthropic` or `qwen` judges, because a Claude model wrote the test pack's reference run. |
 | FR-ML-7 | **Answer keys** are read only by scorers; the prompt builder refuses any path containing `ANSWER_KEY`; seeded and clean briefs are never sent together. |
 | FR-ML-8 | **Calibration log** for Conflict Fit and Structure Fit weights (15–20 known stories). |
 | FR-ML-9 | **Reconciliation:** model names on Notion agent pages (for example GPT-5.6 Sol, Claude Fable 5.1, Gemini 3.1 Pro, GPT-5.6 Luna) are listed as hypotheses; any not in the registry must be added or mapped before a round tests them. |
@@ -407,7 +409,7 @@ Six features from LivingWriter, RaptorWrite, Sudowrite and Novelcrafter. Three a
 | Agent | Feature | Task type | Rules |
 |---|---|---|---|
 | Entity Classifier | Mentions | Extraction | Sorts unregistered names into person · place · object · term · not a name; schema-validated; never creates an entry |
-| Workshop Chat | Workshop chat | Synthesis (brainstorm, craft); Verdict (canon questions, from a different family than the text's producer) | Route chosen per message by intent; the Author can override |
+| Workshop Chat | Workshop chat | Synthesis (brainstorm, craft); Verdict (canon questions, never on the model that wrote the text) | Route chosen per message by intent; the Author can override |
 | Character Interview | Workshop chat | Prose | Pen name voice and the character's Style Bible; answers only from what the character knows as of the chosen chapter; mature context → mature tier |
 | Chat Extractor | Workshop chat | Extraction | Turns a chat into proposals; schema-validated; never writes canon |
 | Brainstorm | Brainstorm keepers | Synthesis | Two models from the pool, shown under blind labels; names pass the naming code checks before they are shown |
@@ -446,7 +448,7 @@ Six features from LivingWriter, RaptorWrite, Sudowrite and Novelcrafter. Three a
 | ID | Requirement |
 |---|---|
 | FR-WS-1 | A **Workshop** chat panel opens from Develop, the Story Bible, Chapters and the Editor. The Author chooses the context (outline, chapter, scene, Bible entries); the default is the as-of view for the current chapter plus the open chapter. Show prompt (FR-PP-1) works on every message. |
-| FR-WS-2 | Each message is **routed by intent**: brainstorm and craft questions → Workshop Chat on its Synthesis slot; "does this contradict canon?" → its Verdict slot, from a different family than the text's producer (P8); character interviews → Character Interview; mature context → mature tier only (P10). The route is shown on every reply, with Try Fallback. |
+| FR-WS-2 | Each message is **routed by intent**: brainstorm and craft questions → Workshop Chat on its Synthesis slot; "does this contradict canon?" → its Verdict slot, never on the model that wrote the text (P8); character interviews → Character Interview; mature context → mature tier only (P10). The route is shown on every reply, with Try Fallback. |
 | FR-WS-3 | **Character interview:** the character answers only from what they know as of the chosen chapter (P14), in their voice; a question about a secret they do not know gets an in-character non-answer, never a leak. |
 | FR-WS-4 | Chat never edits canon, the outline or a chapter. **Extract** runs the Chat Extractor and returns proposals: Reserve entries (P5), change requests (FR-SB-1), scene beats for a brief, outline notes, new PROVISIONAL entries. Each goes to the Author Decision Queue or the normal gate. |
 | FR-WS-5 | Chats are saved in the project as files, are searchable, and feed the mention index. Chat calls are recorded like any other run. |
@@ -481,8 +483,8 @@ Agents already make bounded decisions that drive hand-offs (verdicts that trigge
 | FR-AU-2 | **Where Autonomous is allowed:** only in sections whose output is not canon and can be re-run cheaply: planning for chapters after the next one to be drafted, Mentions, Creative Reserve filing, Brainstorm, and Workshop Extract proposals that go to the Reserve. Every other section offers Supervised and Delegated only. |
 | FR-AU-3 | **Delegable decisions:** resolving R1 clarifications and R2/R3 reflection cycles between agents; repairing a hand-off that fails its contract (re-emit, or ask the upstream agent to fix it); classifying a candidate false alarm; choosing among OPTIONs inside one step (premise wording, scene order, beat placement); names for Tier 3 characters only; sorting unregistered names (add an unambiguous alias, mark "not a name"); filing Brainstorm and Extract results to the Reserve; deduplicating repeat findings. **Formula-determined routing** (D15), when the formula engine's result is determinate: returning weak material to the braindump (Conflict Fit winner below 12); filing the runner-up core as a subplot or Midpoint candidate on a close contest; sending Stage 2 back to Stage 1 when the Guardrail diff fails; sending Stage 3 back to Stage 0 when the Kishōtenketsu flag fires; sending a vacant function to the Character Pool and then to Character Creation; starting the Antagonist Role Spec for a core that needs a face; and recording a residual Unmet Pillar as the next cycle's Ghost. The picks these lead to (the Conflict Core, the outcome, the structure, the cast map) stay the Author's (FR-AU-4). |
 | FR-AU-4 | **Your final call, at every level** (agents always pitch these and never settle them; the Author proceeds or gives an alternative): the pen name and adapted premise; the Stage 0 Conflict Core pick; Plot Blueprint, arc outcome and structure approval; characters and names for Tiers 1–2; the Representation and Trope decision (8b, G4); Bible lock and every canon change (change requests, progressions, G5 canon promotion); chapter lock; mature-tier routing and endpoints; blind prose scores; model assignments and prompt edits; R4 escalations; anything that would exceed the cost cap; the project's genre pack and approving a pack or pack edit (FR-GP-3); saving a recipe (FR-RC-3); restoring an earlier version (FR-HI-4). |
-| FR-AU-5 | **Eligibility test** for an agent to settle a decision, all three required: (a) the agent's calibrated confidence is at or above the section threshold; (b) an independent checker from a different model family agrees (P8); (c) the deciding agent and decision type have **earned** the level in the Model Lab (FR-ML-11). The Author may set a level that has not been earned; the screen then shows *set by you, not earned* and the digest marks those decisions. |
-| FR-AU-6 | **Decision record** for every settled decision: section, decision type, options, choice, confidence, checker verdict and family, evidence, hand-off contract, run IDs, downstream artifacts touched, level in force, time. Stored as plain files (§6.3) and shown in the Engine view. |
+| FR-AU-5 | **Eligibility test** for an agent to settle a decision, all three required: (a) the agent's calibrated confidence is at or above the section threshold; (b) an independent checker on a different model agrees (P8); (c) the deciding agent and decision type have **earned** the level in the Model Lab (FR-ML-11). The Author may set a level that has not been earned; the screen then shows *set by you, not earned* and the digest marks those decisions. |
+| FR-AU-6 | **Decision record** for every settled decision: section, decision type, options, choice, confidence, checker verdict and the checker's model, evidence, hand-off contract, run IDs, downstream artifacts touched, level in force, time. Stored as plain files (§6.3) and shown in the Engine view. |
 | FR-AU-7 | **Decided for you** on Home: every settled decision since the Author last looked, needs-review items first, each with the choice, the reason in one line, and **Undo**. Undo reverses the decision, marks every downstream artifact stale (P6), re-queues the decision for the Author, and records the Author's answer as evidence. |
 | FR-AU-8 | **Circuit breakers:** a section drops back to Supervised, and the Author is told, when the Author undoes 2 of its last 10 settled decisions, when a downstream check contradicts a settled decision, or after 25 settled decisions in a row without the Author opening the digest. A batch also stops at its cost cap whatever the level. |
 | FR-AU-9 | **Visible everywhere:** each pipeline screen shows its sections' levels; a step whose decision could be settled shows what would happen at Delegated. Changing a level is itself logged. |
@@ -621,7 +623,7 @@ The Notion database *Narrative Components* lists every component of the app, 108
 | FR-FN-2 | POV / Tense / Style-Guide / Target-Reader Specification | At intake, records point of view, tense, style-guide defaults and the target reader; the Style Calibrator adapts them in Stage 3 (FR-DEV-12). |
 | FR-FN-3 | Pre-Draft Research / Fact Base | Builds a fact base **only from the Author's own sources and uploads**. No web retrieval in version 1 (D13). Each fact keeps its source. |
 | FR-FN-4 | Planned Master Timeline | After arc, structure and world, lays out the planned story time. Dates, ages and intervals are computed by code; the model proposes the events. Feeds the Chronology Checks and FR-CH-9. |
-| FR-FN-5 | Sensitivity / Authenticity Reading | A critical read of the locked manuscript; findings go to the Author with evidence, as pitches. The reader model comes from a different family than the writer (P8). |
+| FR-FN-5 | Sensitivity / Authenticity Reading | A critical read of the locked manuscript; findings go to the Author with evidence, as pitches. The reader never runs on a model that wrote the manuscript's prose (P8). |
 | FR-FN-6 | Beta / Alpha Reader Management | Tracks human readers, what they received and their feedback; feedback becomes change requests. No model writes in a reader's name. |
 | FR-FN-7 | Line & Copy Correction Pass | Line and copy edits on the locked manuscript, before typesetting, through the paragraph gate (FR-ED-7); locked lines stay byte-identical (FR-ED-6). |
 | FR-FN-8 | Chapter Assembly & Export | Code: assembles locked chapters and exports them (FR-EX-2), including to Obsidian. |
@@ -650,9 +652,9 @@ The Notion database *Narrative Components* is the master list of what the app do
 |---|---|
 | FR-NM-1 | **The app's copy.** `config/components.yaml` holds every row of the database: Step, database name, Flow Order, phase, how it runs, the inputs it needs, the Author gate after it, its code parts and the database's model candidates. It is regenerated whenever the database changes. The engine refuses a copy with a repeated name or step, an unknown phase or run type, an input that is not in the list, or a gap in the Flow Order (FR-FLOW-6). |
 | FR-NM-2 | **Plain names.** The Writer view shows each component's plain name: a few everyday words for what it gives the writer, with no codes, numbers, version marks or brackets (for example *Continuity Check*, not "Chronology Check 2"; *Character Changes Log*, not "Continuity Ledger Update"; *Story Bible Builder*, not "Bible Assembler"). Checks end in *Check*; things you can open and read are named for what they are (*Scene Plan*, *Style Card*). The Engine view shows the Step and the database name beside it (NFR-12). The database keeps its own names; the plain name is stored with them so both sides read the same. |
-| FR-SW-1 | **Swarm Tier** (from the database). The database sets the tier for each component. *Full*: two models from different families work on each run, the Primary and an independent cross-check, and code compares their outputs; mostly extraction, checks and canon work, where a missed or invented item is costly. *Light*: one model, with the Fallback only on failure; mostly ideas, synthesis and prose. *None*: code only. The run estimate counts the second model's cost. |
+| FR-SW-1 | **Swarm Tier** (from the database). The database sets the tier for each component. *Full*: two different experts from the component's own line work on each run, the Primary and a cross-check, and code compares their outputs; mostly extraction, checks and canon work, where a missed or invented item is costly. *Light*: one model, with the next expert only on failure; mostly ideas, synthesis and prose. *None*: code only. The run estimate counts the second model's cost. |
 | FR-SW-2 | **Jev** (`typesafe/jev-1.14`, a structured decision model). Where the database marks Jev as deciding, Jev turns the component's outputs (and, at Full tier, the two models' disagreements) into a structured decision. The engine applies it **only** when the decision is one agents may settle (FR-AU-3, the formula tables) and the section's autonomy level allows it; it is recorded and shown under *Decided for you* with Undo. Every other Jev decision, and everywhere the database marks Jev as advising, becomes a recommendation preselected in the pitch. Jev never makes the Author's final calls, never overrides a code check, and never changes the Flow Order. |
-| FR-SW-3 | **Checks and balances on the database.** When a database change would break an input, put a checker in the same model family as what it checks, or leave a per-chapter component without a Fallback, the app shows the problem and keeps running on the last good copy until it is fixed. |
+| FR-SW-3 | **Checks and balances on the database.** When a database change would break an input, give a checker the same Primary as something it judges, give a Full-tier component fewer than two experts, or leave a component with no model it can call, the app shows the problem and keeps running on the last good copy until it is fixed. The readiness report (`python -m eos_app.readiness`) lists them. |
 
 
 ### 4.20 The shared library (decision D20)
@@ -684,7 +686,7 @@ Eight pools the Author built for the components to draw on. They live once, besi
 
 | ID | Area | Requirement |
 |---|---|---|
-| NFR-1 | Privacy | Runs locally on the Author's PC. Text leaves the machine only as model calls to the four model providers (Concentrate AI, OpenRouter, Featherless AI, Hugging Face; D19) and Notion sync. |
+| NFR-1 | Privacy | Runs locally on the Author's PC. Text leaves the machine only as model calls to the providers the Author has approved (Concentrate AI, OpenRouter, Featherless AI, Hugging Face, and for media ElevenLabs and Comfy Cloud; D19, D28), to Unsloth Desktop on the Author's second machine (D30), and Notion sync. |
 | NFR-2 | Secrets | Keys only in `.env`; never displayed, logged or committed; `.env` git-ignored. |
 | NFR-3 | Cost | Every call logs input and output tokens and cost (the provider's own cost report where it has one, such as OpenRouter's generation lookup; else registry prices). Batches show an estimate first and a running total. |
 | NFR-4 | Reliability | Concurrency limit (default 2), backoff on rate limits, at most two retries, failures recorded as runs with status `refused`, `truncated` or `error`. |
@@ -713,10 +715,11 @@ graph LR
   WF --> AG[Agent runner]
   AG --> PB[Prompt builder + section maps]
   AG --> RT[Model router]
-  RT --> CA[Concentrate AI · frontier Primaries]
-  RT --> OR[OpenRouter · Jev, some frontier, open-weight Fallbacks]
-  RT --> FL[Featherless AI · open weights; mature lane incl. abliterated]
-  RT --> HF[Hugging Face · open weights; second mature endpoint]
+  RT --> CA[Concentrate AI · general lane]
+  RT --> OR[OpenRouter · general lane, Jev, Mature Fallback, some media]
+  RT --> FL[Featherless AI · genre fine-tunes; the mature tier]
+  RT --> UD[Unsloth Desktop · genre fine-tunes on the Author's second machine]
+  RT --> MD[Media: ElevenLabs · Comfy Cloud · Hugging Face]
   AG --> CK[Code checks library]
   WF --> ST[(Project store · plain files)]
   AG --> ST
@@ -793,32 +796,43 @@ The shared library lives beside the projects (§4.20): `<projects root>/library/
 Markdown with YAML frontmatter for anything the Author reads; JSON for structured agent outputs; JSONL for logs. The plain files are the only source of truth. Derived indexes live in one rebuildable SQLite file, `index/cache.sqlite` (Python's standard library, D13); deleting it loses nothing, and the engine rebuilds it at start when it is missing or out of date. No semantic search in version 1.
 
 ### 6.4 Model router
-The router is the app's own code (D22). No hosted gateway sits between the app and the providers: all four accept the same OpenAI-style requests, and only the app knows the rules below.
+The router is the app's own code (`eos_app/router.py`, D22). No hosted gateway sits between the app and the providers, and only the app knows the rules below. Its lists live in `config/routing.yaml`; the models' facts in `config/models.yaml` (FR-ML-1); each component's experts in `config/components.yaml` (FR-NM-1).
 
 ```
-                    [ Writing EOS ]
-                          │
-                          ▼
-   [ App router: mature → mature_ok only · checker ≠ writer family ·
-     no answer keys · a Fallback per component · run records ]
-                          │
-     ┌──────────────┬─────┴────────┬──────────────────┐
-     ▼              ▼              ▼                  ▼
- Concentrate AI   OpenRouter    Featherless AI     Hugging Face
- frontier         Jev, some     open weights;      open weights;
- Primaries        frontier +    mature lane incl.  second mature
-                  open-weight   abliterated        endpoint
-                  Fallbacks     (mature_ok only)
+                              [ Writing EOS ]
+                                    │
+                                    ▼
+   [ App router: experts in order · another route before another model ·
+     a checker never on the writer's model · mature → mature tier only ·
+     no model without an ID · no answer keys · run records ]
+          │                         │                          │
+          ▼                         ▼                          ▼
+     GENERAL LANE               PROSE LANE                 MEDIA LANE
+  Building Blocks,          Prose Writing components    image, video, speech,
+  Sales & Marketing,        that write prose            music, sound
+  editing tools, checkers
+  Concentrate AI            Featherless AI              OpenRouter, Hugging Face,
+  OpenRouter                Unsloth Desktop             ElevenLabs, Comfy Cloud,
+                            (genre fine-tunes)          Featherless AI
 ```
 
-For every agent call:
-1. Read the agent's `task_type`, the batch's quality tier, and the content flags (mature: a scene at or above the mature level, D21).
-2. Look up the agent's slots for that tier in the assignments (from the Model Lab): Primary, Fallback, mature tier, and for a Full swarm tier the cross-check.
-3. **Guards:** mature content → mature_ok models only; an abliterated model only for mature content; checker family ≠ producer family for the artifact being judged, where a derived model counts as its base family; answer-key and section-map checks passed in the prompt builder.
-4. Call the Primary through its provider. On refusal, truncation or error → the component's own Fallback, which is on a different provider where possible; on a provider outage, go straight to the Fallback without retrying that provider. For mature content, the Fallback is the second mature_ok model on the other mature provider, never a general model (P10). At most two retries in total; then a Decision Queue item.
-5. Record the run: agent, model, provider, tier, tokens, cost, latency, status, output path, input hash.
+**The line of experts.** Every model-routed component has a Primary, a Comparable and, where one is given, a Fallback (its own, else the Primary's in the roster): a Mixture of Experts (D27). The router tries them in that order. A cheaper comparable model goes first (D29).
 
-An agent with no assignment yet cannot run except in a Model Lab round, or in Advanced tier with the output marked experimental.
+**Routes.** A model listed in the roster under two providers has two routes. When a provider is down, the router tries the same model's other route before it moves to the next expert (D22). Two roster rows with the same Model Name are one model.
+
+**Lanes.** Each lane lists the providers its calls may go to; a model on a provider outside its lane is never called for that lane.
+- *General lane:* the component's experts.
+- *Prose lane:* a model fine-tuned for the book's genre (the roster's Genre column) leads; the component's own experts stay behind it as the safety net, and do the work until a fine-tune is tagged. Never for mature text.
+- *Media lane:* the component's experts, each of which must make what the component makes (the roster's Modality).
+
+For every call:
+1. Read the component's lane, the book's genre, and the content flag (mature: a scene at or above the mature level, D21).
+2. Build the line: the experts in order, each followed by its other routes, kept to the lane's providers.
+3. **Guards.** A model with no provider model ID is never chosen. Mature text → mature_ok models only (P10); mature media → open-weight models on the mature media providers only. An evaluation component skips the model that produced the work, whichever provider serves it (P8); for mature work all its experts refuse, its Mature Fallback takes over, and if that is still open the call stops with the reason. Answer-key and section-map checks are passed in the prompt builder.
+4. Call the first model in the line that can be called. On a refusal, truncation or error, move to the next; on a provider outage, skip every route on that provider. At most two retries in total; then a Decision Queue item.
+5. Record the run: component, model, provider, route, tokens, cost, latency, status, output path, input hash.
+
+A component with nothing it can call does not run; `python -m eos_app.readiness` lists those components and the reason for each. Quality tiers (FR-ML-5) are not part of the router; whether they are kept is the Author's decision (fixes plan, decision 3).
 
 ### 6.5 Code checks library
 | Check | Used by |
@@ -869,8 +883,8 @@ context: { bible_entries: by_mention, pinned: [world.rule_1] }   # P15; @chapter
 prompt: prompts/continuity_knowledge_check.md         # template version + components recorded per run
 output_schema: schemas/continuity_findings.json
 code_checks: [dates_ages_ids, knowledge_breach]
-independence: { not_family_of: chapter.draft.producer }
-challenger: { task_type: verdict, not_family_of: [self, chapter.draft.producer] }
+independence: { not_model_of: chapter.draft.producer }             # P8: by model, whatever provider serves it
+challenger: { task_type: verdict, not_model_of: [self, chapter.draft.producer] }
 loop: { on: findings_confirmed, to: rewrite, max: 2 }
 gate: null
 temperature: 0.1
@@ -1004,35 +1018,40 @@ Raised while wiring the Author's pools (§4.20). Each has a working default so b
 
 ---
 
-## Appendix A · Develop agents by step (57 model-routed)
-| Step | Model-routed agents |
-|---|---|
-| 1 Intake and Pen Name | Narrative Note-Taker · Braindump Intake · Narrative Builder · Pen Name Selector · Premise Adaptation |
-| 2 Stage 0 | Pitch Profile Builder · Conflict Fit Rater |
-| 3 Naming and Characters | World Naming System Builder · Role Extraction · Character Selector · Evidence or Role Requirements · Psychological Structure Architect ⇄ Personality Type Identifier · Character Archetype Detector · Character Type Classifier · Character Name Generator · Character Name Critique · Character Profile Builder · Mirror Map · Representation and Trope Check · Character Sheet Generator · Character Style Bible · Fictional Character Refiner |
-| 4 Stage 1 | Plot Blueprint Writer · Character Seed Recorder · Collision Analyst · Antagonist Role Spec · Trope Audit · Synopsis Writer |
-| 5 Stage 2 | GANT Converter · Ghost and Lie Confirmer · Climax Outcome Matrix · Supporting Arcs · Oscillation Planner |
-| 6 Stage 3 | Vacancy Mapper · Structure Fit Rater · Style Calibrator |
-| 7 World | Worldbuilding · Element Extractor · Location Writer · World Rules Drafter · Consistency Check · Planned Master Timeline |
-| 8 QA and Bible | Emotional, Logic, Name and Originality & Trope Critiques · Reference Audit · Bible Assembler · Secrets and Knowledge Builder · Rule Extractor · Canon Verifier + Challenger |
-| Steps 1–7 | Dossier Keeper |
-| 1 Intake | POV / Tense / Style-Guide / Target-Reader Specification · Pre-Draft Research / Fact Base (own sources only) |
-| 9 Outline | Narrative Outliner · Arc Beat Planner · Reveal Scheduler · Emotional and Logic Audits · Slider Setter · Outline Audit Scorecard · Outline Rewrite |
+## Appendix A · The components by phase (123: 117 model-routed, 6 code)
+Generated from `config/components.yaml`, in Flow Order, with the plain names the writer sees (FR-NM-2). The database name and Step of each are in that file and in the Engine view. Word Count *(code)* has no place in the order: it runs wherever a length is estimated.
 
-After Develop, the finishing and release components (§4.18) are model-routed except Chapter Assembly & Export, Retail Formatting and the Wordcount Estimator, which are code. Their order is the Flow Order in *Narrative Components*.
+| Phase | Components | In Flow Order |
+|---|---|---|
+| A · Intake | 13 | Story Advisor · Brainstorm · Idea Intake · Note Taker · Fact Base · Story Setup · Genre Pack Builder · Pen Name and Style · Target Audience · Genre Writing Guide · Point of View and Reader · Premise Adapter · Story Dossier |
+| B · Stage 0 | 2 | Story Pitch · Conflict Scoring |
+| C · Naming | 1 | Naming Rules |
+| D · Characters | 19 | Cast Roles · Character Team Lead · Character Pool Match · Role Requirements · New Character · Inner Life · Personality Type · Archetype Check · Character Type · Name Ideas · Name Check · Character Profile · Mirror Map · Representation Check · Character Sheet · Character Voice Guide · Character Polish · Character Interview · Creative Reserve *(code)* |
+| E · Stage 1 | 6 | Character Seeds · Point of Impact · Antagonist Role · Plot Blueprint · Originality Check · Synopsis |
+| F · Stage 2 | 5 | Character Arc · Ghost and Lie Check · Ending Type · Supporting Arcs · Arc Setbacks |
+| G · Stage 3 | 2 | Cast and Structure · Style Card |
+| H · World | 9 | Worldbuilding · World Elements · Locations · World Rules · World Check · Story Timeline · Visual References · Map Maker · Visual Consistency Check |
+| I · QA and Bible | 9 | Logic Check · Emotion Check · Reference Check · Secrets and Who Knows · Story Rules · Story Bible Builder · Style Sheet and Canon Upkeep · Canon Check · Canon Second Opinion |
+| J · Outline | 7 | Outline · Arc Beats · Reveal Plan · Outline Check · Tension and Pace · Outline Scorecard · Outline Revision |
+| K · Chapters | 20 | Recipe Builder · Chapter Brief · Plot Picks · Cast Picks · World Picks · Fiction Tropes · Scene Plan · Setting Notes · Character State · Character Notes · Timeline Check · Scene Plan Fix · First Draft · Continuity Check · Voice and Style Check · Rewrite · Polish · Editing Tools · Character Changes Log · Chapter Summary |
+| L · Editor tools | 6 | Name Sorter · Workshop · Chat to Notes · Proofreader · Self-Edit Reports *(code)* · Edit Coach |
+| M · Finishing | 7 | Sensitivity Read · Beta Readers · Line and Copy Edit · Assemble and Export *(code)* · Interior Art · Typesetting *(code)* · Proofread |
+| N · Sales | 16 | Blurb · Agent Submission · Cover Brief · Cover Art · Launch Plan · Marketing Copy · Marketing Visuals · Audiobook Script · Audiobook Narration · Narration Check · Book Trailer · Music · Sound Effects · Trailer Video · Trailer Assembly *(code)* · Translations |
 
-## Appendix B · Task-type candidate pools (from the harness registry)
+`python -m eos_app.sync export <out.csv>` writes the full list with every column of the database.
+
+## Appendix B · Bake-off candidate pools (the harness)
+These are the candidates the bake-off harness tests against each other for a task type (`eos-bakeoff`, its own `config/models.yaml`). They are test pools, not assignments: a component's experts come from the *Narrative Components* database (FR-ML-4).
+
 | Task type | Candidates |
 |---|---|
 | Extraction | claude_fable_51 · gpt_sol · gemini4 · qwen_38_max · glm_53 · kimi_k3 · deepseek_v4_pro |
 | Synthesis | claude_fable_51 · gpt_sol · gemini4 · qwen_38_max |
 | Prose | claude_fable_51 · gpt_sol · gemini4 · qwen_38_max · glm_53 |
 | Verdict | gemini4 · kimi_k3 · glm_53 · deepseek_v4_pro · gpt_sol |
-| Mature prose | custom_abliterated · baseline_abliterated (Hugging Face endpoints) |
+| Mature prose | Not set in the harness yet. The app's mature tier is P10: Uncensored models on Featherless AI. |
 
-The five agents added in v0.3 (§4.13) use these same pools: Entity Classifier and Chat Extractor from Extraction; Workshop Chat from Synthesis and Verdict; Character Interview from Prose (mature prose for mature context); Brainstorm from Synthesis.
-
-Every OpenRouter model ID in `config/models.yaml` was confirmed against OpenRouter's model list on 2026-10-18, with live prices: `anthropic/claude-fable-5.1`, `openai/gpt-5.6-sol`, `google/gemini-4-argon`, `qwen/qwen3.8-max-0902`, `z-ai/glm-5.3`, `deepseek/deepseek-v4-pro` and `moonshotai/kimi-k3`, plus the D8 additions `openai/gpt-5.6-luna`, `anthropic/claude-opus-5` and `openai/gpt-6.1-sol`. Gemini 3.1 Pro was dropped from D8 (not on OpenRouter). The two Hugging Face mature-tier endpoints still need their URLs and hourly prices.
+Every OpenRouter model ID in the harness's `config/models.yaml` was confirmed against OpenRouter's model list on 2026-10-18, with live prices: `anthropic/claude-fable-5.1`, `openai/gpt-5.6-sol`, `google/gemini-4-argon`, `qwen/qwen3.8-max-0902`, `z-ai/glm-5.3`, `deepseek/deepseek-v4-pro` and `moonshotai/kimi-k3`, plus the D8 additions `openai/gpt-5.6-luna`, `anthropic/claude-opus-5` and `openai/gpt-6.1-sol`. The harness still calls OpenRouter only.
 
 ## Appendix C · Story Blueprint formula tables
 From the Notion *Story Blueprint Pipeline* and its Stage 0–3, Conflict Taxonomy, Axis 7 and GANT 2.0 pages. Held in `blueprint_tables.yaml`; weights are calibratable (FR-DEV-8).

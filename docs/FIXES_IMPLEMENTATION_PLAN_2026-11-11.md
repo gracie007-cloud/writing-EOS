@@ -30,7 +30,7 @@ https://github.com/gracie007-cloud/writing-EOS. 260 tests pass (228 before).
 | **B9** lane lists, media kinds | **Done.** |
 | **B10** look-alike names | **Code done.** **Yours:** the six roster rows. |
 | **B11** unchecked writers | **Reported.** **Waits on decision 4.** |
-| **C1** requirements | **Partly.** v0.27 records the corrections and marks the family wording as superseded. The full consolidation waits on decision 3. |
+| **C1** requirements | **Done** in v0.28: one statement of each routing rule; §6.4 rewritten; Appendix A generated from the app's own component list. The quality tiers are untouched and marked *under review* until decision 3. |
 | **C2** canvas | Not started. |
 | **D1** first real run | Not started. **Waits on decision 6.** |
 
