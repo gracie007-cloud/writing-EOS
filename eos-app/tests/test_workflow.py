@@ -7,7 +7,8 @@ import yaml
 
 from eos_app.blueprint import load_tables
 from eos_app.workflow import (COMPONENTS_PATH, OrderError, chapter_loop, check_order, display_name, gates,
-                              jev_role, load_components, next_to_run, run_plan, validate)
+                              is_chapter_gate, jev_role, load_components, next_to_run, run_plan, validate,
+                              waiting_on)
 
 
 @pytest.fixture(scope="module")
@@ -90,6 +91,10 @@ def test_an_order_that_runs_a_step_before_its_input_is_refused(W):
     (lambda d: d["components"][0].update(runs="sometimes"), "runs"),
     (lambda d: d["components"][5].update(needs=["99.9"]), "99.9"),
     (lambda d: d["components"][7].update(flow_order=200), "Flow Order"),
+    (lambda d: d["components"][1]["candidates"].update(frontier="GPT-6.1 Sol"), "primary, comparable and fallback"),
+    (lambda d: d["components"][1].update(modality="Image"), "media component"),
+    (lambda d: next(c for c in d["components"] if c["step"] == "NEW-22").pop("modality"), "media component"),
+    (lambda d: d["components"][1].update(gate_when_run=True), "no gate"),
 ])
 def test_validation(mutate, message):
     d = raw()
@@ -107,12 +112,12 @@ def test_first_steps(W):
 
 
 def test_next_steps_follow_inputs(W):
-    done = {"1", "2", "4.1", "3", "4", "NEW-02", "3.5"}
-    names = [c.name for c in next_to_run(W, done=done)]
+    done, ok = {"1", "2", "4.1", "3", "4", "NEW-02", "3.5"}, {"2", "3", "3.5"}      # three gates approved
+    names = [c.name for c in next_to_run(W, done=done, approved=ok)]
     assert names[:2] == ["Fact Base", "Target Audience"]
     assert "Story Pitch" not in names                       # reads the Reader Contract
     assert "Conflict Scoring" not in names                  # needs the pitch
-    names = [c.name for c in next_to_run(W, done=done | {"NEW-13"})]
+    names = [c.name for c in next_to_run(W, done=done | {"NEW-13"}, approved=ok)]
     assert "Story Pitch" in names
 
 
@@ -121,8 +126,8 @@ def test_audience_pitch_and_tropes_are_separate_components_on_their_own_models(W
     assert "NEW-13" in pitch.needs and aud.flow_order < pitch.flow_order
 
     assert {"5", "NEW-13", "19"} <= set(tropes.needs)       # after the Story Bible lock: characters and world complete
-    assert aud.candidates == {"frontier": None, "open_weight": "GLM 5.3 Flash", "primary": "open_weight"}
-    assert tropes.candidates["frontier"] == "Claude Fable 5.1" and pitch.candidates["frontier"] == "GPT-6.1 Sol"
+    assert aud.candidates == {"primary": "GLM 5.3 Flash", "comparable": None}       # the Author chose the open model
+    assert tropes.candidates["primary"] == "Claude Fable 5.1" and pitch.candidates["primary"] == "GPT-6.1 Sol"
 
 
 def test_the_reader_contract_comes_right_after_the_pen_name_and_feeds_the_intake(W):
@@ -175,4 +180,80 @@ def test_every_model_component_has_candidates_and_code_has_none(W):
         if c.task_type == "code":
             assert c.candidates is None and c.swarm == "none"
         else:
-            assert c.candidates and (c.candidates["frontier"] or c.candidates.get("primary") == "open_weight" and c.candidates["open_weight"])
+            assert c.candidates and c.candidates["primary"] and set(c.candidates) <= {"primary", "comparable", "fallback"}
+
+
+# ---------- Author gates stop the queue (FR-FLOW-3) ----------
+
+def test_nothing_past_a_gate_is_offered_until_the_author_approves_it(W):
+    done = {"1", "NEW-03", "2"}                                # Story Setup is finished; its gate is not approved
+    assert next_to_run(W, done) == []
+    held = waiting_on(W, W.by_step["4.1"], done)
+    assert [(g.name, g.gate_after) for g, _ in held] == [("Story Setup", "Author confirms manuscript type")]
+    assert [c.name for c in next_to_run(W, done, approved={"2"})] == ["Genre Pack Builder"]
+
+
+def test_a_gate_does_not_hold_back_its_own_component_or_anything_before_it(W):
+    assert [c.name for c in next_to_run(W, done=set())] == ["Idea Intake", "Fact Base"]
+    assert waiting_on(W, W.by_step["2"], done={"1"}) == []
+
+
+def test_the_recipe_gate_applies_only_when_a_recipe_was_built(W):
+    recipe, brief = W.by_step["22.6"], W.by_step["22.5"]
+    assert recipe.gate_when_run and recipe.runs == "on_demand"
+    book = {g.step for g, _ in gates(W) if not is_chapter_gate(W, g)} - {"22.6"}
+    assert not any(g.step == "22.6" for g, _ in waiting_on(W, brief, done=set(), approved=book, chapter=1))
+    assert [g.name for g, _ in waiting_on(W, brief, done={"22.6"}, approved=book, chapter=1)] == ["Recipe Builder"]
+
+
+def test_the_whole_book_stops_at_every_gate(W):
+    """Run the book with two chapters, approving a gate only when the queue has stopped at it."""
+    done, approved, stops, chapters = set(), set(), [], (1, 2)
+    book_gates = [g for g, _ in gates(W) if not is_chapter_gate(W, g) and not g.gate_when_run]
+    lock = next(g for g, _ in gates(W) if is_chapter_gate(W, g))
+    per_chapter = [c for c in chapter_loop(W) if c.runs == "per_chapter"]
+
+    def run_book():
+        while True:
+            nxt = next_to_run(W, done, approved)
+            if nxt:
+                done.add(nxt[0].step)
+                continue
+            waiting = [g for g in book_gates if g.step in done and g.step not in approved]
+            if not waiting:
+                return
+            approved.add(waiting[0].step)                   # the queue was empty: this is a real stop
+            stops.append(waiting[0].gate_after)
+
+    run_book()                                              # everything up to the chapters
+    assert "21.2" in approved and "NEW-12" not in done      # the outline is approved; finishing has not started
+    for ch in chapters:
+        while nxt := next_to_run(W, done, approved, chapter=ch):
+            done.add((nxt[0].step, ch))
+        assert ("36", ch) not in done                       # the canon update waits for this chapter's lock (FR-FLOW-4)
+        approved.add((lock.step, ch))
+        stops.append(f"{lock.gate_after} · chapter {ch}")
+        while nxt := next_to_run(W, done, approved, chapter=ch):
+            done.add((nxt[0].step, ch))
+        assert all((c.step, ch) in done for c in per_chapter)
+    done.update(c.step for c in per_chapter)                # every chapter has finished each per-chapter step
+    approved.add(lock.step)                                 # every chapter is locked
+    run_book()
+    assert all(c.step in done for c in W.ordered() if c.runs == "sequence")
+    assert len(stops) == len(book_gates) + len(chapters) == 20
+    assert stops[:3] == ["Author confirms manuscript type", "Author picks the pen name", "Author approves the adapted premise"]
+
+
+def test_planning_runs_ahead_but_drafting_waits_for_the_previous_chapters_lock(W):
+    book = {g.step for g, _ in gates(W) if not is_chapter_gate(W, g)}
+    done = {c.step for c in W.ordered() if c.runs == "sequence" and c.phase < "K"}
+    for _ in range(40):                                     # run chapter 2 as far as it will go
+        nxt = next_to_run(W, done, approved=book, chapter=2)
+        if not nxt:
+            break
+        done.add((nxt[0].step, 2))
+    assert ("22.5", 2) in done and ("28", 2) in done        # Chapter Brief and Character Notes: planned ahead
+    assert ("32", 2) not in done                            # First Draft waits (FR-GEN-5)
+    held = waiting_on(W, W.by_step["32"], done, approved=book, chapter=2)
+    assert [(g.gate_after, ch) for g, ch in held] == [("Chapter lock (Author)", 1)]
+    assert "First Draft" in [c.name for c in next_to_run(W, done, approved=book | {("38", 1)}, chapter=2)]

@@ -1,5 +1,5 @@
 # How the app's own router (D22) picks a model for a component and where it sends the call. The Author's rules,
-# 2026-10-22. Model facts (provider, ID, checkboxes, family) come from config/models.yaml.
+# 2026-10-22. Model facts (provider, ID, checkboxes, experts) come from config/models.yaml.
 version: "2026-10-22"
 
 # Each roster provider and the route the router calls.
@@ -13,9 +13,10 @@ providers:
   Comfy Cloud: comfy_cloud              # image and video workflows, Ideogram (Author, 2026-10-22)
 
 # Lanes. Building Blocks, Sales & Marketing and the evaluation components (the checkers) use the general lane: the
-# component's Primary, then its Fallback. Prose Writing components that write use the prose lane: a model fine-tuned
-# for the book's genre, via Featherless AI or Unsloth Desktop. Until a fine-tune is tagged for a genre, the prose
-# lane falls back to the component's own general candidates.
+# component's line of experts (Primary, Comparable, Fallback). Prose Writing components that write use the prose
+# lane: a model fine-tuned for the book's genre, via Featherless AI or Unsloth Desktop, then the component's own
+# experts as the safety net (the only choice until a fine-tune is tagged for the genre).
+# The router enforces each list: a model on a provider outside its lane is never called for that lane.
 lanes:
   general:
     providers: [Concentrate AI, OpenRouter]

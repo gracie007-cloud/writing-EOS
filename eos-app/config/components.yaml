@@ -1,7 +1,9 @@
 # Writing EOS components: the app's copy of the Notion database Narrative Components (D18).
 # name = what the writer sees; database_name and step = the Notion row (shown in Engine view).
-# candidates are the database's model columns; the Author's roster replaces them with Primary, Fallback,
-# mature tier and provider for each component. Regenerate this file when the database changes.
+# candidates are the component's line of experts: primary (the database's Frontier Model column),
+# comparable (Comparable Open-Weight) and fallback (Fallback Model). needs, code, judges, modality and
+# gate_when_run come from component_inputs.yaml. Built by `python -m eos_app.sync build <export.csv>`;
+# do not edit by hand.
 version: '2026-10-22'
 source: Notion database Narrative Components (5c6ac348379e4a3dadf8670b8869e6fa); the app follows its order (D18)
 phases:
@@ -47,8 +49,8 @@ components:
   needs: []
   category: Building Blocks
   candidates:
-    frontier: Muse Wonder
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: Muse Wonder
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
 - step: '38.5'
   name: Brainstorm
   database_name: Brainstorm
@@ -61,8 +63,8 @@ components:
   needs: []
   category: Building Blocks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '1'
   name: Idea Intake
   database_name: Braindump Intake (chatbot + uploads)
@@ -75,8 +77,8 @@ components:
   needs: []
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '1.1'
   name: Note Taker
   database_name: Narrative Note-Taker
@@ -89,8 +91,8 @@ components:
   needs: []
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: NEW-03
   name: Fact Base
   database_name: Pre-Draft Research / Fact Base
@@ -103,8 +105,8 @@ components:
   needs: []
   category: Building Blocks
   candidates:
-    frontier: Gemini 4 Argon
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: Gemini 4 Argon
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
 - step: '2'
   name: Story Setup
   database_name: Narrative Builder + Manuscript Type
@@ -119,8 +121,8 @@ components:
   category: Building Blocks
   gate_after: Author confirms manuscript type
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '4.1'
   name: Genre Pack Builder
   database_name: Genre Analyst
@@ -134,8 +136,8 @@ components:
   - '2'
   category: Building Blocks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '3'
   name: Pen Name and Style
   database_name: Pen Name, Genre and Literary Style (Triad)
@@ -151,8 +153,8 @@ components:
   category: Building Blocks
   gate_after: Author picks the pen name
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: NEW-13
   name: Target Audience
   database_name: Target Audience Selector
@@ -168,9 +170,8 @@ components:
   - '4.1'
   category: Building Blocks
   candidates:
-    frontier: null
-    open_weight: GLM 5.3 Flash
-    primary: open_weight
+    primary: GLM 5.3 Flash
+    comparable: null
 - step: '4'
   name: Genre Writing Guide
   database_name: Writing Guide Population (genre templates)
@@ -185,8 +186,8 @@ components:
   - NEW-13
   category: Building Blocks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: NEW-02
   name: Point of View and Reader
   database_name: POV / Tense / Style-Guide / Target-Reader Specification
@@ -201,8 +202,8 @@ components:
   - NEW-13
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '3.5'
   name: Premise Adapter
   database_name: Premise Adaptation (to Pen Name)
@@ -218,8 +219,8 @@ components:
   category: Building Blocks
   gate_after: Author approves the adapted premise
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '9'
   name: Story Dossier
   database_name: Story Dossier (Dossier Keeper)
@@ -233,8 +234,8 @@ components:
   - '3.5'
   category: Building Blocks
   candidates:
-    frontier: Claude Opus 5.5
-    open_weight: Kimi K3
+    primary: Claude Opus 5.5
+    comparable: Kimi K3
 - step: '5'
   name: Story Pitch
   database_name: Story Pitch (Pitch Profile Builder)
@@ -250,8 +251,8 @@ components:
   - NEW-13
   category: Building Blocks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '6'
   name: Conflict Scoring
   database_name: Conflict Fit Rater
@@ -264,18 +265,18 @@ components:
   needs:
   - '5'
   category: Building Blocks
-  judges:
-  - '5'
-  mature_fallback: Venice Uncensored
   gate_after: Author picks the Conflict Core
   code:
   - pillar factor
   - conflict fit totals and decision table
   - runner-up filing
+  judges:
+  - '5'
   candidates:
-    frontier: MiMo-V2.6-Pro (least-gap — not parity)
-    open_weight: GPT-6.1 Sol
+    primary: MiMo-V2.6-Pro (least-gap — not parity)
+    comparable: GPT-6.1 Sol
     fallback: DeepSeek V4 Pro 0813
+  mature_fallback: Venice Uncensored
 - step: '10.1'
   name: Naming Rules
   database_name: World Naming System Builder
@@ -293,8 +294,8 @@ components:
   code:
   - naming checks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '3.6'
   name: Cast Roles
   database_name: Role Extraction (placeholder characters)
@@ -308,8 +309,8 @@ components:
   - '3.5'
   category: Building Blocks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '12'
   name: Character Team Lead
   database_name: Character Development (team lead)
@@ -323,8 +324,8 @@ components:
   - '3.6'
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '6.5'
   name: Character Pool Match
   database_name: Character Pool Match
@@ -340,8 +341,8 @@ components:
   category: Building Blocks
   gate_after: G1 · pool match or create; tier
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: CD-02
   name: Role Requirements
   database_name: Evidence or Role Requirements
@@ -355,8 +356,8 @@ components:
   - '6.5'
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '6.6'
   name: New Character
   database_name: Character Creation
@@ -370,8 +371,8 @@ components:
   - CD-02
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: CD-03a
   name: Inner Life
   database_name: Psychological Structure Architect
@@ -385,8 +386,8 @@ components:
   - CD-02
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: CD-03b
   name: Personality Type
   database_name: Personality Type Identifier
@@ -400,8 +401,8 @@ components:
   - CD-03a
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: CD-04
   name: Archetype Check
   database_name: Character Archetype Detector
@@ -416,11 +417,11 @@ components:
   category: Building Blocks
   judges:
   - CD-03a
-  mature_fallback: Venice Uncensored
   candidates:
-    frontier: Kimi K3
-    open_weight: Claude Fable 5.1
+    primary: Kimi K3
+    comparable: Claude Fable 5.1
     fallback: Qwen 3.8 Max
+  mature_fallback: Venice Uncensored
 - step: CD-05
   name: Character Type
   database_name: Character Type Classifier
@@ -434,8 +435,8 @@ components:
   - CD-04
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '6.61'
   name: Name Ideas
   database_name: Character Name Generator (Creation Mode)
@@ -450,8 +451,8 @@ components:
   - '10.1'
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '16'
   name: Name Check
   database_name: Character Name Critique
@@ -465,13 +466,13 @@ components:
   - '6.61'
   - '10.1'
   category: Building Blocks
+  gate_after: G2 · name
   judges:
   - '6.61'
-  mature_fallback: Venice Uncensored
-  gate_after: G2 · name
   candidates:
-    frontier: Gemini 4 Argon
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: Gemini 4 Argon
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+  mature_fallback: Venice Uncensored
 - step: CD-08
   name: Character Profile
   database_name: Character Profile Builder
@@ -485,8 +486,8 @@ components:
   - CD-05
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: CD-08a
   name: Mirror Map
   database_name: Mirror Map
@@ -500,8 +501,8 @@ components:
   - CD-08
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: CD-08b
   name: Representation Check
   database_name: Representation and Trope Check
@@ -514,14 +515,14 @@ components:
   needs:
   - CD-08
   category: Building Blocks
+  gate_after: G4 · representation decision
   judges:
   - CD-08
-  mature_fallback: Venice Uncensored
-  gate_after: G4 · representation decision
   candidates:
-    frontier: Kimi K3
-    open_weight: Claude Fable 5.1
+    primary: Kimi K3
+    comparable: Claude Fable 5.1
     fallback: Qwen 3.8 Max
+  mature_fallback: Venice Uncensored
 - step: CD-09
   name: Character Sheet
   database_name: Character Sheet Generator
@@ -535,8 +536,8 @@ components:
   - CD-08
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: CD-10
   name: Character Voice Guide
   database_name: Character Style Bible
@@ -550,8 +551,8 @@ components:
   - CD-09
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: CD-11
   name: Character Polish
   database_name: Fictional Character Refiner
@@ -568,8 +569,8 @@ components:
   code:
   - pool write
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '38.3'
   name: Character Interview
   database_name: Character Interview
@@ -583,8 +584,8 @@ components:
   - CD-11
   category: Prose Writing
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: PROP-03
   name: Creative Reserve
   database_name: Creative Reserve / Name Parking Garage Filer
@@ -610,8 +611,8 @@ components:
   - '6'
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '8.1'
   name: Point of Impact
   database_name: Collision Analyst
@@ -626,8 +627,8 @@ components:
   - '6'
   category: Building Blocks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '8.2'
   name: Antagonist Role
   database_name: Antagonist Role Spec
@@ -643,8 +644,8 @@ components:
   code:
   - antagonist rule
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '8'
   name: Plot Blueprint
   database_name: Plot Blueprint Writer
@@ -662,8 +663,8 @@ components:
   code:
   - plot blueprint checks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '18.5'
   name: Originality Check
   database_name: Originality & Trope Critique
@@ -679,10 +680,10 @@ components:
   judges:
   - '8'
   - '8.1'
-  mature_fallback: Venice Uncensored
   candidates:
-    frontier: Gemini 4 Argon
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: Gemini 4 Argon
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+  mature_fallback: Venice Uncensored
 - step: '11'
   name: Synopsis
   database_name: Synopsis Writer (Synopsis Deep Dive)
@@ -697,8 +698,8 @@ components:
   category: Building Blocks
   gate_after: Author approves Plot Blueprint and synopsis
   candidates:
-    frontier: Claude Opus 5.5
-    open_weight: Kimi K3
+    primary: Claude Opus 5.5
+    comparable: Kimi K3
 - step: '13'
   name: Character Arc
   database_name: GANT Converter (Character Arc, GANT 2.0)
@@ -714,8 +715,8 @@ components:
   code:
   - arc skeleton from the conversion table
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '13.1'
   name: Ghost and Lie Check
   database_name: Ghost and Lie Confirmer
@@ -731,10 +732,10 @@ components:
   judges:
   - CD-03a
   - '13'
-  mature_fallback: Venice Uncensored
   candidates:
-    frontier: Gemini 4 Argon
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: Gemini 4 Argon
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+  mature_fallback: Venice Uncensored
 - step: '13.2'
   name: Ending Type
   database_name: Climax Outcome Matrix
@@ -750,8 +751,8 @@ components:
   code:
   - outcome type from the matrix
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '13.3'
   name: Supporting Arcs
   database_name: Supporting Arcs
@@ -765,8 +766,8 @@ components:
   - '13'
   category: Building Blocks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '13.4'
   name: Arc Setbacks
   database_name: Oscillation Planner
@@ -784,8 +785,8 @@ components:
   - oscillation rule
   - stage 2 guardrail
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '14'
   name: Cast and Structure
   database_name: Cast & Structure (Structure Fit Rater + Vacancy Mapper)
@@ -803,8 +804,8 @@ components:
   - Kishotenketsu flag
   - vacancy rule
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '15'
   name: Style Card
   database_name: Style Calibrator (Literary Style Calibration)
@@ -820,8 +821,8 @@ components:
   category: Building Blocks
   gate_after: Author approves cast map, structure, style card
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '10'
   name: Worldbuilding
   database_name: Worldbuilding
@@ -836,8 +837,8 @@ components:
   - '6'
   category: Building Blocks
   candidates:
-    frontier: Gemini 4 Argon
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: Gemini 4 Argon
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
 - step: '10.2'
   name: World Elements
   database_name: Element Extractor
@@ -851,8 +852,8 @@ components:
   - '10'
   category: Building Blocks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '10.3'
   name: Locations
   database_name: Location Writer
@@ -866,8 +867,8 @@ components:
   - '10'
   category: Building Blocks
   candidates:
-    frontier: Gemini 4 Argon
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: Gemini 4 Argon
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
 - step: '10.4'
   name: World Rules
   database_name: World Rules Drafter
@@ -881,8 +882,8 @@ components:
   - '10'
   category: Building Blocks
   candidates:
-    frontier: Gemini 4 Argon
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: Gemini 4 Argon
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
 - step: '10.5'
   name: World Check
   database_name: World Consistency Check
@@ -899,19 +900,19 @@ components:
   - '10.4'
   - CD-11
   category: Building Blocks
+  gate_after: Author approves world elements
+  code:
+  - naming checks
   judges:
   - '10'
   - '10.2'
   - '10.3'
   - '10.4'
-  mature_fallback: Venice Uncensored
-  gate_after: Author approves world elements
-  code:
-  - naming checks
   candidates:
-    frontier: MiMo-V2.6-Pro (least-gap — not parity)
-    open_weight: GPT-6.1 Sol
+    primary: MiMo-V2.6-Pro (least-gap — not parity)
+    comparable: GPT-6.1 Sol
     fallback: DeepSeek V4 Pro 0813
+  mature_fallback: Venice Uncensored
 - step: NEW-04
   name: Story Timeline
   database_name: Planned Master Timeline
@@ -929,8 +930,8 @@ components:
   code:
   - dates, ages and intervals
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: NEW-18
   name: Visual References
   database_name: Visual References (Character Designs, Mood Boards, Locations)
@@ -945,9 +946,10 @@ components:
   - CD-11
   category: Building Blocks
   gate_after: Author approves the reference sheets
+  modality: Image
   candidates:
-    frontier: FLUX.2
-    open_weight: Qwen-Image
+    primary: FLUX.2
+    comparable: Qwen-Image
     fallback: Z-Image Turbo
 - step: NEW-19
   name: Map Maker
@@ -962,9 +964,10 @@ components:
   - '10.3'
   - '10.5'
   category: Building Blocks
+  modality: Image
   candidates:
-    frontier: Nano Banana Pro
-    open_weight: Qwen-Image
+    primary: Nano Banana Pro
+    comparable: Qwen-Image
     fallback: Z-Image Turbo
 - step: NEW-20
   name: Visual Consistency Check
@@ -986,8 +989,8 @@ components:
   - NEW-23
   - NEW-26
   candidates:
-    frontier: Qwen3.8 Omni Flash
-    open_weight: MiMo-V2-Omni
+    primary: Qwen3.8 Omni Flash
+    comparable: MiMo-V2-Omni
     fallback: Nemotron 3 Nano Omni
 - step: '18'
   name: Logic Check
@@ -1011,11 +1014,11 @@ components:
   - '13.3'
   - '14'
   - '10'
-  mature_fallback: Venice Uncensored
   candidates:
-    frontier: MiMo-V2.6-Pro (least-gap — not parity)
-    open_weight: Gemini 4 Argon
+    primary: MiMo-V2.6-Pro (least-gap — not parity)
+    comparable: Gemini 4 Argon
     fallback: Kimi K3
+  mature_fallback: Venice Uncensored
 - step: '17'
   name: Emotion Check
   database_name: Emotional Critique
@@ -1035,11 +1038,11 @@ components:
   - '13.3'
   - '14'
   - '10'
-  mature_fallback: Venice Uncensored
   candidates:
-    frontier: MiMo-V2.6-Pro (least-gap — not parity)
-    open_weight: Gemini 4 Argon
+    primary: MiMo-V2.6-Pro (least-gap — not parity)
+    comparable: Gemini 4 Argon
     fallback: Kimi K3
+  mature_fallback: Venice Uncensored
 - step: '18.6'
   name: Reference Check
   database_name: Reference Audit
@@ -1059,11 +1062,11 @@ components:
   - '13.3'
   - '14'
   - '10'
-  mature_fallback: Venice Uncensored
   candidates:
-    frontier: MiMo-V2.6-Pro (least-gap — not parity)
-    open_weight: Gemini 4 Argon
+    primary: MiMo-V2.6-Pro (least-gap — not parity)
+    comparable: Gemini 4 Argon
     fallback: Kimi K3
+  mature_fallback: Venice Uncensored
 - step: '19.1'
   name: Secrets and Who Knows
   database_name: Secrets and Knowledge Builder
@@ -1078,8 +1081,8 @@ components:
   - '10.5'
   category: Building Blocks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '19.2'
   name: Story Rules
   database_name: Rule Extractor
@@ -1093,8 +1096,8 @@ components:
   - '10.4'
   category: Building Blocks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '19'
   name: Story Bible Builder
   database_name: Bible Assembler
@@ -1113,8 +1116,8 @@ components:
   - '19.2'
   category: Building Blocks
   candidates:
-    frontier: Gemini 4 Argon
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: Gemini 4 Argon
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
 - step: NEW-01
   name: Style Sheet and Canon Upkeep
   database_name: Story-Bible / Canon Maintenance & Style-Sheet Creation
@@ -1128,8 +1131,8 @@ components:
   - '19'
   category: Building Blocks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '19.3'
   name: Canon Check
   database_name: Canon Verifier
@@ -1145,11 +1148,11 @@ components:
   judges:
   - '19'
   - NEW-01
-  mature_fallback: Venice Uncensored
   candidates:
-    frontier: MiMo-V2.6-Pro (least-gap — not parity)
-    open_weight: GPT-6.1 Sol
+    primary: MiMo-V2.6-Pro (least-gap — not parity)
+    comparable: GPT-6.1 Sol
     fallback: DeepSeek V4 Pro 0813
+  mature_fallback: Venice Uncensored
 - step: '19.4'
   name: Canon Second Opinion
   database_name: Canon Challenger
@@ -1162,14 +1165,14 @@ components:
   needs:
   - '19.3'
   category: Building Blocks
+  gate_after: Story Bible lock (Author)
   judges:
   - '19.3'
   - '19'
-  mature_fallback: Venice Uncensored
-  gate_after: Story Bible lock (Author)
   candidates:
-    frontier: Muse Wonder
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: Muse Wonder
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+  mature_fallback: Venice Uncensored
 - step: '20'
   name: Outline
   database_name: Outline Generator (Narrative Outliner)
@@ -1183,8 +1186,8 @@ components:
   - '19.4'
   category: Building Blocks
   candidates:
-    frontier: GPT-6 Astra
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: GPT-6 Astra
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
 - step: '20.1'
   name: Arc Beats
   database_name: Arc Beat Planner
@@ -1198,8 +1201,8 @@ components:
   - '20'
   category: Building Blocks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '20.2'
   name: Reveal Plan
   database_name: Reveal Scheduler
@@ -1215,8 +1218,8 @@ components:
   code:
   - reveal order check
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '21'
   name: Outline Check
   database_name: Outline Emotional & Logic Audit
@@ -1234,10 +1237,10 @@ components:
   - '20'
   - '20.1'
   - '20.2'
-  mature_fallback: Venice Uncensored
   candidates:
-    frontier: Gemini 4 Argon
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: Gemini 4 Argon
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+  mature_fallback: Venice Uncensored
 - step: '22'
   name: Tension and Pace
   database_name: Plot Sliders / Slider Setter (tension, dread, pacing)
@@ -1251,8 +1254,8 @@ components:
   - '20'
   category: Building Blocks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '21.1'
   name: Outline Scorecard
   database_name: Outline Audit Scorecard
@@ -1271,10 +1274,10 @@ components:
   - '20.1'
   - '20.2'
   - '21.2'
-  mature_fallback: Venice Uncensored
   candidates:
-    frontier: Gemini 4 Argon
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: Gemini 4 Argon
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+  mature_fallback: Venice Uncensored
 - step: '21.2'
   name: Outline Revision
   database_name: Outline Rewrite
@@ -1289,8 +1292,8 @@ components:
   category: Building Blocks
   gate_after: Author approves the outline
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '22.6'
   name: Recipe Builder
   database_name: Recipe Builder
@@ -1304,9 +1307,10 @@ components:
   - '21.2'
   category: Building Blocks
   gate_after: Author approves the recipe
+  gate_when_run: true
   candidates:
-    frontier: GPT-6 Luna
-    open_weight: GLM-5.3-Flash
+    primary: GPT-6 Luna
+    comparable: GLM-5.3-Flash
 - step: '22.5'
   name: Chapter Brief
   database_name: Brief Writer (Chapter)
@@ -1320,8 +1324,8 @@ components:
   - '21.2'
   category: Building Blocks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '23'
   name: Plot Picks
   database_name: Plot Selector
@@ -1335,8 +1339,8 @@ components:
   - '22.5'
   category: Building Blocks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '24'
   name: Cast Picks
   database_name: Character Selector (Chapter)
@@ -1350,8 +1354,8 @@ components:
   - '22.5'
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '25'
   name: World Picks
   database_name: Worldbuilding Selector (Chapter)
@@ -1365,8 +1369,8 @@ components:
   - '22.5'
   category: Building Blocks
   candidates:
-    frontier: Gemini 4 Argon
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: Gemini 4 Argon
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
 - step: NEW-14
   name: Fiction Tropes
   database_name: Fiction Tropes Generator
@@ -1382,8 +1386,8 @@ components:
   - '19'
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '27'
   name: Scene Plan
   database_name: Plot Scene Brief
@@ -1397,8 +1401,8 @@ components:
   - '23'
   category: Building Blocks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '29'
   name: Setting Notes
   database_name: Worldbuilding Scene Brief
@@ -1412,8 +1416,8 @@ components:
   - '25'
   category: Building Blocks
   candidates:
-    frontier: Gemini 4 Argon
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: Gemini 4 Argon
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
 - step: '27.5'
   name: Character State
   database_name: Character State Examiner (X1)
@@ -1428,8 +1432,8 @@ components:
   - '27'
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '28'
   name: Character Notes
   database_name: Character Scene Brief
@@ -1443,8 +1447,8 @@ components:
   - '27.5'
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '30'
   name: Timeline Check
   database_name: Chronology Check
@@ -1463,11 +1467,11 @@ components:
   - '27'
   - '28'
   - '29'
-  mature_fallback: Venice Uncensored
   candidates:
-    frontier: MiMo-V2.6-Pro (least-gap — not parity)
-    open_weight: Gemini 4 Argon
+    primary: MiMo-V2.6-Pro (least-gap — not parity)
+    comparable: Gemini 4 Argon
     fallback: Kimi K3
+  mature_fallback: Venice Uncensored
 - step: '31'
   name: Scene Plan Fix
   database_name: Scene Brief Rewrite
@@ -1481,8 +1485,8 @@ components:
   - '30'
   category: Building Blocks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '32'
   name: First Draft
   database_name: First Draft
@@ -1499,8 +1503,8 @@ components:
   - auto-fail checks
   - craft measures
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '33'
   name: Continuity Check
   database_name: Chronology Check 2
@@ -1518,10 +1522,10 @@ components:
   - '35'
   - '37'
   - '38'
-  mature_fallback: Venice Uncensored
   candidates:
-    frontier: Gemini 4 Argon
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: Gemini 4 Argon
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+  mature_fallback: Venice Uncensored
 - step: '34'
   name: Voice and Style Check
   database_name: Style Check
@@ -1539,10 +1543,10 @@ components:
   - '35'
   - '37'
   - '38'
-  mature_fallback: Venice Uncensored
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
+  mature_fallback: Venice Uncensored
 - step: '35'
   name: Rewrite
   database_name: Rewrite
@@ -1560,8 +1564,8 @@ components:
   - auto-fail checks
   - craft measures
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '37'
   name: Polish
   database_name: Prose Refinement (seven levels)
@@ -1580,8 +1584,8 @@ components:
   - craft measures
   - facts unchanged
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '38'
   name: Editing Tools
   database_name: Edit Actions (improve, expand, humanize, etc.)
@@ -1598,8 +1602,8 @@ components:
   code:
   - humanize protections, measures and checks
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '36'
   name: Character Changes Log
   database_name: Continuity Ledger Update
@@ -1613,8 +1617,8 @@ components:
   - '37'
   category: Building Blocks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '36.5'
   name: Chapter Summary
   database_name: Summarizer and Canon Update
@@ -1628,8 +1632,8 @@ components:
   - '36'
   category: Building Blocks
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '38.1'
   name: Name Sorter
   database_name: Entity Classifier
@@ -1642,8 +1646,8 @@ components:
   needs: []
   category: Building Blocks
   candidates:
-    frontier: GPT-6 Luna
-    open_weight: GLM-5.3-Flash
+    primary: GPT-6 Luna
+    comparable: GLM-5.3-Flash
 - step: '38.2'
   name: Workshop
   database_name: Workshop Chat
@@ -1656,8 +1660,8 @@ components:
   needs: []
   category: Sales & Marketing
   candidates:
-    frontier: Gemini 4 Argon
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: Gemini 4 Argon
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
 - step: '38.4'
   name: Chat to Notes
   database_name: Chat Extractor
@@ -1670,8 +1674,8 @@ components:
   needs: []
   category: Building Blocks
   candidates:
-    frontier: GPT-6 Luna
-    open_weight: GLM-5.3-Flash
+    primary: GPT-6 Luna
+    comparable: GLM-5.3-Flash
 - step: NEW-15
   name: Proofreader
   database_name: Proofreader (Correctness & House-Style Consistency)
@@ -1688,8 +1692,8 @@ components:
   - house-style consistency
   - edit agreement
   candidates:
-    frontier: GPT-6 Luna
-    open_weight: GLM-5.3-Flash
+    primary: GPT-6 Luna
+    comparable: GLM-5.3-Flash
 - step: NEW-16
   name: Self-Edit Reports
   database_name: Self-Edit Reports
@@ -1720,11 +1724,11 @@ components:
   - '35'
   - '37'
   - '38'
-  mature_fallback: Venice Uncensored
   candidates:
-    frontier: Kimi K3
-    open_weight: Claude Fable 5.1
+    primary: Kimi K3
+    comparable: Claude Fable 5.1
     fallback: Qwen 3.8 Max
+  mature_fallback: Venice Uncensored
 - step: NEW-12
   name: Sensitivity Read
   database_name: Sensitivity / Authenticity Reading
@@ -1743,10 +1747,10 @@ components:
   - '37'
   - '38'
   - NEW-05a
-  mature_fallback: Venice Uncensored
   candidates:
-    frontier: Muse Wonder
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: Muse Wonder
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+  mature_fallback: Venice Uncensored
 - step: NEW-06
   name: Beta Readers
   database_name: Beta / Alpha Reader Management
@@ -1760,8 +1764,8 @@ components:
   - '36.5'
   category: Sales & Marketing
   candidates:
-    frontier: Gemini 4 Argon
-    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+    primary: Gemini 4 Argon
+    comparable: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
 - step: NEW-05a
   name: Line and Copy Edit
   database_name: Line & Copy Correction Pass (execution)
@@ -1776,8 +1780,8 @@ components:
   - NEW-06
   category: Prose Writing
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: PROP-01
   name: Assemble and Export
   database_name: Chapter Assembly & Obsidian Export
@@ -1806,9 +1810,10 @@ components:
   - NEW-18
   - PROP-01
   category: Sales & Marketing
+  modality: Image
   candidates:
-    frontier: FLUX.2
-    open_weight: Qwen-Image
+    primary: FLUX.2
+    comparable: Qwen-Image
     fallback: Z-Image Turbo
 - step: NEW-07
   name: Typesetting
@@ -1839,8 +1844,8 @@ components:
   category: Prose Writing
   gate_after: Author signs off the proof
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: '40'
   name: Blurb
   database_name: Book Blurb
@@ -1854,8 +1859,8 @@ components:
   - '36.5'
   category: Sales & Marketing
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: NEW-09
   name: Agent Submission
   database_name: Query / Submission Synopsis & Pitch
@@ -1870,8 +1875,8 @@ components:
   - '36.5'
   category: Sales & Marketing
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: NEW-08
   name: Cover Brief
   database_name: Cover Brief
@@ -1885,8 +1890,8 @@ components:
   - '40'
   category: Sales & Marketing
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: NEW-22
   name: Cover Art
   database_name: Cover Art
@@ -1901,9 +1906,10 @@ components:
   - NEW-18
   category: Sales & Marketing
   gate_after: Author picks the cover
+  modality: Image
   candidates:
-    frontier: GPT Image 2
-    open_weight: Ideogram
+    primary: GPT Image 2
+    comparable: Ideogram
     fallback: Qwen-Image
 - step: NEW-10
   name: Launch Plan
@@ -1918,8 +1924,8 @@ components:
   - '40'
   category: Sales & Marketing
   candidates:
-    frontier: GPT-6.1 Sol
-    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+    primary: GPT-6.1 Sol
+    comparable: MiMo-V2.6-Pro (least-gap — not parity)
 - step: '43'
   name: Marketing Copy
   database_name: Marketing, Promotion & Sales Copy
@@ -1933,8 +1939,8 @@ components:
   - '40'
   category: Sales & Marketing
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: NEW-23
   name: Marketing Visuals
   database_name: Marketing Visuals
@@ -1948,9 +1954,10 @@ components:
   - '43'
   - NEW-22
   category: Sales & Marketing
+  modality: Image
   candidates:
-    frontier: FLUX.2
-    open_weight: Qwen-Image
+    primary: FLUX.2
+    comparable: Qwen-Image
     fallback: Z-Image Turbo
 - step: '41'
   name: Audiobook Script
@@ -1965,8 +1972,8 @@ components:
   - NEW-05b
   category: Sales & Marketing
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: NEW-24
   name: Audiobook Narration
   database_name: Audiobook Narration
@@ -1979,9 +1986,10 @@ components:
   needs:
   - '41'
   category: Sales & Marketing
+  modality: Speech
   candidates:
-    frontier: ElevenLabs v3
-    open_weight: Gemini 3.1 Flash TTS
+    primary: ElevenLabs v3
+    comparable: Gemini 3.1 Flash TTS
     fallback: Chatterbox
 - step: NEW-25
   name: Narration Check
@@ -1995,13 +2003,13 @@ components:
   needs:
   - NEW-24
   category: Sales & Marketing
-  judges:
-  - NEW-24
   code:
   - script comparison
+  judges:
+  - NEW-24
   candidates:
-    frontier: Qwen3.8 Omni Flash
-    open_weight: MiMo-V2-Omni
+    primary: Qwen3.8 Omni Flash
+    comparable: MiMo-V2-Omni
     fallback: Nemotron 3 Nano Omni
 - step: '42'
   name: Book Trailer
@@ -2016,8 +2024,8 @@ components:
   - '36.5'
   category: Sales & Marketing
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3
 - step: NEW-27
   name: Music
   database_name: Music
@@ -2030,9 +2038,10 @@ components:
   needs:
   - '42'
   category: Sales & Marketing
+  modality: Music
   candidates:
-    frontier: Lyria 3 Pro
-    open_weight: MiniMax Music 3
+    primary: Lyria 3 Pro
+    comparable: MiniMax Music 3
     fallback: ACE-Step
 - step: NEW-28
   name: Sound Effects
@@ -2046,9 +2055,10 @@ components:
   needs:
   - '42'
   category: Sales & Marketing
+  modality: Sound
   candidates:
-    frontier: ElevenLabs Sound Effects
-    open_weight: Stable Audio Open
+    primary: ElevenLabs Sound Effects
+    comparable: Stable Audio Open
     fallback: Stability Text To Audio
 - step: NEW-26
   name: Trailer Video
@@ -2064,9 +2074,10 @@ components:
   - NEW-22
   - NEW-18
   category: Sales & Marketing
+  modality: Video
   candidates:
-    frontier: Seedance 2.0
-    open_weight: Wan 2.2
+    primary: Seedance 2.0
+    comparable: Wan 2.2
     fallback: LTX-2
 - step: NEW-29
   name: Trailer Assembly
@@ -2097,5 +2108,5 @@ components:
   - NEW-05b
   category: Sales & Marketing
   candidates:
-    frontier: Claude Fable 5.1
-    open_weight: Kimi K3
+    primary: Claude Fable 5.1
+    comparable: Kimi K3

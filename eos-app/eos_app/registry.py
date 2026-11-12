@@ -17,6 +17,7 @@ import csv
 import re
 import sys
 from dataclasses import dataclass
+from datetime import date
 from pathlib import Path
 
 import yaml
@@ -44,6 +45,12 @@ class Model:
     genre: str = ""
     modality: str = ""        # Image, Video, Speech, Music, Sound, Speech-to-text; empty for a text model
 
+    @property
+    def ident(self) -> str:
+        """Which model this is, whatever provider serves it: its roster name. Two roster rows with one name are one
+        model reached by two routes; P8 compares models by this, never by route."""
+        return " ".join(self.name.casefold().split())
+
 
 @dataclass
 class Registry:
@@ -63,7 +70,18 @@ class Registry:
         hits = [m for m in self.models if k in (_norm(m.name), _norm(m.model_id), _norm(m.model_id.replace("-v", "-")))]
         if not hits:
             raise RegistryError(f"{text!r} names no model in the registry")
+        if len({m.ident for m in hits}) > 1:       # two different models read alike: take an exact match or refuse
+            exact = [m for m in hits if name.casefold() in (m.ident, m.model_id.casefold())]
+            if not exact:
+                raise RegistryError(f"{text!r} could mean {' or '.join(sorted({m.name for m in hits}))}; "
+                                    f"write the roster name exactly")
+            hits = exact
         return hits[0]
+
+    def routes(self, model) -> list:
+        """Every roster row for this model: the model itself first, then the same model on its other providers
+        (D22: when a provider is down, the router tries the model's next route before it changes model)."""
+        return [model] + [m for m in self.models if m.ident == model.ident and m.key != model.key]
 
     def for_genre(self, genre: str) -> list:
         return [m for m in self.models if m.genre and _norm(m.genre) == _norm(genre)]
@@ -100,7 +118,8 @@ def _cell(r, column) -> str:
 def build(export_csv) -> dict:
     """models.yaml content from a roster export. Duplicate rows and rows whose name and ID disagree are reported,
     not guessed at: the first row for an ID is kept."""
-    rows = list(csv.DictReader(open(export_csv, encoding="utf-8-sig")))
+    with open(export_csv, encoding="utf-8-sig", newline="") as f:
+        rows = list(csv.DictReader(f))
     models, seen, problems = [], {}, []
     for r in rows:
         provider = (r.get("Provider") or "").strip()
@@ -124,7 +143,8 @@ def build(export_csv) -> dict:
             "comparable": _cell(r, "Comparable Equivalent Model"), "fallback": _cell(r, "Fallback Model"),
             "genre": _cell(r, "Genre"), "modality": _cell(r, "Modality"),
         })
-    return {"version": "2026-10-22", "source": "Notion LLM Identifier (export)", "problems": problems, "models": models}
+    return {"version": date.today().isoformat(), "source": "Notion LLM Identifier (export)", "problems": problems,
+            "models": models}
 
 
 def write(export_csv, out=MODELS_PATH) -> dict:

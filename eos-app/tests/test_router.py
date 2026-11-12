@@ -5,7 +5,7 @@ from dataclasses import replace
 
 import pytest
 
-from eos_app.registry import Registry, candidate_name, least_gap, load_models
+from eos_app.registry import Registry, RegistryError, candidate_name, least_gap, load_models
 from eos_app.router import (RoutingError, choose_checker, choose_writer, experts, load_routing, route,
                             same_model_report, writer_models)
 from eos_app.workflow import load_components
@@ -166,3 +166,73 @@ def test_an_open_mature_fallback_stops_mature_judging_with_a_reason(W, R, RT):
     refused = {m.key for _, m in experts(vcc, R)}
     with pytest.raises(RoutingError, match="still open"):
         choose_checker(vcc, model(R, "GPT Image 2"), R, RT, mature=True, refused=refused)
+
+
+# ---------- corrections of 2026-11-12 (fixes plan B1, B2, B4, B9, B10) ----------
+
+def also_on(R, name, provider, model_id):
+    """The registry with one more roster row: the same model on a second provider."""
+    m = model(R, name)
+    twin = replace(m, key=f"{provider.lower().replace(' ', '-')}-{model_id}", provider=provider, model_id=model_id)
+    return Registry(R.version, R.models + [twin], {**R.by_key, twin.key: twin}, []), twin
+
+
+def test_a_model_with_no_provider_id_is_never_chosen(W, R, RT):
+    cover = W.by_step["NEW-22"]                             # GPT Image 2 has an ID; Ideogram and Qwen-Image do not yet
+    assert choose_writer(cover, R, RT).name == "GPT Image 2"
+    with pytest.raises(RoutingError, match="Ideogram has no provider model ID yet"):
+        choose_writer(cover, R, RT, down={model(R, "GPT Image 2").key})
+    with pytest.raises(RoutingError, match="FLUX.2 has no provider model ID yet"):
+        choose_writer(W.by_step["NEW-18"], R, RT)
+
+
+def test_an_outage_is_met_by_the_same_model_on_another_provider_first(W, R, RT):
+    tropes = W.by_step["NEW-14"]                            # Claude Fable 5.1, then Kimi K3; both on Concentrate AI
+    with pytest.raises(RoutingError, match="Concentrate AI, which is down"):
+        choose_writer(tropes, R, RT, down_providers={"Concentrate AI"})
+    reg, twin = also_on(R, "Claude Fable 5.1", "OpenRouter", "anthropic/claude-fable-5.1")
+    assert [(m.name, m.provider) for m in writer_models(tropes, reg, RT)] == [
+        ("Claude Fable 5.1", "Concentrate AI"), ("Claude Fable 5.1", "OpenRouter"), ("Kimi K3", "Concentrate AI")]
+    assert choose_writer(tropes, reg, RT).provider == "Concentrate AI"
+    assert choose_writer(tropes, reg, RT, down_providers={"Concentrate AI"}) is twin      # same model, other route
+
+
+def test_a_checker_never_judges_its_own_model_on_another_route(W, R, RT):
+    canon = W.by_step["19.3"]                               # MiMo-2.6 Pro, GPT-6.1 Sol, DeepSeek V4 Pro 0813
+    reg, twin = also_on(R, "MiMo-2.6 Pro", "OpenRouter", "xiaomi/mimo-2.6-pro")
+    assert twin.ident == model(R, "MiMo-2.6 Pro").ident and twin.key != model(R, "MiMo-2.6 Pro").key
+    assert choose_checker(canon, twin, reg, RT).name == "GPT-6.1 Sol"                         # the writer's model, skipped
+    assert choose_checker(canon, model(R, "GPT-6.1 Sol"), reg, RT, down_providers={"Concentrate AI"}) is twin
+
+
+def test_a_tagged_fine_tune_leads_and_the_components_experts_stay_as_the_safety_net(W, R, RT):
+    draft = W.by_step["32"]
+    tuned = replace(model(R, "DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic"), genre="Space Opera")
+    reg = Registry(R.version, [tuned] + R.models, {**R.by_key, tuned.key: tuned}, [])
+    assert [m.name for m in writer_models(draft, reg, RT, genre="Space Opera")] == [tuned.name, "Claude Fable 5.1", "Kimi K3"]
+    assert choose_writer(draft, reg, RT, genre="Space Opera", down={tuned.key}).name == "Claude Fable 5.1"
+    assert writer_models(draft, reg, RT, genre="Space Opera", mature=True) == [tuned]         # never the stand-ins
+
+
+def test_a_model_on_a_provider_outside_the_lane_is_not_called(W, R, RT):
+    tropes = W.by_step["NEW-14"]
+    moved = [replace(m, provider="Hugging Face") if m.name == "Kimi K3" else m for m in R.models]
+    reg = Registry(R.version, moved, {m.key: m for m in moved}, [])
+    assert [m.name for m in writer_models(tropes, reg, RT)] == ["Claude Fable 5.1"]           # Kimi K3 left the general lane
+    moved = [replace(m, provider="Hugging Face") if m.name in ("Kimi K3", "Claude Fable 5.1") else m for m in R.models]
+    with pytest.raises(RoutingError, match="general-lane provider"):
+        writer_models(tropes, Registry(R.version, moved, {m.key: m for m in moved}, []), RT)
+
+
+def test_a_media_component_only_takes_models_that_make_what_it_makes(W, R, RT):
+    cover = W.by_step["NEW-22"]
+    assert cover.modality == "Image" and W.by_step["NEW-27"].modality == "Music"
+    with pytest.raises(RoutingError, match="makes music, but GPT Image 2 makes image"):
+        writer_models(replace(cover, modality="Music"), R, RT)
+
+
+def test_two_models_that_read_alike_are_told_apart_or_refused(R):
+    assert R.resolve("Command A").provider == "Concentrate AI" and R.resolve("Command A+").provider == "OpenRouter"
+    assert R.resolve("command-a") is R.resolve("Command A")                                   # an exact provider ID
+    with pytest.raises(RegistryError, match="could mean Command A or Command A\\+"):
+        R.resolve("CommandA")

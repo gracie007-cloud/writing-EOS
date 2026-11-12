@@ -1,0 +1,577 @@
+# What the Notion database Narrative Components does not record, so this app owns it (open question Q13):
+#   needs          the components whose output this one reads; the order check uses it (FR-FLOW-1)
+#   code           the code parts that belong to the component (no model involved)
+#   judges         an evaluation component: the components whose work it judges (P8)
+#   modality       a media component: what it makes (Image, Video, Speech, Music, Sound)
+#   gate_when_run  its Author gate applies only when the component was run (an optional tool)
+# Keyed by the database's Step. `python -m eos_app.sync build <export.csv>` joins this with the database
+# export to build components.yaml. A new database row needs an entry here before it can be built.
+components:
+  PROP-02:
+    needs: []
+    code:
+    - word count estimate
+  '0.5':
+    needs: []
+  '38.5':
+    needs: []
+  '1':
+    needs: []
+  '1.1':
+    needs: []
+  NEW-03:
+    needs: []
+  '2':
+    needs:
+    - '1'
+  '4.1':
+    needs:
+    - '2'
+  '3':
+    needs:
+    - '2'
+    - '4.1'
+  NEW-13:
+    needs:
+    - '1'
+    - '3'
+    - '4.1'
+  '4':
+    needs:
+    - '3'
+    - NEW-13
+  NEW-02:
+    needs:
+    - '3'
+    - NEW-13
+  '3.5':
+    needs:
+    - '3'
+    - NEW-13
+  '9':
+    needs:
+    - '3.5'
+  '5':
+    needs:
+    - '1'
+    - '3.5'
+    - NEW-13
+  '6':
+    needs:
+    - '5'
+    code:
+    - pillar factor
+    - conflict fit totals and decision table
+    - runner-up filing
+    judges:
+    - '5'
+  '10.1':
+    needs:
+    - '3.5'
+    - '4.1'
+    code:
+    - naming checks
+  '3.6':
+    needs:
+    - '3.5'
+  '12':
+    needs:
+    - '3.6'
+  '6.5':
+    needs:
+    - '3.6'
+    - '6'
+  CD-02:
+    needs:
+    - '6.5'
+  '6.6':
+    needs:
+    - CD-02
+  CD-03a:
+    needs:
+    - CD-02
+  CD-03b:
+    needs:
+    - CD-03a
+  CD-04:
+    needs:
+    - CD-03b
+    judges:
+    - CD-03a
+  CD-05:
+    needs:
+    - CD-04
+  '6.61':
+    needs:
+    - CD-05
+    - '10.1'
+  '16':
+    needs:
+    - '6.61'
+    - '10.1'
+    judges:
+    - '6.61'
+  CD-08:
+    needs:
+    - CD-05
+  CD-08a:
+    needs:
+    - CD-08
+  CD-08b:
+    needs:
+    - CD-08
+    judges:
+    - CD-08
+  CD-09:
+    needs:
+    - CD-08
+  CD-10:
+    needs:
+    - CD-09
+  CD-11:
+    needs:
+    - CD-10
+    code:
+    - pool write
+  '38.3':
+    needs:
+    - CD-11
+  PROP-03:
+    needs: []
+  '7':
+    needs:
+    - CD-11
+    - '6'
+  '8.1':
+    needs:
+    - '7'
+    - '6'
+  '8.2':
+    needs:
+    - '6'
+    code:
+    - antagonist rule
+  '8':
+    needs:
+    - '7'
+    - '8.1'
+    - '8.2'
+    code:
+    - plot blueprint checks
+  '18.5':
+    needs:
+    - '8'
+    judges:
+    - '8'
+    - '8.1'
+  '11':
+    needs:
+    - '8'
+  '13':
+    needs:
+    - '8'
+    code:
+    - arc skeleton from the conversion table
+  '13.1':
+    needs:
+    - '13'
+    judges:
+    - CD-03a
+    - '13'
+  '13.2':
+    needs:
+    - '13'
+    code:
+    - outcome type from the matrix
+  '13.3':
+    needs:
+    - '13'
+  '13.4':
+    needs:
+    - '13.2'
+    code:
+    - oscillation rule
+    - stage 2 guardrail
+  '14':
+    needs:
+    - '13.4'
+    code:
+    - structure fit totals
+    - Kishotenketsu flag
+    - vacancy rule
+  '15':
+    needs:
+    - '14'
+    - NEW-02
+  '10':
+    needs:
+    - '14'
+    - '6'
+  '10.2':
+    needs:
+    - '10'
+  '10.3':
+    needs:
+    - '10'
+  '10.4':
+    needs:
+    - '10'
+  '10.5':
+    needs:
+    - '10.1'
+    - '10.2'
+    - '10.3'
+    - '10.4'
+    - CD-11
+    code:
+    - naming checks
+    judges:
+    - '10'
+    - '10.2'
+    - '10.3'
+    - '10.4'
+  NEW-04:
+    needs:
+    - '13.4'
+    - '14'
+    - '10.5'
+    code:
+    - dates, ages and intervals
+  NEW-18:
+    needs:
+    - '10.5'
+    - CD-11
+    modality: Image
+  NEW-19:
+    needs:
+    - '10.3'
+    - '10.5'
+    modality: Image
+  NEW-20:
+    needs:
+    - NEW-18
+    judges:
+    - NEW-18
+    - NEW-19
+    - NEW-21
+    - NEW-22
+    - NEW-23
+    - NEW-26
+  '18':
+    needs:
+    - '8'
+    - '13.4'
+    - '14'
+    - '10.5'
+    judges:
+    - '8'
+    - '11'
+    - '13'
+    - '13.3'
+    - '14'
+    - '10'
+  '17':
+    needs:
+    - '13.4'
+    judges:
+    - '8'
+    - '11'
+    - '13'
+    - '13.3'
+    - '14'
+    - '10'
+  '18.6':
+    needs:
+    - '10.5'
+    judges:
+    - '8'
+    - '11'
+    - '13'
+    - '13.3'
+    - '14'
+    - '10'
+  '19.1':
+    needs:
+    - '13.4'
+    - '10.5'
+  '19.2':
+    needs:
+    - '10.4'
+  '19':
+    needs:
+    - '15'
+    - '17'
+    - '18'
+    - '18.6'
+    - '19.1'
+    - '19.2'
+  NEW-01:
+    needs:
+    - '19'
+  '19.3':
+    needs:
+    - '19'
+    judges:
+    - '19'
+    - NEW-01
+  '19.4':
+    needs:
+    - '19.3'
+    judges:
+    - '19.3'
+    - '19'
+  '20':
+    needs:
+    - '19.4'
+  '20.1':
+    needs:
+    - '20'
+  '20.2':
+    needs:
+    - '20'
+    code:
+    - reveal order check
+  '21':
+    needs:
+    - '20.1'
+    - '20.2'
+    judges:
+    - '20'
+    - '20.1'
+    - '20.2'
+  '22':
+    needs:
+    - '20'
+  '21.1':
+    needs:
+    - '21'
+    - '22'
+    judges:
+    - '20'
+    - '20.1'
+    - '20.2'
+    - '21.2'
+  '21.2':
+    needs:
+    - '21.1'
+  '22.6':
+    needs:
+    - '21.2'
+    gate_when_run: true
+  '22.5':
+    needs:
+    - '21.2'
+  '23':
+    needs:
+    - '22.5'
+  '24':
+    needs:
+    - '22.5'
+  '25':
+    needs:
+    - '22.5'
+  NEW-14:
+    needs:
+    - '5'
+    - NEW-13
+    - '19'
+  '27':
+    needs:
+    - '23'
+  '29':
+    needs:
+    - '25'
+  '27.5':
+    needs:
+    - '24'
+    - '27'
+  '28':
+    needs:
+    - '27.5'
+  '30':
+    needs:
+    - '27'
+    - '28'
+    - '29'
+    judges:
+    - '27'
+    - '28'
+    - '29'
+  '31':
+    needs:
+    - '30'
+  '32':
+    needs:
+    - '30'
+    code:
+    - auto-fail checks
+    - craft measures
+  '33':
+    needs:
+    - '32'
+    judges:
+    - '32'
+    - '35'
+    - '37'
+    - '38'
+  '34':
+    needs:
+    - '32'
+    judges:
+    - '32'
+    - '35'
+    - '37'
+    - '38'
+  '35':
+    needs:
+    - '33'
+    - '34'
+    code:
+    - auto-fail checks
+    - craft measures
+  '37':
+    needs:
+    - '33'
+    - '34'
+    code:
+    - auto-fail checks
+    - craft measures
+    - facts unchanged
+  '38':
+    needs:
+    - '37'
+    code:
+    - humanize protections, measures and checks
+  '36':
+    needs:
+    - '37'
+  '36.5':
+    needs:
+    - '36'
+  '38.1':
+    needs: []
+  '38.2':
+    needs: []
+  '38.4':
+    needs: []
+  NEW-15:
+    needs:
+    - '19'
+    code:
+    - house-style consistency
+    - edit agreement
+  NEW-16:
+    needs: []
+    code:
+    - self-edit reports
+  NEW-17:
+    needs:
+    - '19'
+    judges:
+    - '32'
+    - '35'
+    - '37'
+    - '38'
+  NEW-12:
+    needs:
+    - '36.5'
+    judges:
+    - '32'
+    - '35'
+    - '37'
+    - '38'
+    - NEW-05a
+  NEW-06:
+    needs:
+    - '36.5'
+  NEW-05a:
+    needs:
+    - NEW-12
+    - NEW-06
+  PROP-01:
+    needs:
+    - NEW-05a
+    code:
+    - assembly
+    - export
+  NEW-21:
+    needs:
+    - NEW-18
+    - PROP-01
+    modality: Image
+  NEW-07:
+    needs:
+    - PROP-01
+    - NEW-21
+    code:
+    - typesetting tools
+  NEW-05b:
+    needs:
+    - NEW-07
+  '40':
+    needs:
+    - '36.5'
+  NEW-09:
+    needs:
+    - '11'
+    - '36.5'
+  NEW-08:
+    needs:
+    - '40'
+  NEW-22:
+    needs:
+    - NEW-08
+    - NEW-18
+    modality: Image
+  NEW-10:
+    needs:
+    - '40'
+  '43':
+    needs:
+    - '40'
+  NEW-23:
+    needs:
+    - '43'
+    - NEW-22
+    modality: Image
+  '41':
+    needs:
+    - NEW-05b
+  NEW-24:
+    needs:
+    - '41'
+    modality: Speech
+  NEW-25:
+    needs:
+    - NEW-24
+    code:
+    - script comparison
+    judges:
+    - NEW-24
+  '42':
+    needs:
+    - '36.5'
+  NEW-27:
+    needs:
+    - '42'
+    modality: Music
+  NEW-28:
+    needs:
+    - '42'
+    modality: Sound
+  NEW-26:
+    needs:
+    - '42'
+    - NEW-22
+    - NEW-18
+    modality: Video
+  NEW-29:
+    needs:
+    - NEW-26
+    - NEW-27
+    - NEW-28
+    code:
+    - trailer assembly
+  NEW-11:
+    needs:
+    - NEW-05b
