@@ -16,7 +16,7 @@ https://github.com/gracie007-cloud/writing-EOS. 260 tests pass (228 before).
 
 | Finding | Status |
 |---|---|
-| **A1** version history | **Done.** The project is a git repository on GitHub, private since 2026-11-13, and now includes the bake-off harness, the worked examples and the canvas source. |
+| **A1** version history | **Done.** The project is a git repository on GitHub, private since 2026-11-12, and now includes the bake-off harness, the worked examples and the canvas source. |
 | **A2** lost build scripts | **Done, differently.** The old generator could not be recovered whole: the transcript held only its 21 October version. It is replaced by `python -m eos_app.sync`, which builds `components.yaml` from a Notion export joined with the new tracked file `config/component_inputs.yaml`. A test proves it rebuilds today's file byte for byte. |
 | **A3** package | **Replaced.** The GitHub repository is now the downloadable copy. The old folder and zip are left untouched on disk and are not published. |
 | **B1** models with no ID | **Code done.** The router never chooses one. **Yours:** the 18 IDs. |
@@ -44,7 +44,7 @@ differ slightly from its output.
 
 **Three things found while doing the work.**
 1. **The repository was public at first**, so your own material was kept out of the first three commits. You made
-   it private on 2026-11-13, and the harness with its test pack, the story-pitch experiment, the import report,
+   it private on 2026-11-12, and the harness with its test pack, the story-pitch experiment, the import report,
    the screenshot and the canvas source were added then. Keys, the real answer key and the library pools are
    still never stored. Two lines in the documents that named a ship and two pen names were made generic, as
    decision D10 already requires. `tools/check_public.py` runs before every push: it refuses keys, and it keeps

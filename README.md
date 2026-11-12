@@ -46,7 +46,7 @@ python -m pytest                     # the harness's own 74 tests
 
 ## Private, and what is still left out
 
-This repository is **private** (since 2026-11-13): the harness, the worked examples and the canvas source name the Author's book. Three things are still never stored here: keys (`.env`), the real answer key, and the library pools, whose master copy is the Author's Obsidian vault.
+This repository is **private** (since 2026-11-12): the harness, the worked examples and the canvas source name the Author's book. Three things are still never stored here: keys (`.env`), the real answer key, and the library pools, whose master copy is the Author's Obsidian vault.
 
 `tools/check_public.py` runs before every push. It refuses keys and those paths, and it keeps the app itself generic: no name from the Author's library may appear in `eos-app/` or the requirements (decision D10). **Before this repository is ever made public again**, read the note at the top of that file.
 
