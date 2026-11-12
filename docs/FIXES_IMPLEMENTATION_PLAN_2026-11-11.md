@@ -30,8 +30,8 @@ https://github.com/gracie007-cloud/writing-EOS. 260 tests pass (228 before).
 | **B9** lane lists, media kinds | **Done.** |
 | **B10** look-alike names | **Code done.** **Yours:** the six roster rows. |
 | **B11** unchecked writers | **Reported.** **Waits on decision 4.** |
-| **C1** requirements | **Done** in v0.28: one statement of each routing rule; §6.4 rewritten; Appendix A generated from the app's own component list. The quality tiers are untouched and marked *under review* until decision 3. |
-| **C2** canvas | **Done for routing and for what was approved but never drawn.** *Blueprint:* experts, routes, lanes, gates, hosting, the mature rules and the build status. *Model Lab:* how a step gets its experts, the roster's real models, judging by model. *Library:* a Reference lists tab for the five lists under development. *Finish and publish:* interior art, cover art, marketing visuals, narration, music, sound, trailer video and assembly. *Home, Story Blueprint, Chapters, Recipes, Autonomy:* every "model family" phrase replaced. **Not drawn yet:** the editing suite as its own panel in the Editor, and Visual References and Map Maker in the World step. The usability pass on each board is still to do. The quality-tier wording on the canvas is unchanged until decision 3. |
+| **C1** requirements | **Done** in v0.28: one statement of each routing rule; §6.4 rewritten; Appendix A generated from the app's own component list. **Decision 3 answered (retire):** the quality tiers were removed in v0.29 (D32). |
+| **C2** canvas | **Done for routing and for what was approved but never drawn.** *Blueprint:* experts, routes, lanes, gates, hosting, the mature rules and the build status. *Model Lab:* how a step gets its experts, the roster's real models, judging by model. *Library:* a Reference lists tab for the five lists under development. *Finish and publish:* interior art, cover art, marketing visuals, narration, music, sound, trailer video and assembly. *Home, Story Blueprint, Chapters, Recipes, Autonomy:* every "model family" phrase replaced. **Not drawn yet:** the editing suite as its own panel in the Editor, and Visual References and Map Maker in the World step. The usability pass on each board is still to do. The quality tiers were taken off the canvas after decision 3. |
 | **D1** first real run | Not started. **Waits on decision 6.** |
 
 **Run `python -m eos_app.readiness` from `eos-app/` at any time** to see the current state. Today: 110 ready,
@@ -231,7 +231,7 @@ Stages 1 and 2 run side by side: I correct the code while you correct the roster
 
 1. **Version history.** May I put the project under git and make the first commit, leaving out `.env`, `library/` and any answer key?
 2. **Mature route.** Extend Mature Fallback to the writing components that handle scene content (recommended), or keep mature books blocked until genre fine-tunes exist?
-3. **Quality tiers.** Retire them (recommended) or keep them?
+3. **Quality tiers.** ~~Retire them (recommended) or keep them?~~ **Answered 2026-11-12: retired** (D32).
 4. **Unchecked writers.** A checker for Character Interview, Proofread, Music, Sound Effects, or leave them unchecked?
 5. **Target Audience.** A Comparable model, or Light tier?
 6. **First live run.** A spending cap for the seven-component run.
