@@ -8,3 +8,10 @@ The build files for the Writing EOS design canvas as they were on 2026-10-22:
 
 The live canvas has moved on since this copy was made; it is the source of truth for the design. Treat these files as
 a record and a starting point, not as the current design.
+
+## What changed on the live canvas after this copy
+
+On 2026-11-12 nine boards were corrected on the live canvas only (fixes plan, C2): Blueprint, Model Lab, Library,
+Finish and publish, Home, Story Blueprint, Chapters, Recipes and Autonomy. The files here still carry the older
+wording about model families and the earlier mature lane. Do not rebuild the canvas from them without redoing those
+corrections.
