@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Writing EOS · Blueprint</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F4E79}a:hover{color:#12244A}
+:focus-visible{outline:2px solid #2E75B6;outline-offset:2px}
+.eos-btn{transition:background-color .15s ease, box-shadow .15s ease, transform .15s ease}
+.eos-btn:hover{box-shadow:0 10px 20px -12px rgb(31 56 100 / .5);transform:translateY(-1px)}
+.eos-row{transition:background-color .15s ease}
+.eos-row:hover{background:#F2F7FD}
+.eos-navitem:hover{background:#F2F7FD}
+.eos-navitem[aria-current="page"]:hover{background:#1F4E79}
+@media (max-width: 900px){
+.eos-side{flex:1 1 100% !important;max-width:none !important;min-height:0 !important;border-right:0 !important;border-bottom:1px solid #E3E8F0 !important;padding:12px !important;gap:10px !important}
+.eos-nav{flex-direction:row !important;overflow-x:auto;gap:4px !important}
+.eos-navgroup{flex-direction:row !important}
+.eos-navlabel,.eos-sidefoot,.eos-search{display:none !important}
+.eos-top{padding:12px 16px !important}
+.eos-page{padding:24px 16px 40px !important}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; align-items: stretch; background: #F5F7FB; color: #1B2A41; font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">
+<dc-import name="Sidebar" active="blueprint" hint-size="264px,100%"></dc-import>
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+<header class="eos-top" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 14px 32px; background: rgb(255 255 255 / 0.85); border-bottom: 1px solid #E3E8F0">
+<nav aria-label="Breadcrumb" style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600"><span aria-current="page" style="color: #1B2A41">Blueprint</span></nav>
+<div class="eos-search" style="flex: 1 1 260px; max-width: 420px; position: relative; margin-left: auto">
+<label for="top-search" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search the Bible, chapters and chats</label>
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="position: absolute; left: 12px; top: 14px; fill: none; stroke: #5F6E84; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M11 3a8 8 0 1 0 0 16a8 8 0 1 0 0-16 M21 21l-4.3-4.3"></path></svg>
+<input id="top-search" type="search" placeholder="Search the Bible, chapters and chats" style="width: 100%; box-sizing: border-box; min-height: 44px; padding: 0 12px 0 36px; border-radius: 10px; border: 1px solid #D5DCE6; background: #FFFFFF; font: 14px 'Plus Jakarta Sans', sans-serif; color: #1B2A41">
+</div>
+<div role="radiogroup" aria-label="View" style="display: inline-flex; gap: 4px; padding: 4px; border-radius: 12px; background: #E8EEF6">
+<sc-for list="{{viewOpts}}" as="v" hint-placeholder-count="2">
+<button type="button" role="radio" aria-checked="{{v.on}}" onClick="{{v.pick}}" style="min-height: 36px; padding: 0 14px; border: 0; border-radius: 9px; background: {{v.bg}}; color: {{v.fg}}; box-shadow: {{v.shadow}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{v.name}}</button>
+</sc-for>
+</div>
+</header>
+<main class="eos-page" style="width: 100%; max-width: 1240px; margin: 0 auto; box-sizing: border-box; padding: 28px 32px 56px; display: flex; flex-direction: column; gap: 22px">
+<section aria-labelledby="page-title" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px">
+<div style="flex: 1 1 520px; display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2E75B6"><span style="width: 24px; height: 1px; background: #9DC3E6"></span>Blueprint · how the app is wired</p>
+<h1 id="page-title" style="margin: 0; font-size: 32px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.15">A writing team of best-fit models</h1>
+<p style="margin: 0; max-width: 720px; font-size: 15px; line-height: 1.6; color: #4B5B73">Every step is an agent with one job, running on the model that tested best for that kind of job. Story Blueprint, Chapters and the Editor all go through one router. No single model writes the novel, and you make every creative decision.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px"><a href="System.dc.html" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer">Design system</a></div>
+</section>
+<section aria-labelledby="pipes" style="display: flex; flex-direction: column; gap: 12px">
+<h2 id="pipes" style="margin: 0; font-size: 17px; font-weight: 800">Three pipelines, one router</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 12px">
+<sc-for list="{{pipes}}" as="p" hint-placeholder-count="4">
+<a href="{{p.href}}" class="eos-row" style="display: flex; flex-direction: column; gap: 8px; padding: 18px 20px; border-radius: 16px; background: {{p.bg}}; border: 1px solid #E3E8F0; color: #1B2A41; text-decoration: none">
+<span style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px"><span style="font-size: 18px; font-weight: 800">{{p.name}}</span><span style="font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; background: #EEF1F5; color: #475569; box-shadow: inset 0 0 0 1px #D5DCE6">{{p.runText}}</span></span>
+<span style="font-size: 13px; font-weight: 700; color: #1F4E79">{{p.count}}</span>
+<span style="font-size: 13px; line-height: 1.5; color: #4B5B73">{{p.text}}</span>
+</a>
+</sc-for>
+</div>
+</section>
+
+<section aria-labelledby="roster" style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px"><h2 id="roster" style="margin: 0; font-size: 17px; font-weight: 800">One chapter, left to right</h2><span style="font-size: 13px; color: #4B5B73">Seventeen steps · each step is its own agent on its own model, except your lock</span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr)); gap: 10px">
+<sc-for list="{{lanes}}" as="lane" hint-placeholder-count="7">
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 14px 12px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
+<span style="display: flex; align-items: center; gap: 8px"><span style="display: grid; place-items: center; width: 24px; height: 24px; border-radius: 999px; background: #1F3864; color: #FFFFFF; font-size: 12px; font-weight: 800">{{lane.n}}</span><span style="font-size: 14px; font-weight: 800">{{lane.name}}</span></span>
+<sc-for list="{{lane.agents}}" as="a" hint-placeholder-count="2">
+<div style="display: flex; flex-direction: column; gap: 5px; padding: 9px 10px; border-radius: 10px; background: {{a.bg}}; box-shadow: inset 0 0 0 1px {{a.ring}}">
+<span style="font-size: 13px; font-weight: 700; line-height: 1.3">{{a.label}}</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #1F3864">{{a.poolName}} · {{a.run}}</span></sc-if>
+<sc-if value="{{a.hasLoop}}" hint-placeholder-val="{{ false }}"><span style="display: flex; align-items: flex-start; gap: 5px; font-size: 12px; line-height: 1.35; color: #A5470B"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8 M3 3v5h5"></path></svg>{{a.loop}}</span></sc-if>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section aria-labelledby="router" style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; border-radius: 16px; background: #1F3864; color: #FFFFFF">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px"><h2 id="router" style="margin: 0; font-size: 17px; font-weight: 800">How every step gets its model</h2><a href="Lab.dc.html" style="color: #9DC3E6; font-size: 13px; font-weight: 600">Assignments come from the Model Lab</a></div>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 14px">
+<sc-for list="{{route}}" as="r" hint-placeholder-count="6">
+<li style="display: flex; flex-direction: column; gap: 6px"><span style="display: grid; place-items: center; width: 28px; height: 28px; border-radius: 999px; background: #FFC000; color: #12244A; font-size: 13px; font-weight: 800">{{r.num}}</span><span style="font-size: 14px; font-weight: 700">{{r.title}}</span><span style="font-size: 13px; line-height: 1.5; color: #DCE6F2">{{r.text}}</span></li>
+</sc-for>
+</ol>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+<section aria-labelledby="pooltable" style="flex: 1.4 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<h2 id="pooltable" style="margin: 0; font-size: 17px; font-weight: 800">Kinds of work and what good looks like</h2>
+<sc-for list="{{pools}}" as="p" hint-placeholder-count="6">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span style="font-size: 15px; font-weight: 800">{{p.name}}</span><span style="font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; background: {{p.tBg}}; color: {{p.tFg}}; box-shadow: inset 0 0 0 1px {{p.tRing}}">{{p.label2}}</span></span>
+<span style="font-size: 13px; line-height: 1.5; color: #4B5B73">{{p.good}}</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #1F3864">{{p.cands}}</span></sc-if>
+</div>
+</sc-for>
+</section>
+<section aria-labelledby="rules" style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
+<h2 id="rules" style="margin: 0; font-size: 17px; font-weight: 800">Rules the router never breaks</h2>
+<sc-for list="{{rules}}" as="r" hint-placeholder-count="14">
+<div style="display: flex; gap: 10px"><span style="flex: none; margin-top: 2px; display: grid; place-items: center; width: 20px; height: 20px; border-radius: 999px; background: #E7F3DF; color: #3B7020"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 700">{{r.t}}</span><span style="font-size: 13px; line-height: 1.5; color: #4B5B73">{{r.d}}</span></span></div>
+</sc-for>
+</section>
+</div>
+
+<section aria-labelledby="lineage" style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 4px"><h2 id="lineage" style="margin: 0; font-size: 17px; font-weight: 800">Borrowed from LivingWriter, RaptorWrite, Sudowrite, Novelcrafter and Story Hacker OS</h2><span style="font-size: 13px; color: #4B5B73">Those apps use one house model or a model you pick by hand. Here each borrowed feature is plain code or a routed agent.</span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 12px">
+<sc-for list="{{lineage}}" as="l" hint-placeholder-count="9">
+<a href="{{l.href}}" class="eos-row" style="display: flex; flex-direction: column; gap: 6px; padding: 16px 18px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E3E8F0; color: #1B2A41; text-decoration: none">
+<span style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px"><span style="font-size: 15px; font-weight: 800">{{l.name}}</span><span style="font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; background: {{l.tBg}}; color: {{l.tFg}}; box-shadow: inset 0 0 0 1px {{l.tRing}}">{{l.howText}}</span></span>
+<span style="font-size: 12px; font-weight: 600; color: #5F6E84">From {{l.fromText}}</span>
+<span style="font-size: 13px; line-height: 1.5; color: #4B5B73">{{l.text}}</span>
+</a>
+</sc-for>
+</div>
+</section>
+
+<section aria-labelledby="build" style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px"><h2 id="build" style="margin: 0; font-size: 17px; font-weight: 800">Build order</h2><span style="font-size: 13px; color: #4B5B73">From the requirements document, §8</span></div>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 14px">
+<sc-for list="{{build}}" as="b" hint-placeholder-count="8">
+<li style="display: flex; flex-direction: column; gap: 6px; padding-top: 12px; border-top: 4px solid {{b.bar}}">
+<span style="display: flex; justify-content: space-between; gap: 6px"><span style="font-size: 12px; font-weight: 800; color: #5F6E84">Phase {{b.n}}</span><span style="font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; background: {{b.tBg}}; color: {{b.tFg}}; box-shadow: inset 0 0 0 1px {{b.tRing}}">{{b.state}}</span></span>
+<span style="font-size: 14px; font-weight: 800">{{b.title}}</span>
+<span style="font-size: 13px; line-height: 1.5; color: #4B5B73">{{b.text}}</span>
+</li>
+</sc-for>
+</ol>
+</section>
+
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"view": {"editor": "enum", "options": ["writer", "engine"], "default": "writer"}, "$preview": {"width": 1440, "height": 3600}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { view: null };
+}
+renderVals() {
+var self = this;
+var st = this.state;
+var view = st.view || this.props.view || 'writer';
+var engine = view === 'engine';
+var viewOpts = [{ id: 'writer', name: 'Writer view' }, { id: 'engine', name: 'Engine view' }].map(function (v) {
+var on = v.id === view;
+return { name: v.name, on: on, bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#1F3864' : '#4B5B73', shadow: on ? '0 1px 3px rgb(16 24 40 / 0.12)' : 'none', pick: function () { self.setState({ view: v.id }); } };
+});
+var TONE = {
+done: { bg: '#E7F3DF', fg: '#3B7020', ring: '#B9DCA4', dot: '#70AD47' },
+run: { bg: '#DEEBF7', fg: '#1F4E79', ring: '#9DC3E6', dot: '#2E75B6' },
+you: { bg: '#FFF5D6', fg: '#6B4E00', ring: '#FFD966', dot: '#FFC000' },
+flag: { bg: '#FDE9DC', fg: '#A5470B', ring: '#F4B183', dot: '#ED7D31' },
+mature: { bg: '#EFE8F8', fg: '#5B3A8C', ring: '#CDBDE6', dot: '#7B5BB0' },
+wait: { bg: '#EEF1F5', fg: '#475569', ring: '#D5DCE6', dot: '#94A3B8' },
+blocked: { bg: '#FDECEB', fg: '#A8321F', ring: '#F2B8B0', dot: '#E5604D' },
+navy: { bg: '#1F3864', fg: '#FFFFFF', ring: '#1F3864', dot: '#FFFFFF' }
+};
+var tabsOf = function (defs, cur, key) {
+return defs.map(function (t) { var on = t.id === cur; var o = {}; o[key] = t.id; return Object.assign({}, t, { on: on, bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#1F4E79' : '#FFFFFF', pick: function () { self.setState(o); } }); });
+};
+var P = {
+ext: { pool: 'EXTRACTION', fg: '#123B4C', bg: '#E3EEF2' },
+syn: { pool: 'SYNTHESIS', fg: '#2F4A1E', bg: '#E8EFE1' },
+prose: { pool: 'PROSE', fg: '#8E3B14', bg: '#F8E9E0' },
+ver: { pool: 'VERDICT', fg: '#17191B', bg: '#E6E6E0' },
+mat: { pool: 'MATURE', fg: '#4A3277', bg: '#ECE7F4' },
+you: { pool: 'YOU', fg: '#FFFFFF', bg: '#1B1E21' }
+};
+var ag = function (name, p, run, loop) {
+return Object.assign({ name: name, run: run, loop: loop || '', hasLoop: !!loop }, P[p]);
+};
+var pipes = [
+{ name: 'Develop', href: 'Develop.dc.html', run: 'RUN 03', count: '9 steps · 68 agents', text: 'The Story Blueprint: intake and pen name, Stage 0 pitch, naming rules then characters (pool first), Stages 1–3, world, QA and Bible lock, outline.', bg: '#FFFFFF', border: '#D9D9D2' },
+{ name: 'Chapter Generator', href: 'Generate.dc.html', run: 'RUNS 01–02', count: '17 agents · batch', text: 'Runs selected chapters through the agents below. Stops at gates.', bg: '#FFFFFF', border: '#D9D9D2' },
+{ name: 'Editor', href: 'Editor.dc.html', run: 'RUN 03', count: '5 tools · 9 actions', text: 'Write, Rewrite, Describe and Brainstorm on a selection, plus the Workshop chat. You accept or reject each suggestion.', bg: '#FFFFFF', border: '#D9D9D2' },
+{ name: 'Finish & publish', href: 'Finish.dc.html', run: 'AFTER THE LAST LOCK', count: '6 finishing · 8 release steps', text: 'Sensitivity read, beta readers, line and copy edit, typesetting and proofs; then blurb, cover brief, launch plan, marketing and derivatives. Same router.', bg: '#FFFFFF', border: '#D9D9D2' }
+];
+var lanes = [
+{ name: 'Plan', agents: [
+ag('Chapter Brief', 'syn', 'RUN 02'),
+ag('Plot Picks', 'ext', 'RUN 02', 'Bad JSON: retry, then Fallback'),
+ag('Cast Picks', 'ext', 'RUN 01', 'Bad JSON: retry, then Fallback'),
+ag('World Picks', 'ext', 'RUN 01', 'Bad JSON: retry, then Fallback')
+] },
+{ name: 'Scenes', agents: [
+ag('Scene Plan', 'syn', 'RUN 01', 'Missing Required item: retry with the list'),
+ag('Setting Notes', 'syn', 'RUN 01'),
+ag('Character State', 'syn', 'RUN 02'),
+ag('Character Notes', 'syn', 'RUN 02')
+] },
+{ name: 'Gate', agents: [
+ag('Timeline Check', 'ver', 'RUN 01', 'Contradiction: Scene Plan Fix, then check again')
+] },
+{ name: 'Write', agents: [
+ag('First Draft', 'prose', 'RUN 01'),
+ag('First Draft · mature scenes', 'mat', 'RUN 01')
+] },
+{ name: 'Check', agents: [
+ag('Continuity Check', 'ver', 'RUN 02', 'Contradiction or knowledge breach: to Rewrite, max 2'),
+ag('Voice and Style Check', 'ver', 'RUN 02', 'Voice, slider or arc-stage miss: to Rewrite, max 2')
+] },
+{ name: 'Revise', agents: [
+ag('Rewrite', 'prose', 'RUN 02', 'Then back through Check'),
+ag('Polish', 'prose', 'RUN 02', 'Facts changed: discard, retry once')
+] },
+{ name: 'Close', agents: [
+ag('Your review and lock', 'you', 'HUMAN'),
+ag('Character Changes Log', 'ext', 'RUN 02', 'Only after your lock: records what the text earned'),
+ag('Chapter Summary', 'syn', 'RUN 02', 'Feeds the next chapter as canon')
+] }
+].map(function (l, i) { return Object.assign({}, l, { num: String(i + 1).padStart(2, '0') }); });
+var pools = [
+Object.assign({ name: 'Structured extraction', label: 'EXTRACTION', good: 'Valid JSON. Selects only what is needed; invents nothing.', cands: 'claude_fable_51 gpt_sol gemini4 qwen_38_max glm_53 kimi_k3 deepseek_v4_pro' }, P.ext),
+Object.assign({ name: 'Long-context synthesis', label: 'SYNTHESIS', good: 'Carries every Required and Forbidden item across long inputs.', cands: 'claude_fable_51 gpt_sol gemini4 qwen_38_max' }, P.syn),
+Object.assign({ name: 'Prose generation', label: 'PROSE', good: 'Holds the persona voice. No auto-fail or slop flags.', cands: 'claude_fable_51 gpt_sol gemini4 qwen_38_max glm_53' }, P.prose),
+Object.assign({ name: 'Verdict', label: 'VERDICT', good: 'Catches planted errors with exact quotes; few false alarms.', cands: 'gemini4 kimi_k3 glm_53 deepseek_v4_pro gpt_sol' }, P.ver),
+Object.assign({ name: 'Mature prose', label: 'MATURE', good: 'Clinical, dignified, no refusals. mature_ok models only.', cands: 'custom_abliterated baseline_abliterated' }, P.mat),
+Object.assign({ name: 'Human', label: 'YOU', good: 'Pitch pick, blind scores, false-alarm calls, every lock.', cands: '—' }, P.you)
+];
+var route = [
+{ n: '01', title: 'Agent states its job', text: 'Pipeline, agent and task type, plus only the material its map allows.' },
+{ n: '02', title: 'Router picks the model', text: 'The slot for this agent under the batch’s quality tier, from the latest Model Lab assignment.' },
+{ n: '03', title: 'Guards check the call', text: 'Answer key blocked. Mature text only to mature_ok. Checker family differs from the writer.' },
+{ n: '04', title: 'Call goes out', text: 'Straight from the app to the model’s provider, with no service in between: Concentrate AI for frontier models; OpenRouter, Featherless AI or Hugging Face for open-weight models and Fallbacks; Featherless AI and your Hugging Face endpoints for the mature tier, the only place abliterated models are used. If a provider is down, each step moves to its own Fallback on another provider.' },
+{ n: '05', title: 'Result is recorded', text: 'Output saved verbatim. Tokens, cost, latency and status logged. Editor accepts and rejects too.' },
+{ n: '06', title: 'On failure', text: 'Refused, cut off or broken: Fallback model. Two retries, then it stops at a gate for you.' }
+];
+var rules = [
+{ t: 'Each agent has its own slots', d: 'Primary and Fallback per agent, plus the mature tier where a scene needs it.' },
+{ t: 'Tiers change writers only', d: 'Basic, Excellent, Premium and Advanced pick different writers. Checkers and the mature tier never change.' },
+{ t: 'Checkers never grade their own family', d: 'The router skips any checker or critic from the writer’s model family.' },
+{ t: 'Mature scenes stay in the mature tier', d: 'A refusal moves to the other mature_ok endpoint, never to a general model.' },
+{ t: 'Counting is code, not a model', d: 'Word counts, slider maths, schema checks, verbatim-citation matching, who-knows-what tables, reveal order and chapter assembly run as plain code.' },
+{ t: 'Rules follow the arc', d: 'Style rules can be tied to an arc stage or a chapter range, so checks loosen exactly where the story allows it.' },
+{ t: 'Characters act on what they know', d: 'Every agent reads the Bible as of its chapter: knowledge, relationships and every other progression up to that point, never later facts.' },
+{ t: 'Context is chosen, not dumped', d: 'Within its section map, an agent gets only the Bible entries its inputs mention or you pinned. Show prompt lists each part and why it is there.' },
+{ t: 'Verifier and challenger', d: 'Every check that can block work pairs a verifier with a challenger from another family. Only findings that survive reach you.' },
+{ t: 'Control flow is code; the Director advises', d: 'A state machine runs the steps, gates and retries. The Story Advisor agent writes change-impact assessments and fills the Author Decision Queue; it never decides.' },
+{ t: 'Pen name governs, revisions travel upstream', d: 'The story is reshaped to the pen name. When a later step disproves an earlier one, the earlier step is revised and everything after it is marked stale and re-run.' },
+{ t: 'Nothing is discarded', d: 'Every unchosen option is filed in the Creative Reserve with its origin and critique.' },
+{ t: 'The registry assigns models', d: 'Model names on agent pages are hypotheses for the Model Lab to test, never assignments.' },
+{ t: 'Two retries, then you', d: 'Every failed call is recorded. Nothing is dropped or retried silently.' },
+{ t: 'Re-test when the field moves', d: 'A new model or a drop in scores opens a Model Lab round for that agent only.' }
+];
+var build = [
+{ tag: 'NOW', title: 'Bake-off harness', text: 'The first test picks Primary and Fallback for six agents. Its configs and prompts carry into the app.', bar: '#1E5A73', tagFg: '#1E5A73' },
+{ tag: '2', title: 'Router and run log', text: 'Harness clients become the router: slots, tiers, guards, fallbacks, cost records.', bar: '#C4C4BC', tagFg: '#62676E' },
+{ tag: '3', title: 'Develop and canon', text: 'Braindump to locked Bible and outline, as versioned files, with mentions, progressions and the Matrix.', bar: '#C4C4BC', tagFg: '#62676E' },
+{ tag: '4', title: 'Chapter Generator', text: 'All 17 agents with loops and gates, then batch runs. the next test fills the new slots.', bar: '#C4C4BC', tagFg: '#62676E' },
+{ tag: '5', title: 'Editor and review', text: 'Editing tools, Workshop chat, Brainstorm keepers, blind scoring and inline flags in the app. Notion write-back.', bar: '#C4C4BC', tagFg: '#62676E' },
+{ tag: 'LATER', title: 'Book and beyond', text: 'Book Constructor and export first; audiobook, video and marketing after.', bar: '#C4C4BC', tagFg: '#62676E' }
+];
+var CODE = { fg: '#FFFFFF', bg: '#1B1E21' };
+var lineage = [
+Object.assign({ name: 'Mentions and aliases', from: 'NOVELCRAFTER · LIVINGWRITER', how: 'CODE', href: 'Bible.dc.html', text: 'Every name and alias tracked; Appears in; unregistered names flagged, then sorted by the Name Sorter (extraction pool).' }, CODE),
+Object.assign({ name: 'Progressions', from: 'NOVELCRAFTER', how: 'CODE', href: 'Bible.dc.html', text: 'Any Bible field can change from a chapter or beat. Agents get only the Bible as of their chapter.' }, CODE),
+Object.assign({ name: 'Prompt preview', from: 'NOVELCRAFTER · RAPTORWRITE', how: 'CODE', href: 'Chapter.dc.html', text: 'Every part of every prompt labelled with its source. Edited prompts run in Advanced tier until re-tested.' }, CODE),
+Object.assign({ name: 'Workshop chat and Extract', from: 'NOVELCRAFTER · SUDOWRITE · LIVINGWRITER', how: 'ROUTED BY INTENT', href: 'Editor.dc.html', text: 'Synthesis for ideas, verdict for canon questions, prose for character interviews. Extract turns a chat into proposals; chat never edits canon.' }, P.syn),
+Object.assign({ name: 'Matrix', from: 'NOVELCRAFTER · LIVINGWRITER', how: 'CODE', href: 'Bible.dc.html', text: 'Characters, secrets and plot threads across chapters, with gap and setup-payoff flags. Read-only.' }, CODE),
+Object.assign({ name: 'Brainstorm keepers', from: 'SUDOWRITE', how: 'SYNTHESIS', href: 'Editor.dc.html', text: 'Reserve first. Cards from two models with the names hidden; keepers and declines go to the Reserve, thumbs to the Model Lab.' }, P.syn)
+];
+lineage = lineage.concat([
+Object.assign({ name: 'Genre packs', from: 'STORY HACKER OS', how: 'SYNTHESIS', href: 'Genre.dc.html', text: 'Reader promises, tropes, beats, norms and clichés you approve. They feed the scores and checks you already have; the Genre Analyst drafts packs from your notes on comparable books.' }, P.syn),
+Object.assign({ name: 'Recipes and run controls', from: 'STORY HACKER OS', how: 'ENGINE', href: 'Recipes.dc.html', text: 'Saved chains of existing steps with Pause, Stop, Skip, Re-run from and tier. Every gate still stops for you; no recipe names a model.' }, CODE),
+Object.assign({ name: 'Project history', from: 'STORY HACKER OS · NOVELCRAFTER', how: 'CODE', href: 'History.dc.html', text: 'One timeline of every change, built from the project\u2019s own history. Compare any two versions; restoring adds a new version on top.' }, CODE)
+]);
+rules = rules.concat([{ t: 'Autonomy is a setting, not a takeover', d: 'Per section you choose Supervised, Delegated or Autonomous. Agents settle only routine decisions they have earned, a second model family must agree, every decision comes to Home with Undo, and some decisions are always yours.' }, { t: 'Recipes keep your decisions', d: 'A recipe chains steps you already have. Every gate still stops for a pitch, autonomy can only get stricter for a run, and no recipe names a model.' }, { t: 'History never deletes', d: 'Every change is kept. Restoring brings an old version back as a new one and marks the work after it to re-run.' }]);
+var PLAIN = {
+'Chapter Brief': 'Write the chapter brief', 'Plot Picks': 'Pick the plot threads', 'Scene Plan and Setting Notes': 'Plan each scene',
+'Cast Picks': 'Pick the characters', 'World Picks': 'Pick places and world rules',
+'Timeline Check · brief': 'Check the brief against the Bible', 'Character State': 'Check each character’s state',
+'Character Notes': 'Brief each character per scene', 'First Draft': 'Write the first draft', 'Mature Tier scenes': 'Write the mature scenes',
+'Continuity Check': 'Check continuity and knowledge', 'Voice and Style Check': 'Check voice, tone and arc',
+'Rewrite': 'Rewrite from the notes', 'Polish': 'Polish the prose', 'Your review and lock': 'Your review and lock',
+'Character Changes Log': 'Record what changed', 'Chapter Summary': 'Summarize and update canon'
+};
+var LANE = { 'Plan': 'Plan', 'Pick canon': 'Pick from canon', 'Gate': 'Check the brief', 'Write': 'Write', 'Check': 'Check the draft', 'Revise': 'Revise', 'Close': 'Lock and record' };
+var poolTone = function (pool) { return pool === 'YOU' ? TONE.you : (pool === 'MATURE' ? TONE.mature : null); };
+var lanes2 = lanes.map(function (l, i) {
+return { n: String(i + 1), name: LANE[l.name] || l.name, agents: l.agents.map(function (a) {
+var t = poolTone(a.pool);
+return Object.assign({}, a, { label: engine ? a.name : (PLAIN[a.name] || a.name), poolName: a.pool.toLowerCase(), bg: t ? t.bg : '#F8FAFC', ring: t ? t.ring : '#E3E8F0' });
+}) };
+});
+var NAMES = { 'Develop': 'Story Blueprint', 'Chapter Generator': 'Chapters' };
+var pipes2 = pipes.map(function (p) { return Object.assign({}, p, { name: NAMES[p.name] || p.name, runText: engine ? p.run.charAt(0) + p.run.slice(1).toLowerCase().replace('runs', 'Runs').replace('run', 'Run') : ({ 'RUN 03': 'Story and editor test', 'RUNS 01–02': 'Opening and chapter tests' }[p.run] || 'Coming later'), bg: p.name === 'Later' ? '#F8FAFC' : '#FFFFFF' }); });
+var route2 = route.map(function (r) { return Object.assign({}, r, { num: String(Number(r.n)) }); });
+var POOLLABEL = { EXTRACTION: 'Extraction', SYNTHESIS: 'Synthesis', PROSE: 'Prose', VERDICT: 'Verdict', MATURE: 'Mature tier', YOU: 'You' };
+var pools2 = pools.map(function (p) { var t = poolTone(p.label) || TONE.wait; return Object.assign({}, p, { label2: POOLLABEL[p.label], tBg: t.bg, tFg: t.fg, tRing: t.ring }); });
+var lineage2 = lineage.map(function (l) {
+var code = l.how === 'CODE' || l.how === 'ENGINE';
+var t = code ? TONE.wait : TONE.run;
+return Object.assign({}, l, { howText: l.how === 'ENGINE' ? 'Workflow engine' : (code ? 'Plain code' : (l.how === 'SYNTHESIS' ? 'Synthesis agent' : 'Routed by intent')), fromText: l.from.split(' · ').map(function (w) { return w.charAt(0) + w.slice(1).toLowerCase(); }).join(', ').replace('Livingwriter', 'LivingWriter').replace('Raptorwrite', 'RaptorWrite').replace('Story hacker os', 'Story Hacker OS'), tBg: t.bg, tFg: t.fg, tRing: t.ring });
+});
+var BUILD = function (n, title, text, state) {
+var t = state === 'In progress' ? TONE.run : TONE.wait;
+return { n: n, title: title, text: text, state: state, bar: state === 'In progress' ? '#2E75B6' : '#D5DCE6', tBg: t.bg, tFg: t.fg, tRing: t.ring };
+};
+var build2 = [
+BUILD('0', 'Bake-off harness', 'The opening chapter test picks models for six steps. Runs and automatic scoring are built; review sheets and reports come next.', 'In progress'),
+BUILD('1', 'Engine core', 'Store, agent definitions, prompt builder with versioned parts, router with tiers and guards, run log, code checks.', 'Planned'),
+BUILD('2', 'Story Bible and canon', 'Versions, change requests, secrets and knowledge, mentions, progressions and the Matrix; import an existing Bible and outline; project history with compare and restore.', 'Planned'),
+BUILD('3', 'Chapter pipeline and Generator', 'All 17 steps with loops and gates, batches, estimates, the Decision Queue and draft scoring; recipes with run controls.', 'Planned'),
+BUILD('4', 'Model Lab in the app', 'Rounds from the screen, tiers, calibration, prompt versions; the chapter steps test fills the new slots.', 'Planned'),
+BUILD('5', 'Story Blueprint', 'Develop steps 1–9 with the fit formulas and your gates; genre packs and promise tracking.', 'Planned'),
+BUILD('6', 'Character Development', 'The 13-stage character pipeline, the Character Pool and the story and editor test.', 'Planned'),
+BUILD('7', 'Editor, Workshop and export', 'Editor tools, Workshop chat, Brainstorm keepers, Notion sync, and Markdown and DOCX export.', 'Planned')
+];
+return { viewOpts: viewOpts, isEngine: engine, pipes: pipes2, lanes: lanes2, route: route2, pools: pools2, rules: rules, lineage: lineage2, build: build2 };
+}
+}
+
+</script>
+</body>
+</html>

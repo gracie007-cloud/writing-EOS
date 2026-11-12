@@ -1,0 +1,118 @@
+# Candidate models for the bake-off.
+# EVERY `id` MUST BE VERIFIED on openrouter.ai/models before the first run.
+# The values below are placeholders taken from the Writing EOS registry names;
+# OpenRouter's exact slugs may differ. Prices are per million tokens (USD), to be filled in.
+#
+# family: used by the independence rule (judges must differ from the producer's family).
+# mature_ok: true only for models permitted to receive Section D (mature content).
+
+models:
+  claude_fable_51:
+    provider: openrouter
+    id: "anthropic/claude-fable-5.1"          # verified on openrouter.ai/api/v1/models, 2026-10-18
+    family: anthropic
+    weights: proprietary
+    mature_ok: false
+    price_in: 10.0
+    price_out: 50.0
+
+  gpt_sol:
+    provider: openrouter
+    id: "openai/gpt-5.6-sol"          # verified on openrouter.ai/api/v1/models, 2026-10-18
+    family: openai
+    weights: proprietary
+    mature_ok: false
+    price_in: 4.0
+    price_out: 20.0
+
+  gemini4:
+    provider: openrouter
+    id: "google/gemini-4-argon"          # verified on openrouter.ai/api/v1/models, 2026-10-18
+    family: google
+    weights: proprietary
+    mature_ok: false
+    price_in: 2.0
+    price_out: 10.0
+
+  qwen_38_max:
+    provider: openrouter
+    id: "qwen/qwen3.8-max-0902"          # verified on openrouter.ai/api/v1/models, 2026-10-18
+    family: qwen
+    weights: open
+    mature_ok: false
+    price_in: 2.0
+    price_out: 6.0
+
+  glm_53:
+    provider: openrouter
+    id: "z-ai/glm-5.3"          # verified 2026-10-17; price re-checked 2026-10-18
+    family: zhipu
+    weights: open
+    mature_ok: false
+    price_in: 0.079
+    price_out: 1.8
+
+  deepseek_v4_pro:
+    provider: openrouter
+    id: "deepseek/deepseek-v4-pro"          # verified on openrouter.ai/api/v1/models, 2026-10-18
+    family: deepseek
+    weights: open
+    mature_ok: false
+    price_in: 0.209
+    price_out: 0.418
+
+  kimi_k3:
+    provider: openrouter
+    id: "moonshotai/kimi-k3"          # verified on openrouter.ai/api/v1/models, 2026-10-18
+    family: moonshot
+    weights: open
+    mature_ok: false
+    price_in: 0.304
+    price_out: 11.936
+
+  # Mature tier (Hugging Face Inference Endpoints). Fill in after deployment.
+
+  # --- Decision D8: added before Run 02 (registry only; not yet a candidate in any step).
+  #     Gemini 3.1 Pro was dropped: no such model on OpenRouter (checked 2026-10-18). ---
+  gpt_luna_56:
+    provider: openrouter
+    id: "openai/gpt-5.6-luna"          # verified on openrouter.ai/api/v1/models, 2026-10-18
+    family: openai
+    weights: proprietary
+    mature_ok: false
+    price_in: 0.2
+    price_out: 1.2
+
+  claude_opus_5:
+    provider: openrouter
+    id: "anthropic/claude-opus-5"          # verified on openrouter.ai/api/v1/models, 2026-10-18
+    family: anthropic
+    weights: proprietary
+    mature_ok: false
+    price_in: 5.0
+    price_out: 25.0
+
+  gpt_sol_61:
+    provider: openrouter
+    id: "openai/gpt-6.1-sol"          # verified on openrouter.ai/api/v1/models, 2026-10-18
+    family: openai
+    weights: proprietary
+    mature_ok: false
+    price_in: 2.0
+    price_out: 10.0
+
+  custom_abliterated:
+    provider: huggingface
+    endpoint_url: "SET IN .env as HF_ENDPOINT_CUSTOM"
+    family: custom
+    weights: open
+    mature_ok: true
+    price_per_hour: null   # endpoint hourly rate; cost = runtime share
+
+  baseline_abliterated:
+    provider: huggingface
+    endpoint_url: "SET IN .env as HF_ENDPOINT_BASELINE"
+    family: baseline
+    weights: open
+    mature_ok: true
+    price_per_hour: null

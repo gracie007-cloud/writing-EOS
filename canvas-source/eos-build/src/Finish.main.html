@@ -1,0 +1,68 @@
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<div role="radiogroup" aria-label="Show the book" style="display: inline-flex; gap: 4px; padding: 4px; border-radius: 12px; background: #E8EEF6">
+<sc-for list="{{stages}}" as="o" hint-placeholder-count="2"><button type="button" role="radio" aria-checked="{{o.on}}" onClick="{{o.pick}}" style="min-height: 40px; padding: 0 14px; border: 0; border-radius: 9px; background: {{o.bg}}; color: {{o.fg}}; box-shadow: {{o.shadow}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{o.name}}</button></sc-for>
+</div>
+<span style="font-size: 13px; color: #5F6E84">A preview: switch to see the book after its last chapter lock.</span>
+</div>
+<p role="status" style="margin: 0; padding: 14px 16px; border-radius: 14px; background: {{bannerBg}}; box-shadow: inset 0 0 0 1px {{bannerRing}}; font-size: 14px; line-height: 1.55">{{banner}}</p>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 1fr)); gap: 20px; align-items: start">
+<section aria-labelledby="fin-h" style="display: flex; flex-direction: column; gap: 12px; padding: 20px 22px; @CARD@">
+<span style="display: flex; flex-direction: column; gap: 4px"><h2 id="fin-h" style="@H2@">Finish the book</h2><span style="font-size: 14px; line-height: 1.55; @MUTED@">In this order. Each step works on the locked book, and changes come to you as suggestions.</span></span>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{fin}}" as="r" hint-placeholder-count="6">
+<li style="display: grid; grid-template-columns: 36px minmax(0, 1fr) auto; gap: 4px 14px; align-items: start; padding: 14px 16px; border-radius: 14px; background: #FFFFFF; box-shadow: inset 0 0 0 1px #E3E8F0">
+<span style="display: grid; place-items: center; width: 32px; height: 32px; border-radius: 999px; background: #F2F7FD; font-size: 12px; font-weight: 800; color: #1F4E79">{{r.num}}</span>
+<span style="display: flex; flex-direction: column; gap: 4px; min-width: 0">
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px"><span style="font-size: 15px; font-weight: 800">{{r.name}}</span><span style="@BADGE@; background: {{r.whoBg}}; color: {{r.whoFg}}">{{r.who}}</span></span>
+<span style="font-size: 14px; line-height: 1.55; @MUTED@">{{r.does}}</span>
+<sc-if value="{{r.hasGate}}" hint-placeholder-val="{{ false }}"><span style="display: inline-flex; align-self: flex-start; align-items: center; gap: 6px; @BADGE@; background: #FFF5D6; color: #6B4E00; box-shadow: inset 0 0 0 1px #FFD966">@ICON:lock:13@ {{r.gate}}</span></sc-if>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@MONO@; font-size: 12px; color: #1F4E79">{{r.engine}}</span></sc-if>
+</span>
+<span style="@BADGE@; background: {{r.tBg}}; color: {{r.tFg}}; box-shadow: inset 0 0 0 1px {{r.tRing}}">{{r.state}}</span>
+</li>
+</sc-for>
+</ol>
+</section>
+
+<div style="display: flex; flex-direction: column; gap: 20px">
+<section aria-labelledby="rel-h" style="display: flex; flex-direction: column; gap: 12px; padding: 20px 22px; @CARD@">
+<span style="display: flex; flex-direction: column; gap: 4px"><h2 id="rel-h" style="@H2@">Release</h2><span style="font-size: 14px; line-height: 1.55; @MUTED@">{{routeNote}}</span></span>
+<div role="radiogroup" aria-label="Publishing route" style="display: inline-flex; align-self: flex-start; gap: 4px; padding: 4px; border-radius: 12px; background: #E8EEF6">
+<sc-for list="{{routes}}" as="o" hint-placeholder-count="2"><button type="button" role="radio" aria-checked="{{o.on}}" onClick="{{o.pick}}" style="min-height: 40px; padding: 0 14px; border: 0; border-radius: 9px; background: {{o.bg}}; color: {{o.fg}}; box-shadow: {{o.shadow}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{o.name}}</button></sc-for>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{rel}}" as="r" hint-placeholder-count="4">
+<li style="display: grid; grid-template-columns: 36px minmax(0, 1fr) auto; gap: 4px 14px; align-items: start; padding: 14px 16px; border-radius: 14px; background: #FFFFFF; box-shadow: inset 0 0 0 1px #E3E8F0">
+<span style="display: grid; place-items: center; width: 32px; height: 32px; border-radius: 999px; background: #F2F7FD; font-size: 12px; font-weight: 800; color: #1F4E79">{{r.num}}</span>
+<span style="display: flex; flex-direction: column; gap: 4px; min-width: 0">
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px"><span style="font-size: 15px; font-weight: 800">{{r.name}}</span><span style="@BADGE@; background: {{r.whoBg}}; color: {{r.whoFg}}">{{r.who}}</span></span>
+<span style="font-size: 14px; line-height: 1.55; @MUTED@">{{r.does}}</span>
+<sc-if value="{{r.hasGate}}" hint-placeholder-val="{{ false }}"><span style="display: inline-flex; align-self: flex-start; align-items: center; gap: 6px; @BADGE@; background: #FFF5D6; color: #6B4E00; box-shadow: inset 0 0 0 1px #FFD966">@ICON:lock:13@ {{r.gate}}</span></sc-if>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@MONO@; font-size: 12px; color: #1F4E79">{{r.engine}}</span></sc-if>
+</span>
+<span style="@BADGE@; background: {{r.tBg}}; color: {{r.tFg}}; box-shadow: inset 0 0 0 1px {{r.tRing}}">{{r.state}}</span>
+</li>
+</sc-for>
+</ol>
+</section>
+
+<section aria-labelledby="ext-h" style="display: flex; flex-direction: column; gap: 12px; padding: 20px 22px; @CARD@">
+<span style="display: flex; flex-direction: column; gap: 4px"><h2 id="ext-h" style="@H2@">More from the book</h2><span style="font-size: 14px; line-height: 1.55; @MUTED@">Only when you ask, always from the locked book.</span></span>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{extras}}" as="r" hint-placeholder-count="4">
+<li style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 12px; padding: 12px 14px; border-radius: 12px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0">
+<span style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 800">{{r.name}}</span><span style="font-size: 13px; line-height: 1.5; @MUTED@">{{r.does}}</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@MONO@; font-size: 12px; color: #1F4E79">{{r.engine}}</span></sc-if></span>
+<button type="button" class="eos-btn" style="@BTN_OUTLINE@">{{r.tool}}</button>
+</li>
+</sc-for>
+</ul>
+</section>
+</div>
+</div>
+
+<div style="@NOTE@">
+<span style="@NOTEICON@">@ICON:shield:18@</span>
+<span style="font-size: 14px; line-height: 1.6">Pricing, distribution and research use only your own data and the files you upload: the app does not search the web. Your ISBN, cover and contracts stay yours to supply and sign.</span>
+</div>

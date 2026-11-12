@@ -19,10 +19,13 @@ This repository holds the **rule-keeping engine**, tested, and the documents it 
 ## Layout
 
 ```
-eos-app/     the engine: eos_app/ (code), config/ (the app's copies of the databases), tests/
-docs/        requirements and architecture, proposals, and the fixes implementation plan
-roster/      the export of the model roster that config/models.yaml is built from
-tools/       the publishing gate that runs before every push
+eos-app/         the engine: eos_app/ (code), config/ (the app's copies of the databases), tests/
+eos-bakeoff/     the bake-off harness that tests models on a step, with its test pack
+canvas-source/   the design canvas's build files as of 22 October 2026 (the live canvas is newer)
+experiments/     worked examples
+docs/            requirements and architecture, proposals, reports and the fixes implementation plan
+roster/          the export of the model roster that config/models.yaml is built from
+tools/           the gate that runs before every push
 ```
 
 ## Run it
@@ -34,13 +37,18 @@ cd eos-app
 pip install -r requirements.txt
 python -m pytest                     # 260 tests; no network, no model calls
 python -m eos_app.readiness          # what could run today, and what stands in the way
+
+cd ../eos-bakeoff/eos-bakeoff
+python -m pytest                     # the harness's own 74 tests
 ```
 
 `eos-app/README.md` explains each part and the commands that rebuild the app's copies when a Notion database changes.
 
-## What is not here, on purpose
+## Private, and what is still left out
 
-This repository is public. The Author's own material stays on the Author's computer: the library pools, the bake-off harness with its test pack, worked examples from the Author's books, keys, and anything named as an answer key. `.gitignore` lists them, and `tools/check_public.py` refuses a push that carries any of it.
+This repository is **private** (since 2026-11-13): the harness, the worked examples and the canvas source name the Author's book. Three things are still never stored here: keys (`.env`), the real answer key, and the library pools, whose master copy is the Author's Obsidian vault.
+
+`tools/check_public.py` runs before every push. It refuses keys and those paths, and it keeps the app itself generic: no name from the Author's library may appear in `eos-app/` or the requirements (decision D10). **Before this repository is ever made public again**, read the note at the top of that file.
 
 ## Documents
 

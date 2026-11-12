@@ -1,0 +1,192 @@
+<section aria-label="Governing choices" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)); gap: 10px">
+<sc-for list="{{settings}}" as="s" hint-placeholder-count="6">
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 14px; background: {{s.bg}}; box-shadow: inset 0 0 0 1px {{s.ring}}">
+<span style="font-size: 12px; font-weight: 600; color: {{s.labelFg}}">{{s.k}}</span>
+<span style="font-size: 15px; font-weight: 700">{{s.v}}</span>
+</div>
+</sc-for>
+</section>
+
+<section aria-label="Steps" style="display: flex; flex-direction: column; gap: 12px; padding: 16px 18px; @CARD@">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px">
+<span style="font-size: 15px; font-weight: 800">9 of 9 steps done · outline approved</span>
+<span style="font-size: 13px; @MUTED@">Select a step to see how it ran. A later step can send work back to an earlier one.</span>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100px, 100%), 1fr)); gap: 8px">
+<sc-for list="{{pipes}}" as="p" hint-placeholder-count="9">
+<li style="display: flex">
+<button type="button" onClick="{{p.pick}}" aria-pressed="{{p.on}}" class="eos-row" style="flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; min-height: 96px; padding: 10px 12px; border-radius: 12px; border: 1px solid {{p.border}}; background: {{p.bg}}; box-shadow: {{p.shadow}}; text-align: left; color: #1B2A41; font-family: inherit; cursor: pointer">
+<span style="display: flex; align-items: center; gap: 8px"><span style="display: grid; place-items: center; width: 24px; height: 24px; border-radius: 999px; background: #E7F3DF; color: #3B7020">@ICON:check:14@</span><span style="font-size: 12px; font-weight: 700; color: #5F6E84">{{p.num}}</span></span>
+<span style="font-size: 13px; font-weight: 700; line-height: 1.3">{{p.short}}</span>
+<span style="font-size: 12px; color: #3B7020; font-weight: 600">{{p.result}}</span>
+</button>
+</li>
+</sc-for>
+</ol>
+</section>
+
+<sc-if value="{{isPitch}}" hint-placeholder-val="{{ true }}">
+<section aria-labelledby="pk-h" style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h2 id="pk-h" style="@H2@">What each component produced</h2>
+<span style="font-size: 14px; line-height: 1.55; @MUTED@">One card per component, each on the model best at its job, each with its own decision. Re-running a card repeats only that component. Sample: the Space Opera test pitch, shown as it reached you.</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 16px; align-items: start">
+
+<article aria-labelledby="aud-h" style="display: flex; flex-direction: column; gap: 12px; padding: 18px 20px; @CARD@">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px">
+<span style="@LABEL@">Flow 9 · right after the pen name</span>
+<span style="@BADGE@; background: {{aud.sBg}}; color: {{aud.sFg}}; box-shadow: inset 0 0 0 1px {{aud.sRing}}">{{aud.status}}</span>
+</div>
+<h3 id="aud-h" style="margin: 0; font-size: 19px; font-weight: 800">Target Audience</h3>
+<span style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #1F4E79">@ICON:cpu:15@Runs on {{aud.model}}</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@MONO@; font-size: 12px; color: #1F4E79">{{aud.db}}</span></sc-if>
+<div style="display: flex; flex-direction: column; gap: 10px"><sc-for list="{{aud.summary}}" as="r" hint-placeholder-count="4"><div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 600; color: #5F6E84">{{r.k}}</span><span style="font-size: 14px; line-height: 1.5">{{r.v}}</span></div></sc-for></div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 12px 14px; border-radius: 12px; background: #FDE9DC; box-shadow: inset 0 0 0 1px #F4B183">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 800; color: #A5470B">@ICON:alert:16@Your genre and the material disagree</span>
+<span style="font-size: 13px; line-height: 1.5; color: #5C2A06">Space Opera promises fleets and empires; this material is one station and one crossing. Reported to you, not overridden.</span>
+<span style="display: flex; flex-direction: column; gap: 8px"><button type="button" class="eos-btn" style="@BTN_OUTLINE@; justify-content: flex-start; text-align: left; height: auto; padding: 10px 14px">(a) Keep Space Opera; bring in scale through Nova Lumen's war</button><button type="button" class="eos-btn" style="@BTN_OUTLINE@; justify-content: flex-start; text-align: left; height: auto; padding: 10px 14px">(b) Shelve as literary SF, Space Opera second</button><button type="button" class="eos-btn" style="@BTN_GHOST@">Give your own alternative</button></span>
+</div>
+<sc-if value="{{aud.open}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="@LABEL@">Five variables, kept apart</span><sc-for list="{{aud.variables}}" as="r" hint-placeholder-count="5"><div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 600; color: #5F6E84">{{r.k}}</span><span style="font-size: 14px; line-height: 1.5">{{r.v}}</span></div></sc-for></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="@LABEL@">Fit and appeal</span><span style="font-size: 14px; line-height: 1.5"><strong>Built for:</strong> {{aud.fit}}</span><span style="font-size: 14px; line-height: 1.5"><strong>May also enjoy it:</strong> {{aud.appeal}}</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="@LABEL@">Misclassification checks</span>
+<sc-for list="{{aud.checks}}" as="c" hint-placeholder-count="3"><div style="display: flex; gap: 10px; align-items: flex-start"><span style="@BADGE@; background: {{c.bg}}; color: {{c.fg}}">{{c.mark}}</span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 700">{{c.name}}</span><span style="font-size: 13px; line-height: 1.5; @MUTED@">{{c.why}}</span></span></div></sc-for></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="@LABEL@">Reader Contract 0.1</span><ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 14px; line-height: 1.5"><sc-for list="{{aud.contract}}" as="x" hint-placeholder-count="4"><li>{{x}}</li></sc-for></ul><span style="font-size: 13px; line-height: 1.5; @MUTED@">{{aud.bisac}}</span></div>
+</div>
+</sc-if>
+<span style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding-top: 4px; border-top: 1px solid #EEF1F5">
+<button type="button" class="eos-btn" onClick="{{aud.toggle}}" aria-expanded="{{aud.open}}" style="@BTN_GHOST@">{{aud.toggleText}}</button>
+<button type="button" class="eos-btn" style="@BTN_GHOST@">@ICON:back:15@Re-run this component</button>
+</span>
+</article>
+
+<article aria-labelledby="pitch-h" style="display: flex; flex-direction: column; gap: 12px; padding: 18px 20px; @CARD@">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px">
+<span style="@LABEL@">Flow 14 · Stage 0</span>
+<span style="@BADGE@; background: {{pitch.sBg}}; color: {{pitch.sFg}}; box-shadow: inset 0 0 0 1px {{pitch.sRing}}">{{pitch.status}}</span>
+</div>
+<h3 id="pitch-h" style="margin: 0; font-size: 19px; font-weight: 800">Story Pitch</h3>
+<span style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #1F4E79">@ICON:cpu:15@Runs on {{pitch.model}}</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@MONO@; font-size: 12px; color: #1F4E79">{{pitch.db}}</span></sc-if>
+<span style="display: flex; align-items: center; gap: 6px; font-size: 13px; @MUTED@">@ICON:arrow:14@Reads the Reader Contract from Target Audience; doesn't choose the audience</span>
+<span style="@SERIF@; font-size: 24px; font-weight: 500; line-height: 1.25">{{pitch.title}}</span>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; font-weight: 600">{{pitch.logline}}</p>
+<p style="margin: 0; padding: 14px 16px; border-radius: 12px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0; white-space: pre-line; @SERIF@; font-size: 15px; line-height: 1.7">{{pitch.premise}}</p>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><button type="button" class="eos-btn" style="@BTN_PRIMARY@">Approve the pitch</button><button type="button" class="eos-btn" style="@BTN_OUTLINE@">Give an alternative</button></span>
+<sc-if value="{{pitch.open}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px"><span style="@LABEL@">Pitch Profile signals</span><sc-for list="{{pitch.signals}}" as="r" hint-placeholder-count="9"><div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 600; color: #5F6E84">{{r.k}}</span><span style="font-size: 14px; line-height: 1.5">{{r.v}}</span></div></sc-for></div>
+</sc-if>
+<span style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding-top: 4px; border-top: 1px solid #EEF1F5">
+<button type="button" class="eos-btn" onClick="{{pitch.toggle}}" aria-expanded="{{pitch.open}}" style="@BTN_GHOST@">{{pitch.toggleText}}</button>
+<button type="button" class="eos-btn" style="@BTN_GHOST@">@ICON:back:15@Re-run this component</button>
+</span>
+</article>
+</div>
+
+<article aria-labelledby="tropes-h" style="display: flex; flex-direction: column; gap: 12px; padding: 18px 20px; @CARD@">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px">
+<span style="@LABEL@">Flow 76 · before the first scene briefs</span>
+<span style="@BADGE@; background: {{tropes.sBg}}; color: {{tropes.sFg}}; box-shadow: inset 0 0 0 1px {{tropes.sRing}}">{{tropes.status}}</span>
+</div>
+<h3 id="tropes-h" style="margin: 0; font-size: 19px; font-weight: 800">Fiction Tropes</h3>
+<span style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #1F4E79">@ICON:cpu:15@Runs on {{tropes.model}}</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@MONO@; font-size: 12px; color: #1F4E79">{{tropes.db}}</span></sc-if>
+<span style="font-size: 13px; line-height: 1.5; @MUTED@">This draft was made at Stage 0 without the world brief or full character bios. The full run comes at flow 76; its Matrix and Avoid list then govern the scene briefs. No scores: each trope gets a judgement and a reason.</span>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<sc-for list="{{tropes.tally}}" as="t" hint-placeholder-count="3"><div style="display: flex; align-items: baseline; gap: 8px; padding: 10px 16px; border-radius: 12px; background: {{t.bg}}; box-shadow: inset 0 0 0 1px {{t.ring}}"><span style="font-size: 24px; font-weight: 800; color: {{t.fg}}">{{t.n}}</span><span style="font-size: 14px; font-weight: 700; color: {{t.fg}}">{{t.v}}</span></div></sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="@LABEL@">Avoid</span><span style="display: flex; flex-wrap: wrap; gap: 6px"><sc-for list="{{tropes.avoid}}" as="x" hint-placeholder-count="6"><span style="@CHIP@">{{x}}</span></sc-for></span></div>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><button type="button" class="eos-btn" style="@BTN_PRIMARY@">Approve the verdicts</button><button type="button" class="eos-btn" style="@BTN_OUTLINE@">Change a verdict</button><button type="button" class="eos-btn" style="@BTN_GHOST@">Set the familiar ↔ novel dial</button></span>
+<sc-if value="{{tropes.open}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div role="radiogroup" aria-label="Show tropes" style="display: flex; flex-wrap: wrap; gap: 6px"><sc-for list="{{tropes.filters}}" as="f" hint-placeholder-count="4"><button type="button" role="radio" aria-checked="{{f.on}}" onClick="{{f.pick}}" style="min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #1F3864; background: {{f.bg}}; color: {{f.fg}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{f.v}}</button></sc-for></div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{tropes.rows}}" as="r" hint-placeholder-count="11"><li style="display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 12px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0">
+<span style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px"><span style="font-size: 15px; font-weight: 800">{{r.name}}</span><span style="@BADGE@; background: {{r.vBg}}; color: {{r.vFg}}; box-shadow: inset 0 0 0 1px {{r.vRing}}">{{r.verdict}}</span></span>
+<span style="font-size: 12px; font-weight: 600; color: #5F6E84">{{r.meta}}</span>
+<span style="font-size: 14px; line-height: 1.5">{{r.treat}}</span>
+<span style="font-size: 13px; line-height: 1.5; @MUTED@">Risk: {{r.risk}}</span>
+</li></sc-for>
+</ul>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="@LABEL@">Familiar ↔ novel spread</span><span style="display: flex; flex-wrap: wrap; gap: 6px"><sc-for list="{{tropes.dist}}" as="x" hint-placeholder-count="7"><span style="@CHIP@">{{x.k}} · {{x.v}}</span></sc-for></span></div>
+</div>
+</sc-if>
+<span style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding-top: 4px; border-top: 1px solid #EEF1F5">
+<button type="button" class="eos-btn" onClick="{{tropes.toggle}}" aria-expanded="{{tropes.open}}" style="@BTN_GHOST@">{{tropes.toggleText}}</button>
+<button type="button" class="eos-btn" style="@BTN_GHOST@">@ICON:back:15@Re-run this component</button>
+</span>
+</article>
+</section>
+</sc-if>
+
+<section aria-labelledby="dossier-h" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 18px; @CARD@">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px"><h2 id="dossier-h" style="@H2@">Story Dossier</h2><span style="@BADGE@; background: #E7F3DF; color: #3B7020; box-shadow: inset 0 0 0 1px #B9DCA4">Locked into the Story Bible · nothing provisional left</span></div>
+<span style="font-size: 13px; line-height: 1.5; @MUTED@">The workspace where steps 1–7 put everything that is not canon yet. It is kept consistent after each step, and it reached the Story Bible only through your lock. Two items replaced by later steps are kept in History.</span>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 8px">
+<sc-for list="{{dossier}}" as="x" hint-placeholder-count="7"><div style="display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 12px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0"><span style="font-size: 12px; font-weight: 700; color: #5F6E84">{{x.step}}</span><span style="font-size: 14px; font-weight: 600">{{x.what}}</span></div></sc-for>
+</div>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@MONO@; font-size: 12px; color: #1F4E79">dossier/ · dossier_keeper · synthesis pool · merges after each step, marks superseded items (P6)</span></sc-if>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+
+<section aria-labelledby="step-title" style="flex: 1.5 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 16px; padding: 22px 24px; @CARD@">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px">
+<span style="@LABEL@">Step {{d.num}} · plan step {{d.step}}</span>
+<span style="@BADGE@; background: #E7F3DF; color: #3B7020; box-shadow: inset 0 0 0 1px #B9DCA4">Done · {{d.result}}</span>
+</div>
+<h2 id="step-title" style="margin: 0; font-size: 24px; font-weight: 800; line-height: 1.25">{{d.name}}</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; @MUTED@">{{d.desc}}</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; padding-top: 6px">
+<h3 style="margin: 0; font-size: 15px; font-weight: 800">How it runs</h3>
+<span style="font-size: 13px; @MUTED@">{{d.countText}}</span>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{d.agents}}" as="a" hint-placeholder-count="6">
+<li style="display: flex; gap: 12px; padding: 12px 14px; border-radius: 12px; background: {{a.rowBg}}; box-shadow: inset 0 0 0 1px {{a.rowRing}}">
+<span style="flex: none; display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 4px; box-sizing: border-box; border-radius: 999px; background: #FFFFFF; font-size: 12px; font-weight: 800; box-shadow: inset 0 0 0 1px #D5DCE6">{{a.n}}</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px"><span style="font-size: 14px; font-weight: 700">{{a.name}}</span><span style="@BADGE@; background: {{a.kindBg}}; color: {{a.kindFg}}; box-shadow: inset 0 0 0 1px {{a.kindRing}}">{{a.kind}}</span></span>
+<span style="font-size: 13px; line-height: 1.5; @MUTED@">{{a.does}}</span>
+<sc-if value="{{a.hasLoop}}" hint-placeholder-val="{{ false }}">
+<span style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #A5470B">@ICON:back:15@{{a.loop}}</span>
+</sc-if>
+<sc-if value="{{a.showJudge}}" hint-placeholder-val="{{ false }}">
+<span style="display: flex; align-items: center; gap: 6px; font-size: 12px; @MONO@; color: #1F3864">@ICON:shield:14@{{a.judge}}</span>
+</sc-if>
+</span>
+</li>
+</sc-for>
+</ol>
+</section>
+
+<aside style="flex: 1 1 340px; min-width: 0; position: sticky; top: 20px; display: flex; flex-direction: column; gap: 14px">
+<section aria-label="Your decision" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 18px; @GOLDBOX@">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 800; color: #12244A">@ICON:flag:18:#B98A00@Your final call at this step</span>
+<span style="font-size: 14px; line-height: 1.55">{{d.gate}}</span>
+<span style="font-size: 13px; line-height: 1.5; color: #6B4E00">The agents pitch a recommendation and the options they weighed. You proceed, choose another, or give your own alternative.</span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><button type="button" class="eos-btn" style="@BTN_OUTLINE@">See the pitch you answered</button><button type="button" class="eos-btn" style="@BTN_GHOST@">Give a new alternative</button></span>
+</section>
+<section aria-labelledby="io" style="display: flex; flex-direction: column; gap: 12px; padding: 16px 18px; @CARD@">
+<h2 id="io" style="margin: 0; font-size: 15px; font-weight: 800">In and out</h2>
+<div style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 12px; font-weight: 600; color: #5F6E84">Reads</span><span style="font-size: 14px; line-height: 1.5">{{d.reads}}</span></div>
+<div style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 12px; font-weight: 600; color: #5F6E84">Produces</span><span style="font-size: 14px; line-height: 1.5">{{d.produces}}</span></div>
+</section>
+<section style="@NOTE@">
+<span style="@NOTEICON@">@ICON:info@</span>
+<span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 14px; font-weight: 700">{{d.extraTitle}}</span><span style="white-space: pre-line; font-size: 13px; line-height: 1.55; @MUTED@">{{d.extra}}</span></span>
+</section>
+<section aria-labelledby="rules" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 18px; @CARD@">
+<h2 id="rules" style="margin: 0; font-size: 15px; font-weight: 800">Rules every step follows</h2>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 13px; line-height: 1.5">
+<li><strong>The pen name governs.</strong> <span style="@MUTED@">The story is reshaped to the author, never the reverse.</span></li>
+<li><strong>Braindump characters are placeholders.</strong> <span style="@MUTED@">Only their role survives.</span></li>
+<li><strong>Source first, build second.</strong> <span style="@MUTED@">Match the Character Pool before creating anyone.</span></li>
+<li><strong>No creativity wasted.</strong> <span style="@MUTED@">Every option you don’t choose goes to the <a href="Bible.dc.html">Creative Reserve</a>.</span></li>
+<li><strong>Revisions travel upstream.</strong> <span style="@MUTED@">A later step never patches earlier work; it sends it back.</span></li>
+</ul>
+</section>
+</aside>
+</div>

@@ -1,0 +1,171 @@
+<section aria-label="Round status" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; @CARD@">
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px"><span style="@LABEL@">Opening chapter test · 17 Oct 2026</span><sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@MONO@; font-size: 12px; font-weight: 500; padding: 2px 7px; border-radius: 6px; background: #1F3864; color: #FFFFFF">Run 01</span></sc-if></span>
+<span style="font-size: 22px; font-weight: 800">5 of 6 steps run</span>
+<div role="progressbar" aria-label="Opening chapter test" aria-valuemin="0" aria-valuemax="6" aria-valuenow="5" style="height: 6px; border-radius: 999px; background: #E8EEF6; overflow: hidden"><div style="width: 83%; height: 100%; background: #2E75B6"></div></div>
+<span style="font-size: 13px; @MUTED@">75 runs · 6 steps · 3 runs per model</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; @GOLDBOX@">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #6B4E00">Waiting on you</span>
+<ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 3px; font-size: 14px; line-height: 1.45"><li><a href="Draft.dc.html">Score 15 drafts</a></li><li>Review 12 scene plans</li><li><a href="Chapter.dc.html">Confirm 1 possible false alarm</a></li></ul>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; border-radius: 16px; background: #FDF6F5; box-shadow: inset 0 0 0 1px #F2B8B0">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #A8321F">Blocked</span>
+<span style="font-size: 15px; font-weight: 700">Mature tier endpoints</span>
+<span style="font-size: 13px; line-height: 1.45; @MUTED@">Set HF_ENDPOINT_CUSTOM and HF_ENDPOINT_BASELINE in .env to run the mature step.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; @CARD@">
+<span style="@LABEL@">Model IDs verified</span>
+<span style="font-size: 22px; font-weight: 800">1 of 7</span>
+<span style="font-size: 13px; @MUTED@">glm_53 checked on OpenRouter. Verify the rest before their runs count.</span>
+</div>
+</section>
+
+<div role="tablist" aria-label="Model Lab sections" style="@TABBAR@">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="6">
+<button type="button" role="tab" aria-selected="{{t.on}}" onClick="{{t.pick}}" style="@TAB@; background: {{t.bg}}; color: {{t.fg}}">{{t.name}}</button>
+</sc-for>
+</div>
+
+<sc-if value="{{show.run1}}" hint-placeholder-val="{{ true }}">
+<section aria-label="Opening chapter test steps" style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="6">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; padding: 16px 18px; @CARD@">
+<span style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 3px"><span style="font-size: 15px; font-weight: 800">{{r.step}}</span><span style="font-size: 13px; @MUTED@">{{r.scoring}} · {{r.runs}} runs</span></span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}">
+<span style="flex: 2 1 340px; display: flex; flex-direction: column; gap: 6px">
+<span style="display: flex; flex-wrap: wrap; gap: 4px"><sc-for list="{{r.candList}}" as="c" hint-placeholder-count="5"><span style="@MONO@; font-size: 12px; padding: 2px 7px; border-radius: 6px; background: #F5F7FB; box-shadow: inset 0 0 0 1px #D5DCE6">{{c.t}}</span></sc-for></span>
+<span style="@MONO@; font-size: 12px; color: #1F3864">primary {{r.primary}} · fallback {{r.fallback}}</span>
+</span>
+</sc-if>
+<span style="@BADGE@; background: {{r.bg}}; color: {{r.fg}}; box-shadow: inset 0 0 0 1px {{r.ring}}">{{r.stateText}}</span>
+</div>
+</sc-for>
+</section>
+</sc-if>
+
+<sc-if value="{{show.tiers}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<section aria-label="Quality tiers" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 12px">
+<sc-for list="{{tierCards}}" as="t" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 18px 20px; @CARD@">
+<span style="display: flex; justify-content: space-between; gap: 8px"><span style="font-size: 17px; font-weight: 800">{{t.name}}</span><sc-if value="{{t.def}}" hint-placeholder-val="{{ false }}"><span style="@BADGE@; background: #DEEBF7; color: #1F4E79; box-shadow: inset 0 0 0 1px #9DC3E6">Default</span></sc-if></span>
+<span style="font-size: 13px; font-weight: 600; color: #1F4E79">{{t.tag}}</span>
+<span style="font-size: 14px; line-height: 1.55; @MUTED@">{{t.writers}}</span>
+</div>
+</sc-for>
+</section>
+<div style="@NOTE@"><span style="@NOTEICON@">@ICON:shield@</span><span style="font-size: 13px; line-height: 1.55; @MUTED@">Tiers never change checkers, critics or the mature tier, so the independence and mature rules hold whatever you pick. Each tier needs its own models scored, so a Basic or Premium slot stays empty until a round has tested it.</span></div>
+</div>
+</sc-if>
+
+<sc-if value="{{show.next}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px"><h2 style="@H2@; display: flex; flex-wrap: wrap; align-items: center; gap: 8px">Chapter steps test · not scheduled yet<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@MONO@; font-size: 12px; font-weight: 500; padding: 2px 7px; border-radius: 6px; background: #1F3864; color: #FFFFFF">Run 02</span></sc-if></h2><span style="font-size: 13px; @MUTED@">Each needs new test material before it can run</span></div>
+<section aria-label="Chapter steps test" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 12px">
+<sc-for list="{{run2}}" as="r" hint-placeholder-count="11">
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; @CARD@">
+<span style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px"><span style="font-size: 15px; font-weight: 800">{{r.agent}}</span><sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@BADGE@; background: #EEF1F5; color: #475569; box-shadow: inset 0 0 0 1px #D5DCE6">{{r.poolName}}</span></sc-if></span>
+<span style="font-size: 13px; line-height: 1.5"><strong>Scored by:</strong> <span style="@MUTED@">{{r.scoring}}</span></span>
+<span style="font-size: 13px; line-height: 1.5"><strong>Needs:</strong> <span style="@MUTED@">{{r.needs}}</span></span>
+</div>
+</sc-for>
+</section>
+<div style="@NOTE@"><span style="@NOTEICON@">@ICON:info@</span><span style="display: flex; flex-direction: column; gap: 4px"><span style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 14px; font-weight: 700">Story and editor test · not scheduled yet<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@MONO@; font-size: 12px; font-weight: 500; padding: 2px 7px; border-radius: 6px; background: #1F3864; color: #FFFFFF">Run 03</span></sc-if></span><span style="font-size: 13px; line-height: 1.55; @MUTED@">The 49 Story Blueprint agents are scored the same way: extraction and verdict steps automatically, synthesis and prose by you. The five sample characters in your Character Development plans seed the character tests. Editor accepts and rejects count as evidence, and this test also covers Workshop Chat, Character Interview, Chat to Notes and Brainstorm, where your thumbs count under hidden names.</span><a href="Develop.dc.html" style="font-size: 13px; font-weight: 600">See the Story Blueprint agents</a></span></div>
+</div>
+</sc-if>
+
+<sc-if value="{{show.prompts}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="@NOTE@"><span style="@NOTEICON@">@ICON:info@</span><span style="font-size: 13px; line-height: 1.55; @MUTED@">Test results belong to a prompt version. You can edit any prompt, but an edited one is untested: it runs in Advanced tier, marked experimental, until a round scores it. The same applies to temperature and token budgets.</span></div>
+<section aria-label="Prompt versions" style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{pversions}}" as="v" hint-placeholder-count="6">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; padding: 14px 18px; @CARD@">
+<span style="flex: 1 1 220px; font-size: 15px; font-weight: 700">{{v.agent}}</span>
+<span style="flex: 1 1 220px; @MONO@; font-size: 13px; color: #1F3864">{{v.prompt}}</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="flex: 0 1 200px; @MONO@; font-size: 12px; @MUTED@">{{v.settings}}</span></sc-if>
+<span style="@BADGE@; background: {{v.bg}}; color: {{v.fg}}; box-shadow: inset 0 0 0 1px {{v.ring}}">{{v.statusText}}</span>
+</div>
+</sc-for>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{show.models}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+<section aria-label="Model registry" style="flex: 2 1 520px; min-width: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 10px">
+<sc-for list="{{models}}" as="m" hint-placeholder-count="9">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; @CARD@">
+<span style="display: flex; justify-content: space-between; gap: 8px"><span style="@MONO@; font-size: 14px; font-weight: 500">{{m.key}}</span><span style="@BADGE@; background: {{m.vBg}}; color: {{m.vFg}}; box-shadow: inset 0 0 0 1px {{m.vRing}}">{{m.verified}}</span></span>
+<span style="font-size: 13px; @MUTED@">{{m.family}} · {{m.weights}} weights · {{m.route}}</span>
+<span style="display: flex; justify-content: space-between; gap: 8px; font-size: 13px"><span style="font-weight: 600; color: {{m.matureFg}}">{{m.matureText}}</span><span style="@MONO@; font-size: 12px">{{m.price}}</span></span>
+</div>
+</sc-for>
+</section>
+<aside style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<section aria-labelledby="kept-h" style="display: flex; flex-direction: column; gap: 8px; padding: 18px 20px; @CARD@">
+<h2 id="kept-h" style="margin: 0; font-size: 15px; font-weight: 800">Words kept</h2>
+<span style="font-size: 13px; line-height: 1.5; @MUTED@">For each writer model: how much of what it wrote is still there, unchanged or lightly edited, when you lock the chapter, and what each 1,000 kept words cost. Until 20 chapters are locked it only breaks ties between models.</span>
+<div style="display: flex; justify-content: space-between; gap: 8px; padding: 10px 12px; border-radius: 10px; background: #F8FAFC; font-size: 13px"><span>Locked chapters so far</span><span style="font-weight: 700">0 of 24</span></div>
+<span style="font-size: 12px; color: #5F6E84">Figures appear after the first lock.</span>
+</section>
+<section aria-labelledby="rule" style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; @NAVY@">
+<h2 id="rule" style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #B6C3D6">How a model wins a slot</h2>
+<dl style="margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 13px; line-height: 1.5">
+<div><dt style="font-weight: 700">Primary</dt><dd style="margin: 0; color: #DCE6F2">Highest average score. A cheaper model within 5% takes the slot.</dd></div>
+<div><dt style="font-weight: 700">Fallback</dt><dd style="margin: 0; color: #DCE6F2">Best open-weight model within 15% of the primary.</dd></div>
+<div><dt style="font-weight: 700">Mature tier</dt><dd style="margin: 0; color: #DCE6F2">Best mature-approved model on the mature scene brief.</dd></div>
+<div><dt style="font-weight: 700">Out</dt><dd style="margin: 0; color: #DCE6F2">More than one refusal or cut-off answer in three runs.</dd></div>
+</dl>
+</section>
+<section aria-labelledby="judge" style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; @CARD@">
+<h2 id="judge" style="margin: 0; font-size: 15px; font-weight: 800">Judging</h2>
+<p style="margin: 0; font-size: 13px; line-height: 1.55; @MUTED@">You score prose by default. A model judge must come from a different family than the output it judges, and not anthropic or qwen in the opening chapter test. An abliterated model counts as the family it was built from, and serves the mature tier only.</p>
+<button type="button" disabled="true" style="@BTN_OUTLINE@; cursor: not-allowed; color: #94A3B8">@ICON:lock:16@Unseal model names · 15 scores left</button>
+</section>
+</aside>
+</div>
+</sc-if>
+
+<sc-if value="{{show.calib}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+<section aria-labelledby="calib" style="flex: 1 1 420px; display: flex; flex-direction: column; gap: 12px; padding: 20px 22px; @CARD@">
+<h2 id="calib" style="@H2@">Calibrating the fit scores</h2>
+<p style="margin: 0; font-size: 14px; line-height: 1.6; @MUTED@">Conflict Fit (out of 27) and Structure Fit (out of 36) start from your Notion weights. Run 15–20 known stories through them; where the pick keeps missing the author’s real choice, adjust the weight responsible and log it here.</p>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 26px 16px; border-radius: 12px; border: 1px dashed #CBD5E1; text-align: center">
+<span style="font-size: 15px; font-weight: 700">No calibration runs yet</span>
+<span style="font-size: 13px; @MUTED@">Each tested story will show the model’s pick, the author’s choice and any weight you change.</span>
+<button type="button" class="eos-btn" style="@BTN_OUTLINE@; margin-top: 6px">Add a known story</button>
+</div>
+</section>
+<section aria-labelledby="recon" style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 10px; padding: 20px 22px; @CARD@">
+<h2 id="recon" style="@H2@">Names on Notion pages are only guesses</h2>
+<p style="margin: 0; font-size: 14px; line-height: 1.6; @MUTED@">This registry is the only source of model assignments. Model names written on agent pages are ideas to test, and several pages name two picks for one role.</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 13px; line-height: 1.5">
+<li style="padding: 10px 12px; border-radius: 12px; background: #F5F7FB"><strong>Canon and continuity:</strong> pages suggest Gemini 3.1 Pro as verifier with GPT-5.6 Sol as challenger, and also Claude Opus 5 or Fable 5.1.</li>
+<li style="padding: 10px 12px; border-radius: 12px; background: #F5F7FB"><strong>Story Advisor, Character Changes Log:</strong> pages suggest GPT-5.6 Sol, and also Claude Opus 5 or Fable 5.1.</li>
+<li style="padding: 10px 12px; border-radius: 12px; background: #FFF5D6; box-shadow: inset 0 0 0 1px #FFE699"><strong>Add before the chapter steps test:</strong> Gemini 3.1 Pro, GPT-5.6 Luna, Claude Opus 5 and GPT-6.1 Sol.</li>
+</ul>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{show.decisions}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="@NOTE@"><span style="@NOTEICON@">@ICON:shield@</span><span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 14px; font-weight: 700">How an agent earns autonomy</span><span style="font-size: 13px; line-height: 1.55; @MUTED@">While a section is Supervised, every answer you give is a labelled example. An agent earns <strong>Delegated</strong> after at least 20 of your decisions with 85% agreement and its stated confidence within 10 points of how often it is right. <strong>Autonomous</strong> needs 50 decisions, 95% agreement and fewer than 5% undone.</span><a href="Autonomy.dc.html" style="font-size: 13px; font-weight: 600">Set levels on the Autonomy screen</a></span></div>
+<section aria-label="Decision scoring" style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{decisions}}" as="d" hint-placeholder-count="6">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; padding: 14px 18px; @CARD@">
+<span style="flex: 1 1 240px; display: flex; flex-direction: column; gap: 3px"><span style="font-size: 15px; font-weight: 800">{{d.agent}}</span><span style="font-size: 13px; @MUTED@">{{d.what}} · {{d.section}}</span></span>
+<span style="flex: 1 1 220px; display: flex; flex-direction: column; gap: 5px">
+<span style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: #5F6E84"><span>{{d.count}}</span><span>{{d.agreeText}}</span></span>
+<span role="meter" aria-label="Agreement with you" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{d.agree}}" style="display: block; height: 8px; border-radius: 999px; background: #E8EEF6; overflow: hidden"><span style="display: block; width: {{d.width}}; height: 100%; background: {{d.bar}}"></span></span>
+</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="flex: 0 1 190px; @MONO@; font-size: 12px; color: #1F3864">cal {{d.cal}} · undo {{d.undo}}</span></sc-if>
+<span style="@BADGE@; background: {{d.bg}}; color: {{d.fg}}; box-shadow: inset 0 0 0 1px {{d.ring}}">{{d.earned}}</span>
+</div>
+</sc-for>
+</section>
+<span style="font-size: 12px; color: #5F6E84">Sample figures until the chapter steps test records your real decisions.</span>
+</div>
+</sc-if>

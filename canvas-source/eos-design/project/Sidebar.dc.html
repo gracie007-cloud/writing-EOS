@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Writing EOS · Sidebar</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<nav class="eos-side" aria-label="Primary" style="flex: 1 1 264px; max-width: 264px; min-height: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px; padding: 20px 14px; background: #FFFFFF; border-right: 1px solid #E3E8F0; color: #1B2A41; font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">
+
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; padding: 0 6px; color: #1B2A41; text-decoration: none">
+<span style="flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: #1F3864; color: #FFC000"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M12.67 19a2 2 0 0 0 1.416-.588l6.154-6.172a6 6 0 0 0-8.49-8.49L5.586 9.914A2 2 0 0 0 5 11.328V18a1 1 0 0 0 1 1z M16 8 2 22 M17.5 15H9"></path></svg></span>
+<span style="display: flex; flex-direction: column"><span style="font-size: 16px; font-weight: 800; letter-spacing: -0.01em">Writing EOS</span><span style="font-size: 12px; color: #5F6E84">Author studio</span></span>
+</a>
+
+<button type="button" aria-label="Switch project: current project [Project title]" class="eos-sidefoot" style="display: flex; align-items: center; gap: 10px; min-height: 64px; padding: 10px; border-radius: 12px; border: 1px solid #E3E8F0; background: #F8FAFD; text-align: left; cursor: pointer; font-family: inherit; color: inherit">
+<span style="flex: none; display: grid; place-items: center; width: 34px; height: 46px; border-radius: 4px; background: #1F3864; color: #FFC000; font-family: 'Lora', Georgia, serif; font-size: 9px; font-weight: 600; letter-spacing: 0.08em; box-shadow: 2px 2px 0 #C9D6E8">PEN</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">[Project title]</span>
+<span style="font-size: 12px; color: #5F6E84">[Pen name] · Bible locked</span>
+</span>
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: #5F6E84; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M7 15l5 5 5-5 M7 9l5-5 5 5"></path></svg>
+</button>
+
+<div class="eos-nav" style="display: flex; flex-direction: column; gap: 14px">
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="5">
+<div class="eos-navgroup" style="display: flex; flex-direction: column; gap: 2px">
+<sc-if value="{{g.hasLabel}}" hint-placeholder-val="{{ true }}">
+<span class="eos-navlabel" style="padding: 0 10px 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5F6E84">{{g.label}}</span>
+</sc-if>
+<sc-for list="{{g.items}}" as="it" hint-placeholder-count="3">
+<a href="{{it.href}}" aria-current="{{it.current}}" class="eos-navitem" style="display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 10px; border-radius: 10px; background: {{it.bg}}; color: {{it.fg}}; text-decoration: none; font-size: 14px; font-weight: {{it.weight}}; white-space: nowrap">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round"><path d="{{it.icon}}"></path></svg>
+<span style="flex: 1">{{it.name}}</span>
+<sc-if value="{{it.hasBadge}}" hint-placeholder-val="{{ false }}">
+<span style="min-width: 22px; padding: 1px 7px; box-sizing: border-box; border-radius: 999px; text-align: center; font-size: 12px; font-weight: 700; background: {{it.badgeBg}}; color: {{it.badgeFg}}" aria-label="{{it.badgeLabel}}">{{it.badge}}</span>
+</sc-if>
+<sc-if value="{{it.hasMeta}}" hint-placeholder-val="{{ false }}">
+<span style="font-size: 12px; font-weight: 500; color: {{it.metaFg}}">{{it.meta}}</span>
+</sc-if>
+</a>
+</sc-for>
+</div>
+</sc-for>
+</div>
+
+<div class="eos-sidefoot" style="margin-top: auto; display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: 12px; background: #F2F7FD; box-shadow: inset 0 0 0 1px #DCE8F5">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px">
+<span style="font-size: 12px; font-weight: 700; color: #1F3864">Opening chapter test</span>
+<span style="font-size: 12px; color: #4B5B73">5 of 6 steps</span>
+</div>
+<div role="progressbar" aria-label="Opening chapter test progress" aria-valuemin="0" aria-valuemax="6" aria-valuenow="5" style="height: 6px; border-radius: 999px; background: #DCE6F2; overflow: hidden"><div style="width: 83%; height: 100%; background: #2E75B6"></div></div>
+<div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #4B5B73">
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: #3B7020; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z M9 12l2 2 4-4"></path></svg>
+<span>Guards on · spend [$ SPEND]</span>
+</div>
+</div>
+</nav>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"active":{"editor":"enum","options":["home","develop","bible","board","genres","library","chapters","generate","recipes","editor","review","history","export","finish","autonomy","lab","blueprint"],"default":"home"},"$preview":{"width":264,"height":1260}}'>
+class Component extends DCLogic {
+renderVals() {
+var active = this.props.active || 'home';
+var I = {
+home: 'M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8 M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z',
+develop: 'M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z M15 5.764v15 M9 3.236v15',
+bible: 'M12 7v14 M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z',
+chapters: 'M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12 M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17',
+generate: 'M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z M20 3v4 M22 5h-4',
+editor: 'M12 20h9 M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z',
+review: 'M12 2a10 10 0 1 0 0 20a10 10 0 1 0 0-20 M9 12l2 2 4-4',
+lab: 'M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2 M8.5 2h7 M7 16h10',
+autonomy: 'M21 4h-7 M10 4H3 M21 12h-9 M8 12H3 M21 20h-5 M12 20H3 M14 2v4 M8 10v4 M16 18v4',
+blueprint: 'M5 3h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z M7 11v4a2 2 0 0 0 2 2h4 M15 13h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2z',
+genres: 'M16 6l4 14 M12 6v14 M8 8v12 M4 4v16',
+library: 'M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M8 13h8',
+board: 'M5 3h4a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z M15 3h4a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z',
+export: 'M12 3v12 M7 10l5 5 5-5 M5 21h14',
+finish: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20 M9 7h7 M9 11h5',
+recipes: 'M3 17l2 2 4-4 M3 7l2 2 4-4 M13 6h8 M13 12h8 M13 18h8',
+history: 'M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8 M3 3v5h5 M12 7v5l4 2'
+};
+var item = function (id, name, href, extra) {
+var on = id === active;
+var e = extra || {};
+return {
+name: name, href: href, icon: I[id], current: on ? 'page' : false,
+bg: on ? '#2E75B6' : 'transparent', fg: on ? '#FFFFFF' : '#2B3E58', weight: on ? '700' : '600',
+hasBadge: !!e.badge, badge: e.badge || '', badgeLabel: e.badgeLabel || '',
+badgeBg: on ? '#FFFFFF' : (e.badgeBg || '#FFC000'), badgeFg: on ? '#1F4E79' : (e.badgeFg || '#12244A'),
+hasMeta: !!e.meta, meta: e.meta || '', metaFg: on ? '#DCEBFA' : '#5F6E84'
+};
+};
+var groups = [
+{ label: '', items: [item('home', 'Home', 'Main.dc.html', { badge: '5', badgeLabel: '5 decisions waiting' })] },
+{ label: 'Plan', items: [item('develop', 'Story Blueprint', 'Develop.dc.html', { meta: 'Done' }), item('bible', 'Story Bible', 'Bible.dc.html', { meta: 'Locked' }), item('board', 'Story board', 'Board.dc.html', { meta: '4 flags' }), item('genres', 'Genre packs', 'Genre.dc.html'), item('library', 'Library', 'Library.dc.html')] },
+{ label: 'Write', items: [item('chapters', 'Chapters', 'Chapter.dc.html', { meta: '0 of 24' }), item('generate', 'Generate', 'Generate.dc.html'), item('recipes', 'Recipes', 'Recipes.dc.html', { meta: '1 running' }), item('editor', 'Editor', 'Editor.dc.html')] },
+{ label: 'Review', items: [item('review', 'Score drafts', 'Draft.dc.html', { badge: '15', badgeLabel: '15 drafts to score', badgeBg: '#DEEBF7', badgeFg: '#1F4E79' }), item('history', 'History', 'History.dc.html'), item('export', 'Export', 'Export.dc.html')] },
+{ label: 'Publish', items: [item('finish', 'Finish & publish', 'Finish.dc.html')] },
+{ label: 'Engine', items: [item('autonomy', 'Autonomy', 'Autonomy.dc.html', { meta: '3 on' }), item('lab', 'Model Lab', 'Lab.dc.html'), item('blueprint', 'Blueprint', 'Ecosystem.dc.html')] }
+].map(function (g) { return Object.assign({}, g, { hasLabel: !!g.label }); });
+return { groups: groups };
+}
+}
+</script>
+</body>
+</html>

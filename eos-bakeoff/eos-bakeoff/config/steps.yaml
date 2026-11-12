@@ -1,0 +1,74 @@
+# Steps tested in Run 01. `sections` is the ONLY source of what a step receives.
+# Section E (seeded brief) must never appear with Section C (clean brief).
+#
+# Token budgets (decided 2026-10-17): every candidate is a reasoning model, so
+# `max_tokens` is the ANSWER budget and every model also gets the same separate
+# thinking budget. A step may override it with `reasoning_max_tokens`.
+reasoning:
+  default_max_tokens: 4000
+
+steps:
+  character_selector:
+    task_type: structured_extraction
+    sections: [A, B, C]
+    template: prompts/selector.md
+    selector_kind: characters
+    output: json
+    schema: {characters: ["string"]}
+    temperature: 0.2
+    max_tokens: 800
+    scoring: extraction
+    candidates: [claude_fable_51, gpt_sol, gemini4, qwen_38_max, glm_53]
+
+  worldbuilding_selector:
+    task_type: structured_extraction
+    sections: [A, B, C]
+    template: prompts/selector.md
+    selector_kind: locations_and_rules
+    output: json
+    schema: {locations: ["string"], world_rules: ["string"]}
+    temperature: 0.2
+    max_tokens: 800
+    scoring: extraction
+    candidates: [gemini4, kimi_k3, deepseek_v4_pro, gpt_sol]
+
+  scene_brief:
+    task_type: long_context_synthesis
+    sections: [A, B, C]
+    template: prompts/scene_brief.md
+    output: markdown
+    temperature: 0.5
+    max_tokens: 2500
+    scoring: human_synthesis
+    candidates: [claude_fable_51, gpt_sol, gemini4, qwen_38_max]
+
+  first_draft:
+    task_type: prose_generation
+    sections: [A, B, C]
+    template: prompts/first_draft.md
+    output: markdown
+    temperature: 0.85
+    max_tokens: 6000
+    scoring: prose
+    candidates: [claude_fable_51, gpt_sol, gemini4, qwen_38_max, glm_53]
+
+  first_draft_mature:
+    task_type: prose_generation
+    sections: [A, B, C, D]
+    template: prompts/first_draft_mature.md
+    output: markdown
+    temperature: 0.85
+    max_tokens: 3000
+    scoring: prose_mature
+    candidates: [custom_abliterated, baseline_abliterated]
+
+  chronology_check:
+    task_type: verdict
+    sections: [A, B, E]
+    template: prompts/chronology_check.md
+    output: json
+    schema: {contradictions: [{quote: "string", contradicts: "string"}]}
+    temperature: 0.1
+    max_tokens: 1200
+    scoring: verdict
+    candidates: [gemini4, kimi_k3, glm_53, deepseek_v4_pro, gpt_sol]

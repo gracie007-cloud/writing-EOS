@@ -1,0 +1,318 @@
+<section aria-labelledby="els-h" style="display: flex; flex-direction: column; gap: 12px; padding: 20px 22px; @CARD@">
+<span style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px"><h2 id="els-h" style="@H2@">The Bible's twelve elements</h2><span style="font-size: 13px; color: #5F6E84">Assembled by the Story Bible Builder · checked by Canon Check and its second opinion · locked by you</span></span>
+<span style="font-size: 14px; line-height: 1.55; @MUTED@">Each element is filled by the steps whose job it is, each with its own model. Worldbuilding is one of the elements, not a stage beside the Bible. The Bible keeps growing after the lock through changes you accept.</span>
+<ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr)); gap: 10px">
+<sc-for list="{{elements}}" as="e" hint-placeholder-count="12">
+<li style="display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 12px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0">
+<span style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px"><span style="font-size: 15px; font-weight: 800">{{e.n}} · {{e.title}}</span></span>
+<span style="font-size: 13px; color: #4B5B73">{{e.holds}}</span>
+<span style="font-size: 12px; color: #5F6E84">Filled by {{e.by}}</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@MONO@; font-size: 12px; color: #1F4E79">{{e.byEng}}</span></sc-if>
+<sc-if value="{{e.hasNote}}" hint-placeholder-val="{{ false }}"><span style="font-size: 12px; color: #5F6E84">{{e.note}}</span></sc-if>
+<span style="@BADGE@; align-self: flex-start; background: {{e.tBg}}; color: {{e.tFg}}; box-shadow: inset 0 0 0 1px {{e.tRing}}">{{e.status}}</span>
+</li>
+</sc-for>
+</ul>
+</section>
+
+<section aria-labelledby="wa-h" style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; @CARD@">
+<h2 id="wa-h" style="@H2@">Worldbuilding approach</h2>
+<span style="font-size: 14px; line-height: 1.55; @MUTED@">Worldbuilding proposes an approach from the book's genre, plot and Canon theme; you approve it. Whichever you choose fills the same world element, and your themes give each aspect its starting direction.</span>
+<ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 10px">
+<sc-for list="{{approaches}}" as="a" hint-placeholder-count="3">
+<li style="display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 12px; background: {{a.bg}}; box-shadow: inset 0 0 0 1px {{a.ring}}">
+<span style="display: flex; justify-content: space-between; gap: 8px"><span style="font-size: 15px; font-weight: 800">{{a.n}}</span><span style="font-size: 12px; font-weight: 700; color: #1F4E79">{{a.tag}}</span></span>
+<span style="font-size: 13px; color: #4B5B73">{{a.why}}</span>
+</li>
+</sc-for>
+</ul>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><button type="button" class="eos-btn" style="@BTN_PRIMARY@">Approve Components</button><button type="button" class="eos-btn" style="@BTN_OUTLINE@">Choose another</button></span>
+</section>
+
+<div role="tablist" aria-label="Story Bible sections" style="@TABBAR@">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="9">
+<button type="button" role="tab" aria-selected="{{t.on}}" onClick="{{t.pick}}" style="@TAB@; background: {{t.bg}}; color: {{t.fg}}">{{t.name}}</button>
+</sc-for>
+</div>
+
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 10px 14px; @NAVY@; font-size: 13px">@ICON:cpu:16:#9DC3E6@<span style="color: #B6C3D6">Read by</span><span style="@MONO@">{{readBy}}</span></div>
+</sc-if>
+
+<sc-if value="{{show.chars}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+<div style="flex: 1 1 250px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{people}}" as="p" hint-placeholder-count="7">
+<button type="button" onClick="{{p.pick}}" aria-pressed="{{p.on}}" class="eos-row" style="display: flex; flex-direction: column; gap: 4px; min-height: 64px; padding: 12px 14px; border-radius: 12px; border: 1px solid {{p.border}}; background: {{p.bg}}; box-shadow: {{p.shadow}}; text-align: left; color: #1B2A41; font-family: inherit; cursor: pointer">
+<span style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; width: 100%"><span style="@SERIF@; font-size: 18px">{{p.name}}</span><span style="font-size: 11px; font-weight: 700; color: #5F6E84">{{p.tierShort}}</span></span>
+<span style="font-size: 13px; @MUTED@">{{p.role}}</span>
+</button>
+</sc-for>
+</div>
+
+<article aria-labelledby="pname" style="flex: 2.6 1 540px; min-width: 0; display: flex; flex-direction: column; gap: 20px; padding: 24px 26px; @CARD@">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="@BADGE@; align-self: flex-start; background: #DEEBF7; color: #1F4E79; box-shadow: inset 0 0 0 1px #9DC3E6">{{c.tag}}</span>
+<h2 id="pname" style="margin: 0; @SERIF@; font-size: 32px; font-weight: 500">{{c.full}}</h2>
+<span style="font-size: 14px; @MUTED@">{{c.sub}}</span>
+</div>
+<p style="margin: 0; @SERIF@; font-size: 17px; line-height: 1.7">{{c.body}}</p>
+<section aria-labelledby="iv-h" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 18px; border-radius: 14px; background: #F2F7FD; box-shadow: inset 0 0 0 1px #C9DDF1">
+<span style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px"><h3 id="iv-h" style="margin: 0; font-size: 15px; font-weight: 800">Interview {{c.full}}</h3><span style="font-size: 12px; color: #5F6E84">Answers become proposals, never canon by themselves</span></span>
+<div role="radiogroup" aria-label="Question" style="display: flex; flex-wrap: wrap; gap: 6px"><sc-for list="{{questions}}" as="q" hint-placeholder-count="3"><button type="button" role="radio" aria-checked="{{q.on}}" onClick="{{q.pick}}" style="min-height: 40px; padding: 0 12px; border-radius: 999px; border: 1px solid {{q.border}}; background: {{q.bg}}; color: {{q.fg}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{q.name}}</button></sc-for></div>
+<label for="iv-a" style="font-size: 14px; font-weight: 700">{{question}}</label>
+<textarea id="iv-a" rows="2" placeholder="Answer in a sentence or two, in your own words." style="@INPUT@; min-height: 64px; padding: 10px 12px; resize: vertical; line-height: 1.5"></textarea>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><button type="button" class="eos-btn" style="@BTN_OUTLINE@">Get the follow-ups</button><span style="font-size: 12px; color: #4B5B73">You get a background paragraph, two follow-up questions and one habit to show in the next scene, all marked provisional.</span></span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@MONO@; font-size: 12px; color: #1F4E79">character_interview · prose pool · as of Chapter 1 · output → extract → PROVISIONAL proposals</span></sc-if>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px">
+<section aria-label="Names the text may use" style="flex: 1 1 240px; display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; border-radius: 12px; background: #F5F7FB">
+<span style="@LABEL@">Names the text may use</span>
+<span style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{c.aliases}}" as="al" hint-placeholder-count="4"><span style="@CHIP@">{{al.t}}</span></sc-for>
+</span>
+<span style="font-size: 12px; line-height: 1.5; color: #5F6E84">{{c.aliasNote}}</span>
+</section>
+<section aria-label="Appears in" style="flex: 1 1 240px; display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; border-radius: 12px; background: #F5F7FB">
+<span style="@LABEL@">Appears in</span>
+<sc-for list="{{c.appears}}" as="ap" hint-placeholder-count="2">
+<span style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; font-size: 13px"><span style="font-weight: 700">{{ap.ch}}</span><span style="color: {{ap.fg}}; font-weight: 600">{{ap.what}}</span></span>
+</sc-for>
+</section>
+</div>
+
+<section aria-label="Progressions" style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px">
+<span style="@LABEL@">What agents see as of chapter {{asofLabel}}</span>
+<div role="radiogroup" aria-label="View as of chapter" style="display: inline-flex; gap: 4px; padding: 4px; border-radius: 12px; background: #E8EEF6">
+<sc-for list="{{asofs}}" as="o" hint-placeholder-count="3">
+<button type="button" role="radio" aria-checked="{{o.on}}" onClick="{{o.pick}}" style="min-height: 36px; padding: 0 12px; border: 0; border-radius: 9px; background: {{o.bg}}; color: {{o.fg}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{o.name}}</button>
+</sc-for>
+</div>
+</div>
+<sc-for list="{{c.progNow}}" as="g" hint-placeholder-count="3">
+<div style="display: grid; grid-template-columns: minmax(120px, 0.9fr) minmax(0, 1.3fr) minmax(0, 1.2fr); gap: 4px 14px; padding: 10px 12px; border-radius: 12px; box-shadow: inset 0 0 0 1px #E3E8F0; font-size: 13px; line-height: 1.45">
+<span style="color: #5F6E84; font-weight: 600">{{g.field}}</span>
+<span style="font-weight: 700">{{g.now}}</span>
+<span style="@MUTED@">{{g.next}}</span>
+</div>
+</sc-for>
+</section>
+
+<section aria-label="Strategy and Pillars" style="display: flex; flex-direction: column; gap: 10px">
+<span style="@LABEL@">Strategy and Pillars</span>
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 12px 24px">
+<sc-for list="{{c.strategy}}" as="s" hint-placeholder-count="6">
+<div style="display: flex; flex-direction: column; gap: 3px"><dt style="font-size: 12px; font-weight: 600; color: #5F6E84">{{s.k}}</dt><dd style="margin: 0; font-size: 14px; line-height: 1.5">{{s.v}}</dd></div>
+</sc-for>
+</dl>
+</section>
+
+<section aria-label="Enforced by checks" style="display: flex; flex-direction: column; gap: 8px">
+<span style="@LABEL@">Checked on every draft</span>
+<sc-for list="{{c.rules}}" as="r" hint-placeholder-count="3">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 14px; padding: 10px 12px; border-radius: 12px; background: {{r.bg}}; font-size: 14px">
+<span>{{r.text}}</span>
+<span style="@BADGE@; background: #FFFFFF; color: {{r.fg}}; box-shadow: inset 0 0 0 1px {{r.ring}}">{{r.check}}</span>
+</div>
+</sc-for>
+</section>
+</article>
+</div>
+</sc-if>
+
+<sc-if value="{{show.arc}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<section aria-label="Story spine" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 12px">
+<sc-for list="{{spine}}" as="s" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; @CARD@">
+<span style="@LABEL@">{{s.k}}</span>
+<span style="@SERIF@; font-size: 22px">{{s.v}}</span>
+<span style="font-size: 12px; color: #5F6E84">{{s.note}}</span>
+</div>
+</sc-for>
+</section>
+<section aria-labelledby="ring" style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; @CARD@">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px"><h2 id="ring" style="@H2@">Belief Ring · GANT 2.0</h2><span style="font-size: 13px; @MUTED@">Where [Protagonist] stands, chapter by chapter</span></div>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(120px, 100%), 1fr)); gap: 8px">
+<sc-for list="{{beats}}" as="b" hint-placeholder-count="8">
+<li style="display: flex; flex-direction: column; gap: 6px; padding: 12px; border-radius: 12px; background: {{b.bg}}; box-shadow: inset 0 0 0 1px {{b.ring}}">
+<span style="display: grid; place-items: center; width: 28px; height: 28px; border-radius: 999px; background: {{b.numBg}}; color: {{b.numFg}}; font-size: 13px; font-weight: 800">{{b.n}}</span>
+<span style="font-size: 13px; font-weight: 700; line-height: 1.3">{{b.name}}</span>
+<span style="font-size: 12px; font-weight: 600; color: {{b.whenFg}}">{{b.when}}</span>
+</li>
+</sc-for>
+</ol>
+</section>
+<section aria-label="Arcs" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 14px">
+<sc-for list="{{arcs}}" as="a" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; @CARD@">
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="@SERIF@; font-size: 20px">{{a.who}}</span><span style="font-size: 13px; font-weight: 600; color: #1F4E79">{{a.mode}}</span></span>
+<dl style="margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 13px; line-height: 1.5">
+<div><dt style="font-weight: 700">Ghost</dt><dd style="margin: 0; @MUTED@">{{a.ghost}}</dd></div>
+<div><dt style="font-weight: 700">Lie</dt><dd style="margin: 0; @MUTED@">{{a.lie}}</dd></div>
+<div><dt style="font-weight: 700">Need</dt><dd style="margin: 0; @MUTED@">{{a.need}}</dd></div>
+<div><dt style="font-weight: 700">Reckoning</dt><dd style="margin: 0; @MUTED@">{{a.reck}}</dd></div>
+<div><dt style="font-weight: 700">Truth</dt><dd style="margin: 0; @MUTED@">{{a.truth}}</dd></div>
+</dl>
+</div>
+</sc-for>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{show.secrets}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<section aria-labelledby="reg" style="display: flex; flex-direction: column; gap: 12px">
+<h2 id="reg" style="@H2@">Secret register</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 12px">
+<sc-for list="{{secrets}}" as="s" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 16px 18px; @CARD@">
+<span style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="display: grid; place-items: center; min-width: 36px; height: 28px; border-radius: 8px; background: #1F3864; color: #FFFFFF; font-size: 13px; font-weight: 800">{{s.id}}</span><span style="@BADGE@; background: #EEF1F5; color: #475569; box-shadow: inset 0 0 0 1px #D5DCE6">Level {{s.level}}</span></span>
+<span style="@SERIF@; font-size: 16px; line-height: 1.55">{{s.text}}</span>
+<span style="display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; color: #5F6E84"><span>Depends on {{s.dep}}</span><span>Revealed {{s.reveal}}</span></span>
+</div>
+</sc-for>
+</div>
+</section>
+<section aria-labelledby="know" style="display: flex; flex-direction: column; gap: 12px; padding: 20px 22px; @CARD@">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px"><h2 id="know" style="@H2@">Who knows what · as of Chapter 1</h2><span style="font-size: 13px; @MUTED@">Built by code from the register, the reveal schedule and recorded changes</span></div>
+<div style="overflow-x: auto">
+<div role="table" aria-label="Who knows what" style="min-width: 560px; display: flex; flex-direction: column; gap: 6px">
+<div role="row" style="display: grid; grid-template-columns: minmax(150px, 1.4fr) repeat(4, minmax(0, 1fr)); gap: 6px; font-size: 12px; font-weight: 700; color: #5F6E84"><span role="columnheader">Character</span><span role="columnheader">S1</span><span role="columnheader">S2</span><span role="columnheader">S3</span><span role="columnheader">S4</span></div>
+<sc-for list="{{knowRows}}" as="k" hint-placeholder-count="4">
+<div role="row" style="display: grid; grid-template-columns: minmax(150px, 1.4fr) repeat(4, minmax(0, 1fr)); gap: 6px; align-items: center">
+<span role="rowheader" style="font-size: 14px; font-weight: 700">{{k.who}}</span>
+<sc-for list="{{k.cells}}" as="x" hint-placeholder-count="4">
+<span role="cell" style="display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 10px; background: {{x.bg}}; color: {{x.fg}}; font-size: 13px; font-weight: 600"><span aria-hidden="true">{{x.sym}}</span>{{x.word}}</span>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{show.rel}}" hint-placeholder-val="{{ false }}">
+<section aria-label="Relationships" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 14px">
+<sc-for list="{{rels}}" as="r" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; @CARD@">
+<span style="@SERIF@; font-size: 19px">{{r.pair}}</span>
+<span style="font-size: 14px; line-height: 1.55">{{r.dyn}}</span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><span style="@CHIP@">Score {{r.score}}</span><span style="@CHIP@">Trust {{r.trust}}</span></span>
+<span style="font-size: 13px; line-height: 1.5; @MUTED@"><strong style="color: #1B2A41">The gap:</strong> {{r.gap}}</span>
+</div>
+</sc-for>
+</section>
+</sc-if>
+
+<sc-if value="{{show.naming}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start">
+<section aria-label="Names and conventions" style="flex: 1.4 1 420px; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{names}}" as="n" hint-placeholder-count="5">
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; @CARD@">
+<span style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 12px"><span style="@SERIF@; font-size: 18px">{{n.name}}</span><span style="@BADGE@; background: #DEEBF7; color: #1F4E79; box-shadow: inset 0 0 0 1px #9DC3E6">{{n.conv}}</span></span>
+<span style="font-size: 13px; line-height: 1.5; @MUTED@">{{n.read}}</span>
+</div>
+</sc-for>
+</section>
+<section aria-label="Naming rules" style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{nameRules}}" as="r" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border-radius: 16px; background: #F2F7FD; box-shadow: inset 0 0 0 1px #C9DDF1">
+<span style="font-size: 13px; font-weight: 800">{{r.title}}</span>
+<span style="font-size: 13px; line-height: 1.5; @MUTED@">{{r.v}}</span>
+<span style="font-size: 12px; font-weight: 600; color: #1F4E79">{{r.check}}</span>
+</div>
+</sc-for>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{show.style}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+<section aria-labelledby="vp-h" style="flex: 1.3 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; @CARD@">
+<span style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px"><h2 id="vp-h" style="@H2@">Voice profile · [Pen name]</h2><span style="@BADGE@; background: #E7F3DF; color: #3B7020; box-shadow: inset 0 0 0 1px #B9DCA4">Approved · 12 Oct 2026</span></span>
+<span style="font-size: 13px; @MUTED@">Measured by code from 12 sample pages you wrote. It updates as chapters are locked, and you approve each new version.</span>
+<sc-for list="{{voiceRows}}" as="v" hint-placeholder-count="5"><div style="display: flex; justify-content: space-between; gap: 10px; min-height: 36px; align-items: center; padding: 0 12px; border-radius: 10px; background: #F8FAFC; font-size: 14px"><span>{{v.k}}</span><span style="font-weight: 700">{{v.v}}</span></div></sc-for>
+</section>
+<section aria-labelledby="drift-h" style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; @CARD@">
+<h2 id="drift-h" style="@H2@">Voice drift</h2>
+<span style="font-size: 13px; @MUTED@">How far each text sits from your profile. Above the line, the voice check gets the drifted passages and a rewrite is pitched to you.</span>
+<div role="img" aria-label="{{driftLabel}}" style="position: relative; display: flex; align-items: flex-end; gap: 14px; height: 140px; padding: 0 8px; border-bottom: 1px solid #D5DCE6">
+<span style="position: absolute; left: 0; right: 0; bottom: 70%; border-top: 2px dashed #ED7D31"></span>
+<sc-for list="{{drift}}" as="b" hint-placeholder-count="3"><span style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; justify-content: flex-end"><span style="font-size: 12px; font-weight: 700; color: {{b.fg}}">{{b.v}}</span><span style="width: 100%; max-width: 46px; height: {{b.h}}; border-radius: 6px 6px 0 0; background: {{b.c}}"></span></span></sc-for>
+</div>
+<div style="display: flex; gap: 14px; padding: 0 8px"><sc-for list="{{drift}}" as="b" hint-placeholder-count="3"><span style="flex: 1; text-align: center; font-size: 12px; color: #4B5B73">{{b.name}}</span></sc-for></div>
+<span style="font-size: 12px; color: #5F6E84">Dashed line: the point where a rewrite is pitched. Chapters 2–24 appear as they are written.</span>
+</section>
+</div>
+<section aria-label="Style rules" style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{styleRows}}" as="r" hint-placeholder-count="5">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding: 14px 18px; @CARD@">
+<span style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 3px"><span style="font-size: 15px; font-weight: 700">{{r.rule}}</span><span style="font-size: 13px; @MUTED@">{{r.check}}</span></span>
+<span style="@BADGE@; background: {{r.bg}}; color: {{r.fg}}; box-shadow: inset 0 0 0 1px {{r.ring}}">{{r.gate}}</span>
+</div>
+</sc-for>
+</section>
+</sc-if>
+
+<sc-if value="{{show.world}}" hint-placeholder-val="{{ false }}">
+<section aria-label="World rules" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 14px">
+<sc-for list="{{world}}" as="w" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 18px 20px; @CARD@">
+<span style="@LABEL@">{{w.id}}</span>
+<span style="@SERIF@; font-size: 20px">{{w.name}}</span>
+<span style="font-size: 14px; line-height: 1.6; @MUTED@">{{w.text}}</span>
+</div>
+</sc-for>
+</section>
+</sc-if>
+
+<sc-if value="{{show.matrix}}" hint-placeholder-val="{{ false }}">
+<section aria-labelledby="mx" style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; @CARD@">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px"><h2 id="mx" style="@H2@">Every entry across the chapters</h2><span style="font-size: 13px; @MUTED@">Built by code · read-only · change the plan in the outline</span></div>
+<div role="radiogroup" aria-label="Matrix view" style="display: inline-flex; flex-wrap: wrap; align-self: flex-start; gap: 4px; padding: 4px; border-radius: 12px; background: #E8EEF6">
+<sc-for list="{{mxModes}}" as="m" hint-placeholder-count="4">
+<button type="button" role="radio" aria-checked="{{m.on}}" onClick="{{m.pick}}" style="min-height: 36px; padding: 0 12px; border: 0; border-radius: 9px; background: {{m.bg}}; color: {{m.fg}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{m.name}}</button>
+</sc-for>
+</div>
+<span style="font-size: 13px; @MUTED@">{{mx.note}}</span>
+<div style="overflow-x: auto">
+<div role="table" aria-label="Matrix" style="min-width: 820px; display: flex; flex-direction: column; gap: 4px">
+<div role="row" style="display: grid; grid-template-columns: minmax(190px, 1.4fr) repeat(5, minmax(0, 1fr)); gap: 4px; font-size: 12px; font-weight: 700; color: #5F6E84">
+<span role="columnheader">Entry</span>
+<sc-for list="{{mxCols}}" as="col" hint-placeholder-count="5"><span role="columnheader">{{col.t}}</span></sc-for>
+</div>
+<sc-for list="{{mx.rows}}" as="row" hint-placeholder-count="8">
+<div role="row" style="display: grid; grid-template-columns: minmax(190px, 1.4fr) repeat(5, minmax(0, 1fr)); gap: 4px; align-items: stretch">
+<span role="rowheader" style="display: flex; flex-direction: column; justify-content: center; padding: 6px 0"><span style="font-size: 14px; font-weight: 700">{{row.name}}</span><span style="font-size: 11px; font-weight: 600; color: #5F6E84">{{row.kind}}</span></span>
+<sc-for list="{{row.cells}}" as="cell" hint-placeholder-count="5"><span role="cell" style="display: flex; align-items: center; padding: 8px 10px; border-radius: 8px; background: {{cell.bg}}; color: {{cell.fg}}; font-size: 13px; line-height: 1.35">{{cell.t}}</span></sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 12px; border-top: 1px solid #E3E8F0">
+<span style="@LABEL@">Flags · code</span>
+<sc-for list="{{mxFlagRows}}" as="f" hint-placeholder-count="4">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 14px; padding: 10px 12px; border-radius: 12px; background: #F5F7FB; font-size: 13px"><span>{{f.text}}</span><span style="@BADGE@; background: {{f.bg}}; color: {{f.fg}}; box-shadow: inset 0 0 0 1px {{f.ring}}">{{f.tag}}</span></div>
+</sc-for>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{show.reserve}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="@NOTE@"><span style="@NOTEICON@">@ICON:info@</span><span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 14px; font-weight: 700">Nothing is thrown away</span><span style="font-size: 13px; line-height: 1.5; @MUTED@">Every option you don’t choose is filed here with where it came from and why it wasn’t used. Name and character steps search the Reserve before creating anything new. Synced with your Notion ♻️ Creative Reserve.</span></span></div>
+<section aria-label="Creative Reserve" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 12px">
+<sc-for list="{{reserve}}" as="r" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; @CARD@">
+<span style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px"><span style="@SERIF@; font-size: 19px">{{r.entry}}</span><span style="@BADGE@; background: #FFF5D6; color: #6B4E00; box-shadow: inset 0 0 0 1px #FFD966">{{r.status}}</span></span>
+<span style="font-size: 12px; font-weight: 700; color: #5F6E84">{{r.type}} · for {{r.for}}</span>
+<span style="font-size: 13px; line-height: 1.5; @MUTED@">{{r.origin}}</span>
+</div>
+</sc-for>
+</section>
+</div>
+</sc-if>

@@ -1,0 +1,132 @@
+<section aria-label="Pitch waiting for you" style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; padding: 16px 20px; @GOLDBOX@">
+<span style="flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: #FFC000; color: #12244A">@ICON:flag:20@</span>
+<span style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 15px; font-weight: 800; color: #12244A">Pitch: three changes to Romantic suspense, from your notes on four comparable books</span>
+<span style="font-size: 14px; line-height: 1.55; color: #4B5B73">Recommended: add the promise “the threat comes from someone the leads already trust”, mark <em>protector hero</em> as needing a twist, and widen chapters to 4,500 words. Weighed and set aside: dropping forced proximity (three of your four books use it well).</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@MONO@; font-size: 12px; color: #6B4E00">genre_analyst · synthesis pool · cites notes/comps/*.md · diff against the approved pack</span></sc-if>
+</span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><button type="button" class="eos-btn" style="@BTN_GOLD@">Proceed with the pitch</button><button type="button" class="eos-btn" style="@BTN_OUTLINE@">Choose another</button><button type="button" class="eos-btn" style="@BTN_OUTLINE@">My alternative</button></span>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+
+<section aria-labelledby="lib-h" style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px">
+<h2 id="lib-h" style="@H2@">Library</h2>
+<span style="font-size: 13px; @MUTED@">{{shownCount}}</span>
+</div>
+<div role="radiogroup" aria-label="Show packs" style="display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 12px; background: #E8EEF6">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="4">
+<button type="button" role="radio" aria-checked="{{f.on}}" onClick="{{f.pick}}" style="flex: 1 1 auto; min-height: 36px; padding: 0 10px; border: 0; border-radius: 9px; background: {{f.bg}}; color: {{f.fg}}; box-shadow: {{f.shadow}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{f.name}}</button>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{packs}}" as="p" hint-placeholder-count="6">
+<button type="button" onClick="{{p.pick}}" aria-pressed="{{p.on}}" class="eos-row" style="display: flex; flex-direction: column; align-items: stretch; gap: 6px; padding: 14px 16px; border-radius: 14px; border: 1px solid {{p.border}}; background: {{p.bg}}; box-shadow: {{p.shadow}}; text-align: left; color: #1B2A41; font-family: inherit; cursor: pointer">
+<span style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px"><span style="font-size: 15px; font-weight: 800">{{p.name}}</span><span style="@BADGE@; background: {{p.tBg}}; color: {{p.tFg}}; box-shadow: inset 0 0 0 1px {{p.tRing}}">{{p.badge}}</span></span>
+<span style="font-size: 13px; line-height: 1.5; @MUTED@">{{p.blurb}}</span>
+<span style="font-size: 12px; font-weight: 600; color: #5F6E84">{{p.status}}</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<section aria-labelledby="pack-h" style="flex: 1.8 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 16px; padding: 22px 24px; @CARD@">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 10px">
+<span style="display: flex; flex-direction: column; gap: 4px"><span style="@LABEL@">{{sel.kind}}</span><h2 id="pack-h" style="margin: 0; font-size: 24px; font-weight: 800">{{sel.name}}</h2><span style="font-size: 14px; line-height: 1.55; @MUTED@">{{sel.blurb}}</span></span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><sc-if value="{{sel.canUse}}" hint-placeholder-val="{{ false }}"><button type="button" class="eos-btn" style="@BTN_OUTLINE@">Blend into this project</button></sc-if><button type="button" class="eos-btn" style="@BTN_GHOST@">Duplicate and edit</button><a href="History.dc.html" class="eos-btn" style="@BTN_GHOST@">History</a></span>
+</div>
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr)); gap: 10px">
+<sc-for list="{{sel.norms}}" as="n" hint-placeholder-count="6">
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 12px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0"><dt style="font-size: 12px; font-weight: 600; color: #5F6E84">{{n.k}}</dt><dd style="margin: 0; font-size: 14px; font-weight: 700; line-height: 1.4">{{n.v}}</dd></div>
+</sc-for>
+</dl>
+<div role="tablist" aria-label="Pack contents" style="@TABBAR@">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="4">
+<button type="button" role="tab" aria-selected="{{t.on}}" onClick="{{t.pick}}" style="flex: 1 0 auto; min-height: 40px; padding: 0 14px; border: 0; border-radius: 9px; background: {{t.bg}}; color: {{t.fg}}; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer; white-space: nowrap">{{t.name}}</button>
+</sc-for>
+</div>
+
+<sc-if value="{{isPromises}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 13px; @MUTED@">{{promiseNote}}</span>
+<sc-for list="{{promises}}" as="r" hint-placeholder-count="5">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 12px 14px; border-radius: 12px; background: {{r.rowBg}}; box-shadow: inset 0 0 0 1px {{r.rowRing}}">
+<span style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 700; line-height: 1.45">{{r.text}}</span><span style="font-size: 12px; color: #5F6E84">Usually paid off: {{r.when}}</span></span>
+<sc-if value="{{r.hasStatus}}" hint-placeholder-val="{{ true }}"><span style="@BADGE@; background: {{r.tBg}}; color: {{r.tFg}}; box-shadow: inset 0 0 0 1px {{r.tRing}}">{{r.status}}</span></sc-if>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{isTropes}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{tropes}}" as="r" hint-placeholder-count="5">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 12px 14px; border-radius: 12px; background: #FFFFFF; box-shadow: inset 0 0 0 1px #E3E8F0">
+<span style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 700">{{r.name}}</span><span style="font-size: 13px; line-height: 1.5; @MUTED@">{{r.note}}</span></span>
+<span style="@BADGE@; background: {{r.tBg}}; color: {{r.tFg}}; box-shadow: inset 0 0 0 1px {{r.tRing}}">{{r.kind}}</span>
+</div>
+</sc-for>
+<span style="font-size: 12px; color: #5F6E84">The Trope Audit in the Story Blueprint reads this list; worn-out tropes need a twist you approve.</span>
+</div>
+</sc-if>
+
+<sc-if value="{{isBeats}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 13px; @MUTED@">Beats are positions in the book. Code places them on your {{chapterCount}} chapters and a 90,000-word target, and flags an act that runs long on the Story board.</span>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{beats}}" as="b" hint-placeholder-count="8">
+<li style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 6px 12px; border-radius: 12px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0">
+<span style="flex: none; width: 46px; font-size: 13px; font-weight: 700; color: #2E75B6">{{b.pct}}</span>
+<span style="flex: 1; min-width: 0; font-size: 14px; font-weight: 600">{{b.name}}</span>
+<span style="flex: none; font-size: 13px; font-weight: 600; color: #4B5B73">{{b.chapter}}</span>
+</li>
+</sc-for>
+</ol>
+</div>
+</sc-if>
+
+<sc-if value="{{isCliches}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; @MUTED@">Added to the automatic checks every draft passes before you see it. A hit is flagged with the sentence; it never blocks your own writing.</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{cliches}}" as="c" hint-placeholder-count="5"><span style="@CHIP@; @SERIF@; font-weight: 500; font-size: 14px">“{{c}}”</span></sc-for>
+</div>
+</div>
+</sc-if>
+</section>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+<section aria-labelledby="used-h" style="flex: 1.4 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 12px; padding: 20px 22px; @CARD@">
+<h2 id="used-h" style="@H2@">Where your pack is used</h2>
+<span style="font-size: 13px; @MUTED@">The pack feeds steps you already have. Nothing runs twice, and every use shows up in Show prompt.</span>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 10px">
+<sc-for list="{{uses}}" as="u" hint-placeholder-count="6">
+<a href="{{u.href}}" class="eos-row" style="display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 12px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0; color: #1B2A41; text-decoration: none">
+<span style="font-size: 12px; font-weight: 700; color: #2E75B6">{{u.where}}</span>
+<span style="font-size: 14px; font-weight: 700">{{u.name}}</span>
+<span style="font-size: 13px; line-height: 1.5; @MUTED@">{{u.what}}</span>
+</a>
+</sc-for>
+</div>
+</section>
+<aside style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<section style="@NOTE@">
+<span style="@NOTEICON@">@ICON:shield@</span>
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 700">Your packs stay yours</span>
+<span style="font-size: 13px; line-height: 1.55; @MUTED@">Starter packs are written for this app in plain language. When the Genre Analyst builds from comparable books, it works from your notes and keeps observations only, never text from the books. You approve every pack and every change.</span></span>
+</section>
+<section style="@NOTE@">
+<span style="@NOTEICON@">@ICON:info@</span>
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 700">Blending two packs</span>
+<span style="font-size: 13px; line-height: 1.55; @MUTED@">Promises and clichés from both packs apply. Where beats or norms disagree, your main pack wins, and the clash is listed here.</span></span>
+</section>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}">
+<section aria-label="Pack file" style="display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; @NAVY@">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #B6C3D6">{{yamlName}}</span>
+<pre style="margin: 0; white-space: pre-wrap; @MONO@; font-size: 12px; line-height: 1.6; color: #DCE6F2">{{yaml}}</pre>
+</section>
+</sc-if>
+</aside>
+</div>

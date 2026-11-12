@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Writing EOS · Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F4E79}a:hover{color:#12244A}
+:focus-visible{outline:2px solid #2E75B6;outline-offset:2px}
+.eos-btn{transition:background-color .15s ease, box-shadow .15s ease, transform .15s ease}
+.eos-btn:hover{box-shadow:0 10px 20px -12px rgb(31 56 100 / .5);transform:translateY(-1px)}
+.eos-row{transition:background-color .15s ease}
+.eos-row:hover{background:#F2F7FD}
+.eos-navitem:hover{background:#F2F7FD}
+.eos-navitem[aria-current="page"]:hover{background:#1F4E79}
+@media (max-width: 900px){
+.eos-side{flex:1 1 100% !important;max-width:none !important;min-height:0 !important;border-right:0 !important;border-bottom:1px solid #E3E8F0 !important;padding:12px !important;gap:10px !important}
+.eos-nav{flex-direction:row !important;overflow-x:auto;gap:4px !important}
+.eos-navgroup{flex-direction:row !important}
+.eos-navlabel,.eos-sidefoot,.eos-search{display:none !important}
+.eos-top{padding:12px 16px !important}
+.eos-page{padding:24px 16px 40px !important}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; align-items: stretch; background: #F5F7FB; color: #1B2A41; font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">
+<dc-import name="Sidebar" active="home" hint-size="264px,100%"></dc-import>
+
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+
+<header class="eos-top" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 14px 32px; background: rgb(255 255 255 / 0.85); border-bottom: 1px solid #E3E8F0">
+<nav aria-label="Breadcrumb" style="font-size: 14px; font-weight: 600; color: #1B2A41">Home</nav>
+<div class="eos-search" style="flex: 1 1 260px; max-width: 420px; position: relative; margin-left: auto">
+<label for="home-search" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search the Bible, chapters and chats</label>
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="position: absolute; left: 12px; top: 14px; fill: none; stroke: #5F6E84; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M11 3a8 8 0 1 0 0 16a8 8 0 1 0 0-16 M21 21l-4.3-4.3"></path></svg>
+<input id="home-search" type="search" placeholder="Search the Bible, chapters and chats" style="width: 100%; box-sizing: border-box; min-height: 44px; padding: 0 12px 0 36px; border-radius: 10px; border: 1px solid #D5DCE6; background: #FFFFFF; font: 14px 'Plus Jakarta Sans', sans-serif; color: #1B2A41">
+</div>
+<div role="radiogroup" aria-label="View" style="display: inline-flex; gap: 4px; padding: 4px; border-radius: 12px; background: #E8EEF6">
+<sc-for list="{{viewOpts}}" as="v" hint-placeholder-count="2">
+<button type="button" role="radio" aria-checked="{{v.on}}" onClick="{{v.pick}}" style="min-height: 36px; padding: 0 14px; border: 0; border-radius: 9px; background: {{v.bg}}; color: {{v.fg}}; box-shadow: {{v.shadow}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{v.name}}</button>
+</sc-for>
+</div>
+</header>
+
+<main class="eos-page" style="width: 100%; max-width: 1240px; margin: 0 auto; box-sizing: border-box; padding: 32px 32px 56px; display: flex; flex-direction: column; gap: 24px">
+
+<section aria-labelledby="home-title" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px">
+<div style="flex: 1 1 520px; display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2E75B6"><span style="width: 24px; height: 1px; background: #9DC3E6"></span>[Pen name] · [Genre]</p>
+<h1 id="home-title" style="margin: 0; font-family: 'Lora', Georgia, serif; font-size: 38px; font-weight: 500; line-height: 1.15">[Project title]</h1>
+<p style="margin: 0; max-width: 680px; font-size: 15px; line-height: 1.6; color: #4B5B73">[Logline: one sentence on who wants what, and what stands in their way.]</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<a href="Generate.dc.html" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; gap: 8px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font-size: 14px; font-weight: 600; text-decoration: none">Generate chapters</a>
+<a href="Chapter.dc.html" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; gap: 8px; border-radius: 10px; border: 1px solid #1F4E79; background: #2E75B6; color: #FFFFFF; font-size: 14px; font-weight: 600; text-decoration: none">Continue Chapter 1
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M5 12h14 M12 5l7 7-7 7"></path></svg></a>
+</div>
+</section>
+
+<p style="margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; font-size: 14px; color: #4B5B73"><span><strong style="color: #1B2A41">This week:</strong> 0 chapters locked · 3 pitches answered</span><span>To finish by a date you choose, set one and the pace appears here.</span><a href="Main.dc.html" style="font-weight: 600">Set a date</a></p>
+<section aria-label="Book progress" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 12px">
+<sc-for list="{{stages}}" as="s" hint-placeholder-count="4">
+<a href="{{s.href}}" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 18px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E3E8F0; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06); color: #1B2A41; text-decoration: none">
+<span style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<span style="display: flex; align-items: center; gap: 10px">
+<span style="display: grid; place-items: center; width: 28px; height: 28px; border-radius: 999px; background: {{s.numBg}}; color: {{s.numFg}}; font-size: 13px; font-weight: 800">{{s.n}}</span>
+<span style="font-size: 15px; font-weight: 700">{{s.name}}</span>
+</span>
+<span style="font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: {{s.badgeBg}}; color: {{s.badgeFg}}; box-shadow: inset 0 0 0 1px {{s.badgeRing}}">{{s.status}}</span>
+</span>
+<span role="progressbar" aria-label="{{s.name}} progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{s.pct}}" style="display: block; height: 6px; border-radius: 999px; background: #E8EEF6; overflow: hidden"><span style="display: block; width: {{s.width}}; height: 100%; border-radius: 999px; background: {{s.bar}}"></span></span>
+<span style="font-size: 13px; color: #4B5B73">{{s.note}}</span>
+</a>
+</sc-for>
+</section>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 24px; align-items: start">
+
+<div style="display: flex; flex-direction: column; gap: 24px; min-width: 0">
+
+<section aria-labelledby="dfy" style="display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; background: #FFFFFF; border: 1px solid #C9DDF1; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding: 14px 20px; background: #F2F7FD; border-bottom: 1px solid #C9DDF1">
+<h2 id="dfy" style="margin: 0; display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 800; color: #12244A"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: #2E75B6; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z M9 12l2 2 4-4"></path></svg>Decided for you</h2>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px"><span style="font-size: 13px; font-weight: 600; color: #1F4E79">{{digestCount}} since you last looked</span><a href="Autonomy.dc.html" style="font-size: 13px; font-weight: 600">Autonomy settings</a></span>
+</div>
+<ul style="margin: 0; padding: 6px; list-style: none; display: flex; flex-direction: column">
+<sc-for list="{{digest}}" as="g" hint-placeholder-count="4">
+<li style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding: 12px 14px; border-radius: 12px; background: {{g.rowBg}}; opacity: {{g.opacity}}">
+<span style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px"><span style="font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; background: {{g.tagBg}}; color: {{g.tagFg}}; box-shadow: inset 0 0 0 1px {{g.tagRing}}">{{g.tag}}</span><span style="font-size: 12px; font-weight: 600; color: #5F6E84">{{g.section}}</span></span>
+<span style="font-size: 15px; font-weight: 700; text-decoration: {{g.strike}}">{{g.title}}</span>
+<span style="font-size: 13px; line-height: 1.5; color: #4B5B73">{{g.why}}</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #1F3864">{{g.engine}}</span></sc-if>
+<sc-if value="{{g.undone}}" hint-placeholder-val="{{ false }}"><span role="status" style="font-size: 13px; font-weight: 600; color: #6B4E00">Undone · back in Your calls as a pitch, and the steps after it will run again.</span></sc-if>
+</span>
+<span style="display: flex; gap: 8px">
+<sc-if value="{{g.review}}" hint-placeholder-val="{{ false }}"><a href="Chapter.dc.html" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #B98A00; background: #FFC000; color: #12244A; font: 700 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer; min-height: 40px; font-size: 13px">Review</a></sc-if>
+<button type="button" onClick="{{g.toggle}}" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer; min-height: 40px; font-size: 13px">{{g.undoLabel}}</button>
+</span>
+</li>
+</sc-for>
+</ul>
+</section>
+
+<section aria-labelledby="move" style="display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; background: #FFFFFF; border: 1px solid #F3D98A; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding: 14px 20px; background: #FFF5D6; border-bottom: 1px solid #F3D98A">
+<h2 id="move" style="margin: 0; display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 800; color: #12244A">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="fill: none; stroke: #B98A00; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M22 12h-6l-2 3h-4l-2-3H2 M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path></svg>
+Your calls</h2>
+<span style="font-size: 13px; font-weight: 600; color: #6B4E00">5 waiting · agents pitch, you decide</span>
+</div>
+<ul style="margin: 0; padding: 6px; list-style: none; display: flex; flex-direction: column">
+<sc-for list="{{queue}}" as="q" hint-placeholder-count="5">
+<li class="eos-row" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; padding: 12px 14px; border-radius: 12px">
+<span style="flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: {{q.iconBg}}; color: {{q.iconFg}}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="{{q.icon}}"></path></svg></span>
+<span style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 3px">
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span style="font-size: 15px; font-weight: 700">{{q.title}}</span><span style="font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: {{q.tagBg}}; color: {{q.tagFg}}">{{q.tag}}</span></span>
+<span style="font-size: 13px; line-height: 1.5; color: #4B5B73">{{q.text}}</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #1F3864">{{q.engine}}</span>
+</sc-if>
+</span>
+<a href="{{q.href}}" class="eos-btn" style="flex: none; min-height: 44px; padding: 0 16px; display: inline-flex; align-items: center; border-radius: 10px; border: 1px solid {{q.btnBorder}}; background: {{q.btnBg}}; color: #12244A; font-size: 14px; font-weight: 700; text-decoration: none">{{q.action}}</a>
+</li>
+</sc-for>
+</ul>
+</section>
+
+<section aria-labelledby="chs" style="display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E3E8F0; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; padding-bottom: 8px">
+<h2 id="chs" style="margin: 0; font-size: 17px; font-weight: 800">Chapters</h2>
+<a href="Chapter.dc.html" style="font-size: 14px; font-weight: 600">Open Chapters</a>
+</div>
+<sc-for list="{{chapters}}" as="c" hint-placeholder-count="3">
+<a href="{{c.href}}" class="eos-row" style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(120px, 0.7fr) 104px; align-items: center; gap: 12px; min-height: 56px; padding: 8px 10px; border-radius: 12px; color: #1B2A41; text-decoration: none">
+<span style="font-size: 13px; font-weight: 700; color: #5F6E84">{{c.num}}</span>
+<span style="min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Lora', Georgia, serif; font-size: 17px; font-weight: 500">{{c.title}}</span><span style="font-size: 12px; color: #5F6E84">{{c.meta}}</span></span>
+<span style="display: flex; flex-direction: column; gap: 4px"><span role="progressbar" aria-label="{{c.title}} pipeline" aria-valuemin="0" aria-valuemax="17" aria-valuenow="{{c.done}}" style="display: block; height: 6px; border-radius: 999px; background: #E8EEF6; overflow: hidden"><span style="display: block; width: {{c.width}}; height: 100%; background: #2E75B6"></span></span><span style="font-size: 12px; color: #5F6E84">{{c.steps}}</span></span>
+<span style="font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: {{c.badgeBg}}; color: {{c.badgeFg}}; box-shadow: inset 0 0 0 1px {{c.badgeRing}}; white-space: nowrap; justify-self: end">{{c.status}}</span>
+</a>
+</sc-for>
+<span style="padding: 8px 10px 0; font-size: 13px; color: #5F6E84">21 more chapters in the outline · briefs are written one chapter ahead of drafting</span>
+</section>
+
+</div>
+
+<aside style="display: flex; flex-direction: column; gap: 16px; min-width: 0">
+
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}">
+<section aria-labelledby="eng" style="display: flex; flex-direction: column; gap: 14px; padding: 18px 20px; border-radius: 16px; background: #1F3864; color: #FFFFFF">
+<h2 id="eng" style="margin: 0; display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: #9DC3E6; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round"><path d="M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z M9 9h6v6H9z M15 2v2 M15 20v2 M2 15h2 M2 9h2 M20 15h2 M20 9h2 M9 2v2 M9 20v2"></path></svg>Engine status</h2>
+<dl style="margin: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px 12px; font-size: 13px">
+<sc-for list="{{engineRows}}" as="e" hint-placeholder-count="5">
+<dt style="color: #B6C3D6">{{e.k}}</dt><dd style="margin: 0; text-align: right; font-family: 'JetBrains Mono', monospace; color: {{e.fg}}">{{e.v}}</dd>
+</sc-for>
+</dl>
+<a href="Lab.dc.html" style="color: #9DC3E6; font-size: 13px; font-weight: 600">Open Model Lab</a>
+</section>
+</sc-if>
+
+<section aria-labelledby="voice" style="display: flex; flex-direction: column; gap: 12px; padding: 18px 20px; border-radius: 16px; background: #FFFFFF; border: 1px solid #F3D98A">
+<div style="display: flex; align-items: center; gap: 10px">
+<span style="flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: #FFF5D6; color: #B98A00"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M12.67 19a2 2 0 0 0 1.416-.588l6.154-6.172a6 6 0 0 0-8.49-8.49L5.586 9.914A2 2 0 0 0 5 11.328V18a1 1 0 0 0 1 1z M16 8 2 22 M17.5 15H9"></path></svg></span>
+<span style="display: flex; flex-direction: column"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #6B4E00">Applied to every AI request</span><h2 id="voice" style="margin: 0; font-size: 16px; font-weight: 800">Voice contract · [Pen name]</h2></span>
+</div>
+<p style="margin: 0; font-family: 'Lora', Georgia, serif; font-size: 16px; line-height: 1.6"><em>[Literary style].</em> [One sentence on how the pen name writes: its register, its rhythm, and what it never does.]</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px">
+<li style="font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: #F5F7FB; box-shadow: inset 0 0 0 1px #D5DCE6">Point of view</li>
+<li style="font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: #F5F7FB; box-shadow: inset 0 0 0 1px #D5DCE6">Tense</li>
+<li style="font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: #F5F7FB; box-shadow: inset 0 0 0 1px #D5DCE6">Sentence rhythm</li>
+<li style="font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: #F5F7FB; box-shadow: inset 0 0 0 1px #D5DCE6">What it never does</li>
+</ul>
+<a href="Bible.dc.html" style="font-size: 14px; font-weight: 600">Open the voice contract</a>
+</section>
+
+<section aria-labelledby="recent" style="display: flex; flex-direction: column; gap: 12px; padding: 18px 20px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E3E8F0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px"><h2 id="recent" style="margin: 0; font-size: 16px; font-weight: 800">Recent</h2><a href="History.dc.html" style="font-size: 13px; font-weight: 600">All history</a></div>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column">
+<sc-for list="{{recent}}" as="r" hint-placeholder-count="5">
+<li style="display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 12px">
+<span style="display: flex; flex-direction: column; align-items: center"><span style="width: 10px; height: 10px; margin-top: 5px; border-radius: 999px; background: {{r.dot}}"></span><span style="flex: 1; width: 2px; background: #E3E8F0"></span></span>
+<span style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 14px"><span style="font-size: 14px; font-weight: 600">{{r.t}}</span><span style="font-size: 12px; color: #5F6E84">{{r.d}}</span></span>
+</li>
+</sc-for>
+</ol>
+</section>
+
+</aside>
+</div>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"view":{"editor":"enum","options":["writer","engine"],"default":"writer"},"$preview":{"width":1440,"height":2080}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { view: null, undone: {} };
+}
+renderVals() {
+var self = this;
+var view = this.state.view || this.props.view || 'writer';
+var engine = view === 'engine';
+var viewOpts = [{ id: 'writer', name: 'Writer view' }, { id: 'engine', name: 'Engine view' }].map(function (v) {
+var on = v.id === view;
+return { name: v.name, on: on, bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#1F3864' : '#4B5B73', shadow: on ? '0 1px 3px rgb(16 24 40 / 0.12)' : 'none', pick: function () { self.setState({ view: v.id }); } };
+});
+var DONE = { badgeBg: '#E7F3DF', badgeFg: '#3B7020', badgeRing: '#B9DCA4' };
+var YOU = { badgeBg: '#FFF5D6', badgeFg: '#6B4E00', badgeRing: '#FFD966' };
+var RUN = { badgeBg: '#DEEBF7', badgeFg: '#1F4E79', badgeRing: '#9DC3E6' };
+var WAIT = { badgeBg: '#EEF1F5', badgeFg: '#475569', badgeRing: '#D5DCE6' };
+var stages = [
+Object.assign({ n: '1', name: 'Story Blueprint', href: 'Develop.dc.html', status: 'Done', pct: 100, width: '100%', bar: '#70AD47', note: 'Pitch to locked outline · 9 of 9 steps', numBg: '#E7F3DF', numFg: '#3B7020' }, DONE),
+Object.assign({ n: '2', name: 'Story Bible', href: 'Bible.dc.html', status: 'Locked', pct: 100, width: '100%', bar: '#70AD47', note: '7 characters · 4 secrets · 4 world rules', numBg: '#E7F3DF', numFg: '#3B7020' }, DONE),
+Object.assign({ n: '3', name: 'Chapters', href: 'Chapter.dc.html', status: 'In progress', pct: 2, width: '4%', bar: '#2E75B6', note: '0 of 24 locked · Chapter 1 drafts waiting for scores', numBg: '#DEEBF7', numFg: '#1F4E79' }, RUN),
+Object.assign({ n: '4', name: 'Book', href: 'Ecosystem.dc.html', status: 'Later', pct: 0, width: '0%', bar: '#94A3B8', note: 'Assembly and export after the chapters lock', numBg: '#EEF1F5', numFg: '#475569' }, WAIT)
+];
+var IC = {
+review: 'M12 2a10 10 0 1 0 0 20a10 10 0 1 0 0-20 M9 12l2 2 4-4',
+flag: 'M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528',
+at: 'M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8 M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8',
+chat: 'M7.9 20A9 9 0 1 0 4 16.1L2 22Z',
+plug: 'M12 22v-5 M9 8V2 M15 8V2 M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z'
+};
+var Q = function (title, tag, text, action, href, icon, engineText, first) {
+return {
+title: title, tag: tag, text: text, action: action, href: href, icon: IC[icon], engine: engineText,
+iconBg: icon === 'plug' ? '#FDECEB' : '#FFF5D6', iconFg: icon === 'plug' ? '#A8321F' : '#8A6500',
+tagBg: icon === 'plug' ? '#FDECEB' : '#F5F7FB', tagFg: icon === 'plug' ? '#A8321F' : '#475569',
+btnBg: first ? '#FFC000' : '#FFFFFF', btnBorder: first ? '#B98A00' : '#E2C366'
+};
+};
+var queue = [
+Q('Score 15 Chapter 1 drafts', 'Review', 'Five models wrote the chapter three times each. Names are hidden until you have scored them all.', 'Start scoring', 'Draft.dc.html', 'review', 'Run 01 · first_draft · blind IDs FD-*', true),
+Q('The brief check pitches: a false alarm', 'Check', 'It recommends treating the flagged sentence as fine, and shows why. Proceed, or say it is a real problem.', 'Review pitch', 'Chapter.dc.html', 'flag', 'chronology_check · verdict · false-alarm sheet'),
+Q('Pitch: add a new name as another name for [Mentor]', 'Mentions', 'The other options it weighed: a new entry, keep it for later, or ignore it. Proceed, choose another, or give your own.', 'Review pitch', 'Editor.dc.html', 'at', 'mention index → Name Sorter · extraction'),
+Q('Pitch: file 2 ideas from a Workshop chat', 'Workshop', 'A scene beat for the Chapter 1 brief and a story seed for the Reserve. Nothing changes until you answer.', 'Review pitch', 'Editor.dc.html', 'chat', 'Chat to Notes · extraction · proposals only'),
+Q('Connect the mature tier', 'Blocked', 'Scene 2 of Chapter 1 cannot be written until both mature model endpoints are set.', 'Set up', 'Lab.dc.html', 'plug', 'HF_ENDPOINT_CUSTOM · HF_ENDPOINT_BASELINE missing')
+];
+var CH = function (num, title, meta, done, status, tone, href) {
+return Object.assign({ num: num, title: title, meta: meta, done: done, width: Math.round(done / 17 * 100) + '%', steps: done ? done + ' of 17 steps' : 'Not started', status: status, href: href }, tone);
+};
+var chapters = [
+CH('01', '[Chapter 1 title]', 'Ordinary World · Beat 1 · POV [Protagonist] · about 3,500 words', 7, 'Needs you', YOU, 'Chapter.dc.html'),
+CH('02', '[Chapter 2 title]', '[STAGE · BEAT] · from the outline', 0, 'Outline only', WAIT, 'Chapter.dc.html'),
+CH('03', '[Chapter 3 title]', '[STAGE · BEAT] · from the outline', 0, 'Outline only', WAIT, 'Chapter.dc.html')
+];
+var recent = [
+{ t: 'Chapter 1 drafts finished', d: '15 drafts · names hidden for scoring', dot: '#2E75B6' },
+{ t: 'Brief check scored', d: '1 possible false alarm for you to confirm', dot: '#FFC000' },
+{ t: 'Scene plans written for Chapter 1', d: '4 scenes · every must-have carried', dot: '#70AD47' },
+{ t: 'Outline approved', d: '24 chapters', dot: '#70AD47' },
+{ t: 'Story Bible locked', d: 'Conflict core, outcome and structure approved by you', dot: '#70AD47' }
+];
+var engineRows = [
+{ k: 'Agents with a chosen model', v: '0 of 17', fg: '#FFD966' },
+{ k: 'Being tested in Run 01', v: '6 agents', fg: '#FFFFFF' },
+{ k: 'Waiting for Run 02', v: '10 agents', fg: '#FFFFFF' },
+{ k: 'Run 01 steps run', v: '5 of 6', fg: '#FFFFFF' },
+{ k: 'Model IDs verified', v: '1 of 7', fg: '#FFD966' },
+{ k: 'Mature endpoints', v: 'not set', fg: '#F4B183' },
+{ k: 'Words kept', v: 'after the first lock', fg: '#FFFFFF' },
+{ k: 'Spend this month', v: '[$ SPEND]', fg: '#FFFFFF' }
+];
+var DG = function (id, tag, section, title, why, eng, review) {
+var undone = !!self.state.undone[id];
+var t = review ? { bg: '#FFF5D6', fg: '#6B4E00', ring: '#FFD966' } : { bg: '#DEEBF7', fg: '#1F4E79', ring: '#9DC3E6' };
+return { id: id, tag: tag, section: section, title: title, why: why, engine: eng, review: review && !undone, undone: undone,
+rowBg: review && !undone ? '#FFFBEB' : 'transparent', opacity: undone ? '0.75' : '1', strike: undone ? 'line-through' : 'none',
+tagBg: t.bg, tagFg: t.fg, tagRing: t.ring, undoLabel: undone ? 'Redo' : 'Undo',
+toggle: function () { var u = Object.assign({}, self.state.undone); u[id] = !undone; self.setState({ undone: u }); } };
+};
+var digest = [
+DG('d1', 'Needs review', 'Chapters · Plan · Autonomous', 'Chapter 2 brief: chose the shorter of two scene orders', 'The agent was not sure (0.71) and the checker disagreed, so it went ahead as provisional. Nothing in Chapter 2 is drafted until you look.', 'decision rec · Chapter Brief · synthesis · checker: verdict pool, other family · disagreed', true),
+DG('d2', 'Decided', 'Writing tools · Mentions · Delegated', 'A capitalised word on the timetable is a common word, not a character', 'Sure (0.96), and a checker from another model family agreed. Nothing was added to the Story Bible.', 'decision rec · Name Sorter · extraction · checker agreed'),
+DG('d3', 'Decided', 'Chapters · Plan · Autonomous', 'Repaired scene plan 3, which had dropped a must-not', '“[Antagonist]” was missing from its must-nots; the plan was sent back, fixed and checked again.', 'decision rec · contract X1 repair · Scene Plan and Setting Notes · checker agreed'),
+DG('d4', 'Decided', 'Writing tools · Creative Reserve · Autonomous', 'Filed the scene order you didn’t use to the Creative Reserve', 'Reserve only: nothing in canon changed.', 'decision rec · Reserve filing · code + synthesis · checker agreed')
+];
+var undoneCount = Object.keys(self.state.undone).filter(function (k) { return self.state.undone[k]; }).length;
+return { digest: digest, digestCount: (digest.length - undoneCount) + ' decisions', viewOpts: viewOpts, isEngine: engine, stages: stages, queue: queue, chapters: chapters, recent: recent, engineRows: engineRows };
+}
+}
+</script>
+</body>
+</html>

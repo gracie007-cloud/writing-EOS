@@ -16,7 +16,7 @@ https://github.com/gracie007-cloud/writing-EOS. 260 tests pass (228 before).
 
 | Finding | Status |
 |---|---|
-| **A1** version history | **Done.** The project is a git repository, published to GitHub. The bake-off harness has its own local-only history (see the note below). |
+| **A1** version history | **Done.** The project is a git repository on GitHub, private since 2026-11-13, and now includes the bake-off harness, the worked examples and the canvas source. |
 | **A2** lost build scripts | **Done, differently.** The old generator could not be recovered whole: the transcript held only its 21 October version. It is replaced by `python -m eos_app.sync`, which builds `components.yaml` from a Notion export joined with the new tracked file `config/component_inputs.yaml`. A test proves it rebuilds today's file byte for byte. |
 | **A3** package | **Replaced.** The GitHub repository is now the downloadable copy. The old folder and zip are left untouched on disk and are not published. |
 | **B1** models with no ID | **Code done.** The router never chooses one. **Yours:** the 18 IDs. |
@@ -43,14 +43,15 @@ readiness report counts what could actually be *called*, which is stricter and m
 differ slightly from its output.
 
 **Three things found while doing the work.**
-1. **The repository is public**, so your own material was kept out: the library, the bake-off harness and its test
-   pack, the story-pitch experiment, the import report that names characters, and one screenshot showing the book.
-   Two lines in the documents that named a ship and two pen names were made generic, as decision D10 already
-   requires. `tools/check_public.py` now refuses any push that carries a name from your library or from your own
-   list in `.private-words.txt`.
+1. **The repository was public at first**, so your own material was kept out of the first three commits. You made
+   it private on 2026-11-13, and the harness with its test pack, the story-pitch experiment, the import report,
+   the screenshot and the canvas source were added then. Keys, the real answer key and the library pools are
+   still never stored. Two lines in the documents that named a ship and two pen names were made generic, as
+   decision D10 already requires. `tools/check_public.py` runs before every push: it refuses keys, and it keeps
+   `eos-app/` and the requirements free of names from your library or from your list in `.private-words.txt`.
 2. **Notion's query index is stale.** A direct query of *Narrative Components* returned duplicate Flow Order numbers
    and models you replaced on 22 October. I did not use it. The sync tool takes a CSV export, which is always live.
-3. **The canvas source on disk is three weeks old** and carries book names, so it was not published. The live canvas
+3. **The canvas source on disk is three weeks old.** It is stored in `canvas-source/` as a record; the live canvas
    is the source.
 
 ---

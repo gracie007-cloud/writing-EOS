@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Writing EOS · Score drafts</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F4E79}a:hover{color:#12244A}
+:focus-visible{outline:2px solid #2E75B6;outline-offset:2px}
+.eos-btn{transition:background-color .15s ease, box-shadow .15s ease, transform .15s ease}
+.eos-btn:hover{box-shadow:0 10px 20px -12px rgb(31 56 100 / .5);transform:translateY(-1px)}
+.eos-row{transition:background-color .15s ease}
+.eos-row:hover{background:#F2F7FD}
+.eos-navitem:hover{background:#F2F7FD}
+.eos-navitem[aria-current="page"]:hover{background:#1F4E79}
+@media (max-width: 900px){
+.eos-side{flex:1 1 100% !important;max-width:none !important;min-height:0 !important;border-right:0 !important;border-bottom:1px solid #E3E8F0 !important;padding:12px !important;gap:10px !important}
+.eos-nav{flex-direction:row !important;overflow-x:auto;gap:4px !important}
+.eos-navgroup{flex-direction:row !important}
+.eos-navlabel,.eos-sidefoot,.eos-search{display:none !important}
+.eos-top{padding:12px 16px !important}
+.eos-page{padding:24px 16px 40px !important}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; align-items: stretch; background: #F5F7FB; color: #1B2A41; font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">
+<dc-import name="Sidebar" active="review" hint-size="264px,100%"></dc-import>
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+<header class="eos-top" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 14px 32px; background: rgb(255 255 255 / 0.85); border-bottom: 1px solid #E3E8F0">
+<nav aria-label="Breadcrumb" style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600"><a href="Draft.dc.html" style="color: #4B5B73; text-decoration: none">Score drafts</a><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: #94A3B8; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M9 18l6-6-6-6"></path></svg><span aria-current="page" style="color: #1B2A41">Chapter 1</span></nav>
+<div class="eos-search" style="flex: 1 1 260px; max-width: 420px; position: relative; margin-left: auto">
+<label for="top-search" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search the Bible, chapters and chats</label>
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="position: absolute; left: 12px; top: 14px; fill: none; stroke: #5F6E84; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M11 3a8 8 0 1 0 0 16a8 8 0 1 0 0-16 M21 21l-4.3-4.3"></path></svg>
+<input id="top-search" type="search" placeholder="Search the Bible, chapters and chats" style="width: 100%; box-sizing: border-box; min-height: 44px; padding: 0 12px 0 36px; border-radius: 10px; border: 1px solid #D5DCE6; background: #FFFFFF; font: 14px 'Plus Jakarta Sans', sans-serif; color: #1B2A41">
+</div>
+<div role="radiogroup" aria-label="View" style="display: inline-flex; gap: 4px; padding: 4px; border-radius: 12px; background: #E8EEF6">
+<sc-for list="{{viewOpts}}" as="v" hint-placeholder-count="2">
+<button type="button" role="radio" aria-checked="{{v.on}}" onClick="{{v.pick}}" style="min-height: 36px; padding: 0 14px; border: 0; border-radius: 9px; background: {{v.bg}}; color: {{v.fg}}; box-shadow: {{v.shadow}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{v.name}}</button>
+</sc-for>
+</div>
+</header>
+<main class="eos-page" style="width: 100%; max-width: 1240px; margin: 0 auto; box-sizing: border-box; padding: 28px 32px 56px; display: flex; flex-direction: column; gap: 22px">
+<section aria-labelledby="page-title" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px">
+<div style="flex: 1 1 520px; display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2E75B6"><span style="width: 24px; height: 1px; background: #9DC3E6"></span>Score drafts · Opening chapter test · 17 Oct 2026</p>
+<h1 id="page-title" style="margin: 0; font-size: 32px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.15">Draft 1 of 15</h1>
+<p style="margin: 0; max-width: 720px; font-size: 15px; line-height: 1.6; color: #4B5B73">Score how it reads, not who wrote it: the model behind each draft stays hidden until you have scored all fifteen.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px"><button type="button" aria-label="Previous draft" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer; padding: 0 12px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M15 18l-6-6 6-6"></path></svg></button><button type="button" aria-label="Next draft" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer; padding: 0 12px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M9 18l6-6-6-6"></path></svg></button></div>
+</section>
+<section aria-label="Scoring progress" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; padding: 14px 18px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
+<span style="font-size: 14px; font-weight: 700">0 of 15 drafts scored</span>
+<div role="progressbar" aria-label="Drafts scored" aria-valuemin="0" aria-valuemax="15" aria-valuenow="0" style="flex: 1 1 200px; height: 8px; border-radius: 999px; background: #E8EEF6; overflow: hidden"><div style="width: 2%; height: 100%; background: #2E75B6"></div></div>
+<span style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: #5F6E84"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M5 11h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2z M7 11V7a5 5 0 0 1 10 0v4"></path></svg>Model names sealed until all 15 are scored</span>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+
+<article aria-labelledby="draft-title" style="flex: 1.6 1 500px; min-width: 0; display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06); overflow: hidden">
+<div style="padding: 44px clamp(22px, 6%, 64px) 36px; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6E84">Chapter 01 · Scene 1</p>
+<h2 id="draft-title" style="margin: 0 0 18px; font-family: 'Lora', Georgia, serif; font-size: 34px; font-weight: 500">[Chapter 1 title]</h2>
+<div style="max-width: 660px; display: flex; flex-direction: column; gap: 18px; font-family: 'Lora', Georgia, serif; font-size: 19px; line-height: 1.75">
+<p style="margin: 0">The first ferry left at six. By twenty to, the queue already reached the ticket hut, and the gulls had found the bread van.</p>
+<p style="margin: 0">[Protagonist] showed a pass at the barrier and checked the timetable against the one in their pocket. The times matched.</p>
+<p style="margin: 0">The wind off the water held steady from the east. Along the pier the lamps were still lit, though the sky had gone grey.</p>
+<p style="margin: 0">[Protagonist] <mark title="Auto-fail: named emotion" style="background: #FDE9DC; color: inherit; padding: 1px 3px; border-radius: 3px; box-shadow: inset 0 -2px 0 #ED7D31">felt</mark> <mark title="Stock phrase" style="background: #FFF5D6; color: inherit; padding: 1px 3px; border-radius: 3px; box-shadow: inset 0 -2px 0 #FFC000">the weight of</mark> the morning settle, step by step.</p>
+<p style="margin: 0">At the end of the pier, [Mentor] was already waiting with two coffees and the morning paper.</p>
+</div>
+<div style="margin-top: 22px; display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 12px; background: #F6F2FB; box-shadow: inset 0 0 0 1px #E1D6F0; font-size: 13px; color: #5B3A8C"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M5 11h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2z M7 11V7a5 5 0 0 1 10 0v4"></path></svg>Scene 2 is written by the mature tier and scored on its own.</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding: 12px 18px; border-top: 1px solid #E3E8F0; background: #FBFCFE; font-size: 13px; color: #4B5B73">
+<span style="display: flex; flex-wrap: wrap; gap: 14px"><span style="display: flex; align-items: center; gap: 6px"><span style="width: 14px; height: 10px; border-radius: 2px; background: #FDE9DC; box-shadow: inset 0 -2px 0 #ED7D31"></span>Auto-fail</span><span style="display: flex; align-items: center; gap: 6px"><span style="width: 14px; height: 10px; border-radius: 2px; background: #FFF5D6; box-shadow: inset 0 -2px 0 #FFC000"></span>Stock phrase</span></span>
+<span>Draft complete · not cut off</span>
+</div>
+</article>
+
+<aside style="flex: 1 1 360px; min-width: 0; position: sticky; top: 20px; display: flex; flex-direction: column; gap: 14px">
+<section aria-labelledby="auto" style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
+<h2 id="auto" style="margin: 0; font-size: 15px; font-weight: 800">Automatic checks</h2>
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-radius: 12px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0">
+<span style="font-size: 13px; font-weight: 700">Measured by code, against your voice profile</span>
+<sc-for list="{{craft}}" as="m" hint-placeholder-count="5"><span style="display: flex; justify-content: space-between; gap: 10px; font-size: 13px"><span>{{m.k}}</span><span style="font-weight: 700; color: {{m.fg}}">{{m.v}}</span></span></sc-for>
+<span style="font-size: 12px; color: #5F6E84">Shown to help you score; these figures never fail a draft on their own.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 12px 14px; border-radius: 12px; background: {{af.bg}}; box-shadow: inset 0 0 0 1px {{af.ring}}">
+<span style="display: flex; justify-content: space-between; gap: 8px"><span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: {{af.fg}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M21.73 18l-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3 M12 9v4 M12 17h.01"></path></svg>{{af.title}}</span><span style="font-size: 12px; font-weight: 600; color: #5F6E84">Paragraph 4</span></span>
+<span style="font-size: 13px; line-height: 1.5">"felt" names an emotion for [Protagonist] in narration. The voice contract forbids that, so persona fidelity is set to 0.</span>
+<button type="button" onClick="{{toggleOverturn}}" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer; align-self: flex-start; min-height: 40px; font-size: 13px">{{overturnLabel}}</button>
+</div>
+<sc-for list="{{checks}}" as="k" hint-placeholder-count="5">
+<div style="display: flex; align-items: center; gap: 10px; min-height: 36px; font-size: 14px">
+<span style="display: grid; place-items: center; width: 24px; height: 24px; border-radius: 999px; background: {{k.bg}}; color: {{k.fg}}"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round"><path d="{{k.icon}}"></path></svg></span>
+<span style="flex: 1">{{k.t}}</span>
+<span style="font-size: 13px; font-weight: 700; color: {{k.fg}}">{{k.v}}</span>
+</div>
+</sc-for>
+</section>
+
+<section aria-labelledby="score" style="display: flex; flex-direction: column; gap: 14px; padding: 18px 20px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
+<h2 id="score" style="margin: 0; font-size: 15px; font-weight: 800">Your score</h2>
+<div role="radiogroup" aria-label="Prose level, 1 to 7" style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 13px; font-weight: 600; color: #4B5B73">Prose level · 1 to 7</span>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{levels}}" as="l" hint-placeholder-count="7">
+<button type="button" role="radio" aria-checked="{{l.on}}" aria-label="Level {{l.n}}: {{l.name}}" onClick="{{l.pick}}" style="min-height: 44px; border-radius: 10px; border: 1px solid {{l.border}}; background: {{l.bg}}; color: {{l.fg}}; font: 700 15px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{l.n}}</button>
+</sc-for>
+</div>
+<span style="font-size: 13px; color: #4B5B73"><strong style="color: #1B2A41">Level {{level.n}} · {{level.name}}.</strong> {{level.d}}</span>
+</div>
+<div role="radiogroup" aria-label="Persona fidelity, 0 to 3" style="display: flex; flex-direction: column; gap: 8px">
+<span style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #4B5B73"><span>Persona fidelity · 0 to 3</span><span style="font-weight: 600; color: #A5470B">{{fidNote}}</span></span>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{fids}}" as="f" hint-placeholder-count="4">
+<button type="button" role="radio" aria-checked="{{f.on}}" onClick="{{f.pick}}" disabled="{{f.disabled}}" style="min-height: 44px; border-radius: 10px; border: 1px solid {{f.border}}; background: {{f.bg}}; color: {{f.fg}}; font: 700 15px 'Plus Jakarta Sans', sans-serif; cursor: {{f.cursor}}">{{f.n}}</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="notes" style="font-size: 13px; font-weight: 600; color: #4B5B73">Notes</label>
+<textarea id="notes" rows="3" placeholder="What works, and what breaks the voice" style="padding: 10px 12px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; font: 14px/1.5 'Plus Jakarta Sans', sans-serif; color: #1B2A41; resize: vertical"></textarea>
+</div>
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding: 12px 14px; border-radius: 12px; background: #F2F7FD; box-shadow: inset 0 0 0 1px #C9DDF1">
+<span style="font-size: 14px; font-weight: 700">Score for this draft</span>
+<span style="font-size: 26px; font-weight: 800; color: #1F4E79">{{scoreText}}<span style="font-size: 14px; font-weight: 600; color: #5F6E84"> / 10</span></span>
+</div>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 10px 12px; border-radius: 16px; background: #1F3864; color: #FFFFFF; font-size: 12px; font-family: 'JetBrains Mono', monospace"><span>(level ÷ 7 × 5) + (fidelity ÷ 3 × 4) + 1 − 0.5 × stock phrases</span><span>Run 01 · blind ID FD-K7Q · step first_draft · run [n] of 3</span><span>model, tokens and cost unsealed after the last score</span></div>
+</sc-if>
+<button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #1F4E79; background: #2E75B6; color: #FFFFFF; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer">Save and open draft 2 <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M5 12h14 M12 5l7 7-7 7"></path></svg></button>
+</section>
+</aside>
+</div>
+
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"view": {"editor": "enum", "options": ["writer", "engine"], "default": "writer"}, "$preview": {"width": 1440, "height": 1550}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { view: null, level: 5, fid: 0, overturned: false };
+}
+renderVals() {
+var self = this;
+var st = this.state;
+var view = st.view || this.props.view || 'writer';
+var engine = view === 'engine';
+var viewOpts = [{ id: 'writer', name: 'Writer view' }, { id: 'engine', name: 'Engine view' }].map(function (v) {
+var on = v.id === view;
+return { name: v.name, on: on, bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#1F3864' : '#4B5B73', shadow: on ? '0 1px 3px rgb(16 24 40 / 0.12)' : 'none', pick: function () { self.setState({ view: v.id }); } };
+});
+var TONE = {
+done: { bg: '#E7F3DF', fg: '#3B7020', ring: '#B9DCA4', dot: '#70AD47' },
+run: { bg: '#DEEBF7', fg: '#1F4E79', ring: '#9DC3E6', dot: '#2E75B6' },
+you: { bg: '#FFF5D6', fg: '#6B4E00', ring: '#FFD966', dot: '#FFC000' },
+flag: { bg: '#FDE9DC', fg: '#A5470B', ring: '#F4B183', dot: '#ED7D31' },
+mature: { bg: '#EFE8F8', fg: '#5B3A8C', ring: '#CDBDE6', dot: '#7B5BB0' },
+wait: { bg: '#EEF1F5', fg: '#475569', ring: '#D5DCE6', dot: '#94A3B8' },
+blocked: { bg: '#FDECEB', fg: '#A8321F', ring: '#F2B8B0', dot: '#E5604D' },
+navy: { bg: '#1F3864', fg: '#FFFFFF', ring: '#1F3864', dot: '#FFFFFF' }
+};
+var tabsOf = function (defs, cur, key) {
+return defs.map(function (t) { var on = t.id === cur; var o = {}; o[key] = t.id; return Object.assign({}, t, { on: on, bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#1F4E79' : '#FFFFFF', pick: function () { self.setState(o); } }); });
+};
+var slop = 1;
+var fid = st.overturned ? st.fid : 0;
+var LV = [
+{ n: 1, name: 'Basic grammatical competence', d: 'Grammar, spelling and punctuation are sound.' },
+{ n: 2, name: 'Avoiding adverbs', d: 'Strong verbs carry the weight; adverbs are rare.' },
+{ n: 3, name: 'Variation', d: 'Sentence lengths and shapes vary with purpose.' },
+{ n: 4, name: 'Originality in accuracy', d: 'Familiar ideas are put in fresh, exact ways.' },
+{ n: 5, name: 'Truthful to the narrator', d: 'Every line serves the story and the point of view. The target for this chapter.' },
+{ n: 6, name: 'Emotional infusion', d: 'Word choice and image carry feeling without naming it.' },
+{ n: 7, name: 'Sublime prose', d: 'Rare: the prose itself becomes the experience.' }
+];
+var paint = function (on, locked) {
+return on ? { bg: '#2E75B6', fg: '#FFFFFF', border: '#1F4E79', cursor: 'pointer' } : { bg: locked ? '#F5F7FB' : '#FFFFFF', fg: locked ? '#94A3B8' : '#1B2A41', border: locked ? '#E3E8F0' : '#CBD5E1', cursor: locked ? 'not-allowed' : 'pointer' };
+};
+var levels = LV.map(function (l) { return Object.assign({ n: l.n, name: l.name, on: st.level === l.n, pick: function () { self.setState({ level: l.n }); } }, paint(st.level === l.n, false)); });
+var level = LV.filter(function (l) { return l.n === st.level; })[0];
+var fids = [0, 1, 2, 3].map(function (n) {
+var locked = !st.overturned && n !== 0;
+return Object.assign({ n: n, on: fid === n, disabled: locked, pick: function () { self.setState({ fid: n }); } }, paint(fid === n, locked));
+});
+var score = Math.max(0, (st.level / 7) * 5 + (fid / 3) * 4 + 1 - 0.5 * slop);
+var OK = 'M20 6 9 17l-5-5', BAD = 'M12 8v5 M12 17h.01';
+var C = function (t, v, ok) { var tone = ok ? TONE.done : TONE.flag; return { t: t, v: v, icon: ok ? OK : BAD, bg: tone.bg, fg: tone.fg }; };
+var checks = [C('Stock phrases', '1 · "the weight of"', false), C('Repeated openings, 3 or more in a row', 'None', true), C('Forbidden names and terms', 'None', true), C('Characters named before their first appearance', 'None', true), C('Complete, not cut off', 'Yes', true)];
+var af = st.overturned ? { title: 'Auto-fail overturned by you', bg: '#F5F7FB', ring: '#E3E8F0', fg: '#475569' } : { title: 'Auto-fail · 1', bg: '#FDF4EF', ring: '#F4B183', fg: '#A5470B' };
+var CM = function (k, v, ok) { return { k: k, v: v, fg: ok ? '#3B7020' : '#A5470B' }; };
+var craft = [CM('Sentence length', '17 words on average · yours 6–22', true), CM('Filter verbs', '7 per 1,000 words · yours at most 4', false), CM('-ly adverbs', '3 per 1,000 words · yours at most 6', true), CM('Dialogue share', '18% · yours 25–40%', false), CM('Voice drift', '0.31 · rewrite pitched above 0.35', true)];
+return { craft: craft, 
+viewOpts: viewOpts, isEngine: engine, levels: levels, level: level, fids: fids, checks: checks, af: af,
+overturnLabel: st.overturned ? 'Restore the flag' : 'Overturn the flag',
+fidNote: st.overturned ? '' : 'Locked at 0 by the auto-fail',
+toggleOverturn: function () { self.setState({ overturned: !st.overturned, fid: st.overturned ? 0 : st.fid }); },
+scoreText: score.toFixed(2)
+};
+}
+}
+
+</script>
+</body>
+</html>

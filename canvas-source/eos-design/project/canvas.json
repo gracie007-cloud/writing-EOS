@@ -1,0 +1,228 @@
+{
+  "v": 3,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-17T15:00:00Z"
+  },
+  "title": "Writing EOS App",
+  "launch": {
+    "view": "canvas"
+  },
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 2080,
+      "title": "Home",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Develop.dc.html": {
+      "x": 1520,
+      "y": 0,
+      "w": 1440,
+      "h": 1900,
+      "title": "Story Blueprint",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Bible.dc.html": {
+      "x": 3040,
+      "y": 0,
+      "w": 1440,
+      "h": 1900,
+      "title": "Story Bible",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Chapter.dc.html": {
+      "x": 0,
+      "y": 2300,
+      "w": 1440,
+      "h": 2150,
+      "title": "Chapters · Chapter 1",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Generate.dc.html": {
+      "x": 1520,
+      "y": 2300,
+      "w": 1440,
+      "h": 1700,
+      "title": "Generate chapters",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Editor.dc.html": {
+      "x": 3040,
+      "y": 2300,
+      "w": 1440,
+      "h": 2600,
+      "title": "Editor",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Draft.dc.html": {
+      "x": 4560,
+      "y": 2300,
+      "w": 1440,
+      "h": 1550,
+      "title": "Score drafts",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Lab.dc.html": {
+      "x": 0,
+      "y": 4850,
+      "w": 1440,
+      "h": 1500,
+      "title": "Model Lab",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Ecosystem.dc.html": {
+      "x": 1520,
+      "y": 4850,
+      "w": 1440,
+      "h": 3600,
+      "title": "Blueprint",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "System.dc.html": {
+      "x": 3040,
+      "y": 4850,
+      "w": 1440,
+      "h": 2600,
+      "title": "Design system",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Sidebar.dc.html": {
+      "x": 6080,
+      "y": 4850,
+      "w": 264,
+      "h": 1260,
+      "title": "Sidebar (shared component)"
+    },
+    "Autonomy.dc.html": {
+      "x": 4560,
+      "y": 4850,
+      "w": 1440,
+      "h": 2150,
+      "title": "Autonomy",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Genre.dc.html": {
+      "x": 4560,
+      "y": 0,
+      "w": 1440,
+      "h": 1850,
+      "title": "Genre packs",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Recipes.dc.html": {
+      "x": 6080,
+      "y": 2300,
+      "w": 1440,
+      "h": 1750,
+      "title": "Recipes",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "History.dc.html": {
+      "x": 7600,
+      "y": 2300,
+      "w": 1440,
+      "h": 1400,
+      "title": "History",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Board.dc.html": {
+      "x": 6080,
+      "y": 0,
+      "w": 1440,
+      "h": 1400,
+      "title": "Story board",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Export.dc.html": {
+      "x": 9120,
+      "y": 2300,
+      "w": 1440,
+      "h": 1250,
+      "title": "Export",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Finish.dc.html": {
+      "x": 10640,
+      "y": 2300,
+      "w": 1440,
+      "h": 1750,
+      "title": "Finish & publish",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Library.dc.html": {
+      "x": 7600,
+      "y": 0,
+      "w": 1440,
+      "h": 1500,
+      "title": "Library",
+      "expand": "fill",
+      "is_interactive": true
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Develop.dc.html",
+    "Bible.dc.html",
+    "Genre.dc.html",
+    "Board.dc.html",
+    "Library.dc.html",
+    "Chapter.dc.html",
+    "Generate.dc.html",
+    "Editor.dc.html",
+    "Draft.dc.html",
+    "Recipes.dc.html",
+    "History.dc.html",
+    "Export.dc.html",
+    "Finish.dc.html",
+    "Lab.dc.html",
+    "Ecosystem.dc.html",
+    "System.dc.html",
+    "Autonomy.dc.html",
+    "Sidebar.dc.html"
+  ],
+  "notes": {
+    "row1": {
+      "x": 0,
+      "y": -300,
+      "text": "Start a book: Home, Story Blueprint, Story Bible, Genre packs, Story board, Library",
+      "kind": "title1",
+      "maxW": 9040
+    },
+    "row2": {
+      "x": 0,
+      "y": 2000,
+      "text": "Write chapters: pipeline, batches, editor, draft scoring, recipes, history, export, finish and publish",
+      "kind": "title1",
+      "maxW": 12080
+    },
+    "row3": {
+      "x": 0,
+      "y": 4550,
+      "text": "Autonomy, models, wiring and the design system",
+      "kind": "title1",
+      "maxW": 6344
+    }
+  },
+  "designSystems": []
+}

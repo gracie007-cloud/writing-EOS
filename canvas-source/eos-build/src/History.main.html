@@ -1,0 +1,91 @@
+<section aria-label="Filters" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px">
+<div role="radiogroup" aria-label="Area" style="display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 12px; background: #E8EEF6">
+<sc-for list="{{areas}}" as="f" hint-placeholder-count="6">
+<button type="button" role="radio" aria-checked="{{f.on}}" onClick="{{f.pick}}" style="min-height: 36px; padding: 0 12px; border: 0; border-radius: 9px; background: {{f.bg}}; color: {{f.fg}}; box-shadow: {{f.shadow}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{f.name}}</button>
+</sc-for>
+</div>
+<div role="radiogroup" aria-label="Who" style="display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 12px; background: #E8EEF6">
+<sc-for list="{{whos}}" as="f" hint-placeholder-count="4">
+<button type="button" role="radio" aria-checked="{{f.on}}" onClick="{{f.pick}}" style="min-height: 36px; padding: 0 12px; border: 0; border-radius: 9px; background: {{f.bg}}; color: {{f.fg}}; box-shadow: {{f.shadow}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{f.name}}</button>
+</sc-for>
+</div>
+<span style="margin-left: auto; font-size: 13px; font-weight: 600; color: #5F6E84">{{shownCount}}</span>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+
+<section aria-labelledby="tl-h" style="flex: 1.3 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<h2 id="tl-h" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Timeline</h2>
+<sc-for list="{{days}}" as="d" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="@LABEL@">{{d.name}}</span>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{d.items}}" as="e" hint-placeholder-count="4">
+<li style="display: flex; gap: 12px; padding: 12px 14px; border-radius: 14px; background: {{e.bg}}; box-shadow: {{e.shadow}}">
+<span style="flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: {{e.tBg}}; color: {{e.tFg}}; box-shadow: inset 0 0 0 1px {{e.tRing}}; font-size: 12px; font-weight: 800">{{e.mark}}</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 14px; font-weight: 700; line-height: 1.45">{{e.text}}</span>
+<span style="display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12px; font-weight: 600; color: #5F6E84"><span>{{e.time}}</span><span>{{e.who}}</span><span>{{e.area}}</span></span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@MONO@; font-size: 12px; color: #1F4E79">{{e.engine}}</span></sc-if>
+</span>
+<span style="flex: none; display: flex; flex-direction: column; gap: 4px; align-items: flex-end">
+<sc-if value="{{e.canOpen}}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{e.open}}" aria-pressed="{{e.on}}" class="eos-btn" style="@BTN_GHOST@; min-height: 36px">{{e.openLabel}}</button></sc-if>
+</span>
+</li>
+</sc-for>
+</ol>
+</div>
+</sc-for>
+<sc-if value="{{isEmpty}}" hint-placeholder-val="{{ false }}"><span style="padding: 20px; border-radius: 14px; background: #FFFFFF; box-shadow: inset 0 0 0 1px #E3E8F0; font-size: 14px; @MUTED@">Nothing matches these filters yet.</span></sc-if>
+</section>
+
+<section aria-labelledby="cmp-h" style="flex: 1 1 400px; min-width: 0; position: sticky; top: 20px; display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; @CARD@">
+<span style="@LABEL@">{{cmp.label}}</span>
+<h2 id="cmp-h" style="margin: 0; font-size: 20px; font-weight: 800; line-height: 1.3">{{cmp.title}}</h2>
+<span style="font-size: 13px; line-height: 1.5; @MUTED@">{{cmp.sub}}</span>
+
+<sc-if value="{{cmp.isProse}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 16px 18px; border-radius: 14px; background: #FFFDF8; box-shadow: inset 0 0 0 1px #EDE6D6">
+<sc-for list="{{cmp.paras}}" as="p" hint-placeholder-count="2">
+<p style="margin: 0; @SERIF@; font-size: 17px; line-height: 1.75"><sc-for list="{{p.segs}}" as="g" hint-placeholder-count="6"><span style="background: {{g.bg}}; color: {{g.fg}}; text-decoration: {{g.deco}}; border-radius: 3px">{{g.t}}</span></sc-for></p>
+</sc-for>
+</div>
+<span style="display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; font-weight: 600; color: #5F6E84"><span><span style="padding: 0 4px; background: #FDECEB; color: #A8321F; text-decoration: line-through">Removed</span></span><span><span style="padding: 0 4px; background: #E7F3DF; color: #2F5A1A">Added</span></span><span>{{cmp.stats}}</span></span>
+</sc-if>
+
+<sc-if value="{{cmp.isFields}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{cmp.fields}}" as="f" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-radius: 12px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0">
+<span style="font-size: 12px; font-weight: 700; color: #5F6E84">{{f.k}}</span>
+<span style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 8px; font-size: 14px; line-height: 1.5">
+<span style="padding: 6px 10px; border-radius: 8px; background: #FDECEB; color: #A8321F">{{f.before}}</span>
+<span style="padding: 6px 10px; border-radius: 8px; background: #E7F3DF; color: #2F5A1A">{{f.after}}</span>
+</span>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{cmp.isNote}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; border-radius: 14px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0">
+<sc-for list="{{cmp.lines}}" as="l" hint-placeholder-count="3"><span style="font-size: 14px; line-height: 1.55">{{l}}</span></sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{cmp.canRestore}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 16px 18px; @GOLDBOX@">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 800; color: #12244A">@ICON:back:18:#B98A00@{{cmp.restoreTitle}}</span>
+<span style="font-size: 13px; line-height: 1.55; color: #6B4E00">{{cmp.restoreWhy}}</span>
+<ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 3px; font-size: 13px; line-height: 1.5; color: #4B5B73">
+<sc-for list="{{cmp.stale}}" as="s" hint-placeholder-count="3"><li>{{s}}</li></sc-for>
+</ul>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><button type="button" class="eos-btn" style="@BTN_GOLD@">{{cmp.restoreLabel}}</button><button type="button" class="eos-btn" style="@BTN_OUTLINE@">Keep the current version</button></span>
+</div>
+</sc-if>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 1.5; color: #5F6E84">@ICON:shield:16:#3B7020@Nothing in History is ever deleted. Restoring adds a new version on top.</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}">
+<pre style="margin: 0; padding: 14px 16px; white-space: pre-wrap; @NAVY@; @MONO@; font-size: 12px; line-height: 1.6; color: #DCE6F2">{{cmp.git}}</pre>
+</sc-if>
+</section>
+</div>

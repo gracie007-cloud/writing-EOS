@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Writing EOS · Genre packs</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F4E79}a:hover{color:#12244A}
+:focus-visible{outline:2px solid #2E75B6;outline-offset:2px}
+.eos-btn{transition:background-color .15s ease, box-shadow .15s ease, transform .15s ease}
+.eos-btn:hover{box-shadow:0 10px 20px -12px rgb(31 56 100 / .5);transform:translateY(-1px)}
+.eos-row{transition:background-color .15s ease}
+.eos-row:hover{background:#F2F7FD}
+.eos-navitem:hover{background:#F2F7FD}
+.eos-navitem[aria-current="page"]:hover{background:#1F4E79}
+@media (max-width: 900px){
+.eos-side{flex:1 1 100% !important;max-width:none !important;min-height:0 !important;border-right:0 !important;border-bottom:1px solid #E3E8F0 !important;padding:12px !important;gap:10px !important}
+.eos-nav{flex-direction:row !important;overflow-x:auto;gap:4px !important}
+.eos-navgroup{flex-direction:row !important}
+.eos-navlabel,.eos-sidefoot,.eos-search{display:none !important}
+.eos-top{padding:12px 16px !important}
+.eos-page{padding:24px 16px 40px !important}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; align-items: stretch; background: #F5F7FB; color: #1B2A41; font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">
+<dc-import name="Sidebar" active="genres" hint-size="264px,100%"></dc-import>
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+<header class="eos-top" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 14px 32px; background: rgb(255 255 255 / 0.85); border-bottom: 1px solid #E3E8F0">
+<nav aria-label="Breadcrumb" style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600"><span aria-current="page" style="color: #1B2A41">Genre packs</span></nav>
+<div class="eos-search" style="flex: 1 1 260px; max-width: 420px; position: relative; margin-left: auto">
+<label for="top-search" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search the Bible, chapters and chats</label>
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="position: absolute; left: 12px; top: 14px; fill: none; stroke: #5F6E84; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M11 3a8 8 0 1 0 0 16a8 8 0 1 0 0-16 M21 21l-4.3-4.3"></path></svg>
+<input id="top-search" type="search" placeholder="Search the Bible, chapters and chats" style="width: 100%; box-sizing: border-box; min-height: 44px; padding: 0 12px 0 36px; border-radius: 10px; border: 1px solid #D5DCE6; background: #FFFFFF; font: 14px 'Plus Jakarta Sans', sans-serif; color: #1B2A41">
+</div>
+<div role="radiogroup" aria-label="View" style="display: inline-flex; gap: 4px; padding: 4px; border-radius: 12px; background: #E8EEF6">
+<sc-for list="{{viewOpts}}" as="v" hint-placeholder-count="2">
+<button type="button" role="radio" aria-checked="{{v.on}}" onClick="{{v.pick}}" style="min-height: 36px; padding: 0 14px; border: 0; border-radius: 9px; background: {{v.bg}}; color: {{v.fg}}; box-shadow: {{v.shadow}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{v.name}}</button>
+</sc-for>
+</div>
+</header>
+<main class="eos-page" style="width: 100%; max-width: 1240px; margin: 0 auto; box-sizing: border-box; padding: 28px 32px 56px; display: flex; flex-direction: column; gap: 22px">
+<section aria-labelledby="page-title" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px">
+<div style="flex: 1 1 520px; display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2E75B6"><span style="width: 24px; height: 1px; background: #9DC3E6"></span>Genre packs · what your readers expect</p>
+<h1 id="page-title" style="margin: 0; font-size: 32px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.15">Genre packs</h1>
+<p style="margin: 0; max-width: 720px; font-size: 15px; line-height: 1.6; color: #4B5B73">A genre pack tells the agents what readers of your genre expect: the promises the book must keep, the tropes and how worn they are, where the big beats fall, and the clichés to catch. You approve every pack and every change.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px"><button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer">Import a pack</button><button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #1F4E79; background: #2E75B6; color: #FFFFFF; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer">Build one from books you love</button></div>
+</section>
+<section aria-label="Pitch waiting for you" style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; padding: 16px 20px; border-radius: 16px; background: #FFF5D6; box-shadow: inset 0 0 0 1px #FFD966">
+<span style="flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: #FFC000; color: #12244A"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528"></path></svg></span>
+<span style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 15px; font-weight: 800; color: #12244A">Pitch: three changes to Romantic suspense, from your notes on four comparable books</span>
+<span style="font-size: 14px; line-height: 1.55; color: #4B5B73">Recommended: add the promise “the threat comes from someone the leads already trust”, mark <em>protector hero</em> as needing a twist, and widen chapters to 4,500 words. Weighed and set aside: dropping forced proximity (three of your four books use it well).</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6B4E00">genre_analyst · synthesis pool · cites notes/comps/*.md · diff against the approved pack</span></sc-if>
+</span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #B98A00; background: #FFC000; color: #12244A; font: 700 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer">Proceed with the pitch</button><button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer">Choose another</button><button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer">My alternative</button></span>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+
+<section aria-labelledby="lib-h" style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px">
+<h2 id="lib-h" style="margin: 0; font-size: 17px; font-weight: 800">Library</h2>
+<span style="font-size: 13px; color: #4B5B73">{{shownCount}}</span>
+</div>
+<div role="radiogroup" aria-label="Show packs" style="display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 12px; background: #E8EEF6">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="4">
+<button type="button" role="radio" aria-checked="{{f.on}}" onClick="{{f.pick}}" style="flex: 1 1 auto; min-height: 36px; padding: 0 10px; border: 0; border-radius: 9px; background: {{f.bg}}; color: {{f.fg}}; box-shadow: {{f.shadow}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{f.name}}</button>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{packs}}" as="p" hint-placeholder-count="6">
+<button type="button" onClick="{{p.pick}}" aria-pressed="{{p.on}}" class="eos-row" style="display: flex; flex-direction: column; align-items: stretch; gap: 6px; padding: 14px 16px; border-radius: 14px; border: 1px solid {{p.border}}; background: {{p.bg}}; box-shadow: {{p.shadow}}; text-align: left; color: #1B2A41; font-family: inherit; cursor: pointer">
+<span style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px"><span style="font-size: 15px; font-weight: 800">{{p.name}}</span><span style="font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; background: {{p.tBg}}; color: {{p.tFg}}; box-shadow: inset 0 0 0 1px {{p.tRing}}">{{p.badge}}</span></span>
+<span style="font-size: 13px; line-height: 1.5; color: #4B5B73">{{p.blurb}}</span>
+<span style="font-size: 12px; font-weight: 600; color: #5F6E84">{{p.status}}</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<section aria-labelledby="pack-h" style="flex: 1.8 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 16px; padding: 22px 24px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 10px">
+<span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6E84">{{sel.kind}}</span><h2 id="pack-h" style="margin: 0; font-size: 24px; font-weight: 800">{{sel.name}}</h2><span style="font-size: 14px; line-height: 1.55; color: #4B5B73">{{sel.blurb}}</span></span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><sc-if value="{{sel.canUse}}" hint-placeholder-val="{{ false }}"><button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer">Blend into this project</button></sc-if><button type="button" class="eos-btn" style="min-height: 44px; padding: 0 14px; display: inline-flex; align-items: center; gap: 8px; border-radius: 10px; border: 0; background: transparent; color: #1F4E79; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer">Duplicate and edit</button><a href="History.dc.html" class="eos-btn" style="min-height: 44px; padding: 0 14px; display: inline-flex; align-items: center; gap: 8px; border-radius: 10px; border: 0; background: transparent; color: #1F4E79; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer">History</a></span>
+</div>
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr)); gap: 10px">
+<sc-for list="{{sel.norms}}" as="n" hint-placeholder-count="6">
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 12px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0"><dt style="font-size: 12px; font-weight: 600; color: #5F6E84">{{n.k}}</dt><dd style="margin: 0; font-size: 14px; font-weight: 700; line-height: 1.4">{{n.v}}</dd></div>
+</sc-for>
+</dl>
+<div role="tablist" aria-label="Pack contents" style="display: flex; gap: 4px; padding: 4px; border-radius: 12px; background: #2E75B6; overflow-x: auto">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="4">
+<button type="button" role="tab" aria-selected="{{t.on}}" onClick="{{t.pick}}" style="flex: 1 0 auto; min-height: 40px; padding: 0 14px; border: 0; border-radius: 9px; background: {{t.bg}}; color: {{t.fg}}; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer; white-space: nowrap">{{t.name}}</button>
+</sc-for>
+</div>
+
+<sc-if value="{{isPromises}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 13px; color: #4B5B73">{{promiseNote}}</span>
+<sc-for list="{{promises}}" as="r" hint-placeholder-count="5">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 12px 14px; border-radius: 12px; background: {{r.rowBg}}; box-shadow: inset 0 0 0 1px {{r.rowRing}}">
+<span style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 700; line-height: 1.45">{{r.text}}</span><span style="font-size: 12px; color: #5F6E84">Usually paid off: {{r.when}}</span></span>
+<sc-if value="{{r.hasStatus}}" hint-placeholder-val="{{ true }}"><span style="font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; background: {{r.tBg}}; color: {{r.tFg}}; box-shadow: inset 0 0 0 1px {{r.tRing}}">{{r.status}}</span></sc-if>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{isTropes}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{tropes}}" as="r" hint-placeholder-count="5">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 12px 14px; border-radius: 12px; background: #FFFFFF; box-shadow: inset 0 0 0 1px #E3E8F0">
+<span style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 700">{{r.name}}</span><span style="font-size: 13px; line-height: 1.5; color: #4B5B73">{{r.note}}</span></span>
+<span style="font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; background: {{r.tBg}}; color: {{r.tFg}}; box-shadow: inset 0 0 0 1px {{r.tRing}}">{{r.kind}}</span>
+</div>
+</sc-for>
+<span style="font-size: 12px; color: #5F6E84">The Trope Audit in the Story Blueprint reads this list; worn-out tropes need a twist you approve.</span>
+</div>
+</sc-if>
+
+<sc-if value="{{isBeats}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 13px; color: #4B5B73">Beats are positions in the book. Code places them on your {{chapterCount}} chapters and a 90,000-word target, and flags an act that runs long on the Story board.</span>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{beats}}" as="b" hint-placeholder-count="8">
+<li style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 6px 12px; border-radius: 12px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0">
+<span style="flex: none; width: 46px; font-size: 13px; font-weight: 700; color: #2E75B6">{{b.pct}}</span>
+<span style="flex: 1; min-width: 0; font-size: 14px; font-weight: 600">{{b.name}}</span>
+<span style="flex: none; font-size: 13px; font-weight: 600; color: #4B5B73">{{b.chapter}}</span>
+</li>
+</sc-for>
+</ol>
+</div>
+</sc-if>
+
+<sc-if value="{{isCliches}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; color: #4B5B73">Added to the automatic checks every draft passes before you see it. A hit is flagged with the sentence; it never blocks your own writing.</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{cliches}}" as="c" hint-placeholder-count="5"><span style="font-size: 13px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: #FFFFFF; box-shadow: inset 0 0 0 1px #D5DCE6; font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 14px">“{{c}}”</span></sc-for>
+</div>
+</div>
+</sc-if>
+</section>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+<section aria-labelledby="used-h" style="flex: 1.4 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 12px; padding: 20px 22px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
+<h2 id="used-h" style="margin: 0; font-size: 17px; font-weight: 800">Where your pack is used</h2>
+<span style="font-size: 13px; color: #4B5B73">The pack feeds steps you already have. Nothing runs twice, and every use shows up in Show prompt.</span>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 10px">
+<sc-for list="{{uses}}" as="u" hint-placeholder-count="6">
+<a href="{{u.href}}" class="eos-row" style="display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 12px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0; color: #1B2A41; text-decoration: none">
+<span style="font-size: 12px; font-weight: 700; color: #2E75B6">{{u.where}}</span>
+<span style="font-size: 14px; font-weight: 700">{{u.name}}</span>
+<span style="font-size: 13px; line-height: 1.5; color: #4B5B73">{{u.what}}</span>
+</a>
+</sc-for>
+</div>
+</section>
+<aside style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<section style="display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 16px; background: #F2F7FD; box-shadow: inset 0 0 0 1px #C9DDF1">
+<span style="flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: #FFFFFF; color: #2E75B6"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z M9 12l2 2 4-4"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 700">Your packs stay yours</span>
+<span style="font-size: 13px; line-height: 1.55; color: #4B5B73">Starter packs are written for this app in plain language. When the Genre Analyst builds from comparable books, it works from your notes and keeps observations only, never text from the books. You approve every pack and every change.</span></span>
+</section>
+<section style="display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 16px; background: #F2F7FD; box-shadow: inset 0 0 0 1px #C9DDF1">
+<span style="flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: #FFFFFF; color: #2E75B6"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M12 2a10 10 0 1 0 0 20a10 10 0 1 0 0-20 M12 16v-4 M12 8h.01"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 700">Blending two packs</span>
+<span style="font-size: 13px; line-height: 1.55; color: #4B5B73">Promises and clichés from both packs apply. Where beats or norms disagree, your main pack wins, and the clash is listed here.</span></span>
+</section>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}">
+<section aria-label="Pack file" style="display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; border-radius: 16px; background: #1F3864; color: #FFFFFF">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #B6C3D6">{{yamlName}}</span>
+<pre style="margin: 0; white-space: pre-wrap; font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6; color: #DCE6F2">{{yaml}}</pre>
+</section>
+</sc-if>
+</aside>
+</div>
+
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"view": {"editor": "enum", "options": ["writer", "engine"], "default": "writer"}, "$preview": {"width": 1440, "height": 1850}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { view: null, pack: 'romsus', filter: 'all', tab: 'promises' };
+}
+renderVals() {
+var self = this;
+var st = this.state;
+var view = st.view || this.props.view || 'writer';
+var engine = view === 'engine';
+var viewOpts = [{ id: 'writer', name: 'Writer view' }, { id: 'engine', name: 'Engine view' }].map(function (v) {
+var on = v.id === view;
+return { name: v.name, on: on, bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#1F3864' : '#4B5B73', shadow: on ? '0 1px 3px rgb(16 24 40 / 0.12)' : 'none', pick: function () { self.setState({ view: v.id }); } };
+});
+var TONE = {
+done: { bg: '#E7F3DF', fg: '#3B7020', ring: '#B9DCA4', dot: '#70AD47' },
+run: { bg: '#DEEBF7', fg: '#1F4E79', ring: '#9DC3E6', dot: '#2E75B6' },
+you: { bg: '#FFF5D6', fg: '#6B4E00', ring: '#FFD966', dot: '#FFC000' },
+flag: { bg: '#FDE9DC', fg: '#A5470B', ring: '#F4B183', dot: '#ED7D31' },
+mature: { bg: '#EFE8F8', fg: '#5B3A8C', ring: '#CDBDE6', dot: '#7B5BB0' },
+wait: { bg: '#EEF1F5', fg: '#475569', ring: '#D5DCE6', dot: '#94A3B8' },
+blocked: { bg: '#FDECEB', fg: '#A8321F', ring: '#F2B8B0', dot: '#E5604D' },
+navy: { bg: '#1F3864', fg: '#FFFFFF', ring: '#1F3864', dot: '#FFFFFF' }
+};
+var tabsOf = function (defs, cur, key) {
+return defs.map(function (t) { var on = t.id === cur; var o = {}; o[key] = t.id; return Object.assign({}, t, { on: on, bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#1F4E79' : '#FFFFFF', pick: function () { self.setState(o); } }); });
+};
+var CH = 24;
+var B = function (pct, name) { return { pct: pct, name: name }; };
+var T = function (name, kind, note) { return { name: name, kind: kind, note: note }; };
+var PR = function (text, when, status) { return { text: text, when: when, status: status || '' }; };
+var DEF = [
+{ id: 'romsus', name: 'Romantic suspense', kind: 'Main pack · in this project', use: 'main', group: 'starter', status: 'Approved · 12 Oct 2026',
+blurb: 'Two leads fall in love while a real threat closes in. The romance and the danger rise and resolve together.',
+norms: [['Chapter length', '2,500–4,000 words'], ['Scene length', '1,000–2,000 words'], ['Point of view', 'Both leads, close third'], ['Tense', 'Past'], ['Intimate scenes', 'On the page, mature tier'], ['Rhythm', 'Danger and closeness alternate']],
+promises: [PR('Real danger early, and it keeps escalating', 'first tenth', 'Planned · Ch 2'), PR('The danger forces the leads together', 'first quarter', 'Planned · Ch 4'), PR('The leads earn trust through what they do, not what they say', 'throughout', 'Planned · Ch 9, 14'), PR('The mystery and the romance resolve in the same climax', 'final tenth', 'Missing'), PR('A happy ending, or one clearly on its way', 'last chapter', 'Planned · Ch 24')],
+tropes: [T('Forced proximity', 'Expected', 'Tie it to the threat, never to coincidence.'), T('Protector hero', 'Expected', 'Let the protected lead save the day at least once.'), T('Enemies to lovers', 'Optional', 'Works when the distrust has a reason the reader shares.'), T('Walking into danger alone', 'Worn out', 'Give every risky choice a reason readers accept.'), T('The ex is the villain', 'Worn out', 'Readers guess it early; needs a twist you approve.')],
+beats: [B(3, 'Meet under threat'), B(12, 'The danger escalates'), B(25, 'Forced together'), B(38, 'Closeness interrupted by danger'), B(50, 'Midpoint: trust or betrayal'), B(75, 'The relationship breaks'), B(85, 'The threat revealed'), B(92, 'Joint climax'), B(98, 'Together')],
+cliches: ['her heart skipped a beat', 'a shiver of awareness', 'danger was his middle name', 'released a breath she didn’t know she was holding', 'every nerve ending'] },
+{ id: 'psych', name: 'Psychological thriller', kind: 'Blended in · for the threat', use: 'blend', group: 'starter', status: 'Approved · 12 Oct 2026',
+blurb: 'Dread from the inside: a mind the reader can’t fully trust, and a turn that is fair when you look back.',
+norms: [['Chapter length', '1,500–3,000 words'], ['Scene length', '600–1,500 words'], ['Point of view', 'One narrator, close'], ['Tense', 'Past or present'], ['Intimate scenes', 'Brief, off the page'], ['Rhythm', 'Short chapters, a hook at every end']],
+promises: [PR('A twist that is fair when you reread', 'last fifth', 'Planned · Ch 21'), PR('Dread that rises chapter by chapter', 'throughout', 'Planned · Ch 3–20'), PR('The narrator’s view is not the whole truth', 'from the first act', 'Delivered · Ch 1')],
+tropes: [T('Unreliable narrator', 'Expected', 'Plant the tells on the page, not in the reveal.'), T('Memory loss', 'Worn out', 'Only with a cause the story has earned.'), T('The perfect neighbour', 'Optional', 'Strong if the warmth is real at first.')],
+beats: [B(5, 'Something is wrong'), B(25, 'Point of no return'), B(50, 'The first turn'), B(80, 'Everything collapses'), B(90, 'The real turn'), B(100, 'Aftershock')],
+cliches: ['something felt off', 'I should have known', 'the silence was deafening'] },
+{ id: 'cozy', name: 'Cozy mystery', kind: 'Starter pack', use: '', group: 'starter', status: 'Starter · ready to use',
+blurb: 'An amateur sleuth, a close community and a fair puzzle. Violence stays off the page.',
+norms: [['Chapter length', '2,000–3,500 words'], ['Scene length', '800–1,500 words'], ['Point of view', 'The sleuth, first or close third'], ['Tense', 'Past'], ['Intimate scenes', 'Off the page'], ['Rhythm', 'A clue or a setback every chapter']],
+promises: [PR('Every key clue appears before the reveal', 'final sixth'), PR('A community readers want to return to', 'throughout'), PR('The body arrives early', 'first tenth'), PR('Order restored at the end', 'last chapter')],
+tropes: [T('Sleuth with a day job', 'Expected', 'Give the job a skill that cracks the case.'), T('Bumbling police officer', 'Worn out', 'Make them competent and at odds for a reason.'), T('Confession at a gathering', 'Optional', 'Common; vary the setting.')],
+beats: [B(8, 'The body is found'), B(15, 'The sleuth commits'), B(30, 'A false lead'), B(50, 'Midpoint twist'), B(65, 'A second threat'), B(80, 'Sleuth in danger'), B(90, 'The reveal'), B(97, 'Order restored')],
+cliches: ['the plot thickens', 'little did she know', 'a chill ran down her spine'] },
+{ id: 'epic', name: 'Epic fantasy', kind: 'Starter pack', use: '', group: 'starter', status: 'Starter · ready to use',
+blurb: 'A world with rules that cost something, a threat that grows to world scale, and companions who become family.',
+norms: [['Chapter length', '3,000–6,000 words'], ['Scene length', '1,500–3,000 words'], ['Point of view', 'Several, close third'], ['Tense', 'Past'], ['Intimate scenes', 'Varies by pen name'], ['Rhythm', 'Slow build, rising set pieces']],
+promises: [PR('Magic with a price, used cleverly at the climax', 'final tenth'), PR('The threat grows from local to world-scale', 'by the midpoint'), PR('Companions who become family', 'throughout')],
+tropes: [T('Chosen one', 'Worn out', 'Fresh only if the choosing is questioned.'), T('Magic system with a cost', 'Expected', 'Show the cost before it matters.'), T('Mentor’s fall', 'Optional', 'Earn it; don’t use it to clear the stage.')],
+beats: [B(5, 'The ordinary world cracks'), B(20, 'Leaving home'), B(50, 'The truth about the threat'), B(75, 'All is lost'), B(90, 'The final stand'), B(100, 'The new world')],
+cliches: ['ancient evil stirred', 'the prophecy foretold', 'a shadow fell across the land'] },
+{ id: 'space', name: 'Space opera', kind: 'Starter pack', use: '', group: 'starter', status: 'Starter · ready to use',
+blurb: 'Big stakes across worlds, a crew with loyalties under strain, and technology that shapes society.',
+norms: [['Chapter length', '3,000–5,000 words'], ['Scene length', '1,200–2,500 words'], ['Point of view', 'Two to four, close third'], ['Tense', 'Past'], ['Intimate scenes', 'Varies by pen name'], ['Rhythm', 'Action set pieces between politics']],
+promises: [PR('Scale: the fate of more than one world', 'by the midpoint'), PR('A crew whose loyalty is tested', 'throughout'), PR('Technology with social consequences', 'first act')],
+tropes: [T('Ragtag crew', 'Expected', 'Give each member a reason to leave.'), T('Evil empire', 'Worn out', 'Show why ordinary people support it.'), T('Ancient alien tech', 'Optional', 'Tie it to the theme, not just the plot.')],
+beats: [B(5, 'The call'), B(25, 'Jump to the wider war'), B(50, 'The cost of winning'), B(75, 'Betrayal'), B(92, 'Fleet battle'), B(100, 'A changed galaxy')],
+cliches: ['space, the final frontier', 'the stars stretched into lines', 'the ship groaned'] },
+{ id: 'mine', name: '[Your pack]', kind: 'Yours · draft from the Genre Analyst', use: '', group: 'yours', status: 'Draft · pitched to you',
+blurb: 'Built from your notes on comparable books. Nothing in it is used until you approve it.',
+norms: [['Chapter length', '[from your notes]'], ['Scene length', '[from your notes]'], ['Point of view', '[from your notes]'], ['Tense', '[from your notes]'], ['Intimate scenes', '[from your notes]'], ['Rhythm', '[from your notes]']],
+promises: [PR('[Promise drafted from your notes]', '[where]'), PR('[Promise drafted from your notes]', '[where]')],
+tropes: [T('[Trope]', 'Optional', '[Freshness note, citing the note it came from]')],
+beats: [B(10, '[Beat]'), B(50, '[Beat]'), B(90, '[Beat]')],
+cliches: ['[phrase from your notes]'] }
+];
+var byId = {};
+DEF.forEach(function (p) { byId[p.id] = p; });
+var cur = byId[st.pack] || DEF[0];
+var FIL = [{ id: 'all', name: 'All' }, { id: 'project', name: 'In this project' }, { id: 'starter', name: 'Starter' }, { id: 'yours', name: 'Yours' }];
+var keep = function (p) { return st.filter === 'all' || (st.filter === 'project' ? !!p.use : p.group === st.filter); };
+var shown = DEF.filter(keep);
+var filters = FIL.map(function (f) {
+var on = f.id === st.filter;
+return { name: f.name, on: on, bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#1F3864' : '#4B5B73', shadow: on ? '0 1px 3px rgb(16 24 40 / 0.12)' : 'none', pick: function () { self.setState({ filter: f.id }); } };
+});
+var badgeOf = function (p) {
+if (p.use === 'main') return ['Main pack', TONE.done];
+if (p.use === 'blend') return ['Blended in', TONE.run];
+if (p.group === 'yours') return ['Draft', TONE.you];
+return ['Starter', TONE.wait];
+};
+var packs = shown.map(function (p) {
+var on = p.id === cur.id;
+var b = badgeOf(p);
+return { name: p.name, blurb: p.blurb, status: p.status, badge: b[0], tBg: b[1].bg, tFg: b[1].fg, tRing: b[1].ring, on: on,
+bg: on ? '#F2F7FD' : '#FFFFFF', border: on ? '#2E75B6' : '#E3E8F0', shadow: on ? '0 0 0 3px rgb(46 117 182 / 0.15)' : '0 1px 2px rgb(16 24 40 / 0.05)',
+pick: function () { self.setState({ pack: p.id }); } };
+});
+var tabs = tabsOf([{ id: 'promises', name: 'Reader promises' }, { id: 'tropes', name: 'Tropes' }, { id: 'beats', name: 'Structure' }, { id: 'cliches', name: 'Clichés' }], st.tab, 'tab');
+var inProject = !!cur.use;
+var promises = cur.promises.map(function (r) {
+var s = r.status;
+var t = !s ? TONE.wait : (s.indexOf('Missing') === 0 ? TONE.flag : (s.indexOf('Delivered') === 0 ? TONE.done : TONE.run));
+var miss = s.indexOf('Missing') === 0;
+return { text: r.text, when: r.when, status: s, hasStatus: inProject && !!s, tBg: t.bg, tFg: t.fg, tRing: t.ring, rowBg: miss ? '#FFF8F3' : '#FFFFFF', rowRing: miss ? '#F4B183' : '#E3E8F0' };
+});
+var KIND = { Expected: TONE.done, Optional: TONE.wait, 'Worn out': TONE.flag };
+var tropes = cur.tropes.map(function (r) { var t = KIND[r.kind]; return Object.assign({}, r, { tBg: t.bg, tFg: t.fg, tRing: t.ring }); });
+var WORDS = 90000;
+var beats = cur.beats.map(function (b) { return { pct: b.pct + '%', name: b.name, chapter: 'Ch ' + Math.max(1, Math.round(b.pct * CH / 100)) + ' · about word ' + (Math.round(WORDS * b.pct / 10000) * 100).toLocaleString('en-GB') }; });
+var uses = [
+{ where: 'Story Blueprint · step 2', name: engine ? 'Conflict Fit Rater' : 'Choosing the conflict', what: 'The Genre factor is scored against the pack.', href: 'Develop.dc.html' },
+{ where: 'Story Blueprint · step 4', name: engine ? 'Trope Audit' : 'Checking tropes', what: 'Reads the trope list; worn-out tropes need a twist.', href: 'Develop.dc.html' },
+{ where: 'Story Blueprint · step 6', name: engine ? 'Structure Fit Rater' : 'Choosing the structure', what: 'Shows the pack’s structures beside the scores.', href: 'Develop.dc.html' },
+{ where: 'Story Blueprint · step 9', name: engine ? 'Outline Audit Scorecard' : 'Checking the outline', what: 'Lists each reader promise with its chapter, or missing.', href: 'Develop.dc.html' },
+{ where: 'Chapters · Check the draft', name: engine ? 'Style, Tone and Arc Check' : 'Checking voice, tone and arc', what: 'Gets the promises and voice cues due in that chapter.', href: 'Chapter.dc.html' },
+{ where: 'Every draft', name: engine ? 'Auto-fail checks (code)' : 'Automatic checks', what: 'Adds the pack’s clichés to the phrases flagged.', href: 'Chapter.dc.html' }
+];
+var yaml = ['id: ' + cur.id, 'name: ' + cur.name, 'status: ' + (cur.group === 'yours' ? 'draft' : 'approved'), 'scaled_to_chapters: ' + CH, 'promises:'].concat(cur.promises.map(function (r) { return '  - ' + r.text.toLowerCase().slice(0, 42) + '…'; })).concat(['tropes: ' + cur.tropes.length + ' (expected / optional / worn_out)', 'beats: [' + cur.beats.map(function (b) { return b.pct; }).join(', ') + ']', 'cliches: ' + cur.cliches.length + ' → auto_fail.genre', 'used_by: [conflict_fit_rater, trope_audit,', '  structure_fit_rater, outline_audit_scorecard,', '  style_tone_arc_check, auto_fail]']);
+var missing = cur.promises.filter(function (r) { return r.status.indexOf('Missing') === 0; }).length;
+return {
+viewOpts: viewOpts, isEngine: engine, filters: filters, packs: packs, shownCount: shown.length + (shown.length === 1 ? ' pack' : ' packs'),
+sel: { name: cur.name, kind: cur.kind, blurb: cur.blurb, norms: cur.norms.map(function (n) { return { k: n[0], v: n[1] }; }), canUse: !cur.use && cur.group !== 'yours' },
+tabs: tabs, isPromises: st.tab === 'promises', isTropes: st.tab === 'tropes', isBeats: st.tab === 'beats', isCliches: st.tab === 'cliches',
+promises: promises, tropes: tropes, beats: beats, cliches: cur.cliches, chapterCount: String(CH),
+promiseNote: inProject ? (missing ? 'Tracked against your outline and locked chapters. A missing promise is pitched to you on Home before the last third is planned.' : 'Tracked against your outline and locked chapters.') : 'Not in this project. Blend it in to track these promises against your outline.',
+uses: uses, yaml: yaml.join('\n'), yamlName: 'library/genres/' + cur.id + '.yaml'
+};
+}
+}
+
+</script>
+</body>
+</html>

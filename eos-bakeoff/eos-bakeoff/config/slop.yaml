@@ -1,0 +1,20 @@
+# Generic lists for automatic prose checks: true of any book. Extend as reviews reveal new patterns.
+# Rules that belong to one book (its characters, names and planted terms) live beside its test pack,
+# in data/Run01_rules.yaml. The loader refuses either file holding the other's lists.
+stock_phrases:
+  - "a testament to"
+  - "beacon of hope"
+  - "tapestry"
+  - "delve"
+  - "in that moment"
+  - "little did"
+  - "shiver down"
+  - "breath she didn't know"
+  - "the weight of"
+  - "a stark reminder"
+  - "palpable"
+  - "unspoken"
+  - "whispered secrets"
+  - "an eternity"
+  - "echoed through"
+injury_vocabulary_limit: ["gore", "mangled", "gruesome", "blood pooled", "entrails"]

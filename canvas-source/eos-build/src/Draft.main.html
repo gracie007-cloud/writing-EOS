@@ -1,0 +1,83 @@
+<section aria-label="Scoring progress" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; padding: 14px 18px; @CARD@">
+<span style="font-size: 14px; font-weight: 700">0 of 15 drafts scored</span>
+<div role="progressbar" aria-label="Drafts scored" aria-valuemin="0" aria-valuemax="15" aria-valuenow="0" style="flex: 1 1 200px; height: 8px; border-radius: 999px; background: #E8EEF6; overflow: hidden"><div style="width: 2%; height: 100%; background: #2E75B6"></div></div>
+<span style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: #5F6E84">@ICON:lock:15@Model names sealed until all 15 are scored</span>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+
+<article aria-labelledby="draft-title" style="flex: 1.6 1 500px; min-width: 0; display: flex; flex-direction: column; @CARD@; overflow: hidden">
+<div style="padding: 44px clamp(22px, 6%, 64px) 36px; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; @LABEL@">Chapter 01 · Scene 1</p>
+<h2 id="draft-title" style="margin: 0 0 18px; @SERIF@; font-size: 34px; font-weight: 500">[Chapter 1 title]</h2>
+<div style="max-width: 660px; display: flex; flex-direction: column; gap: 18px; @SERIF@; font-size: 19px; line-height: 1.75">
+<p style="margin: 0">The first ferry left at six. By twenty to, the queue already reached the ticket hut, and the gulls had found the bread van.</p>
+<p style="margin: 0">[Protagonist] showed a pass at the barrier and checked the timetable against the one in their pocket. The times matched.</p>
+<p style="margin: 0">The wind off the water held steady from the east. Along the pier the lamps were still lit, though the sky had gone grey.</p>
+<p style="margin: 0">[Protagonist] <mark title="Auto-fail: named emotion" style="background: #FDE9DC; color: inherit; padding: 1px 3px; border-radius: 3px; box-shadow: inset 0 -2px 0 #ED7D31">felt</mark> <mark title="Stock phrase" style="background: #FFF5D6; color: inherit; padding: 1px 3px; border-radius: 3px; box-shadow: inset 0 -2px 0 #FFC000">the weight of</mark> the morning settle, step by step.</p>
+<p style="margin: 0">At the end of the pier, [Mentor] was already waiting with two coffees and the morning paper.</p>
+</div>
+<div style="margin-top: 22px; display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 12px; background: #F6F2FB; box-shadow: inset 0 0 0 1px #E1D6F0; font-size: 13px; color: #5B3A8C">@ICON:lock:16@Scene 2 is written by the mature tier and scored on its own.</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding: 12px 18px; border-top: 1px solid #E3E8F0; background: #FBFCFE; font-size: 13px; @MUTED@">
+<span style="display: flex; flex-wrap: wrap; gap: 14px"><span style="display: flex; align-items: center; gap: 6px"><span style="width: 14px; height: 10px; border-radius: 2px; background: #FDE9DC; box-shadow: inset 0 -2px 0 #ED7D31"></span>Auto-fail</span><span style="display: flex; align-items: center; gap: 6px"><span style="width: 14px; height: 10px; border-radius: 2px; background: #FFF5D6; box-shadow: inset 0 -2px 0 #FFC000"></span>Stock phrase</span></span>
+<span>Draft complete · not cut off</span>
+</div>
+</article>
+
+<aside style="flex: 1 1 360px; min-width: 0; position: sticky; top: 20px; display: flex; flex-direction: column; gap: 14px">
+<section aria-labelledby="auto" style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; @CARD@">
+<h2 id="auto" style="margin: 0; font-size: 15px; font-weight: 800">Automatic checks</h2>
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-radius: 12px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0">
+<span style="font-size: 13px; font-weight: 700">Measured by code, against your voice profile</span>
+<sc-for list="{{craft}}" as="m" hint-placeholder-count="5"><span style="display: flex; justify-content: space-between; gap: 10px; font-size: 13px"><span>{{m.k}}</span><span style="font-weight: 700; color: {{m.fg}}">{{m.v}}</span></span></sc-for>
+<span style="font-size: 12px; color: #5F6E84">Shown to help you score; these figures never fail a draft on their own.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 12px 14px; border-radius: 12px; background: {{af.bg}}; box-shadow: inset 0 0 0 1px {{af.ring}}">
+<span style="display: flex; justify-content: space-between; gap: 8px"><span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: {{af.fg}}">@ICON:alert:16@{{af.title}}</span><span style="font-size: 12px; font-weight: 600; color: #5F6E84">Paragraph 4</span></span>
+<span style="font-size: 13px; line-height: 1.5">"felt" names an emotion for [Protagonist] in narration. The voice contract forbids that, so persona fidelity is set to 0.</span>
+<button type="button" onClick="{{toggleOverturn}}" class="eos-btn" style="@BTN_OUTLINE@; align-self: flex-start; min-height: 40px; font-size: 13px">{{overturnLabel}}</button>
+</div>
+<sc-for list="{{checks}}" as="k" hint-placeholder-count="5">
+<div style="display: flex; align-items: center; gap: 10px; min-height: 36px; font-size: 14px">
+<span style="display: grid; place-items: center; width: 24px; height: 24px; border-radius: 999px; background: {{k.bg}}; color: {{k.fg}}"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round"><path d="{{k.icon}}"></path></svg></span>
+<span style="flex: 1">{{k.t}}</span>
+<span style="font-size: 13px; font-weight: 700; color: {{k.fg}}">{{k.v}}</span>
+</div>
+</sc-for>
+</section>
+
+<section aria-labelledby="score" style="display: flex; flex-direction: column; gap: 14px; padding: 18px 20px; @CARD@">
+<h2 id="score" style="margin: 0; font-size: 15px; font-weight: 800">Your score</h2>
+<div role="radiogroup" aria-label="Prose level, 1 to 7" style="display: flex; flex-direction: column; gap: 8px">
+<span style="@FIELDLABEL@">Prose level · 1 to 7</span>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{levels}}" as="l" hint-placeholder-count="7">
+<button type="button" role="radio" aria-checked="{{l.on}}" aria-label="Level {{l.n}}: {{l.name}}" onClick="{{l.pick}}" style="min-height: 44px; border-radius: 10px; border: 1px solid {{l.border}}; background: {{l.bg}}; color: {{l.fg}}; font: 700 15px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{l.n}}</button>
+</sc-for>
+</div>
+<span style="font-size: 13px; @MUTED@"><strong style="color: #1B2A41">Level {{level.n}} · {{level.name}}.</strong> {{level.d}}</span>
+</div>
+<div role="radiogroup" aria-label="Persona fidelity, 0 to 3" style="display: flex; flex-direction: column; gap: 8px">
+<span style="display: flex; justify-content: space-between; @FIELDLABEL@"><span>Persona fidelity · 0 to 3</span><span style="font-weight: 600; color: #A5470B">{{fidNote}}</span></span>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{fids}}" as="f" hint-placeholder-count="4">
+<button type="button" role="radio" aria-checked="{{f.on}}" onClick="{{f.pick}}" disabled="{{f.disabled}}" style="min-height: 44px; border-radius: 10px; border: 1px solid {{f.border}}; background: {{f.bg}}; color: {{f.fg}}; font: 700 15px 'Plus Jakarta Sans', sans-serif; cursor: {{f.cursor}}">{{f.n}}</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="notes" style="@FIELDLABEL@">Notes</label>
+<textarea id="notes" rows="3" placeholder="What works, and what breaks the voice" style="padding: 10px 12px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; font: 14px/1.5 'Plus Jakarta Sans', sans-serif; color: #1B2A41; resize: vertical"></textarea>
+</div>
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding: 12px 14px; border-radius: 12px; background: #F2F7FD; box-shadow: inset 0 0 0 1px #C9DDF1">
+<span style="font-size: 14px; font-weight: 700">Score for this draft</span>
+<span style="font-size: 26px; font-weight: 800; color: #1F4E79">{{scoreText}}<span style="font-size: 14px; font-weight: 600; color: #5F6E84"> / 10</span></span>
+</div>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 10px 12px; @NAVY@; font-size: 12px; @MONO@"><span>(level ÷ 7 × 5) + (fidelity ÷ 3 × 4) + 1 − 0.5 × stock phrases</span><span>Run 01 · blind ID FD-K7Q · step first_draft · run [n] of 3</span><span>model, tokens and cost unsealed after the last score</span></div>
+</sc-if>
+<button type="button" class="eos-btn" style="@BTN_PRIMARY@">Save and open draft 2 @ICON:arrow:16@</button>
+</section>
+</aside>
+</div>

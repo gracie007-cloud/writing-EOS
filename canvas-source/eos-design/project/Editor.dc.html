@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Writing EOS · Editor · Chapter 1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F4E79}a:hover{color:#12244A}
+:focus-visible{outline:2px solid #2E75B6;outline-offset:2px}
+.eos-btn{transition:background-color .15s ease, box-shadow .15s ease, transform .15s ease}
+.eos-btn:hover{box-shadow:0 10px 20px -12px rgb(31 56 100 / .5);transform:translateY(-1px)}
+.eos-row{transition:background-color .15s ease}
+.eos-row:hover{background:#F2F7FD}
+.eos-navitem:hover{background:#F2F7FD}
+.eos-navitem[aria-current="page"]:hover{background:#1F4E79}
+.eos-mention{transition:background-color .15s ease}
+.eos-mention:hover{background:#DEEBF7 !important}
+@media (max-width: 900px){
+.eos-side{flex:1 1 100% !important;max-width:none !important;min-height:0 !important;border-right:0 !important;border-bottom:1px solid #E3E8F0 !important;padding:12px !important;gap:10px !important}
+.eos-nav{flex-direction:row !important;overflow-x:auto;gap:4px !important}
+.eos-navgroup{flex-direction:row !important}
+.eos-navlabel,.eos-sidefoot,.eos-search{display:none !important}
+.eos-top{padding:12px 16px !important}
+.eos-page{padding:28px 22px 40px !important}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; align-items: stretch; background: #F5F7FB; color: #1B2A41; font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">
+<sc-if value="{{showChrome}}" hint-placeholder-val="{{ true }}">
+<dc-import name="Sidebar" active="editor" hint-size="264px,100%"></dc-import>
+</sc-if>
+
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+
+<header class="eos-top" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 14px 32px; background: rgb(255 255 255 / 0.85); border-bottom: 1px solid #E3E8F0">
+<nav aria-label="Breadcrumb" style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600">
+<a href="Chapter.dc.html" style="color: #4B5B73; text-decoration: none">Chapter 01</a>
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" style="fill: none; stroke: #94A3B8; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M9 18l6-6-6-6"></path></svg>
+<span aria-current="page">Editor</span>
+</nav>
+<span style="font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: #DEEBF7; color: #1F4E79; box-shadow: inset 0 0 0 1px #9DC3E6">Working draft · not locked</span>
+<a href="Main.dc.html" style="font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: #FFF5D6; color: #6B4E00; box-shadow: inset 0 0 0 1px #FFD966; text-decoration: none">Saved 10:42 · 2 Bible proposals for you</a>
+<div style="margin-left: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<button type="button" role="switch" aria-checked="{{aiFree}}" onClick="{{toggleAiFree}}" title="Turns off every model call while you write" class="eos-btn" style="min-height: 44px; padding: 0 14px; display: inline-flex; align-items: center; gap: 8px; border-radius: 10px; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer; border: 1px solid {{aiFreeBorder}}; background: {{aiFreeBg}}; color: #1F3864">{{aiFreeLabel}}</button>
+<button type="button" onClick="{{toggleFocus}}" aria-pressed="{{focus}}" class="eos-btn" style="min-height: 44px; padding: 0 14px; display: inline-flex; align-items: center; gap: 8px; border-radius: 10px; border: 1px solid #CBD5E1; background: {{focusBg}}; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M8 3H5a2 2 0 0 0-2 2v3 M21 8V5a2 2 0 0 0-2-2h-3 M3 16v3a2 2 0 0 0 2 2h3 M16 21h3a2 2 0 0 0 2-2v-3"></path></svg>{{focusLabel}}</button>
+<div role="radiogroup" aria-label="View" style="display: inline-flex; gap: 4px; padding: 4px; border-radius: 12px; background: #E8EEF6">
+<sc-for list="{{viewOpts}}" as="v" hint-placeholder-count="2">
+<button type="button" role="radio" aria-checked="{{v.on}}" onClick="{{v.pick}}" style="min-height: 36px; padding: 0 14px; border: 0; border-radius: 9px; background: {{v.bg}}; color: {{v.fg}}; box-shadow: {{v.shadow}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{v.name}}</button>
+</sc-for>
+</div>
+</div>
+</header>
+
+<main style="width: 100%; max-width: {{mainMax}}; margin: 0 auto; box-sizing: border-box; padding: 24px 32px 56px; display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start" class="eos-page">
+
+<article aria-labelledby="ms-title" style="flex: 1.7 1 520px; min-width: 0; display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; background: {{paper.bg}}; border: 1px solid {{paper.border}}; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 12px 32px -18px rgb(16 24 40 / 0.25)">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 18px; border-bottom: 1px solid {{paper.border}}; background: {{paper.bar}}">
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<span style="font-size: 13px; font-weight: 700; color: {{paper.ui}}">Show changes</span>
+<button type="button" role="switch" aria-checked="{{changes}}" aria-label="Show changes" onClick="{{toggleChanges}}" style="position: relative; width: 44px; height: 26px; padding: 0; border: 0; border-radius: 999px; background: {{changesBg}}; cursor: pointer"><span style="position: absolute; top: 3px; left: {{changesLeft}}; width: 20px; height: 20px; border-radius: 999px; background: #FFFFFF; box-shadow: 0 1px 3px rgb(16 24 40 / 0.3)"></span></button>
+</span>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<span style="font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: #FFF5D6; color: #6B4E00; box-shadow: inset 0 0 0 1px #FFD966">Prose target · Level 5</span>
+<button type="button" onClick="{{toggleRead}}" aria-expanded="{{readOpen}}" class="eos-btn" style="min-height: 40px; padding: 0 12px; display: inline-flex; align-items: center; gap: 6px; border-radius: 10px; border: 1px solid {{paper.border}}; background: transparent; color: {{paper.ui}}; font: 700 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer"><span style="font-family: 'Lora', Georgia, serif; font-size: 15px">Aa</span>Reading</button>
+</span>
+</div>
+
+<sc-if value="{{readOpen}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; padding: 14px 18px; border-bottom: 1px solid {{paper.border}}; background: {{paper.bar}}">
+<div role="radiogroup" aria-label="Page theme" style="display: flex; align-items: center; gap: 8px">
+<span style="font-size: 13px; font-weight: 600; color: {{paper.ui}}">Page</span>
+<sc-for list="{{themes}}" as="t" hint-placeholder-count="3">
+<button type="button" role="radio" aria-checked="{{t.on}}" onClick="{{t.pick}}" style="min-height: 40px; padding: 0 12px; display: inline-flex; align-items: center; gap: 8px; border-radius: 10px; border: 2px solid {{t.ring}}; background: #FFFFFF; color: #1B2A41; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer"><span style="width: 16px; height: 16px; border-radius: 999px; background: {{t.swatch}}; box-shadow: inset 0 0 0 1px #94A3B8"></span>{{t.name}}</button>
+</sc-for>
+</div>
+<div role="group" aria-label="Text size" style="display: flex; align-items: center; gap: 8px">
+<span style="font-size: 13px; font-weight: 600; color: {{paper.ui}}">Size</span>
+<button type="button" onClick="{{smaller}}" aria-label="Smaller text" style="min-width: 40px; min-height: 40px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1B2A41; font: 700 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">A−</button>
+<span style="min-width: 40px; text-align: center; font-size: 13px; font-weight: 700; color: {{paper.ui}}">{{fontSize}}px</span>
+<button type="button" onClick="{{bigger}}" aria-label="Larger text" style="min-width: 40px; min-height: 40px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1B2A41; font: 700 16px 'Plus Jakarta Sans', sans-serif; cursor: pointer">A+</button>
+</div>
+<div role="radiogroup" aria-label="Line spacing" style="display: flex; align-items: center; gap: 6px">
+<span style="font-size: 13px; font-weight: 600; color: {{paper.ui}}">Spacing</span>
+<sc-for list="{{spacings}}" as="sp" hint-placeholder-count="3">
+<button type="button" role="radio" aria-checked="{{sp.on}}" onClick="{{sp.pick}}" style="min-width: 48px; min-height: 40px; border-radius: 10px; border: 1px solid {{sp.border}}; background: {{sp.bg}}; color: {{sp.fg}}; font: 700 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{sp.name}}</button>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<div style="padding: 44px clamp(22px, 6%, 64px) 36px; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: {{paper.muted}}">Chapter 01 · Scene 1</p>
+<h1 id="ms-title" style="margin: 0 0 18px; font-family: 'Lora', Georgia, serif; font-size: 34px; font-weight: 500; color: {{paper.ink}}">[Chapter 1 title]</h1>
+<div style="max-width: 660px; display: flex; flex-direction: column; gap: {{paraGap}}; font-family: 'Lora', Georgia, serif; font-size: {{fontSizePx}}; line-height: {{lineHeight}}; color: {{paper.ink}}">
+<p style="margin: 0; padding-left: {{provPad}}; border-left: {{prov.p1}}">The first ferry left at six. By twenty to, the queue already reached the ticket hut, and the gulls had found the bread van.</p>
+<p style="margin: 0; padding-left: {{provPad}}; border-left: {{prov.p2}}"><button type="button" onClick="{{mProt}}" class="eos-mention" aria-label="[Protagonist]: open their Story Bible entry as of Chapter 1" style="display: inline; padding: 0 2px; border: 0; border-radius: 3px; border-bottom: 2px dotted {{paper.link}}; background: {{mBgProt}}; font: inherit; color: inherit; cursor: pointer">[Protagonist]</button> showed a pass at the barrier and checked the timetable against the one in their pocket. The times matched.</p>
+<p style="margin: 0; padding-left: {{provPad}}; border-left: {{prov.p3}}"><svg role="img" aria-label="Locked by you" width="15" height="15" viewBox="0 0 24 24" style="margin-right: 6px; vertical-align: -2px; fill: none; stroke: #B98A00; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><title>Locked by you: no agent may change this paragraph</title><path d="M5 11h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2z M7 11V7a5 5 0 0 1 10 0v4"></path></svg>The wind off the water held steady from the east. Along the pier the lamps were still lit, though the sky had gone grey.</p>
+<p style="margin: 0; padding-left: {{provPad}}; border-left: {{prov.p4}}"><sc-if value="{{showOld}}" hint-placeholder-val="{{ false }}"><del style="background: {{paper.del}}; color: {{paper.delInk}}; text-decoration-thickness: 2px">{{orig}}</del> </sc-if><mark style="background: {{markBg}}; color: inherit; padding: 1px 2px; border-radius: 3px; box-shadow: 0 0 0 2px {{markRing}}">{{current}}</mark></p>
+<p style="margin: 0; padding-left: {{provPad}}; border-left: {{prov.p5}}">At the end of the pier, <button type="button" onClick="{{mMentor}}" class="eos-mention" aria-label="[Mentor]: open their Story Bible entry as of Chapter 1" style="display: inline; padding: 0 2px; border: 0; border-radius: 3px; border-bottom: 2px dotted {{paper.link}}; background: {{mBgMentor}}; font: inherit; color: inherit; cursor: pointer">[Mentor]</button> was already waiting with two coffees and the morning paper.</p>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding: 12px 18px; border-top: 1px solid {{paper.border}}; background: {{paper.bar}}; font-size: 13px; color: {{paper.ui}}">
+<span>[WORD COUNT] words · target about 3,500</span>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px"><button type="button" role="switch" aria-checked="{{provOn}}" onClick="{{toggleProv}}" style="min-height: 36px; padding: 0 12px; border-radius: 9px; border: 1px solid {{paper.border}}; background: {{provBtnBg}}; color: {{paper.ui}}; font: 700 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Who wrote what</button><sc-if value="{{provOn}}" hint-placeholder-val="{{ false }}"><sc-for list="{{provKey}}" as="k" hint-placeholder-count="4"><span style="display: inline-flex; align-items: center; gap: 6px"><span style="width: 4px; height: 14px; border-radius: 2px; background: {{k.c}}"></span>{{k.t}}</span></sc-for></sc-if><span>Dotted words are Story Bible entries · the lock means no agent may change it</span></span>
+</div>
+</article>
+
+<sc-if value="{{showChrome}}" hint-placeholder-val="{{ true }}">
+<aside aria-label="Tools" style="flex: 1 1 360px; position: sticky; top: 20px; display: flex; flex-direction: column; gap: 14px; min-width: 0">
+<sc-if value="{{aiFree}}" hint-placeholder-val="{{ false }}">
+<section aria-label="AI-free mode" style="display: flex; flex-direction: column; gap: 8px; padding: 18px 20px; border-radius: 16px; background: #FFF5D6; box-shadow: inset 0 0 0 1px #FFD966">
+<span style="font-size: 15px; font-weight: 800; color: #12244A">AI-free mode is on</span>
+<span style="font-size: 14px; line-height: 1.55; color: #4B5B73">No model is called while you write. The automatic checks, History and the Story Bible keep working, and everything you write now is marked as yours.</span>
+<button type="button" onClick="{{toggleAiFree}}" class="eos-btn" style="align-self: flex-start; min-height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid #B98A00; background: #FFC000; color: #12244A; font: 700 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Turn the tools back on</button>
+</section>
+</sc-if>
+<sc-if value="{{toolsOn}}" hint-placeholder-val="{{ true }}">
+
+<sc-if value="{{hasMention}}" hint-placeholder-val="{{ false }}">
+<section aria-labelledby="men" style="display: flex; flex-direction: column; gap: 10px; padding: 16px 18px; border-radius: 16px; background: #FFFFFF; border: 2px solid #9DC3E6">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+<h2 id="men" style="margin: 0; font-size: 16px; font-weight: 800">{{men.name}}</h2>
+<button type="button" onClick="{{mClose}}" aria-label="Close" style="display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 10px; background: transparent; color: #4B5B73; cursor: pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M18 6 6 18 M6 6l12 12"></path></svg></button>
+</div>
+<span style="font-size: 13px; color: #4B5B73">Written here as "{{men.alias}}" · {{men.tag}} · as of Chapter 1</span>
+<dl style="margin: 0; display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{men.facts}}" as="f" hint-placeholder-count="3">
+<div style="display: grid; grid-template-columns: minmax(110px, 0.8fr) minmax(0, 1.4fr); gap: 4px 12px; padding: 8px 10px; border-radius: 10px; background: #F5F7FB; font-size: 13px; line-height: 1.45"><dt style="color: #5F6E84; font-weight: 600">{{f.k}}</dt><dd style="margin: 0">{{f.v}}</dd></div>
+</sc-for>
+</dl>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #1F3864">{{men.engine}}</span></sc-if>
+<a href="Bible.dc.html" style="font-size: 14px; font-weight: 600">Open in the Story Bible</a>
+</section>
+</sc-if>
+
+</sc-if>
+<sc-if value="{{toolsOn}}" hint-placeholder-val="{{ true }}">
+<div role="tablist" aria-label="Editing tools" style="display: flex; gap: 4px; padding: 4px; border-radius: 12px; background: #2E75B6">
+<sc-for list="{{tools}}" as="t" hint-placeholder-count="5">
+<button type="button" role="tab" aria-selected="{{t.on}}" onClick="{{t.pick}}" style="flex: 1; min-height: 40px; padding: 0 6px; border: 0; border-radius: 9px; background: {{t.bg}}; color: {{t.fg}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{t.name}}</button>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{show.rewrite}}" hint-placeholder-val="{{ true }}">
+<section aria-label="Rewrite" style="display: flex; flex-direction: column; gap: 14px; padding: 18px 20px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E3E8F0">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; font-weight: 700; color: #4B5B73">{{rewriteLabel}}</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{actions}}" as="a" hint-placeholder-count="9">
+<button type="button" onClick="{{a.pick}}" aria-pressed="{{a.on}}" style="min-height: 40px; padding: 0 12px; border-radius: 999px; border: 1px solid {{a.border}}; background: {{a.bg}}; color: {{a.fg}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{a.name}}</button>
+</sc-for>
+</div>
+</div>
+<sc-if value="{{notHuman}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="ed-custom" style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #4B5B73"><span>Or your own instruction</span><span style="font-weight: 500; color: #5F6E84">optional</span></label>
+<input id="ed-custom" type="text" placeholder="e.g. end the scene on the ferry horn" style="min-height: 44px; padding: 0 12px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; font: 14px 'Plus Jakarta Sans', sans-serif; color: #1B2A41">
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; border-radius: 12px; background: #F5F7FB; box-shadow: inset 0 0 0 1px #E3E8F0">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #5F6E84">Suggestion · {{sel.name}}</span>
+<span style="font-family: 'Lora', Georgia, serif; font-size: 16px; line-height: 1.55; color: #5F6E84"><del>{{orig}}</del></span>
+<span style="font-family: 'Lora', Georgia, serif; font-size: 17px; line-height: 1.6">{{sel.text}}</span>
+<span style="display: flex; align-items: flex-start; gap: 8px; font-size: 13px; line-height: 1.45; color: {{sel.checkFg}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="flex: none; margin-top: 1px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round"><path d="{{sel.checkIcon}}"></path></svg>{{sel.checks}}</span>
+<span style="font-size: 12px; line-height: 1.5; color: #4B5B73">{{sel.measures}}</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #1F3864">Rewrite · prose pool · [PRIMARY] · Excellent tier · locked paragraph sent as must-keep</span>
+</sc-if>
+</div>
+<sc-if value="{{decided}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 12px; background: #1F3864; color: #FFFFFF; font-size: 13px">
+<span style="flex: 1">{{decisionText}}</span>
+<button type="button" onClick="{{undo}}" style="min-height: 36px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; color: #9DC3E6; font: 700 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Undo</button>
+</div>
+</sc-if>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<button type="button" onClick="{{accept}}" class="eos-btn" style="min-height: 44px; padding: 0 18px; border-radius: 10px; border: 1px solid #1F4E79; background: #2E75B6; color: #FFFFFF; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Accept</button>
+<button type="button" onClick="{{reject}}" class="eos-btn" style="min-height: 44px; padding: 0 18px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Reject</button>
+<button type="button" onClick="{{alt}}" class="eos-btn" style="min-height: 44px; padding: 0 18px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer">My alternative</button>
+<button type="button" class="eos-btn" style="min-height: 44px; padding: 0 14px; border-radius: 10px; border: 0; background: transparent; color: #1F4E79; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Try another model</button>
+</div>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 6px; padding-top: 12px; border-top: 1px solid #E3E8F0">
+<span style="font-size: 13px; font-weight: 800">What this rewrite is sent</span>
+<sc-for list="{{promptParts}}" as="pp" hint-placeholder-count="6">
+<div style="display: grid; grid-template-columns: minmax(120px, 0.9fr) minmax(0, 1.5fr); gap: 4px 12px; padding: 8px 10px; border-radius: 10px; background: {{pp.bg}}; font-size: 12px; line-height: 1.45"><span style="display: flex; flex-direction: column"><span style="font-weight: 700; font-size: 13px">{{pp.part}}</span><span style="color: #5F6E84">{{pp.src}}</span></span><span style="color: #4B5B73">{{pp.why}}</span></div>
+</sc-for>
+</div>
+</sc-if>
+</sc-if>
+<sc-if value="{{isHuman}}" hint-placeholder-val="{{ true }}">
+<section aria-label="Humanize" style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-radius: 12px; background: #F2F7FD; box-shadow: inset 0 0 0 1px #DEEBF7">
+<span style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1F4E79">Suggested from your text</span>
+<sc-if value="{{hu.usingRec}}" hint-placeholder-val="{{ true }}"><span style="font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; background: #E7F3DF; color: #2F5A18">In use</span></sc-if>
+<sc-if value="{{hu.notUsingRec}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{hu.useRec}}" style="min-height: 36px; padding: 0 12px; border-radius: 9px; border: 1px solid #9DC3E6; background: #FFFFFF; color: #1F4E79; font: 700 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Use the suggestion</button></sc-if></span>
+<span style="font-size: 13px; line-height: 1.5; color: #4B5B73">{{hu.reason}}</span>
+</div>
+<sc-for list="{{hu.settings}}" as="hs" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; font-weight: 700; color: #4B5B73">{{hs.label}}</span>
+<div role="radiogroup" aria-label="{{hs.label}}" style="display: inline-flex; align-self: flex-start; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 10px; background: #E8EEF6">
+<sc-for list="{{hs.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="radio" aria-checked="{{o.on}}" onClick="{{o.pick}}" style="min-height: 36px; padding: 0 12px; border: 0; border-radius: 8px; background: {{o.bg}}; color: {{o.fg}}; box-shadow: {{o.shadow}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{o.name}}</button></sc-for>
+</div>
+<span style="font-size: 12px; line-height: 1.45; color: #5F6E84">{{hs.help}}</span>
+</div>
+</sc-for>
+<div style="display: flex; align-items: center; gap: 10px">
+<button type="button" role="switch" aria-checked="{{hu.dialogue}}" aria-label="Keep dialogue exactly as written" onClick="{{hu.toggleDialogue}}" style="flex: none; position: relative; width: 44px; height: 26px; padding: 0; border: 0; border-radius: 999px; background: {{hu.dlgBg}}; cursor: pointer"><span style="position: absolute; top: 3px; left: {{hu.dlgLeft}}; width: 20px; height: 20px; border-radius: 999px; background: #FFFFFF; box-shadow: 0 1px 3px rgb(16 24 40 / 0.3)"></span></button>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 700; color: #1B2A41">Keep dialogue exactly as written</span><span style="font-size: 12px; color: #5F6E84">Only the narration around it may change.</span></span>
+</div>
+<span style="font-size: 12px; line-height: 1.5; color: #5F6E84">Spelling and voice come from your project style card. Your locked paragraph is hidden from the model and comes back as it was.</span>
+<div role="table" aria-label="Measured by code, before and after" style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; box-shadow: inset 0 0 0 1px #E3E8F0">
+<div role="row" style="display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(56px, 0.6fr) minmax(64px, 0.7fr); gap: 8px; padding: 8px 12px; background: #F5F7FB; font-size: 12px; font-weight: 700; color: #5F6E84"><span role="columnheader">Measured by code</span><span role="columnheader" style="text-align: right">Before</span><span role="columnheader" style="text-align: right">After</span></div>
+<sc-for list="{{hu.measures}}" as="m" hint-placeholder-count="7">
+<div role="row" style="display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(56px, 0.6fr) minmax(64px, 0.7fr); gap: 8px; align-items: baseline; padding: 8px 12px; border-top: 1px solid #EEF2F7; font-size: 13px"><span role="cell" style="display: flex; flex-direction: column; gap: 1px"><span style="font-weight: 600; color: #1B2A41">{{m.name}}</span><span style="font-size: 12px; line-height: 1.4; color: #5F6E84">{{m.help}}</span></span><span role="cell" style="text-align: right; color: #4B5B73">{{m.before}}</span><span role="cell" style="text-align: right; font-weight: 700; color: {{m.fg}}">{{m.after}}</span></div>
+</sc-for>
+</div>
+<span style="display: flex; align-items: flex-start; gap: 8px; font-size: 13px; line-height: 1.45; color: #3B7020"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="flex: none; margin-top: 1px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round"><path d="M20 6 9 17l-5-5"></path></svg>{{hu.checks}}</span>
+<span style="display: flex; flex-direction: column; gap: 4px; padding-top: 4px"><span style="font-size: 15px; font-weight: 800">Choose per paragraph</span><span style="font-size: 13px; line-height: 1.5; color: #4B5B73">The recommendation is already picked. Nothing is saved until you press Save.</span></span>
+<sc-for list="{{hu.gate}}" as="g" hint-placeholder-count="5">
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 12px 14px; border-radius: 12px; background: {{g.bg}}; box-shadow: inset 0 0 0 1px {{g.ring}}">
+<span style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="flex: none; white-space: nowrap; font-size: 12px; font-weight: 700; color: #5F6E84">Paragraph {{g.n}}</span><span style="text-align: right; font-size: 12px; font-weight: 600; color: {{g.noteFg}}">{{g.note}}</span></span>
+<sc-if value="{{g.fixed}}" hint-placeholder-val="{{ false }}"><span style="font-family: 'Lora', Georgia, serif; font-size: 15px; line-height: 1.55; color: #4B5B73">{{g.before}}</span></sc-if>
+<sc-if value="{{g.open}}" hint-placeholder-val="{{ true }}">
+<span style="font-family: 'Lora', Georgia, serif; font-size: 15px; line-height: 1.55; color: {{g.beforeFg}}; text-decoration: {{g.beforeDeco}}">{{g.before}}</span>
+<span style="font-family: 'Lora', Georgia, serif; font-size: 15px; line-height: 1.55; color: {{g.afterFg}}">{{g.after}}</span>
+<div role="radiogroup" aria-label="Paragraph {{g.n}}" style="display: inline-flex; align-self: flex-start; gap: 4px; padding: 4px; border-radius: 10px; background: #E8EEF6">
+<sc-for list="{{g.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="radio" aria-checked="{{o.on}}" onClick="{{o.pick}}" style="min-height: 36px; padding: 0 12px; border: 0; border-radius: 8px; background: {{o.bg}}; color: {{o.fg}}; box-shadow: {{o.shadow}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{o.name}}</button></sc-for>
+</div>
+</sc-if>
+</div>
+</sc-for>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; border-radius: 10px; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer; border: 1px solid #1F4E79; background: #2E75B6; color: #FFFFFF">Save as a new version</button>
+<button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; border-radius: 10px; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864">Run again</button>
+<button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; border-radius: 10px; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer; padding: 0 14px; border: 0; background: transparent; color: #1F4E79">Try another model</button>
+</div>
+<span style="font-size: 12px; color: #5F6E84">{{hu.summary}}</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.5; color: #1F3864">{{hu.route}}</span>
+<div style="display: flex; flex-direction: column; gap: 6px; padding-top: 12px; border-top: 1px solid #E3E8F0">
+<span style="font-size: 13px; font-weight: 800">What Humanize is sent</span>
+<sc-for list="{{hu.promptParts}}" as="pp" hint-placeholder-count="7">
+<div style="display: grid; grid-template-columns: minmax(120px, 0.9fr) minmax(0, 1.5fr); gap: 4px 12px; padding: 8px 10px; border-radius: 10px; background: {{pp.bg}}; font-size: 12px; line-height: 1.45"><span style="display: flex; flex-direction: column"><span style="font-weight: 700; font-size: 13px">{{pp.part}}</span><span style="color: #5F6E84">{{pp.src}}</span></span><span style="color: #4B5B73">{{pp.why}}</span></div>
+</sc-for>
+</div>
+</sc-if>
+</section>
+</sc-if>
+</section>
+</sc-if>
+
+<sc-if value="{{show.changes}}" hint-placeholder-val="{{ false }}">
+<section aria-label="Changes" style="display: flex; flex-direction: column; gap: 12px; padding: 18px 20px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E3E8F0">
+<span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 15px; font-weight: 800">Rewrite from the notes · 4 paragraphs</span><span style="font-size: 13px; line-height: 1.5; color: #4B5B73">Choose per paragraph. The agent’s recommendation is already picked; nothing is saved until you press Save.</span></span>
+<sc-for list="{{gate}}" as="g" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 12px 14px; border-radius: 12px; background: {{g.bg}}; box-shadow: inset 0 0 0 1px {{g.ring}}">
+<span style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="flex: none; white-space: nowrap; font-size: 12px; font-weight: 700; color: #5F6E84">Paragraph {{g.n}}</span><span style="text-align: right; font-size: 12px; font-weight: 600; color: {{g.noteFg}}">{{g.note}}</span></span>
+<sc-if value="{{g.locked}}" hint-placeholder-val="{{ false }}"><span style="font-family: 'Lora', Georgia, serif; font-size: 15px; line-height: 1.55">{{g.before}}</span></sc-if>
+<sc-if value="{{g.open}}" hint-placeholder-val="{{ true }}">
+<span style="font-family: 'Lora', Georgia, serif; font-size: 15px; line-height: 1.55; color: {{g.beforeFg}}; text-decoration: {{g.beforeDeco}}">{{g.before}}</span>
+<span style="font-family: 'Lora', Georgia, serif; font-size: 15px; line-height: 1.55; color: {{g.afterFg}}">{{g.after}}</span>
+<div role="radiogroup" aria-label="Paragraph {{g.n}}" style="display: inline-flex; align-self: flex-start; gap: 4px; padding: 4px; border-radius: 10px; background: #E8EEF6">
+<sc-for list="{{g.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="radio" aria-checked="{{o.on}}" onClick="{{o.pick}}" style="min-height: 36px; padding: 0 12px; border: 0; border-radius: 8px; background: {{o.bg}}; color: {{o.fg}}; box-shadow: {{o.shadow}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{o.name}}</button></sc-for>
+</div>
+</sc-if>
+</div>
+</sc-for>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #1F3864">rewrite · lock check passed (byte-identical) · provenance: agent refinement · restore point before save</span></sc-if>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; border-radius: 10px; border: 1px solid #1F4E79; background: #2E75B6; color: #FFFFFF; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Save as a new version</button>
+<span style="font-size: 12px; color: #5F6E84">{{gateSummary}}</span>
+</div>
+</section>
+</sc-if>
+<sc-if value="{{show.write}}" hint-placeholder-val="{{ false }}">
+<section aria-label="Write" style="display: flex; flex-direction: column; gap: 14px; padding: 18px 20px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E3E8F0">
+<span style="font-size: 13px; font-weight: 700; color: #4B5B73">Continue from the end of the highlighted paragraph · 2 options · about 120 words</span>
+<sc-for list="{{continues}}" as="c" hint-placeholder-count="2">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; border-radius: 12px; background: #F5F7FB; box-shadow: inset 0 0 0 1px #E3E8F0">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #5F6E84">{{c.label}}</span>
+<span style="font-family: 'Lora', Georgia, serif; font-size: 16px; line-height: 1.65">{{c.t}}</span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><button type="button" class="eos-btn" style="min-height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid #1F4E79; background: #2E75B6; color: #FFFFFF; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Insert</button><button type="button" class="eos-btn" style="min-height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Discard</button></span>
+</div>
+</sc-for>
+</section>
+</sc-if>
+
+<sc-if value="{{show.describe}}" hint-placeholder-val="{{ false }}">
+<section aria-label="Describe" style="display: flex; flex-direction: column; gap: 12px; padding: 18px 20px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E3E8F0">
+<span style="font-size: 13px; font-weight: 700; color: #4B5B73">Sensory details for "the pier" · concrete details only, per the voice contract</span>
+<sc-for list="{{senses}}" as="s" hint-placeholder-count="4">
+<div class="eos-row" style="display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; box-shadow: inset 0 0 0 1px #E3E8F0">
+<span style="font-size: 12px; font-weight: 700; color: #5F6E84">{{s.k}}</span>
+<span style="font-family: 'Lora', Georgia, serif; font-size: 15px; line-height: 1.55">{{s.v}}</span>
+<button type="button" aria-label="Insert {{s.k}} detail" style="display: grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F4E79; cursor: pointer"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round"><path d="M5 12h14 M12 5v14"></path></svg></button>
+</div>
+</sc-for>
+</section>
+</sc-if>
+
+<sc-if value="{{show.brainstorm}}" hint-placeholder-val="{{ false }}">
+<section aria-label="Brainstorm" style="display: flex; flex-direction: column; gap: 12px; padding: 18px 20px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E3E8F0">
+<label for="bs-topic" style="font-size: 13px; font-weight: 700; color: #4B5B73">What do you need ideas for?</label>
+<input id="bs-topic" type="text" value="A name for a minor character at the harbour" style="min-height: 44px; padding: 0 12px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; font: 14px 'Plus Jakarta Sans', sans-serif; color: #1B2A41">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6B4E00">Already in your Creative Reserve</span>
+<sc-for list="{{reserveHits}}" as="r" hint-placeholder-count="2">
+<div style="display: flex; flex-direction: column; gap: 3px; padding: 10px 12px; border-radius: 12px; background: #FFF5D6; box-shadow: inset 0 0 0 1px #FFE699">
+<span style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="font-family: 'Lora', Georgia, serif; font-size: 17px">{{r.name}}</span><button type="button" class="eos-btn" style="min-height: 36px; padding: 0 12px; border-radius: 9px; border: 1px solid #E2C366; background: #FFFFFF; color: #12244A; font: 700 12px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Use</button></span>
+<span style="font-size: 12px; line-height: 1.45; color: #4B5B73">{{r.note}}</span>
+</div>
+</sc-for>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #5F6E84">New ideas · two models, names hidden</span>
+<sc-for list="{{cards}}" as="k" hint-placeholder-count="4">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 10px 12px; border-radius: 12px; background: {{k.bg}}; box-shadow: inset 0 0 0 1px {{k.ring}}">
+<span style="flex: 1 1 160px; display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Lora', Georgia, serif; font-size: 17px; text-decoration: {{k.strike}}">{{k.t}}</span><span style="font-size: 12px; color: {{k.checkFg}}">{{k.src}} · {{k.checks}}</span></span>
+<sc-if value="{{k.votable}}" hint-placeholder-val="{{ true }}">
+<span style="display: flex; gap: 6px">
+<button type="button" onClick="{{k.up}}" aria-pressed="{{k.isUp}}" aria-label="Keep this idea" style="display: grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; border: 1px solid #CBD5E1; background: {{k.upBg}}; color: #3B7020; cursor: pointer"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M7 10v12 M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"></path></svg></button>
+<button type="button" onClick="{{k.down}}" aria-pressed="{{k.isDown}}" aria-label="Decline this idea" style="display: grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; border: 1px solid #CBD5E1; background: {{k.downBg}}; color: #A5470B; cursor: pointer"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M17 14V2 M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z"></path></svg></button>
+</span>
+</sc-if>
+<sc-if value="{{k.hasVerdict}}" hint-placeholder-val="{{ false }}"><span style="flex-basis: 100%; font-size: 12px; font-weight: 600; color: #1F4E79">{{k.verdict}}</span></sc-if>
+</div>
+</sc-for>
+<div style="display: flex; flex-wrap: wrap; gap: 10px"><button type="button" class="eos-btn" style="min-height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid #1F4E79; background: #2E75B6; color: #FFFFFF; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer">More like my keepers</button><button type="button" class="eos-btn" style="min-height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Something else</button></div>
+<span style="font-size: 12px; line-height: 1.5; color: #5F6E84">Kept and declined ideas both go to the Creative Reserve with your reason. Your thumbs also tell the Model Lab which model brainstorms better.</span>
+</section>
+</sc-if>
+
+<sc-if value="{{show.workshop}}" hint-placeholder-val="{{ false }}">
+<section aria-label="Workshop" style="display: flex; flex-direction: column; gap: 12px; padding: 18px 20px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E3E8F0">
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{ctx}}" as="x" hint-placeholder-count="4">
+<span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: {{x.bg}}; color: #1F4E79; box-shadow: inset 0 0 0 1px #C9DDF1">{{x.t}}</span>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{chat}}" as="m" hint-placeholder-count="6">
+<div style="display: flex; flex-direction: column; gap: 4px; align-self: {{m.align}}; max-width: 88%; padding: 10px 14px; border-radius: {{m.radius}}; background: {{m.bg}}; color: {{m.fg}}">
+<sc-if value="{{m.hasWho}}" hint-placeholder-val="{{ true }}"><span style="font-size: 12px; font-weight: 700; color: #1F4E79">{{m.who}}</span></sc-if>
+<span style="font-size: 14px; line-height: 1.55; font-family: {{m.font}}">{{m.t}}</span>
+<sc-if value="{{m.hasNote}}" hint-placeholder-val="{{ false }}"><span style="font-size: 12px; color: #3B7020; font-weight: 600">{{m.note}}</span></sc-if>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; gap: 8px">
+<label for="ws-ask" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Message</label>
+<input id="ws-ask" type="text" placeholder="Ask about the chapter, or interview a character" style="flex: 1; min-width: 0; min-height: 44px; padding: 0 12px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; font: 14px 'Plus Jakarta Sans', sans-serif; color: #1B2A41">
+<button type="button" aria-label="Send" class="eos-btn" style="display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; border: 1px solid #1F4E79; background: #2E75B6; color: #FFFFFF; cursor: pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.497.497 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z M21.854 2.147l-10.94 10.939"></path></svg></button>
+</div>
+<button type="button" onClick="{{extract}}" class="eos-btn" style="align-self: flex-start; min-height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Turn this chat into proposals</button>
+<sc-if value="{{extracted}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 10px; border-top: 1px solid #E3E8F0">
+<sc-for list="{{proposals}}" as="q" hint-placeholder-count="2">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 10px 12px; border-radius: 12px; background: #FFF5D6; box-shadow: inset 0 0 0 1px #FFE699">
+<span style="flex: 1 1 180px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700; color: #6B4E00">{{q.type}}</span><span style="font-size: 14px; line-height: 1.45">{{q.t}}</span></span>
+<button type="button" class="eos-btn" style="min-height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid #B98A00; background: #FFC000; color: #12244A; font: 700 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{q.action}}</button>
+</div>
+</sc-for>
+<span style="font-size: 12px; color: #5F6E84">Chat never changes the chapter or the Story Bible. Each proposal waits for your decision.</span>
+</div>
+</sc-if>
+</section>
+</sc-if>
+
+</aside>
+</sc-if>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"view":{"editor":"enum","options":["writer","engine"],"default":"writer"},"$preview":{"width":1440,"height":2600}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { view: null, tool: 'rewrite', action: 'human', hStr: '', hDash: 'keep', hPasses: 1, hDlg: true, hGate: {}, decision: '', mention: '', changes: true, read: false, theme: 'paper', size: 19, spacing: 1.75, focus: false, votes: {}, extracted: false, aiFree: false, prov: false, gate: { g1: 'take', g3: 'take', g4: 'keep' } };
+}
+renderVals() {
+var self = this;
+var st = this.state;
+var view = st.view || this.props.view || 'writer';
+var engine = view === 'engine';
+var viewOpts = [{ id: 'writer', name: 'Writer view' }, { id: 'engine', name: 'Engine view' }].map(function (v) {
+var on = v.id === view;
+return { name: v.name, on: on, bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#1F3864' : '#4B5B73', shadow: on ? '0 1px 3px rgb(16 24 40 / 0.12)' : 'none', pick: function () { self.setState({ view: v.id }); } };
+});
+var PAPERS = {
+paper: { bg: '#FFFFFF', bar: '#FBFCFE', border: '#E3E8F0', ink: '#1B2A41', muted: '#5F6E84', ui: '#4B5B73', link: '#2E75B6', del: '#FDE9DC', delInk: '#8A3B0A', mark: '#E3EEF8', ring: '#9DC3E6', swatch: '#FFFFFF' },
+sepia: { bg: '#F7F0E1', bar: '#F2E9D6', border: '#E2D5BB', ink: '#3B2F22', muted: '#6E5E48', ui: '#5E5040', link: '#8A5A12', del: '#F2D9C4', delInk: '#7A3409', mark: '#EADFC6', ring: '#C9A86A', swatch: '#F4E9D3' },
+night: { bg: '#141B26', bar: '#18212E', border: '#2A3546', ink: '#E7ECF3', muted: '#A7B3C4', ui: '#B9C4D3', link: '#7FB2E5', del: '#4A2A1C', delInk: '#F5C9A8', mark: '#22344B', ring: '#4F7FB4', swatch: '#141B26' }
+};
+var paper = PAPERS[st.theme];
+var themes = [{ id: 'paper', name: 'Paper' }, { id: 'sepia', name: 'Sepia' }, { id: 'night', name: 'Night' }].map(function (t) {
+var on = t.id === st.theme;
+return { name: t.name, on: on, swatch: PAPERS[t.id].swatch, ring: on ? '#2E75B6' : '#E3E8F0', pick: function () { self.setState({ theme: t.id }); } };
+});
+var spacings = [{ v: 1.5, name: '1.5' }, { v: 1.75, name: '1.75' }, { v: 2, name: '2.0' }].map(function (sp) {
+var on = sp.v === st.spacing;
+return { name: sp.name, on: on, bg: on ? '#2E75B6' : '#FFFFFF', fg: on ? '#FFFFFF' : '#1B2A41', border: on ? '#1F4E79' : '#CBD5E1', pick: function () { self.setState({ spacing: sp.v }); } };
+});
+var ORIG = '[Protagonist] felt the weight of the morning settle, step by step.';
+var PASS = { checks: 'Passed the checks: no auto-fail words, no stock phrases, no facts changed.', checkFg: '#3B7020', checkIcon: 'M20 6 9 17l-5-5' };
+var FAIL = { checks: 'Still flagged: "felt" names an emotion (auto-fail) and "the weight of" is a stock phrase.', checkFg: '#A5470B', checkIcon: 'M21.73 18l-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3 M12 9v4 M12 17h.01' };
+var actDefs = [
+{ id: 'improve', name: 'Improve', text: '[Protagonist] walked the pier one plank at a time. Each step took the same care.' },
+{ id: 'grammar', name: 'Fix grammar', text: ORIG, bad: true },
+{ id: 'concise', name: 'Concise', text: '[Protagonist] walked the pier, step by step.' },
+{ id: 'expand', name: 'Expand', text: '[Protagonist] walked the length of the pier. Plank, gap, plank. The rail was wet under their hand, and they counted the lamps as they passed, nine of them, all still lit.' },
+{ id: 'tone', name: 'Change tone', text: 'The pier had its planks. [Protagonist] walked them in order.' },
+{ id: 'simplify', name: 'Simplify', text: '[Protagonist] walked down the pier step by step.' },
+{ id: 'dialogue', name: 'Add dialogue', text: '“Running late,” [Protagonist] said to no one. The gulls did not answer.' },
+{ id: 'show', name: 'Show, don’t tell', text: '[Protagonist] walked the pier one plank at a time, a hand on the wet rail.' },
+{ id: 'human', name: 'Humanize', text: '[Protagonist] took the pier one step at a time.' }
+];
+var actions = actDefs.map(function (a) {
+var on = a.id === st.action;
+return Object.assign({}, a, { on: on, bg: on ? '#DEEBF7' : '#FFFFFF', fg: on ? '#1F4E79' : '#1B2A41', border: on ? '#2E75B6' : '#D5DCE6', pick: function () { self.setState({ action: a.id, decision: '' }); } });
+});
+var a = actDefs.filter(function (x) { return x.id === st.action; })[0];
+var measure = function (t) {
+var w = t.split(/\s+/).filter(Boolean).length;
+var fv = (t.match(/\b(felt|saw|heard|noticed|realised|realized|watched|seemed|wondered|thought|knew)\b/gi) || []).length;
+var ly = (t.match(/\b\w{3,}ly\b/gi) || []).filter(function (x) { return ['only', 'early', 'family', 'likely', 'reply'].indexOf(x.toLowerCase()) < 0; }).length;
+var range = w >= 6 && w <= 22 ? 'sentence length within your usual range (6–22 words)' : 'longer than your usual range (6–22 words)';
+return 'Measured by code: ' + w + ' words · ' + fv + (fv === 1 ? ' filter verb' : ' filter verbs') + ' · ' + ly + ' -ly adverbs · ' + range;
+};
+var sel = Object.assign({ name: a.name, text: a.text, measures: measure(a.text) }, a.bad ? FAIL : PASS);
+var accepted = st.decision === 'accepted';
+var toolDefs = [{ id: 'write', name: 'Write' }, { id: 'rewrite', name: 'Rewrite' }, { id: 'describe', name: 'Describe' }, { id: 'brainstorm', name: 'Brainstorm' }, { id: 'workshop', name: 'Workshop' }, { id: 'changes', name: 'Changes' }];
+var tools = toolDefs.map(function (t) {
+var on = t.id === st.tool;
+return { name: t.name, on: on, bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#1F4E79' : '#FFFFFF', pick: function () { self.setState({ tool: t.id }); } };
+});
+var show = {};
+toolDefs.forEach(function (t) { show[t.id] = !st.aiFree && t.id === st.tool; });
+var PROV = { yours: '#FFC000', draft: '#2E75B6', polish: '#9DC3E6', edited: '#B98A00' };
+var pv = function (k) { return st.prov ? '4px solid ' + PROV[k] : '0 solid transparent'; };
+var prov = { p1: pv('draft'), p2: pv('edited'), p3: pv('yours'), p4: pv('draft'), p5: pv('polish') };
+var provKey = [{ t: 'Yours', c: PROV.yours }, { t: 'Agent draft', c: PROV.draft }, { t: 'Agent polish', c: PROV.polish }, { t: 'Your edit of agent text', c: PROV.edited }];
+var GD = [
+{ id: 'g1', n: 1, before: 'By twenty to, the queue already reached the ticket hut, and the gulls had found the bread van.', after: 'By twenty to, the queue reached the ticket hut and the gulls had found the bread van.', rec: 'take', why: 'Recommended: take · tighter, same facts' },
+{ id: 'g2', n: 3, locked: true, before: 'The wind off the water held steady from the east. Along the pier the lamps were still lit, though the sky had gone grey.' },
+{ id: 'g3', n: 4, before: ORIG, after: '[Protagonist] walked the pier one plank at a time, a hand on the wet rail.', rec: 'take', why: 'Recommended: take · removes an auto-fail word' },
+{ id: 'g4', n: 5, before: 'At the end of the pier, [Mentor] was already waiting with two coffees and the morning paper.', after: 'At the end of the pier, [Mentor] was patiently and quietly waiting with two coffees.', rec: 'keep', why: 'Recommended: keep · drops a detail and adds two -ly adverbs' }
+];
+var gate = GD.map(function (g, i) {
+if (g.locked) return { n: String(g.n), locked: true, open: false, before: g.before, note: 'Locked by you · came back unchanged', noteFg: '#6B4E00', bg: '#FFFBEB', ring: '#FFE699' };
+var cur = (st.gate || {})[g.id] || g.rec;
+var opts = [{ id: 'keep', name: 'Keep mine' }, { id: 'take', name: 'Take theirs' }, { id: 'edit', name: 'Edit' }].map(function (o) {
+var on = o.id === cur;
+return { name: o.name, on: on, bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#1F3864' : '#4B5B73', shadow: on ? '0 1px 3px rgb(16 24 40 / 0.12)' : 'none', pick: function () { var gg = Object.assign({}, st.gate); gg[g.id] = o.id; self.setState({ gate: gg }); } };
+});
+return { n: String(g.n), locked: false, open: true, before: g.before, after: g.after, note: g.why, noteFg: '#1F4E79', opts: opts, bg: '#FFFFFF', ring: '#E3E8F0',
+beforeDeco: cur === 'take' ? 'line-through' : 'none', beforeFg: cur === 'take' ? '#8A3B0A' : '#1B2A41', afterFg: cur === 'keep' ? '#94A3B8' : '#1B2A41' };
+});
+var taken = gate.filter(function (g) { return g.open && g.opts.some(function (o) { return o.on && o.name === 'Take theirs'; }); }).length;
+var mentions = {
+prot: { name: '[Protagonist]', alias: '[Protagonist]', tag: 'Point of view · Tier 1', engine: 'alias "[Protagonist]" → protagonist (longer match wins over [Ghost figure])', facts: [{ k: 'Refers to others by', v: '[Title or role], until Chapter 12' }, { k: '[The gated phrase]', v: 'Never says it until Beat 6 (auto-fail)' }, { k: 'Knows S4', v: 'In part: the clue planted in Chapter 1' }, { k: 'Appears in', v: 'Chapter 1 · point of view' }] },
+mentor: { name: '[Mentor]', alias: '[Mentor]', tag: 'Mentor · Tier 1', engine: 'alias "[Mentor]" → mentor', facts: [{ k: 'Arc', v: 'Flat · already holds the Truth' }, { k: 'Knows S3', v: 'Not yet' }, { k: 'Appears in', v: 'Chapter 1 · on the page' }] }
+};
+var men = mentions[st.mention] || mentions.prot;
+var PART = function (part, src, why, bg) { return { part: part, src: src, why: why, bg: bg || '#F5F7FB' }; };
+var promptParts = [
+PART('Instructions', 'Step prompt · original', 'The Rewrite step’s own instructions.'),
+PART('Voice contract', 'Shared component', 'The pen name’s register and pacing.'),
+PART('Style rules active now', 'Component · as of Ch 1', 'Gated phrases and voice rules in force at this beat.'),
+PART('[Protagonist] · [Mentor]', 'Story Bible as of Ch 1', 'Named in the surrounding text.', '#E3EEF8'),
+PART('The sentence and its neighbors', 'Ch 1 working draft', 'From the step’s allowed material.'),
+PART('Left out', 'Not sent', '[Antagonist], [Supporting character A] and world rules 2–4: not named here and not pinned.', '#FFFFFF')
+];
+var continues = [
+{ label: 'Option A · Model A', t: '[Mentor] handed over a coffee without a word and nodded at the board. The six o’clock was showing “delayed”.' },
+{ label: 'Option B · Model B', t: '[Protagonist] stopped short of the bench. [Mentor] had brought the morning paper, folded to a page they had both been avoiding.' }
+];
+var senses = [
+{ k: 'Sight', v: 'A line of salt where the tide reached the rail overnight.' },
+{ k: 'Sound', v: 'The ferry’s engine idling, then a single horn.' },
+{ k: 'Smell', v: 'Diesel, wet rope and coffee from the hut.' },
+{ k: 'Touch', v: 'The rail cold and slightly sticky with salt.' }
+];
+var reserveHits = [
+{ name: '[Reserved name 1]', note: 'Reserved for a minor role. Too close to the pen name on a cover, so kept for a supporting part.' },
+{ name: '[Reserved name 2]', note: 'Reserved for a minor role. Its meaning is heavy-handed for a lead.' }
+];
+var cardDefs = [
+{ id: 'k1', t: '[GENERATED NAME 1]', src: 'Model A', checks: 'passes the naming checks' },
+{ id: 'k2', t: '[GENERATED NAME 2]', src: 'Model B', checks: 'passes the naming checks' },
+{ id: 'k3', t: 'Kael Voss', src: 'Model B', checks: 'blocked before you saw it: both names are on the blocklist', blocked: true }
+];
+var cards = cardDefs.map(function (k) {
+var v = st.votes[k.id] || '';
+var setV = function (val) { var nv = Object.assign({}, st.votes); nv[k.id] = nv[k.id] === val ? '' : val; self.setState({ votes: nv }); };
+return Object.assign({}, k, {
+votable: !k.blocked, strike: k.blocked ? 'line-through' : 'none',
+bg: k.blocked ? '#FDF4EF' : '#FFFFFF', ring: k.blocked ? '#F4B183' : '#E3E8F0', checkFg: k.blocked ? '#A5470B' : '#5F6E84',
+isUp: v === 'up', isDown: v === 'down', upBg: v === 'up' ? '#E7F3DF' : '#FFFFFF', downBg: v === 'down' ? '#FDE9DC' : '#FFFFFF',
+hasVerdict: v !== '', verdict: v === 'up' ? 'Kept · filed to the Creative Reserve' : 'Declined · filed to the Reserve with your reason',
+up: function () { setV('up'); }, down: function () { setV('down'); }
+});
+});
+var ME = function (t) { return { who: '', hasWho: false, t: t, align: 'flex-end', radius: '14px 14px 4px 14px', bg: '#1F3864', fg: '#FFFFFF', font: "'Plus Jakarta Sans', sans-serif", hasNote: false, note: '' }; };
+var AI = function (who, eng, t, note, voice) { return { who: engine ? eng : who, hasWho: true, t: t, align: 'flex-start', radius: '14px 14px 14px 4px', bg: '#F2F7FD', fg: '#1B2A41', font: voice ? "'Lora', Georgia, serif" : "'Plus Jakarta Sans', sans-serif", hasNote: !!note, note: note || '' }; };
+var chat = [
+ME('Would [Protagonist] check the timetable twice, or does that read as nerves?'),
+AI('Idea partner', 'Workshop Chat · synthesis · [PRIMARY]', 'Once reads as habit. A second check with no stated reason reads as doubt, which the style rules keep off the page. If you want the doubt, put it in what they notice instead.'),
+ME('Interview [Mentor]: has [Protagonist] ever told you about their past?'),
+AI('[Mentor] · as of Chapter 1', 'Character Interview · prose · as of Ch 1', '“Their past? We talk about the weather and the timetable. That is all I have ever been told.”', '[Mentor] doesn’t know S3 yet, so can’t give it away.', true)
+];
+var ctx = [{ t: 'Story Bible as of Ch 1', bg: '#F2F7FD' }, { t: 'This chapter', bg: '#F2F7FD' }, { t: 'Ch 1 brief', bg: '#F2F7FD' }, { t: '+ Add', bg: '#FFFFFF' }];
+var proposals = [
+{ type: 'Scene beat for the Chapter 1 brief', t: 'The timetable is checked once; the doubt shows in what [Protagonist] notices.', action: 'Review pitch' },
+{ type: 'Story seed for the Creative Reserve', t: '[Mentor] has never once asked about [Protagonist]’s past.', action: 'Review pitch' }
+];
+var HU = {"reason": "1 stock phrase or summary opener in 96 words (10 per 1,000), and sentence lengths vary by about 5.1 words, so balanced with 1 pass.", "rec": "balanced", "recPasses": 1, "before": {"spread": 5.1, "variety": 75.8, "stock": 1, "openers": 0, "dashes": 0, "ease": 84.5, "words": 96}, "paras": ["The first ferry left at six. By twenty to, the queue already reached the ticket hut, and the gulls had found the bread van.", "[Protagonist] showed a pass at the barrier and checked the timetable against the one in their pocket. The times matched.", "The wind off the water held steady from the east. Along the pier the lamps were still lit, though the sky had gone grey.", "[Protagonist] felt the weight of the morning settle, step by step.", "At the end of the pier, [Mentor] was already waiting with two coffees and the morning paper."], "runs": {"light|keep": {"paras": ["The first ferry left at six. By twenty to, the queue already reached the ticket hut, and the gulls had found the bread van.", "[Protagonist] showed a pass at the barrier and checked the timetable against the one in their pocket. The times matched.", "The wind off the water held steady from the east. Along the pier the lamps were still lit, though the sky had gone grey.", "[Protagonist] took the morning step by step, one plank at a time.", "At the end of the pier, [Mentor] was already waiting with two coffees and the morning paper."], "after": {"spread": 5.1, "variety": 76.2, "stock": 0, "openers": 0, "dashes": 0, "ease": 85.5, "words": 97}, "drift": 1.0, "warnings": [], "why": {"3": "Removes a stock phrase and a filter verb"}}, "light|fewer": {"paras": ["The first ferry left at six. By twenty to, the queue already reached the ticket hut, and the gulls had found the bread van.", "[Protagonist] showed a pass at the barrier and checked the timetable against the one in their pocket. The times matched.", "The wind off the water held steady from the east. Along the pier the lamps were still lit, though the sky had gone grey.", "[Protagonist] took the morning step by step, one plank at a time.", "At the end of the pier, [Mentor] was already waiting with two coffees and the morning paper."], "after": {"spread": 5.1, "variety": 76.2, "stock": 0, "openers": 0, "dashes": 0, "ease": 85.5, "words": 97}, "drift": 1.0, "warnings": [], "why": {"3": "Removes a stock phrase and a filter verb"}}, "light|none": {"paras": ["The first ferry left at six. By twenty to, the queue already reached the ticket hut, and the gulls had found the bread van.", "[Protagonist] showed a pass at the barrier and checked the timetable against the one in their pocket. The times matched.", "The wind off the water held steady from the east. Along the pier the lamps were still lit, though the sky had gone grey.", "[Protagonist] took the morning step by step, one plank at a time.", "At the end of the pier, [Mentor] was already waiting with two coffees and the morning paper."], "after": {"spread": 5.1, "variety": 76.2, "stock": 0, "openers": 0, "dashes": 0, "ease": 85.5, "words": 97}, "drift": 1.0, "warnings": [], "why": {"3": "Removes a stock phrase and a filter verb"}}, "balanced|keep": {"paras": ["The first ferry left at six. By twenty to, the queue already reached the ticket hut, and the gulls had found the bread van.", "[Protagonist] showed a pass at the barrier and checked the timetable against the one in their pocket. It matched.", "The wind off the water held steady from the east. Along the pier the lamps were still lit, though the sky had gone grey.", "[Protagonist] walked the pier one plank at a time.", "[Mentor] was waiting at the end of the pier with two coffees and the morning paper."], "after": {"spread": 5.3, "variety": 76.7, "stock": 0, "openers": 0, "dashes": 0, "ease": 87.6, "words": 92}, "drift": -4.2, "warnings": [], "why": {"1": "A shorter last beat; same facts", "3": "Removes a stock phrase and a filter verb", "4": "Puts [Mentor] first; same facts"}}, "balanced|fewer": {"paras": ["The first ferry left at six. By twenty to, the queue already reached the ticket hut, and the gulls had found the bread van.", "[Protagonist] showed a pass at the barrier and checked the timetable against the one in their pocket. It matched.", "The wind off the water held steady from the east. Along the pier the lamps were still lit, though the sky had gone grey.", "[Protagonist] walked the pier one plank at a time.", "[Mentor] was waiting at the end of the pier with two coffees and the morning paper."], "after": {"spread": 5.3, "variety": 76.7, "stock": 0, "openers": 0, "dashes": 0, "ease": 87.6, "words": 92}, "drift": -4.2, "warnings": [], "why": {"1": "A shorter last beat; same facts", "3": "Removes a stock phrase and a filter verb", "4": "Puts [Mentor] first; same facts"}}, "balanced|none": {"paras": ["The first ferry left at six. By twenty to, the queue already reached the ticket hut, and the gulls had found the bread van.", "[Protagonist] showed a pass at the barrier and checked the timetable against the one in their pocket. It matched.", "The wind off the water held steady from the east. Along the pier the lamps were still lit, though the sky had gone grey.", "[Protagonist] walked the pier one plank at a time.", "[Mentor] was waiting at the end of the pier with two coffees and the morning paper."], "after": {"spread": 5.3, "variety": 76.7, "stock": 0, "openers": 0, "dashes": 0, "ease": 87.6, "words": 92}, "drift": -4.2, "warnings": [], "why": {"1": "A shorter last beat; same facts", "3": "Removes a stock phrase and a filter verb", "4": "Puts [Mentor] first; same facts"}}, "strong|keep": {"paras": ["Six o’clock, first ferry. By twenty to, the queue had backed up to the ticket hut, and the gulls had found the bread van.", "[Protagonist] showed a pass at the barrier. Then the timetable, checked against the one in their pocket. The times matched.", "The wind off the water held steady from the east. Along the pier the lamps were still lit, though the sky had gone grey.", "[Protagonist] took the pier plank by plank — no hurry — the morning could wait.", "[Mentor] was already at the end of the pier, two coffees and the morning paper in hand."], "after": {"spread": 5.4, "variety": 76.3, "stock": 0, "openers": 0, "dashes": 2, "ease": 87.9, "words": 98}, "drift": 2.1, "warnings": [], "why": {"0": "Shorter, sharper opening; same facts", "1": "Varies the rhythm; same facts", "3": "Removes a stock phrase and a filter verb", "4": "Tighter; same facts"}}, "strong|fewer": {"paras": ["Six o’clock, first ferry. By twenty to, the queue had backed up to the ticket hut, and the gulls had found the bread van.", "[Protagonist] showed a pass at the barrier. Then the timetable, checked against the one in their pocket. The times matched.", "The wind off the water held steady from the east. Along the pier the lamps were still lit, though the sky had gone grey.", "[Protagonist] took the pier plank by plank — no hurry, the morning could wait.", "[Mentor] was already at the end of the pier, two coffees and the morning paper in hand."], "after": {"spread": 5.4, "variety": 76.3, "stock": 0, "openers": 0, "dashes": 1, "ease": 87.9, "words": 98}, "drift": 2.1, "warnings": [], "why": {"0": "Shorter, sharper opening; same facts", "1": "Varies the rhythm; same facts", "3": "Removes a stock phrase and a filter verb", "4": "Tighter; same facts"}}, "strong|none": {"paras": ["Six o’clock, first ferry. By twenty to, the queue had backed up to the ticket hut, and the gulls had found the bread van.", "[Protagonist] showed a pass at the barrier. Then the timetable, checked against the one in their pocket. The times matched.", "The wind off the water held steady from the east. Along the pier the lamps were still lit, though the sky had gone grey.", "[Protagonist] took the pier plank by plank, no hurry, the morning could wait.", "[Mentor] was already at the end of the pier, two coffees and the morning paper in hand."], "after": {"spread": 5.4, "variety": 76.3, "stock": 0, "openers": 0, "dashes": 0, "ease": 87.9, "words": 98}, "drift": 2.1, "warnings": [], "why": {"0": "Shorter, sharper opening; same facts", "1": "Varies the rhythm; same facts", "3": "Removes a stock phrase and a filter verb", "4": "Tighter; same facts"}}}};
+var hStr = st.hStr || HU.rec;
+var hRun = HU.runs[hStr + '|' + st.hDash];
+var seg = function (cur, defs, set) {
+return defs.map(function (d) { var on = d.id === cur; return { name: d.name, on: on, bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#1F3864' : '#4B5B73', shadow: on ? '0 1px 3px rgb(16 24 40 / 0.12)' : 'none', pick: function () { set(d.id); } }; });
+};
+var huSettings = [
+{ label: 'Strength', help: { light: 'Changes only what sounds machine-written.', balanced: 'Reworks rhythm and stock phrasing; every beat stays.', strong: 'Rewrites freely; every event and fact stays.' }[hStr],
+opts: seg(hStr, [{ id: 'light', name: 'Light' }, { id: 'balanced', name: 'Balanced' }, { id: 'strong', name: 'Strong' }], function (v) { self.setState({ hStr: v, hGate: {} }); }) },
+{ label: 'Passes', help: st.hPasses === 1 ? 'One rewrite.' : 'Each pass rewrites the one before. More passes cost more.',
+opts: seg(String(st.hPasses), [{ id: '1', name: '1' }, { id: '2', name: '2' }, { id: '3', name: '3' }], function (v) { self.setState({ hPasses: Number(v) }); }) },
+{ label: 'Em dashes in narration', help: st.hDlg ? 'Dialogue keeps its own punctuation.' : 'With dialogue unprotected, this applies to dialogue too.',
+opts: seg(st.hDash, [{ id: 'keep', name: 'Keep' }, { id: 'fewer', name: 'Fewer' }, { id: 'none', name: 'None' }], function (v) { self.setState({ hDash: v }); }) }
+];
+var HB = HU.before, HA = hRun.after;
+var MR = function (name, help, b, a, better) {
+var fg = '#1B2A41';
+if (better && a !== b) fg = ((better === 'up') === (a > b)) ? '#3B7020' : '#A5470B';
+return { name: name, help: help, before: String(b), after: String(a), fg: fg };
+};
+var drift = hRun.drift;
+var huMeasures = [
+MR('Sentence length spread', 'How much sentence lengths vary, in words', HB.spread, HA.spread, 'up'),
+MR('Vocabulary variety', 'Different words in every 50, as a share', HB.variety, HA.variety, 'up'),
+MR('Stock phrases', 'Phrases that read as machine-written', HB.stock, HA.stock, 'down'),
+MR('Summary openers', '“This was…”, “It was clear that…”', HB.openers, HA.openers, 'down'),
+MR('Em dashes', 'Counted in the whole scene', HB.dashes, HA.dashes, ''),
+MR('Reading ease', 'Higher reads more easily', HB.ease, HA.ease, ''),
+{ name: 'Words', help: 'Warning beyond 10% either way', before: String(HB.words), after: HA.words + (drift === 0 ? '' : ' (' + (drift > 0 ? '+' : '−') + Math.round(Math.abs(drift)) + '%)'), fg: '#1B2A41' }
+];
+var huGate = HU.paras.map(function (b, i) {
+var n = String(i + 1);
+if (i === 2) return { n: n, fixed: true, open: false, before: b, note: 'Locked by you · came back unchanged', noteFg: '#6B4E00', bg: '#FFFBEB', ring: '#FFE699', cur: '' };
+var aft = hRun.paras[i];
+if (aft === b) return { n: n, fixed: true, open: false, before: b, note: 'Already reads naturally · no change', noteFg: '#5F6E84', bg: '#F8FAFC', ring: '#E3E8F0', cur: '' };
+var id = 'h' + i;
+var cur = (st.hGate || {})[id] || 'take';
+var opts = [{ id: 'keep', name: 'Keep mine' }, { id: 'take', name: 'Take theirs' }, { id: 'edit', name: 'Edit' }].map(function (o) {
+var on = o.id === cur;
+return { name: o.name, on: on, bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#1F3864' : '#4B5B73', shadow: on ? '0 1px 3px rgb(16 24 40 / 0.12)' : 'none', pick: function () { var gg = Object.assign({}, st.hGate); gg[id] = o.id; self.setState({ hGate: gg }); } };
+});
+return { n: n, fixed: false, open: true, before: b, after: aft, cur: cur, note: 'Recommended: take · ' + (hRun.why[String(i)] || 'same facts'), noteFg: '#1F4E79', opts: opts, bg: '#FFFFFF', ring: '#E3E8F0',
+beforeDeco: cur === 'take' ? 'line-through' : 'none', beforeFg: cur === 'take' ? '#8A3B0A' : '#1B2A41', afterFg: cur === 'keep' ? '#94A3B8' : '#1B2A41' };
+});
+var huOpen = huGate.filter(function (g) { return g.open; });
+var huTaken = huOpen.filter(function (g) { return g.cur === 'take'; }).length;
+var TEMP = { light: 0.7, balanced: 0.9, strong: 1.1 };
+var lo = Math.round(HB.words * 0.9), hi = Math.round(HB.words * 1.1);
+var hu = {
+reason: HU.reason, usingRec: hStr === HU.rec, notUsingRec: hStr !== HU.rec, useRec: function () { self.setState({ hStr: '', hGate: {} }); },
+settings: huSettings, measures: huMeasures, gate: huGate,
+dialogue: st.hDlg, toggleDialogue: function () { self.setState({ hDlg: !st.hDlg }); }, dlgBg: st.hDlg ? '#2E75B6' : '#CBD5E1', dlgLeft: st.hDlg ? '21px' : '3px',
+checks: (st.hDlg ? 'Dialogue protected (none in this scene)' : 'Dialogue not protected') + ' · the locked paragraph came back unchanged · [Protagonist] and [Mentor] kept · length within 10%',
+summary: huTaken + ' of ' + huOpen.length + ' changes taken · a restore point is made first',
+route: 'edit_actions.humanize · prose · [PRIMARY] → [FALLBACK] · standard tier · temperature ' + TEMP[hStr] + ' · ' + st.hPasses + (st.hPasses === 1 ? ' pass' : ' passes') + ' · protected spans 1 (locked 1, dialogue 0) · retries 0 · config 2026-10-19',
+promptParts: [
+PART('Instructions', 'Humanize · config', 'Keep point of view, tense, events, facts, names and the order of beats; add nothing.'),
+PART('Depth', 'Strength · ' + hStr, huSettings[0].help),
+PART('Voice and spelling', 'Project style card', 'The pen name’s voice notes and the project’s English variant.'),
+PART('Phrases to avoid', 'Shared list', 'The stock phrases code also counts before and after.'),
+PART('Placeholder rule', 'Code', 'One mark stands for the locked paragraph; it must come back once, unchanged.'),
+PART('Length', 'Code', 'About ' + HB.words + ' words; between ' + lo + ' and ' + hi + '.'),
+PART('Left out', 'Not sent', 'The locked paragraph’s text (only its mark is sent) and the Story Bible beyond the names in the scene.', '#FFFFFF')
+]
+};
+var chrome = !st.focus;
+return {
+viewOpts: viewOpts, isEngine: engine, paper: paper, themes: themes, spacings: spacings,
+fontSize: st.size, fontSizePx: st.size + 'px', lineHeight: String(st.spacing), paraGap: Math.round(st.size * 0.9) + 'px',
+readOpen: st.read, toggleRead: function () { self.setState({ read: !st.read }); },
+smaller: function () { self.setState({ size: Math.max(15, st.size - 2) }); }, bigger: function () { self.setState({ size: Math.min(25, st.size + 2) }); },
+changes: st.changes, changesBg: st.changes ? '#2E75B6' : '#CBD5E1', changesLeft: st.changes ? '21px' : '3px', toggleChanges: function () { self.setState({ changes: !st.changes }); },
+showOld: st.changes && accepted, orig: ORIG,
+current: accepted ? a.text : ORIG, markBg: accepted ? (st.changes ? '#E7F3DF' : 'transparent') : paper.mark, markRing: accepted ? (st.changes ? '#B9DCA4' : 'transparent') : paper.ring,
+showChrome: chrome, focus: st.focus, focusBg: st.focus ? '#DEEBF7' : '#FFFFFF', focusLabel: st.focus ? 'Exit focus' : 'Focus',
+toggleFocus: function () { self.setState({ focus: !st.focus }); },
+mainMax: chrome ? '1240px' : '880px',
+tools: tools, show: show, actions: actions, sel: sel, promptParts: promptParts, hu: hu,
+isHuman: st.action === 'human', notHuman: st.action !== 'human', rewriteLabel: st.action === 'human' ? 'Humanize works on the whole scene; the other actions on the highlighted sentence' : 'Rewrite the highlighted sentence',
+aiFree: st.aiFree, toolsOn: !st.aiFree, toggleAiFree: function () { self.setState({ aiFree: !st.aiFree }); }, aiFreeLabel: st.aiFree ? 'AI-free: on' : 'AI-free', aiFreeBg: st.aiFree ? '#FFF5D6' : '#FFFFFF', aiFreeBorder: st.aiFree ? '#B98A00' : '#CBD5E1',
+provOn: st.prov, toggleProv: function () { self.setState({ prov: !st.prov }); }, provBtnBg: st.prov ? '#DEEBF7' : 'transparent', provPad: st.prov ? '12px' : '0', prov: prov, provKey: provKey,
+gate: gate, gateSummary: taken + ' of 3 changes taken · a restore point is made first · the locked paragraph is untouched',
+decided: st.decision !== '', decisionText: accepted ? 'Accepted · saved as a new version. The old text is kept.' : (st.decision === 'alt' ? 'Type your own version in the text. The same checks run on it before it is saved.' : 'Rejected · noted for the Model Lab.'),
+alt: function () { self.setState({ decision: 'alt' }); },
+accept: function () { self.setState({ decision: 'accepted' }); }, reject: function () { self.setState({ decision: 'rejected' }); }, undo: function () { self.setState({ decision: '' }); },
+hasMention: !st.aiFree && st.mention !== '', men: men,
+mBgProt: st.mention === 'prot' ? paper.mark : 'transparent', mBgMentor: st.mention === 'mentor' ? paper.mark : 'transparent',
+mProt: function () { self.setState({ mention: 'prot' }); }, mMentor: function () { self.setState({ mention: 'mentor' }); }, mClose: function () { self.setState({ mention: '' }); },
+continues: continues, senses: senses, reserveHits: reserveHits, cards: cards, chat: chat, ctx: ctx, proposals: proposals,
+extracted: st.extracted, extract: function () { self.setState({ extracted: true }); }
+};
+}
+}
+</script>
+</body>
+</html>

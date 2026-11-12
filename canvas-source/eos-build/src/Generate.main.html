@@ -1,0 +1,103 @@
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+
+<div style="flex: 1.5 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+
+<section aria-labelledby="pick" style="display: flex; flex-direction: column; gap: 12px; padding: 20px 22px; @CARD@">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px">
+<h2 id="pick" style="@H2@"><span style="color: #2E75B6">1</span> · Choose chapters <span style="font-size: 14px; font-weight: 600; color: #5F6E84">{{selCount}} selected</span></h2>
+<span style="display: flex; gap: 4px"><button type="button" onClick="{{selectAll}}" class="eos-btn" style="@BTN_GHOST@">Select all</button><button type="button" onClick="{{selectNone}}" class="eos-btn" style="@BTN_GHOST@">Clear</button></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{chapters}}" as="c" hint-placeholder-count="6">
+<label class="eos-row" style="display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 6px 12px; border-radius: 12px; background: {{c.bg}}; box-shadow: inset 0 0 0 1px {{c.ring}}; cursor: pointer">
+<input type="checkbox" checked="{{c.on}}" onChange="{{c.toggle}}" style="width: 20px; height: 20px; accent-color: #2E75B6; cursor: pointer">
+<span style="width: 28px; font-size: 13px; font-weight: 700; color: #5F6E84">{{c.num}}</span>
+<span style="flex: 1; min-width: 0; @SERIF@; font-size: 17px">{{c.title}}</span>
+<span style="@BADGE@; background: {{c.tBg}}; color: {{c.tFg}}; box-shadow: inset 0 0 0 1px {{c.tRing}}">{{c.state}}</span>
+</label>
+</sc-for>
+</div>
+<span style="font-size: 13px; color: #5F6E84">Chapters 7–24 appear here as their outline entries are confirmed.</span>
+</section>
+
+<section aria-labelledby="tier" style="display: flex; flex-direction: column; gap: 12px; padding: 20px 22px; @CARD@">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px">
+<h2 id="tier" style="@H2@"><span style="color: #2E75B6">2</span> · Quality tier</h2>
+<a href="Lab.dc.html" style="font-size: 14px; font-weight: 600">How tiers pick models</a>
+</div>
+<div role="radiogroup" aria-labelledby="tier" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 10px">
+<sc-for list="{{tiers}}" as="t" hint-placeholder-count="4">
+<button type="button" role="radio" aria-checked="{{t.on}}" onClick="{{t.pick}}" class="eos-row" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px; min-height: 88px; padding: 12px 14px; border-radius: 12px; border: 2px solid {{t.border}}; background: {{t.bg}}; text-align: left; color: #1B2A41; font-family: inherit; cursor: pointer">
+<span style="display: flex; align-items: center; gap: 8px; width: 100%"><span style="display: grid; place-items: center; width: 18px; height: 18px; border-radius: 999px; box-shadow: inset 0 0 0 2px {{t.dot}}"><span style="width: 8px; height: 8px; border-radius: 999px; background: {{t.dotFill}}"></span></span><span style="font-size: 15px; font-weight: 800">{{t.name}}</span></span>
+<span style="font-size: 13px; @MUTED@">{{t.tag}}</span>
+<sc-if value="{{t.rec}}" hint-placeholder-val="{{ false }}"><span style="@BADGE@; background: #DEEBF7; color: #1F4E79; box-shadow: inset 0 0 0 1px #9DC3E6">Recommended</span></sc-if>
+</button>
+</sc-for>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 1.55"><strong>Writers in this tier:</strong> <span style="@MUTED@">{{tier.writers}}</span></p>
+<p style="margin: 0; font-size: 13px; color: #5F6E84">Checkers and the mature tier stay the same in every tier, so the independence and mature rules always hold.</p>
+</section>
+
+<section aria-labelledby="settings" style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; @CARD@">
+<h2 id="settings" style="@H2@"><span style="color: #2E75B6">3</span> · Settings for this batch</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="@FIELDLABEL@">Point of view</span><span style="display: flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: 10px; background: #F5F7FB; font-size: 14px; font-weight: 600">Close third · [Protagonist] <span style="margin-left: auto; font-size: 12px; font-weight: 600; color: #5F6E84">from the Bible</span></span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="tense" style="@FIELDLABEL@">Tense</label><select id="tense" style="@INPUT@"><option>Past</option><option>Present</option></select></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="@FIELDLABEL@">Genre pack</span><a href="Genre.dc.html" style="@INPUT@; display: flex; align-items: center; justify-content: space-between; gap: 8px; text-decoration: none; color: #1B2A41"><span>Romantic suspense + thriller</span>@ICON:chevr:16:#5F6E84@</a></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="lvl" style="@FIELDLABEL@">Prose target</label><select id="lvl" style="@INPUT@"><option>Level 5 · Truthful to the narrator, rising to 6 at key points</option><option>Level 6 · Emotional infusion</option><option>Level 7 · Sublime prose</option></select></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="notes" style="display: flex; justify-content: space-between; @FIELDLABEL@"><span>Notes for every step in this batch</span><span style="font-weight: 500; color: #5F6E84">optional</span></label>
+<textarea id="notes" rows="3" placeholder="Anything every agent in this batch should know" style="padding: 10px 12px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; font: 14px/1.5 'Plus Jakarta Sans', sans-serif; color: #1B2A41; resize: vertical"></textarea>
+</div>
+</section>
+</div>
+
+<aside style="flex: 1 1 340px; min-width: 0; position: sticky; top: 20px; display: flex; flex-direction: column; gap: 14px">
+<section aria-labelledby="run" style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; @CARD@">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+<h2 id="run" style="@H2@">This batch</h2>
+<span style="@BADGE@; background: {{runTone.bg}}; color: {{runTone.fg}}; box-shadow: inset 0 0 0 1px {{runTone.ring}}">{{runLabel}}</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 30px; font-weight: 800; letter-spacing: -0.01em">{{selCount}} chapters</span>
+<span style="font-size: 14px; @MUTED@">{{doneRuns}} of {{totalRuns}} agent runs · {{tier.name}} tier</span>
+</div>
+<div role="progressbar" aria-label="Batch progress" aria-valuemin="0" aria-valuemax="{{totalRuns}}" aria-valuenow="{{doneRuns}}" style="height: 8px; border-radius: 999px; background: #E8EEF6; overflow: hidden"><div style="width: {{pct}}; height: 100%; border-radius: 999px; background: #2E75B6"></div></div>
+<div style="display: flex; justify-content: space-between; gap: 8px; padding: 10px 12px; border-radius: 12px; background: #F5F7FB; font-size: 14px"><span style="@MUTED@">Estimated cost</span><span style="font-weight: 700">[$ ESTIMATE]</span></div>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 10px 12px; @NAVY@; font-size: 12px; @MONO@">
+<span>{{selCount}} chapters × 16 automated agents = {{totalRuns}} runs</span>
+<span>Runs on its own branch: your manuscript changes only when you merge each chapter.</span>
+<span>estimate = expected tokens × registry prices × runs</span>
+<span>planning runs ahead; drafting waits for the previous lock</span>
+</div>
+</sc-if>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<sc-if value="{{showStart}}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{start}}" class="eos-btn" style="@BTN_PRIMARY@; flex: 1 1 auto">@ICON:play:16@{{startLabel}}</button></sc-if>
+<sc-if value="{{showPause}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{pause}}" class="eos-btn" style="@BTN_OUTLINE@; flex: 1 1 auto">@ICON:pause:16@Pause</button></sc-if>
+<button type="button" onClick="{{reset}}" class="eos-btn" style="@BTN_GHOST@">Reset</button>
+<a href="Recipes.dc.html" class="eos-btn" style="@BTN_GHOST@">Save as a recipe</a>
+</div>
+</section>
+
+<section aria-labelledby="queue" style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; @CARD@">
+<h2 id="queue" style="margin: 0; font-size: 15px; font-weight: 800">Queue</h2>
+<sc-for list="{{queue}}" as="q" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 10px 12px; border-radius: 12px; background: {{q.rowBg}}; box-shadow: inset 0 0 0 1px {{q.ring}}">
+<span style="display: flex; justify-content: space-between; gap: 8px"><span style="font-size: 14px; font-weight: 700">{{q.title}}</span><span style="@BADGE@; background: {{q.bg}}; color: {{q.fg}}; box-shadow: inset 0 0 0 1px {{q.ring}}">{{q.state}}</span></span>
+<span style="font-size: 13px; line-height: 1.45; @MUTED@">{{q.note}}</span>
+<sc-if value="{{q.isGate}}" hint-placeholder-val="{{ false }}"><a href="Chapter.dc.html" class="eos-btn" style="@BTN_GOLD@; align-self: flex-start; min-height: 40px; font-size: 13px">Decide</a></sc-if>
+</div>
+</sc-for>
+<sc-if value="{{empty}}" hint-placeholder-val="{{ false }}"><div style="padding: 18px 12px; border-radius: 12px; border: 1px dashed #CBD5E1; text-align: center; font-size: 13px; @MUTED@">Choose at least one chapter to start a batch.</div></sc-if>
+</section>
+
+<section style="@NOTE@">
+<span style="@NOTEICON@">@ICON:flag@</span>
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 700">A batch stops and waits for you when</span>
+<ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 13px; line-height: 1.5; @MUTED@"><li>a check finds a contradiction or a possible false alarm</li><li>a step still fails after two retries</li><li>a mature scene has no mature model to go to</li><li>a chapter is ready for your review and lock</li></ul>
+<span style="font-size: 12px; line-height: 1.5; color: #5F6E84">Planning runs ahead for later chapters. Drafting waits until the chapter before is locked, because the continuity check reads its summary.</span></span>
+</section>
+</aside>
+</div>

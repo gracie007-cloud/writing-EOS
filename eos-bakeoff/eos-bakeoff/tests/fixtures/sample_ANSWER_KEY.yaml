@@ -1,0 +1,55 @@
+# MADE-UP answer key for tests only. Nothing here comes from the real Run 01 key.
+run: "Test fixture"
+
+extraction:
+  character_selector:
+    characters:
+      expected:
+        - name: "Mara Quill"
+          aliases: ["Quill", "Detective Mara Quill", "Det. Mara Quill"]
+        - name: "Oskar Brede"
+          aliases: ["Brede", "Dr. Oskar Brede"]
+        - name: "Lúcia Fonseca"
+          aliases: ["Fonseca"]
+      forbidden:
+        - name: "Ivo Kaan"
+          aliases: ["Kaan", "K.7"]
+      allowed: []
+
+  worldbuilding_selector:
+    locations:
+      expected:
+        - name: "The Salt Archive"
+          aliases: ["Salt Archive"]
+        - name: "Pier Nine"
+          aliases: []
+      forbidden:
+        - name: "The Night Bazaar"
+          aliases: ["Night Bazaar", "the Bazaar"]
+      allowed: []
+    world_rules:
+      expected:
+        - name: "Tides"
+          aliases: ["Rule 1", "World Rule 1"]
+        - name: "Lanterns"
+          aliases: ["Rule 2", "World Rule 2"]
+      forbidden: []
+      allowed:
+        - name: "Ferries"
+          aliases: ["Rule 3"]
+
+verdict:
+  chronology_check:
+    planted:
+      - id: P1
+        sentence: "Quill reports to the harbour office every evening."
+        fact: "Quill reports to the Salt Archive, not the harbour office."
+        keywords: ["salt archive"]
+      - id: P2
+        sentence: "The lanterns were first lit twenty years ago."
+        fact: "The lanterns were first lit five years ago."
+        keywords: ["five years", "5 years"]
+      - id: P3
+        sentence: "Brede keeps a digital ledger of every name."
+        fact: "Brede keeps a handwritten paper ledger."
+        keywords: ["paper", "handwritten"]

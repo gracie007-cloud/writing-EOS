@@ -1,0 +1,221 @@
+{
+ "Develop": {
+  "doctitle": "Writing EOS · Story Blueprint",
+  "active": "develop",
+  "h": 3300,
+  "crumbs": [
+   [
+    "Story Blueprint",
+    ""
+   ]
+  ],
+  "eyebrow": "Story Blueprint · locked",
+  "title": "From braindump to locked outline",
+  "purpose": "Nine steps, in order. Each works inside the limits the steps before it set. When a later step shows an earlier one doesn’t hold, the work goes back to that step and everything after it runs again.",
+  "actions": "<button type=\"button\" class=\"eos-btn\" style=\"@BTN_OUTLINE@\">Switch project</button><button type=\"button\" class=\"eos-btn\" style=\"@BTN_PRIMARY@\">New project</button>"
+ },
+ "Bible": {
+  "doctitle": "Writing EOS · Story Bible",
+  "active": "bible",
+  "h": 2700,
+  "crumbs": [
+   [
+    "Story Bible",
+    ""
+   ]
+  ],
+  "eyebrow": "Canon · [Story world]",
+  "title": "Story Bible",
+  "purpose": "The single source of truth. Every field carries a canon status; agents may use only canon, and they only ever see it as it stands at their chapter. Changes go through a change request you accept.",
+  "extra": "<ul style=\"margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px\"><li style=\"@BADGE@; background: #E7F3DF; color: #3B7020; box-shadow: inset 0 0 0 1px #B9DCA4\">Locked</li><li style=\"@BADGE@; background: #1F3864; color: #FFFFFF\">Canon</li><li style=\"@BADGE@; background: #FFF5D6; color: #6B4E00; box-shadow: inset 0 0 0 1px #FFD966\">Provisional</li><li style=\"@BADGE@; background: #EEF1F5; color: #475569; box-shadow: inset 0 0 0 1px #D5DCE6\">Unknown</li><li style=\"@BADGE@; background: #FDE9DC; color: #A5470B; box-shadow: inset 0 0 0 1px #F4B183\">Your decision needed</li></ul>",
+  "actions": "<button type=\"button\" class=\"eos-btn\" style=\"@BTN_OUTLINE@\">Compare versions</button><button type=\"button\" class=\"eos-btn\" style=\"@BTN_PRIMARY@\">Propose a change</button>"
+ },
+ "Generate": {
+  "doctitle": "Writing EOS · Generate chapters",
+  "active": "generate",
+  "h": 1700,
+  "crumbs": [
+   [
+    "Chapters",
+    "Chapter.dc.html"
+   ],
+   [
+    "Generate",
+    ""
+   ]
+  ],
+  "eyebrow": "Chapter Generator · from the locked outline",
+  "title": "Generate chapters",
+  "purpose": "Pick chapters, a quality tier and a few settings. Each chapter runs through its steps, each on its own model, and the batch stops whenever something needs you."
+ },
+ "Draft": {
+  "doctitle": "Writing EOS · Score drafts",
+  "active": "review",
+  "h": 1550,
+  "crumbs": [
+   [
+    "Score drafts",
+    "Draft.dc.html"
+   ],
+   [
+    "Chapter 1",
+    ""
+   ]
+  ],
+  "eyebrow": "Score drafts · Opening chapter test · 17 Oct 2026",
+  "title": "Draft 1 of 15",
+  "purpose": "Score how it reads, not who wrote it: the model behind each draft stays hidden until you have scored all fifteen.",
+  "actions": "<button type=\"button\" aria-label=\"Previous draft\" class=\"eos-btn\" style=\"@BTN_OUTLINE@; padding: 0 12px\">@ICON:chevl@</button><button type=\"button\" aria-label=\"Next draft\" class=\"eos-btn\" style=\"@BTN_OUTLINE@; padding: 0 12px\">@ICON:chevr@</button>"
+ },
+ "Lab": {
+  "doctitle": "Writing EOS · Model Lab",
+  "active": "lab",
+  "h": 1500,
+  "crumbs": [
+   [
+    "Model Lab",
+    ""
+   ]
+  ],
+  "eyebrow": "Model Lab · Opening chapter test · 17 Oct 2026",
+  "title": "Which model does each job",
+  "purpose": "The same test material goes to every candidate model, three times each. Scores decide which model each step runs on, so every job gets the model that does it best.",
+  "actions": "<button type=\"button\" class=\"eos-btn\" style=\"@BTN_OUTLINE@\">Estimate cost</button><button type=\"button\" class=\"eos-btn\" style=\"@BTN_OUTLINE@\">Export results</button><button type=\"button\" class=\"eos-btn\" style=\"@BTN_PRIMARY@\">New round</button>"
+ },
+ "Ecosystem": {
+  "doctitle": "Writing EOS · Blueprint",
+  "active": "blueprint",
+  "h": 3600,
+  "crumbs": [
+   [
+    "Blueprint",
+    ""
+   ]
+  ],
+  "eyebrow": "Blueprint · how the app is wired",
+  "title": "A writing team of best-fit models",
+  "purpose": "Every step is an agent with one job, running on the model that tested best for that kind of job. Story Blueprint, Chapters and the Editor all go through one router. No single model writes the novel, and you make every creative decision.",
+  "actions": "<a href=\"System.dc.html\" class=\"eos-btn\" style=\"@BTN_OUTLINE@\">Design system</a>"
+ },
+ "Autonomy": {
+  "doctitle": "Writing EOS · Autonomy",
+  "active": "autonomy",
+  "h": 2150,
+  "crumbs": [
+   [
+    "Autonomy",
+    ""
+   ]
+  ],
+  "eyebrow": "Autonomy · decision D9",
+  "title": "How much the agents decide for you",
+  "purpose": "Whatever the level, you are the final decider. Levels only decide which routine calls agents may settle first and show you afterwards, with Undo. Everything else, and your final calls, are pitched to you: proceed, choose another, or give your own.",
+  "actions": "<a href=\"Main.dc.html\" class=\"eos-btn\" style=\"@BTN_OUTLINE@\">Open Decided for you</a>"
+ },
+ "Genre": {
+  "doctitle": "Writing EOS · Genre packs",
+  "active": "genres",
+  "h": 1850,
+  "crumbs": [
+   [
+    "Genre packs",
+    ""
+   ]
+  ],
+  "eyebrow": "Genre packs · what your readers expect",
+  "title": "Genre packs",
+  "purpose": "A genre pack tells the agents what readers of your genre expect: the promises the book must keep, the tropes and how worn they are, where the big beats fall, and the clichés to catch. You approve every pack and every change.",
+  "actions": "<button type=\"button\" class=\"eos-btn\" style=\"@BTN_OUTLINE@\">Import a pack</button><button type=\"button\" class=\"eos-btn\" style=\"@BTN_PRIMARY@\">Build one from books you love</button>"
+ },
+ "Recipes": {
+  "doctitle": "Writing EOS · Recipes",
+  "active": "recipes",
+  "h": 1750,
+  "crumbs": [
+   [
+    "Chapters",
+    "Chapter.dc.html"
+   ],
+   [
+    "Recipes",
+    ""
+   ]
+  ],
+  "eyebrow": "Recipes · automations that keep your decisions",
+  "title": "Recipes",
+  "purpose": "A recipe runs a chain of steps you already use in one go: plan the next chapters, polish one, refresh summaries. It stops for every decision that is yours, and you can pause, stop or re-run it at any point.",
+  "actions": "<button type=\"button\" class=\"eos-btn\" style=\"@BTN_OUTLINE@\">Import a recipe</button>"
+ },
+ "History": {
+  "doctitle": "Writing EOS · History",
+  "active": "history",
+  "h": 1400,
+  "crumbs": [
+   [
+    "History",
+    ""
+   ]
+  ],
+  "eyebrow": "History · every change, nothing lost",
+  "title": "Project history",
+  "purpose": "Everything that happened to this book, newest first: every version, every answer you gave, every recipe run and setting change. Compare any two versions; restoring never deletes, it adds the old version back on top.",
+  "actions": "<button type=\"button\" class=\"eos-btn\" style=\"@BTN_OUTLINE@\">Compare two points</button><button type=\"button\" class=\"eos-btn\" style=\"@BTN_PRIMARY@\">Name a restore point</button>"
+ },
+ "Board": {
+  "doctitle": "Writing EOS · Story board",
+  "active": "board",
+  "h": 1400,
+  "crumbs": [
+   [
+    "Story board",
+    ""
+   ]
+  ],
+  "eyebrow": "Story board · the plan, scene by scene",
+  "title": "Story board",
+  "purpose": "Every scene as a card, by plot line, beat and story day. Move a card and the app drafts an outline change for you to approve; nothing in the outline changes until you do.",
+  "actions": "<a href=\"Bible.dc.html\" class=\"eos-btn\" style=\"@BTN_OUTLINE@\">Open the Matrix</a>"
+ },
+ "Export": {
+  "doctitle": "Writing EOS · Export",
+  "active": "export",
+  "h": 1250,
+  "crumbs": [
+   [
+    "Export",
+    ""
+   ]
+  ],
+  "eyebrow": "Export · your book, your files",
+  "title": "Export and archive",
+  "purpose": "Take the book anywhere: an e-book, a Word file or plain text; one archive file with the whole project; and a report of who wrote what, for the forms publishers and retailers ask you to fill in."
+ },
+ "Finish": {
+  "doctitle": "Writing EOS · Finish & publish",
+  "active": "finish",
+  "h": 1750,
+  "crumbs": [
+   [
+    "Finish & publish",
+    ""
+   ]
+  ],
+  "eyebrow": "After the last chapter lock",
+  "title": "Finish and publish",
+  "purpose": "From a locked manuscript to a book: a sensitivity read, your beta readers, line and copy edits, typesetting and proofs, then the blurb, cover brief, launch plan and marketing. You sign off the proof before anything goes out."
+ },
+ "Library": {
+  "doctitle": "Writing EOS · Library",
+  "active": "library",
+  "h": 1640,
+  "crumbs": [
+   [
+    "Library",
+    ""
+   ]
+  ],
+  "eyebrow": "Shared across your books",
+  "title": "Library",
+  "purpose": "Your characters, pen names, genres, pitches, content levels, structure map, arcs and themes, copied from your Obsidian vault into one place every book can draw on. The vault stays the master."
+ }
+}

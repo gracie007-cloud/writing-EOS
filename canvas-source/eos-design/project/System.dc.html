@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Writing EOS · Design system</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F4E79}a:hover{color:#12244A}
+:focus-visible{outline:2px solid #2E75B6;outline-offset:2px}
+.eos-btn{transition:background-color .15s ease, box-shadow .15s ease, transform .15s ease}
+.eos-btn:hover{box-shadow:0 10px 20px -12px rgb(31 56 100 / .5);transform:translateY(-1px)}
+.eos-row:hover{background:#F2F7FD}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style>
+</helmet>
+<div style="min-height: 100vh; box-sizing: border-box; background: #F5F7FB; color: #1B2A41; font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif; padding: 48px 40px 64px">
+<div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px">
+
+<header style="display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2E75B6"><span style="width: 24px; height: 1px; background: #9DC3E6"></span>Design system</p>
+<h1 style="margin: 0; font-size: 34px; line-height: 1.15; font-weight: 800; letter-spacing: -0.01em">One look for every Writing EOS screen</h1>
+<p style="margin: 0; max-width: 760px; font-size: 16px; line-height: 1.6; color: #4B5B73">Colors carry meaning, the story reads in a serif, and the machinery stays out of the way until you ask for it. Every screen is built from these colors, type and parts.</p>
+</header>
+
+<section aria-labelledby="roles" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h2 id="roles" style="margin: 0; font-size: 20px; font-weight: 700">Color means something</h2>
+<p style="margin: 0; font-size: 14px; color: #4B5B73">Every color stands for one role. Status is always written in words as well, never shown by color alone.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 14px">
+<sc-for list="{{roles}}" as="r" hint-placeholder-count="8">
+<div style="display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; background: #FFFFFF; border: 1px solid #E3E8F0; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
+<div style="height: 64px; display: flex; align-items: flex-end; justify-content: space-between; padding: 10px 14px; background: {{r.bg}}; color: {{r.fg}}">
+<span style="font-size: 15px; font-weight: 700">{{r.name}}</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px">{{r.hex}}</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 14px 14px">
+<span style="font-size: 13px; line-height: 1.5; color: #1B2A41">{{r.use}}</span>
+<span style="font-size: 12px; color: #5F6E84">{{r.pair}}</span>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section aria-labelledby="type" style="display: flex; flex-direction: column; gap: 16px">
+<h2 id="type" style="margin: 0; font-size: 20px; font-weight: 700">Type</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 22px 24px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6E84">Interface · Plus Jakarta Sans</span>
+<span style="font-size: 30px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.15">Page title 30</span>
+<span style="font-size: 20px; font-weight: 700">Section 20</span>
+<span style="font-size: 16px; font-weight: 700">Card title 16</span>
+<span style="font-size: 14px; line-height: 1.55">Body 14. Buttons, lists, labels and help text.</span>
+<span style="font-size: 12px; color: #5F6E84">Caption 12 · the smallest size on any screen</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 22px 24px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6E84">Story · Lora</span>
+<span style="font-family: 'Lora', Georgia, serif; font-size: 28px; font-weight: 500">[Chapter 1 title]</span>
+<p style="margin: 0; font-family: 'Lora', Georgia, serif; font-size: 18px; line-height: 1.8">The first ferry left at six. By twenty to, the queue already reached the ticket hut, and the gulls had found the bread van.</p>
+<span style="font-size: 12px; color: #5F6E84">Manuscript text, chapter titles, quotes from the story. Size, spacing and theme follow your reading preferences.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 22px 24px; background: #1F3864; color: #FFFFFF; border-radius: 16px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #B6C3D6">Engine view only · JetBrains Mono</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.7">gpt_sol · primary · excellent tier<br>1,671 in / 3,790 out · $0.0188<br>FD-E4X · run 1 of 3</span>
+<span style="font-size: 12px; color: #B6C3D6">Model keys, token counts, test-round codes, blind IDs and contract codes. Never in the Writer view.</span>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="views" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h2 id="views" style="margin: 0; font-size: 20px; font-weight: 700">Two views of the same screen</h2>
+<p style="margin: 0; font-size: 14px; color: #4B5B73">The switch sits in the top bar of every screen. Try it here.</p>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px">
+<div style="grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<div role="radiogroup" aria-label="View" style="display: inline-flex; gap: 4px; padding: 4px; border-radius: 12px; background: #E8EEF6">
+<sc-for list="{{viewOpts}}" as="v" hint-placeholder-count="2">
+<button type="button" role="radio" aria-checked="{{v.on}}" onClick="{{v.pick}}" class="eos-btn" style="min-height: 40px; padding: 0 16px; border: 0; border-radius: 9px; background: {{v.bg}}; color: {{v.fg}}; box-shadow: {{v.shadow}}; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{v.name}}</button>
+</sc-for>
+</div>
+<span style="font-size: 14px; color: #4B5B73">{{viewNote}}</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6E84">An agent row</span>
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 12px; border: 1px solid #E3E8F0">
+<span style="flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 999px; background: #E7F3DF; color: #3B7020"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round"><path d="M20 6 9 17l-5-5"></path></svg></span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 14px; font-weight: 700">Pick the characters</span>
+<span style="font-size: 13px; color: #4B5B73">[Protagonist], [Mentor], [Minor character]</span>
+</span>
+<span style="font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: #E7F3DF; color: #3B7020; box-shadow: inset 0 0 0 1px #B9DCA4">Done</span>
+</div>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 12px; border-radius: 10px; background: #1F3864; color: #FFFFFF; font-family: 'JetBrains Mono', monospace; font-size: 12px">
+<span>Chapter Character Selector</span><span style="color: #B6C3D6">·</span><span>extraction pool</span><span style="color: #B6C3D6">·</span><span>[RUN 01 WINNER]</span><span style="color: #B6C3D6">·</span><span>0.2 · 800 + 4,000</span>
+</div>
+</sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6E84">The rule</span>
+<p style="margin: 0; font-size: 14px; line-height: 1.6"><strong>Writer view</strong> (default) shows the story, the work in plain words and your decisions. <strong>Engine view</strong> adds what the machine is doing: the agent's real name, its model slot and pool, budgets, cost, guards and the exact prompt.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.6; color: #4B5B73">Plain names come first everywhere ("Pick the characters"); the agent names from your plans appear in the Engine view.</p>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="parts" style="display: flex; flex-direction: column; gap: 16px">
+<h2 id="parts" style="margin: 0; font-size: 20px; font-weight: 700">Parts</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 14px">
+
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6E84">Buttons · one primary per screen</span>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; gap: 8px; border-radius: 10px; border: 1px solid #1F4E79; background: #2E75B6; color: #FFFFFF; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Run next step</button>
+<button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; gap: 8px; border-radius: 10px; border: 1px solid #B98A00; background: #FFC000; color: #12244A; font: 700 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Decide</button>
+<button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; gap: 8px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Open brief</button>
+<button type="button" class="eos-btn" style="min-height: 44px; padding: 0 14px; display: inline-flex; align-items: center; gap: 8px; border-radius: 10px; border: 0; background: transparent; color: #1F4E79; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Show prompt</button>
+</div>
+<span style="font-size: 13px; line-height: 1.5; color: #4B5B73">Blue for the main action. Gold only when you are making a decision the work is waiting on. Outline for secondary, text for small extras. All at least 44 px tall.</span>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6E84">Status badges</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{badges}}" as="b" hint-placeholder-count="7">
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; background: {{b.bg}}; color: {{b.fg}}; box-shadow: inset 0 0 0 1px {{b.ring}}"><span style="width: 6px; height: 6px; border-radius: 999px; background: {{b.dot}}"></span>{{b.t}}</span>
+</sc-for>
+</div>
+<span style="font-size: 13px; line-height: 1.5; color: #4B5B73">The same seven words everywhere an agent, chapter or check has a state.</span>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6E84">Progress and steps</span>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; font-size: 13px"><span style="font-weight: 600">Chapter 1 pipeline</span><span style="color: #4B5B73">7 of 17 steps</span></div>
+<div role="progressbar" aria-valuemin="0" aria-valuemax="17" aria-valuenow="7" aria-label="Chapter 1 pipeline" style="height: 8px; border-radius: 999px; background: #E8EEF6; overflow: hidden"><div style="width: 41%; height: 100%; border-radius: 999px; background: #2E75B6"></div></div>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+<li style="display: flex; flex-direction: column; gap: 6px"><span style="height: 4px; border-radius: 999px; background: #70AD47"></span><span style="font-size: 12px; font-weight: 600; color: #3B7020">Plan · done</span></li>
+<li style="display: flex; flex-direction: column; gap: 6px"><span style="height: 4px; border-radius: 999px; background: #FFC000"></span><span style="font-size: 12px; font-weight: 600; color: #6B4E00">Check · needs you</span></li>
+<li style="display: flex; flex-direction: column; gap: 6px"><span style="height: 4px; border-radius: 999px; background: #2E75B6"></span><span style="font-size: 12px; font-weight: 600; color: #1F4E79">Write · in progress</span></li>
+<li style="display: flex; flex-direction: column; gap: 6px"><span style="height: 4px; border-radius: 999px; background: #D5DCE6"></span><span style="font-size: 12px; font-weight: 600; color: #475569">Close · waiting</span></li>
+</ol>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6E84">Your final call · a pitch</span>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 12px; background: #FFF5D6; box-shadow: inset 0 0 0 1px #FFD966">
+<span style="flex: 1 1 220px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700; color: #6B4E00">The brief check pitches</span><span style="font-size: 14px; font-weight: 700">Treat the flagged sentence as a false alarm</span><span style="font-size: 13px; color: #4B5B73">Why, the evidence, and the option it weighed against.</span></span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><a href="#" class="eos-btn" style="min-height: 44px; padding: 0 16px; display: inline-flex; align-items: center; border-radius: 10px; border: 1px solid #B98A00; background: #FFC000; color: #12244A; font-size: 14px; font-weight: 700; text-decoration: none">Proceed</a><a href="#" class="eos-btn" style="min-height: 44px; padding: 0 16px; display: inline-flex; align-items: center; border-radius: 10px; border: 1px solid #E2C366; background: #FFFFFF; color: #12244A; font-size: 14px; font-weight: 700; text-decoration: none">My alternative</a></span>
+</div>
+<span style="font-size: 13px; line-height: 1.5; color: #4B5B73">Every decision that is yours arrives like this: the agents’ pitch, then Proceed, another option, or your own alternative.</span>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6E84">Explanation card · right column</span>
+<div style="display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 12px; background: #F2F7FD; box-shadow: inset 0 0 0 1px #C9DDF1">
+<span style="flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: #FFFFFF; color: #2E75B6; box-shadow: 0 1px 2px rgb(16 24 40 / 0.08)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round"><path d="M12 2a10 10 0 1 0 0 20a10 10 0 1 0 0-20 M12 16v-4 M12 8h.01"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 14px; font-weight: 700">Why this step waits</span><span style="font-size: 13px; line-height: 1.5; color: #4B5B73">No prose is written until the brief agrees with the Story Bible.</span></span>
+</div>
+<span style="font-size: 13px; line-height: 1.5; color: #4B5B73">Every screen pairs the work (left) with short answers to "what is this" and "why" (right).</span>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6E84">Switches, tabs and fields</span>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<button type="button" role="switch" aria-checked="{{toggleOn}}" aria-label="Show changes" onClick="{{flip}}" style="position: relative; width: 48px; height: 28px; padding: 0; border: 0; border-radius: 999px; background: {{toggleBg}}; cursor: pointer"><span style="position: absolute; top: 3px; left: {{toggleLeft}}; width: 22px; height: 22px; border-radius: 999px; background: #FFFFFF; box-shadow: 0 1px 3px rgb(16 24 40 / 0.3)"></span></button>
+<span style="font-size: 14px; font-weight: 600">Show changes · {{toggleText}}</span>
+</div>
+<div role="tablist" aria-label="Example tabs" style="display: flex; gap: 4px; padding: 4px; border-radius: 12px; background: #2E75B6">
+<button type="button" role="tab" aria-selected="true" style="flex: 1; min-height: 40px; border: 0; border-radius: 9px; background: #FFFFFF; color: #1F4E79; font: 600 13px 'Plus Jakarta Sans', sans-serif">Rewrite</button>
+<button type="button" role="tab" aria-selected="false" style="flex: 1; min-height: 40px; border: 0; border-radius: 9px; background: transparent; color: #FFFFFF; font: 600 13px 'Plus Jakarta Sans', sans-serif">Brainstorm</button>
+<button type="button" role="tab" aria-selected="false" style="flex: 1; min-height: 40px; border: 0; border-radius: 9px; background: transparent; color: #FFFFFF; font: 600 13px 'Plus Jakarta Sans', sans-serif">Workshop</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="ds-field" style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #4B5B73"><span>Your instruction</span><span style="font-weight: 500; color: #5F6E84">optional</span></label>
+<input id="ds-field" type="text" placeholder="e.g. end the scene on the ferry horn" style="min-height: 44px; padding: 0 12px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; font: 14px 'Plus Jakarta Sans', sans-serif; color: #1B2A41">
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6E84">Feedback</span>
+<div role="status" style="display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 12px; background: #1F3864; color: #FFFFFF; font-size: 14px">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: #9BE07A; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round"><path d="M20 6 9 17l-5-5"></path></svg>
+<span style="flex: 1">Saved as version 4. The old text is kept.</span>
+<button type="button" style="min-height: 36px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; color: #9DC3E6; font: 700 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Undo</button>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 22px 16px; border-radius: 12px; border: 1px dashed #CBD5E1; text-align: center">
+<span style="font-size: 14px; font-weight: 700">Nothing to lock yet</span>
+<span style="font-size: 13px; color: #4B5B73">The chapter reaches you after both checks pass.</span>
+</div>
+<span style="font-size: 13px; line-height: 1.5; color: #4B5B73">Every action says what happened and offers Undo where it can. Empty places say what will fill them and when.</span>
+</div>
+
+</div>
+</section>
+
+<section aria-labelledby="rules" style="display: flex; flex-direction: column; gap: 14px; padding: 24px 28px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E3E8F0">
+<h2 id="rules" style="margin: 0; font-size: 20px; font-weight: 700">Rules every screen follows</h2>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 14px 28px">
+<sc-for list="{{rules}}" as="r" hint-placeholder-count="8">
+<li style="display: flex; gap: 12px"><span style="flex: none; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 999px; background: #DEEBF7; color: #1F4E79; font-size: 13px; font-weight: 700">{{r.n}}</span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 700">{{r.t}}</span><span style="font-size: 13px; line-height: 1.5; color: #4B5B73">{{r.d}}</span></span></li>
+</sc-for>
+</ol>
+</section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"view":{"editor":"enum","options":["writer","engine"],"default":"writer"},"$preview":{"width":1440,"height":2600}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { view: null, toggle: true };
+}
+renderVals() {
+var self = this;
+var st = this.state;
+var view = st.view || this.props.view || 'writer';
+var roles = [
+{ name: 'You', hex: '#FFC000', bg: '#FFC000', fg: '#12244A', use: 'Your final calls: pitches waiting for you, gates, locks and the voice contract. Gold always means the work is waiting on you.', pair: 'Text on gold: #12244A (9.3 : 1)' },
+{ name: 'Agents', hex: '#2E75B6', bg: '#2E75B6', fg: '#FFFFFF', use: 'Work the agents do, running steps and the main action on each screen.', pair: 'White on blue: 4.8 : 1' },
+{ name: 'Done', hex: '#70AD47', bg: '#E7F3DF', fg: '#3B7020', use: 'Finished, passed, locked canon.', pair: 'Text #3B7020 on #E7F3DF: 5.2 : 1' },
+{ name: 'Needs attention', hex: '#ED7D31', bg: '#FDE9DC', fg: '#A5470B', use: 'A flag, a failed check or an auto-fail. Never used as a fill under white text.', pair: 'Text #A5470B on #FDE9DC: 5.1 : 1' },
+{ name: 'Mature tier', hex: '#5B3A8C', bg: '#EFE8F8', fg: '#5B3A8C', use: 'Scenes and calls that stay with mature_ok models.', pair: 'Text on lavender: 7.2 : 1' },
+{ name: 'Waiting', hex: '#475569', bg: '#EEF1F5', fg: '#475569', use: 'Queued, not started, not drafted yet.', pair: 'Text on grey: 6.7 : 1' },
+{ name: 'Engine', hex: '#1F3864', bg: '#1F3864', fg: '#FFFFFF', use: 'Structure: routing, models and other Engine view details.', pair: 'White on navy: 11.6 : 1' },
+{ name: 'Ground', hex: '#F5F7FB', bg: '#F5F7FB', fg: '#1B2A41', use: 'The page. Cards are white with a soft shadow; text is ink #1B2A41.', pair: 'Ink on ground: 13.5 : 1' }
+];
+var B = function (t, bg, fg, ring, dot) { return { t: t, bg: bg, fg: fg, ring: ring, dot: dot }; };
+var badges = [
+B('Done', '#E7F3DF', '#3B7020', '#B9DCA4', '#70AD47'),
+B('Running', '#DEEBF7', '#1F4E79', '#9DC3E6', '#2E75B6'),
+B('Needs you', '#FFF5D6', '#6B4E00', '#FFD966', '#FFC000'),
+B('Flagged', '#FDE9DC', '#A5470B', '#F4B183', '#ED7D31'),
+B('Mature tier', '#EFE8F8', '#5B3A8C', '#CDBDE6', '#7B5BB0'),
+B('Waiting', '#EEF1F5', '#475569', '#D5DCE6', '#94A3B8'),
+B('Blocked', '#FDECEB', '#A8321F', '#F2B8B0', '#E5604D')
+];
+var viewOpts = [{ id: 'writer', name: 'Writer view' }, { id: 'engine', name: 'Engine view' }].map(function (v) {
+var on = v.id === view;
+return { name: v.name, on: on, bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#1F3864' : '#4B5B73', shadow: on ? '0 1px 3px rgb(16 24 40 / 0.12)' : 'none', pick: function () { self.setState({ view: v.id }); } };
+});
+var rules = [
+{ n: '1', t: 'One primary action', d: 'Each screen has one blue (or gold) button for the obvious next step.' },
+{ n: '2', t: 'Work left, answers right', d: 'The main work fills the left; the right column explains what it is and why.' },
+{ n: '3', t: 'Agents pitch, you decide', d: 'You are the final decider. Anything waiting on your call is gold, arrives as a pitch, and is also listed on Home.' },
+{ n: '4', t: 'Plain words first', d: 'Steps are named for what they do. Agent names, pools and codes live in the Engine view.' },
+{ n: '5', t: 'Status in words', d: 'Badges always carry a word; color only reinforces it.' },
+{ n: '6', t: 'Story in serif', d: 'Anything from the novel is set in Lora, at your chosen size and spacing.' },
+{ n: '7', t: 'Big enough to hit', d: 'Buttons and rows are at least 44 px tall; text is never below 12 px.' },
+{ n: '8', t: 'Say what happened', d: 'Actions confirm in a short message with Undo; empty areas say what will fill them.' }
+];
+return {
+roles: roles, badges: badges, viewOpts: viewOpts, rules: rules,
+isEngine: view === 'engine',
+viewNote: view === 'engine' ? 'Engine view: the same row, plus its routing.' : 'Writer view: the work in plain words.',
+toggleOn: st.toggle, toggleBg: st.toggle ? '#2E75B6' : '#CBD5E1', toggleLeft: st.toggle ? '23px' : '3px', toggleText: st.toggle ? 'on' : 'off',
+flip: function () { self.setState({ toggle: !st.toggle }); }
+};
+}
+}
+</script>
+</body>
+</html>

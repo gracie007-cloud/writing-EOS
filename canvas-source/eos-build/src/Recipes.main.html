@@ -1,0 +1,95 @@
+<section aria-labelledby="run-h" style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; @CARD@">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px">
+<span style="display: flex; flex-direction: column; gap: 4px"><span style="@LABEL@">Running now</span><h2 id="run-h" style="margin: 0; font-size: 20px; font-weight: 800">Plan ahead · Chapters 4–6</h2></span>
+<span role="status" style="@BADGE@; font-size: 13px; padding: 4px 12px; background: {{run.tBg}}; color: {{run.tFg}}; box-shadow: inset 0 0 0 1px {{run.tRing}}">{{run.state}}</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div role="progressbar" aria-label="Recipe progress" aria-valuemin="0" aria-valuemax="{{run.total}}" aria-valuenow="{{run.done}}" style="height: 10px; border-radius: 999px; background: #E8EEF6; overflow: hidden"><div style="width: {{run.pct}}; height: 100%; border-radius: 999px; background: {{run.bar}}"></div></div>
+<span style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px; font-size: 13px; font-weight: 600; color: #4B5B73"><span>{{run.done}} of {{run.total}} steps done · {{run.agentRuns}}</span><span>Spent {{run.spent}} of about {{run.estimate}} · stops at {{run.cap}}</span></span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 12px; background: #F2F7FD; box-shadow: inset 0 0 0 1px #C9DDF1">
+<span style="font-size: 12px; font-weight: 700; color: #1F4E79">{{run.nowLabel}}</span>
+<span style="font-size: 15px; font-weight: 700">{{run.now}}</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@MONO@; font-size: 12px; color: #1F4E79">chapter_worldbuilding_selector · primary · [Primary model] · job running</span></sc-if>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; @GOLDBOX@">
+<span style="flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: #FFC000; color: #12244A">@ICON:flag:16@</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 700">Chapter 4 is waiting for you</span><span style="font-size: 13px; color: #6B4E00">The brief check flagged one sentence. Chapters 5 and 6 keep planning.</span></span>
+<a href="Chapter.dc.html" class="eos-btn" style="@BTN_GOLD@; min-height: 40px">Review the pitch</a>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px">
+<sc-if value="{{run.canPause}}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{pause}}" class="eos-btn" style="@BTN_OUTLINE@">@ICON:pause:16@Pause</button></sc-if>
+<sc-if value="{{run.canResume}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{resume}}" class="eos-btn" style="@BTN_PRIMARY@">@ICON:play:16@{{run.resumeLabel}}</button></sc-if>
+<sc-if value="{{run.canStop}}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{stop}}" class="eos-btn" style="@BTN_OUTLINE@">@ICON:x:16@Stop</button></sc-if>
+<button type="button" disabled title="Only steps marked optional can be skipped" class="eos-btn" style="@BTN_OUTLINE@; color: #94A3B8; cursor: not-allowed">Skip this step</button>
+<span style="display: flex; flex-direction: column; gap: 4px"><label for="rerun" style="@FIELDLABEL@">Re-run from</label><span style="display: flex; gap: 6px"><select id="rerun" style="@INPUT@"><option>Plan each scene · Chapter 4</option><option>Pick the characters · Chapter 5</option><option>Write the chapter brief · Chapter 6</option></select><button type="button" class="eos-btn" style="@BTN_GHOST@">Re-run</button></span></span>
+<span style="display: flex; flex-direction: column; gap: 4px"><label for="tier" style="@FIELDLABEL@">Quality for the remaining steps</label><select id="tier" style="@INPUT@"><option>Excellent (default)</option><option>Basic</option><option>Premium</option><option>Advanced</option></select></span>
+</div>
+<span style="font-size: 13px; color: #5F6E84">{{run.footer}}</span>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+
+<section aria-labelledby="lib-h" style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<h2 id="lib-h" style="@H2@">Your recipes</h2>
+<sc-for list="{{recipes}}" as="r" hint-placeholder-count="6">
+<button type="button" onClick="{{r.pick}}" aria-pressed="{{r.on}}" class="eos-row" style="display: flex; flex-direction: column; align-items: stretch; gap: 6px; padding: 14px 16px; border-radius: 14px; border: 1px solid {{r.border}}; background: {{r.bg}}; box-shadow: {{r.shadow}}; text-align: left; color: #1B2A41; font-family: inherit; cursor: pointer">
+<span style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px"><span style="font-size: 15px; font-weight: 800">{{r.name}}</span><span style="@BADGE@; background: {{r.tBg}}; color: {{r.tFg}}; box-shadow: inset 0 0 0 1px {{r.tRing}}">{{r.badge}}</span></span>
+<span style="font-size: 13px; line-height: 1.5; @MUTED@">{{r.what}}</span>
+<span style="font-size: 12px; font-weight: 600; color: #5F6E84">{{r.meta}}</span>
+</button>
+</sc-for>
+<section aria-labelledby="new-h" style="display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 14px; background: #FFFFFF; border: 1px dashed #9DC3E6">
+<label id="new-h" for="describe" style="font-size: 14px; font-weight: 700">Describe a new recipe</label>
+<textarea id="describe" rows="3" placeholder="Plan and draft the next three chapters, and stop before each draft so I can read the brief." style="@INPUT@; min-height: 84px; padding: 10px 12px; resize: vertical; line-height: 1.5"></textarea>
+<button type="button" class="eos-btn" style="@BTN_OUTLINE@">Draft it for me</button>
+<span style="font-size: 12px; line-height: 1.5; color: #5F6E84">An agent drafts the steps, the app checks them, and you get it as a pitch. Nothing runs until you save it and press Run.</span>
+</section>
+</section>
+
+<section aria-labelledby="rec-h" style="flex: 1.8 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 16px; padding: 22px 24px; @CARD@">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 10px">
+<span style="display: flex; flex-direction: column; gap: 4px"><span style="@LABEL@">{{sel.kind}}</span><h2 id="rec-h" style="margin: 0; font-size: 24px; font-weight: 800">{{sel.name}}</h2><span style="font-size: 14px; line-height: 1.55; @MUTED@">{{sel.what}}</span></span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><button type="button" class="eos-btn" style="@BTN_GHOST@">Duplicate and edit</button><a href="History.dc.html" class="eos-btn" style="@BTN_GHOST@">Past runs</a></span>
+</div>
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 10px">
+<sc-for list="{{sel.facts}}" as="f" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 12px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0"><dt style="font-size: 12px; font-weight: 600; color: #5F6E84">{{f.k}}</dt><dd style="margin: 0; font-size: 15px; font-weight: 700">{{f.v}}</dd></div>
+</sc-for>
+</dl>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="@LABEL@">Steps</span>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{sel.steps}}" as="s" hint-placeholder-count="8">
+<li style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; min-height: 44px; padding: 8px 12px; border-radius: 12px; background: {{s.bg}}; box-shadow: inset 0 0 0 1px {{s.ring}}">
+<span style="flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 999px; background: {{s.numBg}}; color: {{s.numFg}}; font-size: 12px; font-weight: 800">{{s.num}}</span>
+<span style="flex: 1 1 220px; min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 700">{{s.name}}</span><span style="font-size: 12px; color: #5F6E84">{{s.note}}</span></span>
+<sc-for list="{{s.tags}}" as="t" hint-placeholder-count="1"><span style="@BADGE@; background: {{t.bg}}; color: {{t.fg}}; box-shadow: inset 0 0 0 1px {{t.ring}}">{{t.name}}</span></sc-for>
+</li>
+</sc-for>
+</ol>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border-radius: 14px; background: #F2F8EE; box-shadow: inset 0 0 0 1px #B9DCA4">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: #3B7020">@ICON:shield:18@Checked before it can run</span>
+<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 3px; font-size: 13px; line-height: 1.5; color: #2F5A1A">
+<li>Every decision that is yours stops the run and comes to you as a pitch.</li>
+<li>Every step’s inputs exist before it runs.</li>
+<li>No model is named: each step uses the model that tested best for it.</li>
+<li>Autonomy stays as you set it, or stricter for this run.</li>
+<li>Anything that writes chapter text runs on its own branch; your manuscript changes only when you merge.</li>
+</ul>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<span style="font-size: 13px; @MUTED@">{{sel.estimate}}</span>
+<button type="button" onClick="{{startSel}}" class="eos-btn" style="@BTN_PRIMARY@">@ICON:play:16@Run {{sel.name}}</button>
+</div>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}">
+<section aria-label="Recipe file" style="display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; @NAVY@">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #B6C3D6">{{yamlName}}</span>
+<pre style="margin: 0; white-space: pre-wrap; @MONO@; font-size: 12px; line-height: 1.6; color: #DCE6F2">{{yaml}}</pre>
+</section>
+</sc-if>
+</section>
+</div>

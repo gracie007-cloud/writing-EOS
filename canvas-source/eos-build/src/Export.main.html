@@ -1,0 +1,65 @@
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 20px; align-items: start">
+
+<section aria-labelledby="exp-h" style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; @CARD@">
+<h2 id="exp-h" style="@H2@">Export the book</h2>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="@FIELDLABEL@">Format</span>
+<div role="radiogroup" aria-label="Format" style="display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 12px; background: #E8EEF6">
+<sc-for list="{{formats}}" as="f" hint-placeholder-count="3"><button type="button" role="radio" aria-checked="{{f.on}}" onClick="{{f.pick}}" style="flex: 1 1 auto; min-height: 40px; padding: 0 12px; border: 0; border-radius: 9px; background: {{f.bg}}; color: {{f.fg}}; box-shadow: {{f.shadow}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{f.name}}</button></sc-for>
+</div>
+<span style="font-size: 13px; @MUTED@">{{formatNote}}</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="@FIELDLABEL@">What to include</span>
+<div role="radiogroup" aria-label="What to include" style="display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 12px; background: #E8EEF6">
+<sc-for list="{{scopes}}" as="f" hint-placeholder-count="2"><button type="button" role="radio" aria-checked="{{f.on}}" onClick="{{f.pick}}" style="flex: 1 1 auto; min-height: 40px; padding: 0 12px; border: 0; border-radius: 9px; background: {{f.bg}}; color: {{f.fg}}; box-shadow: {{f.shadow}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{f.name}}</button></sc-for>
+</div>
+<span style="font-size: 13px; @MUTED@">{{scopeNote}}</span>
+</div>
+<button type="button" class="eos-btn" style="@BTN_PRIMARY@; align-self: flex-start">Export {{formatName}}</button>
+</section>
+
+<section aria-labelledby="arc-h" style="display: flex; flex-direction: column; gap: 12px; padding: 20px 22px; @CARD@">
+<h2 id="arc-h" style="@H2@">Project archive</h2>
+<span style="font-size: 14px; line-height: 1.55; @MUTED@">One file with everything: chapters and every version of them, the Story Bible, the genre pack you use, History, run records and your decisions. Open it on another computer and the project comes back as it was. Your keys are never included.</span>
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 10px">
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 12px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0"><dt style="font-size: 12px; font-weight: 600; color: #5F6E84">Last archive</dt><dd style="margin: 0; font-size: 14px; font-weight: 700">16 Oct 2026</dd></div>
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 12px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0"><dt style="font-size: 12px; font-weight: 600; color: #5F6E84">Changes since</dt><dd style="margin: 0; font-size: 14px; font-weight: 700">23 entries in History</dd></div>
+</dl>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><button type="button" class="eos-btn" style="@BTN_OUTLINE@">Make an archive</button><button type="button" class="eos-btn" style="@BTN_GHOST@">Open an archive</button></span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@MONO@; font-size: 12px; color: #1F4E79">[project].eos.zip · project folder + git history · .env excluded · checked on import</span></sc-if>
+</section>
+
+<section aria-labelledby="imp-h" style="display: flex; flex-direction: column; gap: 12px; padding: 20px 22px; @CARD@">
+<h2 id="imp-h" style="@H2@">Bring in writing</h2>
+<span style="font-size: 14px; line-height: 1.55; @MUTED@">Start from pages you already have. Chapters are split at headings, and every chapter arrives marked as yours.</span>
+<sc-for list="{{importers}}" as="i" hint-placeholder-count="5">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; min-height: 44px; padding: 6px 12px; border-radius: 12px; background: #F8FAFC; box-shadow: inset 0 0 0 1px #E3E8F0">
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 700">{{i.name}}</span><span style="font-size: 12px; color: #5F6E84">{{i.note}}</span></span>
+<span style="@BADGE@; background: {{i.tBg}}; color: {{i.tFg}}; box-shadow: inset 0 0 0 1px {{i.tRing}}">{{i.state}}</span>
+</div>
+</sc-for>
+</section>
+</div>
+
+<section aria-labelledby="ai-h" style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; @CARD@">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 10px">
+<span style="display: flex; flex-direction: column; gap: 4px"><h2 id="ai-h" style="@H2@">AI involvement report</h2><span style="max-width: 720px; font-size: 14px; line-height: 1.55; @MUTED@">Who wrote what, chapter by chapter, from the marks the app keeps on every sentence and the record of every model call. Worded to help you fill in retailer and publisher forms; check each form’s current rules.</span></span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><button type="button" class="eos-btn" style="@BTN_OUTLINE@">Download CSV</button><button type="button" class="eos-btn" style="@BTN_GHOST@">Open as a page</button></span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 13px; font-weight: 600; color: #4B5B73">
+<sc-for list="{{key}}" as="k" hint-placeholder-count="4"><span style="display: inline-flex; align-items: center; gap: 6px"><span style="width: 12px; height: 12px; border-radius: 3px; background: {{k.c}}"></span>{{k.t}}</span></sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="4">
+<div style="display: grid; grid-template-columns: minmax(150px, 0.8fr) minmax(0, 2fr); gap: 6px 16px; align-items: center; padding: 10px 12px; border-radius: 12px; background: {{r.bg}}; box-shadow: inset 0 0 0 1px #E3E8F0">
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 700">{{r.name}}</span><span style="font-size: 12px; color: #5F6E84">{{r.note}}</span></span>
+<span style="display: flex; flex-direction: column; gap: 6px">
+<span role="img" aria-label="{{r.label}}" style="display: flex; height: 14px; border-radius: 999px; overflow: hidden; background: #E8EEF6"><sc-for list="{{r.parts}}" as="p" hint-placeholder-count="4"><span style="width: {{p.w}}; background: {{p.c}}"></span></sc-for></span>
+<span style="font-size: 12px; color: #4B5B73">{{r.label}}</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@MONO@; font-size: 12px; color: #1F4E79">{{r.engine}}</span></sc-if>
+</span>
+</div>
+</sc-for>
+</div>
+</section>

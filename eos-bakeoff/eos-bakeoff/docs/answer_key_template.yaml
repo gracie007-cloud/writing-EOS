@@ -1,0 +1,64 @@
+# Run 01 answer key · BLANK TEMPLATE (holds no answers)
+#
+# How to use:
+#   1. Copy this file to   data/Run01_ANSWER_KEY.yaml
+#      (that name is git-ignored and refused by the prompt builder; only the scorer reads it).
+#   2. Replace every "FILL IN" with the answer from the Notion answer key. Add or remove list items freely.
+#   3. Run:  python -m eos_bakeoff score --step character_selector
+#
+# The scorer refuses the key while any "FILL IN" is left, and its messages name only the field, never your answers.
+#
+# Entries: write a name on its own, or a name with aliases (other ways a model may write it):
+#     - "Full Name"
+#     - name: "Full Name"
+#       aliases: ["Surname", "Title Surname", "code name"]
+# Matching ignores case, accents, punctuation and a leading "The", and a name also counts when it appears
+# inside a longer item ("World Rule 1: Tides" matches "Tides"). So list short, distinctive aliases.
+#
+#   expected   must be selected: -2 for each one missing
+#   forbidden  must NOT be selected: -3 for each one selected
+#   allowed    acceptable but not required: no penalty either way (optional)
+#   anything a model lists that is in none of the three is "invented": -3 each
+
+extraction:
+  character_selector:            # Ch 1 cast the selector should pick
+    characters:
+      expected:
+        - name: "FILL IN"
+          aliases: []
+      forbidden:
+        - name: "Mattis"         # named in SPEC §4.1 as forbidden for Ch 1; add the aliases from your key
+          aliases: ["FILL IN"]
+      allowed: []
+
+  worldbuilding_selector:
+    locations:
+      expected:
+        - name: "FILL IN"
+          aliases: []
+      forbidden:
+        - name: "memory market"  # named in SPEC §4.1 as forbidden for Ch 1; add the aliases from your key
+          aliases: ["FILL IN"]
+      allowed: []
+    world_rules:
+      expected:
+        - name: "FILL IN"        # e.g. the rule's short title, with "Rule 3"-style aliases if the bible numbers them
+          aliases: []
+      forbidden: []
+      allowed: []
+
+verdict:
+  chronology_check:              # the errors planted in Section E
+    planted:
+      - id: P1
+        sentence: "FILL IN"      # the planted sentence exactly as it appears in Section E
+        fact: "FILL IN"          # the bible fact it breaks (for your reference; never shown on the sheet)
+        keywords: ["FILL IN"]    # words a correct report must mention, any one is enough, e.g. ["salt archive"]
+      - id: P2
+        sentence: "FILL IN"
+        fact: "FILL IN"
+        keywords: ["FILL IN"]
+      - id: P3
+        sentence: "FILL IN"
+        fact: "FILL IN"
+        keywords: ["FILL IN"]

@@ -1,0 +1,7 @@
+# Prose-check rules for the Run 01 test pack only (Chapter 1). Read by the scorer, never sent to a model.
+# Generic lists (stock phrases, injury vocabulary) stay in config/slop.yaml.
+pov_character: "Varga"
+auto_fail_terms: ["I remember", "Mattis", "M.22", "Pell", "Tova", "market"]
+victim_names_in_pov_speech: ["Kavitha", "Thangaraj"]
+pov_emotion_words: ["felt", "sadness", "grief", "fear", "anger", "heartbroken", "her heart", "a pang", "dread filled", "tears"]
+dignity_required: ["Kavitha Thangaraj", "dye"]

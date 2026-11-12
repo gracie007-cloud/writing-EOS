@@ -1,0 +1,80 @@
+<section aria-label="You decide" style="display: flex; align-items: center; gap: 14px; padding: 14px 18px; @GOLDBOX@"><span style="flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: #FFC000; color: #12244A">@ICON:flag:20@</span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 800; color: #12244A">You are the final decider at every level</span><span style="font-size: 14px; line-height: 1.5; color: #4B5B73">Agents do the work and pitch the decisions. A level only decides which routine calls they may settle first and show you afterwards, with Undo.</span></span></section>
+
+<section aria-label="The three levels" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 12px">
+<sc-for list="{{levelCards}}" as="l" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 18px 20px; border-radius: 16px; background: {{l.bg}}; box-shadow: inset 0 0 0 1px {{l.ring}}">
+<span style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px"><span style="font-size: 18px; font-weight: 800">{{l.name}}</span><span style="font-size: 13px; font-weight: 700; color: {{l.countFg}}">{{l.count}}</span></span>
+<span style="font-size: 14px; line-height: 1.55">{{l.what}}</span>
+<span style="font-size: 13px; line-height: 1.5; @MUTED@">{{l.when}}</span>
+</div>
+</sc-for>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+
+<section aria-labelledby="sections-h" style="flex: 1.7 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px">
+<h2 id="sections-h" style="@H2@">Level for each section</h2>
+<span style="font-size: 13px; @MUTED@">New sections start Supervised</span>
+</div>
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="@LABEL@">{{g.name}}</span>
+<sc-for list="{{g.rows}}" as="r" hint-placeholder-count="5">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding: 14px 16px; @CARD@">
+<span style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span style="font-size: 15px; font-weight: 800">{{r.name}}</span>
+<sc-if value="{{r.hasWarn}}" hint-placeholder-val="{{ false }}"><span style="@BADGE@; background: #FDE9DC; color: #A5470B; box-shadow: inset 0 0 0 1px #F4B183">Set by you, not earned</span></sc-if>
+<sc-if value="{{r.locked}}" hint-placeholder-val="{{ false }}"><span style="@BADGE@; background: #FFF5D6; color: #6B4E00; box-shadow: inset 0 0 0 1px #FFD966">Your final call</span></sc-if>
+</span>
+<span style="font-size: 13px; line-height: 1.5; @MUTED@">{{r.decides}}</span>
+<span style="display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12px; font-weight: 600; color: #5F6E84"><span>Earned: <span style="color: {{r.earnedFg}}">{{r.earned}}</span></span><span>{{r.evidence}}</span></span>
+</span>
+<div role="radiogroup" aria-label="Autonomy level for {{r.name}}" style="display: inline-flex; gap: 4px; padding: 4px; border-radius: 12px; background: #E8EEF6">
+<sc-for list="{{r.opts}}" as="o" hint-placeholder-count="3">
+<button type="button" role="radio" aria-checked="{{o.on}}" disabled="{{o.disabled}}" onClick="{{o.pick}}" title="{{o.tip}}" style="min-height: 40px; padding: 0 12px; border: 0; border-radius: 9px; background: {{o.bg}}; color: {{o.fg}}; box-shadow: {{o.shadow}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: {{o.cursor}}">{{o.name}}</button>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+</sc-for>
+<span style="font-size: 12px; color: #5F6E84">Earned figures are samples until the chapter steps test records your real decisions.</span>
+</section>
+
+<aside style="flex: 1 1 340px; min-width: 0; position: sticky; top: 20px; display: flex; flex-direction: column; gap: 14px">
+<section aria-labelledby="yours" style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; @GOLDBOX@">
+<h2 id="yours" style="margin: 0; display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 800; color: #12244A">@ICON:lock:18:#B98A00@Your final call, at every level</h2>
+<span style="font-size: 13px; line-height: 1.5; color: #6B4E00">Agents never settle these. They pitch: a recommendation, the options they weighed, and why. You proceed, choose another, or give your own alternative.</span>
+<ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 13px; line-height: 1.5">
+<li>The pen name and the adapted premise</li>
+<li>The Conflict Core pick, the Plot Blueprint, the arc’s outcome and the structure</li>
+<li>Characters and names for Tiers 1 and 2</li>
+<li>The representation and trope decision</li>
+<li>Locking the Bible and every change to canon</li>
+<li>Locking a chapter</li>
+<li>Mature-tier routing and its endpoints</li>
+<li>Scoring drafts, model assignments and prompt edits</li>
+<li>Escalations, and anything over the cost cap</li>
+</ul>
+</section>
+<section style="@NOTE@">
+<span style="@NOTEICON@">@ICON:shield@</span>
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 700">An agent may decide only when</span>
+<ol style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 13px; line-height: 1.5; @MUTED@"><li>its confidence clears the section’s bar,</li><li>a checker from a different model family agrees, and</li><li>it has earned the level in the Model Lab by agreeing with your own past choices.</li></ol>
+<span style="font-size: 12px; line-height: 1.5; color: #5F6E84">You can set a level that hasn’t been earned; those decisions are marked in your digest.</span></span>
+</section>
+<section style="@NOTE@">
+<span style="@NOTEICON@">@ICON:back@</span>
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 700">Back to Supervised automatically when</span>
+<ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 13px; line-height: 1.5; @MUTED@"><li>you undo 2 of a section’s last 10 decisions,</li><li>a later check contradicts a decision it made, or</li><li>25 decisions pile up without you opening the digest.</li></ul>
+<span style="font-size: 12px; line-height: 1.5; color: #5F6E84">A batch also stops at its cost cap, whatever the level.</span></span>
+</section>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}">
+<section aria-label="autonomy.yaml" style="display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; @NAVY@">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #B6C3D6">autonomy.yaml</span>
+<pre style="margin: 0; white-space: pre-wrap; @MONO@; font-size: 12px; line-height: 1.6; color: #DCE6F2">{{yaml}}</pre>
+</section>
+</sc-if>
+</aside>
+</div>

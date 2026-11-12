@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Writing EOS · Story board</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F4E79}a:hover{color:#12244A}
+:focus-visible{outline:2px solid #2E75B6;outline-offset:2px}
+.eos-btn{transition:background-color .15s ease, box-shadow .15s ease, transform .15s ease}
+.eos-btn:hover{box-shadow:0 10px 20px -12px rgb(31 56 100 / .5);transform:translateY(-1px)}
+.eos-row{transition:background-color .15s ease}
+.eos-row:hover{background:#F2F7FD}
+.eos-navitem:hover{background:#F2F7FD}
+.eos-navitem[aria-current="page"]:hover{background:#1F4E79}
+@media (max-width: 900px){
+.eos-side{flex:1 1 100% !important;max-width:none !important;min-height:0 !important;border-right:0 !important;border-bottom:1px solid #E3E8F0 !important;padding:12px !important;gap:10px !important}
+.eos-nav{flex-direction:row !important;overflow-x:auto;gap:4px !important}
+.eos-navgroup{flex-direction:row !important}
+.eos-navlabel,.eos-sidefoot,.eos-search{display:none !important}
+.eos-top{padding:12px 16px !important}
+.eos-page{padding:24px 16px 40px !important}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; align-items: stretch; background: #F5F7FB; color: #1B2A41; font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">
+<dc-import name="Sidebar" active="board" hint-size="264px,100%"></dc-import>
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+<header class="eos-top" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 14px 32px; background: rgb(255 255 255 / 0.85); border-bottom: 1px solid #E3E8F0">
+<nav aria-label="Breadcrumb" style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600"><span aria-current="page" style="color: #1B2A41">Story board</span></nav>
+<div class="eos-search" style="flex: 1 1 260px; max-width: 420px; position: relative; margin-left: auto">
+<label for="top-search" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search the Bible, chapters and chats</label>
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="position: absolute; left: 12px; top: 14px; fill: none; stroke: #5F6E84; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M11 3a8 8 0 1 0 0 16a8 8 0 1 0 0-16 M21 21l-4.3-4.3"></path></svg>
+<input id="top-search" type="search" placeholder="Search the Bible, chapters and chats" style="width: 100%; box-sizing: border-box; min-height: 44px; padding: 0 12px 0 36px; border-radius: 10px; border: 1px solid #D5DCE6; background: #FFFFFF; font: 14px 'Plus Jakarta Sans', sans-serif; color: #1B2A41">
+</div>
+<div role="radiogroup" aria-label="View" style="display: inline-flex; gap: 4px; padding: 4px; border-radius: 12px; background: #E8EEF6">
+<sc-for list="{{viewOpts}}" as="v" hint-placeholder-count="2">
+<button type="button" role="radio" aria-checked="{{v.on}}" onClick="{{v.pick}}" style="min-height: 36px; padding: 0 14px; border: 0; border-radius: 9px; background: {{v.bg}}; color: {{v.fg}}; box-shadow: {{v.shadow}}; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{v.name}}</button>
+</sc-for>
+</div>
+</header>
+<main class="eos-page" style="width: 100%; max-width: 1240px; margin: 0 auto; box-sizing: border-box; padding: 28px 32px 56px; display: flex; flex-direction: column; gap: 22px">
+<section aria-labelledby="page-title" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px">
+<div style="flex: 1 1 520px; display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2E75B6"><span style="width: 24px; height: 1px; background: #9DC3E6"></span>Story board · the plan, scene by scene</p>
+<h1 id="page-title" style="margin: 0; font-size: 32px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.15">Story board</h1>
+<p style="margin: 0; max-width: 720px; font-size: 15px; line-height: 1.6; color: #4B5B73">Every scene as a card, by plot line, beat and story day. Move a card and the app drafts an outline change for you to approve; nothing in the outline changes until you do.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px"><a href="Bible.dc.html" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer">Open the Matrix</a></div>
+</section>
+<sc-if value="{{hasPending}}" hint-placeholder-val="{{ false }}">
+<section aria-label="Drafted outline change" style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; padding: 16px 20px; border-radius: 16px; background: #FFF5D6; box-shadow: inset 0 0 0 1px #FFD966">
+<span style="flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: #FFC000; color: #12244A"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528"></path></svg></span>
+<span style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 15px; font-weight: 800; color: #12244A">{{pendingTitle}}</span>
+<span style="font-size: 14px; line-height: 1.55; color: #4B5B73">Nothing in the outline has changed yet. If you proceed, this becomes a new outline version and the work that read the old one is marked to re-run: {{pendingStale}}.</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6B4E00">outline change draft · stale propagation · index/cache.sqlite rebuilt after merge</span></sc-if>
+</span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #B98A00; background: #FFC000; color: #12244A; font: 700 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer">Proceed</button><button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer">My alternative</button><button type="button" onClick="{{discard}}" class="eos-btn" style="min-height: 44px; padding: 0 14px; display: inline-flex; align-items: center; gap: 8px; border-radius: 10px; border: 0; background: transparent; color: #1F4E79; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer">Discard</button></span>
+</section>
+</sc-if>
+
+<section aria-labelledby="flags-h" style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px"><h2 id="flags-h" style="margin: 0; font-size: 17px; font-weight: 800">Found by code</h2><span style="font-size: 13px; color: #4B5B73">Checked on every outline change, before any model is asked</span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 10px">
+<sc-for list="{{flags}}" as="f" hint-placeholder-count="4">
+<button type="button" onClick="{{f.go}}" class="eos-row" style="display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 12px 14px; border-radius: 14px; border: 0; background: #FFF8F3; box-shadow: inset 0 0 0 1px #F4B183; text-align: left; color: #1B2A41; font-family: inherit; cursor: pointer">
+<span style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: #A5470B"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M21.73 18l-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3 M12 9v4 M12 17h.01"></path></svg>{{f.kind}}</span>
+<span style="font-size: 14px; font-weight: 700; line-height: 1.4">{{f.text}}</span>
+<span style="font-size: 12px; font-weight: 600; color: #1F4E79">{{f.where}}</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<div role="tablist" aria-label="Board view" style="display: flex; gap: 4px; padding: 4px; border-radius: 12px; background: #2E75B6; overflow-x: auto">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+<button type="button" role="tab" aria-selected="{{t.on}}" onClick="{{t.pick}}" style="flex: 1 0 auto; min-height: 40px; padding: 0 14px; border: 0; border-radius: 9px; background: {{t.bg}}; color: {{t.fg}}; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer; white-space: nowrap">{{t.name}}</button>
+</sc-for>
+</div>
+
+<sc-if value="{{isLines}}" hint-placeholder-val="{{ true }}">
+<section aria-label="Plot lines" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 14px; align-items: start">
+<sc-for list="{{columns}}" as="c" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: 16px; background: {{c.bg}}; box-shadow: inset 0 0 0 1px {{c.ring}}">
+<span style="display: flex; justify-content: space-between; align-items: baseline; gap: 6px; padding: 2px 4px"><span style="font-size: 14px; font-weight: 800; color: {{c.fg}}">{{c.name}}</span><span style="font-size: 12px; font-weight: 600; color: #5F6E84">{{c.count}}</span></span>
+<sc-if value="{{c.hasNote}}" hint-placeholder-val="{{ false }}"><span style="padding: 0 4px; font-size: 12px; line-height: 1.5; color: #A5470B">{{c.note}}</span></sc-if>
+<sc-for list="{{c.cards}}" as="k" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; border-radius: 12px; background: #FFFFFF; box-shadow: {{k.shadow}}">
+<span style="display: flex; justify-content: space-between; gap: 6px; font-size: 12px; font-weight: 700; color: #5F6E84"><span>{{k.where}}</span><span>{{k.when}}</span></span>
+<span style="font-family: 'Lora', Georgia, serif; font-size: 15px; font-weight: 500; line-height: 1.35">{{k.title}}</span>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px"><span style="font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; background: {{k.tBg}}; color: {{k.tFg}}; box-shadow: inset 0 0 0 1px {{k.tRing}}">{{k.state}}</span><sc-if value="{{k.moved}}" hint-placeholder-val="{{ false }}"><span style="font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; background: #FFF5D6; color: #6B4E00; box-shadow: inset 0 0 0 1px #FFD966">Move drafted</span></sc-if></span>
+<label style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: #4B5B73; white-space: nowrap">Move to
+<select aria-label="Move {{k.title}} to a plot line" onChange="{{k.move}}" style="flex: 1; min-height: 36px; padding: 0 8px; border-radius: 8px; border: 1px solid #CBD5E1; background: #FFFFFF; font: 13px 'Plus Jakarta Sans', sans-serif; color: #1B2A41">
+<sc-for list="{{k.opts}}" as="o" hint-placeholder-count="4"><option value="{{o.id}}" selected="{{o.on}}">{{o.name}}</option></sc-for>
+</select></label>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</section>
+</sc-if>
+
+<sc-if value="{{isBeats}}" hint-placeholder-val="{{ false }}">
+<section aria-label="Beats and word targets" style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
+<span style="font-size: 13px; color: #4B5B73">From your genre pack, placed on a book of {{targetWords}} words and {{chapterCount}} chapters. Acts are flagged when planned words run more than 15% over their share.</span>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 10px">
+<sc-for list="{{acts}}" as="a" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-radius: 12px; background: {{a.bg}}; box-shadow: inset 0 0 0 1px {{a.ring}}">
+<span style="display: flex; justify-content: space-between; font-size: 14px; font-weight: 800"><span>{{a.name}}</span><span style="color: {{a.fg}}">{{a.delta}}</span></span>
+<div style="height: 8px; border-radius: 999px; background: #E8EEF6; overflow: hidden"><div style="width: {{a.pct}}; height: 100%; border-radius: 999px; background: {{a.bar}}"></div></div>
+<span style="font-size: 12px; color: #4B5B73">Planned {{a.planned}} · target {{a.target}}</span>
+</div>
+</sc-for>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{beats}}" as="b" hint-placeholder-count="9">
+<li style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; min-height: 44px; padding: 6px 12px; border-radius: 12px; background: {{b.bg}}; box-shadow: inset 0 0 0 1px {{b.ring}}">
+<span style="flex: none; width: 44px; font-size: 13px; font-weight: 700; color: #2E75B6">{{b.pct}}</span>
+<span style="flex: 1 1 200px; min-width: 0; font-size: 14px; font-weight: 600">{{b.name}}</span>
+<span style="flex: none; font-size: 13px; color: #4B5B73">{{b.target}}</span>
+<span style="font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; background: {{b.tBg}}; color: {{b.tFg}}; box-shadow: inset 0 0 0 1px {{b.tRing}}">{{b.scenes}}</span>
+</li>
+</sc-for>
+</ol>
+</section>
+</sc-if>
+
+<sc-if value="{{isTime}}" hint-placeholder-val="{{ false }}">
+<section aria-label="Story timeline" style="display: flex; flex-direction: column; gap: 12px; padding: 20px 22px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
+<span style="font-size: 13px; color: #4B5B73">Scenes in story order, by day and time. Code checks that no one is in two places at once and that journeys take as long as the Story Bible says.</span>
+<sc-for list="{{days}}" as="d" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6E84">{{d.name}}</span>
+<sc-for list="{{d.items}}" as="e" hint-placeholder-count="4">
+<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 10px; align-items: start; padding: 8px 12px; border-radius: 12px; background: {{e.bg}}; box-shadow: inset 0 0 0 1px {{e.ring}}">
+<span style="font-size: 13px; font-weight: 700; color: #1F4E79">{{e.time}}</span>
+<span style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 600">{{e.where}} · <span style="font-family: 'Lora', Georgia, serif; font-weight: 500">{{e.title}}</span></span><span style="font-size: 12px; color: #5F6E84">{{e.place}}</span>
+<sc-if value="{{e.hasFlag}}" hint-placeholder-val="{{ false }}"><span style="font-size: 12px; line-height: 1.5; color: #A5470B">{{e.flag}}</span></sc-if></span>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</section>
+</sc-if>
+
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"view": {"editor": "enum", "options": ["writer", "engine"], "default": "writer"}, "$preview": {"width": 1440, "height": 1400}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { view: null, tab: 'lines', moves: {} };
+}
+renderVals() {
+var self = this;
+var st = this.state;
+var view = st.view || this.props.view || 'writer';
+var engine = view === 'engine';
+var viewOpts = [{ id: 'writer', name: 'Writer view' }, { id: 'engine', name: 'Engine view' }].map(function (v) {
+var on = v.id === view;
+return { name: v.name, on: on, bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#1F3864' : '#4B5B73', shadow: on ? '0 1px 3px rgb(16 24 40 / 0.12)' : 'none', pick: function () { self.setState({ view: v.id }); } };
+});
+var TONE = {
+done: { bg: '#E7F3DF', fg: '#3B7020', ring: '#B9DCA4', dot: '#70AD47' },
+run: { bg: '#DEEBF7', fg: '#1F4E79', ring: '#9DC3E6', dot: '#2E75B6' },
+you: { bg: '#FFF5D6', fg: '#6B4E00', ring: '#FFD966', dot: '#FFC000' },
+flag: { bg: '#FDE9DC', fg: '#A5470B', ring: '#F4B183', dot: '#ED7D31' },
+mature: { bg: '#EFE8F8', fg: '#5B3A8C', ring: '#CDBDE6', dot: '#7B5BB0' },
+wait: { bg: '#EEF1F5', fg: '#475569', ring: '#D5DCE6', dot: '#94A3B8' },
+blocked: { bg: '#FDECEB', fg: '#A8321F', ring: '#F2B8B0', dot: '#E5604D' },
+navy: { bg: '#1F3864', fg: '#FFFFFF', ring: '#1F3864', dot: '#FFFFFF' }
+};
+var tabsOf = function (defs, cur, key) {
+return defs.map(function (t) { var on = t.id === cur; var o = {}; o[key] = t.id; return Object.assign({}, t, { on: on, bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#1F4E79' : '#FFFFFF', pick: function () { self.setState(o); } }); });
+};
+var LINES = [{ id: 'main', name: 'Main plot' }, { id: 'b', name: 'B-story' }, { id: 'sub', name: 'Subplot · [Ghost figure]' }, { id: 'none', name: 'Unassigned' }];
+var K = function (id, ch, sc, title, line, when, place, state) { return { id: id, ch: ch, sc: sc, title: title, line: line, when: when, place: place, state: state }; };
+var CARDS = [
+K('c1s1', 1, 1, '[Scene 1 · Opening]', 'main', 'Day 1 · 05:40', '[Location A]', 'brief'),
+K('c1s2', 1, 2, '[Scene 2] · mature tier', 'main', 'Day 1 · 07:15', '[Location A]', 'brief'),
+K('c1s3', 1, 3, '[Scene 3]', 'b', 'Day 1 · 08:00', '[Location B]', 'brief'),
+K('c1s4', 1, 4, '[Scene 4 · Coda]', 'none', 'Day 1 · 19:30', '[Location A]', 'brief'),
+K('c2s1', 2, 1, '[Ch 2 · Scene 1]', 'main', 'Day 2 · 09:00', '[Location C]', 'outline'),
+K('c2s2', 2, 2, '[Ch 2 · Scene 2]', 'sub', 'Day 2 · 22:10', '[Location A]', 'outline'),
+K('c3s1', 3, 1, '[Ch 3 · Scene 1]', 'b', 'Day 4 · 18:30', '[Location B]', 'outline'),
+K('c3s2', 3, 2, '[Ch 3 · Scene 2]', 'main', 'Day 4 · 21:00', '[Location C]', 'outline'),
+K('c4s1', 4, 1, '[Ch 4 · Scene 1]', 'sub', 'Day 5 · 07:30', '[Location A]', 'outline')
+];
+var STATE = { brief: ['Brief ready', TONE.done], outline: ['Outline only', TONE.wait] };
+var lineOf = function (c) { return st.moves[c.id] || c.line; };
+var cardVals = function (c) {
+var s2 = STATE[c.state];
+var moved = !!st.moves[c.id] && st.moves[c.id] !== c.line;
+return { title: c.title, where: 'Ch ' + c.ch + ' · Scene ' + c.sc, when: c.when, state: s2[0], tBg: s2[1].bg, tFg: s2[1].fg, tRing: s2[1].ring, moved: moved,
+shadow: moved ? '0 0 0 2px #FFC000' : 'inset 0 0 0 1px #E3E8F0',
+opts: LINES.map(function (l) { return { id: l.id, name: l.name, on: l.id === lineOf(c) }; }),
+move: function (e) { var m = Object.assign({}, st.moves); m[c.id] = e.target.value; self.setState({ moves: m }); } };
+};
+var columns = LINES.map(function (l) {
+var cs = CARDS.filter(function (c) { return lineOf(c) === l.id; });
+var none = l.id === 'none';
+return { name: l.name, count: cs.length + (cs.length === 1 ? ' scene' : ' scenes'), cards: cs.map(cardVals),
+bg: none ? '#FFF8F3' : '#F8FAFC', ring: none ? '#F4B183' : '#E3E8F0', fg: none ? '#A5470B' : '#1B2A41',
+hasNote: none && cs.length > 0, note: 'Every scene should serve a plot line; loose scenes are how a middle sags.' };
+});
+var movedIds = Object.keys(st.moves).filter(function (id) { return CARDS.some(function (c) { return c.id === id && c.line !== st.moves[id]; }); });
+var first = CARDS.filter(function (c) { return c.id === movedIds[0]; })[0];
+var lineName = function (id) { return LINES.filter(function (l) { return l.id === id; })[0].name; };
+var pendingTitle = !first ? '' : (movedIds.length === 1 ? 'Drafted change: move Ch ' + first.ch + ' · Scene ' + first.sc + ' to ' + lineName(st.moves[first.id]) : 'Drafted change: ' + movedIds.length + ' scenes moved between plot lines');
+var flags = [
+{ kind: 'Act length', text: 'Act 2 is planned 18% over its share of the book', where: 'Beats', tab: 'beats' },
+{ kind: 'No plot line', text: (function (n) { return n + (n === 1 ? ' scene has' : ' scenes have') + ' no plot line'; })(CARDS.filter(function (c) { return lineOf(c) === 'none'; }).length), where: 'Plot lines', tab: 'lines' },
+{ kind: 'Beat with no scene', text: 'Midpoint: trust or betrayal has no scene yet', where: 'Beats', tab: 'beats' },
+{ kind: 'Story time', text: 'Ch 1 · Scene 3: [Location B] cannot be reached by 08:00', where: 'Timeline', tab: 'time' }
+].filter(function (f) { return f.text.indexOf('0 scenes') !== 0; }).map(function (f) { return Object.assign({}, f, { go: function () { self.setState({ tab: f.tab }); } }); });
+var tabs = tabsOf([{ id: 'lines', name: 'Plot lines' }, { id: 'beats', name: 'Beats and word targets' }, { id: 'time', name: 'Story timeline' }], st.tab, 'tab');
+var TOTAL = 90000, CH = 24;
+var fmt = function (n) { return n.toLocaleString('en-GB'); };
+var actDefs = [{ name: 'Act 1', share: 25, planned: 21800 }, { name: 'Act 2', share: 50, planned: 53100 }, { name: 'Act 3', share: 25, planned: 19600 }];
+var acts = actDefs.map(function (a) {
+var target = TOTAL * a.share / 100;
+var d = Math.round((a.planned - target) / target * 100);
+var over = d > 15;
+return { name: a.name, planned: fmt(a.planned) + ' words', target: fmt(target), delta: (d > 0 ? '+' : '') + d + '%', fg: over ? '#A5470B' : '#3B7020',
+pct: Math.min(100, Math.round(a.planned / target * 100)) + '%', bar: over ? '#ED7D31' : '#70AD47', bg: over ? '#FFF8F3' : '#FFFFFF', ring: over ? '#F4B183' : '#E3E8F0' };
+});
+var B = function (pct, name, scenes) { return { pct: pct, name: name, scenes: scenes }; };
+var beats = [B(3, 'Meet under threat', 2), B(12, 'The danger escalates', 1), B(25, 'Forced together', 1), B(38, 'Closeness interrupted by danger', 2), B(50, 'Midpoint: trust or betrayal', 0), B(75, 'The relationship breaks', 1), B(85, 'The threat revealed', 1), B(92, 'Joint climax', 2), B(98, 'Together', 1)].map(function (b) {
+var none = b.scenes === 0;
+var t = none ? TONE.flag : TONE.done;
+return { pct: b.pct + '%', name: b.name, target: 'about word ' + fmt(Math.round(TOTAL * b.pct / 100 / 100) * 100) + ' · Ch ' + Math.max(1, Math.round(b.pct * CH / 100)),
+scenes: none ? 'No scene yet' : b.scenes + (b.scenes === 1 ? ' scene' : ' scenes'), tBg: t.bg, tFg: t.fg, tRing: t.ring, bg: none ? '#FFF8F3' : '#F8FAFC', ring: none ? '#F4B183' : '#E3E8F0' };
+});
+var dayNames = [];
+CARDS.forEach(function (c) { var d = c.when.split(' · ')[0]; if (dayNames.indexOf(d) < 0) dayNames.push(d); });
+var days = dayNames.map(function (d) {
+return { name: d, items: CARDS.filter(function (c) { return c.when.indexOf(d + ' ·') === 0; }).map(function (c) {
+var clash = c.id === 'c1s3';
+return { time: c.when.split(' · ')[1], where: 'Ch ' + c.ch + ' · Scene ' + c.sc, title: c.title, place: c.place, hasFlag: clash,
+flag: 'Scene 2 ends at [Location A] at 07:15 and the trip takes 90 minutes, so 08:00 is too early.', bg: clash ? '#FFF8F3' : '#F8FAFC', ring: clash ? '#F4B183' : '#E3E8F0' };
+}) };
+});
+return {
+viewOpts: viewOpts, isEngine: engine, flags: flags, tabs: tabs, isLines: st.tab === 'lines', isBeats: st.tab === 'beats', isTime: st.tab === 'time',
+columns: columns, acts: acts, beats: beats, days: days, targetWords: fmt(TOTAL), chapterCount: String(CH),
+hasPending: movedIds.length > 0, pendingTitle: pendingTitle, pendingStale: 'the briefs and checks of the chapters involved, and the Matrix', discard: function () { self.setState({ moves: {} }); }
+};
+}
+}
+
+</script>
+</body>
+</html>

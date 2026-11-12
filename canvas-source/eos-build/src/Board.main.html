@@ -1,0 +1,95 @@
+<sc-if value="{{hasPending}}" hint-placeholder-val="{{ false }}">
+<section aria-label="Drafted outline change" style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; padding: 16px 20px; @GOLDBOX@">
+<span style="flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: #FFC000; color: #12244A">@ICON:flag:20@</span>
+<span style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 15px; font-weight: 800; color: #12244A">{{pendingTitle}}</span>
+<span style="font-size: 14px; line-height: 1.55; color: #4B5B73">Nothing in the outline has changed yet. If you proceed, this becomes a new outline version and the work that read the old one is marked to re-run: {{pendingStale}}.</span>
+<sc-if value="{{isEngine}}" hint-placeholder-val="{{ false }}"><span style="@MONO@; font-size: 12px; color: #6B4E00">outline change draft · stale propagation · index/cache.sqlite rebuilt after merge</span></sc-if>
+</span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><button type="button" class="eos-btn" style="@BTN_GOLD@">Proceed</button><button type="button" class="eos-btn" style="@BTN_OUTLINE@">My alternative</button><button type="button" onClick="{{discard}}" class="eos-btn" style="@BTN_GHOST@">Discard</button></span>
+</section>
+</sc-if>
+
+<section aria-labelledby="flags-h" style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px"><h2 id="flags-h" style="@H2@">Found by code</h2><span style="font-size: 13px; @MUTED@">Checked on every outline change, before any model is asked</span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 10px">
+<sc-for list="{{flags}}" as="f" hint-placeholder-count="4">
+<button type="button" onClick="{{f.go}}" class="eos-row" style="display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 12px 14px; border-radius: 14px; border: 0; background: #FFF8F3; box-shadow: inset 0 0 0 1px #F4B183; text-align: left; color: #1B2A41; font-family: inherit; cursor: pointer">
+<span style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: #A5470B">@ICON:alert:14@{{f.kind}}</span>
+<span style="font-size: 14px; font-weight: 700; line-height: 1.4">{{f.text}}</span>
+<span style="font-size: 12px; font-weight: 600; color: #1F4E79">{{f.where}}</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<div role="tablist" aria-label="Board view" style="@TABBAR@">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+<button type="button" role="tab" aria-selected="{{t.on}}" onClick="{{t.pick}}" style="flex: 1 0 auto; min-height: 40px; padding: 0 14px; border: 0; border-radius: 9px; background: {{t.bg}}; color: {{t.fg}}; font: 600 14px 'Plus Jakarta Sans', sans-serif; cursor: pointer; white-space: nowrap">{{t.name}}</button>
+</sc-for>
+</div>
+
+<sc-if value="{{isLines}}" hint-placeholder-val="{{ true }}">
+<section aria-label="Plot lines" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 14px; align-items: start">
+<sc-for list="{{columns}}" as="c" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: 16px; background: {{c.bg}}; box-shadow: inset 0 0 0 1px {{c.ring}}">
+<span style="display: flex; justify-content: space-between; align-items: baseline; gap: 6px; padding: 2px 4px"><span style="font-size: 14px; font-weight: 800; color: {{c.fg}}">{{c.name}}</span><span style="font-size: 12px; font-weight: 600; color: #5F6E84">{{c.count}}</span></span>
+<sc-if value="{{c.hasNote}}" hint-placeholder-val="{{ false }}"><span style="padding: 0 4px; font-size: 12px; line-height: 1.5; color: #A5470B">{{c.note}}</span></sc-if>
+<sc-for list="{{c.cards}}" as="k" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; border-radius: 12px; background: #FFFFFF; box-shadow: {{k.shadow}}">
+<span style="display: flex; justify-content: space-between; gap: 6px; font-size: 12px; font-weight: 700; color: #5F6E84"><span>{{k.where}}</span><span>{{k.when}}</span></span>
+<span style="@SERIF@; font-size: 15px; font-weight: 500; line-height: 1.35">{{k.title}}</span>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px"><span style="@BADGE@; background: {{k.tBg}}; color: {{k.tFg}}; box-shadow: inset 0 0 0 1px {{k.tRing}}">{{k.state}}</span><sc-if value="{{k.moved}}" hint-placeholder-val="{{ false }}"><span style="@BADGE@; background: #FFF5D6; color: #6B4E00; box-shadow: inset 0 0 0 1px #FFD966">Move drafted</span></sc-if></span>
+<label style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: #4B5B73; white-space: nowrap">Move to
+<select aria-label="Move {{k.title}} to a plot line" onChange="{{k.move}}" style="flex: 1; min-height: 36px; padding: 0 8px; border-radius: 8px; border: 1px solid #CBD5E1; background: #FFFFFF; font: 13px 'Plus Jakarta Sans', sans-serif; color: #1B2A41">
+<sc-for list="{{k.opts}}" as="o" hint-placeholder-count="4"><option value="{{o.id}}" selected="{{o.on}}">{{o.name}}</option></sc-for>
+</select></label>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</section>
+</sc-if>
+
+<sc-if value="{{isBeats}}" hint-placeholder-val="{{ false }}">
+<section aria-label="Beats and word targets" style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; @CARD@">
+<span style="font-size: 13px; @MUTED@">From your genre pack, placed on a book of {{targetWords}} words and {{chapterCount}} chapters. Acts are flagged when planned words run more than 15% over their share.</span>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 10px">
+<sc-for list="{{acts}}" as="a" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-radius: 12px; background: {{a.bg}}; box-shadow: inset 0 0 0 1px {{a.ring}}">
+<span style="display: flex; justify-content: space-between; font-size: 14px; font-weight: 800"><span>{{a.name}}</span><span style="color: {{a.fg}}">{{a.delta}}</span></span>
+<div style="height: 8px; border-radius: 999px; background: #E8EEF6; overflow: hidden"><div style="width: {{a.pct}}; height: 100%; border-radius: 999px; background: {{a.bar}}"></div></div>
+<span style="font-size: 12px; color: #4B5B73">Planned {{a.planned}} · target {{a.target}}</span>
+</div>
+</sc-for>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{beats}}" as="b" hint-placeholder-count="9">
+<li style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; min-height: 44px; padding: 6px 12px; border-radius: 12px; background: {{b.bg}}; box-shadow: inset 0 0 0 1px {{b.ring}}">
+<span style="flex: none; width: 44px; font-size: 13px; font-weight: 700; color: #2E75B6">{{b.pct}}</span>
+<span style="flex: 1 1 200px; min-width: 0; font-size: 14px; font-weight: 600">{{b.name}}</span>
+<span style="flex: none; font-size: 13px; color: #4B5B73">{{b.target}}</span>
+<span style="@BADGE@; background: {{b.tBg}}; color: {{b.tFg}}; box-shadow: inset 0 0 0 1px {{b.tRing}}">{{b.scenes}}</span>
+</li>
+</sc-for>
+</ol>
+</section>
+</sc-if>
+
+<sc-if value="{{isTime}}" hint-placeholder-val="{{ false }}">
+<section aria-label="Story timeline" style="display: flex; flex-direction: column; gap: 12px; padding: 20px 22px; @CARD@">
+<span style="font-size: 13px; @MUTED@">Scenes in story order, by day and time. Code checks that no one is in two places at once and that journeys take as long as the Story Bible says.</span>
+<sc-for list="{{days}}" as="d" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="@LABEL@">{{d.name}}</span>
+<sc-for list="{{d.items}}" as="e" hint-placeholder-count="4">
+<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 10px; align-items: start; padding: 8px 12px; border-radius: 12px; background: {{e.bg}}; box-shadow: inset 0 0 0 1px {{e.ring}}">
+<span style="font-size: 13px; font-weight: 700; color: #1F4E79">{{e.time}}</span>
+<span style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 600">{{e.where}} · <span style="@SERIF@; font-weight: 500">{{e.title}}</span></span><span style="font-size: 12px; color: #5F6E84">{{e.place}}</span>
+<sc-if value="{{e.hasFlag}}" hint-placeholder-val="{{ false }}"><span style="font-size: 12px; line-height: 1.5; color: #A5470B">{{e.flag}}</span></sc-if></span>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</section>
+</sc-if>
