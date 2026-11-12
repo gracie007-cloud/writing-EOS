@@ -24,3 +24,6 @@ Writing-EOS-App/
 __pycache__/
 *.pyc
 .pytest_cache/
+
+# The Author's own list of private names, read by tools/check_public.py:
+.private-words.txt

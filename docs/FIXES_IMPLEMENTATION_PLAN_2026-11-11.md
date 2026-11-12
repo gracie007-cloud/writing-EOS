@@ -5,7 +5,53 @@
 | **Date** | 2026-11-11 |
 | **Basis** | An audit of the project as it stands today: every check below was run against the real files, not recalled |
 | **Scope** | `eos-app/` (engine, config, tests), the model roster export, the bake-off harness, the requirements document, the design canvas, the package |
-| **Status** | A plan for your approval. Nothing in the project was changed to write it. |
+| **Status** | Stages 0 and 1 carried out on 2026-11-12 (section 0). The rest waits on the six decisions in section 4. |
+
+---
+
+## 0. Status on 2026-11-12
+
+The corrections that did not need a decision from you are done, tested and published to
+https://github.com/gracie007-cloud/writing-EOS. 260 tests pass (228 before).
+
+| Finding | Status |
+|---|---|
+| **A1** version history | **Done.** The project is a git repository, published to GitHub. The bake-off harness has its own local-only history (see the note below). |
+| **A2** lost build scripts | **Done, differently.** The old generator could not be recovered whole: the transcript held only its 21 October version. It is replaced by `python -m eos_app.sync`, which builds `components.yaml` from a Notion export joined with the new tracked file `config/component_inputs.yaml`. A test proves it rebuilds today's file byte for byte. |
+| **A3** package | **Replaced.** The GitHub repository is now the downloadable copy. The old folder and zip are left untouched on disk and are not published. |
+| **B1** models with no ID | **Code done.** The router never chooses one. **Yours:** the 18 IDs. |
+| **B2** one provider | **Code done.** A second roster row with the same Model Name is a second route. **Yours:** the rows. |
+| **B3** mature books | **Waits on decision 2** and a fresh roster export with your Genre column. |
+| **B4** prose safety net | **Done.** |
+| **B5** gates | **Done.** The queue stops at every gate; chapters keep their own progress. |
+| **B6** slot names | **Done.** `primary`, `comparable`, `fallback`. |
+| **B7** Target Audience | **Reported as degraded** by the readiness report. **Waits on decision 5.** |
+| **B8** Jev | **Reported.** **Yours:** the roster row. |
+| **B9** lane lists, media kinds | **Done.** |
+| **B10** look-alike names | **Code done.** **Yours:** the six roster rows. |
+| **B11** unchecked writers | **Reported.** **Waits on decision 4.** |
+| **C1** requirements | **Partly.** v0.27 records the corrections and marks the family wording as superseded. The full consolidation waits on decision 3. |
+| **C2** canvas | Not started. |
+| **D1** first real run | Not started. **Waits on decision 6.** |
+
+**Run `python -m eos_app.readiness` from `eos-app/` at any time** to see the current state. Today: 110 ready,
+1 degraded, 6 blocked, 6 code only. An outage of Concentrate AI would stop 106 components, 17 of them inside every
+chapter.
+
+**What changed in the numbers.** The audit counted components whose experts all sit on one provider (111). The
+readiness report counts what could actually be *called*, which is stricter and more useful, so some figures below
+differ slightly from its output.
+
+**Three things found while doing the work.**
+1. **The repository is public**, so your own material was kept out: the library, the bake-off harness and its test
+   pack, the story-pitch experiment, the import report that names characters, and one screenshot showing the book.
+   Two lines in the documents that named a ship and two pen names were made generic, as decision D10 already
+   requires. `tools/check_public.py` now refuses any push that carries a name from your library or from your own
+   list in `.private-words.txt`.
+2. **Notion's query index is stale.** A direct query of *Narrative Components* returned duplicate Flow Order numbers
+   and models you replaced on 22 October. I did not use it. The sync tool takes a CSV export, which is always live.
+3. **The canvas source on disk is three weeks old** and carries book names, so it was not published. The live canvas
+   is the source.
 
 ---
 

@@ -73,17 +73,30 @@ The app follows the Notion database *Narrative Components*. `config/components.y
 - how it runs: in sequence, per chapter, only on a failed check, on demand, or throughout
 - the inputs it needs and the gate after it
 - its code parts
-- the database's model candidates: a frontier model and an open-weight one, or an open-weight model marked as primary when you chose it for the job (Target Audience: GLM 5.3 Flash)
+- its line of experts: `primary` (the database's Frontier Model column), `comparable` (Comparable Open-Weight) and `fallback` (Fallback Model). The slot says the model's place in the line, not what kind of model it is: a cheaper comparable model can be the Primary
+- for a media component, what it makes (`modality`)
 - the Swarm Tier and the Jev role
 
 `workflow.py` reads that file and:
 - refuses a copy with a gap in the order, a repeated name or an input that isn't in the list
 - `check_order()` lists, in plain words, every component that would run before an input it needs
-- `next_to_run()` gives the components that can run now, `chapter_loop()` the 17 steps of every chapter, and `gates()` your decision points
-- `run_plan()` says how many models work on a component: Full = two from different families, Light = one, None = code
+- `next_to_run()` gives the components that can start now: their inputs are done **and every gate before them is approved**. Nothing past a gate is offered until you approve it; `waiting_on()` names the gate holding a component back
+- chapters keep their own progress: `next_to_run(..., chapter=2)` gives chapter 2's work. Planning may run ahead; drafting waits for the previous chapter's lock
+- the recipe gate applies only when a recipe was built (`gate_when_run`)
+- `chapter_loop()` gives the 17 steps of every chapter, and `gates()` your decision points
+- `run_plan()` says how many models work on a component: Full = the Primary plus a second, different expert from its own line, Light = one, None = code
 - `jev_role()` says what Jev (`typesafe/jev-1.14`) may do with a decision: it settles only what agents may settle, and otherwise its pick is a recommendation
 
-When the database changes, regenerate `components.yaml` and run the tests.
+### When the database changes
+
+Export *Narrative Components* from Notion as CSV (… → Export → Markdown & CSV), then:
+
+    python -m eos_app.sync check "<the export.csv>"    # lists what would change; writes nothing
+    python -m eos_app.sync build "<the export.csv>"    # rebuilds components.yaml and checks its order
+
+The database does not record what a component takes in, its code parts, what a checker judges or what a media component makes. Those live in `config/component_inputs.yaml`, which this app owns. A new database row needs an entry there first; the build stops and names it otherwise. `python -m eos_app.sync export out.csv` writes the app's copy in the database's own columns, for comparing by eye.
+
+**Rule:** everything the app depends on is built by a command in this repository. Nothing lives in a temporary folder.
 
 ## Models and routing
 
@@ -97,16 +110,28 @@ The build lists roster rows that look mistyped (an ID copied from the row above,
 
 `eos_app/router.py` picks the model for each call (`config/routing.yaml`):
 - **Experts:** each component's Primary, then its Comparable, then its Fallback (the database's Fallback Model, or the Primary's roster Fallback when that is empty). A cheaper comparable model goes first.
+- **Routes:** a model listed in the roster under two providers has two routes. When a provider is down, the router tries the same model's other route before it moves to the next expert. To give a model a second route, add a roster row with the same Model Name and the other provider.
+- **No ID, no call:** a model with no provider model ID is never chosen.
+- **Lanes:** each lane's providers are listed in `routing.yaml` and enforced.
 - **Prose:** writers in Prose Writing use the model fine-tuned for the book's genre (Featherless AI or Unsloth
-  Desktop); until one is tagged, the component's own experts stand in. Mature text goes only to an Uncensored model
-  on Featherless AI.
-- **Checkers:** the 18 evaluation components (each lists what it `judges` in components.yaml) never run on the
-  model that wrote the text; for mature text their experts refuse, their `mature_fallback` takes over.
+  Desktop), with the component's own experts behind it as the safety net; until a fine-tune is tagged, those
+  experts do the work. Mature text goes only to an Uncensored model on Featherless AI.
+- **Checkers:** the 21 evaluation components (each lists what it `judges` in components.yaml) never run on the
+  model that wrote the text, whichever provider serves it; for mature text their experts refuse, their
+  `mature_fallback` takes over.
 - **Editing tools:** Proofreader and Edit Coach run on their own experts, not the genre fine-tunes; Self-Edit
   Reports is code.
-- **Media:** image, video, speech, music and sound components use media models only (the roster's Modality), routed
+- **Media:** image, video, speech, music and sound components use only models that make what they make (the
+  roster's Modality), routed
   to OpenRouter, Hugging Face, ElevenLabs, Comfy Cloud or Featherless AI. Comparables and Fallbacks run on Comfy Cloud; mature media goes only to open models there.
 - `same_model_report()` lists where a checker and something it judges share a Primary.
+
+### What could run today
+
+    python -m eos_app.readiness          # the summary and everything that needs attention
+    python -m eos_app.readiness --all    # every component
+
+It asks the router which models each component could actually call and sends nothing to any model. A component is **ready**, **degraded** (it would run, but on a later expert or with no second expert to cross-check) or **blocked** (nothing it could call). The report also counts what an outage of each provider would stop, and lists what is still open: no route for mature material, a Mature Fallback left open, writers nothing checks, and Jev's missing roster row.
 
 ## Shared library
 
