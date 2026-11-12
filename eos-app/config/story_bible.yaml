@@ -1,0 +1,100 @@
+# The Story Bible (requirements §4.4, FR-SB-3; D26): the twelve elements of a story bible, each filled by the components
+# whose job it is (one job per component, D25), fed by the Author's pools, and assembled by the Story Bible Builder.
+# The Bible grows: what is settled before the lock is locked; the outline, key dialogues and timelines keep growing
+# through change requests (FR-SB-1). Steps are the Narrative Components database's Step numbers.
+version: "2026-10-22a"
+assembled_by: "19"            # Story Bible Builder (Bible Assembler)
+checked_by: ["19.3", "19.4"]  # Canon Check, Canon Second Opinion; the Author locks the Bible after them
+kept_by: "NEW-01"             # Style Sheet and Canon Upkeep, after the lock
+
+elements:
+  - id: title_logline
+    title: Title and Logline
+    holds: [working title, one-sentence logline]
+    filled_by: ["2", "5", "3.5"]          # Story Setup, Story Pitch, Premise Adapter
+    sources: []
+    registers: [Premise and Blueprints]
+
+  - id: synopsis
+    title: Synopsis
+    holds: [overview of plot, key characters and central conflict, the book's themes]
+    filled_by: ["11", "5", "6"]           # Synopsis, Story Pitch (the book's Canon theme), Conflict Scoring (the core)
+    sources: [{pool: themes, fields: [definition, complementary_theme, theme_type]}]
+    registers: []
+
+  - id: characters
+    title: Characters
+    holds: [main characters in full (name, age, look, background, personality and quirks, goals, motivations,
+            conflicts, arc), supporting characters in brief (role, relationships to the leads)]
+    filled_by: ["3.6", "6.5", "CD-02", "6.6", "CD-03a", "CD-03b", "CD-04", "CD-05", "6.61", "16", "CD-08", "CD-08a",
+                "CD-09", "CD-10", "CD-11", "13", "13.1", "13.3", "13.4"]
+    sources: [{pool: characters}, {pool: arc_themes}, {pool: themes, fields: [theme_type]}]
+    registers: [Characters, Arc, Relationships, Secrets and knowledge]
+
+  - id: world
+    title: Setting and World-Building
+    holds: [geography (maps, locations, landmarks), cultures (societies, customs, beliefs), history (events, lore),
+            technology and magic (rules and limits)]
+    filled_by: ["10", "10.1", "10.2", "10.3", "10.4", "10.5"]   # Worldbuilding proposes the approach; World Check checks the cast
+    sources: [{pool: themes, fields: [world_components, world_grapes, world_merps, world_bible]},
+              {pool: characters, part: settings}, {pool: story_pitches, part: doctrine}]
+    registers: [World rules, Locations, Objects, Naming]
+    approach: {choices: [Components, G.R.A.P.E.S., M.E.R.P.S.], proposed_by: "10", decided_by: author,
+               gate: Author approves world elements}
+
+  - id: plot_structure
+    title: Plot and Structure
+    holds: [outline by acts, chapters or scenes, key plot points and turning points, subplots and where they meet]
+    filled_by: ["8", "8.1", "8.2", "18.5", "14", "20", "20.2"]
+    sources: [{pool: conflict_map}, {pool: themes, fields: [structure_good, structure_situational, structure_not_ideal]}]
+    registers: [Plot threads, Premise and Blueprints]
+
+  - id: themes_symbolism
+    title: Themes and Symbolism
+    holds: [core themes (Canon), recurring symbols, motifs (Motif themes) and imagery]
+    filled_by: ["5", "13", "13.3", "15"]
+    sources: [{pool: themes, fields: [theme_type, definition, complementary_theme, colours]}]
+    registers: []
+
+  - id: dialogue_voice
+    title: Dialogue and Voice
+    holds: [each character's way of speaking (dialect, slang, tics), the narrative voice, key lines of dialogue]
+    filled_by: ["CD-10", "15", "NEW-02", "3"]
+    sources: [{pool: themes, fields: [dialogue_voice]}, {pool: pen_names}]
+    registers: [Style card]
+
+  - id: visual_references
+    title: Visual References
+    holds: [mood and palette of the world, character designs]
+    filled_by: ["CD-08", "10", "15"]
+    sources: [{pool: themes, fields: [colours]}, {pool: pen_names, fields: [color_palette, book_cover_style]},
+              {pool: characters, fields: [appearance, color_palette, associated_color]}]
+    registers: []
+
+  - id: timeline
+    title: Timeline
+    holds: [chronology of key events, backstory included; each main character's own timeline]
+    filled_by: ["NEW-04", "13", "20.1"]
+    sources: [{pool: themes, fields: [timeline]}]
+    registers: []
+
+  - id: research
+    title: Research and References
+    holds: [notes from the Author's own sources, the influences behind the book (the Author's eyes only)]
+    filled_by: ["NEW-03", "18.6"]         # Fact Base (the Author's sources only, D13), Reference Check
+    sources: [{pool: story_pitches, fields: [scholarship_anchor]}, {pool: pen_names, fields: [literary_style, cinematic_style]}]
+    registers: []
+
+  - id: glossary
+    title: Glossary
+    holds: [definitions of the book's own terms, names and concepts]
+    filled_by: ["10.1", "10.2", "19.2"]
+    sources: []
+    registers: [Naming]
+
+  - id: appendices
+    title: Appendices
+    holds: [maps, family trees, important objects, anything else worth keeping]
+    filled_by: ["19", "PROP-03"]
+    sources: []
+    registers: [Objects, Creative Reserve]

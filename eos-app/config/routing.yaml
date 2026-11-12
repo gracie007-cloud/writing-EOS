@@ -1,0 +1,35 @@
+# How the app's own router (D22) picks a model for a component and where it sends the call. The Author's rules,
+# 2026-10-22. Model facts (provider, ID, checkboxes, family) come from config/models.yaml.
+version: "2026-10-22"
+
+# Each roster provider and the route the router calls.
+providers:
+  Concentrate AI: concentrate
+  OpenRouter: openrouter
+  Featherless AI: featherless
+  Unsloth Desktop: unsloth_desktop      # a second machine on the Author's Tailscale network; its address is in .env (D30)
+  Hugging Face: huggingface             # hosted Inference Providers
+  ElevenLabs: elevenlabs                # speech, music, sound effects, speech-to-text (Author, 2026-10-22)
+  Comfy Cloud: comfy_cloud              # image and video workflows, Ideogram (Author, 2026-10-22)
+
+# Lanes. Building Blocks, Sales & Marketing and the evaluation components (the checkers) use the general lane: the
+# component's Primary, then its Fallback. Prose Writing components that write use the prose lane: a model fine-tuned
+# for the book's genre, via Featherless AI or Unsloth Desktop. Until a fine-tune is tagged for a genre, the prose
+# lane falls back to the component's own general candidates.
+lanes:
+  general:
+    providers: [Concentrate AI, OpenRouter]
+  prose:
+    providers: [Featherless AI, Unsloth Desktop]
+    interim: component_candidates
+  media:
+    providers: [OpenRouter, Hugging Face, ElevenLabs, Comfy Cloud, Featherless AI]
+
+# Mature content (P10).
+mature:
+  # A writer of mature text must have the Uncensored box ticked and be hosted by one of these providers.
+  # An evaluation component's own Mature Fallback (components.yaml) takes over when its experts refuse mature text.
+  writer_providers: [Featherless AI]
+  # Mature media: only open-weight models on these providers. Comfy's terms ban only illegal content; fal.ai's ban
+  # sexually explicit content and OpenRouter defers to models that refuse it (checked 2026-10-22).
+  media_providers: [Comfy Cloud, Featherless AI]   # Featherless: Chatterbox narration (the Author, 2026-10-22)

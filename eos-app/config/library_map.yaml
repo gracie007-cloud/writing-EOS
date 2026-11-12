@@ -1,0 +1,391 @@
+# The shared library (requirements v0.15, FR-LIB, D20): Character Pool, Pen Names Pool, Narrative Genres Pool,
+# Story Pitch Pool, Content Levels, Conflict and Structure Map, Character Arc and Theme, Themes in Literature.
+# Built to the Author's vault as it is (Obsidian Vault\Writing EOS, read 2026-10-21): the app uses the vault's own
+# field names and Controlled Vocabulary. aliases only translate other spellings; notes are never rewritten.
+# The library lives beside the projects: <projects root>/library/<folder>/ and opens as an Obsidian vault.
+version: "2026-10-22g"
+root: "library"
+exclude: ["Archive*", "*_zip"]          # folders skipped on import (older copies); hidden folders are always skipped
+send_named_influences: false            # models get a style's description, not the named authors or directors
+
+pools:
+  characters:
+    title: Character Pool
+    source_folder: Character Pool
+    folder: characters
+    reader: cards                       # one note per character
+    note_filter: {has_field: character_id}
+    id_field: character_id
+    id_prefix: CHAR
+    id_width: 3
+    body_fields: true                   # the card's **field:** lines count as fields
+    required: [name, role_in_story, one_line_concept]
+    status_values: [Fusion Draft, Reimagine Queued, Reimagined, Ready to Pull, Assigned to Project, Retired]
+    offer_statuses: [Ready to Pull, Reimagined]      # offered to any project
+    project_statuses: [Assigned to Project]          # offered only to the project named in used_in_project
+    project_field: used_in_project
+    write_gate: G5                                   # Pool Write needs this approval (roster and canon promotion)
+    new_status: Ready to Pull                        # what Pool Write gives a new character
+    new_folder: new                                  # new characters land in characters/new/ for you to copy to the vault
+    role_field: role_in_story
+    # The vault's role_in_story words, and the archetype positions (Appendix C11) each can fill. A pre-filter only:
+    # Character Pool Match (a model) scores every candidate.
+    role_functions:
+      protagonist: [Hero]
+      deuteragonist: [Hero, Ally]
+      antagonist: [Shadow / Antagonist]
+      mentor: [Mentor]
+      ally: [Ally]
+      sidekick: [Ally]
+      comic relief: [Trickster]
+      love interest: [Ally, Shapeshifter]
+      rival: [Shapeshifter, Threshold Guardian]
+      supporting: [Ally, Herald, Threshold Guardian]
+      background: []
+      setting: []                       # setting-characters are places; they fill no archetype position
+      # Words the cards use beyond the Controlled Vocabulary list:
+      anti-hero: [Hero]
+      anti-heroine: [Hero]
+      antihero: [Hero]
+      hero: [Hero]
+      heroine: [Hero]
+      central figure: [Hero]
+      villain: [Shadow / Antagonist]
+      adversary: [Shadow / Antagonist]
+      student: [Ally]
+      companion: [Ally]
+      confidante: [Ally]
+      jester: [Trickster]
+      trickster: [Trickster]
+      herald: [Herald]
+      guardian: [Threshold Guardian]
+      shapeshifter: [Shapeshifter]
+    core: [role_in_story, one_line_concept, personality_core, strengths, flaws, chief_feature_flaw, root_fear, want_goal,
+           need_internal, character_arc, abilities, behaviors_quirks, animal_nature]
+    skin: [name, aliases, aliases_titles, name_rationale, cluster_universe, species_tribe, age_gender, appearance,
+           clothing_style, color_palette, associated_color, color_psychology_basis, recurring_motif, backstory_history,
+           voice, catchphrase_recurring_remark, sample_line, relationships]
+    private: [fusion_sources, reimagine_record, fusion_pairing_rationale, source, tags]   # never sent to a model
+    aliases:
+      id: character_id
+      role: role_in_story
+      concept: one_line_concept
+      want: want_goal
+      need: need_internal
+    read_by: ["3.6", "6.5", "CD-02", "8.2", "14", "6.61", "16", "10", "10.3"]   # Worldbuilding and Locations take the setting cards
+    setting_words: [setting]           # a role_in_story starting with these is a place, offered to the world, never cast
+    written_by: ["CD-11"]
+    # A pool card is a launchpad, not the final profile: Character Development completes it for the book (adaptation
+    # mode). Gate G5 waits until the developed profile has every one of these; a gap goes back to the stage that owns it.
+    profile_required:
+      name: CD-09            # Character Sheet
+      age: CD-09
+      gender: CD-09
+      species_tribe: CD-09
+      appearance: CD-08      # Character Profile
+      role_in_story: CD-02   # Role Requirements
+      personality_core: CD-03b
+      flaws: CD-03a          # Inner Life
+      root_fear: CD-03a
+      ghost: CD-03a
+      lie: CD-03a
+      want_goal: CD-03a
+      need_internal: CD-03a
+      backstory_history: CD-08
+      voice: CD-10           # Character Voice Guide
+      relationships: CD-08
+
+  pen_names:
+    title: Pen Names Pool
+    source_folder: Pen Names Pool
+    folder: pen-names
+    reader: pairings                    # pen names are built from the subgenre rows that name them
+    row_types: [minor-subgenre, childrens-minor-subgenre, hybrid-minor-subgenre, ya-minor-subgenre, nonfiction-type,
+                poetry-drama-form]
+    author_field: author_name
+    author_folder: Authors              # each database's Authors folder holds one short note per pen name
+    id_prefix: PEN
+    row_fields: [primary_genre, secondary_genre, major_subgenre, literary_style, writing_style, writing_styles, tone,
+                 tones, themes, cinematic_style, book_trailer_style, book_cover_style, color_palette]
+    named_influence_fields: [literary_style, cinematic_style, book_cover_style]
+    aliases:
+      best_fit_literary_style: literary_style
+      best_fit_writing_styles: writing_styles
+      best_fit_tones: tones
+      secondary_genres: secondary_genre
+      major_subgenres: major_subgenre
+    read_by: ["3", "3.5", "15", "34", "10.1", "6.61", "40", "NEW-10", "NEW-08", "42"]   # Cover Brief and Book Trailer use the cover, palette, cinematic and trailer styles
+    written_by: []
+
+  genres:
+    title: Narrative Genres Pool
+    source_folder: Narrative Genres Pool
+    folder: narrative-genres
+    reader: cards
+    note_filter: {field: type, values: [minor-subgenre, childrens-minor-subgenre, hybrid-minor-subgenre,
+                                        ya-minor-subgenre, nonfiction-type, poetry-drama-form]}
+    id_prefix: GEN
+    id_from: [primary_genre, title]
+    near_duplicate_scope: primary_genre   # names that differ only in spacing, hyphens, case or a plural
+    sections_as_fields: {Definition: definition}
+    required: [primary_genre, definition]
+    aliases: {}
+    read_by: ["4.1", "3", "4", "6", "20"]
+    written_by: []
+
+  story_pitches:
+    title: Story Pitch Pool
+    source_folder: Story Pitch Pool
+    folder: story-pitches
+    reader: cards                       # one note per writing topic; the Pitch Type notes are indexes
+    note_filter: {field: type, values: [writing-topic]}
+    title_field: topic
+    id_prefix: PITCH
+    near_duplicate_scope: ""           # across all topics
+    id_from: [title]
+    sections_as_fields: {"Premise (from Notion)": premise, Assessment: assessment}
+    required: [topic, pitch_type, serves, premise]
+    private: [notion_page, tags]        # never sent to a model
+    doctrine_types: ["E — Doctrine — Story Bible Material"]   # framework material: offered to the Story Bible, not as a pitch
+    read_by: ["38.5", "1", "5", "NEW-03", "10", "19"]
+    written_by: []
+
+  content_levels:
+    title: Content Levels
+    source_folder: Content Levels Mapping
+    folder: content-levels
+    reader: cards                       # one note per subgenre; the Core and Secondary notes are indexes
+    note_filter: {field: type, values: [content-level]}
+    title_field: minor_subgenre
+    id_prefix: LVL
+    id_from: [primary_genre, secondary_genre, major_subgenre, minor_subgenre]   # one subgenre can sit under several paths
+    near_duplicate_scope: primary_genre
+    body_fields: true                   # **Authors:** and **Basis:** lines
+    required: [minor_subgenre, spice, violence, swearing]
+    axes: [spice, violence, swearing]   # each 0 to 5
+    scale:
+      spice: [None, "chaste attraction, a kiss", "sensual tension, fade to black", "sensual, closed door",
+              "open door, moderate detail", explicit]
+      violence: [None, "mild peril, harm off the page", "action violence, non-graphic",
+                 "injury or death described in moderate detail", "graphic injury or death", "extreme or gory"]
+      swearing: [None, very mild, occasional mild, regular moderate, frequent strong, constant strongest]
+    # A scene at or above any of these levels is mature: it goes to the mature tier only (P10). The Author's call.
+    mature_at: {spice: 4, violence: 4, swearing: 4}
+    review_field: assignment
+    unreviewed_values: ["maggie-generated (review)"]   # suggested levels: the Author confirms them at Story Setup
+    read_by: ["2", "4.1", "3", "4", "22.5", "27", "32", "34", "NEW-12"]
+    written_by: []
+
+  conflict_map:
+    title: Conflict and Structure Map
+    source_folder: Conflict Type + Plot Structure
+    folder: conflict-structure-map
+    reader: cards                       # one note per conflict core or modifier value; structure notes are reverse indexes
+    note_filter: {field: type, values: [conflict-core, conflict-modifier]}
+    id_prefix: CMAP
+    id_from: [axis, title]
+    sections_as_fields: {"Why It Fits": why_it_fits}
+    required: [axis, descriptor, best_fit_plot_structures]
+    core_axis: Conflict Core
+    # The standing order for Structure Fit (Q10): its 21 structures are the ones the formula scores.
+    read_by: ["6", "14", "8", "20"]
+    written_by: []
+
+  arc_themes:
+    title: Character Arc and Theme
+    source_folder: Character Arc and Theme Template
+    folder: arc-and-theme
+    reader: cards
+    note_filter: {field: type, values: [character-arc-entry]}
+    exclude_notes: ["*Template*"]       # the blank entry the Author copies
+    title_field: character_name
+    id_prefix: ARC
+    id_from: [title]
+    required: [character_name, theme, character_arc]
+    template: [character_name, theme, basic_information, relationships, character_arc]
+    sections:                            # the template's headings, in order, for each field
+      theme: Theme in Literature
+      basic_information: "Basic Information (Name, Age, Gender)"
+      relationships: Relationships with Other Characters
+      character_arc: Character Arc or Development
+    write_gate: Story Bible lock       # Cast and Structure drafts it on the structure's beats; the Story Bible finishes it
+    new_folder: new                      # entries land in arc-and-theme/new/<project>/ for the Author to copy to the vault
+    read_by: ["20.1", "28", "38.3"]
+    written_by: ["19"]
+
+  themes:
+    title: Themes in Literature
+    folder: themes
+    reader: csv
+    file_types: [".csv"]
+    source_folder: Theme in Literature   # the workbook's sheets, one row per theme, in a vault folder of their own
+    # The first sheet sets the list; the others add columns to the same themes, matched by name, and the import
+    # report says if they ever stop lining up.
+    tables:
+      "Theme in Literature - Literary Genres and Theme.csv":
+        key: Themes in Literature
+        columns: {"Good Fit": good_fit, "Situational Fit": situational_fit, "Not An Ideal Fit": not_ideal}
+      "Theme in Literature - Themes in Literature List.csv":
+        key: Theme in Literature
+        columns: {Definitions: definition, "Theme Type": theme_type}
+      "Theme in Literature - Complementary Theme.csv":
+        key: Themes in Literature
+        columns: {"Complementary Theme": complementary_theme, "How They Intersect": intersection}
+      # Story Bible element 4, Setting and World-Building: the three worldbuilding approaches, and the Bible's own layout.
+      "Theme in Literature - Worldbuilding and Theme_ Components.csv":
+        key: Themes in Literature
+        group: world_components
+        columns: [Social Structures, Temporal Elements, Environmental Aspects, Cultural Elements, Technology and Magic,
+                  Mechanics and Systems, Narrative Devices, Health and Well-Being, Unique Creatures, Movement and Travel]
+      "Theme in Literature - Worldbuilding and Theme_ G.R.A.P.E.S.csv":
+        key: Themes in Literature
+        group: world_grapes
+        columns: [Geography, Religion, Achievements, Politics, Economics, Social Structures]
+      "Theme in Literature - Worldbuilding and Theme_ M.E.R.P.S.csv":
+        key: Themes in Literature
+        group: world_merps
+        columns: [Military, Economy, Religion, Politics, Social]
+      "Theme in Literature - Worldbuilding and Theme_ Story Bible.csv":
+        key: Themes in Literature
+        group: world_bible
+        columns: [Physical Environment, Social Structure, Economic Systems, Technology and Magic, Culture and Beliefs,
+                  History and Lore]
+      # Element 5, Plot and Structure: the structures each theme suits (the 21 of the Conflict and Structure Map).
+      "Theme in Literature - Plot Structure and Theme.csv":
+        key: Themes in Literature
+        columns: {"Good Fit": structure_good, "Situational Fit": structure_situational, "Not An Ideal Fit": structure_not_ideal}
+      # Element 7, Dialogue and Voice.
+      "Theme in Literature - Dialogue and Voice and Theme.csv":
+        key: Themes in Literature
+        group: dialogue_voice
+        columns: [Tone and Style, Speech Patterns or Catchphrases, Dialect and Accent, Formal vs. Informal Language,
+                  Character-Specific Vocabulary and Jargon, Narrative Voice]
+      # Elements 6 and 8, Themes and Symbolism, Visual References.
+      "Theme in Literature - Theme Color Associations.csv":
+        key: Theme in Literature
+        group: colours
+        columns: [Color Association, Complementary Colors, Triadic Colors, Tetradic Colors, Additional Color,
+                  "Hexadecimal Code #1", "Hexadecimal Code #2", "Hexadecimal Code #3", "Hexadecimal Code #4",
+                  "Hexadecimal Code #5", "Hexadecimal Code #6", "Hexadecimal Code #7", "Hexadecimal Code #8"]
+      # Element 9, Timeline.
+      "Theme in Literature - Timeline and Theme.csv":
+        key: Themes in Literature
+        group: timeline
+        columns: [Flashbacks, Flash-forwards, Parallel Timelines]
+    partner_field: complementary_theme   # must name another theme in the list
+    list_fields: [structure_good, structure_situational, structure_not_ideal]
+    structure_fit_fields: {structure_good: good, structure_situational: situational, structure_not_ideal: not_ideal}
+    # The three worldbuilding approaches. Worldbuilding proposes one from the book's genre, plot and Canon theme;
+    # the Author approves it at the world gate. Whichever is chosen fills the Story Bible's world layout.
+    world_approaches: {Components: world_components, G.R.A.P.E.S.: world_grapes, M.E.R.P.S.: world_merps}
+    world_layout: world_bible
+    type_field: theme_type
+    type_values: [Canon, Motif]          # Canon: a value or question an arc turns on; Motif: a recurring mode or texture
+    lead_type: Canon                     # the book's theme and a lead character's arc theme must be of this type
+    lead_functions: [Hero, Shadow / Antagonist]   # archetype positions that count as lead characters
+    fit_columns: {good_fit: good, situational_fit: situational, not_ideal: not_ideal}
+    empty_marks: ["—", "-", "–"]        # a cell holding only a dash means none
+    title_field: theme
+    id_prefix: THEME
+    id_from: [title]
+    required: [theme, definition, theme_type]
+    near_duplicate_scope: ""
+    # The list's shorthand for genres, in the genre pools' own names.
+    genre_aliases:
+      Contemporary: [Contemporary Literary Fiction]
+      Nonfiction: [Autobiography, Biography, Essay, Self-Help, Travel]
+    read_by: ["5", "6", "13", "13.3", "14", "19", "20.1"]   # Story Pitch proposes the book's Canon theme; confirmed with the Conflict Core
+    written_by: []
+
+  # The Author's Fictional Character Development knowledge base (2026-10-22). SCAFFOLDING: brainstorming material with
+  # incomplete information (the Author). Components may draw ideas from it; it never counts as canon or as a
+  # standard a character must meet, and its gaps are not errors to fix. The Character Pool is the refined version of
+  # this knowledge base's character list, so the character documents themselves are never imported.
+  # Lifecycle (D31): a scaffolding pool is under development. Research completes it; the Author then moves its file
+  # out of Brainstorming Scaffolding Documents, and only then does its source_folder change and `standing` go.
+  # Each read_by names the component whose Notion page shows it doing that pool's job.
+  character_traits:
+    title: Character Traits and Personal Strengths
+    folder: character-traits
+    standing: scaffolding
+    reader: word_lists
+    file_types: [".xlsx"]
+    source_folder: Brainstorming Scaffolding Documents/Fictional Character Development/Knowledge-Base_ Fictional Characters Building
+    id_prefix: TRAIT
+    kind_field: kind
+    tables:
+      "Character Traits and Personal Strengths.xlsx":
+        sheets:
+          Character Traits: {kind: trait, header: Character Traits}
+          Personal Strengths: {kind: strength, header: Personal Strengths}
+    read_by: ["CD-03b"]                       # Personality Type Identifier: "personality trait inference" (its Notion page)
+    written_by: []
+
+  character_flaws:
+    title: Character Flaws
+    folder: character-flaws
+    standing: scaffolding
+    reader: word_lists
+    file_types: [".xlsx"]
+    source_folder: Brainstorming Scaffolding Documents/Fictional Character Development/Knowledge-Base_ Fictional Characters Building
+    id_prefix: FLAW
+    kind_field: kind
+    tables:
+      "Character Flaws.xlsx":
+        sheets:
+          Sheet1: {kind: flaw, header: Character Flaws}
+          Sheet2: {kind: flaw, synonyms: true}  # a flaw and its synonyms, for some of the list
+    read_by: ["CD-11"]                        # Fictional Character Refiner: "deepen psychological flaws" (its Notion page)
+    written_by: []
+
+  animal_natures:
+    title: Animal Traits, Strengths and Weaknesses
+    folder: animal-natures
+    standing: scaffolding
+    reader: grouped
+    file_types: [".xlsx"]
+    source_folder: Brainstorming Scaffolding Documents/Fictional Character Development/Knowledge-Base_ Fictional Characters Building
+    id_prefix: ANIMAL
+    group_word: animal
+    tables:
+      "Animal Traits Strengths and Weaknesses.xlsx":
+        sheet: Sheet1
+        header_rows: 1
+        columns: {B: strengths, C: weaknesses}
+    required: [strengths, weaknesses]
+    # A four-temperament personality model (Lion, Otter, Beaver, Golden Retriever). It is not the cards'
+    # animal_nature field, which names a symbolic animal per character.
+    read_by: ["CD-03b"]                       # Personality Type Identifier: its Temperament framework (its Notion page)
+    written_by: []
+
+  epithet_words:
+    title: Character Building (epithet words)
+    folder: epithet-words
+    standing: scaffolding
+    reader: word_lists
+    file_types: [".xlsx"]
+    source_folder: Brainstorming Scaffolding Documents/Fictional Character Development/Knowledge-Base_ Fictional Characters Building
+    id_prefix: EPITHET
+    kind_field: slot
+    tables:
+      "Character Building.xlsx":
+        sheets:
+          Sheet1: {kind: descriptor}          # black, crazed, feral, ...
+          Sheet2: {kind: noun}                # cyborg, doctor, tyrant, ...
+          Sheet3: {kind: domain}              # of Death, of the Stars, ...
+    read_by: []                               # no component page names epithets yet; the Author assigns one
+    written_by: []
+
+  clothing:
+    title: Character Building - Types of Clothing
+    folder: clothing
+    standing: scaffolding
+    reader: doc_sections
+    file_types: [".docx"]
+    source_folder: Brainstorming Scaffolding Documents/Fictional Character Development/Knowledge-Base_ Fictional Characters Building
+    id_prefix: CLOTH
+    section_gap: 2                              # sections are separated by two empty paragraphs
+    tables:
+      "Character Building_ Types of Clothing.docx": {}
+    read_by: ["CD-10"]                        # Character Style Bible: its Fashion Designer layer (its Notion page)
+    written_by: []

@@ -1,0 +1,214 @@
+# Story Blueprint formula tables (requirements v0.7, Appendix C; FR-DEV-23).
+# Source: Notion "Story Blueprint Pipeline", Stage 0-3 pages, Conflict Taxonomy, Axis 7 Pillars, GANT 2.0.
+# Weights are starting values; calibrate against 15-20 known stories and log every change (FR-DEV-8).
+version: "2026-10-22a"
+
+weights:
+  conflict_fit: {source: 3, pillar: 3, theme: 2, genre: 1, contradiction_penalty: 3, maximum: 27}
+  decision: {clear_gap: 4, weak_below: 12}
+  structure_fit: {outcome: 3, intensity_curve: 3, pen_name_pacing: 2, inevitability: 2, novelty: 1, cast_shape: 1,
+                  maximum: 36, three_act_baseline: 18}
+  structure_scoring: {exact: 3, adjacent: 2, any: 1, two_steps: 1, mismatch: 0}
+
+cores: [Internal, Interpersonal, Systemic, Cultural, Technological, Environmental, Unknown, Existential, Creational]
+pillars: [Sustenance, Clothing, Shelter & Safety, Belonging, Technology, Purpose]
+
+# C3: typical Pillars at stake per core; the first listed is the primary. Tendencies, not rules.
+core_pillars:
+  Internal: [Belonging, Purpose]
+  Interpersonal: [Belonging]
+  Systemic: [Shelter & Safety, Sustenance, Technology]
+  Cultural: [Belonging, Clothing]
+  Technological: [Technology, Purpose]
+  Environmental: [Sustenance, Shelter & Safety, Clothing]
+  Unknown: [Shelter & Safety, Belonging]
+  Existential: [Purpose]
+  Creational: [Belonging, Purpose]
+
+# C4: cores that need a face (Antagonist Role required)
+antagonist_face_cores: [Systemic, Cultural, Technological, Unknown]
+
+# C6: ordered scales (Temporal Root is not ordered)
+scales:
+  scale: [Isolated, Personal, Communal, Regional, Global]
+  temporal_root: [Situational, Historical, Generational, Cyclical]
+  inevitability: [Avoidable, Conditional, Unavoidable]
+  novelty: [Ordinary, Unusual, Unprecedented, Inexplicable]
+  intensity: [Mild, Mild-Moderate, Moderate, Moderate-Severe, Severe]
+  pillar_state: [Secure, Threatened, Unmet]
+  pillar_level: [Natural, Technological]
+
+# C10: Climax Outcome Matrix, decided on the Need Pillar
+outcomes:
+  matrix:
+    truth_embraced: {restored: Triumph, lost: Bittersweet}
+    lie_retained: {restored: Hollow Victory, lost: Downfall}
+  flat: Flat
+
+# C7: structure ideal profiles for the 21 structures of the Author's Conflict and Structure Map, the standing order
+# (Q10, 2026-10-22). Inevitability and novelty are scored from the map, not from this table. Code scores outcome;
+# the rater scores intensity curve, pen-name pacing and cast shape against the guidance below. outcome_source: formula
+# = from the Notion Story Blueprint Pipeline; proposed = drafted by the build for the Author to confirm.
+structures:
+  24-Chapter Model:
+    outcome: Any
+    outcome_source: proposed
+    intensity_curve: "Four quarters of rising pressure to a final-quarter climax"
+    cast_shape: "Protagonist-led; flexible cast"
+    pacing: "24 chapters in four movements of six"
+  40-Chapter Plot Model:
+    outcome: Any
+    outcome_source: proposed
+    intensity_curve: "Long build, mid-book reversal, late climax"
+    cast_shape: "Protagonist with several subplots"
+    pacing: "40 chapters mapped to beats"
+  Dan Harmon's Story Circle:
+    outcome: [Bittersweet, Triumph]
+    outcome_source: formula
+    triumph_needs_residual_unmet: true
+    inevitability_exact_with_temporal_root: Cyclical
+    intensity_curve: "Moderate to Moderate-Severe"
+    cast_shape: "Ensemble or series"
+    pacing: "Cyclical departure and return"
+  Eight-Sequence Approach:
+    outcome: Any
+    outcome_source: proposed
+    intensity_curve: "Eight rising mini-climaxes"
+    cast_shape: "Protagonist with a clear goal in each sequence"
+    pacing: "Eight sequences of roughly equal length"
+  Fichtean Curve:
+    outcome: Any
+    outcome_source: formula
+    intensity_curve: "Opens at Severe, sustained"
+    cast_shape: "Small cast; cascading Pillar cluster"
+    pacing: "Crisis after crisis (acceleration)"
+  Four-Act Structure:
+    outcome: Any
+    outcome_source: proposed
+    intensity_curve: "Rise to a midpoint reversal, then to the climax"
+    cast_shape: "Protagonist and a strong opposing force"
+    pacing: "Four acts split at the midpoint"
+  Freytag's Pyramid:
+    outcome: [Downfall, Hollow Victory]
+    outcome_source: formula
+    intensity_curve: "Rise, then fall"
+    cast_shape: "Protagonist + strong Shadow"
+    pacing: "Gradual rise to a turn, then fall"
+  Hero's Journey:
+    outcome: [Triumph, Bittersweet]
+    outcome_source: formula
+    intensity_curve: "Rising, with a return"
+    cast_shape: "Hero + Mentor + Allies; departure from the familiar world"
+    pacing: "Staged, episodic movement through thresholds"
+  Kishōtenketsu:
+    outcome: [Flat, Bittersweet]
+    outcome_source: formula
+    intensity_curve: "Mild to Mild-Moderate"
+    cast_shape: "No Shadow"
+    pacing: "Slow development, then a turn"
+  Lester Dent's Master Plot Formula:
+    outcome: [Triumph]
+    outcome_source: proposed
+    intensity_curve: "Peril compounding at pulp speed"
+    cast_shape: "Hero against a villain; small cast"
+    pacing: "Four quarters, a twist and fresh trouble in each"
+  Pixar Story Spine:
+    outcome: [Triumph, Bittersweet]
+    outcome_source: proposed
+    intensity_curve: "Routine broken, a chain of consequences, a climax"
+    cast_shape: "Single protagonist; the flaw beneath the want"
+    pacing: "Short causal chain: once upon a time … until finally"
+  Ring Composition:
+    outcome: [Bittersweet]
+    outcome_source: proposed
+    intensity_curve: "Out to a central turn and back, transformed"
+    cast_shape: "Mirrored pairs of characters and scenes"
+    pacing: "The second half mirrors the first around the centre"
+  Save the Cat:
+    outcome: [Triumph]
+    outcome_source: formula
+    intensity_curve: "Mild to Severe escalation"
+    cast_shape: "Single protagonist; clear Want/Need split"
+    pacing: "Fixed commercial beats at set page positions"
+  Seven-Point Structure:
+    outcome: [Triumph, Bittersweet]
+    outcome_source: proposed
+    intensity_curve: "Hook to resolution with two pinches and a midpoint turn"
+    cast_shape: "Protagonist and an antagonistic force"
+    pacing: "Seven beats, planned backward from the resolution"
+  Story Clock:
+    outcome: Any
+    outcome_source: proposed
+    intensity_curve: "Rising tension tracked round a clock face in three acts"
+    cast_shape: "Flexible cast"
+    pacing: "Beats at fixed positions on the clock"
+  Story Grid:
+    outcome: Any
+    outcome_source: proposed
+    intensity_curve: "Stakes escalating to the genre's obligatory scene"
+    cast_shape: "Set by the genre's conventions"
+    pacing: "Five commandments in every unit of story"
+  The Heroine's Journey:
+    outcome: [Bittersweet, Triumph]
+    outcome_source: proposed
+    intensity_curve: "Descent, then return and reintegration"
+    cast_shape: "Heroine within a community; an inner Shadow"
+    pacing: "Separation, descent, reunion"
+  The Virgin's Journey:
+    outcome: [Triumph]
+    outcome_source: proposed
+    intensity_curve: "Tension rising between the dependent world and the secret one"
+    cast_shape: "Protagonist claiming her own life against a small world"
+    pacing: "Thirteen beats from the price of conformity to the kingdom brightened"
+  Three-Act Structure:
+    outcome: Any
+    outcome_source: proposed
+    intensity_curve: "Setup, confrontation, resolution"
+    cast_shape: "Flexible cast"
+    pacing: "Quarter, half, quarter"
+  Truby's 22-Step Structure:
+    outcome: Any
+    outcome_source: proposed
+    intensity_curve: "Organic: a moral argument escalating"
+    cast_shape: "Protagonist and opponent in a moral argument; a web of characters"
+    pacing: "22 steps grown from the premise"
+  Yorke's Five-Act Structure:
+    outcome: Any
+    outcome_source: proposed
+    intensity_curve: "Rise to the midpoint, a fall, a final rise"
+    cast_shape: "Protagonist with a flaw, and an opponent"
+    pacing: "Five acts, symmetric about the midpoint"
+kishotenketsu: Kishōtenketsu
+three_act: Three-Act Structure
+
+# C11: archetypes as positions relative to the protagonist's arc
+archetypes: [Hero, Mentor, Herald, Threshold Guardian, Shadow / Antagonist, Shapeshifter, Ally, Trickster]
+
+# C9: GANT conversion, Plot Blueprint field -> (beat, component)
+gant_conversion:
+  - {field: pillar_history, beat: 0, component: Ghost}
+  - {field: [pillar_profile, pillar_history], beat: 1, component: Lie}
+  - {field: want, beat: 1, component: Want declared}
+  - {field: point_of_impact, beat: 2, component: Threat to the Lie}
+  - {field: want, beat: 3, component: Want activated}
+  - {field: pillar_profile, beat: 4, component: Need}
+  - {field: peak_intensity, beat: 5, component: Reckoning}
+  - {field: possible_endings, beat: 6, component: Climax Outcome Matrix}
+adaptation_states: [Protection, Disruption, Resistance, Negotiation, Collapse, Acceptance, Integration]
+
+# Stage 2 Guardrail: fields Stage 2 must not change (FR-DEV-5)
+guardrail_fields: [core, scale, temporal_root, inevitability, novelty, intensity, pillars, point_of_impact]
+
+# Stage gates (FR-DEV-22). Each stage also needs everything the stages before it needed.
+# characters: no character is named before the naming system is approved (D17).
+stage_prerequisites:
+  stage0: []
+  characters: [conflict_seed, naming_system]
+  stage1: [character_seeds]
+  stage2: [plot_blueprint]
+  stage3: [arc_blueprint]
+
+# Who decides (FR-AU-3, FR-AU-4). Anything not listed is the Author's.
+author_final_calls: [core_pick, outcome, structure, cast_map, plot_blueprint, arc_blueprint, cut_or_merge]
+agent_may_settle: [return_to_braindump, file_runner_up, guardrail_send_back, kishotenketsu_send_back,
+                   send_to_pool, start_antagonist_role_spec, record_next_ghost]

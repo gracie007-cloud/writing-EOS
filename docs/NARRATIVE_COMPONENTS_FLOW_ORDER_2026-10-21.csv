@@ -1,0 +1,107 @@
+﻿Flow Order,Old Flow Order,Step,Component,Phase,Runs,Author gate after,Change,Task Type,Frontier Model,Comparable Open-Weight
+1,1,0.5,Narrative Director (advisory),A · Intake,Cross-cutting,,Advisory throughout; anchored at the start.,Synthesis,Muse Wonder,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+2,2,38.5,Brainstorm,A · Intake,On demand,,"A tool, available from the start.",Ideation,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+3,3,1,Braindump Intake (chatbot + uploads),A · Intake,In sequence,,,Synthesis,Claude Fable 5.1,Kimi K3
+4,4,1.1,Narrative Note-Taker,A · Intake,Cross-cutting,,Takes notes throughout intake.,Synthesis,Claude Fable 5.1,Kimi K3
+5,5,NEW-03,Pre-Draft Research / Fact Base,A · Intake,In sequence,,Your own sources and uploads only; no web retrieval (D13 stands).,Synthesis,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+6,6,2,Narrative Builder + Manuscript Type,A · Intake,In sequence,Author confirms manuscript type,,Extraction,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+7,7,4.1,Genre Analyst,A · Intake,In sequence,,Builds the genre pack the Triad pitches with.,Synthesis,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+8,8,3,"Pen Name, Genre and Literary Style (Triad)",A · Intake,In sequence,Author picks the pen name,,Ideation,Claude Fable 5.1,Kimi K3
+9,9,4,Writing Guide Population (genre templates),A · Intake,In sequence,,,Synthesis,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+10,10,NEW-02,POV / Tense / Style-Guide / Target-Reader Specification,A · Intake,In sequence,,Sets the reader-facing defaults; the Style Calibrator (15) adapts them in Stage 3.,Synthesis,Claude Fable 5.1,Kimi K3
+11,11,3.5,Premise Adaptation (to Pen Name),A · Intake,In sequence,Author approves the adapted premise,,Synthesis,Claude Fable 5.1,Kimi K3
+12,45,9,Story Dossier (Dossier Keeper),A · Intake,Cross-cutting,,MOVED from 45. The Dossier Keeper runs through Develop steps 1–7 (FR-DEV-9); anchored where the premise exists.,Synthesis,Claude Opus 5.5,Kimi K3
+13,44,5,Story Pitch (Pitch Profile Builder),B · Stage 0,In sequence,,MOVED from 44 (audit Error 3). Must run before the Conflict Fit Rater.,Ideation,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+14,32,6,Conflict Fit Rater,B · Stage 0,In sequence,Author picks the Conflict Core,MOVED from 32: Stage 0 runs before Characters (§4.2 step 2).,Extraction,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+15,38,10.1,World Naming System Builder,C · Naming,In sequence,Author approves the naming system,MOVED from 38 (audit Error 5). Built before any character is named (D17).,Ideation,Claude Fable 5.1,Kimi K3
+16,12,3.6,Role Extraction (placeholder characters),D · Characters,In sequence,,,Extraction,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+17,13,12,Character Development (team lead),D · Characters,In sequence,,Team lead for rows CD-01 to CD-11 below.,Ideation,Claude Fable 5.1,Kimi K3
+18,14,6.5,Character Pool Match,D · Characters,In sequence,G1 · pool match or create; tier,Character Development stage 01.,Extraction,Claude Fable 5.1,Kimi K3
+19,16,CD-02,Evidence or Role Requirements,D · Characters,In sequence,,,Extraction,Claude Fable 5.1,Kimi K3
+20,17,6.6,Character Creation,D · Characters,In sequence,,Runs only where no pool character fits (Creation Mode).,Ideation,Claude Fable 5.1,Kimi K3
+21,18,CD-03a,Psychological Structure Architect,D · Characters,In sequence,,,Synthesis,Claude Fable 5.1,Kimi K3
+22,19,CD-03b,Personality Type Identifier,D · Characters,In sequence,,,Extraction,Claude Fable 5.1,Kimi K3
+23,20,CD-04,Character Archetype Detector,D · Characters,In sequence,,,Verdict / Check,Claude Fable 5.1,Kimi K3
+24,21,CD-05,Character Type Classifier,D · Characters,In sequence,,,Extraction,Claude Fable 5.1,Kimi K3
+25,22,6.61,Character Name Generator (Creation Mode),D · Characters,In sequence,,Creation Mode only; now reads the naming system built at C.,Ideation,Claude Fable 5.1,Kimi K3
+26,23,16,Character Name Critique,D · Characters,In sequence,G2 · name,"Fires per character here and again cast-wide at the QA gate (one row, two firings).",Verdict / Check,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+27,24,CD-08,Character Profile Builder,D · Characters,In sequence,,,Synthesis,Claude Fable 5.1,Kimi K3
+28,25,CD-08a,Mirror Map,D · Characters,In sequence,,,Synthesis,Claude Fable 5.1,Kimi K3
+29,26,CD-08b,Representation and Trope Check,D · Characters,In sequence,G4 · representation decision,"Two firings, as you ruled.",Verdict / Check,Claude Fable 5.1,Kimi K3
+30,27,CD-09,Character Sheet Generator,D · Characters,In sequence,,,Synthesis,Claude Fable 5.1,Kimi K3
+31,28,CD-10,Character Style Bible,D · Characters,In sequence,,,Synthesis,Claude Fable 5.1,Kimi K3
+32,30,CD-11,Fictional Character Refiner,D · Characters,In sequence,G5 · roster and canon promotion,,Prose + Verdict,Claude Fable 5.1,Kimi K3
+33,29,38.3,Character Interview,D · Characters,On demand,,MOVED after the Refiner: an interview needs the finished character.,Prose,Claude Fable 5.1,Kimi K3
+34,31,PROP-03,Creative Reserve / Name Parking Garage Filer,D · Characters,Cross-cutting,,Files unused names and ideas whenever they arise.,Deterministic tooling,Deterministic tooling — no LLM,
+35,15,7,Character Seed Recorder,E · Stage 1,In sequence,,RENAMED from 'Character Seed (Character Selector)': it records the seeds Stage 1 uses; the pool match is 6.5.,Extraction,Claude Fable 5.1,Kimi K3
+36,35,8.1,Collision Analyst,E · Stage 1,In sequence,,MOVED before the Plot Blueprint Writer (audit Error 4).,Synthesis,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+37,33,8.2,Antagonist Role Spec,E · Stage 1,In sequence,,"Runs when the core needs a face (code decides, FR-DEV-17).",Synthesis,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+38,34,8,Plot Blueprint Writer,E · Stage 1,In sequence,,,Ideation,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+39,36,18.5,Originality & Trope Critique,E · Stage 1,In sequence,,Trope audit here; reruns at the QA gate.,Verdict / Check,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+40,46,11,Synopsis Writer (Synopsis Deep Dive),E · Stage 1,In sequence,Author approves Plot Blueprint and synopsis,MOVED from 46. One-page synopsis here (§4.2 step 4); the full synopsis is written again at the QA gate.,Synthesis,Claude Opus 5.5,Kimi K3
+41,47,13,"GANT Converter (Character Arc, GANT 2.0)",F · Stage 2,In sequence,,,Synthesis,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+42,48,13.1,Ghost and Lie Confirmer,F · Stage 2,In sequence,,,Verdict / Check,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+43,49,13.2,Climax Outcome Matrix,F · Stage 2,In sequence,,,Synthesis,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+44,50,13.3,Supporting Arcs,F · Stage 2,In sequence,,,Synthesis,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+45,51,13.4,Oscillation Planner,F · Stage 2,In sequence,Author approves arc and outcome,,Synthesis,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+46,52,14,Cast & Structure (Structure Fit Rater + Vacancy Mapper),G · Stage 3,In sequence,,A vacant function loops back to Character Creation (6.6).,Extraction,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+47,53,15,Style Calibrator (Literary Style Calibration),G · Stage 3,In sequence,"Author approves cast map, structure, style card",,Extraction,Claude Fable 5.1,Kimi K3
+48,37,10,Worldbuilding,H · World,In sequence,,MOVED after Stages 2–3 (audit Error 6; §4.2 step 7).,Ideation,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+49,39,10.2,Element Extractor,H · World,In sequence,,,Extraction,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+50,40,10.3,Location Writer,H · World,In sequence,,,Ideation,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+51,41,10.4,World Rules Drafter,H · World,In sequence,,,Synthesis,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+52,42,10.5,World Consistency Check,H · World,In sequence,Author approves world elements,,Verdict / Check,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+53,43,NEW-04,Planned Master Timeline,H · World,In sequence,,"MOVED after arc, structure and world, which it depends on (audit Error 6).",Synthesis,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+54,54,18,Logic Critique,I · QA and Bible,In sequence,,Name Critique (16) and Originality (18.5) rerun cast-wide alongside these.,Verdict / Check,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+55,55,17,Emotional Critique,I · QA and Bible,In sequence,,,Verdict / Check,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+56,56,18.6,Reference Audit,I · QA and Bible,In sequence,,,Verdict / Check,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+57,57,19.1,Secrets and Knowledge Builder,I · QA and Bible,In sequence,,,Extraction,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+58,58,19.2,Rule Extractor,I · QA and Bible,In sequence,,,Extraction,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+59,59,19,Bible Assembler,I · QA and Bible,In sequence,,RENAMED from 'Story Bible Lock (Bible Assembler)': the lock is your gate after 19.4 (audit Error 7).,Synthesis,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+60,62,NEW-01,Story-Bible / Canon Maintenance & Style-Sheet Creation,I · QA and Bible,In sequence,,Style sheet made here; maintenance reruns after every chapter lock.,Synthesis,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+61,60,19.3,Canon Verifier,I · QA and Bible,In sequence,,,Verdict / Check,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+62,61,19.4,Canon Challenger,I · QA and Bible,In sequence,Story Bible lock (Author),,Verdict / Check,Muse Wonder,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+63,63,20,Outline Generator (Narrative Outliner),J · Outline,In sequence,,,Synthesis,GPT-6 Astra,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+64,64,20.1,Arc Beat Planner,J · Outline,In sequence,,,Synthesis,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+65,65,20.2,Reveal Scheduler,J · Outline,In sequence,,,Synthesis,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+66,67,21,Outline Emotional & Logic Audit,J · Outline,In sequence,,MOVED before the sliders (audit Error 8).,Verdict / Check,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+67,66,22,"Plot Sliders / Slider Setter (tension, dread, pacing)",J · Outline,In sequence,,Kept before the Scorecard (§4.2 step 9) so the Scorecard can score the sliders; reruns on any chapter the Outline Rewrite changes.,Extraction,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+68,68,21.1,Outline Audit Scorecard,J · Outline,In sequence,,,Verdict / Check,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+69,69,21.2,Outline Rewrite,J · Outline,In sequence,Author approves the outline,,Synthesis,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+70,77,22.6,Recipe Builder,K · Chapters,On demand,Author approves the recipe,"MOVED before the chapter loop (audit Error 1). Builds a run recipe once, not per chapter.",Synthesis,GPT-6 Luna,GLM-5.3-Flash
+71,78,22.5,Brief Writer (Chapter),K · Chapters,Per chapter,,MOVED to the start of the chapter loop (audit Error 1; §4.5 #1).,Synthesis,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+72,70,23,Plot Selector,K · Chapters,Per chapter,,,Extraction,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+73,71,24,Character Selector (Chapter),K · Chapters,Per chapter,,,Extraction,Claude Fable 5.1,Kimi K3
+74,72,25,Worldbuilding Selector (Chapter),K · Chapters,Per chapter,,,Extraction,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+75,74,27,Plot Scene Brief,K · Chapters,Per chapter,,MOVED before X1 (§4.5 #5).,Synthesis,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+76,76,29,Worldbuilding Scene Brief,K · Chapters,Per chapter,,MOVED before X1 (§4.5 #5).,Synthesis,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+77,73,27.5,Character State Examiner (X1),K · Chapters,Per chapter,,Reads the scene briefs (§4.5 #6).,Synthesis,Claude Fable 5.1,Kimi K3
+78,75,28,Character Scene Brief,K · Chapters,Per chapter,,,Synthesis,Claude Fable 5.1,Kimi K3
+79,79,30,Chronology Check,K · Chapters,Per chapter,,Gate: a contradiction goes back to the Brief Writer.,Verdict / Check,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+80,80,31,Scene Brief Rewrite,K · Chapters,Per chapter · only on a failed check,,"Runs only when 30 fails, then 30 again.",Synthesis,Claude Fable 5.1,Kimi K3
+81,81,32,First Draft,K · Chapters,Per chapter,,,Prose,Claude Fable 5.1,Kimi K3
+82,82,33,Chronology Check 2,K · Chapters,Per chapter,,,Verdict / Check,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+83,83,34,Style Check,K · Chapters,Per chapter,,,Verdict / Check,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+84,84,35,Rewrite,K · Chapters,Per chapter · only on a failed check,,Back through 33–34 (max 2).,Prose,Claude Fable 5.1,Kimi K3
+85,87,37,Prose Refinement (seven levels),K · Chapters,Per chapter,,MOVED before the canon updates (audit Error 2; §4.5 #14).,Prose,Claude Fable 5.1,Kimi K3
+86,88,38,"Edit Actions (improve, expand, humanize, etc.)",K · Chapters,On demand,Chapter lock (Author),Your edits happen before the lock.,Prose,Claude Fable 5.1,Kimi K3
+87,85,36,Continuity Ledger Update,K · Chapters,Per chapter,,MOVED after the chapter lock (audit Error 2; P1: only locked chapters enter canon).,Extraction,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+88,86,36.5,Summarizer and Canon Update,K · Chapters,Per chapter,,MOVED after the chapter lock (audit Error 2).,Synthesis,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+89,89,38.1,Entity Classifier,L · Editor tools,On demand,,Runs on save in the Editor.,Extraction,GPT-6 Luna,GLM-5.3-Flash
+90,90,38.2,Workshop Chat,L · Editor tools,On demand,,,Synthesis,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+91,91,38.4,Chat Extractor,L · Editor tools,On demand,,,Extraction,GPT-6 Luna,GLM-5.3-Flash
+92,92,NEW-12,Sensitivity / Authenticity Reading,M · Finishing,In sequence,,,Verdict / Check,Muse Wonder,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+93,93,NEW-06,Beta / Alpha Reader Management,M · Finishing,In sequence,,,Synthesis,Gemini 4 Argon,None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)
+94,94,NEW-05a,Line & Copy Correction Pass (execution),M · Finishing,In sequence,,,Prose,Claude Fable 5.1,Kimi K3
+95,95,PROP-01,Chapter Assembly & Obsidian Export,M · Finishing,In sequence,,,No LLM (Code),Deterministic tooling — no LLM,
+96,96,NEW-07,Retail Formatting / Typesetting / ISBN / Front-&-Back Matter,M · Finishing,In sequence,,,Synthesis,Deterministic tooling — no LLM,
+97,97,NEW-05b,Proof Correction Pass (on typeset pages),M · Finishing,In sequence,Author signs off the proof,,Prose,Claude Fable 5.1,Kimi K3
+98,98,40,Book Blurb,N · Sales,In sequence,,,Ideation,Claude Fable 5.1,Kimi K3
+99,99,NEW-09,Query / Submission Synopsis & Pitch,N · Sales,On demand,,Only for the traditional-submission route.,Ideation,Claude Fable 5.1,Kimi K3
+100,100,NEW-08,Cover Brief,N · Sales,In sequence,,,Ideation,Claude Fable 5.1,Kimi K3
+101,101,NEW-10,Author Bio / Platform / ARC / Pricing / Distribution,N · Sales,In sequence,,"Pricing and market data come from your own sources and uploads, not web retrieval (D13 stands).",Synthesis,GPT-6.1 Sol,MiMo-V2.6-Pro (least-gap — not parity)
+102,102,43,"Marketing, Promotion & Sales Copy",N · Sales,In sequence,,,Ideation,Claude Fable 5.1,Kimi K3
+103,103,41,Audiobook Script,N · Sales,On demand,,Derivative of the locked book.,Prose,Claude Fable 5.1,Kimi K3
+104,104,42,Cinematic Storyboard & Trailer Script,N · Sales,On demand,,,Ideation,Claude Fable 5.1,Kimi K3
+105,105,NEW-11,Translation & Other Derivatives,N · Sales,On demand,,,Ideation,Claude Fable 5.1,Kimi K3
+,,PROP-02,Wordcount Estimator,All,Cross-cutting,,"Left without a Flow Order, as you ruled.",No LLM (Code),Deterministic tooling — no LLM,

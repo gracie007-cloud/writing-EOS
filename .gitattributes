@@ -1,0 +1,2 @@
+# Store every file exactly as it is on disk: the library import is tested byte for byte.
+* -text

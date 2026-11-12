@@ -1,0 +1,26 @@
+# Secrets: keys live in .env only and never leave this computer.
+.env
+**/.env
+
+# The Author's own material. This repository is public; none of this is published.
+# Character, pen-name, genre and reference pools:
+library/
+# Worked examples that use the Author's book:
+experiments/
+# The bake-off harness carries the book's test pack; it keeps its own local history:
+eos-bakeoff/
+# Names real characters:
+docs/LIBRARY_IMPORT_REPORT_*.md
+# A screenshot showing the book:
+docs/pilot-home-before-after.png
+# Never read by a model, never published:
+**/*ANSWER_KEY*
+
+# Built from the files above; not sources.
+Writing-EOS-App/
+*.zip
+
+# Python leftovers
+__pycache__/
+*.pyc
+.pytest_cache/

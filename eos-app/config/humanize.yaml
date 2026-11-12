@@ -1,0 +1,104 @@
+# Humanize (Editor action and Prose Refinement pass) · requirements v0.8, FR-HU, decision D16.
+# The approach (strength levels, passes, an English-variant rule, plain-text clean-up, rhythm and vocabulary
+# measures, settings recommended from the text) was studied in gracie007-cloud/ai-humanizer-app on 2026-10-19.
+# That repository has no licence, so none of its code or prompt text is used: this is a fresh implementation
+# for fiction, routed through the Writing EOS blueprint. It aims at natural prose in the pen name's voice,
+# not at fooling AI detectors.
+version: "2026-10-19"
+
+limits:
+  max_chars: 20000          # longer passages are humanized scene by scene
+  max_passes: 3
+  word_drift_warn: 10       # percent; above this the result carries a warning
+  word_drift_fail: 25       # percent; above this the output is a failed call (P12)
+  retries: 2                # failed calls per pass before the router moves to the Fallback
+
+strengths:
+  light:
+    temperature: 0.7
+    instruction: >-
+      Change only what sounds machine-written: stock phrases, stiff connectors and runs of same-length
+      sentences. Leave every sentence that already sounds natural exactly as it is.
+  balanced:
+    temperature: 0.9
+    instruction: >-
+      Rework the passage for natural rhythm. Break up runs of similar sentences, replace stock phrasing with
+      specific, concrete wording, and let the voice come through, while keeping every beat and idea.
+  strong:
+    temperature: 1.1
+    instruction: >-
+      Rewrite freely for living prose. Restructure sentences, vary rhythm hard between short and long, and
+      choose fresh, exact words, while keeping every event, fact and line of meaning in its place.
+
+english_variants:
+  american: "Use American spelling and usage (color, realize, gray, toward); punctuation inside closing quotation marks."
+  british: "Use British spelling and usage (colour, realise, grey, towards)."
+  canadian: "Use Canadian spelling (colour, centre, realize, travelled)."
+  australian: "Use Australian spelling and usage (colour, realise, centre, travelled)."
+
+em_dash_policies:
+  keep: "Use em dashes only where the voice uses them."
+  reduce_narration: "Use few em dashes in narration; prefer commas, full stops or parentheses."
+  remove_narration: "Do not use em dashes in narration."
+
+# Phrases that read as machine-written in fiction. Counted before and after; also listed in the prompt.
+# The first block matches the bake-off harness's generic stock_phrases list (config/slop.yaml).
+stock_phrases:
+  - "a testament to"
+  - "beacon of hope"
+  - "tapestry"
+  - "delve"
+  - "in that moment"
+  - "little did"
+  - "shiver down"
+  - "breath she didn't know"
+  - "the weight of"
+  - "a stark reminder"
+  - "palpable"
+  - "unspoken"
+  - "whispered secrets"
+  - "an eternity"
+  - "echoed through"
+  # further fiction tells
+  - "couldn't help but"
+  - "a sense of"
+  - "the air was thick with"
+  - "barely above a whisper"
+  - "a flicker of"
+  - "a wave of"
+  - "it was as if"
+  - "only time would tell"
+  - "a mix of"
+  - "sent a chill"
+  - "let out a breath"
+  - "every fiber of"
+  - "every fibre of"
+  # essay connectors that leak into narration
+  - "furthermore"
+  - "moreover"
+  - "it is important to note"
+  - "it's important to note"
+  - "in conclusion"
+  - "notably"
+  - "it is worth noting"
+  - "underscores"
+  - "shed light on"
+
+# Sentence openers that summarise instead of showing ("This was a ...", "It was clear that ...").
+copula_openers:
+  - '^(this|that)( \w+)? (is|was|creates|created|makes|made|means|meant|allows|allowed)\b'
+  - '^it (is|was) (clear|evident|obvious|apparent) that\b'
+
+# Lead-ins a model adds before the text; removed by code.
+preambles:
+  - '^(here(''s| is) (the|your) (rewritten|revised|humani[sz]ed|edited) (text|passage|version)[^\n]*:)\s*'
+  - '^(sure|certainly|of course)[,!.][^\n]*\n+'
+
+# Code recommends settings from the text (no model call). Tells = stock phrases + copula openers.
+recommend:
+  strong_if_tells_per_1000: 8
+  strong_min_tells: 3        # so one phrase in a short scene is not read as heavy
+  strong_if_spread_below: 3.0
+  balanced_if_tells_per_1000: 3
+  balanced_if_spread_below: 5.0
+  two_passes_if_strong_and_words_over: 300

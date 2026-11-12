@@ -1,0 +1,2101 @@
+# Writing EOS components: the app's copy of the Notion database Narrative Components (D18).
+# name = what the writer sees; database_name and step = the Notion row (shown in Engine view).
+# candidates are the database's model columns; the Author's roster replaces them with Primary, Fallback,
+# mature tier and provider for each component. Regenerate this file when the database changes.
+version: '2026-10-22'
+source: Notion database Narrative Components (5c6ac348379e4a3dadf8670b8869e6fa); the app follows its order (D18)
+phases:
+  A: Intake
+  B: Stage 0
+  C: Naming
+  D: Characters
+  E: Stage 1
+  F: Stage 2
+  G: Stage 3
+  H: World
+  I: QA and Bible
+  J: Outline
+  K: Chapters
+  L: Editor tools
+  M: Finishing
+  N: Sales
+  All: Throughout
+jev_model: typesafe/jev-1.14
+components:
+- step: PROP-02
+  name: Word Count
+  database_name: Wordcount Estimator
+  flow_order: null
+  phase: All
+  runs: cross_cutting
+  task_type: code
+  swarm: none
+  jev: none
+  needs: []
+  category: Building Blocks
+  code:
+  - word count estimate
+- step: '0.5'
+  name: Story Advisor
+  database_name: Narrative Director (advisory)
+  flow_order: 1
+  phase: A
+  runs: cross_cutting
+  task_type: synthesis
+  swarm: full
+  jev: advises
+  needs: []
+  category: Building Blocks
+  candidates:
+    frontier: Muse Wonder
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: '38.5'
+  name: Brainstorm
+  database_name: Brainstorm
+  flow_order: 2
+  phase: A
+  runs: on_demand
+  task_type: ideation
+  swarm: full
+  jev: advises
+  needs: []
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '1'
+  name: Idea Intake
+  database_name: Braindump Intake (chatbot + uploads)
+  flow_order: 3
+  phase: A
+  runs: sequence
+  task_type: synthesis
+  swarm: full
+  jev: advises
+  needs: []
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '1.1'
+  name: Note Taker
+  database_name: Narrative Note-Taker
+  flow_order: 4
+  phase: A
+  runs: cross_cutting
+  task_type: synthesis
+  swarm: full
+  jev: advises
+  needs: []
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: NEW-03
+  name: Fact Base
+  database_name: Pre-Draft Research / Fact Base
+  flow_order: 5
+  phase: A
+  runs: sequence
+  task_type: synthesis
+  swarm: full
+  jev: advises
+  needs: []
+  category: Building Blocks
+  candidates:
+    frontier: Gemini 4 Argon
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: '2'
+  name: Story Setup
+  database_name: Narrative Builder + Manuscript Type
+  flow_order: 6
+  phase: A
+  runs: sequence
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - '1'
+  category: Building Blocks
+  gate_after: Author confirms manuscript type
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '4.1'
+  name: Genre Pack Builder
+  database_name: Genre Analyst
+  flow_order: 7
+  phase: A
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '2'
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '3'
+  name: Pen Name and Style
+  database_name: Pen Name, Genre and Literary Style (Triad)
+  flow_order: 8
+  phase: A
+  runs: sequence
+  task_type: ideation
+  swarm: light
+  jev: advises
+  needs:
+  - '2'
+  - '4.1'
+  category: Building Blocks
+  gate_after: Author picks the pen name
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: NEW-13
+  name: Target Audience
+  database_name: Target Audience Selector
+  flow_order: 9
+  phase: A
+  runs: sequence
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - '1'
+  - '3'
+  - '4.1'
+  category: Building Blocks
+  candidates:
+    frontier: null
+    open_weight: GLM 5.3 Flash
+    primary: open_weight
+- step: '4'
+  name: Genre Writing Guide
+  database_name: Writing Guide Population (genre templates)
+  flow_order: 10
+  phase: A
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '3'
+  - NEW-13
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: NEW-02
+  name: Point of View and Reader
+  database_name: POV / Tense / Style-Guide / Target-Reader Specification
+  flow_order: 11
+  phase: A
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '3'
+  - NEW-13
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '3.5'
+  name: Premise Adapter
+  database_name: Premise Adaptation (to Pen Name)
+  flow_order: 12
+  phase: A
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '3'
+  - NEW-13
+  category: Building Blocks
+  gate_after: Author approves the adapted premise
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '9'
+  name: Story Dossier
+  database_name: Story Dossier (Dossier Keeper)
+  flow_order: 13
+  phase: A
+  runs: cross_cutting
+  task_type: synthesis
+  swarm: full
+  jev: advises
+  needs:
+  - '3.5'
+  category: Building Blocks
+  candidates:
+    frontier: Claude Opus 5.5
+    open_weight: Kimi K3
+- step: '5'
+  name: Story Pitch
+  database_name: Story Pitch (Pitch Profile Builder)
+  flow_order: 14
+  phase: B
+  runs: sequence
+  task_type: ideation
+  swarm: full
+  jev: advises
+  needs:
+  - '1'
+  - '3.5'
+  - NEW-13
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '6'
+  name: Conflict Scoring
+  database_name: Conflict Fit Rater
+  flow_order: 15
+  phase: B
+  runs: sequence
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - '5'
+  category: Building Blocks
+  judges:
+  - '5'
+  mature_fallback: Venice Uncensored
+  gate_after: Author picks the Conflict Core
+  code:
+  - pillar factor
+  - conflict fit totals and decision table
+  - runner-up filing
+  candidates:
+    frontier: MiMo-V2.6-Pro (least-gap — not parity)
+    open_weight: GPT-6.1 Sol
+    fallback: DeepSeek V4 Pro 0813
+- step: '10.1'
+  name: Naming Rules
+  database_name: World Naming System Builder
+  flow_order: 16
+  phase: C
+  runs: sequence
+  task_type: ideation
+  swarm: light
+  jev: advises
+  needs:
+  - '3.5'
+  - '4.1'
+  category: Building Blocks
+  gate_after: Author approves the naming system
+  code:
+  - naming checks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '3.6'
+  name: Cast Roles
+  database_name: Role Extraction (placeholder characters)
+  flow_order: 17
+  phase: D
+  runs: sequence
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - '3.5'
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '12'
+  name: Character Team Lead
+  database_name: Character Development (team lead)
+  flow_order: 18
+  phase: D
+  runs: sequence
+  task_type: ideation
+  swarm: light
+  jev: advises
+  needs:
+  - '3.6'
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '6.5'
+  name: Character Pool Match
+  database_name: Character Pool Match
+  flow_order: 19
+  phase: D
+  runs: sequence
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - '3.6'
+  - '6'
+  category: Building Blocks
+  gate_after: G1 · pool match or create; tier
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: CD-02
+  name: Role Requirements
+  database_name: Evidence or Role Requirements
+  flow_order: 20
+  phase: D
+  runs: sequence
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - '6.5'
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '6.6'
+  name: New Character
+  database_name: Character Creation
+  flow_order: 21
+  phase: D
+  runs: sequence
+  task_type: ideation
+  swarm: light
+  jev: advises
+  needs:
+  - CD-02
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: CD-03a
+  name: Inner Life
+  database_name: Psychological Structure Architect
+  flow_order: 22
+  phase: D
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - CD-02
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: CD-03b
+  name: Personality Type
+  database_name: Personality Type Identifier
+  flow_order: 23
+  phase: D
+  runs: sequence
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - CD-03a
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: CD-04
+  name: Archetype Check
+  database_name: Character Archetype Detector
+  flow_order: 24
+  phase: D
+  runs: sequence
+  task_type: verdict
+  swarm: full
+  jev: settles
+  needs:
+  - CD-03b
+  category: Building Blocks
+  judges:
+  - CD-03a
+  mature_fallback: Venice Uncensored
+  candidates:
+    frontier: Kimi K3
+    open_weight: Claude Fable 5.1
+    fallback: Qwen 3.8 Max
+- step: CD-05
+  name: Character Type
+  database_name: Character Type Classifier
+  flow_order: 25
+  phase: D
+  runs: sequence
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - CD-04
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '6.61'
+  name: Name Ideas
+  database_name: Character Name Generator (Creation Mode)
+  flow_order: 26
+  phase: D
+  runs: sequence
+  task_type: ideation
+  swarm: light
+  jev: advises
+  needs:
+  - CD-05
+  - '10.1'
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '16'
+  name: Name Check
+  database_name: Character Name Critique
+  flow_order: 27
+  phase: D
+  runs: sequence
+  task_type: verdict
+  swarm: full
+  jev: settles
+  needs:
+  - '6.61'
+  - '10.1'
+  category: Building Blocks
+  judges:
+  - '6.61'
+  mature_fallback: Venice Uncensored
+  gate_after: G2 · name
+  candidates:
+    frontier: Gemini 4 Argon
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: CD-08
+  name: Character Profile
+  database_name: Character Profile Builder
+  flow_order: 28
+  phase: D
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - CD-05
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: CD-08a
+  name: Mirror Map
+  database_name: Mirror Map
+  flow_order: 29
+  phase: D
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - CD-08
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: CD-08b
+  name: Representation Check
+  database_name: Representation and Trope Check
+  flow_order: 30
+  phase: D
+  runs: sequence
+  task_type: verdict
+  swarm: full
+  jev: settles
+  needs:
+  - CD-08
+  category: Building Blocks
+  judges:
+  - CD-08
+  mature_fallback: Venice Uncensored
+  gate_after: G4 · representation decision
+  candidates:
+    frontier: Kimi K3
+    open_weight: Claude Fable 5.1
+    fallback: Qwen 3.8 Max
+- step: CD-09
+  name: Character Sheet
+  database_name: Character Sheet Generator
+  flow_order: 31
+  phase: D
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - CD-08
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: CD-10
+  name: Character Voice Guide
+  database_name: Character Style Bible
+  flow_order: 32
+  phase: D
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - CD-09
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: CD-11
+  name: Character Polish
+  database_name: Fictional Character Refiner
+  flow_order: 33
+  phase: D
+  runs: sequence
+  task_type: prose_verdict
+  swarm: light
+  jev: advises
+  needs:
+  - CD-10
+  category: Building Blocks
+  gate_after: G5 · roster and canon promotion
+  code:
+  - pool write
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '38.3'
+  name: Character Interview
+  database_name: Character Interview
+  flow_order: 34
+  phase: D
+  runs: on_demand
+  task_type: prose
+  swarm: light
+  jev: advises
+  needs:
+  - CD-11
+  category: Prose Writing
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: PROP-03
+  name: Creative Reserve
+  database_name: Creative Reserve / Name Parking Garage Filer
+  flow_order: 35
+  phase: D
+  runs: cross_cutting
+  task_type: code
+  swarm: none
+  jev: none
+  needs: []
+  category: Building Blocks
+- step: '7'
+  name: Character Seeds
+  database_name: Character Seed Recorder
+  flow_order: 36
+  phase: E
+  runs: sequence
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - CD-11
+  - '6'
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '8.1'
+  name: Point of Impact
+  database_name: Collision Analyst
+  flow_order: 37
+  phase: E
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '7'
+  - '6'
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '8.2'
+  name: Antagonist Role
+  database_name: Antagonist Role Spec
+  flow_order: 38
+  phase: E
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '6'
+  category: Building Blocks
+  code:
+  - antagonist rule
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '8'
+  name: Plot Blueprint
+  database_name: Plot Blueprint Writer
+  flow_order: 39
+  phase: E
+  runs: sequence
+  task_type: ideation
+  swarm: light
+  jev: advises
+  needs:
+  - '7'
+  - '8.1'
+  - '8.2'
+  category: Building Blocks
+  code:
+  - plot blueprint checks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '18.5'
+  name: Originality Check
+  database_name: Originality & Trope Critique
+  flow_order: 40
+  phase: E
+  runs: sequence
+  task_type: verdict
+  swarm: full
+  jev: settles
+  needs:
+  - '8'
+  category: Building Blocks
+  judges:
+  - '8'
+  - '8.1'
+  mature_fallback: Venice Uncensored
+  candidates:
+    frontier: Gemini 4 Argon
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: '11'
+  name: Synopsis
+  database_name: Synopsis Writer (Synopsis Deep Dive)
+  flow_order: 41
+  phase: E
+  runs: sequence
+  task_type: synthesis
+  swarm: full
+  jev: advises
+  needs:
+  - '8'
+  category: Building Blocks
+  gate_after: Author approves Plot Blueprint and synopsis
+  candidates:
+    frontier: Claude Opus 5.5
+    open_weight: Kimi K3
+- step: '13'
+  name: Character Arc
+  database_name: GANT Converter (Character Arc, GANT 2.0)
+  flow_order: 42
+  phase: F
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '8'
+  category: Building Blocks
+  code:
+  - arc skeleton from the conversion table
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '13.1'
+  name: Ghost and Lie Check
+  database_name: Ghost and Lie Confirmer
+  flow_order: 43
+  phase: F
+  runs: sequence
+  task_type: verdict
+  swarm: full
+  jev: settles
+  needs:
+  - '13'
+  category: Building Blocks
+  judges:
+  - CD-03a
+  - '13'
+  mature_fallback: Venice Uncensored
+  candidates:
+    frontier: Gemini 4 Argon
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: '13.2'
+  name: Ending Type
+  database_name: Climax Outcome Matrix
+  flow_order: 44
+  phase: F
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '13'
+  category: Building Blocks
+  code:
+  - outcome type from the matrix
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '13.3'
+  name: Supporting Arcs
+  database_name: Supporting Arcs
+  flow_order: 45
+  phase: F
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '13'
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '13.4'
+  name: Arc Setbacks
+  database_name: Oscillation Planner
+  flow_order: 46
+  phase: F
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '13.2'
+  category: Building Blocks
+  gate_after: Author approves arc and outcome
+  code:
+  - oscillation rule
+  - stage 2 guardrail
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '14'
+  name: Cast and Structure
+  database_name: Cast & Structure (Structure Fit Rater + Vacancy Mapper)
+  flow_order: 47
+  phase: G
+  runs: sequence
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - '13.4'
+  category: Building Blocks
+  code:
+  - structure fit totals
+  - Kishotenketsu flag
+  - vacancy rule
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '15'
+  name: Style Card
+  database_name: Style Calibrator (Literary Style Calibration)
+  flow_order: 48
+  phase: G
+  runs: sequence
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - '14'
+  - NEW-02
+  category: Building Blocks
+  gate_after: Author approves cast map, structure, style card
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '10'
+  name: Worldbuilding
+  database_name: Worldbuilding
+  flow_order: 49
+  phase: H
+  runs: sequence
+  task_type: ideation
+  swarm: light
+  jev: advises
+  needs:
+  - '14'
+  - '6'
+  category: Building Blocks
+  candidates:
+    frontier: Gemini 4 Argon
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: '10.2'
+  name: World Elements
+  database_name: Element Extractor
+  flow_order: 50
+  phase: H
+  runs: sequence
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - '10'
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '10.3'
+  name: Locations
+  database_name: Location Writer
+  flow_order: 51
+  phase: H
+  runs: sequence
+  task_type: ideation
+  swarm: light
+  jev: advises
+  needs:
+  - '10'
+  category: Building Blocks
+  candidates:
+    frontier: Gemini 4 Argon
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: '10.4'
+  name: World Rules
+  database_name: World Rules Drafter
+  flow_order: 52
+  phase: H
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '10'
+  category: Building Blocks
+  candidates:
+    frontier: Gemini 4 Argon
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: '10.5'
+  name: World Check
+  database_name: World Consistency Check
+  flow_order: 53
+  phase: H
+  runs: sequence
+  task_type: verdict
+  swarm: full
+  jev: settles
+  needs:
+  - '10.1'
+  - '10.2'
+  - '10.3'
+  - '10.4'
+  - CD-11
+  category: Building Blocks
+  judges:
+  - '10'
+  - '10.2'
+  - '10.3'
+  - '10.4'
+  mature_fallback: Venice Uncensored
+  gate_after: Author approves world elements
+  code:
+  - naming checks
+  candidates:
+    frontier: MiMo-V2.6-Pro (least-gap — not parity)
+    open_weight: GPT-6.1 Sol
+    fallback: DeepSeek V4 Pro 0813
+- step: NEW-04
+  name: Story Timeline
+  database_name: Planned Master Timeline
+  flow_order: 54
+  phase: H
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '13.4'
+  - '14'
+  - '10.5'
+  category: Building Blocks
+  code:
+  - dates, ages and intervals
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: NEW-18
+  name: Visual References
+  database_name: Visual References (Character Designs, Mood Boards, Locations)
+  flow_order: 55
+  phase: H
+  runs: sequence
+  task_type: media
+  swarm: light
+  jev: none
+  needs:
+  - '10.5'
+  - CD-11
+  category: Building Blocks
+  gate_after: Author approves the reference sheets
+  candidates:
+    frontier: FLUX.2
+    open_weight: Qwen-Image
+    fallback: Z-Image Turbo
+- step: NEW-19
+  name: Map Maker
+  database_name: Map Maker
+  flow_order: 56
+  phase: H
+  runs: sequence
+  task_type: media
+  swarm: light
+  jev: none
+  needs:
+  - '10.3'
+  - '10.5'
+  category: Building Blocks
+  candidates:
+    frontier: Nano Banana Pro
+    open_weight: Qwen-Image
+    fallback: Z-Image Turbo
+- step: NEW-20
+  name: Visual Consistency Check
+  database_name: Visual Consistency Check
+  flow_order: 57
+  phase: H
+  runs: sequence
+  task_type: verdict
+  swarm: full
+  jev: settles
+  needs:
+  - NEW-18
+  category: Building Blocks
+  judges:
+  - NEW-18
+  - NEW-19
+  - NEW-21
+  - NEW-22
+  - NEW-23
+  - NEW-26
+  candidates:
+    frontier: Qwen3.8 Omni Flash
+    open_weight: MiMo-V2-Omni
+    fallback: Nemotron 3 Nano Omni
+- step: '18'
+  name: Logic Check
+  database_name: Logic Critique
+  flow_order: 58
+  phase: I
+  runs: sequence
+  task_type: verdict
+  swarm: full
+  jev: settles
+  needs:
+  - '8'
+  - '13.4'
+  - '14'
+  - '10.5'
+  category: Building Blocks
+  judges:
+  - '8'
+  - '11'
+  - '13'
+  - '13.3'
+  - '14'
+  - '10'
+  mature_fallback: Venice Uncensored
+  candidates:
+    frontier: MiMo-V2.6-Pro (least-gap — not parity)
+    open_weight: Gemini 4 Argon
+    fallback: Kimi K3
+- step: '17'
+  name: Emotion Check
+  database_name: Emotional Critique
+  flow_order: 59
+  phase: I
+  runs: sequence
+  task_type: verdict
+  swarm: full
+  jev: settles
+  needs:
+  - '13.4'
+  category: Building Blocks
+  judges:
+  - '8'
+  - '11'
+  - '13'
+  - '13.3'
+  - '14'
+  - '10'
+  mature_fallback: Venice Uncensored
+  candidates:
+    frontier: MiMo-V2.6-Pro (least-gap — not parity)
+    open_weight: Gemini 4 Argon
+    fallback: Kimi K3
+- step: '18.6'
+  name: Reference Check
+  database_name: Reference Audit
+  flow_order: 60
+  phase: I
+  runs: sequence
+  task_type: verdict
+  swarm: full
+  jev: settles
+  needs:
+  - '10.5'
+  category: Building Blocks
+  judges:
+  - '8'
+  - '11'
+  - '13'
+  - '13.3'
+  - '14'
+  - '10'
+  mature_fallback: Venice Uncensored
+  candidates:
+    frontier: MiMo-V2.6-Pro (least-gap — not parity)
+    open_weight: Gemini 4 Argon
+    fallback: Kimi K3
+- step: '19.1'
+  name: Secrets and Who Knows
+  database_name: Secrets and Knowledge Builder
+  flow_order: 61
+  phase: I
+  runs: sequence
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - '13.4'
+  - '10.5'
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '19.2'
+  name: Story Rules
+  database_name: Rule Extractor
+  flow_order: 62
+  phase: I
+  runs: sequence
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - '10.4'
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '19'
+  name: Story Bible Builder
+  database_name: Bible Assembler
+  flow_order: 63
+  phase: I
+  runs: sequence
+  task_type: synthesis
+  swarm: full
+  jev: advises
+  needs:
+  - '15'
+  - '17'
+  - '18'
+  - '18.6'
+  - '19.1'
+  - '19.2'
+  category: Building Blocks
+  candidates:
+    frontier: Gemini 4 Argon
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: NEW-01
+  name: Style Sheet and Canon Upkeep
+  database_name: Story-Bible / Canon Maintenance & Style-Sheet Creation
+  flow_order: 64
+  phase: I
+  runs: sequence
+  task_type: synthesis
+  swarm: full
+  jev: advises
+  needs:
+  - '19'
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '19.3'
+  name: Canon Check
+  database_name: Canon Verifier
+  flow_order: 65
+  phase: I
+  runs: sequence
+  task_type: verdict
+  swarm: full
+  jev: settles
+  needs:
+  - '19'
+  category: Building Blocks
+  judges:
+  - '19'
+  - NEW-01
+  mature_fallback: Venice Uncensored
+  candidates:
+    frontier: MiMo-V2.6-Pro (least-gap — not parity)
+    open_weight: GPT-6.1 Sol
+    fallback: DeepSeek V4 Pro 0813
+- step: '19.4'
+  name: Canon Second Opinion
+  database_name: Canon Challenger
+  flow_order: 66
+  phase: I
+  runs: sequence
+  task_type: verdict
+  swarm: full
+  jev: settles
+  needs:
+  - '19.3'
+  category: Building Blocks
+  judges:
+  - '19.3'
+  - '19'
+  mature_fallback: Venice Uncensored
+  gate_after: Story Bible lock (Author)
+  candidates:
+    frontier: Muse Wonder
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: '20'
+  name: Outline
+  database_name: Outline Generator (Narrative Outliner)
+  flow_order: 67
+  phase: J
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '19.4'
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6 Astra
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: '20.1'
+  name: Arc Beats
+  database_name: Arc Beat Planner
+  flow_order: 68
+  phase: J
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '20'
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '20.2'
+  name: Reveal Plan
+  database_name: Reveal Scheduler
+  flow_order: 69
+  phase: J
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '20'
+  category: Building Blocks
+  code:
+  - reveal order check
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '21'
+  name: Outline Check
+  database_name: Outline Emotional & Logic Audit
+  flow_order: 70
+  phase: J
+  runs: sequence
+  task_type: verdict
+  swarm: full
+  jev: settles
+  needs:
+  - '20.1'
+  - '20.2'
+  category: Building Blocks
+  judges:
+  - '20'
+  - '20.1'
+  - '20.2'
+  mature_fallback: Venice Uncensored
+  candidates:
+    frontier: Gemini 4 Argon
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: '22'
+  name: Tension and Pace
+  database_name: Plot Sliders / Slider Setter (tension, dread, pacing)
+  flow_order: 71
+  phase: J
+  runs: sequence
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - '20'
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '21.1'
+  name: Outline Scorecard
+  database_name: Outline Audit Scorecard
+  flow_order: 72
+  phase: J
+  runs: sequence
+  task_type: verdict
+  swarm: full
+  jev: settles
+  needs:
+  - '21'
+  - '22'
+  category: Building Blocks
+  judges:
+  - '20'
+  - '20.1'
+  - '20.2'
+  - '21.2'
+  mature_fallback: Venice Uncensored
+  candidates:
+    frontier: Gemini 4 Argon
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: '21.2'
+  name: Outline Revision
+  database_name: Outline Rewrite
+  flow_order: 73
+  phase: J
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '21.1'
+  category: Building Blocks
+  gate_after: Author approves the outline
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '22.6'
+  name: Recipe Builder
+  database_name: Recipe Builder
+  flow_order: 74
+  phase: K
+  runs: on_demand
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '21.2'
+  category: Building Blocks
+  gate_after: Author approves the recipe
+  candidates:
+    frontier: GPT-6 Luna
+    open_weight: GLM-5.3-Flash
+- step: '22.5'
+  name: Chapter Brief
+  database_name: Brief Writer (Chapter)
+  flow_order: 75
+  phase: K
+  runs: per_chapter
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '21.2'
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '23'
+  name: Plot Picks
+  database_name: Plot Selector
+  flow_order: 76
+  phase: K
+  runs: per_chapter
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - '22.5'
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '24'
+  name: Cast Picks
+  database_name: Character Selector (Chapter)
+  flow_order: 77
+  phase: K
+  runs: per_chapter
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - '22.5'
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '25'
+  name: World Picks
+  database_name: Worldbuilding Selector (Chapter)
+  flow_order: 78
+  phase: K
+  runs: per_chapter
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - '22.5'
+  category: Building Blocks
+  candidates:
+    frontier: Gemini 4 Argon
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: NEW-14
+  name: Fiction Tropes
+  database_name: Fiction Tropes Generator
+  flow_order: 79
+  phase: K
+  runs: sequence
+  task_type: ideation
+  swarm: full
+  jev: advises
+  needs:
+  - '5'
+  - NEW-13
+  - '19'
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '27'
+  name: Scene Plan
+  database_name: Plot Scene Brief
+  flow_order: 80
+  phase: K
+  runs: per_chapter
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '23'
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '29'
+  name: Setting Notes
+  database_name: Worldbuilding Scene Brief
+  flow_order: 81
+  phase: K
+  runs: per_chapter
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '25'
+  category: Building Blocks
+  candidates:
+    frontier: Gemini 4 Argon
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: '27.5'
+  name: Character State
+  database_name: Character State Examiner (X1)
+  flow_order: 82
+  phase: K
+  runs: per_chapter
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '24'
+  - '27'
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '28'
+  name: Character Notes
+  database_name: Character Scene Brief
+  flow_order: 83
+  phase: K
+  runs: per_chapter
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '27.5'
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '30'
+  name: Timeline Check
+  database_name: Chronology Check
+  flow_order: 84
+  phase: K
+  runs: per_chapter
+  task_type: verdict
+  swarm: full
+  jev: settles
+  needs:
+  - '27'
+  - '28'
+  - '29'
+  category: Building Blocks
+  judges:
+  - '27'
+  - '28'
+  - '29'
+  mature_fallback: Venice Uncensored
+  candidates:
+    frontier: MiMo-V2.6-Pro (least-gap — not parity)
+    open_weight: Gemini 4 Argon
+    fallback: Kimi K3
+- step: '31'
+  name: Scene Plan Fix
+  database_name: Scene Brief Rewrite
+  flow_order: 85
+  phase: K
+  runs: on_failure
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '30'
+  category: Building Blocks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '32'
+  name: First Draft
+  database_name: First Draft
+  flow_order: 86
+  phase: K
+  runs: per_chapter
+  task_type: prose
+  swarm: light
+  jev: advises
+  needs:
+  - '30'
+  category: Prose Writing
+  code:
+  - auto-fail checks
+  - craft measures
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '33'
+  name: Continuity Check
+  database_name: Chronology Check 2
+  flow_order: 87
+  phase: K
+  runs: per_chapter
+  task_type: verdict
+  swarm: full
+  jev: settles
+  needs:
+  - '32'
+  category: Prose Writing
+  judges:
+  - '32'
+  - '35'
+  - '37'
+  - '38'
+  mature_fallback: Venice Uncensored
+  candidates:
+    frontier: Gemini 4 Argon
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: '34'
+  name: Voice and Style Check
+  database_name: Style Check
+  flow_order: 88
+  phase: K
+  runs: per_chapter
+  task_type: verdict
+  swarm: full
+  jev: settles
+  needs:
+  - '32'
+  category: Prose Writing
+  judges:
+  - '32'
+  - '35'
+  - '37'
+  - '38'
+  mature_fallback: Venice Uncensored
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '35'
+  name: Rewrite
+  database_name: Rewrite
+  flow_order: 89
+  phase: K
+  runs: on_failure
+  task_type: prose
+  swarm: light
+  jev: advises
+  needs:
+  - '33'
+  - '34'
+  category: Prose Writing
+  code:
+  - auto-fail checks
+  - craft measures
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '37'
+  name: Polish
+  database_name: Prose Refinement (seven levels)
+  flow_order: 90
+  phase: K
+  runs: per_chapter
+  task_type: prose
+  swarm: light
+  jev: advises
+  needs:
+  - '33'
+  - '34'
+  category: Prose Writing
+  code:
+  - auto-fail checks
+  - craft measures
+  - facts unchanged
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '38'
+  name: Editing Tools
+  database_name: Edit Actions (improve, expand, humanize, etc.)
+  flow_order: 91
+  phase: K
+  runs: on_demand
+  task_type: prose
+  swarm: light
+  jev: advises
+  needs:
+  - '37'
+  category: Prose Writing
+  gate_after: Chapter lock (Author)
+  code:
+  - humanize protections, measures and checks
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '36'
+  name: Character Changes Log
+  database_name: Continuity Ledger Update
+  flow_order: 92
+  phase: K
+  runs: per_chapter
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs:
+  - '37'
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '36.5'
+  name: Chapter Summary
+  database_name: Summarizer and Canon Update
+  flow_order: 93
+  phase: K
+  runs: per_chapter
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '36'
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '38.1'
+  name: Name Sorter
+  database_name: Entity Classifier
+  flow_order: 94
+  phase: L
+  runs: on_demand
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs: []
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6 Luna
+    open_weight: GLM-5.3-Flash
+- step: '38.2'
+  name: Workshop
+  database_name: Workshop Chat
+  flow_order: 95
+  phase: L
+  runs: on_demand
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs: []
+  category: Sales & Marketing
+  candidates:
+    frontier: Gemini 4 Argon
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: '38.4'
+  name: Chat to Notes
+  database_name: Chat Extractor
+  flow_order: 96
+  phase: L
+  runs: on_demand
+  task_type: extraction
+  swarm: full
+  jev: settles
+  needs: []
+  category: Building Blocks
+  candidates:
+    frontier: GPT-6 Luna
+    open_weight: GLM-5.3-Flash
+- step: NEW-15
+  name: Proofreader
+  database_name: Proofreader (Correctness & House-Style Consistency)
+  flow_order: 97
+  phase: L
+  runs: on_demand
+  task_type: verdict
+  swarm: full
+  jev: advises
+  needs:
+  - '19'
+  category: Prose Writing
+  code:
+  - house-style consistency
+  - edit agreement
+  candidates:
+    frontier: GPT-6 Luna
+    open_weight: GLM-5.3-Flash
+- step: NEW-16
+  name: Self-Edit Reports
+  database_name: Self-Edit Reports
+  flow_order: 98
+  phase: L
+  runs: on_demand
+  task_type: code
+  swarm: none
+  jev: none
+  needs: []
+  category: Prose Writing
+  code:
+  - self-edit reports
+- step: NEW-17
+  name: Edit Coach
+  database_name: Edit Coach
+  flow_order: 99
+  phase: L
+  runs: on_demand
+  task_type: verdict
+  swarm: light
+  jev: advises
+  needs:
+  - '19'
+  category: Prose Writing
+  judges:
+  - '32'
+  - '35'
+  - '37'
+  - '38'
+  mature_fallback: Venice Uncensored
+  candidates:
+    frontier: Kimi K3
+    open_weight: Claude Fable 5.1
+    fallback: Qwen 3.8 Max
+- step: NEW-12
+  name: Sensitivity Read
+  database_name: Sensitivity / Authenticity Reading
+  flow_order: 100
+  phase: M
+  runs: sequence
+  task_type: verdict
+  swarm: full
+  jev: settles
+  needs:
+  - '36.5'
+  category: Prose Writing
+  judges:
+  - '32'
+  - '35'
+  - '37'
+  - '38'
+  - NEW-05a
+  mature_fallback: Venice Uncensored
+  candidates:
+    frontier: Muse Wonder
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: NEW-06
+  name: Beta Readers
+  database_name: Beta / Alpha Reader Management
+  flow_order: 101
+  phase: M
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '36.5'
+  category: Sales & Marketing
+  candidates:
+    frontier: Gemini 4 Argon
+    open_weight: 'None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)'
+- step: NEW-05a
+  name: Line and Copy Edit
+  database_name: Line & Copy Correction Pass (execution)
+  flow_order: 102
+  phase: M
+  runs: sequence
+  task_type: prose
+  swarm: light
+  jev: advises
+  needs:
+  - NEW-12
+  - NEW-06
+  category: Prose Writing
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: PROP-01
+  name: Assemble and Export
+  database_name: Chapter Assembly & Obsidian Export
+  flow_order: 103
+  phase: M
+  runs: sequence
+  task_type: code
+  swarm: none
+  jev: none
+  needs:
+  - NEW-05a
+  category: Sales & Marketing
+  code:
+  - assembly
+  - export
+- step: NEW-21
+  name: Interior Art
+  database_name: Interior Art (Chapter Heads, Ornaments)
+  flow_order: 104
+  phase: M
+  runs: sequence
+  task_type: media
+  swarm: light
+  jev: none
+  needs:
+  - NEW-18
+  - PROP-01
+  category: Sales & Marketing
+  candidates:
+    frontier: FLUX.2
+    open_weight: Qwen-Image
+    fallback: Z-Image Turbo
+- step: NEW-07
+  name: Typesetting
+  database_name: Retail Formatting / Typesetting / ISBN / Front-&-Back Matter
+  flow_order: 105
+  phase: M
+  runs: sequence
+  task_type: code
+  swarm: none
+  jev: none
+  needs:
+  - PROP-01
+  - NEW-21
+  category: Sales & Marketing
+  code:
+  - typesetting tools
+- step: NEW-05b
+  name: Proofread
+  database_name: Proof Correction Pass (on typeset pages)
+  flow_order: 106
+  phase: M
+  runs: sequence
+  task_type: prose
+  swarm: light
+  jev: advises
+  needs:
+  - NEW-07
+  category: Prose Writing
+  gate_after: Author signs off the proof
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: '40'
+  name: Blurb
+  database_name: Book Blurb
+  flow_order: 107
+  phase: N
+  runs: sequence
+  task_type: ideation
+  swarm: light
+  jev: advises
+  needs:
+  - '36.5'
+  category: Sales & Marketing
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: NEW-09
+  name: Agent Submission
+  database_name: Query / Submission Synopsis & Pitch
+  flow_order: 108
+  phase: N
+  runs: on_demand
+  task_type: ideation
+  swarm: light
+  jev: advises
+  needs:
+  - '11'
+  - '36.5'
+  category: Sales & Marketing
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: NEW-08
+  name: Cover Brief
+  database_name: Cover Brief
+  flow_order: 109
+  phase: N
+  runs: sequence
+  task_type: ideation
+  swarm: light
+  jev: advises
+  needs:
+  - '40'
+  category: Sales & Marketing
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: NEW-22
+  name: Cover Art
+  database_name: Cover Art
+  flow_order: 110
+  phase: N
+  runs: sequence
+  task_type: media
+  swarm: light
+  jev: none
+  needs:
+  - NEW-08
+  - NEW-18
+  category: Sales & Marketing
+  gate_after: Author picks the cover
+  candidates:
+    frontier: GPT Image 2
+    open_weight: Ideogram
+    fallback: Qwen-Image
+- step: NEW-10
+  name: Launch Plan
+  database_name: Author Bio / Platform / ARC / Pricing / Distribution
+  flow_order: 111
+  phase: N
+  runs: sequence
+  task_type: synthesis
+  swarm: light
+  jev: advises
+  needs:
+  - '40'
+  category: Sales & Marketing
+  candidates:
+    frontier: GPT-6.1 Sol
+    open_weight: MiMo-V2.6-Pro (least-gap — not parity)
+- step: '43'
+  name: Marketing Copy
+  database_name: Marketing, Promotion & Sales Copy
+  flow_order: 112
+  phase: N
+  runs: sequence
+  task_type: ideation
+  swarm: light
+  jev: advises
+  needs:
+  - '40'
+  category: Sales & Marketing
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: NEW-23
+  name: Marketing Visuals
+  database_name: Marketing Visuals
+  flow_order: 113
+  phase: N
+  runs: sequence
+  task_type: media
+  swarm: light
+  jev: none
+  needs:
+  - '43'
+  - NEW-22
+  category: Sales & Marketing
+  candidates:
+    frontier: FLUX.2
+    open_weight: Qwen-Image
+    fallback: Z-Image Turbo
+- step: '41'
+  name: Audiobook Script
+  database_name: Audiobook Script
+  flow_order: 114
+  phase: N
+  runs: on_demand
+  task_type: prose
+  swarm: light
+  jev: advises
+  needs:
+  - NEW-05b
+  category: Sales & Marketing
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: NEW-24
+  name: Audiobook Narration
+  database_name: Audiobook Narration
+  flow_order: 115
+  phase: N
+  runs: on_demand
+  task_type: media
+  swarm: light
+  jev: none
+  needs:
+  - '41'
+  category: Sales & Marketing
+  candidates:
+    frontier: ElevenLabs v3
+    open_weight: Gemini 3.1 Flash TTS
+    fallback: Chatterbox
+- step: NEW-25
+  name: Narration Check
+  database_name: Narration Check
+  flow_order: 116
+  phase: N
+  runs: on_demand
+  task_type: verdict
+  swarm: light
+  jev: settles
+  needs:
+  - NEW-24
+  category: Sales & Marketing
+  judges:
+  - NEW-24
+  code:
+  - script comparison
+  candidates:
+    frontier: Qwen3.8 Omni Flash
+    open_weight: MiMo-V2-Omni
+    fallback: Nemotron 3 Nano Omni
+- step: '42'
+  name: Book Trailer
+  database_name: Cinematic Storyboard & Trailer Script
+  flow_order: 117
+  phase: N
+  runs: on_demand
+  task_type: ideation
+  swarm: light
+  jev: advises
+  needs:
+  - '36.5'
+  category: Sales & Marketing
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3
+- step: NEW-27
+  name: Music
+  database_name: Music
+  flow_order: 118
+  phase: N
+  runs: on_demand
+  task_type: media
+  swarm: light
+  jev: none
+  needs:
+  - '42'
+  category: Sales & Marketing
+  candidates:
+    frontier: Lyria 3 Pro
+    open_weight: MiniMax Music 3
+    fallback: ACE-Step
+- step: NEW-28
+  name: Sound Effects
+  database_name: Sound Effects
+  flow_order: 119
+  phase: N
+  runs: on_demand
+  task_type: media
+  swarm: light
+  jev: none
+  needs:
+  - '42'
+  category: Sales & Marketing
+  candidates:
+    frontier: ElevenLabs Sound Effects
+    open_weight: Stable Audio Open
+    fallback: Stability Text To Audio
+- step: NEW-26
+  name: Trailer Video
+  database_name: Trailer Video
+  flow_order: 120
+  phase: N
+  runs: on_demand
+  task_type: media
+  swarm: light
+  jev: none
+  needs:
+  - '42'
+  - NEW-22
+  - NEW-18
+  category: Sales & Marketing
+  candidates:
+    frontier: Seedance 2.0
+    open_weight: Wan 2.2
+    fallback: LTX-2
+- step: NEW-29
+  name: Trailer Assembly
+  database_name: Trailer Assembly
+  flow_order: 121
+  phase: N
+  runs: on_demand
+  task_type: code
+  swarm: none
+  jev: none
+  needs:
+  - NEW-26
+  - NEW-27
+  - NEW-28
+  category: Sales & Marketing
+  code:
+  - trailer assembly
+- step: NEW-11
+  name: Translations
+  database_name: Translation & Other Derivatives
+  flow_order: 122
+  phase: N
+  runs: on_demand
+  task_type: ideation
+  swarm: light
+  jev: advises
+  needs:
+  - NEW-05b
+  category: Sales & Marketing
+  candidates:
+    frontier: Claude Fable 5.1
+    open_weight: Kimi K3

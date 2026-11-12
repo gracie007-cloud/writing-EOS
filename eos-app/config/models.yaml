@@ -1,0 +1,3501 @@
+# Writing EOS model registry: the app's copy of the Notion roster LLM Identifier (FR-ML-1).
+# Built by `python -m eos_app.registry <export.csv>`; do not edit by hand.
+version: '2026-10-22'
+source: Notion LLM Identifier (export)
+problems:
+- 'Featherless AI: the name ''DavidAU/Qwen3-VL-12B-Thinking-Brainstorm20x-NEO-MAX-GGUF'' and the ID ''DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking''
+  disagree (an ID copied from another row?)'
+- 'Featherless AI: ''DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking'' is listed twice (rows ''DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking''
+  and ''DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking''); the first is kept'
+- 'Hugging Face: the name ''bartowski/Hathor_Tahsin-L3-8B-v0.9-GGUF'' and the ID ''backyardai/L3-8B-Stheno-v3.3-32K-GGUF''
+  disagree (an ID copied from another row?)'
+- 'Hugging Face: ''backyardai/L3-8B-Stheno-v3.3-32K-GGUF'' is listed twice (rows ''backyardai/L3-8B-Stheno-v3.3-32K-GGUF''
+  and ''bartowski/Hathor_Tahsin-L3-8B-v0.9-GGUF''); the first is kept'
+- 'Hugging Face: the name ''DavidAU/L3-Dark-Planet-8B'' and the ID ''DavidAU/L3-Dark-Planet-8B-GGUF'' disagree (an ID copied
+  from another row?)'
+- 'Hugging Face: ''DavidAU/L3-Dark-Planet-8B-GGUF'' is listed twice (rows ''DavidAU/L3-Dark-Planet-8B'' and ''DavidAU/L3-Dark-Planet-8B-GGUF'');
+  the first is kept'
+- 'Hugging Face: the name ''KoboldAI/LLaMA2-13B-Tiefighter'' and the ID ''itlwas/EVA-Yi-1.5-9B-32K-V1-Q4_K_M-GGUF'' disagree
+  (an ID copied from another row?)'
+- 'Hugging Face: ''itlwas/EVA-Yi-1.5-9B-32K-V1-Q4_K_M-GGUF'' is listed twice (rows ''KoboldAI/LLaMA2-13B-Tiefighter'' and
+  ''itlwas/EVA-Yi-1.5-9B-32K-V1-Q4_K_M-GGUF''); the first is kept'
+- 'Hugging Face: the name ''mradermacher/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking-i1-GGUF''
+  and the ID ''nightmedia/Qwen3.6-27B-Architect-Polaris2-Fable-B-F451-Tess'' disagree (an ID copied from another row?)'
+- 'Hugging Face: ''nightmedia/Qwen3.6-27B-Architect-Polaris2-Fable-B-F451-Tess'' is listed twice (rows ''nightmedia/Qwen3.6-27B-Architect-Polaris2-Fable-B-F451-Tess''
+  and ''mradermacher/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking-i1-GGUF''); the first
+  is kept'
+- 'Comfy Cloud: ''Ideogram'' has no provider model ID yet; fill it from the provider''s model list'
+- 'Comfy Cloud: ''FLUX.2'' has no provider model ID yet; fill it from the provider''s model list'
+- 'OpenRouter: ''Nano Banana Pro'' has no provider model ID yet; fill it from the provider''s model list'
+- 'OpenRouter: ''Gemini 3.1 Flash TTS'' has no provider model ID yet; fill it from the provider''s model list'
+- 'ElevenLabs: ''ElevenLabs Sound Effects'' has no provider model ID yet; fill it from the provider''s model list'
+- 'Comfy Cloud: ''Seedance 2.0'' has no provider model ID yet; fill it from the provider''s model list'
+- 'Hugging Face: ''Wan 3.0'' has no provider model ID yet; fill it from the provider''s model list'
+- 'ElevenLabs: ''ElevenLabs Scribe'' has no provider model ID yet; fill it from the provider''s model list'
+- 'Comfy Cloud: ''Qwen-Image'' has no provider model ID yet; fill it from the provider''s model list'
+- 'Comfy Cloud: ''Z-Image Turbo'' has no provider model ID yet; fill it from the provider''s model list'
+- 'Comfy Cloud: ''Wan 2.2'' has no provider model ID yet; fill it from the provider''s model list'
+- 'Comfy Cloud: ''LTX-2'' has no provider model ID yet; fill it from the provider''s model list'
+- 'Comfy Cloud: ''MiniMax Music 3'' has no provider model ID yet; fill it from the provider''s model list'
+- 'Comfy Cloud: ''ACE-Step'' has no provider model ID yet; fill it from the provider''s model list'
+- 'Featherless AI: ''Chatterbox'' has no provider model ID yet; fill it from the provider''s model list'
+- 'Comfy Cloud: ''Stable Audio Open'' has no provider model ID yet; fill it from the provider''s model list'
+- 'OpenRouter: ''Fish Audio S2 Pro'' has no provider model ID yet; fill it from the provider''s model list'
+- 'Comfy Cloud: ''Stability Text To Audio'' has no provider model ID yet; fill it from the provider''s model list'
+models:
+- key: concentrate-ai-claude-fable-5-1
+  name: Claude Fable 5.1
+  provider: Concentrate AI
+  model_id: claude-fable-5-1
+  frontier: true
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: Kimi  K3
+  genre: ''
+  modality: ''
+- key: concentrate-ai-claude-haiku-5-5
+  name: Claude Haiku 5.5
+  provider: Concentrate AI
+  model_id: claude-haiku-5-5
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-claude-opus-5
+  name: Claude Opus 5
+  provider: Concentrate AI
+  model_id: claude-opus-5
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-claude-opus-5-5
+  name: Claude Opus 5.5
+  provider: Concentrate AI
+  model_id: claude-opus-5-5
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: Kimi  K3
+  genre: ''
+  modality: ''
+- key: concentrate-ai-claude-sonnet-5-5
+  name: Claude Sonnet 5.5
+  provider: Concentrate AI
+  model_id: claude-sonnet-5-5
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-command-a
+  name: Command A
+  provider: Concentrate AI
+  model_id: command-a
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-deepseek-v4-flash-0423
+  name: DeepSeek V4 Flash 0423
+  provider: Concentrate AI
+  model_id: deepseek-v4-flash-0423
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-deepseek-v4-flash-0731
+  name: DeepSeek V4 Flash 0731
+  provider: Concentrate AI
+  model_id: deepseek-v4-flash-0731
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-deepseek-v4-flash-vision-exp
+  name: DeepSeek V4 Flash Vision Exp
+  provider: Concentrate AI
+  model_id: deepseek-v4-flash-vision-exp
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-deepseek-v4-pro-0813
+  name: DeepSeek V4 Pro 0813
+  provider: Concentrate AI
+  model_id: deepseek-v4-pro-0813
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-deepseek-v4-1-flash
+  name: DeepSeek V4.1 Flash
+  provider: Concentrate AI
+  model_id: deepseek-v4-1-flash
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-deepseek-v4-1-flash-1017
+  name: DeepSeek V4.1 Flash 1017
+  provider: Concentrate AI
+  model_id: deepseek-v4-1-flash-1017
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-gemini-3-flash-preview
+  name: Gemini 3 Flash Preview
+  provider: Concentrate AI
+  model_id: gemini-3-flash-preview
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-gemini-3-5-flash-lite
+  name: Gemini 3.5 Flash Lite
+  provider: Concentrate AI
+  model_id: gemini-3.5-flash-lite
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-gemini-3-8-flash
+  name: Gemini 3.8 Flash
+  provider: Concentrate AI
+  model_id: gemini-3.8-flash
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-gemini-4-argon
+  name: Gemini 4 Argon
+  provider: Concentrate AI
+  model_id: gemini-4-argon
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-gemma-4-26b
+  name: Gemma 4 26B-A4B
+  provider: Concentrate AI
+  model_id: gemma-4-26b
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-gemma-4-31b
+  name: Gemma 4 31B
+  provider: Concentrate AI
+  model_id: gemma-4-31b
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-glm-5-3-flash
+  name: GLM 5.3 Flash
+  provider: Concentrate AI
+  model_id: glm-5.3-flash
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-glm-5-3
+  name: GLM-5.3
+  provider: Concentrate AI
+  model_id: glm-5.3
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-gpt-5-nano
+  name: GPT-5 Nano
+  provider: Concentrate AI
+  model_id: gpt-5-nano
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-gpt-5-2
+  name: GPT-5.2
+  provider: Concentrate AI
+  model_id: gpt-5.2
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-gpt-5-4-nano
+  name: GPT-5.4 Nano
+  provider: Concentrate AI
+  model_id: gpt-5.4-nano
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-gpt-5-6-luna
+  name: GPT-5.6 Luna
+  provider: Concentrate AI
+  model_id: gpt-5.6-luna
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-gpt-5-6-sol
+  name: GPT-5.6 Sol
+  provider: Concentrate AI
+  model_id: gpt-5.6-sol
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-gpt-6-astra
+  name: GPT-6 Astra
+  provider: Concentrate AI
+  model_id: gpt-6-astra
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-gpt-6-luna
+  name: GPT-6 Luna
+  provider: Concentrate AI
+  model_id: gpt-6-luna
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: GLM-5.3-Flash
+  genre: ''
+  modality: ''
+- key: concentrate-ai-gpt-6-1-sol
+  name: GPT-6.1 Sol
+  provider: Concentrate AI
+  model_id: gpt-6.1-sol
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: MiMo-2.6-Pro
+  genre: ''
+  modality: ''
+- key: concentrate-ai-gpt-oss-120b
+  name: gpt-oss-120b
+  provider: Concentrate AI
+  model_id: gpt-oss-120b
+  frontier: false
+  open_weights: false
+  uncensored: true
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-grok-4-7
+  name: Grok 4.7
+  provider: Concentrate AI
+  model_id: grok-4.7
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-hy4-preview
+  name: HY4 Preview
+  provider: Concentrate AI
+  model_id: hy4-preview
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-kimi-k3
+  name: Kimi K3
+  provider: Concentrate AI
+  model_id: kimi-k3
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-ling-3-1-flash
+  name: Ling 3.1 Flash
+  provider: Concentrate AI
+  model_id: ling-3.1-flash
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-mercury-2-5
+  name: Mercury 2.5
+  provider: Concentrate AI
+  model_id: mercury-2.5
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-mimo-v2-6-flash
+  name: MiMo V2.6 Flash
+  provider: Concentrate AI
+  model_id: mimo-v2.6-flash
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-mimo-v2-6-pro
+  name: MiMo-2.6 Pro
+  provider: Concentrate AI
+  model_id: mimo-v2.6-pro
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-mistral-large-4
+  name: Mistral Large 4
+  provider: Concentrate AI
+  model_id: mistral-large-4
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-muse-spark-open
+  name: Muse Spark Open
+  provider: Concentrate AI
+  model_id: muse-spark-open
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-muse-wonder
+  name: Muse Wonder
+  provider: Concentrate AI
+  model_id: muse-wonder
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-nemotron-3-nano-30b
+  name: Nemotron 3 Nano 30B A3B
+  provider: Concentrate AI
+  model_id: nemotron-3-nano-30b
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-qwen3-8-27b
+  name: Qwen 3.8 27B
+  provider: Concentrate AI
+  model_id: qwen3.8-27b
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: concentrate-ai-qwen3-8-max
+  name: Qwen 3.8 Max
+  provider: Concentrate AI
+  model_id: qwen3.8-max
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-reflection-beam-1-0-501b-a23b
+  name: Beam 1.0 501B A23B
+  provider: OpenRouter
+  model_id: reflection/beam-1.0-501b-a23b
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-cohere-command-a-plus
+  name: Command A+
+  provider: OpenRouter
+  model_id: cohere/command-a-plus
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-deepseek-deepseek-v3-2
+  name: DeepSeek V3.2
+  provider: OpenRouter
+  model_id: deepseek/deepseek-v3.2
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-google-gemini-2-5-flash-lite
+  name: Gemini 2.5 Flash Lite
+  provider: OpenRouter
+  model_id: google/gemini-2.5-flash-lite
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-google-gemini-3-7-flash
+  name: Gemini 3.7 Flash
+  provider: OpenRouter
+  model_id: google/gemini-3.7-flash
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-google-gemma-3-27b-it
+  name: Gemma 3 27B
+  provider: OpenRouter
+  model_id: google/gemma-3-27b-it
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-ibm-granite-granite-4-2-8b
+  name: Granite 4.2 8B
+  provider: OpenRouter
+  model_id: ibm-granite/granite-4.2-8b
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-meta-llama-llama-4-scout
+  name: Llama 4 Scout
+  provider: OpenRouter
+  model_id: meta-llama/llama-4-scout
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-minimax-minimax-m3
+  name: MiniMax-M3
+  provider: OpenRouter
+  model_id: minimax/minimax-m3
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-cohere-north-mini-code-free
+  name: North Mini Code
+  provider: OpenRouter
+  model_id: cohere/north-mini-code:free
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-unbiased-pareto-26-10
+  name: Pareto 26.10
+  provider: OpenRouter
+  model_id: unbiased/pareto-26.10
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-unbiased-pareto-latest
+  name: Pareto Latest
+  provider: OpenRouter
+  model_id: ~unbiased/pareto-latest
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-upstage-solar-mini4
+  name: Solar Mini 4
+  provider: OpenRouter
+  model_id: upstage/solar-mini4
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-perplexity-sonar-deep-research
+  name: Sonar Deep Research
+  provider: OpenRouter
+  model_id: perplexity/sonar-deep-research
+  frontier: true
+  open_weights: false
+  uncensored: true
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-stepfun-step-5-preview
+  name: Step 5 Preview
+  provider: OpenRouter
+  model_id: stepfun/step-5-preview
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-thedrummer-unslopnemo-12b
+  name: 'TheDrummer: UnslopNemo 12B'
+  provider: OpenRouter
+  model_id: thedrummer/unslopnemo-12b
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-cognitivecomputations-dolphin-mistral-24b-venice-edition
+  name: Venice Uncensored
+  provider: OpenRouter
+  model_id: cognitivecomputations/dolphin-mistral-24b-venice-edition
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: unsloth-desktop-davidau-gemma-4-e2b-it-the-deckard-expresso-one-universe-heretic-uncensored-thinking
+  name: DavidAU/gemma-4-E2B-it-The-DECKARD-Expresso-ONE-Universe-HERETIC-UNCENSORED-Thinking
+  provider: Unsloth Desktop
+  model_id: DavidAU/gemma-4-E2B-it-The-DECKARD-Expresso-ONE-Universe-HERETIC-UNCENSORED-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: unsloth-desktop-davidau-gemma-4-e2b-it-the-deckard-heretic-uncensored-thinking
+  name: DavidAU/gemma-4-E2B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking
+  provider: Unsloth Desktop
+  model_id: DavidAU/gemma-4-E2B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: unsloth-desktop-davidau-gemma-4-e4b-it-the-deckard-claude-opus-expresso-universe-heretic-uncensored-thinking
+  name: DavidAU/gemma-4-E4B-it-The-DECKARD-Claude-Opus-Expresso-Universe-HERETIC-UNCENSORED-Thinking
+  provider: Unsloth Desktop
+  model_id: DavidAU/gemma-4-E4B-it-The-DECKARD-Claude-Opus-Expresso-Universe-HERETIC-UNCENSORED-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: unsloth-desktop-davidau-gemma-4-e4b-it-the-deckard-expresso-universe-heretic-uncensored-thinking
+  name: DavidAU/gemma-4-E4B-it-The-DECKARD-Expresso-Universe-HERETIC-UNCENSORED-Thinking
+  provider: Unsloth Desktop
+  model_id: DavidAU/gemma-4-E4B-it-The-DECKARD-Expresso-Universe-HERETIC-UNCENSORED-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: unsloth-desktop-davidau-gemma-4-e4b-it-the-deckard-heretic-uncensored-thinking
+  name: DavidAU/gemma-4-E4B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking
+  provider: Unsloth Desktop
+  model_id: DavidAU/gemma-4-E4B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: unsloth-desktop-davidau-gemma-4-e4b-it-the-deckard-v2-strong-heretic-uncensored-thinking
+  name: DavidAU/gemma-4-E4B-it-The-DECKARD-V2-Strong-HERETIC-UNCENSORED-Thinking
+  provider: Unsloth Desktop
+  model_id: DavidAU/gemma-4-E4B-it-The-DECKARD-V2-Strong-HERETIC-UNCENSORED-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: unsloth-desktop-davidau-gemma-4-e4b-it-the-deckard-v3-expresso-heretic-uncensored-thinking
+  name: DavidAU/gemma-4-E4B-it-The-DECKARD-V3-Expresso-HERETIC-UNCENSORED-Thinking
+  provider: Unsloth Desktop
+  model_id: DavidAU/gemma-4-E4B-it-The-DECKARD-V3-Expresso-HERETIC-UNCENSORED-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-chuanli11-llama-3-2-3b-instruct-uncensored
+  name: chuanli11/Llama-3.2-3B-Instruct-uncensored
+  provider: Featherless AI
+  model_id: chuanli11/Llama-3.2-3B-Instruct-uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-dolphin-mistral-glm-4-7-flash-24b-venice-edition-thinking-uncensored
+  name: DavidAU/Dolphin-Mistral-GLM-4.7-Flash-24B-Venice-Edition-Thinking-Uncensored
+  provider: Featherless AI
+  model_id: DavidAU/Dolphin-Mistral-GLM-4.7-Flash-24B-Venice-Edition-Thinking-Uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-gemma-3-12b-it-vl-deepseek-v3-1-heretic-uncensored-thinking
+  name: DavidAU/gemma-3-12b-it-vl-Deepseek-v3.1-Heretic-Uncensored-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/gemma-3-12b-it-vl-Deepseek-v3.1-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-gemma-3-12b-it-vl-gemini-3-pro-preview-heretic-uncensored-thinking
+  name: DavidAU/gemma-3-12b-it-vl-Gemini-3-Pro-Preview-Heretic-Uncensored-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/gemma-3-12b-it-vl-Gemini-3-Pro-Preview-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-gemma-3-12b-it-vl-glm-4-7-flash-heretic-uncensored-thinking
+  name: DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-Heretic-Uncensored-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-gemma-3-12b-it-vl-glm-4-7-flash-instruct-thinking-hybrid-heretic-uncensored
+  name: DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-INSTRUCT-Thinking-Hybrid-Heretic-Uncensored
+  provider: Featherless AI
+  model_id: DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-INSTRUCT-Thinking-Hybrid-Heretic-Uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-gemma-3-12b-it-vl-gpt-5-1-high-heretic-uncensored-thinking
+  name: DavidAU/gemma-3-12b-it-vl-GPT-5.1-High-Heretic-Uncensored-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/gemma-3-12b-it-vl-GPT-5.1-High-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-gemma-3-12b-it-vl-highiq-polaris-heretic-uncensored-thinking
+  name: DavidAU/gemma-3-12b-it-vl-HighIQ-Polaris-Heretic-Uncensored-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/gemma-3-12b-it-vl-HighIQ-Polaris-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-gemma-3-1b-it-glm-4-7-flash-heretic-uncensored-thinking
+  name: DavidAU/Gemma-3-1B-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/Gemma-3-1B-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-gemma-4-31b-it-mystery-fine-tune-heretic-uncensored-thinking
+  name: DavidAU/gemma-4-31B-it-Mystery-Fine-Tune-HERETIC-UNCENSORED-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/gemma-4-31B-it-Mystery-Fine-Tune-HERETIC-UNCENSORED-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-gemma-4-31b-it-the-deckard-heretic-uncensored-thinking
+  name: DavidAU/gemma-4-31B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/gemma-4-31B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-gemma-the-writer-9b-heretic-uncensored-abliterated
+  name: DavidAU/Gemma-The-Writer-9B-HERETIC-Uncensored-Abliterated
+  provider: Featherless AI
+  model_id: DavidAU/Gemma-The-Writer-9B-HERETIC-Uncensored-Abliterated
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-gemma3-27b-it-vl-glm-4-7-uncensored-heretic-deep-reasoning
+  name: DavidAU/Gemma3-27B-it-vl-GLM-4.7-Uncensored-Heretic-Deep-Reasoning
+  provider: Featherless AI
+  model_id: DavidAU/Gemma3-27B-it-vl-GLM-4.7-Uncensored-Heretic-Deep-Reasoning
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-l3-dark-planet-8b-heretic-uncensored-abliterated
+  name: DavidAU/L3-Dark-Planet-8B-HERETIC-Uncensored-Abliterated
+  provider: Featherless AI
+  model_id: DavidAU/L3-Dark-Planet-8B-HERETIC-Uncensored-Abliterated
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-llama-3-3-8b-instruct-thinking-claude-haiku-4-5-high-reasoning-1700x
+  name: DavidAU/Llama-3.3-8B-Instruct-Thinking-Claude-Haiku-4.5-High-Reasoning-1700x
+  provider: Featherless AI
+  model_id: DavidAU/Llama-3.3-8B-Instruct-Thinking-Claude-Haiku-4.5-High-Reasoning-1700x
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-llama3-3-8b-instruct-thinking-claude-4-5-opus-high-reasoning
+  name: DavidAU/Llama3.3-8B-Instruct-Thinking-Claude-4.5-Opus-High-Reasoning
+  provider: Featherless AI
+  model_id: DavidAU/Llama3.3-8B-Instruct-Thinking-Claude-4.5-Opus-High-Reasoning
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-llama3-3-8b-instruct-thinking-heretic-uncensored-claude-4-5-opus-high-reasoning
+  name: DavidAU/Llama3.3-8B-Instruct-Thinking-Heretic-Uncensored-Claude-4.5-Opus-High-Reasoning
+  provider: Featherless AI
+  model_id: DavidAU/Llama3.3-8B-Instruct-Thinking-Heretic-Uncensored-Claude-4.5-Opus-High-Reasoning
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-mistral-nemo-2407-12b-thinking-claude-gemini-gpt5-2-uncensored-heretic
+  name: DavidAU/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC
+  provider: Featherless AI
+  model_id: DavidAU/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-mistral-nemo-inst-2407-12b-thinking-uncensored-heretic-hi-claude-opus
+  name: DavidAU/Mistral-Nemo-Inst-2407-12B-Thinking-Uncensored-HERETIC-HI-Claude-Opus
+  provider: Featherless AI
+  model_id: DavidAU/Mistral-Nemo-Inst-2407-12B-Thinking-Uncensored-HERETIC-HI-Claude-Opus
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-mn-captainerisnebula-12b-chimera-v1-1-heretic-uncensored-abliterated
+  name: DavidAU/MN-CaptainErisNebula-12B-Chimera-v1.1-heretic-uncensored-abliterated
+  provider: Featherless AI
+  model_id: DavidAU/MN-CaptainErisNebula-12B-Chimera-v1.1-heretic-uncensored-abliterated
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-mn-captainerisnebula-chimera-v1-1-thinking-claudeopus4-5-12b-heretic-uncensored
+  name: DavidAU/MN-CaptainErisNebula-Chimera-v1.1-THINKING-ClaudeOpus4.5-12B-heretic-uncensored
+  provider: Featherless AI
+  model_id: DavidAU/MN-CaptainErisNebula-Chimera-v1.1-THINKING-ClaudeOpus4.5-12B-heretic-uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-qwen3-short-story-instruct-uncensored-262k-ctx-4b
+  name: DavidAU/Qwen3-Short-Story-Instruct-Uncensored-262K-ctx-4B
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3-Short-Story-Instruct-Uncensored-262K-ctx-4B
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-qwen3-vl-32b-gemini-heretic-uncensored-thinking
+  name: DavidAU/Qwen3-VL-12B-Thinking-Brainstorm20x-NEO-MAX-GGUF
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-qwen3-5-21b-claude-4-6-opus-deckard-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.5-21B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.5-21B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-qwen3-5-27b-claude-4-6-os-instruct
+  name: DavidAU/Qwen3.5-27B-Claude-4.6-OS-INSTRUCT
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.5-27B-Claude-4.6-OS-INSTRUCT
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-qwen3-5-2b-claude-4-6-os-auto-variable-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.5-2B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.5-2B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-qwen3-5-9b-claude-4-6-highiq-instruct-heretic-uncensored
+  name: DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-INSTRUCT-HERETIC-UNCENSORED
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-INSTRUCT-HERETIC-UNCENSORED
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-qwen3-5-9b-claude-4-6-highiq-thinking-heretic-uncensored
+  name: DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-THINKING-HERETIC-UNCENSORED
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-THINKING-HERETIC-UNCENSORED
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-qwen3-5-9b-claude-4-6-os-heretic-uncensored-instruct
+  name: DavidAU/Qwen3.5-9B-Claude-4.6-OS-HERETIC-UNCENSORED-INSTRUCT
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.5-9B-Claude-4.6-OS-HERETIC-UNCENSORED-INSTRUCT
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-qwen3-5-9b-deckard-claude-dimoe-uncensored-heretic-thinking
+  name: DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-qwen3-5-9b-the-deckard-pro-writer-uncensored-heretic
+  name: DavidAU/Qwen3.5-9B-The-Deckard-Pro-Writer-Uncensored-Heretic
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.5-9B-The-Deckard-Pro-Writer-Uncensored-Heretic
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-qwen3-6-21b-iq-ultra-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.6-21B-IQ-Ultra-Heretic-Uncensored-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.6-21B-IQ-Ultra-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-qwen3-6-27b-f451-and-tri-polar-ultra-pro-writer-uncensored-heretic
+  name: DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-qwen3-6-27b-fable-fusion-711-uncensored-heretic-nm-dau-mtp
+  name: DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-MTP
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-MTP
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-qwen3-6-27b-heretic2-uncensored-finetune-thinking
+  name: DavidAU/Qwen3.6-27B-Heretic2-Uncensored-Finetune-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.6-27B-Heretic2-Uncensored-Finetune-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-qwen3-6-9b-heretic-uncensored-thinking-sweet-madness
+  name: DavidAU/Qwen3.6-9B-Heretic-Uncensored-Thinking-Sweet-Madness
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.6-9B-Heretic-Uncensored-Thinking-Sweet-Madness
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-davidau-rocinante-x-12b-v1-heretic-uncensored
+  name: DavidAU/Rocinante-X-12B-v1-Heretic-Uncensored
+  provider: Featherless AI
+  model_id: DavidAU/Rocinante-X-12B-v1-Heretic-Uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-e-n-v-y-legion-v2-1-llama-70b-elarablated-v0-8-hf
+  name: e-n-v-y/Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf
+  provider: Featherless AI
+  model_id: e-n-v-y/Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-fallenmerick-mn-violet-lotus-12b
+  name: FallenMerick/MN-Violet-Lotus-12B
+  provider: Featherless AI
+  model_id: FallenMerick/MN-Violet-Lotus-12B
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-gryphe-pantheon-reasoning-31b-1-1
+  name: Gryphe/Pantheon-Reasoning-31B-1.1
+  provider: Featherless AI
+  model_id: Gryphe/Pantheon-Reasoning-31B-1.1
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-huihui-ai-llama-3-2-3b-instruct-abliterated
+  name: huihui-ai/Llama-3.2-3B-Instruct-abliterated
+  provider: Featherless AI
+  model_id: huihui-ai/Llama-3.2-3B-Instruct-abliterated
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-ifm-k2-horizon-375b-a23b
+  name: K2 Horizon 375B - A23B
+  provider: Featherless AI
+  model_id: IFM/K2-Horizon-375B-A23B
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-mantis2024-dirty-muse-writer-v01-uncensored-erotica-nsfw
+  name: Mantis2024/Dirty-Muse-Writer-v01-Uncensored-Erotica-NSFW
+  provider: Featherless AI
+  model_id: Mantis2024/Dirty-Muse-Writer-v01-Uncensored-Erotica-NSFW
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-naphula-goetia-26b-a4b-v1-3-absolute-heretic-ara
+  name: Naphula/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA
+  provider: Featherless AI
+  model_id: Naphula/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-nitral-ai-hathor-tahsin-l3-8b-v0-85
+  name: Nitral-AI/Hathor_Tahsin-L3-8B-v0.85
+  provider: Featherless AI
+  model_id: Nitral-AI/Hathor_Tahsin-L3-8B-v0.85
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: featherless-ai-vortex5-shadow-siren-26b-a4b
+  name: Vortex5/Shadow-Siren-26B-A4B
+  provider: Featherless AI
+  model_id: Vortex5/Shadow-Siren-26B-A4B
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-agnes-ai-agnes-3-0-flash
+  name: Agnes-3.0-Flash
+  provider: Hugging Face
+  model_id: Agnes-AI/Agnes-3.0-Flash
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-arliai-phi-3-5-mini-3-8b-arliai-rpmax-v1-1-gguf
+  name: ArliAI/Phi-3.5-mini-3.8B-ArliAI-RPMax-v1.1-GGUF
+  provider: Hugging Face
+  model_id: ArliAI/Phi-3.5-mini-3.8B-ArliAI-RPMax-v1.1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-backyardai-l3-8b-stheno-v3-3-32k-gguf
+  name: backyardai/L3-8B-Stheno-v3.3-32K-GGUF
+  provider: Hugging Face
+  model_id: backyardai/L3-8B-Stheno-v3.3-32K-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-bartowski-e-n-v-y-legion-v2-1-llama-70b-elarablated-v0-8-hf-gguf
+  name: bartowski/e-n-v-y_Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf-GGUF
+  provider: Hugging Face
+  model_id: bartowski/e-n-v-y_Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-bartowski-llama-3-1-70b-instruct-lorablated-creative-writer-gguf
+  name: bartowski/Llama-3.1-70B-Instruct-Lorablated-Creative-Writer-GGUF
+  provider: Hugging Face
+  model_id: bartowski/Llama-3.1-70B-Instruct-Lorablated-Creative-Writer-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-bartowski-naphula-goetia-26b-a4b-v1-7-gguf
+  name: bartowski/Naphula_Goetia-26B-A4B-v1.7-GGUF
+  provider: Hugging Face
+  model_id: bartowski/Naphula_Goetia-26B-A4B-v1.7-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-ernie-21b-a3b-claude-4-5-high-opus-thinking
+  name: DavidAU/ERNIE-21B-A3B-Claude-4.5-High-OPUS-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/ERNIE-21B-A3B-Claude-4.5-High-OPUS-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-ernie-21b-a3b-glm-4-7-flash-thinking
+  name: DavidAU/ERNIE-21B-A3B-GLM-4.7-Flash-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/ERNIE-21B-A3B-GLM-4.7-Flash-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-ernie-21b-a3b-thinking-gemini-3-pro-high-reasoning-v2
+  name: DavidAU/ERNIE-21B-A3B-Thinking-Gemini-3-Pro-High-Reasoning-V2
+  provider: Hugging Face
+  model_id: DavidAU/ERNIE-21B-A3B-Thinking-Gemini-3-Pro-High-Reasoning-V2
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-ernie-4-5-37b-a3b-thinking-brainstorm20x
+  name: DavidAU/ERNIE-4.5-37B-A3B-Thinking-Brainstorm20x
+  provider: Hugging Face
+  model_id: DavidAU/ERNIE-4.5-37B-A3B-Thinking-Brainstorm20x
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-fimbulvetr-11b-ultra-quality-plus-imatrix-gguf
+  name: DavidAU/Fimbulvetr-11B-Ultra-Quality-plus-imatrix-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Fimbulvetr-11B-Ultra-Quality-plus-imatrix-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-3-12b-it-vl-polaris-glm-4-7-flash-var-thinking-instruct-heretic-uncensored
+  name: DavidAU/gemma-3-12b-it-vl-Polaris-GLM-4.7-Flash-VAR-Thinking-Instruct-Heretic-Uncensored
+  provider: Hugging Face
+  model_id: DavidAU/gemma-3-12b-it-vl-Polaris-GLM-4.7-Flash-VAR-Thinking-Instruct-Heretic-Uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-3-27b-it-gemini-deep-reasoning
+  name: DavidAU/Gemma-3-27b-it-Gemini-Deep-Reasoning
+  provider: Hugging Face
+  model_id: DavidAU/Gemma-3-27b-it-Gemini-Deep-Reasoning
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-3-4b-it-max-horror-uncensored-dbl-x-imatrix-gguf
+  name: DavidAU/Gemma-3-4b-it-MAX-HORROR-Uncensored-DBL-X-Imatrix-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Gemma-3-4b-it-MAX-HORROR-Uncensored-DBL-X-Imatrix-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-3-4b-it-vl-heretic-4-horsemen-uncensored
+  name: DavidAU/gemma-3-4b-it-vl-Heretic-4-Horsemen-Uncensored
+  provider: Hugging Face
+  model_id: DavidAU/gemma-3-4b-it-vl-Heretic-4-Horsemen-Uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-3-4b-vl-it-gemini-pro-heretic-uncensored-thinking
+  name: DavidAU/Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-3-4b-vl-it-glm-4-7-flash-heretic-uncensored-thinking
+  name: DavidAU/Gemma-3-4B-VL-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Gemma-3-4B-VL-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-3-it-4b-uncensored-dbl-x-gguf
+  name: DavidAU/Gemma-3-it-4B-Uncensored-DBL-X-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Gemma-3-it-4B-Uncensored-DBL-X-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-3-it-vl-40b-gemini-heretic-uncensored-thinking
+  name: DavidAU/gemma-3-it-vl-40B-Gemini-Heretic-Uncensored-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/gemma-3-it-vl-40B-Gemini-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-3-the-grand-horror-27b-gguf
+  name: DavidAU/Gemma-3-The-Grand-Horror-27B-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Gemma-3-The-Grand-Horror-27B-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-4-19b-a4b-it-instruct-heretic-uncensored
+  name: DavidAU/gemma-4-19B-A4B-it-INSTRUCT-Heretic-Uncensored
+  provider: Hugging Face
+  model_id: DavidAU/gemma-4-19B-A4B-it-INSTRUCT-Heretic-Uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-4-19b-a4b-it-the-deckard-heretic-uncensored-thinking
+  name: DavidAU/gemma-4-19B-A4B-it-The-DECKARD-Heretic-Uncensored-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/gemma-4-19B-A4B-it-The-DECKARD-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-4-31b-it-grand-horror-x-intense-heretic-uncensored-thinking
+  name: DavidAU/gemma-4-31B-it-Grand-Horror-X-INTENSE-HERETIC-UNCENSORED-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/gemma-4-31B-it-Grand-Horror-X-INTENSE-HERETIC-UNCENSORED-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-4-31b-it-mystery-fine-tune-heretic-uncensored-thinking-instruct-gguf
+  name: DavidAU/gemma-4-31B-it-Mystery-Fine-Tune-HERETIC-UNCENSORED-Thinking-Instruct-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/gemma-4-31B-it-Mystery-Fine-Tune-HERETIC-UNCENSORED-Thinking-Instruct-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-4-e4b-it-the-deckard-expresso-universe-heretic-uncensored-thinking-gguf
+  name: DavidAU/gemma-4-E4B-it-The-DECKARD-Expresso-Universe-HERETIC-UNCENSORED-Thinking-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/gemma-4-E4B-it-The-DECKARD-Expresso-Universe-HERETIC-UNCENSORED-Thinking-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-the-writer-9b-gguf
+  name: DavidAU/Gemma-The-Writer-9B-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Gemma-The-Writer-9B-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-the-writer-j-gutenberg-10b-gguf
+  name: DavidAU/Gemma-The-Writer-J.GutenBerg-10B-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Gemma-The-Writer-J.GutenBerg-10B-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-the-writer-mighty-sword-9b-gguf
+  name: DavidAU/Gemma-The-Writer-Mighty-Sword-9B-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Gemma-The-Writer-Mighty-Sword-9B-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-the-writer-n-restless-quill-10b-uncensored-gguf
+  name: DavidAU/Gemma-The-Writer-N-Restless-Quill-10B-Uncensored-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Gemma-The-Writer-N-Restless-Quill-10B-Uncensored-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma-the-writer-n-restless-quill-v2-enhanced32-10b-uncensored-gguf
+  name: DavidAU/Gemma-The-Writer-N-Restless-Quill-V2-Enhanced32-10B-Uncensored-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Gemma-The-Writer-N-Restless-Quill-V2-Enhanced32-10B-Uncensored-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-gemma3-27b-it-vl-polaris-hi16-heretic-uncensored-instruct
+  name: DavidAU/Gemma3-27B-it-vl-Polaris-HI16-Heretic-Uncensored-INSTRUCT
+  provider: Hugging Face
+  model_id: DavidAU/Gemma3-27B-it-vl-Polaris-HI16-Heretic-Uncensored-INSTRUCT
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-glm-4-7-flash-grande-heretic-uncensored-42b-a3b-gguf
+  name: DavidAU/GLM-4.7-Flash-Grande-Heretic-UNCENSORED-42B-A3B-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/GLM-4.7-Flash-Grande-Heretic-UNCENSORED-42B-A3B-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-glm-4-7-flash-uncensored-heretic-neo-code-imatrix-max-gguf
+  name: DavidAU/GLM-4.7-Flash-Uncensored-Heretic-NEO-CODE-Imatrix-MAX-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/GLM-4.7-Flash-Uncensored-Heretic-NEO-CODE-Imatrix-MAX-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-l3-8b-stheno-v3-2-ultra-neo-v1-imatrix-gguf
+  name: DavidAU/L3-8B-Stheno-v3.2-Ultra-NEO-V1-IMATRIX-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/L3-8B-Stheno-v3.2-Ultra-NEO-V1-IMATRIX-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-l3-dark-planet-8b-gguf
+  name: DavidAU/L3-Dark-Planet-8B
+  provider: Hugging Face
+  model_id: DavidAU/L3-Dark-Planet-8B-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-l3-dark-mistress-the-guilty-pen-uncensored-17-4b-gguf
+  name: DavidAU/L3-Dark_Mistress-The_Guilty_Pen-Uncensored-17.4B-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/L3-Dark_Mistress-The_Guilty_Pen-Uncensored-17.4B-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-llama-3-1-128k-dark-planet-uncensored-8b-gguf
+  name: DavidAU/Llama-3.1-128k-Dark-Planet-Uncensored-8B-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Llama-3.1-128k-Dark-Planet-Uncensored-8B-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-llama-3-3-8b-thinking-gemini-flash-11000x-128k
+  name: DavidAU/Llama-3.3-8B-Thinking-Gemini-Flash-11000x-128k
+  provider: Hugging Face
+  model_id: DavidAU/Llama-3.3-8B-Thinking-Gemini-Flash-11000x-128k
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-m-metaphors-of-madness-19-4b-gguf
+  name: DavidAU/M-Metaphors-Of-Madness-19.4B-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/M-Metaphors-Of-Madness-19.4B-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-mistral-moe-4x7b-dark-multiverse-24b-gguf
+  name: DavidAU/Mistral-MOE-4X7B-Dark-MultiVerse-24B-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Mistral-MOE-4X7B-Dark-MultiVerse-24B-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-mistral-moe-4x7b-dark-multiverse-uncensored-enhanced32-24b-gguf
+  name: DavidAU/Mistral-MOE-4X7B-Dark-MultiVerse-Uncensored-Enhanced32-24B-gguf
+  provider: Hugging Face
+  model_id: DavidAU/Mistral-MOE-4X7B-Dark-MultiVerse-Uncensored-Enhanced32-24B-gguf
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-mistral-nemo-instruct-2407-13-35b-brainstorm-5x-form-11-gguf
+  name: DavidAU/Mistral-Nemo-Instruct-2407-13.35B-BRAINSTORM-5x-FORM-11-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Mistral-Nemo-Instruct-2407-13.35B-BRAINSTORM-5x-FORM-11-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-mistral-small-3-2-46b-the-brilliant-raconteur-ii-instruct-2506
+  name: DavidAU/Mistral-Small-3.2-46B-The-Brilliant-Raconteur-II-Instruct-2506
+  provider: Hugging Face
+  model_id: DavidAU/Mistral-Small-3.2-46B-The-Brilliant-Raconteur-II-Instruct-2506
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-mistral-small-instruct-2409-22b-neo-imatrix-gguf
+  name: DavidAU/Mistral-Small-Instruct-2409-22B-NEO-Imatrix-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Mistral-Small-Instruct-2409-22B-NEO-Imatrix-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-mn-dark-horror-the-cliffhanger-18-5b-gguf
+  name: DavidAU/MN-Dark-Horror-The-Cliffhanger-18.5B-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/MN-Dark-Horror-The-Cliffhanger-18.5B-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-mn-dark-planet-kaboom-21b-gguf
+  name: DavidAU/MN-Dark-Planet-Kaboom-21B-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/MN-Dark-Planet-Kaboom-21B-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-mn-dark-planet-titan-12b-gguf
+  name: DavidAU/MN-Dark-Planet-TITAN-12B-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/MN-Dark-Planet-TITAN-12B-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-mn-darkest-universe-29b-gguf
+  name: DavidAU/MN-DARKEST-UNIVERSE-29B-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/MN-DARKEST-UNIVERSE-29B-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-mn-grand-23-5b-gutenberg-uncensored-v2-glm4-7-thinking-neo-imatrix-gguf
+  name: DavidAU/MN-GRAND-23.5B-Gutenberg-UNCENSORED-V2-GLM4.7-Thinking-NEO-Imatrix-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/MN-GRAND-23.5B-Gutenberg-UNCENSORED-V2-GLM4.7-Thinking-NEO-Imatrix-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-mn-grand-gutenberg-lyra4-lyra-12b-darkness-gguf
+  name: DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-12B-DARKNESS-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-12B-DARKNESS-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-mn-grand-gutenberg-lyra4-lyra-12b-madness-gguf
+  name: DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-12B-MADNESS-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-12B-MADNESS-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-mn-grand-gutenberg-lyra4-lyra-23-5b-gguf
+  name: DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-23.5B-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-23.5B-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-mn-grand-gutenberg-lyra4-lyra-23b-v2-gguf
+  name: DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-23B-V2-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-23B-V2-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-mn-oblivion-26b-uncensored-neo-imatrix-gguf
+  name: DavidAU/MN-Oblivion-26B-UNCENSORED-NEO-Imatrix-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/MN-Oblivion-26B-UNCENSORED-NEO-Imatrix-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-mn-wordstorm-pt3-rcm-pov-nightmare-18-5b-instruct-gguf
+  name: DavidAU/MN-WORDSTORM-pt3-RCM-POV-Nightmare-18.5B-Instruct-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/MN-WORDSTORM-pt3-RCM-POV-Nightmare-18.5B-Instruct-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-mn-wordstorm-pt4-rcm-cliffhanger-18-5b-instruct-gguf
+  name: DavidAU/MN-WORDSTORM-pt4-RCM-Cliffhanger-18.5B-Instruct-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/MN-WORDSTORM-pt4-RCM-Cliffhanger-18.5B-Instruct-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-mn-wordstorm-pt5-rcm-extra-intense-18-5b-instruct-gguf
+  name: DavidAU/MN-WORDSTORM-pt5-RCM-Extra-Intense-18.5B-Instruct-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/MN-WORDSTORM-pt5-RCM-Extra-Intense-18.5B-Instruct-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-horror-instruct-uncensored-262k-ctx-4b
+  name: DavidAU/Qwen3-Horror-Instruct-Uncensored-262K-ctx-4B
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3-Horror-Instruct-Uncensored-262K-ctx-4B
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-jan-v1-4b-grand-horror-day1-to-day7-evolved-imatrix-gguf
+  name: DavidAU/Qwen3-Jan-V1-4B-Grand-Horror-Day1-to-Day7-Evolved-Imatrix-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3-Jan-V1-4B-Grand-Horror-Day1-to-Day7-Evolved-Imatrix-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-moe-4x0-6b-2-4b-writing-thunder
+  name: DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-moe-4x0-6b-2-4b-writing-thunder-v1-2
+  name: DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder-V1.2
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder-V1.2
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-moe-4x1-7b-6-8b-lucys-song-uncensored
+  name: DavidAU/Qwen3-MOE-4x1.7B-6.8B-Lucys-Song-Uncensored
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3-MOE-4x1.7B-6.8B-Lucys-Song-Uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-moe-6x0-6b-3-6b-writing-on-fire-uncensored
+  name: DavidAU/Qwen3-MOE-6x0.6B-3.6B-Writing-On-Fire-Uncensored
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3-MOE-6x0.6B-3.6B-Writing-On-Fire-Uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-moe-6x1-7b-10-2b-shining-madness-uncensored
+  name: DavidAU/Qwen3-MOE-6x1.7B-10.2B-Shining-Madness-Uncensored
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3-MOE-6x1.7B-10.2B-Shining-Madness-Uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-moe-6x6b-star-trek-universe-alpha-256k-ctx-36b
+  name: DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-256k-ctx-36B
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-256k-ctx-36B
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-moe-6x6b-star-trek-universe-alpha-d-256k-ctx-36b
+  name: DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-D-256k-ctx-36B
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-D-256k-ctx-36B
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-the-josiefied-omega-directive-22b-uncensored-abliterated-gguf
+  name: DavidAU/Qwen3-The-Josiefied-Omega-Directive-22B-uncensored-abliterated-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3-The-Josiefied-Omega-Directive-22B-uncensored-abliterated-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-the-xiaolong-josiefied-omega-directive-22b-uncensored-abliterated-gguf
+  name: DavidAU/Qwen3-The-Xiaolong-Josiefied-Omega-Directive-22B-uncensored-abliterated-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3-The-Xiaolong-Josiefied-Omega-Directive-22B-uncensored-abliterated-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-the-xiaolong-omega-directive-22b-uncensored-abliterated-gguf
+  name: DavidAU/Qwen3-The-Xiaolong-Omega-Directive-22B-uncensored-abliterated-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3-The-Xiaolong-Omega-Directive-22B-uncensored-abliterated-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-vl-12b-instruct-brainstorm20x-neo-max-gguf
+  name: DavidAU/Qwen3-VL-12B-Instruct-Brainstorm20x-NEO-MAX-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3-VL-12B-Instruct-Brainstorm20x-NEO-MAX-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-vl-32b-gemini-heretic-uncensored-thinking
+  name: DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-vl-8b-glm-4-7-flash-heretic-uncensored-thinking
+  name: DavidAU/Qwen3-VL-8B-GLM-4.7-Flash-Heretic-Uncensored-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3-VL-8B-GLM-4.7-Flash-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-13b-deckard-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.5-13B-Deckard-Heretic-Uncensored-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-13B-Deckard-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-13b-glm-4-7-flash-deepseek-polaris-grande-deep-thinking
+  name: DavidAU/Qwen3.5-13B-GLM-4.7-Flash-DeepSeek-Polaris-Grande-Deep-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-13B-GLM-4.7-Flash-DeepSeek-Polaris-Grande-Deep-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-21b-glm-4-7-flash-deckard-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Deckard-Heretic-Uncensored-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Deckard-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-21b-glm-4-7-flash-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Heretic-Uncensored-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-27b-claude-4-6-os-auto-variable-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.5-27B-Claude-4.6-OS-Auto-Variable-Heretic-Uncensored-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-27B-Claude-4.6-OS-Auto-Variable-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-27b-deckard-pkd-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.5-27B-Deckard-PKD-Heretic-Uncensored-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-27B-Deckard-PKD-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-27b-gemini3-pro-high-reasoning-compact-thinking
+  name: DavidAU/Qwen3.5-27B-Gemini3-Pro-High-Reasoning-Compact-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-27B-Gemini3-Pro-High-Reasoning-Compact-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-27b-heretic-polaris-advanced-thinking-alpha-uncensored
+  name: DavidAU/Qwen3.5-27B-HERETIC-Polaris-Advanced-Thinking-Alpha-uncensored
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-27B-HERETIC-Polaris-Advanced-Thinking-Alpha-uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-40b-claude-4-5-opus-high-reasoning-thinking
+  name: DavidAU/Qwen3.5-40B-Claude-4.5-Opus-High-Reasoning-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-40B-Claude-4.5-Opus-High-Reasoning-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-40b-claude-4-6-opus-deckard-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.5-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-40b-roughhouse-claude-4-6-opus-polar-deckard-uncensored-heretic-thinking
+  name: DavidAU/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-4b-claude-4-6-os-auto-variable-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.5-4B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-4B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-4b-deckard-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.5-4B-Deckard-HERETIC-UNCENSORED-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-4B-Deckard-HERETIC-UNCENSORED-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-9b-claude-4-6-opus-deckard-v4-2-uncensored-heretic-thinking
+  name: DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-9b-claude-4-6-opus-deckard-v4-2-uncensored-heretic-thinking-gguf
+  name: DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-9b-claude-4-6-os-auto-variable-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-9b-claude-4-6-os-auto-variable-heretic-uncensored-thinking-max-neocode-imatrix-gguf
+  name: DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING-MAX-NEOCODE-Imatrix-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING-MAX-NEOCODE-Imatrix-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-9b-claude-4-6-os-auto-variable-thinking
+  name: DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-THINKING
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-THINKING
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-9b-star-trek-tng-ds9-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.5-9B-Star-Trek-TNG-DS9-Heretic-Uncensored-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-9B-Star-Trek-TNG-DS9-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-9b-star-trek-tng-ds9-heretic-uncensored-thinking-max-neocode-gguf
+  name: DavidAU/Qwen3.5-9B-Star-Trek-TNG-DS9-Heretic-Uncensored-Thinking-MAX-NEOCODE-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-9B-Star-Trek-TNG-DS9-Heretic-Uncensored-Thinking-MAX-NEOCODE-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-5-9b-the-defiant-fable-uncensored-heretic-neo-imatrix-max-mtp-gguf
+  name: DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-6-12b-iq-ultra-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-6-12b-iq-ultra-heretic-uncensored-thinking-v2-hightop
+  name: DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking-V2-Hightop
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking-V2-Hightop
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-6-27b-fable-fusion-711-uncensored-heretic-nm-dau-neo-max-mtp-gguf
+  name: DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-NEO-MAX-MTP-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-NEO-MAX-MTP-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-6-27b-heretic-uncensored-finetune-neo-code-di-imatrix-max-gguf
+  name: DavidAU/Qwen3.6-27B-Heretic-Uncensored-FINETUNE-NEO-CODE-Di-IMatrix-MAX-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.6-27B-Heretic-Uncensored-FINETUNE-NEO-CODE-Di-IMatrix-MAX-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-6-27b-neo-code-di-imatrix-max-gguf
+  name: DavidAU/Qwen3.6-27B-NEO-CODE-Di-IMatrix-MAX-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.6-27B-NEO-CODE-Di-IMatrix-MAX-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-6-40b-claude-4-6-opus-deckard-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.6-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.6-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-6-40b-claude-4-6-opus-deckard-heretic-uncensored-thinking-neo-code-di-imatrix-max-gguf
+  name: DavidAU/Qwen3.6-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking-NEO-CODE-Di-IMatrix-MAX-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.6-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking-NEO-CODE-Di-IMatrix-MAX-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-qwen3-8-27b-turbo-fable-cold-fusion-735-882-heretic-uncensored-neo-coder-max-mtp-gguf
+  name: DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-davidau-tiefighter-holodeck-holomax-mythomax-f1-v1-compos-20b-gguf
+  name: DavidAU/TieFighter-Holodeck-Holomax-Mythomax-F1-V1-COMPOS-20B-gguf
+  provider: Hugging Face
+  model_id: DavidAU/TieFighter-Holodeck-Holomax-Mythomax-F1-V1-COMPOS-20B-gguf
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-day078-qwen3-30b-a3b-abliterated-erotic-q4-k-m-gguf
+  name: day078/Qwen3-30B-A3B-abliterated-erotic-Q4_K_M-GGUF
+  provider: Hugging Face
+  model_id: day078/Qwen3-30B-A3B-abliterated-erotic-Q4_K_M-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-e-n-v-y-l3-3-electra-r1-70b-elarablated-v0-1
+  name: e-n-v-y/L3.3-Electra-R1-70b-Elarablated-v0.1
+  provider: Hugging Face
+  model_id: e-n-v-y/L3.3-Electra-R1-70b-Elarablated-v0.1
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-eldritchlabs-mn-crimson-cafe-12b
+  name: EldritchLabs/MN-Crimson-Cafe-12B
+  provider: Hugging Face
+  model_id: EldritchLabs/MN-Crimson-Cafe-12B
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-eva-unit-01-eva-yi-1-5-9b-32k-v1
+  name: EVA-UNIT-01/EVA-Yi-1.5-9B-32K-V1
+  provider: Hugging Face
+  model_id: EVA-UNIT-01/EVA-Yi-1.5-9B-32K-V1
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-ggml-org-stories15m-moe
+  name: ggml-org/stories15M_MOE
+  provider: Hugging Face
+  model_id: ggml-org/stories15M_MOE
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-itlwas-eva-yi-1-5-9b-32k-v1-q4-k-m-gguf
+  name: KoboldAI/LLaMA2-13B-Tiefighter
+  provider: Hugging Face
+  model_id: itlwas/EVA-Yi-1.5-9B-32K-V1-Q4_K_M-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-medvedko-mistral-nemo-2407-12b-thinking-claude-gemini-gpt5-2-uncensored-heretic-q4-k-m-gguf
+  name: Medvedko/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC-Q4_K_M-GGUF
+  provider: Hugging Face
+  model_id: Medvedko/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC-Q4_K_M-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-modelcloud-tinyllama-15m-stories
+  name: Tinyllama-15M-stories
+  provider: Hugging Face
+  model_id: ModelCloud/tinyllama-15M-stories
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-motif-technologies-motif-3
+  name: Motif 3
+  provider: Hugging Face
+  model_id: Motif-Technologies/Motif-3
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-dirty-muse-writer-v01-uncensored-erotica-nsfw-i1-gguf
+  name: mradermacher/Dirty-Muse-Writer-v01-Uncensored-Erotica-NSFW-i1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Dirty-Muse-Writer-v01-Uncensored-Erotica-NSFW-i1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-eva-yi-1-5-9b-32k-v1-gguf
+  name: mradermacher/EVA-Yi-1.5-9B-32K-V1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/EVA-Yi-1.5-9B-32K-V1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-eva-yi-1-5-9b-32k-v1-i1-gguf
+  name: mradermacher/EVA-Yi-1.5-9B-32K-V1-i1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/EVA-Yi-1.5-9B-32K-V1-i1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-fimbulvetr-grande-v2-19b-gguf
+  name: mradermacher/Fimbulvetr-Grande-V2-19B-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Fimbulvetr-Grande-V2-19B-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-fimbulvetr-grande-v2-19b-i1-gguf
+  name: mradermacher/Fimbulvetr-Grande-V2-19B-i1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Fimbulvetr-Grande-V2-19B-i1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-gemma-2-2b-arliai-rpmax-v1-1-i1-gguf
+  name: mradermacher/Gemma-2-2B-ArliAI-RPMax-v1.1-i1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Gemma-2-2B-ArliAI-RPMax-v1.1-i1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-gemma-2-9b-arliai-rpmax-v1-1-gguf
+  name: mradermacher/Gemma-2-9B-ArliAI-RPMax-v1.1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Gemma-2-9B-ArliAI-RPMax-v1.1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-gemma-2-9b-arliai-rpmax-v1-1-i1-gguf
+  name: mradermacher/Gemma-2-9B-ArliAI-RPMax-v1.1-i1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Gemma-2-9B-ArliAI-RPMax-v1.1-i1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-goetia-26b-a4b-v1-3-absolute-heretic-ara-gguf
+  name: mradermacher/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-goetia-26b-a4b-v1-3-absolute-heretic-ara-i1-gguf
+  name: mradermacher/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA-i1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA-i1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-goetia-26b-a4b-v1-6-i1-gguf
+  name: mradermacher/Goetia-26B-A4B-v1.6-i1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Goetia-26B-A4B-v1.6-i1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-goetia-26b-a4b-v1-7-i1-gguf
+  name: mradermacher/Goetia-26B-A4B-v1.7-i1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Goetia-26B-A4B-v1.7-i1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-l3-dark-planet-8b-wordstorm-b4-i1-gguf
+  name: mradermacher/L3-Dark-Planet-8B-wordstorm-b4-i1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/L3-Dark-Planet-8B-wordstorm-b4-i1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-l3-dark-planet-8b-wordstorm-r4-gguf
+  name: mradermacher/L3-Dark-Planet-8B-wordstorm-r4-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/L3-Dark-Planet-8B-wordstorm-r4-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-loki-v2-75b-8b-erotica-1024k-i1-gguf
+  name: mradermacher/Loki-v2.75b-8b-EROTICA-1024k-i1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Loki-v2.75b-8b-EROTICA-1024k-i1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-mistral-nemo-2407-12b-thinking-claude-gemini-gpt5-2-uncensored-heretic-i1-gguf
+  name: mradermacher/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC-i1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC-i1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-mistral-nemo-instruct-2407-12b-thinking-m-claude-opus-high-reasoning-i1-gguf
+  name: mradermacher/Mistral-Nemo-Instruct-2407-12B-Thinking-M-Claude-Opus-High-Reasoning-i1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Mistral-Nemo-Instruct-2407-12B-Thinking-M-Claude-Opus-High-Reasoning-i1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-mn-violet-lotus-12b-gguf
+  name: mradermacher/MN-Violet-Lotus-12B-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/MN-Violet-Lotus-12B-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-mn-violet-lotus-12b-i1-gguf
+  name: mradermacher/MN-Violet-Lotus-12B-i1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/MN-Violet-Lotus-12B-i1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-mn-wordstorm-pt5-rcm-extra-intense-18-5b-instruct-i1-gguf
+  name: mradermacher/MN-WORDSTORM-pt5-RCM-Extra-Intense-18.5B-Instruct-i1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/MN-WORDSTORM-pt5-RCM-Extra-Intense-18.5B-Instruct-i1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-qwen3-30b-a3b-abliterated-erotic-gguf
+  name: mradermacher/Qwen3-30B-A3B-abliterated-erotic-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Qwen3-30B-A3B-abliterated-erotic-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-qwen3-30b-a3b-abliterated-erotic-i1-gguf
+  name: mradermacher/Qwen3-30B-A3B-abliterated-erotic-i1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Qwen3-30B-A3B-abliterated-erotic-i1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-qwen3-5-40b-roughhouse-claude-4-6-opus-polar-deckard-uncensored-heretic-thinking-gguf
+  name: mradermacher/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-qwen3-5-9b-deckard-claude-dimoe-uncensored-heretic-thinking-gguf
+  name: mradermacher/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-qwen3-5-9b-deckard-claude-dimoe-uncensored-heretic-thinking-i1-gguf
+  name: mradermacher/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking-i1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking-i1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-shadow-siren-26b-a4b-gguf
+  name: mradermacher/Shadow-Siren-26B-A4B-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Shadow-Siren-26B-A4B-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-shadow-siren-26b-a4b-i1-gguf
+  name: mradermacher/Shadow-Siren-26B-A4B-i1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Shadow-Siren-26B-A4B-i1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-tower-plus-72b-ultra-uncensored-heretic-gguf
+  name: mradermacher/Tower-Plus-72B-ultra-uncensored-heretic-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Tower-Plus-72B-ultra-uncensored-heretic-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-mradermacher-tower-plus-72b-ultra-uncensored-heretic-i1-gguf
+  name: mradermacher/Tower-Plus-72B-ultra-uncensored-heretic-i1-GGUF
+  provider: Hugging Face
+  model_id: mradermacher/Tower-Plus-72B-ultra-uncensored-heretic-i1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-naphula-goetia-26b-a4b-v1-6
+  name: Naphula/Goetia-26B-A4B-v1.6
+  provider: Hugging Face
+  model_id: Naphula/Goetia-26B-A4B-v1.6
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-naphula-goetia-26b-a4b-v1-7
+  name: Naphula/Goetia-26B-A4B-v1.7
+  provider: Hugging Face
+  model_id: Naphula/Goetia-26B-A4B-v1.7
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-nightmedia-qwen3-6-27b-architect-polaris2-fable-b-f451-tess
+  name: nightmedia/Qwen3.6-27B-Architect-Polaris2-Fable-B-F451-Tess
+  provider: Hugging Face
+  model_id: nightmedia/Qwen3.6-27B-Architect-Polaris2-Fable-B-F451-Tess
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-owenarli-gemma-2-2b-arliai-rpmax-v1-1-gguf
+  name: OwenArli/Gemma-2-2B-ArliAI-RPMax-v1.1-GGUF
+  provider: Hugging Face
+  model_id: OwenArli/Gemma-2-2B-ArliAI-RPMax-v1.1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-phil2sat-goetia-26b-a4b-v1-3-absolute-heretic-restored-i-compact-mxfp4-gguf
+  name: Phil2Sat/Goetia-26B-A4B-v1.3-Absolute-Heretic-Restored-I-Compact-MXFP4-GGUF
+  provider: Hugging Face
+  model_id: Phil2Sat/Goetia-26B-A4B-v1.3-Absolute-Heretic-Restored-I-Compact-MXFP4-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-philipjohnbasile-qwen3-6-27b-fable-fusion-711-mtplx-8bit
+  name: philipjohnbasile/Qwen3.6-27B-Fable-Fusion-711-MTPLX-8bit
+  provider: Hugging Face
+  model_id: philipjohnbasile/Qwen3.6-27B-Fable-Fusion-711-MTPLX-8bit
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-quantfactory-eva-yi-1-5-9b-32k-v1-gguf
+  name: QuantFactory/EVA-Yi-1.5-9B-32K-V1-GGUF
+  provider: Hugging Face
+  model_id: QuantFactory/EVA-Yi-1.5-9B-32K-V1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-quantfactory-gemma-2-2b-arliai-rpmax-v1-1-gguf
+  name: QuantFactory/Gemma-2-2B-ArliAI-RPMax-v1.1-GGUF
+  provider: Hugging Face
+  model_id: QuantFactory/Gemma-2-2B-ArliAI-RPMax-v1.1-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-quantfactory-hathor-tahsin-l3-8b-v0-85-gguf
+  name: QuantFactory/Hathor_Tahsin-L3-8B-v0.85-GGUF
+  provider: Hugging Face
+  model_id: QuantFactory/Hathor_Tahsin-L3-8B-v0.85-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-quantfactory-mn-12b-celeste-v1-9-gguf
+  name: QuantFactory/MN-12B-Celeste-V1.9-GGUF
+  provider: Hugging Face
+  model_id: QuantFactory/MN-12B-Celeste-V1.9-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-richarderkhov-nitral-ai-hathor-tahsin-l3-8b-v0-85-gguf
+  name: RichardErkhov/Nitral-AI_-_Hathor_Tahsin-L3-8B-v0.85-gguf
+  provider: Hugging Face
+  model_id: RichardErkhov/Nitral-AI_-_Hathor_Tahsin-L3-8B-v0.85-gguf
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: hugging-face-thedrummer-cydonia-24b-v4-1
+  name: TheDrummer:Cydonia-24b-v4.1
+  provider: Hugging Face
+  model_id: thedrummer/cydonia-24b-v4.1
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-openai-gpt-image-2
+  name: GPT Image 2
+  provider: OpenRouter
+  model_id: openai/gpt-image-2
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Image
+- key: comfy-cloud-ideogram
+  name: Ideogram
+  provider: Comfy Cloud
+  model_id: ''
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Image
+- key: comfy-cloud-flux-2
+  name: FLUX.2
+  provider: Comfy Cloud
+  model_id: ''
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Image
+- key: openrouter-nano-banana-pro
+  name: Nano Banana Pro
+  provider: OpenRouter
+  model_id: ''
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Image
+- key: elevenlabs-eleven-v3
+  name: ElevenLabs v3
+  provider: ElevenLabs
+  model_id: eleven_v3
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Speech
+- key: openrouter-gemini-3-1-flash-tts
+  name: Gemini 3.1 Flash TTS
+  provider: OpenRouter
+  model_id: ''
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Speech
+- key: elevenlabs-elevenlabs-sound-effects
+  name: ElevenLabs Sound Effects
+  provider: ElevenLabs
+  model_id: ''
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Sound
+- key: comfy-cloud-seedance-2-0
+  name: Seedance 2.0
+  provider: Comfy Cloud
+  model_id: ''
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Video
+- key: hugging-face-wan-3-0
+  name: Wan 3.0
+  provider: Hugging Face
+  model_id: ''
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Video
+- key: elevenlabs-elevenlabs-scribe
+  name: ElevenLabs Scribe
+  provider: ElevenLabs
+  model_id: ''
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Speech-to-text
+- key: comfy-cloud-qwen-image
+  name: Qwen-Image
+  provider: Comfy Cloud
+  model_id: ''
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Image
+- key: comfy-cloud-z-image-turbo
+  name: Z-Image Turbo
+  provider: Comfy Cloud
+  model_id: ''
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Image
+- key: comfy-cloud-wan-2-2
+  name: Wan 2.2
+  provider: Comfy Cloud
+  model_id: ''
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Video
+- key: comfy-cloud-ltx-2
+  name: LTX-2
+  provider: Comfy Cloud
+  model_id: ''
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Video
+- key: comfy-cloud-minimax-music-3
+  name: MiniMax Music 3
+  provider: Comfy Cloud
+  model_id: ''
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Music
+- key: comfy-cloud-ace-step
+  name: ACE-Step
+  provider: Comfy Cloud
+  model_id: ''
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Music
+- key: featherless-ai-chatterbox
+  name: Chatterbox
+  provider: Featherless AI
+  model_id: ''
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Speech
+- key: comfy-cloud-stable-audio-open
+  name: Stable Audio Open
+  provider: Comfy Cloud
+  model_id: ''
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Sound
+- key: openrouter-fish-audio-s2-pro
+  name: Fish Audio S2 Pro
+  provider: OpenRouter
+  model_id: ''
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Speech
+- key: openrouter-qwen-qwen3-8-omni-flash
+  name: Qwen3.8 Omni Flash
+  provider: OpenRouter
+  model_id: qwen/qwen3.8-omni-flash
+  frontier: false
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-xiaomi-mimo-v2-omni
+  name: MiMo-V2-Omni
+  provider: OpenRouter
+  model_id: xiaomi/mimo-v2-omni
+  frontier: false
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: openrouter-nvidia-nemotron-3-nano-omni-30b-a3b-reasoning-free
+  name: Nemotron 3 Nano Omni
+  provider: OpenRouter
+  model_id: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: ''
+- key: comfy-cloud-stability-text-to-audio
+  name: Stability Text To Audio
+  provider: Comfy Cloud
+  model_id: ''
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Sound
+- key: openrouter-google-lyria-3-pro-preview
+  name: Lyria 3 Pro
+  provider: OpenRouter
+  model_id: google/lyria-3-pro-preview
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  genre: ''
+  modality: Music
