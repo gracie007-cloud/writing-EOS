@@ -1,18 +1,35 @@
-# Canvas source (copy of 22 October 2026)
+# Canvas source: the Writing EOS front end
 
-The build files for the Writing EOS design canvas as they were on 2026-10-22:
+The Writing EOS design canvas, the app's front end: 19 screens (boards) and the canvas layout. The live canvas is the
+claude.ai artifact *Writing EOS App* (https://claude.ai/artifact/HL7wfJWnqk7QcLaBFjdUGZ); this folder is its copy in
+the repository.
 
-- `eos-build/` — `build.py` and the per-board sources in `src/`
-- `eos-design/project/` — the built boards
-- `dcpreview/`, `jscheck.py` — preview and check tools
+- `eos-design/project/`: the boards (`*.dc.html`) and `canvas.json`, **copied from the live canvas on
+  2026-11-25** (live version `1795611737-263e`, last changed 2026-11-12). Each file's SHA-256 matches the live one.
+- `eos-build/`: `build.py` and the per-board sources in `src/`, as of **2026-10-22**.
+- `dcpreview/`, `jscheck.py`: preview and check tools.
 
-The live canvas has moved on since this copy was made; it is the source of truth for the design. Treat these files as
-a record and a starting point, not as the current design.
+The artifact platform's own runtime (its `app.js`, `dc-runtime.js`, fonts and translations) comes with the artifact
+type and is not the app's code, so it is not copied here.
 
-## What changed on the live canvas after this copy
+## Do not run `build.py` as it stands
 
-On 2026-11-12 nine boards were corrected on the live canvas only (fixes plan, C2): Blueprint, Model Lab, Library,
-Finish and publish, Home, Story Blueprint, Chapters, Recipes and Autonomy. The same day the four quality tiers were taken
-off six boards (Generate, Recipes, Model Lab, Blueprint, Chapters, Editor) after decision D32. The files here still
-carry the older wording about model families, the earlier mature lane and the quality tiers. Do not rebuild the canvas from them without redoing those
-corrections.
+The boards were corrected on the live canvas after `src/` was written, so `src/` is older than the boards:
+
+- On 2026-11-12 nine boards were corrected on the live canvas only (fixes plan, C2): Blueprint, Model Lab, Library,
+  Finish and publish, Home, Story Blueprint, Chapters, Recipes and Autonomy.
+- The same day the four quality tiers were taken off six boards (Generate, Recipes, Model Lab, Blueprint, Chapters,
+  Editor) after decision D32.
+
+`build.py` writes every board that has a source in `src/` (Autonomy, Bible, Board, Develop, Draft, Ecosystem,
+Export, Finish, Generate, Genre, History, Lab, Library, Recipes). Running it would put the October wording back on
+eight boards: Autonomy, Develop, Ecosystem, Finish, Generate, Lab, Library and Recipes. Chapter, Editor, Main, Sidebar
+and System have no source in `src/`; they exist only as boards.
+
+So the boards in `eos-design/project/` are the current front end. Edit them, or bring `src/` up to date from them
+first, before building again.
+
+## Updating this copy
+
+When the live canvas changes, copy its `project/` files over `eos-design/project/` and check each SHA-256 against the
+artifact's file list.

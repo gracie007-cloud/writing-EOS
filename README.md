@@ -21,7 +21,7 @@ This repository holds the **rule-keeping engine**, tested, and the documents it 
 ```
 eos-app/         the engine: eos_app/ (code), config/ (the app's copies of the databases), tests/
 eos-bakeoff/     the bake-off harness that tests models on a step, with its test pack
-canvas-source/   the design canvas's build files as of 22 October 2026 (the live canvas is newer)
+canvas-source/   the front end: the design canvas's 19 boards, copied from the live canvas on 25 November 2026
 experiments/     worked examples
 docs/            requirements and architecture, proposals, reports and the fixes implementation plan
 roster/          the export of the model roster LLM Identifier

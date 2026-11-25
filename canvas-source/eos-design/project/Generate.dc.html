@@ -51,7 +51,7 @@ a{color:#1F4E79}a:hover{color:#12244A}
 <div style="flex: 1 1 520px; display: flex; flex-direction: column; gap: 10px">
 <p style="margin: 0; display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2E75B6"><span style="width: 24px; height: 1px; background: #9DC3E6"></span>Chapter Generator · from the locked outline</p>
 <h1 id="page-title" style="margin: 0; font-size: 32px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.15">Generate chapters</h1>
-<p style="margin: 0; max-width: 720px; font-size: 15px; line-height: 1.6; color: #4B5B73">Pick chapters, a quality tier and a few settings. Each chapter runs through its steps, each on its own model, and the batch stops whenever something needs you.</p>
+<p style="margin: 0; max-width: 720px; font-size: 15px; line-height: 1.6; color: #4B5B73">Pick chapters and a few settings. Each chapter runs through its steps, each on its own model, and the batch stops whenever something needs you.</p>
 </div>
 </section>
 <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
@@ -78,10 +78,10 @@ a{color:#1F4E79}a:hover{color:#12244A}
 
 <section aria-labelledby="tier" style="display: flex; flex-direction: column; gap: 12px; padding: 20px 22px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px">
-<h2 id="tier" style="margin: 0; font-size: 17px; font-weight: 800"><span style="color: #2E75B6">2</span> · Quality tier</h2>
-<a href="Lab.dc.html" style="font-size: 14px; font-weight: 600">How tiers pick models</a>
+<h2 id="tier" style="margin: 0; font-size: 17px; font-weight: 800"><span style="color: #2E75B6">2</span> · Models</h2>
+<a href="Lab.dc.html" style="font-size: 14px; font-weight: 600">How each step gets its experts</a>
 </div>
-<div role="radiogroup" aria-labelledby="tier" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 10px">
+<div hidden="hidden" style="display: none">
 <sc-for list="{{tiers}}" as="t" hint-placeholder-count="4">
 <button type="button" role="radio" aria-checked="{{t.on}}" onClick="{{t.pick}}" class="eos-row" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px; min-height: 88px; padding: 12px 14px; border-radius: 12px; border: 2px solid {{t.border}}; background: {{t.bg}}; text-align: left; color: #1B2A41; font-family: inherit; cursor: pointer">
 <span style="display: flex; align-items: center; gap: 8px; width: 100%"><span style="display: grid; place-items: center; width: 18px; height: 18px; border-radius: 999px; box-shadow: inset 0 0 0 2px {{t.dot}}"><span style="width: 8px; height: 8px; border-radius: 999px; background: {{t.dotFill}}"></span></span><span style="font-size: 15px; font-weight: 800">{{t.name}}</span></span>
@@ -90,8 +90,8 @@ a{color:#1F4E79}a:hover{color:#12244A}
 </button>
 </sc-for>
 </div>
-<p style="margin: 0; font-size: 14px; line-height: 1.55"><strong>Writers in this tier:</strong> <span style="color: #4B5B73">{{tier.writers}}</span></p>
-<p style="margin: 0; font-size: 13px; color: #5F6E84">Checkers and the mature tier stay the same in every tier, so the independence and mature rules always hold.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.55"><strong>Nothing to choose here.</strong> <span style="color: #4B5B73">Each step runs on its own line of experts, as you set them: the Primary first, then the Comparable, then the Fallback. A step moves down its line only when a model refuses, fails or cannot be reached.</span></p>
+<p style="margin: 0; font-size: 13px; color: #5F6E84">A checker never runs on the model that wrote the draft, and mature scenes go only to the mature tier.</p>
 </section>
 
 <section aria-labelledby="settings" style="display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
@@ -117,7 +117,7 @@ a{color:#1F4E79}a:hover{color:#12244A}
 </div>
 <div style="display: flex; flex-direction: column; gap: 4px">
 <span style="font-size: 30px; font-weight: 800; letter-spacing: -0.01em">{{selCount}} chapters</span>
-<span style="font-size: 14px; color: #4B5B73">{{doneRuns}} of {{totalRuns}} agent runs · {{tier.name}} tier</span>
+<span style="font-size: 14px; color: #4B5B73">{{doneRuns}} of {{totalRuns}} agent runs</span>
 </div>
 <div role="progressbar" aria-label="Batch progress" aria-valuemin="0" aria-valuemax="{{totalRuns}}" aria-valuenow="{{doneRuns}}" style="height: 8px; border-radius: 999px; background: #E8EEF6; overflow: hidden"><div style="width: {{pct}}; height: 100%; border-radius: 999px; background: #2E75B6"></div></div>
 <div style="display: flex; justify-content: space-between; gap: 8px; padding: 10px 12px; border-radius: 12px; background: #F5F7FB; font-size: 14px"><span style="color: #4B5B73">Estimated cost</span><span style="font-weight: 700">[$ ESTIMATE]</span></div>
@@ -191,10 +191,10 @@ var tabsOf = function (defs, cur, key) {
 return defs.map(function (t) { var on = t.id === cur; var o = {}; o[key] = t.id; return Object.assign({}, t, { on: on, bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#1F4E79' : '#FFFFFF', pick: function () { self.setState(o); } }); });
 };
 var tierDefs = [
-{ id: 'basic', name: 'Basic', tag: 'Good quality, economical', writers: 'the cheapest tested model within 15% of the best score for each step.' },
-{ id: 'excellent', name: 'Excellent', tag: 'The best choice for most chapters', writers: 'the best average score, or a cheaper model within 5% of it.', rec: true },
-{ id: 'premium', name: 'Premium', tag: 'Best quality, whatever it costs', writers: 'the best average score for each step, cost ignored.' },
-{ id: 'advanced', name: 'Advanced', tag: 'Experimental', writers: 'new or untested models, for pitches and drafts only. Results are marked experimental.' }
+
+
+
+
 ];
 var tiers = tierDefs.map(function (t) {
 var on = t.id === st.tier;

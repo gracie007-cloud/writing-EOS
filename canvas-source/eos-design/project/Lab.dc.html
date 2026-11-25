@@ -51,7 +51,7 @@ a{color:#1F4E79}a:hover{color:#12244A}
 <div style="flex: 1 1 520px; display: flex; flex-direction: column; gap: 10px">
 <p style="margin: 0; display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2E75B6"><span style="width: 24px; height: 1px; background: #9DC3E6"></span>Model Lab · Opening chapter test · 17 Oct 2026</p>
 <h1 id="page-title" style="margin: 0; font-size: 32px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.15">Which model does each job</h1>
-<p style="margin: 0; max-width: 720px; font-size: 15px; line-height: 1.6; color: #4B5B73">The same test material goes to every candidate model, three times each. Scores decide which model each step runs on, so every job gets the model that does it best.</p>
+<p style="margin: 0; max-width: 720px; font-size: 15px; line-height: 1.6; color: #4B5B73">The same test material goes to every candidate model, three times each. The scores are your evidence for choosing the experts of each step, so every job gets the models that do it best.</p>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 10px"><button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer">Estimate cost</button><button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer">Export results</button><button type="button" class="eos-btn" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #1F4E79; background: #2E75B6; color: #FFFFFF; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer">New round</button></div>
 </section>
@@ -68,13 +68,13 @@ a{color:#1F4E79}a:hover{color:#12244A}
 </div>
 <div style="display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; border-radius: 16px; background: #FDF6F5; box-shadow: inset 0 0 0 1px #F2B8B0">
 <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #A8321F">Blocked</span>
-<span style="font-size: 15px; font-weight: 700">Mature tier endpoints</span>
-<span style="font-size: 13px; line-height: 1.45; color: #4B5B73">Set HF_ENDPOINT_CUSTOM and HF_ENDPOINT_BASELINE in .env to run the mature step.</span>
+<span style="font-size: 15px; font-weight: 700">Mature tier not set up</span>
+<span style="font-size: 13px; line-height: 1.45; color: #4B5B73">The mature step needs an Uncensored model on Featherless AI. None is chosen for the test yet.</span>
 </div>
 <div style="display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
 <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6E84">Model IDs verified</span>
-<span style="font-size: 22px; font-weight: 800">1 of 7</span>
-<span style="font-size: 13px; color: #4B5B73">glm_53 checked on OpenRouter. Verify the rest before their runs count.</span>
+<span style="font-size: 22px; font-weight: 800">7 of 7</span>
+<span style="font-size: 13px; color: #4B5B73">All seven test candidates were checked against OpenRouter on 18 Oct 2026.</span>
 </div>
 </section>
 
@@ -103,7 +103,7 @@ a{color:#1F4E79}a:hover{color:#12244A}
 
 <sc-if value="{{show.tiers}}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-direction: column; gap: 14px">
-<section aria-label="Quality tiers" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 12px">
+<section aria-label="Retired" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 12px">
 <sc-for list="{{tierCards}}" as="t" hint-placeholder-count="4">
 <div style="display: flex; flex-direction: column; gap: 6px; padding: 18px 20px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
 <span style="display: flex; justify-content: space-between; gap: 8px"><span style="font-size: 17px; font-weight: 800">{{t.name}}</span><sc-if value="{{t.def}}" hint-placeholder-val="{{ false }}"><span style="font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; background: #DEEBF7; color: #1F4E79; box-shadow: inset 0 0 0 1px #9DC3E6">Default</span></sc-if></span>
@@ -112,7 +112,7 @@ a{color:#1F4E79}a:hover{color:#12244A}
 </div>
 </sc-for>
 </section>
-<div style="display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 16px; background: #F2F7FD; box-shadow: inset 0 0 0 1px #C9DDF1"><span style="flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: #FFFFFF; color: #2E75B6"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z M9 12l2 2 4-4"></path></svg></span><span style="font-size: 13px; line-height: 1.55; color: #4B5B73">Tiers never change checkers, critics or the mature tier, so the independence and mature rules hold whatever you pick. Each tier needs its own models scored, so a Basic or Premium slot stays empty until a round has tested it.</span></div>
+<div style="display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 16px; background: #F2F7FD; box-shadow: inset 0 0 0 1px #C9DDF1"><span style="flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: #FFFFFF; color: #2E75B6"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z M9 12l2 2 4-4"></path></svg></span><span style="font-size: 13px; line-height: 1.55; color: #4B5B73"></span></div>
 </div>
 </sc-if>
 
@@ -134,7 +134,7 @@ a{color:#1F4E79}a:hover{color:#12244A}
 
 <sc-if value="{{show.prompts}}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 16px; background: #F2F7FD; box-shadow: inset 0 0 0 1px #C9DDF1"><span style="flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: #FFFFFF; color: #2E75B6"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M12 2a10 10 0 1 0 0 20a10 10 0 1 0 0-20 M12 16v-4 M12 8h.01"></path></svg></span><span style="font-size: 13px; line-height: 1.55; color: #4B5B73">Test results belong to a prompt version. You can edit any prompt, but an edited one is untested: it runs in Advanced tier, marked experimental, until a round scores it. The same applies to temperature and token budgets.</span></div>
+<div style="display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 16px; background: #F2F7FD; box-shadow: inset 0 0 0 1px #C9DDF1"><span style="flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: #FFFFFF; color: #2E75B6"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M12 2a10 10 0 1 0 0 20a10 10 0 1 0 0-20 M12 16v-4 M12 8h.01"></path></svg></span><span style="font-size: 13px; line-height: 1.55; color: #4B5B73">Test results belong to a prompt version. You can edit any prompt, but an edited one is untested: its output is marked experimental until a round scores it. The same applies to temperature and token budgets.</span></div>
 <section aria-label="Prompt versions" style="display: flex; flex-direction: column; gap: 8px">
 <sc-for list="{{pversions}}" as="v" hint-placeholder-count="6">
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; padding: 14px 18px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
@@ -154,7 +154,7 @@ a{color:#1F4E79}a:hover{color:#12244A}
 <sc-for list="{{models}}" as="m" hint-placeholder-count="9">
 <div style="display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
 <span style="display: flex; justify-content: space-between; gap: 8px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 500">{{m.key}}</span><span style="font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; background: {{m.vBg}}; color: {{m.vFg}}; box-shadow: inset 0 0 0 1px {{m.vRing}}">{{m.verified}}</span></span>
-<span style="font-size: 13px; color: #4B5B73">{{m.family}} · {{m.weights}} weights · {{m.route}}</span>
+<span style="font-size: 13px; color: #4B5B73">{{m.role}} · {{m.route}}</span>
 <span style="display: flex; justify-content: space-between; gap: 8px; font-size: 13px"><span style="font-weight: 600; color: {{m.matureFg}}">{{m.matureText}}</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px">{{m.price}}</span></span>
 </div>
 </sc-for>
@@ -167,17 +167,18 @@ a{color:#1F4E79}a:hover{color:#12244A}
 <span style="font-size: 12px; color: #5F6E84">Figures appear after the first lock.</span>
 </section>
 <section aria-labelledby="rule" style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; border-radius: 16px; background: #1F3864; color: #FFFFFF">
-<h2 id="rule" style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #B6C3D6">How a model wins a slot</h2>
+<h2 id="rule" style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #B6C3D6">How a step gets its experts</h2>
 <dl style="margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 13px; line-height: 1.5">
-<div><dt style="font-weight: 700">Primary</dt><dd style="margin: 0; color: #DCE6F2">Highest average score. A cheaper model within 5% takes the slot.</dd></div>
-<div><dt style="font-weight: 700">Fallback</dt><dd style="margin: 0; color: #DCE6F2">Best open-weight model within 15% of the primary.</dd></div>
-<div><dt style="font-weight: 700">Mature tier</dt><dd style="margin: 0; color: #DCE6F2">Best mature-approved model on the mature scene brief.</dd></div>
-<div><dt style="font-weight: 700">Out</dt><dd style="margin: 0; color: #DCE6F2">More than one refusal or cut-off answer in three runs.</dd></div>
+<div><dt style="font-weight: 700">Primary</dt><dd style="margin: 0; color: #DCE6F2">You set it in the Narrative Components database, on the evidence of the rounds. A cheaper model that is comparable for the job goes first.</dd></div>
+<div><dt style="font-weight: 700">Comparable</dt><dd style="margin: 0; color: #DCE6F2">The second expert in the line. At the Full tier it cross-checks the Primary.</dd></div>
+<div><dt style="font-weight: 700">Fallback</dt><dd style="margin: 0; color: #DCE6F2">The third expert: the one named for the step, or the one the roster gives its Primary. A model on a second provider is a second route.</dd></div>
+<div><dt style="font-weight: 700">Mature tier</dt><dd style="margin: 0; color: #DCE6F2">Uncensored models on Featherless AI. Checkers keep a Mature Fallback for work their experts refuse.</dd></div>
+<div><dt style="font-weight: 700">Out of a round</dt><dd style="margin: 0; color: #DCE6F2">More than one refusal or cut-off answer in three runs.</dd></div>
 </dl>
 </section>
 <section aria-labelledby="judge" style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
 <h2 id="judge" style="margin: 0; font-size: 15px; font-weight: 800">Judging</h2>
-<p style="margin: 0; font-size: 13px; line-height: 1.55; color: #4B5B73">You score prose by default. A model judge must come from a different family than the output it judges, and not anthropic or qwen in the opening chapter test. An abliterated model counts as the family it was built from, and serves the mature tier only.</p>
+<p style="margin: 0; font-size: 13px; line-height: 1.55; color: #4B5B73">You score prose by default. A model judge never runs on the model that wrote the output it judges, whichever provider serves it, and there are no anthropic or qwen judges in the opening chapter test.</p>
 <button type="button" disabled="true" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; border: 1px solid #CBD5E1; background: #FFFFFF; color: #1F3864; font: 600 14px 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer; cursor: not-allowed; color: #94A3B8"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M5 11h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2z M7 11V7a5 5 0 0 1 10 0v4"></path></svg>Unseal model names · 15 scores left</button>
 </section>
 </aside>
@@ -196,12 +197,12 @@ a{color:#1F4E79}a:hover{color:#12244A}
 </div>
 </section>
 <section aria-labelledby="recon" style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 10px; padding: 20px 22px; background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.06)">
-<h2 id="recon" style="margin: 0; font-size: 17px; font-weight: 800">Names on Notion pages are only guesses</h2>
-<p style="margin: 0; font-size: 14px; line-height: 1.6; color: #4B5B73">This registry is the only source of model assignments. Model names written on agent pages are ideas to test, and several pages name two picks for one role.</p>
+<h2 id="recon" style="margin: 0; font-size: 17px; font-weight: 800">Where the assignments live</h2>
+<p style="margin: 0; font-size: 14px; line-height: 1.6; color: #4B5B73">The Primary, Comparable and Fallback of each step are set in the Narrative Components database, and the app follows it. Model names written on older agent pages are ideas to test.</p>
 <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 13px; line-height: 1.5">
-<li style="padding: 10px 12px; border-radius: 12px; background: #F5F7FB"><strong>Canon and continuity:</strong> pages suggest Gemini 3.1 Pro as verifier with GPT-5.6 Sol as challenger, and also Claude Opus 5 or Fable 5.1.</li>
-<li style="padding: 10px 12px; border-radius: 12px; background: #F5F7FB"><strong>Story Advisor, Character Changes Log:</strong> pages suggest GPT-5.6 Sol, and also Claude Opus 5 or Fable 5.1.</li>
-<li style="padding: 10px 12px; border-radius: 12px; background: #FFF5D6; box-shadow: inset 0 0 0 1px #FFE699"><strong>Add before the chapter steps test:</strong> Gemini 3.1 Pro, GPT-5.6 Luna, Claude Opus 5 and GPT-6.1 Sol.</li>
+<li style="padding: 10px 12px; border-radius: 12px; background: #F5F7FB"><strong>Rounds are evidence:</strong> a round ranks the candidates for a step, and you move a model up or down the line on that evidence.</li>
+<li style="padding: 10px 12px; border-radius: 12px; background: #F5F7FB"><strong>The roster holds the facts:</strong> provider, model ID, Uncensored, Genre and Modality for every model. A model listed under two providers has two routes.</li>
+<li style="padding: 10px 12px; border-radius: 12px; background: #FFF5D6; box-shadow: inset 0 0 0 1px #FFE699"><strong>What cannot run yet:</strong> the readiness report lists every step with nothing it could call, and the reason.</li>
 </ul>
 </section>
 </div>
@@ -270,20 +271,20 @@ var rows = [
 { step: 'Scene Plan and Setting Notes', scoring: 'Synthesis · you', cands: 'claude_fable_51 gpt_sol gemini4 qwen_38_max', runs: '12', primary: '—', fallback: '—', state: '12 TO REVIEW', t: 'you' },
 { step: 'Timeline Check', scoring: 'Verdict · auto + confirm', cands: 'gemini4 kimi_k3 glm_53 deepseek_v4_pro gpt_sol', runs: '15', primary: '—', fallback: '—', state: '1 TO CONFIRM', t: 'you' },
 { step: 'First Draft', scoring: 'Prose · checks + you', cands: 'claude_fable_51 gpt_sol gemini4 qwen_38_max glm_53', runs: '15', primary: '—', fallback: '—', state: '15 TO SCORE', t: 'you' },
-{ step: 'First Draft · Mature', scoring: 'Prose · dignity + you', cands: 'custom_abliterated baseline_abliterated', runs: '6', primary: '—', fallback: 'n/a', state: 'NO ENDPOINT', t: 'blocked' }
+{ step: 'First Draft · Mature', scoring: 'Prose · dignity + you', cands: 'uncensored_on_featherless', runs: '6', primary: '—', fallback: 'n/a', state: 'NOT SET UP', t: 'blocked' }
 ].map(function (r) { return Object.assign({}, r, T[r.t]); });
 var dash = '— · —';
 var models = [
-{ key: 'claude_fable_51', family: 'anthropic', weights: 'proprietary', route: 'Concentrate AI', mature: 'no', price: dash },
-{ key: 'gpt_sol', family: 'openai', weights: 'proprietary', route: 'Concentrate AI', mature: 'no', price: dash },
-{ key: 'gemini4', family: 'google', weights: 'proprietary', route: 'Concentrate AI', mature: 'no', price: dash },
-{ key: 'qwen_38_max', family: 'qwen', weights: 'open', route: 'OpenRouter', mature: 'no', price: dash },
-{ key: 'glm_53', family: 'zhipu', weights: 'open', route: 'OpenRouter', mature: 'no', price: dash },
-{ key: 'deepseek_v4_pro', family: 'deepseek', weights: 'open', route: 'OpenRouter', mature: 'no', price: dash },
-{ key: 'kimi_k3', family: 'moonshot', weights: 'open', route: 'OpenRouter', mature: 'no', price: dash },
-{ key: 'custom_abliterated', family: '[base family], abliterated', weights: 'open', route: 'HF endpoint', mature: 'mature_ok', price: '— / hour' },
-{ key: 'baseline_abliterated', family: '[base family], abliterated', weights: 'open', route: 'HF endpoint', mature: 'mature_ok', price: '— / hour' }
-].map(function (m) { return Object.assign({}, m, { matureFg: m.mature === 'no' ? '#62676E' : '#4A3277' }); });
+{ key: 'Claude Fable 5.1', role: 'Frontier', route: 'Concentrate AI', lane: 'General lane', id: true },
+{ key: 'GPT-6.1 Sol', role: 'Frontier', route: 'Concentrate AI', lane: 'General lane', id: true },
+{ key: 'Gemini 4 Argon', role: 'Frontier', route: 'Concentrate AI', lane: 'General lane', id: true },
+{ key: 'Kimi K3', role: 'Open weights', route: 'Concentrate AI', lane: 'General lane', id: true },
+{ key: 'MiMo-2.6 Pro', role: 'Open weights', route: 'Concentrate AI', lane: 'General lane', id: true },
+{ key: 'GLM 5.3 Flash', role: 'Open weights', route: 'Concentrate AI', lane: 'General lane', id: true },
+{ key: 'Venice Uncensored', role: 'Open weights, Uncensored', route: 'OpenRouter', lane: 'Mature Fallback for checkers', id: true },
+{ key: '[Genre fine-tune]', role: 'Open weights, Uncensored', route: 'Featherless AI or Unsloth Desktop', lane: 'Prose lane and mature tier', id: true },
+{ key: 'FLUX.2', role: 'Open weights, image', route: 'Comfy Cloud', lane: 'Media lane', id: false }
+].map(function (m) { return Object.assign({}, m, {}); });
 var PL = {
 ext: { pool: 'EXTRACTION', fg: '#123B4C', bg: '#E3EEF2' },
 syn: { pool: 'SYNTHESIS', fg: '#2F4A1E', bg: '#E8EFE1' },
@@ -293,7 +294,7 @@ ver: { pool: 'VERDICT', fg: '#17191B', bg: '#E6E6E0' }
 var run2 = [
 { agent: 'Chapter Brief', p: 'syn', scoring: 'You compare its brief with the Ch 1 brief: scenes, lengths, Required and Forbidden carried.', needs: 'An outline extract for Chapter 1' },
 { agent: 'Plot Picks', p: 'ext', scoring: 'Automatic against the answer key: stage, beat and threads.', needs: 'Plot entries in the answer key' },
-{ agent: 'Continuity Check', p: 'ver', scoring: 'Automatic: planted contradictions and knowledge breaches caught, minus confirmed false alarms. Drafter family excluded.', needs: 'A seeded draft where a character acts on a secret they don’t know yet' },
+{ agent: 'Continuity Check', p: 'ver', scoring: 'Automatic: planted contradictions and knowledge breaches caught, minus confirmed false alarms. The drafting model is excluded.', needs: 'A seeded draft where a character acts on a secret they don’t know yet' },
 { agent: 'Voice and Style Check', p: 'ver', scoring: 'Automatic: planted voice violations, slider misses and wrong-stage behaviour caught.', needs: 'A seeded draft with planted voice breaks and an arc-stage slip' },
 { agent: 'Rewrite', p: 'prose', scoring: 'Auto checks on the result, then your prose level and fidelity.', needs: 'A flawed draft plus reviewer notes' },
 { agent: 'Polish', p: 'prose', scoring: 'Auto checks, a fact-change scan against the input, then you.', needs: 'A passing draft to refine' },
@@ -308,11 +309,11 @@ var pversions = [
 Object.assign({ agent: 'First Draft', prompt: 'First draft prompt · original', status: 'TESTED · RUN 01', settings: '0.85 · 6,000 + 4,000' }, TESTED),
 Object.assign({ agent: 'Timeline Check · brief', prompt: 'Brief check prompt · original', status: 'TESTED · RUN 01', settings: '0.1 · 1,200 + 4,000' }, TESTED),
 Object.assign({ agent: 'Cast Picks', prompt: 'Selector prompt · original', status: 'TESTED · RUN 01', settings: '0.2 · 800 + 4,000' }, TESTED),
-Object.assign({ agent: 'Rewrite', prompt: 'Rewrite prompt · edited by you', status: 'UNTESTED · ADVANCED TIER', settings: '[ ] · [ ] + [ ]' }, UNTESTED),
+Object.assign({ agent: 'Rewrite', prompt: 'Rewrite prompt · edited by you', status: 'UNTESTED · EXPERIMENTAL', settings: '[ ] · [ ] + [ ]' }, UNTESTED),
 Object.assign({ agent: 'Workshop Chat', prompt: 'Workshop prompt · original', status: 'RUN 03', settings: '[ ] · [ ] + [ ]' }, LATER),
 Object.assign({ agent: 'Brainstorm', prompt: 'Brainstorm prompt · original', status: 'RUN 03 · THUMBS AS EVIDENCE', settings: '[ ] · [ ] + [ ]' }, LATER)
 ];
-var tabDefs = [{ id: 'run1', name: engine ? 'Run 01' : 'Opening chapter' }, { id: 'tiers', name: 'Quality tiers' }, { id: 'next', name: 'Next rounds' }, { id: 'prompts', name: 'Prompts' }, { id: 'models', name: 'Models' }, { id: 'decisions', name: 'Decisions' }, { id: 'calib', name: 'Calibration' }];
+var tabDefs = [{ id: 'run1', name: engine ? 'Run 01' : 'Opening chapter' }, { id: 'next', name: 'Next rounds' }, { id: 'prompts', name: 'Prompts' }, { id: 'models', name: 'Models' }, { id: 'decisions', name: 'Decisions' }, { id: 'calib', name: 'Calibration' }];
 var tabs2 = tabsOf(tabDefs, st.tab, 'tab');
 var show = {};
 tabDefs.forEach(function (t) { show[t.id] = st.tab === t.id; });
@@ -323,23 +324,23 @@ var t = STATE[r.t];
 return Object.assign({}, r, { stateText: cap(r.state), bg: t.bg, fg: t.fg, ring: t.ring, candList: r.cands.split(' ').map(function (c) { return { t: c }; }) });
 });
 var models2 = models.map(function (m) {
-var verified = m.key === 'glm_53';
-var hf = m.route === 'HF endpoint';
+var verified = m.id;
+var hf = !m.id;
 return Object.assign({}, m, {
-price: verified ? '$0.079 · $4.80 per M' : m.price,
-verified: verified ? 'Verified' : (hf ? 'Not connected' : 'Verify ID'),
+price: '',
+verified: verified ? 'Has an ID' : 'No ID yet',
 vBg: verified ? TONE.done.bg : (hf ? TONE.blocked.bg : TONE.wait.bg), vFg: verified ? TONE.done.fg : (hf ? TONE.blocked.fg : TONE.wait.fg), vRing: verified ? TONE.done.ring : (hf ? TONE.blocked.ring : TONE.wait.ring),
-matureText: m.mature === 'no' ? 'General tier' : 'Mature tier', matureFg: m.mature === 'no' ? '#5F6E84' : '#5B3A8C'
+matureText: m.lane, matureFg: m.lane === 'General lane' ? '#5F6E84' : '#5B3A8C'
 });
 });
 var POOLN = { EXTRACTION: 'extraction pool', SYNTHESIS: 'synthesis pool', PROSE: 'prose pool', VERDICT: 'verdict pool' };
 var run2b = run2.map(function (r) { return Object.assign({}, r, { poolName: POOLN[r.pool] }); });
 var PV = function (v) { var s = v.status; var t = s.indexOf('UNTESTED') === 0 ? TONE.flag : (s.indexOf('TESTED') === 0 ? TONE.done : TONE.wait); return Object.assign({}, v, { statusText: engine ? cap(s).replace('run 01', 'Run 01').replace('run 03', 'Run 03').replace('advanced tier', 'Advanced tier') : cap(s).replace(/^Run 03/, 'Story and editor test').replace(/run 03/, 'story and editor test').replace(/run 01/, 'opening chapter test').replace('advanced tier', 'Advanced tier'), bg: t.bg, fg: t.fg, ring: t.ring }); };
 var tierCards = [
-{ name: 'Basic', tag: 'Good quality, economical', writers: 'Writers: the cheapest tested model within 15% of the best score.' },
-{ name: 'Excellent', tag: 'The best choice for most', writers: 'Writers: the best average, or a cheaper model within 5% of it.', def: true },
-{ name: 'Premium', tag: 'Best quality, whatever it costs', writers: 'Writers: the best average score, cost ignored.' },
-{ name: 'Advanced', tag: 'Experimental', writers: 'Writers: new or untested models, for pitches and drafts only. Results are marked experimental.' }
+
+
+
+
 ].map(function (t) { return Object.assign({ def: false }, t); });
 var DS = function (agent, what, section, n, agree, cal, undo, earned) {
 var tone = earned === 'Autonomous' ? TONE.you : (earned === 'Delegated' ? TONE.run : TONE.wait);
