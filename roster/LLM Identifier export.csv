@@ -1,294 +1,419 @@
-Model Name,Provider,Provider Model ID,Frontier Model,Open-Weights Model,Uncensored Model,Can Run Locally,Fallback Model,Modality
-Claude Fable 5.1,Concentrate AI,claude-fable-5-1,Yes,Yes,No,No,Kimi  K3
-Claude Haiku 5.5,Concentrate AI,claude-haiku-5-5,Yes,No,No,No,
-Claude Opus 5,Concentrate AI,claude-opus-5,Yes,No,No,No,
-Claude Opus 5.5,Concentrate AI,claude-opus-5-5,Yes,No,No,No,Kimi  K3
-Claude Sonnet 5.5,Concentrate AI,claude-sonnet-5-5,Yes,No,No,No,
-Command A,Concentrate AI,command-a,No,Yes,No,No,
-DeepSeek V4 Flash 0423,Concentrate AI,deepseek-v4-flash-0423,No,Yes,No,No,
-DeepSeek V4 Flash 0731,Concentrate AI,deepseek-v4-flash-0731,No,Yes,No,No,
-DeepSeek V4 Flash Vision Exp,Concentrate AI,deepseek-v4-flash-vision-exp,No,Yes,No,No,
-DeepSeek V4 Pro 0813,Concentrate AI,deepseek-v4-pro-0813,No,Yes,No,No,
-DeepSeek V4.1 Flash,Concentrate AI,deepseek-v4-1-flash,No,Yes,No,No,
-DeepSeek V4.1 Flash 1017,Concentrate AI,deepseek-v4-1-flash-1017,No,Yes,No,No,
-Gemini 3 Flash Preview,Concentrate AI,gemini-3-flash-preview,Yes,No,No,No,
-Gemini 3.5 Flash Lite,Concentrate AI,gemini-3.5-flash-lite,Yes,No,No,No,
-Gemini 3.8 Flash,Concentrate AI,gemini-3.8-flash,Yes,No,No,No,
-Gemini 4 Argon,Concentrate AI,gemini-4-argon,Yes,No,No,No,None
-Gemma 4 26B-A4B,Concentrate AI,gemma-4-26b,No,Yes,No,No,
-Gemma 4 31B,Concentrate AI,gemma-4-31b,No,Yes,No,No,
-GLM 5.3 Flash,Concentrate AI,glm-5.3-flash,No,Yes,No,No,
-GLM-5.3,Concentrate AI,glm-5.3,No,Yes,No,No,
-GPT-5 Nano,Concentrate AI,gpt-5-nano,Yes,No,No,No,
-GPT-5.2,Concentrate AI,gpt-5.2,Yes,No,No,No,
-GPT-5.4 Nano,Concentrate AI,gpt-5.4-nano,Yes,No,No,No,
-GPT-5.6 Luna,Concentrate AI,gpt-5.6-luna,Yes,No,No,No,
-GPT-5.6 Sol,Concentrate AI,gpt-5.6-sol,Yes,No,No,No,
-GPT-6 Astra,Concentrate AI,gpt-6-astra,Yes,No,No,No,None
-GPT-6 Luna,Concentrate AI,gpt-6-luna,Yes,No,No,No,GLM-5.3-Flash
-GPT-6.1 Sol,Concentrate AI,gpt-6.1-sol,Yes,No,No,No,MiMo-2.6-Pro
-gpt-oss-120b,Concentrate AI,gpt-oss-120b,No,No,Yes,No,
-Grok 4.7,Concentrate AI,grok-4.7,Yes,No,No,No,
-HY4 Preview,Concentrate AI,hy4-preview,No,Yes,No,No,
-Kimi K3,Concentrate AI,kimi-k3,No,Yes,No,No,
-Ling 3.1 Flash,Concentrate AI,ling-3.1-flash,No,Yes,No,No,
-Mercury 2.5,Concentrate AI,mercury-2.5,No,Yes,No,No,
-MiMo V2.6 Flash,Concentrate AI,mimo-v2.6-flash,No,Yes,No,No,
-MiMo-2.6 Pro,Concentrate AI,mimo-v2.6-pro,No,Yes,No,No,
-Mistral Large 4,Concentrate AI,mistral-large-4,No,Yes,No,No,
-Muse Spark Open,Concentrate AI,muse-spark-open,Yes,No,No,No,
-Muse Wonder,Concentrate AI,muse-wonder,Yes,No,No,No,None
-Nemotron 3 Nano 30B A3B,Concentrate AI,nemotron-3-nano-30b,No,Yes,No,No,
-Qwen 3.8 27B,Concentrate AI,qwen3.8-27b,No,Yes,No,No,
-Qwen 3.8 Max,Concentrate AI,qwen3.8-max,No,Yes,No,No,
-Beam 1.0 501B A23B,OpenRouter,reflection/beam-1.0-501b-a23b,No,Yes,No,No,
-Command A+,OpenRouter,cohere/command-a-plus,No,Yes,No,No,
-DeepSeek V3.2,OpenRouter,deepseek/deepseek-v3.2,No,Yes,No,No,
-Gemini 2.5 Flash Lite,OpenRouter,google/gemini-2.5-flash-lite,Yes,No,No,No,
-Gemini 3.7 Flash,OpenRouter,google/gemini-3.7-flash,Yes,No,No,No,
-Gemma 3 27B,OpenRouter,google/gemma-3-27b-it,No,Yes,No,No,
-Granite 4.2 8B,OpenRouter,ibm-granite/granite-4.2-8b,No,Yes,No,No,
-Llama 4 Scout,OpenRouter,meta-llama/llama-4-scout,No,Yes,No,No,
-MiniMax-M3,OpenRouter,minimax/minimax-m3,No,Yes,No,No,
-North Mini Code,OpenRouter,cohere/north-mini-code:free,No,Yes,No,No,
-Pareto 26.10,OpenRouter,unbiased/pareto-26.10,No,Yes,No,No,
-Pareto Latest,OpenRouter,~unbiased/pareto-latest,No,Yes,No,No,
-Solar Mini 4,OpenRouter,upstage/solar-mini4,No,Yes,No,No,
-Sonar Deep Research,OpenRouter,perplexity/sonar-deep-research,Yes,No,Yes,No,
-Step 5 Preview,OpenRouter,stepfun/step-5-preview,No,Yes,No,No,
-TheDrummer: UnslopNemo 12B,OpenRouter,thedrummer/unslopnemo-12b,No,Yes,No,No,
-Venice Uncensored,OpenRouter,cognitivecomputations/dolphin-mistral-24b-venice-edition,No,Yes,Yes,No,
-DavidAU/gemma-4-E2B-it-The-DECKARD-Expresso-ONE-Universe-HERETIC-UNCENSORED-Thinking,Unsloth Desktop,DavidAU/gemma-4-E2B-it-The-DECKARD-Expresso-ONE-Universe-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,
-DavidAU/gemma-4-E2B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking,Unsloth Desktop,DavidAU/gemma-4-E2B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,
-DavidAU/gemma-4-E4B-it-The-DECKARD-Claude-Opus-Expresso-Universe-HERETIC-UNCENSORED-Thinking,Unsloth Desktop,DavidAU/gemma-4-E4B-it-The-DECKARD-Claude-Opus-Expresso-Universe-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,
-DavidAU/gemma-4-E4B-it-The-DECKARD-Expresso-Universe-HERETIC-UNCENSORED-Thinking,Unsloth Desktop,DavidAU/gemma-4-E4B-it-The-DECKARD-Expresso-Universe-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,
-DavidAU/gemma-4-E4B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking,Unsloth Desktop,DavidAU/gemma-4-E4B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,
-DavidAU/gemma-4-E4B-it-The-DECKARD-V2-Strong-HERETIC-UNCENSORED-Thinking,Unsloth Desktop,DavidAU/gemma-4-E4B-it-The-DECKARD-V2-Strong-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,
-DavidAU/gemma-4-E4B-it-The-DECKARD-V3-Expresso-HERETIC-UNCENSORED-Thinking,Unsloth Desktop,DavidAU/gemma-4-E4B-it-The-DECKARD-V3-Expresso-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,
-chuanli11/Llama-3.2-3B-Instruct-uncensored,Featherless AI,chuanli11/Llama-3.2-3B-Instruct-uncensored,No,Yes,Yes,No,
-DavidAU/Dolphin-Mistral-GLM-4.7-Flash-24B-Venice-Edition-Thinking-Uncensored,Featherless AI,DavidAU/Dolphin-Mistral-GLM-4.7-Flash-24B-Venice-Edition-Thinking-Uncensored,No,Yes,Yes,Yes,
-DavidAU/gemma-3-12b-it-vl-Deepseek-v3.1-Heretic-Uncensored-Thinking,Featherless AI,DavidAU/gemma-3-12b-it-vl-Deepseek-v3.1-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/gemma-3-12b-it-vl-Gemini-3-Pro-Preview-Heretic-Uncensored-Thinking,Featherless AI,DavidAU/gemma-3-12b-it-vl-Gemini-3-Pro-Preview-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-Heretic-Uncensored-Thinking,Featherless AI,DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-INSTRUCT-Thinking-Hybrid-Heretic-Uncensored,Featherless AI,DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-INSTRUCT-Thinking-Hybrid-Heretic-Uncensored,No,Yes,Yes,Yes,
-DavidAU/gemma-3-12b-it-vl-GPT-5.1-High-Heretic-Uncensored-Thinking,Featherless AI,DavidAU/gemma-3-12b-it-vl-GPT-5.1-High-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/gemma-3-12b-it-vl-HighIQ-Polaris-Heretic-Uncensored-Thinking,Featherless AI,DavidAU/gemma-3-12b-it-vl-HighIQ-Polaris-Heretic-Uncensored-Thinking,No,Yes,Yes,No,
-DavidAU/Gemma-3-1B-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking,Featherless AI,DavidAU/Gemma-3-1B-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/gemma-4-31B-it-Mystery-Fine-Tune-HERETIC-UNCENSORED-Thinking,Featherless AI,DavidAU/gemma-4-31B-it-Mystery-Fine-Tune-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,
-DavidAU/gemma-4-31B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking,Featherless AI,DavidAU/gemma-4-31B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,
-DavidAU/Gemma-The-Writer-9B-HERETIC-Uncensored-Abliterated,Featherless AI,DavidAU/Gemma-The-Writer-9B-HERETIC-Uncensored-Abliterated,No,Yes,Yes,Yes,
-DavidAU/Gemma3-27B-it-vl-GLM-4.7-Uncensored-Heretic-Deep-Reasoning,Featherless AI,DavidAU/Gemma3-27B-it-vl-GLM-4.7-Uncensored-Heretic-Deep-Reasoning,No,Yes,Yes,Yes,
-DavidAU/L3-Dark-Planet-8B-HERETIC-Uncensored-Abliterated,Featherless AI,DavidAU/L3-Dark-Planet-8B-HERETIC-Uncensored-Abliterated,No,Yes,Yes,Yes,
-DavidAU/Llama-3.3-8B-Instruct-Thinking-Claude-Haiku-4.5-High-Reasoning-1700x,Featherless AI,DavidAU/Llama-3.3-8B-Instruct-Thinking-Claude-Haiku-4.5-High-Reasoning-1700x,No,Yes,No,Yes,
-DavidAU/Llama3.3-8B-Instruct-Thinking-Claude-4.5-Opus-High-Reasoning,Featherless AI,DavidAU/Llama3.3-8B-Instruct-Thinking-Claude-4.5-Opus-High-Reasoning,No,Yes,No,Yes,
-DavidAU/Llama3.3-8B-Instruct-Thinking-Heretic-Uncensored-Claude-4.5-Opus-High-Reasoning,Featherless AI,DavidAU/Llama3.3-8B-Instruct-Thinking-Heretic-Uncensored-Claude-4.5-Opus-High-Reasoning,No,Yes,Yes,Yes,
-DavidAU/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC,Featherless AI,DavidAU/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC,No,Yes,Yes,Yes,
-DavidAU/Mistral-Nemo-Inst-2407-12B-Thinking-Uncensored-HERETIC-HI-Claude-Opus,Featherless AI,DavidAU/Mistral-Nemo-Inst-2407-12B-Thinking-Uncensored-HERETIC-HI-Claude-Opus,No,Yes,Yes,Yes,
-DavidAU/MN-CaptainErisNebula-12B-Chimera-v1.1-heretic-uncensored-abliterated,Featherless AI,DavidAU/MN-CaptainErisNebula-12B-Chimera-v1.1-heretic-uncensored-abliterated,No,Yes,Yes,Yes,
-DavidAU/MN-CaptainErisNebula-Chimera-v1.1-THINKING-ClaudeOpus4.5-12B-heretic-uncensored,Featherless AI,DavidAU/MN-CaptainErisNebula-Chimera-v1.1-THINKING-ClaudeOpus4.5-12B-heretic-uncensored,No,Yes,Yes,Yes,
-DavidAU/Qwen3-Short-Story-Instruct-Uncensored-262K-ctx-4B,Featherless AI,DavidAU/Qwen3-Short-Story-Instruct-Uncensored-262K-ctx-4B,No,Yes,Yes,Yes,
-DavidAU/Qwen3-VL-12B-Thinking-Brainstorm20x-NEO-MAX-GGUF,Featherless AI,DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-21B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking,Featherless AI,DavidAU/Qwen3.5-21B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-27B-Claude-4.6-OS-INSTRUCT,Featherless AI,DavidAU/Qwen3.5-27B-Claude-4.6-OS-INSTRUCT,No,Yes,No,Yes,
-DavidAU/Qwen3.5-2B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING,Featherless AI,DavidAU/Qwen3.5-2B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-INSTRUCT-HERETIC-UNCENSORED,Featherless AI,DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-INSTRUCT-HERETIC-UNCENSORED,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-THINKING-HERETIC-UNCENSORED,Featherless AI,DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-THINKING-HERETIC-UNCENSORED,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-9B-Claude-4.6-OS-HERETIC-UNCENSORED-INSTRUCT,Featherless AI,DavidAU/Qwen3.5-9B-Claude-4.6-OS-HERETIC-UNCENSORED-INSTRUCT,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking,Featherless AI,DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking,Featherless AI,DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-9B-The-Deckard-Pro-Writer-Uncensored-Heretic,Featherless AI,DavidAU/Qwen3.5-9B-The-Deckard-Pro-Writer-Uncensored-Heretic,No,Yes,Yes,No,
-DavidAU/Qwen3.6-21B-IQ-Ultra-Heretic-Uncensored-Thinking,Featherless AI,DavidAU/Qwen3.6-21B-IQ-Ultra-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic,Featherless AI,DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic,No,Yes,Yes,Yes,
-DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-MTP,Featherless AI,DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-MTP,No,Yes,Yes,Yes,
-DavidAU/Qwen3.6-27B-Heretic2-Uncensored-Finetune-Thinking,Featherless AI,DavidAU/Qwen3.6-27B-Heretic2-Uncensored-Finetune-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3.6-9B-Heretic-Uncensored-Thinking-Sweet-Madness,Featherless AI,DavidAU/Qwen3.6-9B-Heretic-Uncensored-Thinking-Sweet-Madness,No,Yes,Yes,Yes,
-DavidAU/Rocinante-X-12B-v1-Heretic-Uncensored,Featherless AI,DavidAU/Rocinante-X-12B-v1-Heretic-Uncensored,No,Yes,Yes,Yes,
-e-n-v-y/Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf,Featherless AI,e-n-v-y/Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf,No,Yes,No,Yes,
-FallenMerick/MN-Violet-Lotus-12B,Featherless AI,FallenMerick/MN-Violet-Lotus-12B,No,Yes,No,No,
-Gryphe/Pantheon-Reasoning-31B-1.1,Featherless AI,Gryphe/Pantheon-Reasoning-31B-1.1,No,Yes,No,No,
-huihui-ai/Llama-3.2-3B-Instruct-abliterated,Featherless AI,huihui-ai/Llama-3.2-3B-Instruct-abliterated,No,Yes,Yes,Yes,
-K2 Horizon 375B - A23B,Featherless AI,IFM/K2-Horizon-375B-A23B,No,Yes,No,Yes,
-Mantis2024/Dirty-Muse-Writer-v01-Uncensored-Erotica-NSFW,Featherless AI,Mantis2024/Dirty-Muse-Writer-v01-Uncensored-Erotica-NSFW,No,Yes,Yes,Yes,
-Naphula/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA,Featherless AI,Naphula/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA,No,Yes,Yes,Yes,
-Nitral-AI/Hathor_Tahsin-L3-8B-v0.85,Featherless AI,Nitral-AI/Hathor_Tahsin-L3-8B-v0.85,No,Yes,No,Yes,
-Vortex5/Shadow-Siren-26B-A4B,Featherless AI,Vortex5/Shadow-Siren-26B-A4B,No,Yes,No,Yes,
-Agnes-3.0-Flash,Hugging Face,Agnes-AI/Agnes-3.0-Flash,No,Yes,No,Yes,
-ArliAI/Phi-3.5-mini-3.8B-ArliAI-RPMax-v1.1-GGUF,Hugging Face,ArliAI/Phi-3.5-mini-3.8B-ArliAI-RPMax-v1.1-GGUF,No,Yes,No,Yes,
-backyardai/L3-8B-Stheno-v3.3-32K-GGUF,Hugging Face,backyardai/L3-8B-Stheno-v3.3-32K-GGUF,No,Yes,No,Yes,
-bartowski/Hathor_Tahsin-L3-8B-v0.9-GGUF,Hugging Face,backyardai/L3-8B-Stheno-v3.3-32K-GGUF,No,Yes,No,Yes,
-bartowski/e-n-v-y_Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf-GGUF,Hugging Face,bartowski/e-n-v-y_Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf-GGUF,No,Yes,No,Yes,
-bartowski/Llama-3.1-70B-Instruct-Lorablated-Creative-Writer-GGUF,Hugging Face,bartowski/Llama-3.1-70B-Instruct-Lorablated-Creative-Writer-GGUF,No,Yes,No,Yes,
-bartowski/Naphula_Goetia-26B-A4B-v1.7-GGUF,Hugging Face,bartowski/Naphula_Goetia-26B-A4B-v1.7-GGUF,No,Yes,No,Yes,
-DavidAU/ERNIE-21B-A3B-Claude-4.5-High-OPUS-Thinking,Hugging Face,DavidAU/ERNIE-21B-A3B-Claude-4.5-High-OPUS-Thinking,No,Yes,No,Yes,
-DavidAU/ERNIE-21B-A3B-GLM-4.7-Flash-Thinking,Hugging Face,DavidAU/ERNIE-21B-A3B-GLM-4.7-Flash-Thinking,No,Yes,No,Yes,
-DavidAU/ERNIE-21B-A3B-Thinking-Gemini-3-Pro-High-Reasoning-V2,Hugging Face,DavidAU/ERNIE-21B-A3B-Thinking-Gemini-3-Pro-High-Reasoning-V2,No,Yes,No,Yes,
-DavidAU/ERNIE-4.5-37B-A3B-Thinking-Brainstorm20x,Hugging Face,DavidAU/ERNIE-4.5-37B-A3B-Thinking-Brainstorm20x,No,Yes,No,Yes,
-DavidAU/Fimbulvetr-11B-Ultra-Quality-plus-imatrix-GGUF,Hugging Face,DavidAU/Fimbulvetr-11B-Ultra-Quality-plus-imatrix-GGUF,No,Yes,Yes,Yes,
-DavidAU/gemma-3-12b-it-vl-Polaris-GLM-4.7-Flash-VAR-Thinking-Instruct-Heretic-Uncensored,Hugging Face,DavidAU/gemma-3-12b-it-vl-Polaris-GLM-4.7-Flash-VAR-Thinking-Instruct-Heretic-Uncensored,No,Yes,Yes,Yes,
-DavidAU/Gemma-3-27b-it-Gemini-Deep-Reasoning,Hugging Face,DavidAU/Gemma-3-27b-it-Gemini-Deep-Reasoning,No,Yes,No,Yes,
-DavidAU/Gemma-3-4b-it-MAX-HORROR-Uncensored-DBL-X-Imatrix-GGUF,Hugging Face,DavidAU/Gemma-3-4b-it-MAX-HORROR-Uncensored-DBL-X-Imatrix-GGUF,No,Yes,Yes,Yes,
-DavidAU/gemma-3-4b-it-vl-Heretic-4-Horsemen-Uncensored,Hugging Face,DavidAU/gemma-3-4b-it-vl-Heretic-4-Horsemen-Uncensored,No,Yes,Yes,Yes,
-DavidAU/Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/Gemma-3-4B-VL-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Gemma-3-4B-VL-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/Gemma-3-it-4B-Uncensored-DBL-X-GGUF,Hugging Face,DavidAU/Gemma-3-it-4B-Uncensored-DBL-X-GGUF,No,Yes,Yes,Yes,
-DavidAU/gemma-3-it-vl-40B-Gemini-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/gemma-3-it-vl-40B-Gemini-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/Gemma-3-The-Grand-Horror-27B-GGUF,Hugging Face,DavidAU/Gemma-3-The-Grand-Horror-27B-GGUF,No,Yes,Yes,Yes,
-DavidAU/gemma-4-19B-A4B-it-INSTRUCT-Heretic-Uncensored,Hugging Face,DavidAU/gemma-4-19B-A4B-it-INSTRUCT-Heretic-Uncensored,No,Yes,Yes,Yes,
-DavidAU/gemma-4-19B-A4B-it-The-DECKARD-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/gemma-4-19B-A4B-it-The-DECKARD-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/gemma-4-31B-it-Grand-Horror-X-INTENSE-HERETIC-UNCENSORED-Thinking,Hugging Face,DavidAU/gemma-4-31B-it-Grand-Horror-X-INTENSE-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,
-DavidAU/gemma-4-31B-it-Mystery-Fine-Tune-HERETIC-UNCENSORED-Thinking-Instruct-GGUF,Hugging Face,DavidAU/gemma-4-31B-it-Mystery-Fine-Tune-HERETIC-UNCENSORED-Thinking-Instruct-GGUF,No,Yes,Yes,Yes,
-DavidAU/gemma-4-E4B-it-The-DECKARD-Expresso-Universe-HERETIC-UNCENSORED-Thinking-GGUF,Hugging Face,DavidAU/gemma-4-E4B-it-The-DECKARD-Expresso-Universe-HERETIC-UNCENSORED-Thinking-GGUF,No,Yes,Yes,Yes,
-DavidAU/Gemma-The-Writer-9B-GGUF,Hugging Face,DavidAU/Gemma-The-Writer-9B-GGUF,No,Yes,No,Yes,
-DavidAU/Gemma-The-Writer-J.GutenBerg-10B-GGUF,Hugging Face,DavidAU/Gemma-The-Writer-J.GutenBerg-10B-GGUF,No,Yes,No,Yes,
-DavidAU/Gemma-The-Writer-Mighty-Sword-9B-GGUF,Hugging Face,DavidAU/Gemma-The-Writer-Mighty-Sword-9B-GGUF,No,Yes,No,Yes,
-DavidAU/Gemma-The-Writer-N-Restless-Quill-10B-Uncensored-GGUF,Hugging Face,DavidAU/Gemma-The-Writer-N-Restless-Quill-10B-Uncensored-GGUF,No,Yes,Yes,Yes,
-DavidAU/Gemma-The-Writer-N-Restless-Quill-V2-Enhanced32-10B-Uncensored-GGUF,Hugging Face,DavidAU/Gemma-The-Writer-N-Restless-Quill-V2-Enhanced32-10B-Uncensored-GGUF,No,Yes,Yes,Yes,
-DavidAU/Gemma3-27B-it-vl-Polaris-HI16-Heretic-Uncensored-INSTRUCT,Hugging Face,DavidAU/Gemma3-27B-it-vl-Polaris-HI16-Heretic-Uncensored-INSTRUCT,No,Yes,Yes,Yes,
-DavidAU/GLM-4.7-Flash-Grande-Heretic-UNCENSORED-42B-A3B-GGUF,Hugging Face,DavidAU/GLM-4.7-Flash-Grande-Heretic-UNCENSORED-42B-A3B-GGUF,No,Yes,Yes,Yes,
-DavidAU/GLM-4.7-Flash-Uncensored-Heretic-NEO-CODE-Imatrix-MAX-GGUF,Hugging Face,DavidAU/GLM-4.7-Flash-Uncensored-Heretic-NEO-CODE-Imatrix-MAX-GGUF,No,Yes,Yes,Yes,
-DavidAU/L3-8B-Stheno-v3.2-Ultra-NEO-V1-IMATRIX-GGUF,Hugging Face,DavidAU/L3-8B-Stheno-v3.2-Ultra-NEO-V1-IMATRIX-GGUF,No,Yes,No,Yes,
-DavidAU/L3-Dark-Planet-8B,Hugging Face,DavidAU/L3-Dark-Planet-8B-GGUF,No,Yes,No,Yes,
-DavidAU/L3-Dark-Planet-8B-GGUF,Hugging Face,DavidAU/L3-Dark-Planet-8B-GGUF,No,Yes,No,Yes,
-DavidAU/L3-Dark_Mistress-The_Guilty_Pen-Uncensored-17.4B-GGUF,Hugging Face,DavidAU/L3-Dark_Mistress-The_Guilty_Pen-Uncensored-17.4B-GGUF,No,Yes,Yes,Yes,
-DavidAU/Llama-3.1-128k-Dark-Planet-Uncensored-8B-GGUF,Hugging Face,DavidAU/Llama-3.1-128k-Dark-Planet-Uncensored-8B-GGUF,No,Yes,Yes,Yes,
-DavidAU/Llama-3.3-8B-Thinking-Gemini-Flash-11000x-128k,Hugging Face,DavidAU/Llama-3.3-8B-Thinking-Gemini-Flash-11000x-128k,No,Yes,No,Yes,
-DavidAU/M-Metaphors-Of-Madness-19.4B-GGUF,Hugging Face,DavidAU/M-Metaphors-Of-Madness-19.4B-GGUF,No,Yes,No,Yes,
-DavidAU/Mistral-MOE-4X7B-Dark-MultiVerse-24B-GGUF,Hugging Face,DavidAU/Mistral-MOE-4X7B-Dark-MultiVerse-24B-GGUF,No,Yes,Yes,Yes,
-DavidAU/Mistral-MOE-4X7B-Dark-MultiVerse-Uncensored-Enhanced32-24B-gguf,Hugging Face,DavidAU/Mistral-MOE-4X7B-Dark-MultiVerse-Uncensored-Enhanced32-24B-gguf,No,Yes,Yes,Yes,
-DavidAU/Mistral-Nemo-Instruct-2407-13.35B-BRAINSTORM-5x-FORM-11-GGUF,Hugging Face,DavidAU/Mistral-Nemo-Instruct-2407-13.35B-BRAINSTORM-5x-FORM-11-GGUF,No,Yes,No,Yes,
-DavidAU/Mistral-Small-3.2-46B-The-Brilliant-Raconteur-II-Instruct-2506,Hugging Face,DavidAU/Mistral-Small-3.2-46B-The-Brilliant-Raconteur-II-Instruct-2506,No,Yes,Yes,Yes,
-DavidAU/Mistral-Small-Instruct-2409-22B-NEO-Imatrix-GGUF,Hugging Face,DavidAU/Mistral-Small-Instruct-2409-22B-NEO-Imatrix-GGUF,No,Yes,No,Yes,
-DavidAU/MN-Dark-Horror-The-Cliffhanger-18.5B-GGUF,Hugging Face,DavidAU/MN-Dark-Horror-The-Cliffhanger-18.5B-GGUF,No,Yes,Yes,Yes,
-DavidAU/MN-Dark-Planet-Kaboom-21B-GGUF,Hugging Face,DavidAU/MN-Dark-Planet-Kaboom-21B-GGUF,No,Yes,Yes,Yes,
-DavidAU/MN-Dark-Planet-TITAN-12B-GGUF,Hugging Face,DavidAU/MN-Dark-Planet-TITAN-12B-GGUF,No,Yes,No,Yes,
-DavidAU/MN-DARKEST-UNIVERSE-29B-GGUF,Hugging Face,DavidAU/MN-DARKEST-UNIVERSE-29B-GGUF,No,Yes,Yes,Yes,
-DavidAU/MN-GRAND-23.5B-Gutenberg-UNCENSORED-V2-GLM4.7-Thinking-NEO-Imatrix-GGUF,Hugging Face,DavidAU/MN-GRAND-23.5B-Gutenberg-UNCENSORED-V2-GLM4.7-Thinking-NEO-Imatrix-GGUF,No,Yes,Yes,Yes,
-DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-12B-DARKNESS-GGUF,Hugging Face,DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-12B-DARKNESS-GGUF,No,Yes,Yes,Yes,
-DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-12B-MADNESS-GGUF,Hugging Face,DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-12B-MADNESS-GGUF,No,Yes,Yes,Yes,
-DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-23.5B-GGUF,Hugging Face,DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-23.5B-GGUF,No,Yes,Yes,Yes,
-DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-23B-V2-GGUF,Hugging Face,DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-23B-V2-GGUF,No,Yes,Yes,Yes,
-DavidAU/MN-Oblivion-26B-UNCENSORED-NEO-Imatrix-GGUF,Hugging Face,DavidAU/MN-Oblivion-26B-UNCENSORED-NEO-Imatrix-GGUF,No,Yes,Yes,Yes,
-DavidAU/MN-WORDSTORM-pt3-RCM-POV-Nightmare-18.5B-Instruct-GGUF,Hugging Face,DavidAU/MN-WORDSTORM-pt3-RCM-POV-Nightmare-18.5B-Instruct-GGUF,No,Yes,Yes,Yes,
-DavidAU/MN-WORDSTORM-pt4-RCM-Cliffhanger-18.5B-Instruct-GGUF,Hugging Face,DavidAU/MN-WORDSTORM-pt4-RCM-Cliffhanger-18.5B-Instruct-GGUF,No,Yes,Yes,Yes,
-DavidAU/MN-WORDSTORM-pt5-RCM-Extra-Intense-18.5B-Instruct-GGUF,Hugging Face,DavidAU/MN-WORDSTORM-pt5-RCM-Extra-Intense-18.5B-Instruct-GGUF,No,Yes,Yes,Yes,
-DavidAU/Qwen3-Horror-Instruct-Uncensored-262K-ctx-4B,Hugging Face,DavidAU/Qwen3-Horror-Instruct-Uncensored-262K-ctx-4B,No,Yes,Yes,Yes,
-DavidAU/Qwen3-Jan-V1-4B-Grand-Horror-Day1-to-Day7-Evolved-Imatrix-GGUF,Hugging Face,DavidAU/Qwen3-Jan-V1-4B-Grand-Horror-Day1-to-Day7-Evolved-Imatrix-GGUF,No,Yes,No,Yes,
-DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder,Hugging Face,DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder,No,Yes,No,Yes,
-DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder-V1.2,Hugging Face,DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder-V1.2,No,Yes,No,Yes,
-DavidAU/Qwen3-MOE-4x1.7B-6.8B-Lucys-Song-Uncensored,Hugging Face,DavidAU/Qwen3-MOE-4x1.7B-6.8B-Lucys-Song-Uncensored,No,Yes,Yes,Yes,
-DavidAU/Qwen3-MOE-6x0.6B-3.6B-Writing-On-Fire-Uncensored,Hugging Face,DavidAU/Qwen3-MOE-6x0.6B-3.6B-Writing-On-Fire-Uncensored,No,Yes,Yes,Yes,
-DavidAU/Qwen3-MOE-6x1.7B-10.2B-Shining-Madness-Uncensored,Hugging Face,DavidAU/Qwen3-MOE-6x1.7B-10.2B-Shining-Madness-Uncensored,No,Yes,Yes,Yes,
-DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-256k-ctx-36B,Hugging Face,DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-256k-ctx-36B,No,Yes,No,Yes,
-DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-D-256k-ctx-36B,Hugging Face,DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-D-256k-ctx-36B,No,Yes,No,Yes,
-DavidAU/Qwen3-The-Josiefied-Omega-Directive-22B-uncensored-abliterated-GGUF,Hugging Face,DavidAU/Qwen3-The-Josiefied-Omega-Directive-22B-uncensored-abliterated-GGUF,No,Yes,Yes,Yes,
-DavidAU/Qwen3-The-Xiaolong-Josiefied-Omega-Directive-22B-uncensored-abliterated-GGUF,Hugging Face,DavidAU/Qwen3-The-Xiaolong-Josiefied-Omega-Directive-22B-uncensored-abliterated-GGUF,No,Yes,Yes,Yes,
-DavidAU/Qwen3-The-Xiaolong-Omega-Directive-22B-uncensored-abliterated-GGUF,Hugging Face,DavidAU/Qwen3-The-Xiaolong-Omega-Directive-22B-uncensored-abliterated-GGUF,No,Yes,Yes,Yes,
-DavidAU/Qwen3-VL-12B-Instruct-Brainstorm20x-NEO-MAX-GGUF,Hugging Face,DavidAU/Qwen3-VL-12B-Instruct-Brainstorm20x-NEO-MAX-GGUF,No,Yes,No,Yes,
-DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3-VL-8B-GLM-4.7-Flash-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3-VL-8B-GLM-4.7-Flash-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-13B-Deckard-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3.5-13B-Deckard-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-13B-GLM-4.7-Flash-DeepSeek-Polaris-Grande-Deep-Thinking,Hugging Face,DavidAU/Qwen3.5-13B-GLM-4.7-Flash-DeepSeek-Polaris-Grande-Deep-Thinking,No,Yes,No,Yes,
-DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Deckard-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Deckard-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-27B-Claude-4.6-OS-Auto-Variable-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3.5-27B-Claude-4.6-OS-Auto-Variable-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-27B-Deckard-PKD-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3.5-27B-Deckard-PKD-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-27B-Gemini3-Pro-High-Reasoning-Compact-Thinking,Hugging Face,DavidAU/Qwen3.5-27B-Gemini3-Pro-High-Reasoning-Compact-Thinking,No,Yes,No,Yes,
-DavidAU/Qwen3.5-27B-HERETIC-Polaris-Advanced-Thinking-Alpha-uncensored,Hugging Face,DavidAU/Qwen3.5-27B-HERETIC-Polaris-Advanced-Thinking-Alpha-uncensored,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-40B-Claude-4.5-Opus-High-Reasoning-Thinking,Hugging Face,DavidAU/Qwen3.5-40B-Claude-4.5-Opus-High-Reasoning-Thinking,No,Yes,No,Yes,
-DavidAU/Qwen3.5-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3.5-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking,Hugging Face,DavidAU/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-4B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING,Hugging Face,DavidAU/Qwen3.5-4B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-4B-Deckard-HERETIC-UNCENSORED-Thinking,Hugging Face,DavidAU/Qwen3.5-4B-Deckard-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking,Hugging Face,DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking-GGUF,Hugging Face,DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking-GGUF,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING,Hugging Face,DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING-MAX-NEOCODE-Imatrix-GGUF,Hugging Face,DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING-MAX-NEOCODE-Imatrix-GGUF,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-THINKING,Hugging Face,DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-THINKING,No,Yes,No,Yes,
-DavidAU/Qwen3.5-9B-Star-Trek-TNG-DS9-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3.5-9B-Star-Trek-TNG-DS9-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-9B-Star-Trek-TNG-DS9-Heretic-Uncensored-Thinking-MAX-NEOCODE-GGUF,Hugging Face,DavidAU/Qwen3.5-9B-Star-Trek-TNG-DS9-Heretic-Uncensored-Thinking-MAX-NEOCODE-GGUF,No,Yes,Yes,Yes,
-DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF,Hugging Face,DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF,No,Yes,Yes,Yes,
-DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking,No,Yes,Yes,No,
-DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking-V2-Hightop,Hugging Face,DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking-V2-Hightop,No,Yes,Yes,Yes,
-DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-NEO-MAX-MTP-GGUF,Hugging Face,DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-NEO-MAX-MTP-GGUF,No,Yes,Yes,Yes,
-DavidAU/Qwen3.6-27B-Heretic-Uncensored-FINETUNE-NEO-CODE-Di-IMatrix-MAX-GGUF,Hugging Face,DavidAU/Qwen3.6-27B-Heretic-Uncensored-FINETUNE-NEO-CODE-Di-IMatrix-MAX-GGUF,No,Yes,Yes,Yes,
-DavidAU/Qwen3.6-27B-NEO-CODE-Di-IMatrix-MAX-GGUF,Hugging Face,DavidAU/Qwen3.6-27B-NEO-CODE-Di-IMatrix-MAX-GGUF,No,Yes,No,Yes,
-DavidAU/Qwen3.6-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3.6-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,
-DavidAU/Qwen3.6-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking-NEO-CODE-Di-IMatrix-MAX-GGUF,Hugging Face,DavidAU/Qwen3.6-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking-NEO-CODE-Di-IMatrix-MAX-GGUF,No,Yes,Yes,Yes,
-DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF,Hugging Face,DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF,No,Yes,Yes,Yes,
-DavidAU/TieFighter-Holodeck-Holomax-Mythomax-F1-V1-COMPOS-20B-gguf,Hugging Face,DavidAU/TieFighter-Holodeck-Holomax-Mythomax-F1-V1-COMPOS-20B-gguf,No,Yes,Yes,Yes,
-day078/Qwen3-30B-A3B-abliterated-erotic-Q4_K_M-GGUF,Hugging Face,day078/Qwen3-30B-A3B-abliterated-erotic-Q4_K_M-GGUF,No,Yes,Yes,Yes,
-e-n-v-y/L3.3-Electra-R1-70b-Elarablated-v0.1,Hugging Face,e-n-v-y/L3.3-Electra-R1-70b-Elarablated-v0.1,No,Yes,No,Yes,
-EldritchLabs/MN-Crimson-Cafe-12B,Hugging Face,EldritchLabs/MN-Crimson-Cafe-12B,No,Yes,No,No,
-EVA-UNIT-01/EVA-Yi-1.5-9B-32K-V1,Hugging Face,EVA-UNIT-01/EVA-Yi-1.5-9B-32K-V1,No,Yes,No,No,
-ggml-org/stories15M_MOE,Hugging Face,ggml-org/stories15M_MOE,No,Yes,No,Yes,
-KoboldAI/LLaMA2-13B-Tiefighter,Hugging Face,itlwas/EVA-Yi-1.5-9B-32K-V1-Q4_K_M-GGUF,No,Yes,No,Yes,
-itlwas/EVA-Yi-1.5-9B-32K-V1-Q4_K_M-GGUF,Hugging Face,itlwas/EVA-Yi-1.5-9B-32K-V1-Q4_K_M-GGUF,No,Yes,No,Yes,
-Medvedko/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC-Q4_K_M-GGUF,Hugging Face,Medvedko/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC-Q4_K_M-GGUF,No,Yes,Yes,Yes,
-Tinyllama-15M-stories,Hugging Face,ModelCloud/tinyllama-15M-stories,No,Yes,No,Yes,
-Motif 3,Hugging Face,Motif-Technologies/Motif-3,No,Yes,No,Yes,
-mradermacher/Dirty-Muse-Writer-v01-Uncensored-Erotica-NSFW-i1-GGUF,Hugging Face,mradermacher/Dirty-Muse-Writer-v01-Uncensored-Erotica-NSFW-i1-GGUF,No,Yes,Yes,Yes,
-mradermacher/EVA-Yi-1.5-9B-32K-V1-GGUF,Hugging Face,mradermacher/EVA-Yi-1.5-9B-32K-V1-GGUF,No,Yes,No,Yes,
-mradermacher/EVA-Yi-1.5-9B-32K-V1-i1-GGUF,Hugging Face,mradermacher/EVA-Yi-1.5-9B-32K-V1-i1-GGUF,No,Yes,No,Yes,
-mradermacher/Fimbulvetr-Grande-V2-19B-GGUF,Hugging Face,mradermacher/Fimbulvetr-Grande-V2-19B-GGUF,No,Yes,No,Yes,
-mradermacher/Fimbulvetr-Grande-V2-19B-i1-GGUF,Hugging Face,mradermacher/Fimbulvetr-Grande-V2-19B-i1-GGUF,No,Yes,No,Yes,
-mradermacher/Gemma-2-2B-ArliAI-RPMax-v1.1-i1-GGUF,Hugging Face,mradermacher/Gemma-2-2B-ArliAI-RPMax-v1.1-i1-GGUF,No,Yes,No,Yes,
-mradermacher/Gemma-2-9B-ArliAI-RPMax-v1.1-GGUF,Hugging Face,mradermacher/Gemma-2-9B-ArliAI-RPMax-v1.1-GGUF,No,Yes,No,Yes,
-mradermacher/Gemma-2-9B-ArliAI-RPMax-v1.1-i1-GGUF,Hugging Face,mradermacher/Gemma-2-9B-ArliAI-RPMax-v1.1-i1-GGUF,No,Yes,No,Yes,
-mradermacher/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA-GGUF,Hugging Face,mradermacher/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA-GGUF,No,Yes,Yes,Yes,
-mradermacher/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA-i1-GGUF,Hugging Face,mradermacher/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA-i1-GGUF,No,Yes,Yes,Yes,
-mradermacher/Goetia-26B-A4B-v1.6-i1-GGUF,Hugging Face,mradermacher/Goetia-26B-A4B-v1.6-i1-GGUF,No,Yes,No,Yes,
-mradermacher/Goetia-26B-A4B-v1.7-i1-GGUF,Hugging Face,mradermacher/Goetia-26B-A4B-v1.7-i1-GGUF,No,Yes,No,Yes,
-mradermacher/L3-Dark-Planet-8B-wordstorm-b4-i1-GGUF,Hugging Face,mradermacher/L3-Dark-Planet-8B-wordstorm-b4-i1-GGUF,No,Yes,Yes,Yes,
-mradermacher/L3-Dark-Planet-8B-wordstorm-r4-GGUF,Hugging Face,mradermacher/L3-Dark-Planet-8B-wordstorm-r4-GGUF,No,Yes,Yes,Yes,
-mradermacher/Loki-v2.75b-8b-EROTICA-1024k-i1-GGUF,Hugging Face,mradermacher/Loki-v2.75b-8b-EROTICA-1024k-i1-GGUF,No,Yes,Yes,Yes,
-mradermacher/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC-i1-GGUF,Hugging Face,mradermacher/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC-i1-GGUF,No,Yes,Yes,Yes,
-mradermacher/Mistral-Nemo-Instruct-2407-12B-Thinking-M-Claude-Opus-High-Reasoning-i1-GGUF,Hugging Face,mradermacher/Mistral-Nemo-Instruct-2407-12B-Thinking-M-Claude-Opus-High-Reasoning-i1-GGUF,No,Yes,No,Yes,
-mradermacher/MN-Violet-Lotus-12B-GGUF,Hugging Face,mradermacher/MN-Violet-Lotus-12B-GGUF,No,Yes,No,Yes,
-mradermacher/MN-Violet-Lotus-12B-i1-GGUF,Hugging Face,mradermacher/MN-Violet-Lotus-12B-i1-GGUF,No,Yes,No,Yes,
-mradermacher/MN-WORDSTORM-pt5-RCM-Extra-Intense-18.5B-Instruct-i1-GGUF,Hugging Face,mradermacher/MN-WORDSTORM-pt5-RCM-Extra-Intense-18.5B-Instruct-i1-GGUF,No,Yes,No,Yes,
-mradermacher/Qwen3-30B-A3B-abliterated-erotic-GGUF,Hugging Face,mradermacher/Qwen3-30B-A3B-abliterated-erotic-GGUF,No,Yes,Yes,Yes,
-mradermacher/Qwen3-30B-A3B-abliterated-erotic-i1-GGUF,Hugging Face,mradermacher/Qwen3-30B-A3B-abliterated-erotic-i1-GGUF,No,Yes,Yes,Yes,
-mradermacher/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking-GGUF,Hugging Face,mradermacher/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking-GGUF,No,Yes,Yes,Yes,
-mradermacher/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking-GGUF,Hugging Face,mradermacher/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking-GGUF,No,Yes,Yes,Yes,
-mradermacher/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking-i1-GGUF,Hugging Face,mradermacher/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking-i1-GGUF,No,Yes,Yes,Yes,
-mradermacher/Shadow-Siren-26B-A4B-GGUF,Hugging Face,mradermacher/Shadow-Siren-26B-A4B-GGUF,No,Yes,No,Yes,
-mradermacher/Shadow-Siren-26B-A4B-i1-GGUF,Hugging Face,mradermacher/Shadow-Siren-26B-A4B-i1-GGUF,No,Yes,No,Yes,
-mradermacher/Tower-Plus-72B-ultra-uncensored-heretic-GGUF,Hugging Face,mradermacher/Tower-Plus-72B-ultra-uncensored-heretic-GGUF,No,Yes,Yes,Yes,
-mradermacher/Tower-Plus-72B-ultra-uncensored-heretic-i1-GGUF,Hugging Face,mradermacher/Tower-Plus-72B-ultra-uncensored-heretic-i1-GGUF,No,Yes,Yes,Yes,
-Naphula/Goetia-26B-A4B-v1.6,Hugging Face,Naphula/Goetia-26B-A4B-v1.6,No,Yes,Yes,Yes,
-Naphula/Goetia-26B-A4B-v1.7,Hugging Face,Naphula/Goetia-26B-A4B-v1.7,No,Yes,Yes,Yes,
-nightmedia/Qwen3.6-27B-Architect-Polaris2-Fable-B-F451-Tess,Hugging Face,nightmedia/Qwen3.6-27B-Architect-Polaris2-Fable-B-F451-Tess,No,Yes,No,Yes,
-mradermacher/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking-i1-GGUF,Hugging Face,nightmedia/Qwen3.6-27B-Architect-Polaris2-Fable-B-F451-Tess,No,Yes,Yes,Yes,
-OwenArli/Gemma-2-2B-ArliAI-RPMax-v1.1-GGUF,Hugging Face,OwenArli/Gemma-2-2B-ArliAI-RPMax-v1.1-GGUF,No,Yes,No,Yes,
-Phil2Sat/Goetia-26B-A4B-v1.3-Absolute-Heretic-Restored-I-Compact-MXFP4-GGUF,Hugging Face,Phil2Sat/Goetia-26B-A4B-v1.3-Absolute-Heretic-Restored-I-Compact-MXFP4-GGUF,No,Yes,Yes,Yes,
-philipjohnbasile/Qwen3.6-27B-Fable-Fusion-711-MTPLX-8bit,Hugging Face,philipjohnbasile/Qwen3.6-27B-Fable-Fusion-711-MTPLX-8bit,No,Yes,No,Yes,
-QuantFactory/EVA-Yi-1.5-9B-32K-V1-GGUF,Hugging Face,QuantFactory/EVA-Yi-1.5-9B-32K-V1-GGUF,No,Yes,No,Yes,
-QuantFactory/Gemma-2-2B-ArliAI-RPMax-v1.1-GGUF,Hugging Face,QuantFactory/Gemma-2-2B-ArliAI-RPMax-v1.1-GGUF,No,Yes,No,Yes,
-QuantFactory/Hathor_Tahsin-L3-8B-v0.85-GGUF,Hugging Face,QuantFactory/Hathor_Tahsin-L3-8B-v0.85-GGUF,No,Yes,No,Yes,
-QuantFactory/MN-12B-Celeste-V1.9-GGUF,Hugging Face,QuantFactory/MN-12B-Celeste-V1.9-GGUF,No,Yes,No,Yes,
-RichardErkhov/Nitral-AI_-_Hathor_Tahsin-L3-8B-v0.85-gguf,Hugging Face,RichardErkhov/Nitral-AI_-_Hathor_Tahsin-L3-8B-v0.85-gguf,No,Yes,No,Yes,
-TheDrummer:Cydonia-24b-v4.1,Hugging Face,thedrummer/cydonia-24b-v4.1,No,Yes,Yes,No,
-GPT Image 2,OpenRouter,openai/gpt-image-2,Yes,No,No,No,,Image
-Ideogram,Comfy Cloud,,Yes,No,No,No,,Image
-FLUX.2,Comfy Cloud,,No,Yes,No,Yes,,Image
-Nano Banana Pro,OpenRouter,,Yes,No,No,No,,Image
-ElevenLabs v3,ElevenLabs,eleven_v3,Yes,No,No,No,,Speech
-Gemini 3.1 Flash TTS,OpenRouter,,Yes,No,No,No,,Speech
-ElevenLabs Sound Effects,ElevenLabs,,Yes,No,No,No,,Sound
-Seedance 2.0,Comfy Cloud,,Yes,No,No,No,,Video
-Wan 3.0,Hugging Face,,No,Yes,No,No,,Video
-ElevenLabs Scribe,ElevenLabs,,Yes,No,No,No,,Speech-to-text
-Qwen-Image,Comfy Cloud,,No,Yes,No,Yes,,Image
-Z-Image Turbo,Comfy Cloud,,No,Yes,No,Yes,,Image
-Wan 2.2,Comfy Cloud,,No,Yes,No,Yes,,Video
-LTX-2,Comfy Cloud,,No,Yes,No,Yes,,Video
-MiniMax Music 3,Comfy Cloud,,Yes,No,No,No,,Music
-ACE-Step,Comfy Cloud,,No,Yes,No,Yes,,Music
-Chatterbox,Featherless AI,,No,Yes,No,Yes,,Speech
-Stable Audio Open,Comfy Cloud,,No,Yes,No,Yes,,Sound
-Fish Audio S2 Pro,OpenRouter,,Yes,No,No,No,,Speech
-Qwen3.8 Omni Flash,OpenRouter,qwen/qwen3.8-omni-flash,No,No,No,No,,
-MiMo-V2-Omni,OpenRouter,xiaomi/mimo-v2-omni,No,No,No,No,,
-Nemotron 3 Nano Omni,OpenRouter,nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free,No,Yes,No,No,,
-Stability Text To Audio,Comfy Cloud,,Yes,No,No,No,,Sound
-Lyria 3 Pro,OpenRouter,google/lyria-3-pro-preview,Yes,No,No,No,,Music
+Model Name,Provider,Provider Model ID,Frontier Model,Open-Weights Model,Uncensored Model,Can Run Locally,Comparable Equivalent Model,Fallback Model,Modality,Via Aggregator,Via Inference Providers
+DeepSeek V4 Flash 0731,Concentrate AI,deepseek-v4-flash-0731,No,Yes,No,No,N/A,,,Yes,No
+GPT-5.6 Luna,Concentrate AI,gpt-5.6-luna,Yes,No,No,No,DeepSeek V4.1-Flash 1017,None,,Yes,No
+DeepSeek V4 Flash 0423,Concentrate AI,deepseek-v4-flash-0423,No,Yes,No,No,N/A,,,Yes,No
+Gemini 3 Flash Preview,Concentrate AI,gemini-3-flash-preview,Yes,No,No,No,MiMo-V2.6-Flash,None,,Yes,No
+gpt-oss-120b,Concentrate AI,gpt-oss-120b,No,No,Yes,No,N/A,,,Yes,No
+Step 5 Preview,OpenRouter,stepfun/step-5-preview,No,Yes,No,No,N/A,,,Yes,No
+GPT-6.1 Sol,Concentrate AI,gpt-6.1-sol,Yes,No,No,No,MiMo-2.6-Pro,MiMo-2.6-Pro,,Yes,No
+Claude Sonnet 5.5,Concentrate AI,claude-sonnet-5-5,Yes,No,No,No,DeepSeek V4.1-Flash 1017,,,Yes,No
+Solar Mini 4,OpenRouter,upstage/solar-mini4,No,Yes,No,No,N/A,,,Yes,No
+GPT-6 Luna,Concentrate AI,gpt-6-luna,Yes,No,No,No,GLM-5.3-Flash,GLM-5.3-Flash,,Yes,No
+Claude Haiku 5.5,Concentrate AI,claude-haiku-5-5,Yes,No,No,No,Nemotron 3.5 Lightning,,,Yes,No
+DeepSeek V4.1 Flash,Concentrate AI,deepseek-v4-1-flash,No,Yes,No,No,N/A,,,Yes,No
+GLM 5.3 Flash,Concentrate AI,glm-5.3-flash,No,Yes,No,No,DeepSeek V4.1-Flash 1017,None,,Yes,No
+Gemini 4 Argon,Concentrate AI,gemini-4-argon,Yes,No,No,No,None,None,,Yes,No
+Kimi K3,Concentrate AI,kimi-k3,No,Yes,No,No,MiMo-2.6-Pro,None,,Yes,No
+Muse Wonder,Concentrate AI,muse-wonder,Yes,No,No,No,None,None,,No,No
+Qwen 3.8 Max,Concentrate AI,qwen3.8-max,No,Yes,No,No,N/A,,,Yes,No
+MiMo-V2.6 Pro,Concentrate AI,mimo-v2.6-pro,No,Yes,No,No,DeepSeek V4.1-Flash 1017,None,,Yes,No
+HY4 Preview,Concentrate AI,hy4-preview,No,Yes,No,No,N/A,,,Yes,No
+Llama 4 Scout,OpenRouter,meta-llama/llama-4-scout,No,Yes,No,No,N/A,,,Yes,No
+K2 Horizon 375B - A23B,Featherless AI,IFM/K2-Horizon-375B-A23B,No,Yes,No,Yes,N/A,,,Yes,Yes
+Gemma 4 31B,Concentrate AI,gemma-4-31b,No,Yes,No,No,N/A,,,Yes,No
+Command A+,OpenRouter,cohere/command-a-plus,No,Yes,No,No,N/A,,,Yes,No
+Claude Opus 5,Concentrate AI,claude-opus-5,Yes,No,No,No,MiMo-2.6-Pro,,,Yes,No
+GPT-5.6 Sol,Concentrate AI,gpt-5.6-sol,Yes,No,No,No,MiMo-2.6-Pro,None,,Yes,No
+North Mini Code,OpenRouter,cohere/north-mini-code:free,No,Yes,No,No,N/A,,,Yes,No
+Granite 4.2 8B,OpenRouter,ibm-granite/granite-4.2-8b,No,Yes,No,No,N/A,,,Yes,No
+Nemotron 3 Nano 30B A3B,Concentrate AI,nemotron-3-nano-30b,No,Yes,No,No,N/A,,,Yes,No
+Mercury 2.5,Concentrate AI,mercury-2.5,No,Yes,No,No,N/A,,,Yes,No
+Gemini 3.5 Flash Lite,Concentrate AI,gemini-3.5-flash-lite,Yes,No,No,No,Qwen3.8-27B,,,Yes,No
+Claude Opus 5.5,Concentrate AI,claude-opus-5-5,Yes,No,No,No,GLM-5.3,Kimi  K3,,Yes,No
+Gemini 3.8 Flash,Concentrate AI,gemini-3.8-flash,Yes,No,No,No,MiMo-V2.6-Flash,,,Yes,No
+DeepSeek V3.2,OpenRouter,deepseek/deepseek-v3.2,No,Yes,No,No,N/A,,,Yes,No
+GPT-5 Nano,Concentrate AI,gpt-5-nano,Yes,No,No,No,Qwen3.8-27B,None,,Yes,No
+Gemini 2.5 Flash Lite,OpenRouter,google/gemini-2.5-flash-lite,Yes,No,No,No,Gemma 4 26B-A4B,None,,Yes,No
+Gemma 3 27B,OpenRouter,google/gemma-3-27b-it,No,Yes,No,No,N/A,,,Yes,No
+Grok 4.7,Concentrate AI,grok-4.7,Yes,No,No,No,MiMo-2.6-Pro,None,,Yes,No
+MiniMax-M3,OpenRouter,minimax/minimax-m3,No,Yes,No,No,N/A,,,Yes,No
+Motif 3,Hugging Face,Motif-Technologies/Motif-3,No,Yes,No,Yes,N/A,,,Yes,No
+Qwen 3.8 27B,Concentrate AI,qwen3.8-27b,No,Yes,No,No,N/A,,,Yes,No
+DeepSeek V4 Flash Vision Exp,Concentrate AI,deepseek-v4-flash-vision-exp,No,Yes,No,No,N/A,,,Yes,No
+DeepSeek V4 Pro 0813,Concentrate AI,deepseek-v4-pro-0813,No,Yes,No,No,N/A,,,Yes,No
+GLM-5.3,Concentrate AI,glm-5.3,No,Yes,No,No,N/A,,,Yes,No
+Mistral Large 4,Concentrate AI,mistral-large-4,No,Yes,No,No,N/A,,,Yes,No
+Muse Spark Open,Concentrate AI,muse-spark-open,Yes,No,No,No,MiMo-2.6-Pro,None,,Yes,No
+Ling 3.1 Flash,Concentrate AI,ling-3.1-flash,No,Yes,No,No,N/A,,,Yes,No
+Gemini 3.7 Flash,OpenRouter,google/gemini-3.7-flash,Yes,No,No,No,MiMo-V2.6-Flash,None,,Yes,No
+GPT-5.4 Nano,Concentrate AI,gpt-5.4-nano,Yes,No,No,No,Qwen3.8-27B,None,,Yes,No
+GPT-5.2,Concentrate AI,gpt-5.2,Yes,No,No,No,Kimi K3,None,,Yes,No
+GPT-6 Astra,Concentrate AI,gpt-6-astra,Yes,No,No,No,None,None,,Yes,No
+Sonar Deep Research,OpenRouter,perplexity/sonar-deep-research,Yes,No,No,No,Kimi K3,,,Yes,No
+Pareto Latest,OpenRouter,~unbiased/pareto-latest,No,Yes,No,No,N/A,,,Yes,No
+Claude Fable 5.1,Concentrate AI,claude-fable-5-1,Yes,Yes,No,No,Kimi K3,Kimi  K3,,Yes,No
+DavidAU/DeepThought-MOE-8X3B-R1-Llama-3.2-Reasoning-18B-gguf,Hugging Face,DavidAU/DeepThought-MOE-8X3B-R1-Llama-3.2-Reasoning-18B-gguf,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Llama3.2-DeepHermes-3-3B-Preview-Reasoning-MAX-NEO-Imatrix-GGUF,Hugging Face,DavidAU/Llama3.2-DeepHermes-3-3B-Preview-Reasoning-MAX-NEO-Imatrix-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/L3.1-Evil-Reasoning-Dark-Planet-Hermes-R1-Uncensored-8B-i1-GGUF,,,No,Yes,Yes,No,,,,No,No
+mradermacher/L3.1-Dark-Reasoning-Dark-Planet-Hermes-R1-Uncensored-8B-i1-GGUF,,,No,Yes,Yes,No,,,,No,No
+DavidAU/Qwen3-8B-64k-Josiefied-Uncensored-NEO-Max-GGUF,Hugging Face,DavidAU/Qwen3-8B-64k-Josiefied-Uncensored-NEO-Max-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-8B-64k-Josiefied-Uncensored-HORROR-Max-GGUF,Hugging Face,DavidAU/Qwen3-8B-64k-Josiefied-Uncensored-HORROR-Max-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-8B-192k-Josiefied-Uncensored-NEO-Max-GGUF,Hugging Face,DavidAU/Qwen3-8B-192k-Josiefied-Uncensored-NEO-Max-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Llama-3.2-4X3B-MOE-Ultra-Instruct-10B-GGUF,Hugging Face,DavidAU/Llama-3.2-4X3B-MOE-Ultra-Instruct-10B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Qwen2.5-MOE-2X1.5B-DeepSeek-Uncensored-Censored-4B-gguf,Hugging Face,DavidAU/Qwen2.5-MOE-2X1.5B-DeepSeek-Uncensored-Censored-4B-gguf,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen2.5-MOE-2X7B-DeepSeek-Abliterated-UNCensored-19B-gguf,Hugging Face,DavidAU/Qwen2.5-MOE-2X7B-DeepSeek-Abliterated-UNCensored-19B-gguf,No,Yes,Yes,Yes,N/A,,,Yes,No
+mradermacher/L3.1-MOE-4X8B-Dark-Reasoning-Dark-Planet-Hermes-R1-Uncensored-e32-25B-i1-GGUF,,,No,Yes,Yes,No,,,,No,No
+DavidAU/Llama3.1-MOE-4X8B-Gated-IQ-Multi-Tier-Deep-Reasoning-32B-GGUF,Hugging Face,DavidAU/Llama3.1-MOE-4X8B-Gated-IQ-Multi-Tier-Deep-Reasoning-32B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/L3.1-MOE-4X8B-Dark-Reasoning-Super-Nova-RP-Hermes-R1-Uncensored-25B-i1-GGUF,,,No,Yes,Yes,No,,,,No,No
+DavidAU/Qwen3-30B-A1.5B-64K-High-Speed-NEO-Imatrix-MAX-gguf,Hugging Face,DavidAU/Qwen3-30B-A1.5B-64K-High-Speed-NEO-Imatrix-MAX-gguf,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Llama3.1-MOE-4X8B-Gated-IQ-Multi-Tier-COGITO-Deep-Reasoning-32B-GGUF,Hugging Face,DavidAU/Llama3.1-MOE-4X8B-Gated-IQ-Multi-Tier-COGITO-Deep-Reasoning-32B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Llama3.1-MOE-4X8B-Gated-IQ-Multi-Tier-Deep-Reasoning-32B,Hugging Face,DavidAU/Llama3.1-MOE-4X8B-Gated-IQ-Multi-Tier-Deep-Reasoning-32B,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Gemma-3-27b-it-Gemini-Deep-Reasoning,Featherless AI,DavidAU/Gemma-3-27b-it-Gemini-Deep-Reasoning,No,Yes,No,Yes,N/A,,,Yes,Yes
+DavidAU/L3.1-Dark-Reasoning-Dark-Planet-Hermes-R1-Uncensored-Horror-Imatrix-MAX-8B-GGUF,Hugging Face,DavidAU/L3.1-Dark-Reasoning-Dark-Planet-Hermes-R1-Uncensored-Horror-Imatrix-MAX-8B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+mradermacher/L3.1-Dark-Reasoning-Super-Nova-RP-Hermes-R1-Uncensored-8B-i1-GGUF,,,No,Yes,Yes,No,,,,No,No
+mradermacher/L3.1-Dark-Reasoning-Celeste-V1.2-Hermes-R1-Uncensored-8B-i1-GGUF,,,No,Yes,Yes,No,,,,No,No
+mradermacher/L3.1-Dark-Reasoning-Jamet-8B-MK.I-Hermes-R1-Uncensored-8B-i1-GGUF,,,No,Yes,Yes,No,,,,No,No
+mradermacher/L3.1-Dark-Reasoning-Anjir-Hermes-R1-Uncensored-8B-i1-GGUF,,,No,Yes,Yes,No,,,,No,No
+DavidAU/Llama3.3-8B-Instruct-Thinking-Claude-4.5-Opus-High-Reasoning,Featherless AI,DavidAU/Llama3.3-8B-Instruct-Thinking-Claude-4.5-Opus-High-Reasoning,No,Yes,No,Yes,N/A,,,Yes,Yes
+DavidAU/Llama-3.3-8B-Thinking-Gemini-Flash-11000x-128k,Hugging Face,DavidAU/Llama-3.3-8B-Thinking-Gemini-Flash-11000x-128k,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Llama-3.3-8B-Instruct-Thinking-Claude-Haiku-4.5-High-Reasoning-1700x,Featherless AI,DavidAU/Llama-3.3-8B-Instruct-Thinking-Claude-Haiku-4.5-High-Reasoning-1700x,No,Yes,No,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen2.5-7B-Instruct-1M-Thinking-Claude-Gemini-GPT5.2-DISTILL,Featherless AI,DavidAU/Qwen2.5-7B-Instruct-1M-Thinking-Claude-Gemini-GPT5.2-DISTILL,No,Yes,No,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3.5-27B-Claude-4.6-OS-INSTRUCT,Featherless AI,DavidAU/Qwen3.5-27B-Claude-4.6-OS-INSTRUCT,No,Yes,No,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-THINKING,Hugging Face,DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-THINKING,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-13B-GLM-4.7-Flash-DeepSeek-Polaris-Grande-Deep-Thinking,Hugging Face,DavidAU/Qwen3.5-13B-GLM-4.7-Flash-DeepSeek-Polaris-Grande-Deep-Thinking,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Psyonic-Cetacean-Ultra-Quality-20b-GGUF,Hugging Face,DavidAU/Psyonic-Cetacean-Ultra-Quality-20b-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Dark-Forest-V1-Ultra-Quality-20b-GGUF,Hugging Face,DavidAU/Dark-Forest-V1-Ultra-Quality-20b-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Fimbulvetr-11B-Ultra-Quality-plus-imatrix-GGUF,Hugging Face,DavidAU/Fimbulvetr-11B-Ultra-Quality-plus-imatrix-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Dark-Forest-V2-Ultra-Quality-20b-GGUF,Hugging Face,DavidAU/Dark-Forest-V2-Ultra-Quality-20b-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/DarkSapling-V2-Ultra-Quality-7B-GGUF,Hugging Face,DavidAU/DarkSapling-V2-Ultra-Quality-7B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Psyfighter2-Ultra-Quality-13B-GGUF,Hugging Face,DavidAU/Psyfighter2-Ultra-Quality-13B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Psyonic-Cetacean-Ultra-Quality-20b-GGUF-imat-plus2,Hugging Face,DavidAU/Psyonic-Cetacean-Ultra-Quality-20b-GGUF-imat-plus2,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/DarkForest-20B-V3-Ultra-Quality-GGUF,Hugging Face,DavidAU/DarkForest-20B-V3-Ultra-Quality-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/DarkForest-20B-V3-Ultra-Quality-ImatP2-GGUF,Hugging Face,DavidAU/DarkForest-20B-V3-Ultra-Quality-ImatP2-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Command-R-01-Ultra-NEO-V1-35B-IMATRIX-GGUF,Hugging Face,DavidAU/Command-R-01-Ultra-NEO-V1-35B-IMATRIX-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/L3-8B-Stheno-v3.2-Ultra-NEO-V1-IMATRIX-GGUF,Hugging Face,DavidAU/L3-8B-Stheno-v3.2-Ultra-NEO-V1-IMATRIX-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Psyonic-Cetacean-MythoMax-Prose-Crazy-Ultra-Quality-29B-GGUF,Hugging Face,DavidAU/Psyonic-Cetacean-MythoMax-Prose-Crazy-Ultra-Quality-29B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Daredevil-8B-abliterated-Ultra-NEO-V1-IMATRIX-GGUF,Hugging Face,DavidAU/Daredevil-8B-abliterated-Ultra-NEO-V1-IMATRIX-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/L3-Stheno-Maid-Blackroot-Grand-HORROR-16B-GGUF,Hugging Face,DavidAU/L3-Stheno-Maid-Blackroot-Grand-HORROR-16B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Llama3-Little-LLM-Of-Horror_N_Fiction-14.6B-GGUF,Hugging Face,DavidAU/Llama3-Little-LLM-Of-Horror_N_Fiction-14.6B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/L3-Stheno-Maid-Blackroot-Grand-HORROR-16B-Ultra-NEO-V2-IMATRIX-GGUF,Hugging Face,DavidAU/L3-Stheno-Maid-Blackroot-Grand-HORROR-16B-Ultra-NEO-V2-IMATRIX-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/L3-SMB-Grand-STORY-F32-Ultra-Quality-16.5B-GGUF,Hugging Face,DavidAU/L3-SMB-Grand-STORY-F32-Ultra-Quality-16.5B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/L3-SMB-Grand-STORY-F32-Ultra-Quality-16.5B-NEO-V2-IMATRIX-GGUF,Hugging Face,DavidAU/L3-SMB-Grand-STORY-F32-Ultra-Quality-16.5B-NEO-V2-IMATRIX-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Psyonic-Cetacean-Ultra-Quality-21.3B-22.5B-BRAINSTORM-5x-10x-GGUF,Hugging Face,DavidAU/Psyonic-Cetacean-Ultra-Quality-21.3B-22.5B-BRAINSTORM-5x-10x-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Mistral-Nemo-Instruct-2407-13.35B-BRAINSTORM-5x-FORM-11-GGUF,Hugging Face,DavidAU/Mistral-Nemo-Instruct-2407-13.35B-BRAINSTORM-5x-FORM-11-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/L3-Grand-HORROR-25B-V2-STABLE-Godzillas-Wicked-Sister-GGUF,Hugging Face,DavidAU/L3-Grand-HORROR-25B-V2-STABLE-Godzillas-Wicked-Sister-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/L3-Grand-HORROR-17.4B-V1.7-STABLE-Kiss-Of-Death-GGUF,Hugging Face,DavidAU/L3-Grand-HORROR-17.4B-V1.7-STABLE-Kiss-Of-Death-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/L3-Jamet-8B-MK.V-Blackroot-12.2B-V1-INSTRUCT-ULTRA-F32-GGUF,Hugging Face,DavidAU/L3-Jamet-8B-MK.V-Blackroot-12.2B-V1-INSTRUCT-ULTRA-F32-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Command-R-01-Ultra-NEO-DARK-HORROR-V1-V2-35B-IMATRIX-GGUF,Hugging Face,DavidAU/Command-R-01-Ultra-NEO-DARK-HORROR-V1-V2-35B-IMATRIX-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/L3-Dark-Planet-8B-GGUF,Hugging Face,DavidAU/L3-Dark-Planet-8B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/L3-Dark-Planet-8B-V2-Eight-Orbs-Of-Power-GGUF,Hugging Face,DavidAU/L3-Dark-Planet-8B-V2-Eight-Orbs-Of-Power-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/MN-Dark-Planet-Kaboom-21B-GGUF,Hugging Face,DavidAU/MN-Dark-Planet-Kaboom-21B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/L3.1-Dark-Planet-10.7B-ExxxxxxxxTended-GGUF,Hugging Face,DavidAU/L3.1-Dark-Planet-10.7B-ExxxxxxxxTended-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Gemma-The-Writer-9B-GGUF,Hugging Face,DavidAU/Gemma-The-Writer-9B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/L3-Darker-Planet-12.15B-GGUF,Hugging Face,DavidAU/L3-Darker-Planet-12.15B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Llama-3.2-1B-Instruct-NEO-WEE-HORROR-GGUF,Hugging Face,DavidAU/Llama-3.2-1B-Instruct-NEO-WEE-HORROR-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Llama-3.2-3B-Instruct-NEO-SI-FI-GGUF,Hugging Face,DavidAU/Llama-3.2-3B-Instruct-NEO-SI-FI-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/L3-DARKER-PLANET-Broken-Land-12.15B-GGUF,Hugging Face,DavidAU/L3-DARKER-PLANET-Broken-Land-12.15B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/MN-Dark-Planet-TITAN-12B-GGUF,Hugging Face,DavidAU/MN-Dark-Planet-TITAN-12B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-23.5B-GGUF,Hugging Face,DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-23.5B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-23B-V2-GGUF,Hugging Face,DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-23B-V2-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-12B-DARKNESS-GGUF,Hugging Face,DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-12B-DARKNESS-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-12B-MADNESS-GGUF,Hugging Face,DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-12B-MADNESS-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/M-Metaphors-Of-Madness-19.4B-GGUF,Hugging Face,DavidAU/M-Metaphors-Of-Madness-19.4B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/L3-DARKEST-PLANET-Seven-Rings-Of-DOOM-16.5B-GGUF,Hugging Face,DavidAU/L3-DARKEST-PLANET-Seven-Rings-Of-DOOM-16.5B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Gemma-The-Writer-J.GutenBerg-10B-GGUF,Hugging Face,DavidAU/Gemma-The-Writer-J.GutenBerg-10B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Gemma-The-Writer-N-Restless-Quill-10B-Uncensored-GGUF,Hugging Face,DavidAU/Gemma-The-Writer-N-Restless-Quill-10B-Uncensored-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/MN-DARKEST-UNIVERSE-29B-GGUF,Hugging Face,DavidAU/MN-DARKEST-UNIVERSE-29B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/MN-Dark-Horror-The-Cliffhanger-18.5B-GGUF,Hugging Face,DavidAU/MN-Dark-Horror-The-Cliffhanger-18.5B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/L3-Dark_Mistress-The_Guilty_Pen-Uncensored-17.4B-GGUF,Hugging Face,DavidAU/L3-Dark_Mistress-The_Guilty_Pen-Uncensored-17.4B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/L3.1-RP-Hero-InBetween-8B-GGUF,Hugging Face,DavidAU/L3.1-RP-Hero-InBetween-8B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/L3.1-RP-Hero-BigTalker-8B-GGUF,Hugging Face,DavidAU/L3.1-RP-Hero-BigTalker-8B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Llama-3.2-4X3B-MOE-Hell-California-Uncensored-10B-GGUF,Hugging Face,DavidAU/Llama-3.2-4X3B-MOE-Hell-California-Uncensored-10B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Mistral-MOE-4X7B-Dark-MultiVerse-24B-GGUF,Hugging Face,DavidAU/Mistral-MOE-4X7B-Dark-MultiVerse-24B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/L3-MOE-8X8B-Dark-Planet-8D-Mirrored-Chaos-47B-GGUF,Hugging Face,DavidAU/L3-MOE-8X8B-Dark-Planet-8D-Mirrored-Chaos-47B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/L3-MOE-4x8B-Dark-Planet-Rebel-FURY-25B-GGUF,Hugging Face,DavidAU/L3-MOE-4x8B-Dark-Planet-Rebel-FURY-25B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Gemma-The-Writer-Mighty-Sword-9B-GGUF,Hugging Face,DavidAU/Gemma-The-Writer-Mighty-Sword-9B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Gemma-The-Writer-N-Restless-Quill-V2-Enhanced32-10B-Uncensored-GGUF,Hugging Face,DavidAU/Gemma-The-Writer-N-Restless-Quill-V2-Enhanced32-10B-Uncensored-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Mistral-MOE-4X7B-Dark-MultiVerse-Uncensored-Enhanced32-24B-gguf,Hugging Face,DavidAU/Mistral-MOE-4X7B-Dark-MultiVerse-Uncensored-Enhanced32-24B-gguf,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/L3-Grand-Story-Darkness-MOE-4X8-24.9B-e32-GGUF,Hugging Face,DavidAU/L3-Grand-Story-Darkness-MOE-4X8-24.9B-e32-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/DeepSeek-R1-Distill-Llama-3.1-16.5B-Brainstorm-gguf,Hugging Face,DavidAU/DeepSeek-R1-Distill-Llama-3.1-16.5B-Brainstorm-gguf,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/DeepSeek-Grand-Horror-SMB-R1-Distill-Llama-3.1-16B-GGUF,Hugging Face,DavidAU/DeepSeek-Grand-Horror-SMB-R1-Distill-Llama-3.1-16B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/DeepSeek-V2-Grand-Horror-SMB-R1-Distill-Llama-3.1-Uncensored-16.5B-GGUF,Hugging Face,DavidAU/DeepSeek-V2-Grand-Horror-SMB-R1-Distill-Llama-3.1-Uncensored-16.5B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/DeepSeek-BlackRoot-R1-Distill-Llama-3.1-8B-GGUF,Hugging Face,DavidAU/DeepSeek-BlackRoot-R1-Distill-Llama-3.1-8B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/DeepSeek-MOE-4X8B-R1-Distill-Llama-3.1-Deep-Thinker-Uncensored-24B-GGUF,Hugging Face,DavidAU/DeepSeek-MOE-4X8B-R1-Distill-Llama-3.1-Deep-Thinker-Uncensored-24B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Llama-3.2-8X4B-MOE-V2-Dark-Champion-Instruct-uncensored-abliterated-21B-GGUF,Hugging Face,DavidAU/Llama-3.2-8X4B-MOE-V2-Dark-Champion-Instruct-uncensored-abliterated-21B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Llama-3.1-DeepSeek-8B-DarkIdol-Instruct-1.2-Uncensored-GGUF,Hugging Face,DavidAU/Llama-3.1-DeepSeek-8B-DarkIdol-Instruct-1.2-Uncensored-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Llama-3.1-DeepHermes-R1-Reasoning-8B-DarkIdol-Instruct-1.2-Uncensored-GGUF,Hugging Face,DavidAU/Llama-3.1-DeepHermes-R1-Reasoning-8B-DarkIdol-Instruct-1.2-Uncensored-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen2.5-QwQ-35B-Eureka-Cubed-abliterated-uncensored-gguf,Hugging Face,DavidAU/Qwen2.5-QwQ-35B-Eureka-Cubed-abliterated-uncensored-gguf,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Gemma-3-it-4B-Uncensored-DBL-X-GGUF,Hugging Face,DavidAU/Gemma-3-it-4B-Uncensored-DBL-X-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Gemma-3-4b-it-MAX-HORROR-Uncensored-DBL-X-Imatrix-GGUF,Hugging Face,DavidAU/Gemma-3-4b-it-MAX-HORROR-Uncensored-DBL-X-Imatrix-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/L3.1-MOE-6X8B-Dark-Reasoning-Dantes-Peak-HORROR-R1-Uncensored-36B-GGUF,Hugging Face,DavidAU/L3.1-MOE-6X8B-Dark-Reasoning-Dantes-Peak-HORROR-R1-Uncensored-36B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Llama-3.1-128k-Dark-Planet-Uncensored-8B-GGUF,Hugging Face,DavidAU/Llama-3.1-128k-Dark-Planet-Uncensored-8B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/LLama-3.1-128k-Uncensored-Stheno-Maid-Blackroot-Grand-HORROR-16.5B-GGUF,Hugging Face,DavidAU/LLama-3.1-128k-Uncensored-Stheno-Maid-Blackroot-Grand-HORROR-16.5B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Llama-3.1-1-million-cxt-Dark-Planet-8B-GGUF,Hugging Face,DavidAU/Llama-3.1-1-million-cxt-Dark-Planet-8B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/LLama-3.1-1-million-ctx-Darkest-Planet-16.5B-GGUF,Hugging Face,DavidAU/LLama-3.1-1-million-ctx-Darkest-Planet-16.5B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-The-Josiefied-Omega-Directive-22B-uncensored-abliterated-GGUF,Hugging Face,DavidAU/Qwen3-The-Josiefied-Omega-Directive-22B-uncensored-abliterated-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-The-Xiaolong-Omega-Directive-22B-uncensored-abliterated-GGUF,Hugging Face,DavidAU/Qwen3-The-Xiaolong-Omega-Directive-22B-uncensored-abliterated-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-The-Xiaolong-Josiefied-Omega-Directive-22B-uncensored-abliterated-GGUF,Hugging Face,DavidAU/Qwen3-The-Xiaolong-Josiefied-Omega-Directive-22B-uncensored-abliterated-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-33B-A3B-Stranger-Thoughts-GGUF,Hugging Face,DavidAU/Qwen3-33B-A3B-Stranger-Thoughts-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-18B-A3B-Stranger-Thoughts-Abliterated-Uncensored-GGUF,Hugging Face,DavidAU/Qwen3-18B-A3B-Stranger-Thoughts-Abliterated-Uncensored-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-42B-A3B-Stranger-Thoughts-Deep20x-Abliterated-Uncensored,Hugging Face,DavidAU/Qwen3-42B-A3B-Stranger-Thoughts-Deep20x-Abliterated-Uncensored,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Llama-3.2-9B-Uncensored-Brainstorm-Alpha-GGUF,Hugging Face,DavidAU/Llama-3.2-9B-Uncensored-Brainstorm-Alpha-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-53B-A3B-2507-TOTAL-RECALL-v2-MASTER-CODER,Hugging Face,DavidAU/Qwen3-53B-A3B-2507-TOTAL-RECALL-v2-MASTER-CODER,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Mistral-Small-3.2-46B-The-Brilliant-Raconteur-II-Instruct-2506,Hugging Face,DavidAU/Mistral-Small-3.2-46B-The-Brilliant-Raconteur-II-Instruct-2506,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Llama-3.2-8X3B-GATED-MOE-Reasoning-Dark-Champion-Instruct-uncensored-abliterated-18.4B-GGUF,Hugging Face,DavidAU/Llama-3.2-8X3B-GATED-MOE-Reasoning-Dark-Champion-Instruct-uncensored-abliterated-18.4B-GGUF,No,Yes,Yes,Yes,,,,Yes,No
+DavidAU/Llama-3.2-8X3B-GATED-MOE-NEO-Reasoning-Dark-Champion-uncensored-18.4B-IMAT-GGUF,Hugging Face,DavidAU/Llama-3.2-8X3B-GATED-MOE-NEO-Reasoning-Dark-Champion-uncensored-18.4B-IMAT-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Llama-3.2-8X3B-GATED-MOE-Horror-Reasoning-Dark-Champion-uncensored-18.4B-IMAT-GGUF,Hugging Face,DavidAU/Llama-3.2-8X3B-GATED-MOE-NEO-Reasoning-Dark-Champion-uncensored-18.4B-IMAT-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-Jan-V1-4B-Grand-Horror-Day1-to-Day7-Evolved-Imatrix-GGUF,Hugging Face,DavidAU/Qwen3-Jan-V1-4B-Grand-Horror-Day1-to-Day7-Evolved-Imatrix-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder,Hugging Face,DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-MOE-6x0.6B-3.6B-Writing-On-Fire-Uncensored,Hugging Face,DavidAU/Qwen3-MOE-6x0.6B-3.6B-Writing-On-Fire-Uncensored,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-MOE-6x1.7B-10.2B-Shining-Madness-Uncensored,Hugging Face,DavidAU/Qwen3-MOE-6x1.7B-10.2B-Shining-Madness-Uncensored,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-MOE-4x1.7B-6.8B-Lucys-Song-Uncensored,Hugging Face,DavidAU/Qwen3-MOE-4x1.7B-6.8B-Lucys-Song-Uncensored,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-Horror-Instruct-Uncensored-262K-ctx-4B,Hugging Face,DavidAU/Qwen3-Horror-Instruct-Uncensored-262K-ctx-4B,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-Short-Story-Instruct-Uncensored-262K-ctx-4B,Featherless AI,DavidAU/Qwen3-Short-Story-Instruct-Uncensored-262K-ctx-4B,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/ERNIE-4.5-37B-A3B-Thinking-Brainstorm20x,Hugging Face,DavidAU/ERNIE-4.5-37B-A3B-Thinking-Brainstorm20x,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-Great-Bowels-Of-Horror-FREAKSTORM-6B,Unsloth Desktop,DavidAU/Qwen3-Great-Bowels-Of-Horror-FREAKSTORM-6B,No,Yes,Yes,No,N/A,,,Yes,Yes
+DavidAU/Qwen3-Great-Bowels-Of-Horror-FREAKSTORM-6B-NEO-Horror-Imatrix-GGUF,Hugging Face,DavidAU/Qwen3-Great-Bowels-Of-Horror-FREAKSTORM-6B-NEO-Horror-Imatrix-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-256k-ctx-36B,Hugging Face,DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-256k-ctx-36B,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-D-256k-ctx-36B,Hugging Face,DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-D-256k-ctx-36B,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/L3.2-Rogue-Creative-Instruct-DARK-HORROR-Uncensored-Abliterated-7B,Hugging Face,DavidAU/L3.2-Rogue-Creative-Instruct-DARK-HORROR-Uncensored-Abliterated-7B,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Gemma-3-The-Grand-Horror-27B-GGUF,Hugging Face,DavidAU/Gemma-3-The-Grand-Horror-27B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-VL-12B-Instruct-Brainstorm20x-NEO-MAX-GGUF,Hugging Face,DavidAU/Qwen3-VL-12B-Instruct-Brainstorm20x-NEO-MAX-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-VL-12B-Thinking-Brainstorm20x-NEO-MAX-GGUF,Featherless AI,DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF,Hugging Face,DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-4B-Hivemind-Instruct-NEO-MAX-Imatrix-GGUF,Hugging Face,DavidAU/Qwen3-4B-Hivemind-Instruct-NEO-MAX-Imatrix-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-24B-A4B-Freedom-Thinking-Abliterated-Heretic-NEO-Imatrix-GGUF,Hugging Face,DavidAU/Qwen3-24B-A4B-Freedom-Thinking-Abliterated-Heretic-NEO-Imatrix-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/GLM-4.7-Flash-Uncensored-Heretic-NEO-CODE-Imatrix-MAX-GGUF,Hugging Face,DavidAU/GLM-4.7-Flash-Uncensored-Heretic-NEO-CODE-Imatrix-MAX-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/GLM-4.7-Flash-Grande-Heretic-UNCENSORED-42B-A3B-GGUF,Hugging Face,DavidAU/GLM-4.7-Flash-Grande-Heretic-UNCENSORED-42B-A3B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Dolphin-Mistral-GLM-4.7-Flash-24B-Venice-Edition-Thinking-Uncensored,Featherless AI,DavidAU/Dolphin-Mistral-GLM-4.7-Flash-24B-Venice-Edition-Thinking-Uncensored,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3-24B-MOE-6x-4B-Star-Trek-AwayTeam-Instruct,Hugging Face,DavidAU/Qwen3-24B-MOE-6x-4B-Star-Trek-AwayTeam-Instruct,No,Yes,No,No,N/A,,,Yes,No
+DavidAU/ERNIE-21B-A3B-GLM-4.7-Flash-Thinking,Featherless AI,DavidAU/ERNIE-21B-A3B-GLM-4.7-Flash-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/ERNIE-21B-A3B-Claude-4.5-High-OPUS-Thinking,Featherless AI,DavidAU/ERNIE-21B-A3B-Claude-4.5-High-OPUS-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/ERNIE-21B-A3B-Thinking-Gemini-3-Pro-High-Reasoning-V2,Featherless AI,DavidAU/ERNIE-21B-A3B-Thinking-Gemini-3-Pro-High-Reasoning-V2,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/gemma-3-12b-it-vl-HighIQ-Polaris-Heretic-Uncensored-Thinking,Featherless AI,DavidAU/gemma-3-12b-it-vl-HighIQ-Polaris-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3.5-27B-Gemini3-Pro-High-Reasoning-Compact-Thinking,Hugging Face,DavidAU/Qwen3.5-27B-Gemini3-Pro-High-Reasoning-Compact-Thinking,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-27B-Claude-4.6-OS-Auto-Variable-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3.5-27B-Claude-4.6-OS-Auto-Variable-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-40B-Claude-4.5-Opus-High-Reasoning-Thinking,Hugging Face,DavidAU/Qwen3.5-40B-Claude-4.5-Opus-High-Reasoning-Thinking,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/LFM2-8B-A1B-GLM-4.7-Flash-Thinking-Quantum-IQ1C,Hugging Face,DavidAU/LFM2-8B-A1B-GLM-4.7-Flash-Thinking-Quantum-IQ1C,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/LFM2-8B-A1B-GLM-4.7-Flash-Thinking-Quantum-IQ1C-P,Hugging Face,DavidAU/LFM2-8B-A1B-GLM-4.7-Flash-Thinking-Quantum-IQ1C-P,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-48B-A4B-Savant-Commander-Distill-12X-Closed-Open-Heretic-Uncensored-GGUF,Hugging Face,DavidAU/Qwen3-48B-A4B-Savant-Commander-Distill-12X-Closed-Open-Heretic-Uncensored-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-8B-Hivemind-Instruct-Heretic-Abliterated-Uncensored-NEO-Imatrix-GGUF,Hugging Face,DavidAU/Qwen3-8B-Hivemind-Instruct-Heretic-Abliterated-Uncensored-NEO-Imatrix-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Llama3.2-30B-A3B-II-Dark-Champion-INSTRUCT-Heretic-Abliterated-Uncensored,Hugging Face,DavidAU/Llama3.2-30B-A3B-II-Dark-Champion-INSTRUCT-Heretic-Abliterated-Uncensored,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-24B-A4B-Freedom-HQ-Thinking-Abliterated-Heretic-NEOMAX-Imatrix-GGUF,Hugging Face,DavidAU/Qwen3-24B-A4B-Freedom-HQ-Thinking-Abliterated-Heretic-NEOMAX-Imatrix-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Llama3.2-24B-A3B-II-Dark-Champion-INSTRUCT-Heretic-Abliterated-Uncensored,Hugging Face,DavidAU/Llama3.2-24B-A3B-II-Dark-Champion-INSTRUCT-Heretic-Abliterated-Uncensored,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-4B-Hivemind-Instruct-Heretic-Abliterated-Uncensored-NEO-Imatrix-GGUF,Hugging Face,DavidAU/Qwen3-4B-Hivemind-Instruct-Heretic-Abliterated-Uncensored-NEO-Imatrix-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-6B-Hivemind-Instruct-Heretic-Abliterated-Uncensored-NEO-Imatrix-GGUF,Hugging Face,DavidAU/Qwen3-6B-Hivemind-Instruct-Heretic-Abliterated-Uncensored-NEO-Imatrix-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Gemma-The-Writer-9B-HERETIC-Uncensored-Abliterated,Featherless AI,DavidAU/Gemma-The-Writer-9B-HERETIC-Uncensored-Abliterated,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/L3-Dark-Planet-8B-HERETIC-Uncensored-Abliterated,Featherless AI,DavidAU/L3-Dark-Planet-8B-HERETIC-Uncensored-Abliterated,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/L3-Darkest-Planet-16B-HERETIC-Uncensored-Abliterated,Hugging Face,DavidAU/L3-Darkest-Planet-16B-HERETIC-Uncensored-Abliterated,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/MN-CaptainErisNebula-12B-Chimera-v1.1-heretic-uncensored-abliterated,Featherless AI,DavidAU/MN-CaptainErisNebula-12B-Chimera-v1.1-heretic-uncensored-abliterated,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3-4B-Gemini-TripleX-High-Reasoning-Thinking-Heretic-Uncensored-GGUF,Hugging Face,DavidAU/Qwen3-4B-Gemini-TripleX-High-Reasoning-Thinking-Heretic-Uncensored-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Llama3.3-8B-Instruct-Thinking-Heretic-Uncensored-Claude-4.5-Opus-High-Reasoning,Featherless AI,DavidAU/Llama3.3-8B-Instruct-Thinking-Heretic-Uncensored-Claude-4.5-Opus-High-Reasoning,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Mistral-Nemo-Inst-2407-12B-Thinking-Uncensored-HERETIC-HI-Claude-Opus,Featherless AI,DavidAU/Mistral-Nemo-Inst-2407-12B-Thinking-Uncensored-HERETIC-HI-Claude-Opus,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/MN-CaptainErisNebula-Chimera-v1.1-THINKING-ClaudeOpus4.5-12B-heretic-uncensored,Featherless AI,DavidAU/MN-CaptainErisNebula-Chimera-v1.1-THINKING-ClaudeOpus4.5-12B-heretic-uncensored,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Gemma3-27B-it-vl-GLM-4.7-Uncensored-Heretic-Deep-Reasoning,Featherless AI,DavidAU/Gemma3-27B-it-vl-GLM-4.7-Uncensored-Heretic-Deep-Reasoning,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Rocinante-X-12B-v1-Heretic-Uncensored,Featherless AI,DavidAU/Rocinante-X-12B-v1-Heretic-Uncensored,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3-VL-8B-GLM-4.7-Flash-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3-VL-8B-GLM-4.7-Flash-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Gemma-3-1B-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking,Featherless AI,DavidAU/Gemma-3-1B-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Gemma-3-4B-VL-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Gemma-3-4B-VL-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-Heretic-Uncensored-Thinking,Featherless AI,DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/gemma-3-12b-it-vl-Polaris-GLM-4.7-Flash-VAR-Thinking-Instruct-Heretic-Uncensored,Featherless AI,DavidAU/gemma-3-12b-it-vl-Polaris-GLM-4.7-Flash-VAR-Thinking-Instruct-Heretic-Uncensored,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/gemma-3-12b-it-vl-Gemini-3-Pro-Preview-Heretic-Uncensored-Thinking,Featherless AI,DavidAU/gemma-3-12b-it-vl-Gemini-3-Pro-Preview-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/gemma-3-12b-it-vl-GPT-5.1-High-Heretic-Uncensored-Thinking,Featherless AI,DavidAU/gemma-3-12b-it-vl-GPT-5.1-High-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/gemma-3-12b-it-vl-Deepseek-v3.1-Heretic-Uncensored-Thinking,Featherless AI,DavidAU/gemma-3-12b-it-vl-Deepseek-v3.1-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/LFM2.5-1.2B-Thinking-SuperMinds-7x-Heretic-Uncensored-DISTILL,Featherless AI,DavidAU/LFM2.5-1.2B-Thinking-SuperMinds-7x-Heretic-Uncensored-DISTILL,No,No,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/LFM2.5-1.2B-Thinking-Claude-4.6-Opus-Heretic-Uncensored-DISTILL,Featherless AI,DavidAU/LFM2.5-1.2B-Thinking-Claude-4.6-Opus-Heretic-Uncensored-DISTILL,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/LFM2.5-1.2B-Thinking-Gemini-Pro-1000-Heretic-Uncensored-DISTILL,Featherless AI,DavidAU/LFM2.5-1.2B-Thinking-Gemini-Pro-1000-Heretic-Uncensored-DISTILL,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/gemma-3-4b-it-vl-Heretic-4-Horsemen-Uncensored,Hugging Face,DavidAU/gemma-3-4b-it-vl-Heretic-4-Horsemen-Uncensored,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Gemma3-27B-it-vl-Polaris-HI16-Heretic-Uncensored-INSTRUCT,Featherless AI,DavidAU/Gemma3-27B-it-vl-Polaris-HI16-Heretic-Uncensored-INSTRUCT,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-INSTRUCT-Thinking-Hybrid-Heretic-Uncensored,Featherless AI,DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-INSTRUCT-Thinking-Hybrid-Heretic-Uncensored,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3.5-27B-HERETIC-Polaris-Advanced-Thinking-Alpha-uncensored,Hugging Face,DavidAU/Qwen3.5-27B-HERETIC-Polaris-Advanced-Thinking-Alpha-uncensored,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-INSTRUCT-HERETIC-UNCENSORED,Featherless AI,DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-INSTRUCT-HERETIC-UNCENSORED,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-THINKING-HERETIC-UNCENSORED,Featherless AI,DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-THINKING-HERETIC-UNCENSORED,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING,Hugging Face,DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-9B-Claude-4.6-OS-HERETIC-UNCENSORED-INSTRUCT,Featherless AI,DavidAU/Qwen3.5-9B-Claude-4.6-OS-HERETIC-UNCENSORED-INSTRUCT,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING-MAX-NEOCODE-Imatrix-GGUF,Hugging Face,DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING-MAX-NEOCODE-Imatrix-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-4B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING,Hugging Face,DavidAU/Qwen3.5-4B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-27B-Deckard-PKD-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3.5-27B-Deckard-PKD-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3.5-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking,Hugging Face,DavidAU/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking,Hugging Face,DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking,Featherless AI,DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3.5-2B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING,Featherless AI,DavidAU/Qwen3.5-2B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3.5-9B-Star-Trek-TNG-DS9-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3.5-9B-Star-Trek-TNG-DS9-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-9B-Star-Trek-TNG-DS9-Heretic-Uncensored-Thinking-MAX-NEOCODE-GGUF,Hugging Face,DavidAU/Qwen3.5-9B-Star-Trek-TNG-DS9-Heretic-Uncensored-Thinking-MAX-NEOCODE-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking,Featherless AI,DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking-GGUF,Hugging Face,DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-48B-A4B-Savant-Commander-Distill-12X-Closed-Open-Heretic-Uncensored,Hugging Face,DavidAU/Qwen3-48B-A4B-Savant-Commander-Distill-12X-Closed-Open-Heretic-Uncensored,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-4B-Deckard-HERETIC-UNCENSORED-Thinking,Hugging Face,DavidAU/Qwen3.5-4B-Deckard-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-13B-Deckard-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3.5-13B-Deckard-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Deckard-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Deckard-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-21B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking,Featherless AI,DavidAU/Qwen3.5-21B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/gemma-3-it-vl-40B-Gemini-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/gemma-3-it-vl-40B-Gemini-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/gemma-4-31B-it-Mystery-Fine-Tune-HERETIC-UNCENSORED-Thinking-Instruct-GGUF,Hugging Face,DavidAU/gemma-4-31B-it-Mystery-Fine-Tune-HERETIC-UNCENSORED-Thinking-Instruct-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/gemma-4-31B-it-Mystery-Fine-Tune-HERETIC-UNCENSORED-Thinking,Featherless AI,DavidAU/gemma-4-31B-it-Mystery-Fine-Tune-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/gemma-4-31B-it-Grand-Horror-X-INTENSE-HERETIC-UNCENSORED-Thinking,Featherless AI,DavidAU/gemma-4-31B-it-Grand-Horror-X-INTENSE-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/gemma-4-31B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking,Featherless AI,DavidAU/gemma-4-31B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/gemma-4-E4B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking,Unsloth Desktop,DavidAU/gemma-4-E4B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/gemma-4-E4B-it-The-DECKARD-V2-Strong-HERETIC-UNCENSORED-Thinking,Unsloth Desktop,DavidAU/gemma-4-E4B-it-The-DECKARD-V2-Strong-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/gemma-4-E4B-it-The-DECKARD-Expresso-Universe-HERETIC-UNCENSORED-Thinking,Unsloth Desktop,DavidAU/gemma-4-E4B-it-The-DECKARD-Expresso-Universe-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/gemma-4-E4B-it-The-DECKARD-V3-Expresso-HERETIC-UNCENSORED-Thinking,Unsloth Desktop,DavidAU/gemma-4-E4B-it-The-DECKARD-V3-Expresso-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/gemma-4-E4B-it-The-DECKARD-Expresso-Universe-HERETIC-UNCENSORED-Thinking-GGUF,Hugging Face,DavidAU/gemma-4-E4B-it-The-DECKARD-Expresso-Universe-HERETIC-UNCENSORED-Thinking-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/gemma-4-E4B-it-The-DECKARD-Claude-Opus-Expresso-Universe-HERETIC-UNCENSORED-Thinking,Unsloth Desktop,DavidAU/gemma-4-E4B-it-The-DECKARD-Claude-Opus-Expresso-Universe-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/gemma-4-19B-A4B-it-The-DECKARD-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/gemma-4-19B-A4B-it-The-DECKARD-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/gemma-4-19B-A4B-it-INSTRUCT-Heretic-Uncensored,Hugging Face,DavidAU/gemma-4-19B-A4B-it-INSTRUCT-Heretic-Uncensored,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/LFM2-12B-A1B-SpeedDemon-The-Deckard-II-HERETIC-Uncensored,Hugging Face,DavidAU/LFM2-12B-A1B-SpeedDemon-The-Deckard-II-HERETIC-Uncensored,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/gemma-4-E2B-it-The-DECKARD-Expresso-ONE-Universe-HERETIC-UNCENSORED-Thinking,Unsloth Desktop,DavidAU/gemma-4-E2B-it-The-DECKARD-Expresso-ONE-Universe-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/gemma-4-E2B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking,Unsloth Desktop,DavidAU/gemma-4-E2B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.6-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking-NEO-CODE-Di-IMatrix-MAX-GGUF,Hugging Face,DavidAU/Qwen3.6-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking-NEO-CODE-Di-IMatrix-MAX-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.6-27B-Heretic-Uncensored-FINETUNE-NEO-CODE-Di-IMatrix-MAX-GGUF,Hugging Face,DavidAU/Qwen3.6-27B-Heretic-Uncensored-FINETUNE-NEO-CODE-Di-IMatrix-MAX-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-NEO-MAX-MTP-GGUF,Hugging Face,DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-NEO-MAX-MTP-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.6-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3.6-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.6-27B-NEO-CODE-Di-IMatrix-MAX-GGUF,Hugging Face,DavidAU/Qwen3.6-27B-NEO-CODE-Di-IMatrix-MAX-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking-V2-Hightop,Hugging Face,DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking-V2-Hightop,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.6-9B-Heretic-Uncensored-Thinking-Sweet-Madness,Featherless AI,DavidAU/Qwen3.6-9B-Heretic-Uncensored-Thinking-Sweet-Madness,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3.6-21B-IQ-Ultra-Heretic-Uncensored-Thinking,Featherless AI,DavidAU/Qwen3.6-21B-IQ-Ultra-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking,Hugging Face,DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking,No,Yes,Yes,No,N/A,,,Yes,No
+DavidAU/Qwen3.6-27B-Heretic2-Uncensored-Finetune-Thinking,Featherless AI,DavidAU/Qwen3.6-27B-Heretic2-Uncensored-Finetune-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+mradermacher/Shadow-Siren-26B-A4B-i1-GGUF,Hugging Face,mradermacher/Shadow-Siren-26B-A4B-i1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+Vortex5/Shadow-Siren-26B-A4B,Featherless AI,Vortex5/Shadow-Siren-26B-A4B,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+mradermacher/Shadow-Siren-26B-A4B-GGUF,Hugging Face,mradermacher/Shadow-Siren-26B-A4B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/Tower-Plus-72B-ultra-uncensored-heretic-i1-GGUF,Hugging Face,mradermacher/Tower-Plus-72B-ultra-uncensored-heretic-i1-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+mradermacher/Tower-Plus-72B-ultra-uncensored-heretic-GGUF,Hugging Face,mradermacher/Tower-Plus-72B-ultra-uncensored-heretic-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+backyardai/L3-8B-Stheno-v3.3-32K-GGUF,Hugging Face,backyardai/L3-8B-Stheno-v3.3-32K-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+bartowski/Hathor_Tahsin-L3-8B-v0.9-GGUF,Hugging Face,backyardai/L3-8B-Stheno-v3.3-32K-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/Hathor_Tahsin-L3-8B-v0.85-i1-GGUF,Hugging Face,mradermacher/Hathor_Tahsin-L3-8B-v0.85-i1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+Nitral-AI/Hathor_Tahsin-L3-8B-v0.85,Featherless AI,Nitral-AI/Hathor_Tahsin-L3-8B-v0.85,No,Yes,No,Yes,N/A,,,Yes,Yes
+mradermacher/Hathor_Tahsin-L3-8B-v0.85-GGUF,Hugging Face,mradermacher/Hathor_Tahsin-L3-8B-v0.85-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+RichardErkhov/Nitral-AI_-_Hathor_Tahsin-L3-8B-v0.85-gguf,Hugging Face,RichardErkhov/Nitral-AI_-_Hathor_Tahsin-L3-8B-v0.85-gguf,No,Yes,No,Yes,N/A,,,Yes,No
+QuantFactory/Hathor_Tahsin-L3-8B-v0.85-GGUF,Hugging Face,QuantFactory/Hathor_Tahsin-L3-8B-v0.85-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+ggml-org/stories15M_MOE,Hugging Face,ggml-org/stories15M_MOE,No,Yes,No,Yes,N/A,,,Yes,No
+nightmedia/Qwen3.6-27B-Architect-Polaris2-Fable-B-F451-Tess,Featherless AI,nightmedia/Qwen3.6-27B-Architect-Polaris2-Fable-B-F451-Tess,No,Yes,No,Yes,N/A,,,Yes,Yes
+QuantFactory/MN-12B-Celeste-V1.9-GGUF,Hugging Face,QuantFactory/MN-12B-Celeste-V1.9-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+KoboldAI/LLaMA2-13B-Tiefighter,Featherless AI,KoboldAI/LLaMA2-13B-Tiefighter,No,Yes,No,Yes,N/A,,,Yes,Yes
+ArliAI/Phi-3.5-mini-3.8B-ArliAI-RPMax-v1.1-GGUF,Hugging Face,ArliAI/Phi-3.5-mini-3.8B-ArliAI-RPMax-v1.1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+EldritchLabs/MN-Crimson-Cafe-12B,Featherless AI,EldritchLabs/MN-Crimson-Cafe-12B,No,Yes,No,No,N/A,,,Yes,Yes
+mradermacher/Gemma-2-2B-ArliAI-RPMax-v1.1-i1-GGUF,Hugging Face,mradermacher/Gemma-2-2B-ArliAI-RPMax-v1.1-i1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+QuantFactory/Gemma-2-2B-ArliAI-RPMax-v1.1-GGUF,Hugging Face,QuantFactory/Gemma-2-2B-ArliAI-RPMax-v1.1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/Gemma-2-9B-ArliAI-RPMax-v1.1-i1-GGUF,Hugging Face,mradermacher/Gemma-2-9B-ArliAI-RPMax-v1.1-i1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/Gemma-2-9B-ArliAI-RPMax-v1.1-GGUF,Hugging Face,mradermacher/Gemma-2-9B-ArliAI-RPMax-v1.1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+OwenArli/Gemma-2-2B-ArliAI-RPMax-v1.1-GGUF,Hugging Face,OwenArli/Gemma-2-2B-ArliAI-RPMax-v1.1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/EVA-Yi-1.5-9B-32K-V1-i1-GGUF,Hugging Face,mradermacher/EVA-Yi-1.5-9B-32K-V1-i1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+EVA-UNIT-01/EVA-Yi-1.5-9B-32K-V1,Hugging Face,EVA-UNIT-01/EVA-Yi-1.5-9B-32K-V1,No,Yes,No,No,N/A,,,Yes,No
+itlwas/EVA-Yi-1.5-9B-32K-V1-Q4_K_M-GGUF,Hugging Face,itlwas/EVA-Yi-1.5-9B-32K-V1-Q4_K_M-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+QuantFactory/EVA-Yi-1.5-9B-32K-V1-GGUF,Hugging Face,QuantFactory/EVA-Yi-1.5-9B-32K-V1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/Mistral-Small-Instruct-2409-22B-NEO-Imatrix-GGUF,Hugging Face,DavidAU/Mistral-Small-Instruct-2409-22B-NEO-Imatrix-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/Llama3.2-30B-A3B-II-Dark-Champion-INSTRUCT-Heretic-Abliterated-Uncensored-GGUF,Hugging Face,mradermacher/Llama3.2-30B-A3B-II-Dark-Champion-INSTRUCT-Heretic-Abliterated-Uncensored-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+mradermacher/Llama3.2-24B-A3B-II-Dark-Champion-INSTRUCT-Heretic-Abliterated-Uncensored-i1-GGUF,Hugging Face,mradermacher/Llama3.2-24B-A3B-II-Dark-Champion-INSTRUCT-Heretic-Abliterated-Uncensored-i1-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+mradermacher/Mistral-Nemo-Instruct-2407-12B-Thinking-M-Claude-Opus-High-Reasoning-i1-GGUF,Hugging Face,mradermacher/Mistral-Nemo-Instruct-2407-12B-Thinking-M-Claude-Opus-High-Reasoning-i1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC-i1-GGUF,Hugging Face,mradermacher/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC-i1-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+Medvedko/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC-Q4_K_M-GGUF,Hugging Face,Medvedko/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC-Q4_K_M-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC,Featherless AI,DavidAU/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+mradermacher/MN-Violet-Lotus-12B-GGUF,Hugging Face,mradermacher/MN-Violet-Lotus-12B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+FallenMerick/MN-Violet-Lotus-12B,Featherless AI,FallenMerick/MN-Violet-Lotus-12B,No,Yes,No,No,N/A,,,Yes,Yes
+mradermacher/MN-Violet-Lotus-12B-i1-GGUF,Hugging Face,mradermacher/MN-Violet-Lotus-12B-i1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+philipjohnbasile/Qwen3.6-27B-Fable-Fusion-711-MTPLX-8bit,Hugging Face,philipjohnbasile/Qwen3.6-27B-Fable-Fusion-711-MTPLX-8bit,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/Llama-3.1-70B-Instruct-Lorablated-Creative-Writer-i1-GGUF,,,No,No,No,No,,,,No,No
+bartowski/Llama-3.1-70B-Instruct-Lorablated-Creative-Writer-GGUF,Hugging Face,bartowski/Llama-3.1-70B-Instruct-Lorablated-Creative-Writer-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/L3.2-Rogue-Creative-Instruct-7B-GGUF,Hugging Face,DavidAU/L3.2-Rogue-Creative-Instruct-7B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/L3.2-Rogue-Creative-Instruct-Uncensored-Abliterated-7B-GGUF,Hugging Face,DavidAU/L3.2-Rogue-Creative-Instruct-Uncensored-Abliterated-7B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+huihui-ai/Llama-3.2-3B-Instruct-abliterated,Featherless AI,huihui-ai/Llama-3.2-3B-Instruct-abliterated,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/L3.2-Rogue-Creative-Instruct-Uncensored-7B-GGUF,Hugging Face,DavidAU/L3.2-Rogue-Creative-Instruct-Uncensored-7B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+chuanli11/Llama-3.2-3B-Instruct-uncensored,Featherless AI,chuanli11/Llama-3.2-3B-Instruct-uncensored,No,Yes,Yes,No,N/A,,,No,Yes
+mradermacher/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking-GGUF,Hugging Face,mradermacher/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+mradermacher/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking-i1-GGUF,Hugging Face,mradermacher/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking-i1-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Llama-3.2-8X3B-MOE-Dark-Champion-Instruct-uncensored-abliterated-18.4B-GGUF,Hugging Face,DavidAU/Llama-3.2-8X3B-MOE-Dark-Champion-Instruct-uncensored-abliterated-18.4B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder-V1.2,Hugging Face,DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder-V1.2,No,Yes,No,Yes,N/A,,,Yes,No
+Gryphe/Pantheon-Reasoning-31B-1.1,Featherless AI,Gryphe/Pantheon-Reasoning-31B-1.1,No,Yes,No,No,N/A,,,Yes,Yes
+DavidAU/MN-GRAND-23.5B-Gutenberg-UNCENSORED-V2-GLM4.7-Thinking-NEO-Imatrix-GGUF,Hugging Face,DavidAU/MN-GRAND-23.5B-Gutenberg-UNCENSORED-V2-GLM4.7-Thinking-NEO-Imatrix-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/L3-V2-S-M-B-Grand-HORROR-17B-GLM4.7-Thinking-UNCENSORED-NEO-Imatrix-GGUF,Hugging Face,DavidAU/L3-V2-S-M-B-Grand-HORROR-17B-GLM4.7-Thinking-UNCENSORED-NEO-Imatrix-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/MN-Oblivion-26B-UNCENSORED-NEO-Imatrix-GGUF,Hugging Face,DavidAU/MN-Oblivion-26B-UNCENSORED-NEO-Imatrix-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Qwen3.5-9B-The-Deckard-Pro-Writer-Uncensored-Heretic,Featherless AI,DavidAU/Qwen3.5-9B-The-Deckard-Pro-Writer-Uncensored-Heretic,No,Yes,Yes,No,N/A,,,Yes,Yes
+DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic,Featherless AI,DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-MTP,Featherless AI,DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-MTP,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF,Hugging Face,DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Psyonic-Cetacean-Ultra-Quality-20b-GGUF-imatrix,Hugging Face,DavidAU/Psyonic-Cetacean-Ultra-Quality-20b-GGUF-imatrix,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/TieFighter-Holodeck-Holomax-Mythomax-F1-V1-COMPOS-20B-gguf,Hugging Face,DavidAU/TieFighter-Holodeck-Holomax-Mythomax-F1-V1-COMPOS-20B-gguf,No,Yes,Yes,Yes,N/A,,,Yes,No
+mradermacher/L3-Darkest-Planet-16B-HERETIC-Uncensored-Abliterated-i1-GGUF,,,No,No,No,No,,,,No,No
+mradermacher/L3-Darkest-Planet-16B-HERETIC-Uncensored-Abliterated-GGUF,,,No,No,No,No,,,,No,No
+DavidAU/L3-DARKEST-PLANET-16.5B-GGUF,Hugging Face,DavidAU/L3-DARKEST-PLANET-16.5B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/LLama-3.1-128k-Darkest-Planet-Uncensored-16.5B-GGUF,Hugging Face,DavidAU/LLama-3.1-128k-Darkest-Planet-Uncensored-16.5B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Llama-3.2-1B-Instruct-NEO-SI-FI-GGUF,Hugging Face,DavidAU/Llama-3.2-1B-Instruct-NEO-SI-FI-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+Agnes-3.0-Flash,Hugging Face,Agnes-AI/Agnes-3.0-Flash,No,Yes,No,Yes,N/A,,,Yes,No
+Beam 1.0 501B A23B,OpenRouter,reflection/beam-1.0-501b-a23b,No,Yes,No,No,N/A,,,Yes,No
+Command A,Concentrate AI,command-a,No,Yes,No,No,N/A,,,Yes,No
+Venice Uncensored,OpenRouter,cognitivecomputations/dolphin-mistral-24b-venice-edition,No,Yes,Yes,No,N/A,,,Yes,No
+DeepSeek V4.1 Flash 1017,Concentrate AI,deepseek-v4-1-flash-1017,No,Yes,No,No,GLM-5.3-Flash,,,Yes,No
+TheDrummer:Cydonia-24b-v4.1,Featherless AI,TheDrummer/Cydonia-24B-v4.1,No,Yes,No,No,N/A,,,Yes,Yes
+Gemma 4 26B-A4B,Concentrate AI,gemma-4-26b,No,Yes,No,No,N/A,,,Yes,No
+MiMo V2.6 Flash,Concentrate AI,mimo-v2.6-flash,No,Yes,No,No,N/A,,,Yes,No
+TheDrummer: UnslopNemo 12B,OpenRouter,thedrummer/unslopnemo-12b,No,Yes,No,No,N/A,,,Yes,No
+Pareto 26.10,OpenRouter,unbiased/pareto-26.10,No,Yes,No,No,N/A,,,Yes,No
+Tinyllama-15M-stories,Hugging Face,ModelCloud/tinyllama-15M-stories,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking-GGUF,Hugging Face,mradermacher/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+mradermacher/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking-i1-GGUF,Hugging Face,mradermacher/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking-i1-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+mradermacher/Fimbulvetr-Grande-V2-19B-GGUF,Hugging Face,mradermacher/Fimbulvetr-Grande-V2-19B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/Fimbulvetr-Grande-V2-19B-i1-GGUF,Hugging Face,mradermacher/Fimbulvetr-Grande-V2-19B-i1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/EVA-Yi-1.5-9B-32K-V1-GGUF,Hugging Face,mradermacher/EVA-Yi-1.5-9B-32K-V1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+day078/Qwen3-30B-A3B-abliterated-erotic-Q4_K_M-GGUF,Hugging Face,day078/Qwen3-30B-A3B-abliterated-erotic-Q4_K_M-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+mradermacher/Qwen3-30B-A3B-abliterated-erotic-i1-GGUF,Hugging Face,mradermacher/Qwen3-30B-A3B-abliterated-erotic-i1-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+mradermacher/Qwen3-30B-A3B-abliterated-erotic-GGUF,Hugging Face,mradermacher/Qwen3-30B-A3B-abliterated-erotic-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+mradermacher/Loki-v2.75b-8b-EROTICA-1024k-i1-GGUF,Hugging Face,mradermacher/Loki-v2.75b-8b-EROTICA-1024k-i1-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+Mantis2024/Dirty-Muse-Writer-v01-Uncensored-Erotica-NSFW,Featherless AI,Mantis2024/Dirty-Muse-Writer-v01-Uncensored-Erotica-NSFW,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+mradermacher/Dirty-Muse-Writer-v01-Uncensored-Erotica-NSFW-i1-GGUF,Hugging Face,mradermacher/Dirty-Muse-Writer-v01-Uncensored-Erotica-NSFW-i1-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+Phil2Sat/Goetia-26B-A4B-v1.3-Absolute-Heretic-Restored-I-Compact-MXFP4-GGUF,Hugging Face,Phil2Sat/Goetia-26B-A4B-v1.3-Absolute-Heretic-Restored-I-Compact-MXFP4-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+mradermacher/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA-i1-GGUF,Hugging Face,mradermacher/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA-i1-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+Naphula/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA,Featherless AI,Naphula/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+mradermacher/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA-GGUF,Hugging Face,mradermacher/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+Naphula/Goetia-26B-A4B-v1.7,Featherless AI,Naphula/Goetia-26B-A4B-v1.7,No,Yes,No,Yes,N/A,,,Yes,Yes
+Naphula/Goetia-26B-A4B-v1.6,Featherless AI,Naphula/Goetia-26B-A4B-v1.6,No,Yes,No,Yes,N/A,,,Yes,Yes
+bartowski/Naphula_Goetia-26B-A4B-v1.7-GGUF,Hugging Face,bartowski/Naphula_Goetia-26B-A4B-v1.7-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/Goetia-26B-A4B-v1.7-i1-GGUF,Hugging Face,mradermacher/Goetia-26B-A4B-v1.7-i1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/Goetia-26B-A4B-v1.6-i1-GGUF,Hugging Face,mradermacher/Goetia-26B-A4B-v1.6-i1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+e-n-v-y/L3.3-Electra-R1-70b-Elarablated-v0.1,Hugging Face,e-n-v-y/L3.3-Electra-R1-70b-Elarablated-v0.1,No,Yes,No,Yes,N/A,,,Yes,No
+e-n-v-y/Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf,Featherless AI,e-n-v-y/Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf,No,Yes,No,Yes,N/A,,,Yes,Yes
+bartowski/e-n-v-y_Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf-GGUF,Hugging Face,bartowski/e-n-v-y_Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/MN-WORDSTORM-pt4-RCM-Cliffhanger-18.5B-Instruct-GGUF,Hugging Face,DavidAU/MN-WORDSTORM-pt4-RCM-Cliffhanger-18.5B-Instruct-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+mradermacher/MN-WORDSTORM-pt5-RCM-Extra-Intense-18.5B-Instruct-i1-GGUF,Hugging Face,mradermacher/MN-WORDSTORM-pt5-RCM-Extra-Intense-18.5B-Instruct-i1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+DavidAU/MN-WORDSTORM-pt5-RCM-Extra-Intense-18.5B-Instruct-GGUF,Hugging Face,DavidAU/MN-WORDSTORM-pt5-RCM-Extra-Intense-18.5B-Instruct-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+mradermacher/L3-Dark-Planet-8B-wordstorm-b4-i1-GGUF,Hugging Face,mradermacher/L3-Dark-Planet-8B-wordstorm-b4-i1-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+mradermacher/L3-Dark-Planet-8B-wordstorm-r4-GGUF,Hugging Face,mradermacher/L3-Dark-Planet-8B-wordstorm-r4-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/MN-WORDSTORM-pt3-RCM-POV-Nightmare-18.5B-Instruct-GGUF,Hugging Face,DavidAU/MN-WORDSTORM-pt3-RCM-POV-Nightmare-18.5B-Instruct-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+Wan 3.0: Image to Video,Comfy Cloud,Wan3.0: Image to Video,No,Yes,No,Yes,N/A,,Video,Yes,No
+Gemini 3.1 Flash TTS,,,Yes,No,No,No,,,Speech,No,No
+FLUX.2,Hugging Face,black-forest-labs/FLUX.2-dev,No,Yes,No,No,,,Image,No,Yes
+Nano Banana Pro,Comfy Cloud,Nano Banana Pro,Yes,No,No,Yes,N/A,,Image,Yes,No
+GPT Image 2,OpenRouter,openai/gpt-image-2,Yes,No,No,No,,,Image,Yes,No
+Seedance 2.5: Text to Video,Comfy Cloud,Seedance 2.5: Text to Video,Yes,No,No,Yes,N/A,,Video,Yes,No
+Ideogram v4: Text to Image,Comfy Cloud,Ideogram v4: Text to Image,Yes,No,No,Yes,N/A,,Image,Yes,No
+LTX-2.5: Text to Video,Comfy Cloud,LTX-2.5: Text to Video,No,Yes,No,Yes,N/A,,Video,Yes,No
+Z-Image-Turbo Text to Image,Comfy Cloud,Z-Image-Turbo Text to Image,No,Yes,No,Yes,N/A,,Image,Yes,No
+Qwen-Image: Text to Image,Comfy Cloud,Qwen-Image: Text to Image,No,Yes,No,Yes,N/A,,Image,Yes,No
+Chatterbox,Featherless AI,ResembleAI/chatterbox,No,Yes,No,Yes,None,,Speech,No,Yes
+ACE-Step 1.5 Music Generation AIO,Comfy Cloud,ACE-Step 1.5 Music Generation AIO,No,Yes,No,Yes,None,,Music,Yes,No
+Stable Audio 2.5: Text to Audio,Comfy Cloud,Stable Audio 2.5: Text to Audio,No,Yes,No,Yes,N/A,,Sound,Yes,No
+Wan 3.0: Text to Video,Comfy Cloud,Wan3.0: Text to Video,No,Yes,No,Yes,N/A,,Video,Yes,No
+MiniMax Music 3: Text to Music,Comfy Cloud,MiniMax Music 3: Text to Music,Yes,No,No,Yes,N/A,,Music,Yes,No
+Fish Audio S2 Pro,OpenRouter,,No,Yes,No,No,None,,Speech,Yes,No
+Nemotron 3 Nano Omni,OpenRouter,nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free,No,Yes,No,No,None,,,Yes,No
+Qwen3.8 Omni Flash,OpenRouter,qwen/qwen3.8-omni-flash,No,Yes,No,No,None,,,Yes,No
+mradermacher/Llama-3.1-70B-Instruct-Lorablated-Creative-Writer-GGUF,Hugging Face,mradermacher/Llama-3.1-70B-Instruct-Lorablated-Creative-Writer-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+Stability Audio 2.5: Audio Inpainting,Comfy Cloud,Stability Audio 2.5: Audio Inpainting,Yes,No,No,Yes,N/A,,Sound,Yes,No
+Lyria 3 Pro Preview,OpenRouter,google/lyria-3-pro-preview,Yes,No,No,No,N/A,,Music,Yes,No
+mradermacher/DeepSeek-R1-Distill-Qwen-25.5B-Brainstorm-GGUF,Hugging Face,mradermacher/DeepSeek-R1-Distill-Qwen-25.5B-Brainstorm-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/DeepSeek-R1-Distill-Qwen-25.5B-Brainstorm-i1-GGUF,Hugging Face,mradermacher/DeepSeek-R1-Distill-Qwen-25.5B-Brainstorm-i1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/DeepHermes-3-Llama-3-8B-Preview-16.5B-Brainstorm-GGUF,Hugging Face,mradermacher/DeepHermes-3-Llama-3-8B-Preview-16.5B-Brainstorm-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/DeepHermes-3-Llama-3-8B-Preview-16.5B-Brainstorm-i1-GGUF,Hugging Face,mradermacher/DeepHermes-3-Llama-3-8B-Preview-16.5B-Brainstorm-i1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+KoboldAI/LLaMA2-13B-TiefighterLR,Featherless AI,KoboldAI/LLaMA2-13B-TiefighterLR,No,Yes,No,No,N/A,,,Yes,Yes
+TheDrummer/UnslopNemo-12B-v4.1,Featherless AI,TheDrummer/UnslopNemo-12B-v4.1,No,Yes,No,No,N/A,,,Yes,Yes
+TheDrummer/UnslopNemo-12B-v4,Featherless AI,TheDrummer/UnslopNemo-12B-v4,No,Yes,No,No,N/A,,,Yes,Yes
+TheDrummer/UnslopNemo-12B-v3,Featherless AI,TheDrummer/UnslopNemo-12B-v3,No,Yes,No,No,N/A,,,Yes,Yes
+TheDrummer/UnslopNemo-12B-v1,Featherless AI,TheDrummer/UnslopNemo-12B-v1,No,Yes,No,No,N/A,,,Yes,Yes
+TheDrummer/UnslopNemo-12B-v2-GGUF,Hugging Face,TheDrummer/UnslopNemo-12B-v2-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/L3-MOE-2X16.5B-DARKEST-Planet-Song-of-Fire-29B-GGUF,Hugging Face,mradermacher/L3-MOE-2X16.5B-DARKEST-Planet-Song-of-Fire-29B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/L3-MOE-2X16.5B-DARKEST-Planet-Song-of-Fire-29B-i1-GGUF,Hugging Face,mradermacher/L3-MOE-2X16.5B-DARKEST-Planet-Song-of-Fire-29B-i1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/L3.1-Instruct-Guru-8B-GGUF,Hugging Face,mradermacher/L3.1-Instruct-Guru-8B-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+mradermacher/L3.1-Instruct-Guru-8B-i1-GGUF,Hugging Face,mradermacher/L3.1-Instruct-Guru-8B-i1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No

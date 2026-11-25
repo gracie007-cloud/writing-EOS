@@ -257,11 +257,14 @@ MEDIA_MODALITIES = {"Text-to-Image": "Image", "Text-to-Speech (Audio)": "Speech"
                     "Speech": "Speech", "Music": "Music", "Sound": "Sound", "Speech-to-Text": "Speech-to-text"}
 
 
-def _catalog(models: list, rows: list, problems: list, *, uncensored: bool, source: str) -> None:
+def _catalog(models: list, rows: list, problems: list, *, uncensored: bool, source: str,
+             media_source: bool = False) -> None:
     """Fold a Notion catalog in. Its genre tags and categories join the model's; a route it names that the roster
     lacks is added; an ID the roster left empty is filled. The mature catalog also marks every model uncensored.
     A Hugging Face row not served through Inference Providers is a fine-tune base (never called). A media row that
-    matches no roster row is reported, not added: media models are named per workflow and need the Author's ID."""
+    matches no roster row is reported, not added: media models are named per workflow and need the Author's ID. The
+    proprietary catalog is the exception (`media_source`): the Author keeps every media model there (2026-11-25), so its
+    media rows are added with their modality."""
     for r in rows:
         name, mid, provider = r["Model Name"].strip(), _cell(r, "Provider Model ID"), _cell(r, "Provider")
         if not provider:
@@ -275,7 +278,7 @@ def _catalog(models: list, rows: list, problems: list, *, uncensored: bool, sour
                                                                                   problems, source)):
             mine.append(claimed)
         if not any(m["provider"] == provider for m in mine):
-            if media:
+            if media and not media_source:
                 problems.append(f"{source}: the {media.lower()} model {name!r} on {provider} matches no roster "
                                 f"row; not added (confirm its name and ID in the roster)")
                 continue
@@ -284,7 +287,7 @@ def _catalog(models: list, rows: list, problems: list, *, uncensored: bool, sour
                    "open_weights": _yes(r.get("Open-Weights Model")), "uncensored": uncensored,
                    "can_run_locally": _yes(r.get("Can Run Locally")),
                    "comparable": _cell(r, "Comparable Equivalent Model"), "fallback": _cell(r, "Fallback Model"),
-                   "modality": "", "genres": [], "genre_categories": [], "fine_tune_base": False,
+                   "modality": media, "genres": [], "genre_categories": [], "fine_tune_base": False,
                    "served_context": None, "register_id": "", "same_as": ""}
             models.append(new)
             mine.append(new)
@@ -371,7 +374,8 @@ def build(export_csv, mature_csv=None, register_json=None, open_csv=None, propri
         _catalog(models, _read_csv(open_csv), problems, uncensored=False, source="open-weight catalog")
         sources.append("Notion LLM Identifier for Creative Writing: Open-Weight & Fine-Tuned Models (export)")
     if proprietary_csv:
-        _catalog(models, _read_csv(proprietary_csv), problems, uncensored=False, source="proprietary catalog")
+        _catalog(models, _read_csv(proprietary_csv), problems, uncensored=False, source="proprietary catalog",
+                 media_source=True)
         sources.append("Notion LLM Identifier for Creative Writing: Proprietary & Open/Near Frontier Models (export)")
     if register_json:
         _register(models, json.loads(Path(register_json).read_text(encoding="utf-8")), problems)
