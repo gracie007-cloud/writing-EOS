@@ -120,31 +120,30 @@ The database does not record what a component takes in, its code parts, what a c
   a component with no Fallback of its own takes its Primary's, and a checker whose experts refuse mature text
   turns to the writer's own Comparable, then Fallback, when they may take it (never the writer's model, P8). A
   pairing that names no model in the registry is reported by the build and left out;
-- the **register** `..\registry.json` (verified against the providers on 2026-11-14): the context each provider
-  actually serves (`served_context`: size every request to it), the register ID (W01 to W77, C01 to C10), the
-  Genre Matrix subgenres each model serves, and a model's second route on OpenRouter.
+- two **same-model pairs** the catalogs' notes record (UnslopNemo 12B and Venice / Dolphin, each on OpenRouter and
+  Featherless AI): one model on two routes, so P8 and outages treat it as one.
+
+The 14 November register (`..\registry.json`, `..\routing.json`, `REGISTER.md`, `VERIFICATION.md`) is **not used**:
+the Author found it incorrect (2026-11-25). Base models for fine-tuning live only in the Notion database *Base
+Models for Fine-Tuning* and are never called.
 
 Export the roster and the catalogs from Notion as CSV and rebuild:
 
-    python -m eos_app.registry "..\roster\LLM Identifier export.csv" --mature "..\llm-identifier-creative-writing-abliterated\abliterated_models.csv" --open "..\llm-identifier-creative-writing-open-weight\open_weight_models.csv" --proprietary "..\llm-identifier-creative-writing-proprietary\proprietary_models.csv" --register ..\registry.json
+    python -m eos_app.registry "..\roster\LLM Identifier export.csv" --mature "..\llm-identifier-creative-writing-abliterated\abliterated_models.csv" --open "..\llm-identifier-creative-writing-open-weight\open_weight_models.csv" --proprietary "..\llm-identifier-creative-writing-proprietary\proprietary_models.csv"
 
-The build lists rows that look mistyped (an ID copied from another row, a model listed twice) and the models the
-register verified that neither Notion source lists yet. Where a newer source names a mistyped roster row, the row
-takes that name and the build says so; correct the roster to match.
-
-The register's routing table, `..\routing.json` (which models write for each pen name in each Genre Matrix path, by
-role), is read from the repository root when the app loads, like the library pools. It names pen names, so it is
-never copied into the app (D10).
+The build lists rows that look mistyped (an ID copied from another row, a model listed twice) and pairings that
+name no model. Where a newer source names a mistyped roster row, the row takes that name and the build says so;
+correct the roster to match.
 
 `eos_app/router.py` picks the model for each call (`config/routing.yaml`):
 - **Experts:** each component's Primary, then its Comparable, then its Fallback (the database's Fallback Model, or the Primary's roster Fallback when that is empty). A cheaper comparable model goes first.
 - **Routes:** a model listed in the roster under two providers has two routes. When a provider is down, the router tries the same model's other route before it moves to the next expert. To give a model a second route, add a roster row with the same Model Name and the other provider.
 - **No ID, no call:** a model with no provider model ID is never chosen.
 - **Lanes:** each lane's providers are listed in `routing.yaml` and enforced.
-- **Prose:** writers in Prose Writing use the register's writers for the book's pen name and subgenre (lead
-  writers, then strong adjacent fits, in the register's order), then every model tagged for the subgenre, with the
-  component's own experts behind them as the safety net. Pass `pen_name=` and `genre=` (the minor subgenre, or the
-  major where the path has none) to `writer_models()` or `choose_writer()`.
+- **Prose:** writers in Prose Writing are every model the catalogs tag for the book's subgenre, with the component's
+  own experts behind them as the safety net. Pass `genre=` (the minor subgenre, or the major where the path has
+  none) to `writer_models()` or `choose_writer()`. A pen name does not change the choice yet: its only source was the
+  superseded register.
 - **Mature tier (P10, D33):** mature text goes only to an uncensored model served by an inference provider or an
   aggregator: Featherless AI or OpenRouter. Local models and fine-tune bases are not in it. A prose writer uses the
   tier's models fitted to the book and never its general experts; any other text component with no mature expert

@@ -18,7 +18,6 @@ from eos_app.workflow import load_components
 ROOT = Path(__file__).resolve().parents[2]
 ROSTER = ROOT / "roster" / "LLM Identifier export.csv"
 MATURE = ROOT / "llm-identifier-creative-writing-abliterated" / "abliterated_models.csv"
-REGISTER, ROUTING = ROOT / "registry.json", ROOT / "routing.json"
 OPEN = ROOT / "llm-identifier-creative-writing-open-weight" / "open_weight_models.csv"
 PROPRIETARY = ROOT / "llm-identifier-creative-writing-proprietary" / "proprietary_models.csv"
 
@@ -44,16 +43,6 @@ def catalog():
         return list(csv.DictReader(f))
 
 
-@pytest.fixture(scope="module")
-def table():
-    return json.loads(ROUTING.read_text(encoding="utf-8"))
-
-
-@pytest.fixture(scope="module")
-def ids():
-    return {w["id"]: w["hf_repo"] for w in json.loads(REGISTER.read_text(encoding="utf-8"))["models"]}
-
-
 def named(R, name, provider):
     return next(m for m in R.models if m.name == name and m.provider == provider)
 
@@ -62,22 +51,15 @@ def tier_models(R, RT):
     return [m for m in R.models if mature_ok(m, RT)]
 
 
-def subgenre(row):
-    return row["minor_subgenre"] or row["major_subgenre"]
-
-
-def mature_led_row(table, ids, R, RT):
-    """A routing-table row whose first lead writer is in the mature tier: its pen name, subgenre and that model."""
-    tier = {m.name for m in R.models if mature_ok(m, RT)}
-    row = next(r for r in table if r["lead_writer"] and ids[r["lead_writer"][0]["model"]] in tier)
-    return row["pen_name"], subgenre(row), ids[row["lead_writer"][0]["model"]]
+GENRE = "Legal Thriller"          # a subgenre the catalogs tag mature-tier models for
 
 
 def test_the_shipped_registry_is_exactly_what_the_tool_builds_from_the_sources():
-    built = registry.build(ROSTER, MATURE, REGISTER, OPEN, PROPRIETARY)
+    built = registry.build(ROSTER, MATURE, OPEN, PROPRIETARY)
     shipped = yaml.safe_load(registry.MODELS_PATH.read_text(encoding="utf-8"))
     assert built["models"] == shipped["models"] and built["problems"] == shipped["problems"]
-    assert len(registry.load_fits()) == 538                              # one per Genre Matrix row with a model
+    assert "registry.json" not in shipped["source"]       # the 2026-11-14 register is superseded (the Author, 2026-11-25)
+    assert not any(m["register_id"] or m["served_context"] for m in shipped["models"])
     assert "pen_names" not in shipped["models"][0]                       # pen names stay outside the app (D10)
 
 
@@ -91,7 +73,7 @@ def test_every_catalog_model_is_uncensored_on_the_catalogs_provider(R, catalog):
 
 def test_hugging_face_ggufs_are_fine_tune_bases_and_never_called(R, RT, W):
     bases = [m for m in R.models if m.fine_tune_base]
-    assert len(bases) == 42 and {m.provider for m in bases} == {"Hugging Face"}
+    assert len(bases) == 40 and {m.provider for m in bases} == {"Hugging Face"}
     assert all("fine-tune base" in unusable(m) for m in bases)
     assert not any(mature_ok(m, RT) for m in bases)
 
@@ -103,23 +85,20 @@ def test_mature_text_goes_only_to_an_inference_provider_or_an_aggregator(R, RT):
     assert len(local) == 8 and not any(mature_ok(m, RT) for m in local)   # local is not in the tier (2026-11-25)
 
 
-def test_the_registers_writers_for_the_pen_name_lead_in_its_order(W, R, RT, table, ids):
+def test_prose_writers_come_from_the_catalogs_genre_tags_not_the_register(W, R, RT):
     draft = W.by_step["32"]
-    rows = [r for r in table if len(r["lead_writer"]) > 2]
-    pen, genre = rows[0]["pen_name"], subgenre(rows[0])
-    leads = [ids[x["model"]] for r in table if r["pen_name"] == pen and subgenre(r) == genre for x in r["lead_writer"]]
-    got = [m.name for m in writer_models(draft, R, RT, genre=genre, pen_name=pen)]
-    assert [n for n in got if n in leads] == list(dict.fromkeys(leads))  # the register's order, routes beside each
-    assert got.index(leads[-1]) < got.index("Claude Fable 5.1")         # the component's experts stay behind
+    tagged = {m.name for m in R.for_genre(GENRE)}
+    got = [m.name for m in writer_models(draft, R, RT, genre=GENRE, pen_name="any pen name")]
+    assert got[0] in tagged and not R.fits                               # no pen-name source until a correct one exists
+    assert got.index("Claude Fable 5.1") > max(got.index(n) for n in got if n in tagged)   # experts stay behind
 
 
-def test_mature_prose_uses_only_the_tier_never_the_stand_ins(W, R, RT, table, ids):
+def test_mature_prose_uses_only_the_tier_never_the_stand_ins(W, R, RT):
     draft = W.by_step["32"]
-    pen, genre, lead = mature_led_row(table, ids, R, RT)
-    tier = writer_models(draft, R, RT, genre=genre, pen_name=pen, mature=True)
+    tier = writer_models(draft, R, RT, genre=GENRE, mature=True)
     assert tier and all(mature_ok(m, RT) for m in tier)
     assert "Claude Fable 5.1" not in {m.name for m in tier}
-    assert tier[0].name == lead                                          # the register's first lead writer
+    assert all(GENRE in m.genres or any(GENRE in x.genres for x in R.routes(m)) for m in tier)
 
 
 def test_venice_on_openrouter_and_featherless_are_both_used_as_one_model(W, R, RT):
@@ -133,18 +112,17 @@ def test_unslopnemo_on_openrouter_is_one_model_with_its_featherless_route(R, RT)
     orr = named(R, "TheDrummer: UnslopNemo 12B", "OpenRouter")
     fl = named(R, "TheDrummer/UnslopNemo-12B-v4.1", "Featherless AI")
     assert orr.ident == fl.ident and orr.model_id == "thedrummer/unslopnemo-12b"
-    assert mature_ok(orr, RT) and mature_ok(fl, RT) and fl.served_context == 32768
+    assert mature_ok(orr, RT) and mature_ok(fl, RT)
     assert not named(R, "TheDrummer/UnslopNemo-12B-v4", "Featherless AI").uncensored   # only v4.1 is in the tier
 
 
-def test_a_text_component_with_no_mature_expert_hands_the_passage_to_the_tier(W, R, RT, table, ids):
+def test_a_text_component_with_no_mature_expert_hands_the_passage_to_the_tier(W, R, RT):
     edit = W.by_step["NEW-15"]                                          # Proofreader: general lane, text
     assert not any(mature_ok(m, RT) for _, m in experts(edit, R))
     with pytest.raises(RoutingError, match="give its subgenre"):
         writer_models(edit, R, RT, mature=True)
-    pen, genre, lead = mature_led_row(table, ids, R, RT)
-    picked = writer_models(edit, R, RT, genre=genre, pen_name=pen, mature=True)
-    assert picked[0].name == lead and all(mature_ok(m, RT) for m in picked)
+    picked = writer_models(edit, R, RT, genre=GENRE, mature=True)
+    assert picked and all(mature_ok(m, RT) for m in picked)
 
 
 def test_venice_uncensored_never_judges_text_its_own_model_wrote(W, R, RT):
@@ -161,12 +139,16 @@ def test_venice_uncensored_never_judges_text_its_own_model_wrote(W, R, RT):
 def test_the_catalogs_pair_each_model_with_a_comparable_and_a_fallback(R):
     haiku = named(R, "Claude Haiku 5.5", "Concentrate AI")
     assert haiku.fallback == "GPT-6 Luna"                               # the proprietary catalog (2026-11-25)
-    assert any("'Kimi K3.1' names no model" in p for p in R.problems)  # reported, never guessed
+    # the Author's pairings of 2026-11-25: Kimi K3.1 is Kimi K3.1 Pro; Haiku's comparable is Nemotron Lightning 3.5
+    assert named(R, "Gemini 4 Argon", "Concentrate AI").fallback == "Kimi K3.1 Pro"
+    assert haiku.comparable == "Nemotron Lightning 3.5 30B A3B"
+    assert named(R, "Kimi K3.1 Pro", "Concentrate AI").fallback == "Step 5 Preview"
+    assert not any("names no model" in p for p in R.problems)
 
 
 def test_the_corrected_qwen3_vl_row_is_the_32b_model_featherless_serves(R):
     row = named(R, "DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking", "Featherless AI")
-    assert row.register_id == "W41" and "Space Opera" in row.genres and row.uncensored
+    assert "Space Opera" in row.genres and row.uncensored
     assert not any("renamed" in p for p in R.problems)          # corrected in Notion (2026-11-25), nothing to rename
 
 
@@ -174,7 +156,7 @@ def test_readiness_sizes_the_mature_tier(W, R, RT):
     rep = report(W, R, RT)
     assert rep["mature_models"] == 62 and dict(rep["mature_tier"]) == {"Featherless AI": 62, "OpenRouter": 2}
     assert "Sonar Deep Research" not in {m.name for m in tier_models(R, RT)}       # not uncensored in Notion
-    assert rep["fine_tune_bases"] == 42
+    assert rep["fine_tune_bases"] == 40
 
 
 def test_the_open_weight_catalog_adds_routes_and_ids_but_not_the_uncensored_mark(R):
@@ -192,7 +174,7 @@ def test_the_open_weight_catalog_adds_routes_and_ids_but_not_the_uncensored_mark
 def test_the_proprietary_catalog_adds_concentrate_routes_and_its_media_models(R):
     with open(PROPRIETARY, encoding="utf-8", newline="") as f:
         rows = list(csv.DictReader(f))
-    assert len(rows) == 62
+    assert len(rows) == 63                                       # + Nemotron Lightning 3.5 30B A3B (2026-11-25)
     for name in ("Claude Fable 5", "Claude Fable 5.2", "Gemini 4 Neon", "Kimi K3.1 Pro", "Qwen3.8 Omni Flash"):
         m = named(R, name, "Concentrate AI")
         assert m.frontier and not m.uncensored and m.genres

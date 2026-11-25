@@ -87,6 +87,6 @@ def test_open_items_are_named(rep, W):
     assert "Writers nothing checks (4): Character Interview, Proofread, Music, Sound Effects" in text
     # D33: text hands mature passages to the tier; the media components now have open models for them
     assert "No route for mature material" not in text
-    assert ("Mature tier: 62 models, 64 routes (Featherless AI 62, OpenRouter 2), fitted to 218 subgenres · "
-            "42 fine-tune bases recorded, never called") in text
+    assert ("Mature tier: 62 models, 64 routes (Featherless AI 62, OpenRouter 2), fitted to 212 subgenres · "
+            "40 fine-tune bases recorded, never called") in text
     assert "Concentrate AI: 106 components (17 of them run in every chapter)" in text

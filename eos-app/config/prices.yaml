@@ -53,3 +53,4 @@ concentrate-ai-gemini-4-neon: {input: 3.0, output: 15.0}   # Gemini 4 Neon · co
 concentrate-ai-kimi-k3-1-pro: {input: 1.6, output: 9.61}   # Kimi K3.1 Pro · concentrate.ai/models, 2026-11-25
 concentrate-ai-kimi-k3-1-pro-highspeed: {input: 4.0, output: 20.0}   # Kimi K3.1 Pro Highspeed · concentrate.ai/models, 2026-11-25
 concentrate-ai-qwen3-8-omni-flash: {input: 0.11, output: 0.38}   # Qwen3.8 Omni Flash · concentrate.ai/models, 2026-11-25
+concentrate-ai-nemotron-lightning-3-5-30b: {input: 0.05, output: 0.2}   # Nemotron Lightning 3.5 30B A3B · concentrate.ai/models, 2026-11-25

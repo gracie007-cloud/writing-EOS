@@ -1,3 +1,5 @@
+> **Superseded (2026-11-25).** The Author found this 14 November register incorrect. The app no longer reads it (nor `registry.json` or `routing.json`); models come only from the Notion databases (the roster *LLM Identifier - Master List* and the three *LLM Identifier for Creative Writing* catalogs). Kept for reference until the Author says to delete it.
+
 # Pen Name and Fine-Tuned Model Assignment Register
 
 **For:** Claude Code, building the Writing EOS app · **Data verified:** 14 November 2026 · **Roster:** 87 models (77 prose writers, 10 component specialists) · 44 pen names · 739 Genre Matrix rows

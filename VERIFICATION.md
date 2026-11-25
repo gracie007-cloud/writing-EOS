@@ -1,3 +1,5 @@
+> **Superseded (2026-11-25).** The Author found this 14 November register incorrect. The app no longer reads it (nor `registry.json` or `routing.json`); models come only from the Notion databases (the roster *LLM Identifier - Master List* and the three *LLM Identifier for Creative Writing* catalogs). Kept for reference until the Author says to delete it.
+
 # Verification log: model register, 14 November 2026
 
 Every model ID was checked live against the Hugging Face API (`/api/models/{id}`) and the Featherless AI API (`/v1/models/{id}`) on 14 November 2026. The Notion database "LLM Identifier for Creative Writing" and the Google Drive model documents were treated as scaffolding: each claim below was checked, not copied.
