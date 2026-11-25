@@ -1,9 +1,10 @@
 # Writing EOS model registry (FR-ML-1, D33): the app's copy of the Notion roster LLM Identifier, joined
-# with the mature catalog (Abliterated & Uncensored Models) and the 2026-11-14 register.
+# with the mature, open-weight and proprietary catalogs and the 2026-11-14 register.
 # Built by `python -m eos_app.registry`; do not edit by hand.
 version: '2026-11-25'
 source: 'Notion LLM Identifier (export); Notion LLM Identifier for Creative Writing: Abliterated & Uncensored Models (export);
-  Notion LLM Identifier for Creative Writing: Open-Weight & Fine-Tuned Models (export); registry.json (verified 2026-11-14)'
+  Notion LLM Identifier for Creative Writing: Open-Weight & Fine-Tuned Models (export); Notion LLM Identifier for Creative
+  Writing: Proprietary & Open/Near Frontier Models (export); registry.json (verified 2026-11-14)'
 problems:
 - 'Featherless AI: the name ''DavidAU/Qwen3-VL-12B-Thinking-Brainstorm20x-NEO-MAX-GGUF'' and the ID ''DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking''
   disagree (an ID copied from another row?)'
@@ -49,6 +50,35 @@ problems:
 - 'Featherless AI: ''Chatterbox'' had no provider model ID; ''ResembleAI/chatterbox'' taken from the open-weight catalog'
 - 'open-weight catalog: the image model ''Z-Image-Turbo Text to Image'' on Comfy Cloud matches no roster row; not added (confirm
   its name and ID in the roster)'
+- 'proprietary catalog: the music model ''ACE-Step 1.5 Music Generation AIO'' on Comfy Cloud matches no roster row; not added
+  (confirm its name and ID in the roster)'
+- 'OpenRouter: ''Fish Audio S2 Pro'' had no provider model ID; ''fish-audio/s2-pro'' taken from the proprietary catalog'
+- 'proprietary catalog: the video model ''FLUX 3 Video Image-to-Video'' on Comfy Cloud matches no roster row; not added (confirm
+  its name and ID in the roster)'
+- 'proprietary catalog: the image model ''FLUX.2 Pro'' on Comfy Cloud matches no roster row; not added (confirm its name and
+  ID in the roster)'
+- 'proprietary catalog: the speech model ''Gemini 3.1 Flash TTS Preview'' on OpenRouter matches no roster row; not added (confirm
+  its name and ID in the roster)'
+- 'proprietary catalog: the image model ''Ideogram v4: Text to Image'' on Comfy Cloud matches no roster row; not added (confirm
+  its name and ID in the roster)'
+- 'proprietary catalog: the video model ''LTX-2.5: Text to Video'' on Comfy Cloud matches no roster row; not added (confirm
+  its name and ID in the roster)'
+- 'proprietary catalog: the music model ''MiniMax Music 3: Text to Music'' on Comfy Cloud matches no roster row; not added
+  (confirm its name and ID in the roster)'
+- 'proprietary catalog: the image model ''Nano Banana Pro'' on Comfy Cloud matches no roster row; not added (confirm its name
+  and ID in the roster)'
+- 'proprietary catalog: the image model ''Qwen-Image 3.0: Text to Image'' on Comfy Cloud matches no roster row; not added
+  (confirm its name and ID in the roster)'
+- 'proprietary catalog: the video model ''Seedance 2.5: Text to Video'' on Comfy Cloud matches no roster row; not added (confirm
+  its name and ID in the roster)'
+- 'proprietary catalog: the sound model ''Stability Audio 2.5: Audio Inpainting'' on Comfy Cloud matches no roster row; not
+  added (confirm its name and ID in the roster)'
+- 'proprietary catalog: the sound model ''Stable Audio 2.5: Text to Audio'' on Comfy Cloud matches no roster row; not added
+  (confirm its name and ID in the roster)'
+- 'proprietary catalog: the video model ''Wan 3.0: Image to Video'' on Comfy Cloud matches no roster row; not added (confirm
+  its name and ID in the roster)'
+- 'proprietary catalog: the video model ''Wan 3.0: Text to Video'' on Comfy Cloud matches no roster row; not added (confirm
+  its name and ID in the roster)'
 - 'register W69: ''DavidAU/LFM2.5-2.6B-Qwen3.8-Turbo-Brilliance-Power-X12-NEO-MAX-GGUF'' is in neither Notion source; added
   on Hugging Face from the register (add it to the roster)'
 models:
@@ -80,8 +110,35 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Crime Fiction
+  - Police Officers
+  - Humor
+  - Adventure Fiction
+  - Romantic Fiction
+  - Western Drama
+  - Psychological Horror
+  - Guidebook
+  - Popular Biography
+  - Celebrity Biography
+  - Familiar Essay
+  - Travelogue
+  - Motivational
+  - Narrative
+  - Personal Narrative
+  - School Stories
+  - Middle-Grade Mystery
+  - Picture Books
+  - Early Readers
+  - Chapter Books
+  - Documentary Theatre
+  - Morality Play
+  - Graphic Novel Scripting
+  genre_categories:
+  - E
+  - F
+  - H
+  - C
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -97,8 +154,56 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - True Crime
+  - Historical Crime Fiction
+  - Crime Fiction
+  - Police Officers
+  - Heist Fiction
+  - Organized Crime
+  - Legal Thriller
+  - Legal Drama
+  - Courtroom Drama
+  - Historical Legal Drama
+  - Domestic Noir
+  - Crime Noir
+  - Post-Cyberpunk
+  - AI Science Fiction
+  - Utopian Fiction
+  - Telepathic Science Fiction
+  - Speculative Fiction
+  - Speculative Biology
+  - Western Drama
+  - Romantic Fiction
+  - Psychological Horror
+  - Humor
+  - Dystopian
+  - Lit RPG/Gamelit
+  - Guidebook
+  - Adventure
+  - Personal Finance
+  - Personal Development
+  - Reference Biography
+  - Political Biography
+  - Persuasive
+  - Critical Essay
+  - Argumentative
+  - Spiritual Autobiography
+  - Testimonio
+  - Memoir
+  - Sestina
+  - Pantoum
+  - Documentary Theatre
+  - Morality Play
+  - Free Verse
+  - Epigram
+  - Dramatic Monologue
+  - Lyric Essay
+  genre_categories:
+  - F
+  - D
+  - H
+  - B
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -114,8 +219,43 @@ models:
   comparable: ''
   fallback: Kimi  K3
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Police Officers
+  - True Crime
+  - Historical Crime Fiction
+  - Crime Fiction
+  - Heist Fiction
+  - Organized Crime
+  - Legal Thriller
+  - Legal Drama
+  - Courtroom Drama
+  - Historical Legal Drama
+  - Domestic Noir
+  - Crime Noir
+  - Post-Cyberpunk
+  - AI Science Fiction
+  - Utopian Fiction
+  - Telepathic Science Fiction
+  - Speculative Fiction
+  - Speculative Biology
+  - Western Drama
+  - Romantic Fiction
+  - Psychological Horror
+  - Humor
+  - Dystopian
+  - Lit RPG/Gamelit
+  - Sestina
+  - Pantoum
+  - Documentary Theatre
+  - Morality Play
+  - Free Verse
+  - Epigram
+  - Dramatic Monologue
+  - Lyric Essay
+  genre_categories:
+  - F
+  - D
+  - B
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -131,8 +271,36 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Police Officers
+  - True Crime
+  - Historical Crime Fiction
+  - Crime Fiction
+  - Culinary Mysteries
+  - Legal Thriller
+  - Legal Drama
+  - Courtroom Drama
+  - Historical Legal Drama
+  - Domestic Noir
+  - Crime Noir
+  - Financial Thriller
+  - Corporate Science Fiction
+  - Western Drama
+  - Romantic Fiction
+  - Psychological Horror
+  - Humor
+  - School Stories
+  - Middle-Grade Mystery
+  - Dystopian
+  - Guidebook
+  - Personal Finance
+  - Persuasive
+  - Documentary Theatre
+  genre_categories:
+  - F
+  - E
+  - C
+  - H
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -347,8 +515,16 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Speculative Fiction
+  - Contemporary Fiction
+  - Romantic Comedy
+  - Mystery Thriller
+  - YA Academy Fantasy
+  genre_categories:
+  - D
+  - E
+  - C
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -364,8 +540,16 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Cozy Fiction
+  - Slice-of-Life Fiction
+  - Middle Grade
+  - Expository
+  - Self-Help
+  - Guidebook
+  genre_categories:
+  - E
+  - H
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -381,8 +565,16 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Speculative Fiction
+  - Hard Science Fiction
+  - Mystery Thriller
+  - Historical Adventure
+  - Alternate History
+  genre_categories:
+  - D
+  - F
+  - G
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -398,8 +590,17 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - General Literary Fiction
+  - Philosophical Fiction
+  - Hard Science Fiction
+  - Alternate History
+  - Historical Epic Drama
+  - Literary Mystery
+  genre_categories:
+  - B
+  - D
+  - G
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -524,8 +725,16 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Cozy Fiction
+  - Slice-of-Life Fiction
+  - Early Readers
+  - Chapter Books
+  - Guidebook
+  - Self-Help
+  genre_categories:
+  - E
+  - H
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -541,8 +750,17 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - General Literary Fiction
+  - Literary Thriller
+  - Contemporary Fiction
+  - Essay
+  - Biography
+  - Memoir
+  genre_categories:
+  - B
+  - F
+  - H
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -558,8 +776,16 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Cozy Fiction
+  - Slice-of-Life Fiction
+  - Chapter Books
+  - Middle Grade
+  - Self-Help
+  - Guidebook
+  genre_categories:
+  - E
+  - H
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -575,8 +801,15 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Contemporary Fiction
+  - Romantic Comedy
+  - Beach Reads
+  - Cozy Mystery
+  - Slice-of-Life Fiction
+  genre_categories:
+  - E
+  - C
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -592,8 +825,19 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - General Literary Fiction
+  - Hard Science Fiction
+  - Legal Thriller
+  - Conspiracy Thriller
+  - Historical Drama
+  - Essay
+  - Biography
+  genre_categories:
+  - B
+  - D
+  - F
+  - H
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -609,8 +853,22 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - General Literary Fiction
+  - Philosophical Fiction
+  - Hard Science Fiction
+  - Alternate History
+  - Historical Epic Drama
+  - Literary Mystery
+  - Literary Thriller
+  - Critical Essay
+  - Historical Biography
+  - Memoir
+  genre_categories:
+  - B
+  - D
+  - G
+  - H
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -626,8 +884,17 @@ models:
   comparable: ''
   fallback: GLM-5.3-Flash
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Contemporary Fiction
+  - Romantic Comedy
+  - Cozy Mystery
+  - Slice-of-Life Fiction
+  - Mystery Thriller
+  - Middle Grade
+  genre_categories:
+  - E
+  - C
+  - F
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -643,8 +910,21 @@ models:
   comparable: ''
   fallback: MiMo-2.6-Pro
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - General Literary Fiction
+  - Hard Science Fiction
+  - Techno-Thriller
+  - Legal Thriller
+  - Conspiracy Fiction
+  - Multi-generational Saga
+  - Essay
+  - Biography
+  - Self-Help
+  genre_categories:
+  - B
+  - D
+  - F
+  - H
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -689,8 +969,21 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Satire
+  - Dark Comedy
+  - Cyberpunk
+  - Techno-Thriller
+  - Conspiracy Thriller
+  - Hard-boiled Fiction
+  - Neo-Noir
+  - Speculative Fiction
+  - Transgressional Fiction
+  genre_categories:
+  - F
+  - D
+  - E
+  - A
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -706,8 +999,18 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - East Asian Historical Fiction
+  - Wuxia Fantasy
+  - Xianxia Fantasy
+  - Corporate Science Fiction
+  - Financial Thriller
+  - Expository
+  - Historical Biography
+  genre_categories:
+  - G
+  - D
+  - H
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -723,8 +1026,21 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Multi-generational Saga
+  - Space Opera
+  - Wuxia Fantasy
+  - Xianxia Fantasy
+  - Hard Science Fiction
+  - Historical Epic Drama
+  - Literary Fiction
+  - Conspiracy Thriller
+  - East Asian Historical Fiction
+  genre_categories:
+  - G
+  - D
+  - B
+  - F
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -740,8 +1056,18 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Medical Thriller
+  - Financial Thriller
+  - Hard Science Fiction
+  - Corporate Science Fiction
+  - Health & Wellness
+  - Personal Finance
+  - Expository
+  genre_categories:
+  - D
+  - F
+  - H
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -757,8 +1083,17 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Adventure Fiction
+  - Mystery Thriller
+  - Contemporary Fiction
+  - Cozy Mystery
+  - Slice-of-Life Fiction
+  - Pulp Fiction
+  genre_categories:
+  - E
+  - F
+  - D
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -774,8 +1109,16 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Speculative Fiction
+  - Contemporary Fiction
+  - Romantic Adventure
+  - Cozy Sci-Fi
+  - Graphic Novel Scripting
+  genre_categories:
+  - D
+  - C
+  - E
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -791,8 +1134,19 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Hard Science Fiction
+  - Space Opera
+  - Speculative Fiction
+  - Cyberpunk
+  - General Literary Fiction
+  - Historical Epic Drama
+  - Graphic Novel Scripting
+  genre_categories:
+  - D
+  - B
+  - G
+  - C
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -808,8 +1162,20 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Techno-Thriller
+  - Legal Thriller
+  - Financial Thriller
+  - Espionage Thriller
+  - Crime Noir
+  - Cyberpunk
+  - Hard Science Fiction
+  - General Literary Fiction
+  - Political Thriller
+  genre_categories:
+  - F
+  - D
+  - B
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -825,8 +1191,18 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - General Literary Fiction
+  - Speculative Fiction
+  - Historical Epic Drama
+  - Mystery Thriller
+  - Conspiracy Fiction
+  - Multi-generational Saga
+  genre_categories:
+  - B
+  - D
+  - G
+  - F
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -842,8 +1218,19 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Legal Thriller
+  - Financial Thriller
+  - Medical Thriller
+  - Literary Realism
+  - Personal Finance
+  - Health & Wellness
+  - Historical Biography
+  - Memoir
+  genre_categories:
+  - F
+  - H
+  - B
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -884,8 +1271,17 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - General Literary Fiction
+  - Speculative Fiction
+  - Dystopian Fiction
+  - Alternate History
+  - Wuxia Fantasy
+  - Literary Mystery
+  genre_categories:
+  - B
+  - D
+  - G
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -901,8 +1297,20 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - General Literary Fiction
+  - Historical Epic Drama
+  - Wuxia Fantasy
+  - Xianxia Fantasy
+  - Hard Science Fiction
+  - Space Opera
+  - Critical Essay
+  - Historical Biography
+  genre_categories:
+  - B
+  - G
+  - D
+  - H
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -918,8 +1326,47 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Legal Thriller
+  - Legal Drama
+  - Courtroom Drama
+  - Historical Legal Drama
+  - Domestic Noir
+  - Crime Noir
+  - Crime Fiction
+  - True Crime
+  - Historical Crime Fiction
+  - Cozy Sci-Fi
+  - Culinary Mysteries
+  - Culinary Cozy Mystery
+  - Speculative Fiction
+  - Speculative Biology
+  - Hard Science Fiction
+  - Telepathic Science Fiction
+  - Utopian Fiction
+  - Synthwave
+  - TV Movie Video Game Adaptations
+  - Lit RPG/Gamelit
+  - Persuasive
+  - Critical Essay
+  - Argumentative
+  - Expository
+  - Formal Essay
+  - Adventure
+  - Guidebook
+  - Reference Biography
+  - Political Biography
+  - Personal Finance
+  - Personal Development
+  - Sestina
+  - Pantoum
+  - Documentary Theatre
+  - Morality Play
+  genre_categories:
+  - F
+  - D
+  - H
+  - B
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -993,8 +1440,16 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Cozy Fiction
+  - Slice-of-Life Fiction
+  - Cozy Mystery
+  - Beach Reads
+  - Chapter Books
+  - Guidebook
+  genre_categories:
+  - E
+  - F
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -1010,8 +1465,16 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Speculative Fiction
+  - Techno-Thriller
+  - Mystery Thriller
+  - Contemporary Fiction
+  - Romantic Drama
+  genre_categories:
+  - D
+  - F
+  - C
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -1105,8 +1568,19 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - General Literary Fiction
+  - Romantic Drama
+  - Wuxia Fantasy
+  - Xianxia Fantasy
+  - Space Opera
+  - Multi-generational Saga
+  - Graphic Novel Scripting
+  genre_categories:
+  - B
+  - C
+  - D
+  - G
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -1144,8 +1618,18 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Philosophical Fiction
+  - Literary Realism
+  - Political Fiction
+  - Legal Social Commentary
+  - Argumentative
+  - Critical Essay
+  - Historical Biography
+  genre_categories:
+  - B
+  - H
+  - F
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -1161,8 +1645,18 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Philosophical Fiction
+  - Literary Realism
+  - Political Fiction
+  - Legal Social Commentary
+  - Argumentative
+  - Critical Essay
+  - Historical Biography
+  genre_categories:
+  - B
+  - H
+  - F
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -1178,8 +1672,17 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Cozy Fiction
+  - Slice-of-Life Fiction
+  - Amateur Sleuth Mystery
+  - Expository
+  - Self-Help
+  - Guidebook
+  genre_categories:
+  - E
+  - H
+  - F
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -1195,8 +1698,20 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Historical Biography
+  - Reference Biography
+  - Political Biography
+  - Guidebook
+  - Travelogue
+  - Expository
+  - Historical Mystery
+  - Historical Thrillers
+  - True Crime
+  genre_categories:
+  - H
+  - G
+  - F
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -1212,8 +1727,18 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Financial Thriller
+  - Corporate Science Fiction
+  - Conspiracy Thriller
+  - Hard Science Fiction
+  - Personal Finance
+  - Expository
+  - Political Biography
+  genre_categories:
+  - F
+  - D
+  - H
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -6370,8 +6895,17 @@ models:
   comparable: ''
   fallback: ''
   modality: Image
-  genres: []
-  genre_categories: []
+  genres:
+  - Book Covers & Stylized Illustrations (All Genres)
+  genre_categories:
+  - A
+  - B
+  - C
+  - D
+  - E
+  - F
+  - G
+  - H
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -6677,7 +7211,7 @@ models:
 - key: openrouter-fish-audio-s2-pro
   name: Fish Audio S2 Pro
   provider: OpenRouter
-  model_id: ''
+  model_id: fish-audio/s2-pro
   frontier: true
   open_weights: false
   uncensored: false
@@ -6685,8 +7219,17 @@ models:
   comparable: ''
   fallback: ''
   modality: Speech
-  genres: []
-  genre_categories: []
+  genres:
+  - Audiobook Narration & Multi-Speaker Dramatization (All Genres)
+  genre_categories:
+  - A
+  - B
+  - C
+  - D
+  - E
+  - F
+  - G
+  - H
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -6702,8 +7245,16 @@ models:
   comparable: ''
   fallback: ''
   modality: ''
-  genres: []
-  genre_categories: []
+  genres:
+  - Contemporary Fiction
+  - Speculative Fiction
+  - Graphic Novel Scripting
+  - Cozy Mystery
+  - Travelogue
+  genre_categories:
+  - C
+  - D
+  - E
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -6777,8 +7328,17 @@ models:
   comparable: ''
   fallback: ''
   modality: Music
-  genres: []
-  genre_categories: []
+  genres:
+  - Book Trailer Scores & Instrumental Soundtracks (All Genres)
+  genre_categories:
+  - A
+  - B
+  - C
+  - D
+  - E
+  - F
+  - G
+  - H
   fine_tune_base: false
   served_context: null
   register_id: ''
@@ -8305,6 +8865,280 @@ models:
   fine_tune_base: false
   served_context: 32768
   register_id: W56
+  same_as: ''
+- key: concentrate-ai-claude-fable-5
+  name: Claude Fable 5
+  provider: Concentrate AI
+  model_id: claude-fable-5
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: Kimi K3
+  fallback: Kimi K3
+  modality: ''
+  genres:
+  - Legal Thriller
+  - Legal Drama
+  - Courtroom Drama
+  - Historical Legal Drama
+  - Domestic Noir
+  - Crime Noir
+  - True Crime
+  - Historical Crime Fiction
+  - Police Officers
+  - Utopian Fiction
+  - Telepathic Science Fiction
+  - TV Movie Video Game Adaptations
+  - Synthwave
+  - Speculative Fiction
+  - Speculative Biology
+  - Dystopian
+  - Aliens
+  - Lit RPG/Gamelit
+  - Persuasive
+  - Critical Essay
+  - Argumentative
+  - Guidebook
+  - Adventure
+  - Reference Biography
+  - Political Biography
+  - Personal Finance
+  - Personal Development
+  - Testimonio
+  - Memoir
+  - Sestina
+  - Pantoum
+  - Documentary Theatre
+  - Morality Play
+  - Dramatic Monologue
+  - Lyric Essay
+  genre_categories:
+  - F
+  - D
+  - H
+  - B
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
+- key: concentrate-ai-claude-fable-5-2
+  name: Claude Fable 5.2
+  provider: Concentrate AI
+  model_id: claude-fable-5-2
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: Kimi-K3.1
+  fallback: Kimi K3.1
+  modality: ''
+  genres:
+  - Legal Thriller
+  - Legal Drama
+  - Courtroom Drama
+  - Historical Legal Drama
+  - Domestic Noir
+  - Crime Noir
+  - Police Officers
+  - Cozy Sci-Fi
+  - True Crime
+  - Historical Crime Fiction
+  - Crime Fiction
+  - Utopian Fiction
+  - Telepathic Science Fiction
+  - TV Movie Video Game Adaptations
+  - Synthwave
+  - Speculative Fiction
+  - Speculative Biology
+  - Dystopian
+  - Aliens
+  - Lit RPG/Gamelit
+  - Persuasive
+  - Critical Essay
+  - Argumentative
+  - Personal Finance
+  - Personal Development
+  - Health & Wellness
+  - Testimonio
+  - Memoir
+  - Sestina
+  - Pantoum
+  - Documentary Theatre
+  - Morality Play
+  - Lyric Essay
+  genre_categories:
+  - F
+  - D
+  - H
+  - B
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
+- key: concentrate-ai-gemini-4-carbon
+  name: Gemini 4 Carbon
+  provider: Concentrate AI
+  model_id: gemini-4-carbon
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: Kimi-K3.1
+  fallback: Kimi K3.1
+  modality: ''
+  genres:
+  - General Literary Fiction
+  - Literary Realism
+  - Hard Science Fiction
+  - Conspiracy Thriller
+  - Techno-Thriller
+  - Legal Thriller
+  - Historical Epic Drama
+  - Critical Essay
+  - Historical Biography
+  genre_categories:
+  - B
+  - D
+  - F
+  - H
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
+- key: concentrate-ai-gemini-4-hydrogen
+  name: Gemini 4 Hydrogen
+  provider: Concentrate AI
+  model_id: gemini-4-hydrogen
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Contemporary Fiction
+  - Romantic Adventure
+  - Mystery Thriller
+  - Speculative Fiction
+  - Cozy Mystery
+  - Graphic Novel Scripting
+  genre_categories:
+  - C
+  - E
+  - F
+  - D
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
+- key: concentrate-ai-gemini-4-neon
+  name: Gemini 4 Neon
+  provider: Concentrate AI
+  model_id: gemini-4-neon
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Hard Science Fiction
+  - Cyberpunk
+  - Techno-Thriller
+  - Lit RPG/Gamelit
+  - Space Opera
+  - Multi-generational Saga
+  - Conspiracy Fiction
+  genre_categories:
+  - D
+  - F
+  - G
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
+- key: concentrate-ai-kimi-k3-1-pro
+  name: Kimi K3.1 Pro
+  provider: Concentrate AI
+  model_id: kimi-k3-1-pro
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Financial Thriller
+  - Corporate Science Fiction
+  - Hard Science Fiction
+  - Space Opera
+  - Wuxia Fantasy
+  - Historical Epic Drama
+  - Expository
+  - Historical Biography
+  genre_categories:
+  - F
+  - D
+  - G
+  - H
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
+- key: concentrate-ai-kimi-k3-1-pro-highspeed
+  name: Kimi K3.1 Pro Highspeed
+  provider: Concentrate AI
+  model_id: kimi-k3-1-pro-highspeed
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Financial Thriller
+  - Corporate Science Fiction
+  - Hard Science Fiction
+  - Space Opera
+  - Wuxia Fantasy
+  - Mystery Thriller
+  genre_categories:
+  - F
+  - D
+  - G
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
+- key: concentrate-ai-qwen3-8-omni-flash
+  name: Qwen3.8 Omni Flash
+  provider: Concentrate AI
+  model_id: qwen3.8-omni-flash
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Contemporary Fiction
+  - Speculative Fiction
+  - Graphic Novel Scripting
+  - Cozy Mystery
+  - Travelogue
+  genre_categories:
+  - C
+  - D
+  - E
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
   same_as: ''
 - key: hugging-face-davidau-lfm2-5-2-6b-qwen3-8-turbo-brilliance-power-x12-neo-max-gguf
   name: DavidAU/LFM2.5-2.6B-Qwen3.8-Turbo-Brilliance-Power-X12-NEO-MAX-GGUF

@@ -20,6 +20,7 @@ ROSTER = ROOT / "roster" / "LLM Identifier export.csv"
 MATURE = ROOT / "llm-identifier-creative-writing-abliterated" / "abliterated_models.csv"
 REGISTER, ROUTING = ROOT / "registry.json", ROOT / "routing.json"
 OPEN = ROOT / "llm-identifier-creative-writing-open-weight" / "open_weight_models.csv"
+PROPRIETARY = ROOT / "llm-identifier-creative-writing-proprietary" / "proprietary_models.csv"
 
 
 @pytest.fixture(scope="module")
@@ -69,7 +70,7 @@ def mature_led_row(table, ids, R, RT):
 
 
 def test_the_shipped_registry_is_exactly_what_the_tool_builds_from_the_sources():
-    built = registry.build(ROSTER, MATURE, REGISTER, OPEN)
+    built = registry.build(ROSTER, MATURE, REGISTER, OPEN, PROPRIETARY)
     shipped = yaml.safe_load(registry.MODELS_PATH.read_text(encoding="utf-8"))
     assert built["models"] == shipped["models"] and built["problems"] == shipped["problems"]
     assert len(registry.load_fits()) == 538                              # one per Genre Matrix row with a model
@@ -160,7 +161,8 @@ def test_a_mistyped_roster_row_takes_the_name_the_newer_sources_give_it(R):
 
 def test_readiness_sizes_the_mature_tier(W, R, RT):
     rep = report(W, R, RT)
-    assert rep["mature_models"] == 63 and dict(rep["mature_tier"]) == {"Featherless AI": 63, "OpenRouter": 2}
+    # Sonar Deep Research joins (roster ticks it uncensored; the proprietary catalog gave it genres)
+    assert rep["mature_models"] == 64 and dict(rep["mature_tier"]) == {"Featherless AI": 63, "OpenRouter": 3}
     assert rep["fine_tune_bases"] == 42
 
 
@@ -174,3 +176,16 @@ def test_the_open_weight_catalog_adds_routes_and_ids_but_not_the_uncensored_mark
     assert any("Z-Image-Turbo Text to Image" in p and "not added" in p for p in R.problems)  # media: reported only
     tiefighter = named(R, "KoboldAI/LLaMA2-13B-TiefighterLR", "Featherless AI")              # markup stripped
     assert not tiefighter.uncensored
+
+
+def test_the_proprietary_catalog_adds_concentrate_routes_and_reports_unmatched_media(R):
+    with open(PROPRIETARY, encoding="utf-8", newline="") as f:
+        rows = list(csv.DictReader(f))
+    assert len(rows) == 62
+    for name in ("Claude Fable 5", "Claude Fable 5.2", "Gemini 4 Neon", "Kimi K3.1 Pro", "Qwen3.8 Omni Flash"):
+        m = named(R, name, "Concentrate AI")
+        assert m.frontier and not m.uncensored and m.genres
+    omni = [m.provider for m in R.models if m.name == "Qwen3.8 Omni Flash"]
+    assert sorted(omni) == ["Concentrate AI", "OpenRouter"]                       # a second route to one model
+    assert named(R, "Fish Audio S2 Pro", "OpenRouter").model_id == "fish-audio/s2-pro"   # an empty ID filled
+    assert sum("proprietary catalog" in p and "not added" in p for p in R.problems) == 14  # media: reported only

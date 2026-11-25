@@ -31,8 +31,8 @@ def model(R, name):
 
 
 def test_the_registry_holds_every_roster_model_with_a_provider(R):
-    # the roster, with the models both Notion catalogs and the register add (D33)
-    assert Counter(m.provider for m in R.models) == {"Hugging Face": 166, "Featherless AI": 83, "Concentrate AI": 42,
+    # the roster, with the models the three Notion catalogs and the register add (D33)
+    assert Counter(m.provider for m in R.models) == {"Hugging Face": 166, "Featherless AI": 83, "Concentrate AI": 50,
                                                       "OpenRouter": 25, "Unsloth Desktop": 8, "ElevenLabs": 3,
                                                       "Comfy Cloud": 11}
     assert {m.modality for m in R.models} == {"", "Image", "Video", "Speech", "Music", "Sound", "Speech-to-text"}

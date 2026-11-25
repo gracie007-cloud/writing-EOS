@@ -9,7 +9,7 @@ This repository holds the **rule-keeping engine**, tested, and the documents it 
 | Part | What it does |
 |---|---|
 | Order of work | Follows the *Narrative Components* database: what runs next, never before its inputs, never past a gate the Author has not approved |
-| Model registry and router | Each component's line of experts (Primary, Comparable, Fallback), provider routes, the rule that a checker never judges its own model's work, and the mature tier: 62 uncensored models on Featherless AI and OpenRouter, chosen by the book's pen name and subgenre (D33) |
+| Model registry and router | Each component's line of experts (Primary, Comparable, Fallback), provider routes, the rule that a checker never judges its own model's work, and the mature tier: 64 uncensored models on Featherless AI and OpenRouter, chosen by the book's pen name and subgenre (D33) |
 | Readiness report | Which components could run today, what an outage would stop, what is still open |
 | Story Blueprint formulas | Conflict Fit, Structure Fit and the gates of the Story Blueprint, as code |
 | Dry run | Builds the prompts of Idea Intake through Story Pitch from their allowed inputs, picks their models, stops at the three gates, prices the run, and sends nothing |
@@ -28,6 +28,7 @@ docs/            requirements and architecture, proposals, reports and the fixes
 roster/          the export of the model roster LLM Identifier
 llm-identifier-creative-writing-abliterated/   the mature catalog (Notion: Abliterated & Uncensored Models)
 llm-identifier-creative-writing-open-weight/   the open-weight catalog (Notion: Open-Weight & Fine-Tuned Models)
+llm-identifier-creative-writing-proprietary/   the proprietary catalog (Notion: Proprietary & Open/Near Frontier Models)
 llm-identifier-creative-writing/               204 GGUF bases for later fine-tuning; not called by the app
 llm-identifier-creative-writing-base-models/   the README for that catalog
 registry.json, routing.json                    the model register and its pen name routing table (2026-11-14)
@@ -35,7 +36,7 @@ REGISTER.md, VERIFICATION.md                   the same register to read, and ho
 tools/           the gate that runs before every push
 ```
 
-`eos-app/config/models.yaml` is built from the roster, both catalogs and `registry.json`; the app reads
+`eos-app/config/models.yaml` is built from the roster, the three catalogs and `registry.json`; the app reads
 `routing.json` where it is. See `eos-app/README.md`, *Models and routing*.
 
 ## Run it

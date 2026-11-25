@@ -4,6 +4,7 @@
 
     python -m eos_app.registry "<LLM Identifier export.csv>" \\
         [--mature "<Abliterated & Uncensored Models export.csv>"] [--open "<Open-Weight & Fine-Tuned Models export.csv>"] \\
+        [--proprietary "<Proprietary & Open/Near Frontier Models export.csv>"] \\
         [--register ../registry.json]
 
 - The **roster** *LLM Identifier* (Notion, CSV export): every model with a provider, its provider model ID, the
@@ -19,6 +20,9 @@
 - The **open-weight catalog** *LLM Identifier for Creative Writing: Open-Weight & Fine-Tuned Models* (Notion, CSV
   export; the repository's copy is `llm-identifier-creative-writing-open-weight/open_weight_models.csv`): the same
   folding without the uncensored mark, so its routes, genre tags and IDs reach the prose lane.
+- The **proprietary catalog** *LLM Identifier for Creative Writing: Proprietary & Open/Near Frontier Models* (Notion,
+  CSV export; the repository's copy is `llm-identifier-creative-writing-proprietary/proprietary_models.csv`): folded
+  the same way, without the uncensored mark. A model it adds is frontier when either checkbox is ticked.
 - The **register** `registry.json` (verified against the provider APIs on 2026-11-14): the context each provider
   actually serves, the register ID (W01 to W77, C01 to C10), the Genre Matrix subgenres each model serves, and the
   same model's OpenRouter route.
@@ -248,7 +252,7 @@ def _claim(models: list, provider: str, name: str, mid: str, problems: list, sou
 
 
 TEXT_MODALITIES = {"", "Text", "Text-to-Text", "Image-Text-to-Text", "Image-Video-Text-to-Text",
-                   "Omni (Text-Image-Audio)"}
+                   "Image-Video-Audio-Text-to-Text", "Omni (Text-Image-Audio)", "Omni (Text-Image-Video-Audio)"}
 MEDIA_MODALITIES = {"Text-to-Image": "Image", "Text-to-Speech (Audio)": "Speech", "Image": "Image", "Video": "Video",
                     "Speech": "Speech", "Music": "Music", "Sound": "Sound", "Speech-to-Text": "Speech-to-text"}
 
@@ -276,7 +280,7 @@ def _catalog(models: list, rows: list, problems: list, *, uncensored: bool, sour
                                 f"row; not added (confirm its name and ID in the roster)")
                 continue
             new = {"key": _key(provider, mid or name), "name": name, "provider": provider, "model_id": mid,
-                   "frontier": _yes(r.get("Open/Near Frontier Model")),
+                   "frontier": _yes(r.get("Open/Near Frontier Model")) or _yes(r.get("Proprietary Model")),
                    "open_weights": _yes(r.get("Open-Weights Model")), "uncensored": uncensored,
                    "can_run_locally": _yes(r.get("Can Run Locally")),
                    "comparable": _cell(r, "Comparable Equivalent Model"), "fallback": _cell(r, "Fallback Model"),
@@ -354,7 +358,7 @@ def _fits(register: dict, rows: list) -> list:
     return out
 
 
-def build(export_csv, mature_csv=None, register_json=None, open_csv=None) -> dict:
+def build(export_csv, mature_csv=None, register_json=None, open_csv=None, proprietary_csv=None) -> dict:
     """models.yaml content. Duplicate rows and rows whose name and ID disagree are reported, not guessed at: the
     first row for an ID is kept."""
     problems = []
@@ -366,6 +370,9 @@ def build(export_csv, mature_csv=None, register_json=None, open_csv=None) -> dic
     if open_csv:
         _catalog(models, _read_csv(open_csv), problems, uncensored=False, source="open-weight catalog")
         sources.append("Notion LLM Identifier for Creative Writing: Open-Weight & Fine-Tuned Models (export)")
+    if proprietary_csv:
+        _catalog(models, _read_csv(proprietary_csv), problems, uncensored=False, source="proprietary catalog")
+        sources.append("Notion LLM Identifier for Creative Writing: Proprietary & Open/Near Frontier Models (export)")
     if register_json:
         _register(models, json.loads(Path(register_json).read_text(encoding="utf-8")), problems)
         sources.append("registry.json (verified 2026-11-14)")
@@ -388,12 +395,13 @@ def dump(doc: dict, head: str) -> str:
 
 
 MODELS_HEAD = ("# Writing EOS model registry (FR-ML-1, D33): the app's copy of the Notion roster LLM Identifier, joined\n"
-               "# with the mature catalog (Abliterated & Uncensored Models) and the 2026-11-14 register.\n"
+               "# with the mature, open-weight and proprietary catalogs and the 2026-11-14 register.\n"
                "# Built by `python -m eos_app.registry`; do not edit by hand.\n")
 
 
-def write(export_csv, mature_csv=None, register_json=None, open_csv=None, out=MODELS_PATH) -> dict:
-    doc = build(export_csv, mature_csv, register_json, open_csv)
+def write(export_csv, mature_csv=None, register_json=None, open_csv=None, proprietary_csv=None,
+          out=MODELS_PATH) -> dict:
+    doc = build(export_csv, mature_csv, register_json, open_csv, proprietary_csv)
     Path(out).write_text(dump(doc, MODELS_HEAD), encoding="utf-8")
     return doc
 
@@ -412,9 +420,10 @@ def main(argv) -> int:
     p.add_argument("roster", help="Notion export of the LLM Identifier roster (CSV)")
     p.add_argument("--mature", help="Notion export of the Abliterated & Uncensored Models catalog (CSV)")
     p.add_argument("--open", help="Notion export of the Open-Weight & Fine-Tuned Models catalog (CSV)")
+    p.add_argument("--proprietary", help="Notion export of the Proprietary & Open/Near Frontier Models catalog (CSV)")
     p.add_argument("--register", help="registry.json")
     a = p.parse_args(argv)
-    d = write(a.roster, a.mature, a.register, a.open)
+    d = write(a.roster, a.mature, a.register, a.open, a.proprietary)
     print(f"models: {len(d['models'])}")
     for line in d["problems"]:
         print("-", line)

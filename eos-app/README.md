@@ -100,7 +100,7 @@ The database does not record what a component takes in, its code parts, what a c
 
 ## Models and routing
 
-`config/models.yaml` is the app's copy of three sources, joined (decision D33):
+`config/models.yaml` is the app's copy of five sources, joined (decision D33):
 - your roster *LLM Identifier*: every model with a provider, its ID, its boxes (Frontier, Open-Weights, Uncensored,
   Can Run Locally) and its Comparable and Fallback models;
 - the **mature catalog** *LLM Identifier for Creative Writing: Abliterated & Uncensored Models*
@@ -112,13 +112,17 @@ The database does not record what a component takes in, its code parts, what a c
   (`..\llm-identifier-creative-writing-open-weight\open_weight_models.csv`): folded in the same way without the
   uncensored mark: its routes, genre tags and missing IDs reach the prose lane; its Hugging Face GGUFs are fine-tune
   bases; a media row that matches no roster row is reported, not added;
+- the **proprietary catalog** *Proprietary & Open/Near Frontier Models*
+  (`..\llm-identifier-creative-writing-proprietary\proprietary_models.csv`): folded in the same way, without the
+  uncensored mark. It adds the Concentrate AI routes the roster lacks (e.g. Claude Fable 5 and 5.2, Gemini 4 Carbon,
+  Hydrogen and Neon, Kimi K3.1 Pro); a model it adds is frontier when either of its checkboxes is ticked;
 - the **register** `..\registry.json` (verified against the providers on 2026-11-14): the context each provider
   actually serves (`served_context`: size every request to it), the register ID (W01 to W77, C01 to C10), the
   Genre Matrix subgenres each model serves, and a model's second route on OpenRouter.
 
-Export the roster and the mature catalog from Notion as CSV and rebuild:
+Export the roster and the catalogs from Notion as CSV and rebuild:
 
-    python -m eos_app.registry "..\roster\LLM Identifier export.csv" --mature "..\llm-identifier-creative-writing-abliterated\abliterated_models.csv" --open "..\llm-identifier-creative-writing-open-weight\open_weight_models.csv" --register ..\registry.json
+    python -m eos_app.registry "..\roster\LLM Identifier export.csv" --mature "..\llm-identifier-creative-writing-abliterated\abliterated_models.csv" --open "..\llm-identifier-creative-writing-open-weight\open_weight_models.csv" --proprietary "..\llm-identifier-creative-writing-proprietary\proprietary_models.csv" --register ..\registry.json
 
 The build lists rows that look mistyped (an ID copied from another row, a model listed twice) and the models the
 register verified that neither Notion source lists yet. Where a newer source names a mistyped roster row, the row
