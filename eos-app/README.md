@@ -116,6 +116,10 @@ The database does not record what a component takes in, its code parts, what a c
   (`..\llm-identifier-creative-writing-proprietary\proprietary_models.csv`): folded in the same way, without the
   uncensored mark. It adds the Concentrate AI routes the roster lacks (e.g. Claude Fable 5 and 5.2, Gemini 4 Carbon,
   Hydrogen and Neon, Kimi K3.1 Pro); a model it adds is frontier when either of its checkboxes is ticked;
+- each model's **Comparable and Fallback** come from the catalogs where they name one (the Author's latest pairing):
+  a component with no Fallback of its own takes its Primary's, and a checker whose experts refuse mature text
+  turns to the writer's own Comparable, then Fallback, when they may take it (never the writer's model, P8). A
+  pairing that names no model in the registry is reported by the build and left out;
 - the **register** `..\registry.json` (verified against the providers on 2026-11-14): the context each provider
   actually serves (`served_context`: size every request to it), the register ID (W01 to W77, C01 to C10), the
   Genre Matrix subgenres each model serves, and a model's second route on OpenRouter.
@@ -197,8 +201,9 @@ It writes into the project folder, which lives outside the app and is never comm
 `runs/<date>/runs.jsonl` (one record per planned call, status "not sent"), `prompts/dry-run/NN-<agent>.md` (Show
 prompt with the requests) and `dry-run.html` (a card per step with Proceed and My alternative, and the gate stops).
 
-Today: 7 prompts, 10 planned calls on Concentrate AI, 3 gate stops, at most $0.44. One item before a live run:
-Target Audience is on the Full tier with one expert (decision 5).
+Today: 7 prompts, 11 planned calls on Concentrate AI, 3 gate stops. Target Audience now has its cross-check
+(MiMo V2.6 Flash, GLM 5.3 Flash's Fallback in the catalogs), so nothing is left open before a live run except
+the spending cap (decision 6).
 
 ## Shared library
 

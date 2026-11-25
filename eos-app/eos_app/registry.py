@@ -257,6 +257,34 @@ MEDIA_MODALITIES = {"Text-to-Image": "Image", "Text-to-Speech (Audio)": "Speech"
                     "Speech": "Speech", "Music": "Music", "Sound": "Sound", "Speech-to-Text": "Speech-to-text"}
 
 
+def _check_pairings(models: list, problems: list) -> None:
+    """Report each Comparable or Fallback that names no model in the registry, so the Author can correct it; the
+    router leaves such a pairing out rather than guessing."""
+    reg = Registry("", [], {}, [])
+    reg.models = [Model(**{k: tuple(v) if isinstance(v, list) else v for k, v in m.items()}) for m in models]
+    seen = {}
+    for m in models:
+        for col in ("comparable", "fallback"):
+            v = m[col]
+            if not v or (col, v) in seen:
+                continue
+            try:
+                reg.resolve(v)
+                seen[(col, v)] = None
+            except RegistryError as e:
+                seen[(col, v)] = str(e)
+    for (col, v), err in seen.items():
+        if err:
+            users = sorted({m["name"] for m in models if m[col] == v})
+            problems.append(f"{col}: {v!r} names no model in the registry; used by {', '.join(users)}")
+
+
+def _named(cell) -> str:
+    """A Comparable or Fallback cell's model name, or '' when it names none ('N/A', 'None')."""
+    v = " ".join((cell or "").split())
+    return "" if v.casefold() in ("", "n/a", "none") else v
+
+
 def _catalog(models: list, rows: list, problems: list, *, uncensored: bool, source: str,
              media_source: bool = False) -> None:
     """Fold a Notion catalog in. Its genre tags and categories join the model's; a route it names that the roster
@@ -291,9 +319,14 @@ def _catalog(models: list, rows: list, problems: list, *, uncensored: bool, sour
                    "served_context": None, "register_id": "", "same_as": ""}
             models.append(new)
             mine.append(new)
+        comparable, fallback = _named(r.get("Comparable Equivalent Model")), _named(r.get("Fallback Model"))
         for m in mine:
             if uncensored:
                 m["uncensored"] = True
+            if comparable:                       # the catalogs carry the Author's latest pairing (2026-11-25)
+                m["comparable"] = comparable
+            if fallback:
+                m["fallback"] = fallback
             m["genres"] = _merge(m["genres"], _split(r.get("Genres")))
             m["genre_categories"] = _merge(m["genre_categories"], CATEGORY.findall(r.get("Genre Category") or ""))
             if m["provider"] == provider:
@@ -382,6 +415,7 @@ def build(export_csv, mature_csv=None, register_json=None, open_csv=None, propri
         sources.append("registry.json (verified 2026-11-14)")
     if len({m["key"] for m in models}) != len(models):
         raise RegistryError("two models share a key")
+    _check_pairings(models, problems)
     return {"version": date.today().isoformat(), "source": "; ".join(sources), "problems": problems,
             "models": models}
 

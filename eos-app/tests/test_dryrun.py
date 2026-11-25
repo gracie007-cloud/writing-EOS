@@ -73,7 +73,7 @@ def test_an_input_the_component_may_not_have_is_refused(M):
 
 def test_seven_prompts_three_gate_stops_and_nothing_sent(run):
     project, s = run
-    assert (s["prompts"], s["calls"], s["gate_stops"]) == (7, 10, 3)
+    assert (s["prompts"], s["calls"], s["gate_stops"]) == (7, 11, 3)
     events = json.loads((project / "dry-run.json").read_text(encoding="utf-8"))
     assert events["prompts"] == 7
     page = (project / "dry-run.html").read_text(encoding="utf-8")
@@ -82,7 +82,7 @@ def test_seven_prompts_three_gate_stops_and_nothing_sent(run):
                      "Pen Name and Style", "Stop · Author picks the pen name", "Target Audience", "Premise Adapter",
                      "Stop · Author approves the adapted premise", "Story Pitch"]
     records = [json.loads(x) for f in (project / "runs").glob("*/runs.jsonl") for x in f.read_text().splitlines()]
-    assert len(records) == 10 and {r["status"] for r in records} == {"not sent"}
+    assert len(records) == 11 and {r["status"] for r in records} == {"not sent"}
     assert len(list((project / "prompts" / "dry-run").glob("*.md"))) == 7
 
 
@@ -90,18 +90,18 @@ def test_the_models_come_from_the_router_on_concentrate_with_verified_endpoints(
     _, s = run
     calls = {step: c for step, _, c in s["steps"]}
     assert calls["1"] == [("writer", "Claude Fable 5.1", "concentrate"), ("cross-check", "Kimi K3", "concentrate")]
-    assert calls["NEW-13"] == [("writer", "GLM 5.3 Flash", "concentrate")]
+    # Target Audience: GLM 5.3 Flash's catalog Fallback, MiMo V2.6 Flash, gives the Full tier its cross-check
+    assert calls["NEW-13"] == [("writer", "GLM 5.3 Flash", "concentrate"), ("cross-check", "MiMo V2.6 Flash", "concentrate")]
     ep = load_endpoints()
     assert ep["concentrate"].url == "https://api.concentrate.ai/v1/chat/completions"
     assert ep["featherless"].url == "https://api.featherless.ai/v1/chat/completions"
     assert ep["openrouter"].url == "https://openrouter.ai/api/v1/chat/completions"
 
 
-def test_the_cost_is_estimated_and_target_audience_is_reported(run):
+def test_the_cost_is_estimated_and_nothing_is_left_open(run):
     _, s = run
     assert s["cost_usd_max"] is not None and 0 < s["cost_usd_max"] < 1
-    assert s["open_items"] == ["Target Audience: degraded: the Full tier cross-checks with a second expert, and it "
-                               "has one"]
+    assert s["open_items"] == []
 
 
 def test_no_key_ever_reaches_a_prompt_a_request_or_a_record(run):

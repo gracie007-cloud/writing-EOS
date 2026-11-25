@@ -153,8 +153,15 @@ def test_venice_uncensored_never_judges_text_its_own_model_wrote(W, R, RT):
     assert venice.ident == dolphin.ident                                # one model, two routes (P8)
     cont = W.by_step["33"]
     refused = {m.key for _, m in experts(cont, R)}
-    with pytest.raises(RoutingError, match="Venice Uncensored wrote the text"):
-        choose_checker(cont, dolphin, R, RT, mature=True, refused=refused)
+    judge = choose_checker(cont, dolphin, R, RT, mature=True, refused=refused)
+    assert judge.ident != dolphin.ident                                 # never Venice on either route
+    assert judge.name == dolphin.comparable == "DavidAU/Dolphin-Mistral-GLM-4.7-Flash-24B-Venice-Edition-Thinking-Uncensored"
+
+
+def test_the_catalogs_pair_each_model_with_a_comparable_and_a_fallback(R):
+    haiku = named(R, "Claude Haiku 5.5", "Concentrate AI")
+    assert haiku.fallback == "GPT-6 Luna"                               # the proprietary catalog (2026-11-25)
+    assert any("'Kimi K3.1' names no model" in p for p in R.problems)  # reported, never guessed
 
 
 def test_the_corrected_qwen3_vl_row_is_the_32b_model_featherless_serves(R):

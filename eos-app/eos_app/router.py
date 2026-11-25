@@ -73,7 +73,15 @@ def experts(c, reg: Registry) -> list:
     try:
         line = [(s, m) for s in ("primary", "comparable") if (m := reg.resolve(cand.get(s)))]
         if line:
-            fb = reg.resolve(cand.get("fallback") or line[0][1].fallback)   # the component's own, else the roster's
+            if cand.get("fallback"):
+                fb = reg.resolve(cand["fallback"])                           # the component's own
+            else:
+                try:
+                    fb = reg.resolve(line[0][1].fallback)                    # else the Primary's, from the catalogs
+                except RegistryError:
+                    fb = None                       # a pairing the registry cannot name (reported by the build)
+                if fb and c.makes_media and fb.modality != c.modality:
+                    fb = None                       # the Primary's pairing makes another kind of media
             if fb and fb.ident not in {m.ident for _, m in line}:
                 line.append(("fallback", fb))
     except RegistryError as e:
@@ -197,7 +205,8 @@ def checker_models(judge, reg: Registry, routing: Routing) -> list:
 def choose_checker(judge, writer, reg: Registry, routing: Routing, mature: bool = False, refused=(), down=(),
                    down_providers=()):
     """The model an evaluation component runs on to judge work made by `writer`: its experts in order, then, for
-    mature work they all refused, its Mature Fallback. A model is skipped if it is the writer's own model on any
+    mature work they all refused, its Mature Fallback, then the writer's own Comparable and Fallback models (the
+    catalogs, 2026-11-25) that may take mature text. A model is skipped if it is the writer's own model on any
     provider (P8), has refused, cannot be called, or is down."""
     tried = checker_models(judge, reg, routing)
     said_no = {reg.by_key[k].ident for k in refused if k in reg.by_key}       # a refusal is the model's, not a route's
@@ -208,9 +217,18 @@ def choose_checker(judge, writer, reg: Registry, routing: Routing, mature: bool 
         return f"{m.name} is refusing" if m.ident in said_no else unusable(m, down, down_providers)
 
     if mature and all(why_not(m) for m in tried):
-        if not judge.mature_fallback:
-            raise RoutingError(f"{judge.name}: its Mature Fallback is still open, so mature work can't be judged yet")
-        tried = tried + [reg.resolve(judge.mature_fallback)]
+        extra = [reg.resolve(judge.mature_fallback)] if judge.mature_fallback else []
+        for ref in (writer.comparable, writer.fallback):              # the writer's own pairing, never itself
+            try:
+                m = reg.resolve(ref)
+            except RegistryError:
+                m = None                    # a pairing the registry cannot name is left out, not guessed
+            if m is not None:
+                extra += [r for r in reg.routes(m) if mature_ok(r, routing)]
+        if not extra:
+            raise RoutingError(f"{judge.name}: its Mature Fallback is still open, and {writer.name} has no Comparable "
+                               f"or Fallback that may judge mature text, so mature work can't be judged yet")
+        tried = tried + extra
     reasons = []
     for m in tried:
         why = why_not(m)

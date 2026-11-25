@@ -35,7 +35,7 @@ def names(rep, state):
 
 
 def test_every_component_has_a_state(rep):
-    assert rep["counts"] == {"ready": 116, "degraded": 1, "code": 6}
+    assert rep["counts"] == {"ready": 117, "code": 6}
 
 
 def test_media_components_run_now_their_models_have_ids(rep):
@@ -43,10 +43,9 @@ def test_media_components_run_now_their_models_have_ids(rep):
     assert names(rep, "blocked") == []
 
 
-def test_a_full_tier_component_with_one_expert_is_degraded(rep):
-    assert names(rep, "degraded") == ["Target Audience"]
-    aud = next(r for r in rep["components"] if r.name == "Target Audience")
-    assert aud.reasons == ("the Full tier cross-checks with a second expert, and it has one",)
+def test_target_audience_has_its_cross_check_from_the_catalog_pairing(rep):
+    # GLM 5.3 Flash's Fallback in the catalogs (MiMo V2.6 Flash) is its second expert: decision 5 closed
+    assert names(rep, "degraded") == []
 
 
 def test_a_component_running_on_a_later_expert_is_degraded(W, R, RT):

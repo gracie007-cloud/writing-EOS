@@ -10,6 +10,11 @@ problems:
 - 'OpenRouter: ''Fish Audio S2 Pro'' had no provider model ID; ''fish-audio/s2-pro'' taken from the proprietary catalog'
 - 'register W69: ''DavidAU/LFM2.5-2.6B-Qwen3.8-Turbo-Brilliance-Power-X12-NEO-MAX-GGUF'' is in neither Notion source; added
   on Hugging Face from the register (add it to the roster)'
+- 'comparable: ''Nemotron 3.5 Lightning'' names no model in the registry; used by Claude Haiku 5.5'
+- 'comparable: ''Kimi-K3.1'' names no model in the registry; used by Claude Fable 5.2, GPT-6 Astra, Gemini 4 Argon, Gemini
+  4 Carbon'
+- 'fallback: ''Kimi K3.1'' names no model in the registry; used by Claude Fable 5.2, GPT-6 Astra, Gemini 4 Argon, Gemini 4
+  Carbon'
 models:
 - key: concentrate-ai-deepseek-v4-flash-0731
   name: DeepSeek V4 Flash 0731
@@ -19,8 +24,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: DeepSeek V4.1 Flash
+  fallback: GLM 5.3 Flash
   modality: ''
   genres:
   - Hard Science Fiction
@@ -46,7 +51,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: DeepSeek V4.1-Flash 1017
-  fallback: ''
+  fallback: GLM 5.3 Flash
   modality: ''
   genres:
   - Contemporary Fiction
@@ -69,8 +74,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: DeepSeek V4 Flash 0731
+  fallback: GLM 5.3 Flash
   modality: ''
   genres:
   - Hard Science Fiction
@@ -96,7 +101,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: MiMo-V2.6-Flash
-  fallback: ''
+  fallback: GLM 5.3 Flash
   modality: ''
   genres:
   - Speculative Fiction
@@ -120,8 +125,8 @@ models:
   open_weights: false
   uncensored: true
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: DeepSeek V4 Pro 0813
+  fallback: GLM-5.3
   modality: ''
   genres:
   - General Literary Fiction
@@ -149,8 +154,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Ling 3.1 Flash
+  fallback: DeepSeek V4 Pro 0813
   modality: ''
   genres:
   - Financial Thriller
@@ -207,7 +212,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: DeepSeek V4.1-Flash 1017
-  fallback: ''
+  fallback: GLM-5.3
   modality: ''
   genres:
   - Police Officers
@@ -251,8 +256,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Nemotron 3 Nano 30B A3B
+  fallback: Gemini 2.5 Flash Lite
   modality: ''
   genres:
   - Cozy Fiction
@@ -304,7 +309,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: Nemotron 3.5 Lightning
-  fallback: ''
+  fallback: GPT-6 Luna
   modality: ''
   genres:
   - Crime Fiction
@@ -347,8 +352,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: DeepSeek V4.1 Flash 1017
+  fallback: GLM 5.3 Flash
   modality: ''
   genres:
   - Techno-Thriller
@@ -374,7 +379,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: DeepSeek V4.1-Flash 1017
-  fallback: ''
+  fallback: MiMo V2.6 Flash
   modality: ''
   genres:
   - Techno-Thriller
@@ -398,8 +403,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Kimi-K3.1
+  fallback: Kimi K3.1
   modality: ''
   genres:
   - General Literary Fiction
@@ -425,7 +430,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: MiMo-2.6-Pro
-  fallback: ''
+  fallback: DeepSeek V4 Pro 0813
   modality: ''
   genres:
   - Multi-generational Saga
@@ -454,8 +459,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: GPT-6.1 Sol
+  fallback: Kimi K3.1 Pro
   modality: ''
   genres:
   - Legal Thriller
@@ -482,8 +487,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Kimi K3
+  fallback: GLM-5.3
   modality: ''
   genres:
   - General Literary Fiction
@@ -512,7 +517,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: DeepSeek V4.1-Flash 1017
-  fallback: ''
+  fallback: Kimi K3
   modality: ''
   genres:
   - Hard Science Fiction
@@ -539,8 +544,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Kimi K3
+  fallback: GLM-5.3
   modality: ''
   genres:
   - East Asian Historical Fiction
@@ -566,8 +571,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen2.5-7B-Instruct-1M-Thinking-Claude-Gemini-GPT5.2-DISTILL
+  fallback: Kimi K3
   modality: ''
   genres:
   - Multi-generational Saga
@@ -592,8 +597,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: Beam 1.0 501B A23B
+  fallback: Kimi K3
   modality: ''
   genres:
   - General Literary Fiction
@@ -622,8 +627,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Qwen 3.8 27B
+  fallback: Gemma 4 26B-A4B
   modality: ''
   genres:
   - General Literary Fiction
@@ -650,8 +655,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Command A
+  fallback: DeepSeek V4 Pro 0813
   modality: ''
   genres:
   - Financial Thriller
@@ -679,7 +684,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: MiMo-2.6-Pro
-  fallback: ''
+  fallback: Kimi K3
   modality: ''
   genres:
   - True Crime
@@ -744,7 +749,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: MiMo-2.6-Pro
-  fallback: ''
+  fallback: GLM-5.3
   modality: ''
   genres:
   - General Literary Fiction
@@ -771,8 +776,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3-53B-A3B-2507-TOTAL-RECALL-v2-MASTER-CODER
+  fallback: Gemini 4 Neon
   modality: ''
   genres:
   - Hard Science Fiction
@@ -793,8 +798,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Solar Mini 4
+  fallback: Command A
   modality: ''
   genres:
   - Expository
@@ -818,8 +823,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Solar Mini 4
+  fallback: GLM 5.3 Flash
   modality: ''
   genres:
   - Hard Science Fiction
@@ -843,8 +848,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: GPT-6 Luna
+  fallback: DeepSeek V4.1 Flash 1017
   modality: ''
   genres:
   - Adventure Fiction
@@ -870,7 +875,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: Qwen3.8-27B
-  fallback: ''
+  fallback: Gemma 4 26B-A4B
   modality: ''
   genres:
   - Cozy Fiction
@@ -895,7 +900,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: GLM-5.3
-  fallback: Kimi  K3
+  fallback: Kimi K3
   modality: ''
   genres:
   - Police Officers
@@ -947,7 +952,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: MiMo-V2.6-Flash
-  fallback: ''
+  fallback: DeepSeek V4.1 Flash 1017
   modality: ''
   genres:
   - Speculative Fiction
@@ -971,8 +976,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: DeepSeek V4 Pro 0813
+  fallback: GLM-5.3
   modality: ''
   genres:
   - General Literary Fiction
@@ -1002,7 +1007,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: Qwen3.8-27B
-  fallback: ''
+  fallback: Solar Mini 4
   modality: ''
   genres:
   - Cozy Fiction
@@ -1027,7 +1032,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: Gemma 4 26B-A4B
-  fallback: ''
+  fallback: Solar Mini 4
   modality: ''
   genres:
   - Cozy Fiction
@@ -1051,8 +1056,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Gemma 4 31B
+  fallback: Gemma 4 26B-A4B
   modality: ''
   genres:
   - General Literary Fiction
@@ -1079,7 +1084,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: MiMo-2.6-Pro
-  fallback: ''
+  fallback: Mistral Large 4
   modality: ''
   genres:
   - Satire
@@ -1108,8 +1113,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Kimi K3
+  fallback: GLM-5.3
   modality: ''
   genres:
   - General Literary Fiction
@@ -1136,8 +1141,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: K2 Horizon 375B - A23B
+  fallback: Mistral Large 4
   modality: ''
   genres:
   - Legal Thriller
@@ -1164,8 +1169,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Gemma 4 31B
+  fallback: GLM 5.3 Flash
   modality: ''
   genres:
   - General Literary Fiction
@@ -1190,8 +1195,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Gemini 3.8 Flash
+  fallback: Qwen3.8 Omni Flash
   modality: ''
   genres:
   - Police Procedural
@@ -1215,8 +1220,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: GLM-5.3
+  fallback: Kimi K3
   modality: ''
   genres:
   - General Literary Fiction
@@ -1246,8 +1251,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: DeepSeek V4 Pro 0813
+  fallback: Kimi K3
   modality: ''
   genres:
   - General Literary Fiction
@@ -1275,8 +1280,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: DeepSeek V4 Pro 0813
+  fallback: Kimi K3
   modality: ''
   genres:
   - Techno-Thriller
@@ -1305,7 +1310,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: MiMo-2.6-Pro
-  fallback: ''
+  fallback: DeepSeek V4 Pro 0813
   modality: ''
   genres:
   - General Literary Fiction
@@ -1331,8 +1336,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: DeepSeek V4.1 Flash 1017
+  fallback: Step 5 Preview
   modality: ''
   genres:
   - Medical Thriller
@@ -1359,7 +1364,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: MiMo-V2.6-Flash
-  fallback: ''
+  fallback: DeepSeek V4.1 Flash 1017
   modality: ''
   genres:
   - Speculative Fiction
@@ -1384,7 +1389,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: Qwen3.8-27B
-  fallback: ''
+  fallback: Solar Mini 4
   modality: ''
   genres:
   - Cozy Fiction
@@ -1409,7 +1414,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: Kimi K3
-  fallback: ''
+  fallback: DeepSeek V4 Pro 0813
   modality: ''
   genres:
   - General Literary Fiction
@@ -1434,8 +1439,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Kimi-K3.1
+  fallback: Kimi K3.1
   modality: ''
   genres:
   - General Literary Fiction
@@ -1466,7 +1471,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: Kimi K3
-  fallback: ''
+  fallback: Gemini 4 Carbon
   modality: ''
   genres:
   - Historical Biography
@@ -1494,8 +1499,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Pareto 26.10
+  fallback: Kimi K3
   modality: ''
   genres:
   - Philosophical Fiction
@@ -1725,8 +1730,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: Gryphe/Pantheon-Reasoning-31B-1.1
+  fallback: DavidAU/Qwen3.5-27B-Claude-4.6-OS-INSTRUCT
   modality: ''
   genres:
   - Mystery Thriller
@@ -1753,8 +1758,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-4-31B-it-Mystery-Fine-Tune-HERETIC-UNCENSORED-Thinking
+  fallback: Gryphe/Pantheon-Reasoning-31B-1.1
   modality: ''
   genres:
   - Classic Detective
@@ -1800,8 +1805,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-THINKING
+  fallback: DavidAU/Qwen3.5-27B-Claude-4.6-OS-INSTRUCT
   modality: ''
   genres:
   - Hard Science Fiction
@@ -1836,8 +1841,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: Gemini 3 Flash Preview
+  fallback: DavidAU/Llama3.3-8B-Instruct-Thinking-Claude-4.5-Opus-High-Reasoning
   modality: ''
   genres:
   - Solarpunk
@@ -1871,8 +1876,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: Claude Haiku 5.5
+  fallback: DavidAU/Llama-3.3-8B-Thinking-Gemini-Flash-11000x-128k
   modality: ''
   genres:
   - Speculative Fiction
@@ -1905,8 +1910,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: Llama 4 Scout
+  fallback: DavidAU/Qwen3.5-27B-Gemini3-Pro-High-Reasoning-Compact-Thinking
   modality: ''
   genres:
   - Multi-generational Saga
@@ -1945,8 +1950,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-27B-Claude-4.6-OS-Auto-Variable-Heretic-Uncensored-Thinking
+  fallback: DeepSeek V4.1 Flash 1017
   modality: ''
   genres:
   - Hard Science Fiction
@@ -1980,8 +1985,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-THINKING-HERETIC-UNCENSORED
+  fallback: DavidAU/Qwen3.5-27B-Claude-4.6-OS-INSTRUCT
   modality: ''
   genres:
   - Hard Science Fiction
@@ -2015,8 +2020,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-3-12b-it-vl-Deepseek-v3.1-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3.5-27B-Claude-4.6-OS-INSTRUCT
   modality: ''
   genres:
   - Literary Mystery
@@ -3336,8 +3341,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-27B-Deckard-PKD-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3.6-21B-IQ-Ultra-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Weird Fiction
@@ -3384,8 +3389,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: North Mini Code
+  fallback: Gemini 4 Neon
   modality: ''
   genres:
   - Hard Science Fiction
@@ -3407,8 +3412,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: Naphula/Goetia-26B-A4B-v1.6
+  fallback: Gemma 4 31B
   modality: ''
   genres:
   - General Literary Fiction
@@ -3505,8 +3510,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder-V1.2
+  fallback: DavidAU/Qwen3-MOE-6x0.6B-3.6B-Writing-On-Fire-Uncensored
   modality: ''
   genres:
   - Adventure Fiction
@@ -3531,8 +3536,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder-V1.2
+  fallback: DavidAU/Qwen3-Short-Story-Instruct-Uncensored-262K-ctx-4B
   modality: ''
   genres:
   - Absurdist Fiction
@@ -3559,8 +3564,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.6-9B-Heretic-Uncensored-Thinking-Sweet-Madness
+  fallback: DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Psychological Horror
@@ -3589,8 +3594,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Gemma-The-Writer-9B-HERETIC-Uncensored-Abliterated
+  fallback: FallenMerick/MN-Violet-Lotus-12B
   modality: ''
   genres:
   - Sensual Romance
@@ -3617,8 +3622,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3-Great-Bowels-Of-Horror-FREAKSTORM-6B
+  fallback: DavidAU/L3-Dark-Planet-8B-HERETIC-Uncensored-Abliterated
   modality: ''
   genres:
   - Monster
@@ -3650,8 +3655,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-4-E4B-it-The-DECKARD-V3-Expresso-HERETIC-UNCENSORED-Thinking
+  fallback: DavidAU/Qwen3.6-9B-Heretic-Uncensored-Thinking-Sweet-Madness
   modality: ''
   genres:
   - Transgressional Fiction
@@ -3681,8 +3686,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/ERNIE-21B-A3B-Claude-4.5-High-OPUS-Thinking
+  fallback: nightmedia/Qwen3.6-27B-Architect-Polaris2-Fable-B-F451-Tess
   modality: ''
   genres:
   - Philosophical Fiction
@@ -3709,8 +3714,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3-Horror-Instruct-Uncensored-262K-ctx-4B
+  fallback: DavidAU/gemma-4-31B-it-Grand-Horror-X-INTENSE-HERETIC-UNCENSORED-Thinking
   modality: ''
   genres:
   - Slasher
@@ -3762,8 +3767,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-D-256k-ctx-36B
+  fallback: DavidAU/Qwen3-24B-MOE-6x-4B-Star-Trek-AwayTeam-Instruct
   modality: ''
   genres:
   - Space Opera
@@ -3791,8 +3796,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-256k-ctx-36B
+  fallback: DavidAU/Qwen3.5-9B-Star-Trek-TNG-DS9-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Space Opera
@@ -3819,8 +3824,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3-Great-Bowels-Of-Horror-FREAKSTORM-6B
+  fallback: DavidAU/L3-Dark-Planet-8B-HERETIC-Uncensored-Abliterated
   modality: ''
   genres:
   - Gothic Horror
@@ -3883,8 +3888,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-3-it-vl-40B-Gemini-Heretic-Uncensored-Thinking
+  fallback: DavidAU/gemma-3-12b-it-vl-Gemini-3-Pro-Preview-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Colonization
@@ -4007,8 +4012,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: dphn/Dolphin-Mistral-24B-Venice-Edition
+  fallback: DavidAU/Qwen3.5-27B-Claude-4.6-OS-Auto-Variable-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Heist Fiction
@@ -4033,8 +4038,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-9B-Star-Trek-TNG-DS9-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-256k-ctx-36B
   modality: ''
   genres:
   - Space Exploration
@@ -4077,8 +4082,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/ERNIE-4.5-37B-A3B-Thinking-Brainstorm20x
+  fallback: DavidAU/Qwen3.5-21B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Philosophical Fiction
@@ -4126,8 +4131,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Gemma3-27B-it-vl-Polaris-HI16-Heretic-Uncensored-INSTRUCT
+  fallback: DavidAU/gemma-4-31B-it-Mystery-Fine-Tune-HERETIC-UNCENSORED-Thinking
   modality: ''
   genres:
   - Classic Whodunit
@@ -4157,8 +4162,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-3-12b-it-vl-Gemini-3-Pro-Preview-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Alternate History
@@ -4195,8 +4200,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Dolphin-Mistral-GLM-4.7-Flash-24B-Venice-Edition-Thinking-Uncensored
+  fallback: DavidAU/Qwen3.6-27B-Heretic2-Uncensored-Finetune-Thinking
   modality: ''
   genres:
   - Techno-Thriller
@@ -4229,8 +4234,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
+  fallback: Gemma 4 31B
   modality: ''
   genres:
   - General Literary Fiction
@@ -4261,8 +4266,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/LFM2-8B-A1B-GLM-4.7-Flash-Thinking-Quantum-IQ1C-P
+  fallback: DavidAU/LFM2.5-1.2B-Thinking-SuperMinds-7x-Heretic-Uncensored-DISTILL
   modality: ''
   genres:
   - Techno-Thriller
@@ -4286,8 +4291,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/LFM2-8B-A1B-GLM-4.7-Flash-Thinking-Quantum-IQ1C
+  fallback: DavidAU/Gemma-3-4B-VL-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Techno-Thriller
@@ -4345,8 +4350,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: Naphula/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA
+  fallback: DavidAU/Llama3.2-24B-A3B-II-Dark-Champion-INSTRUCT-Heretic-Abliterated-Uncensored
   modality: ''
   genres:
   - Grimdark Fantasy
@@ -4393,8 +4398,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: Naphula/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA
+  fallback: DavidAU/Llama3.2-30B-A3B-II-Dark-Champion-INSTRUCT-Heretic-Abliterated-Uncensored
   modality: ''
   genres:
   - Dark Fantasy
@@ -4458,8 +4463,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: TheDrummer/UnslopNemo-12B-v1
+  fallback: DavidAU/Qwen3.5-9B-The-Deckard-Pro-Writer-Uncensored-Heretic
   modality: ''
   genres:
   - Sensual Romance
@@ -4495,8 +4500,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/L3.2-Rogue-Creative-Instruct-DARK-HORROR-Uncensored-Abliterated-7B
+  fallback: DavidAU/L3-Darkest-Planet-16B-HERETIC-Uncensored-Abliterated
   modality: ''
   genres:
   - Transgressional Fiction
@@ -4533,8 +4538,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Llama3.2-24B-A3B-II-Dark-Champion-INSTRUCT-Heretic-Abliterated-Uncensored
+  fallback: DavidAU/L3-Dark-Planet-8B-HERETIC-Uncensored-Abliterated
   modality: ''
   genres:
   - Dark Fantasy
@@ -4565,8 +4570,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Rocinante-X-12B-v1-Heretic-Uncensored
+  fallback: Vortex5/Shadow-Siren-26B-A4B
   modality: ''
   genres:
   - Dark Romance
@@ -4620,8 +4625,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Mistral-Nemo-Inst-2407-12B-Thinking-Uncensored-HERETIC-HI-Claude-Opus
+  fallback: DavidAU/L3-Dark-Planet-8B-HERETIC-Uncensored-Abliterated
   modality: ''
   genres:
   - Gothic Horror
@@ -4657,8 +4662,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC
+  fallback: DavidAU/MN-CaptainErisNebula-Chimera-v1.1-THINKING-ClaudeOpus4.5-12B-heretic-uncensored
   modality: ''
   genres:
   - Crime Fiction
@@ -4692,8 +4697,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/MN-CaptainErisNebula-12B-Chimera-v1.1-heretic-uncensored-abliterated
+  fallback: DavidAU/Mistral-Nemo-Inst-2407-12B-Thinking-Uncensored-HERETIC-HI-Claude-Opus
   modality: ''
   genres:
   - Psychological Horror
@@ -4731,8 +4736,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Deckard-Heretic-Uncensored-Thinking
+  fallback: DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Techno-Thriller
@@ -4759,8 +4764,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/MN-CaptainErisNebula-12B-Chimera-v1.1-heretic-uncensored-abliterated
+  fallback: Vortex5/Shadow-Siren-26B-A4B
   modality: ''
   genres:
   - Urban Fantasy
@@ -4802,8 +4807,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-3-12b-it-vl-Deepseek-v3.1-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Police Procedural
@@ -4836,8 +4841,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/LFM2.5-1.2B-Thinking-Claude-4.6-Opus-Heretic-Uncensored-DISTILL
+  fallback: DavidAU/Gemma-3-4B-VL-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Heist Fiction
@@ -4860,8 +4865,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-3-it-vl-40B-Gemini-Heretic-Uncensored-Thinking
+  fallback: DavidAU/gemma-3-12b-it-vl-Gemini-3-Pro-Preview-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Colonization
@@ -4899,8 +4904,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/LFM2.5-1.2B-Thinking-Gemini-Pro-1000-Heretic-Uncensored-DISTILL
+  fallback: DavidAU/gemma-3-12b-it-vl-Gemini-3-Pro-Preview-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Alternate History
@@ -4924,8 +4929,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-4B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING
+  fallback: DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Techno-Thriller
@@ -4950,8 +4955,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-INSTRUCT-Thinking-Hybrid-Heretic-Uncensored
+  fallback: DavidAU/Gemma3-27B-it-vl-GLM-4.7-Uncensored-Heretic-Deep-Reasoning
   modality: ''
   genres:
   - Techno-Thriller
@@ -4979,8 +4984,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-INSTRUCT-Thinking-Hybrid-Heretic-Uncensored
+  fallback: DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Deckard-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Heist Fiction
@@ -5005,8 +5010,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-27B-Gemini3-Pro-High-Reasoning-Compact-Thinking
+  fallback: DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Alternate History
@@ -5035,8 +5040,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-THINKING-HERETIC-UNCENSORED
   modality: ''
   genres:
   - Corporate Science Fiction
@@ -5062,8 +5067,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-13B-GLM-4.7-Flash-DeepSeek-Polaris-Grande-Deep-Thinking
+  fallback: DavidAU/Qwen3-VL-8B-GLM-4.7-Flash-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Police Procedural
@@ -5091,8 +5096,8 @@ models:
   open_weights: false
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/LFM2-8B-A1B-GLM-4.7-Flash-Thinking-Quantum-IQ1C
+  fallback: DavidAU/LFM2.5-1.2B-Thinking-Claude-4.6-Opus-Heretic-Uncensored-DISTILL
   modality: ''
   genres:
   - Mystery Thriller
@@ -5121,8 +5126,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Gemma-3-1B-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking
+  fallback: DavidAU/LFM2.5-1.2B-Thinking-SuperMinds-7x-Heretic-Uncensored-DISTILL
   modality: ''
   genres:
   - Whodunit
@@ -5151,8 +5156,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking
+  fallback: DavidAU/LFM2.5-1.2B-Thinking-SuperMinds-7x-Heretic-Uncensored-DISTILL
   modality: ''
   genres:
   - Alternate History
@@ -5190,8 +5195,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Gemma-3-4B-VL-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3-VL-8B-GLM-4.7-Flash-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Police Procedural
@@ -5216,8 +5221,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-27B-HERETIC-Polaris-Advanced-Thinking-Alpha-uncensored
+  fallback: Naphula/Goetia-26B-A4B-v1.6
   modality: ''
   genres:
   - Alternate History
@@ -5245,8 +5250,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-Heretic-Uncensored-Thinking
+  fallback: DavidAU/gemma-3-12b-it-vl-Polaris-GLM-4.7-Flash-VAR-Thinking-Instruct-Heretic-Uncensored
   modality: ''
   genres:
   - Techno-Thriller
@@ -5274,8 +5279,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic
+  fallback: DavidAU/Gemma3-27B-it-vl-Polaris-HI16-Heretic-Uncensored-INSTRUCT
   modality: ''
   genres:
   - Literary Realism
@@ -5311,8 +5316,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-9B-Claude-4.6-OS-HERETIC-UNCENSORED-INSTRUCT
+  fallback: DavidAU/gemma-4-19B-A4B-it-INSTRUCT-Heretic-Uncensored
   modality: ''
   genres:
   - Romantic Adventure
@@ -5347,8 +5352,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-THINKING
+  fallback: DavidAU/Qwen3.5-27B-Claude-4.6-OS-Auto-Variable-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Hard Science Fiction
@@ -5399,8 +5404,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-INSTRUCT-HERETIC-UNCENSORED
+  fallback: DavidAU/gemma-4-19B-A4B-it-INSTRUCT-Heretic-Uncensored
   modality: ''
   genres:
   - Romantic Adventure
@@ -5451,8 +5456,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Gemma-3-4B-VL-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-THINKING
   modality: ''
   genres:
   - Police Procedural
@@ -5481,8 +5486,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-4-31B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking
+  fallback: DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Deckard-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Virtual Reality
@@ -5525,8 +5530,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.6-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3.5-21B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - General Literary Fiction
@@ -5559,8 +5564,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: e-n-v-y/L3.3-Electra-R1-70b-Elarablated-v0.1
+  fallback: DavidAU/Qwen3.5-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Transgressional Fiction
@@ -5593,8 +5598,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-13B-Deckard-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3.5-21B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Philosophical Fiction
@@ -5626,8 +5631,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking
+  fallback: Naphula/Goetia-26B-A4B-v1.7
   modality: ''
   genres:
   - Hard-boiled Fiction
@@ -5661,8 +5666,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-4B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING
+  fallback: DavidAU/LFM2.5-1.2B-Thinking-Claude-4.6-Opus-Heretic-Uncensored-DISTILL
   modality: ''
   genres:
   - Police Procedural
@@ -5690,8 +5695,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3-24B-MOE-6x-4B-Star-Trek-AwayTeam-Instruct
+  fallback: DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-256k-ctx-36B
   modality: ''
   genres:
   - First Contact
@@ -5756,8 +5761,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-MTP
   modality: ''
   genres:
   - Hard Science Fiction
@@ -5787,8 +5792,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-4-E4B-it-The-DECKARD-V2-Strong-HERETIC-UNCENSORED-Thinking
+  fallback: DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking
   modality: ''
   genres:
   - Biographical Fiction
@@ -5820,8 +5825,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking
+  fallback: DavidAU/Qwen3.5-21B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Philosophical Fiction
@@ -5852,8 +5857,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Gemma3-27B-it-vl-GLM-4.7-Uncensored-Heretic-Deep-Reasoning
+  fallback: DavidAU/Qwen3.5-27B-Deckard-PKD-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Virtual Reality
@@ -5888,8 +5893,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-4-31B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking
+  fallback: DavidAU/Qwen3.5-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Philosophical Fiction
@@ -5925,8 +5930,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Gemma-3-27b-it-Gemini-Deep-Reasoning
   modality: ''
   genres:
   - Historical Epic Drama
@@ -5989,8 +5994,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: Gryphe/Pantheon-Reasoning-31B-1.1
+  fallback: DavidAU/gemma-3-12b-it-vl-HighIQ-Polaris-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Mystery-Suspense Fiction
@@ -6018,8 +6023,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3-Great-Bowels-Of-Horror-FREAKSTORM-6B
+  fallback: DavidAU/L3-Darkest-Planet-16B-HERETIC-Uncensored-Abliterated
   modality: ''
   genres:
   - Slasher
@@ -6046,8 +6051,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-27B-Deckard-PKD-Heretic-Uncensored-Thinking
+  fallback: DavidAU/gemma-4-19B-A4B-it-The-DECKARD-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Philosophical Fiction
@@ -6075,8 +6080,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-4-E4B-it-The-DECKARD-V2-Strong-HERETIC-UNCENSORED-Thinking
+  fallback: DavidAU/Qwen3.5-4B-Deckard-HERETIC-UNCENSORED-Thinking
   modality: ''
   genres:
   - Dramatic Monologue
@@ -6109,8 +6114,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-4-E4B-it-The-DECKARD-V3-Expresso-HERETIC-UNCENSORED-Thinking
+  fallback: DavidAU/gemma-4-E4B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking
   modality: ''
   genres:
   - Dramatic Monologue
@@ -6147,8 +6152,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-4-E4B-it-The-DECKARD-V3-Expresso-HERETIC-UNCENSORED-Thinking
+  fallback: DavidAU/gemma-4-E4B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking
   modality: ''
   genres:
   - Romantic Comedy
@@ -6179,8 +6184,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-4-E4B-it-The-DECKARD-Expresso-Universe-HERETIC-UNCENSORED-Thinking
+  fallback: DavidAU/gemma-4-E4B-it-The-DECKARD-V2-Strong-HERETIC-UNCENSORED-Thinking
   modality: ''
   genres:
   - Dramatic Monologue
@@ -6233,8 +6238,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.6-9B-Heretic-Uncensored-Thinking-Sweet-Madness
+  fallback: DavidAU/gemma-4-E4B-it-The-DECKARD-V2-Strong-HERETIC-UNCENSORED-Thinking
   modality: ''
   genres:
   - Transgressional Fiction
@@ -6263,8 +6268,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-4-31B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking
+  fallback: DavidAU/Qwen3.5-21B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Philosophical Fiction
@@ -6294,8 +6299,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: Gemma 4 26B-A4B
+  fallback: DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-INSTRUCT-HERETIC-UNCENSORED
   modality: ''
   genres:
   - Contemporary Fiction
@@ -6324,8 +6329,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-4-E4B-it-The-DECKARD-V2-Strong-HERETIC-UNCENSORED-Thinking
+  fallback: DavidAU/Qwen3.5-4B-Deckard-HERETIC-UNCENSORED-Thinking
   modality: ''
   genres:
   - Dramatic Monologue
@@ -6354,8 +6359,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-4-E2B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking
+  fallback: DavidAU/gemma-4-E4B-it-The-DECKARD-Expresso-Universe-HERETIC-UNCENSORED-Thinking
   modality: ''
   genres:
   - Whimsical Mystery
@@ -6383,8 +6388,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-4-E2B-it-The-DECKARD-Expresso-ONE-Universe-HERETIC-UNCENSORED-Thinking
+  fallback: DavidAU/gemma-4-E4B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking
   modality: ''
   genres:
   - Dramatic Monologue
@@ -6461,8 +6466,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking
   modality: ''
   genres:
   - General Literary Fiction
@@ -6514,8 +6519,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3.6-9B-Heretic-Uncensored-Thinking-Sweet-Madness
   modality: ''
   genres:
   - Weird Fiction
@@ -6541,8 +6546,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3-MOE-6x1.7B-10.2B-Shining-Madness-Uncensored
+  fallback: DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Surreal Literature
@@ -6571,8 +6576,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.6-27B-Heretic2-Uncensored-Finetune-Thinking
+  fallback: DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-MTP
   modality: ''
   genres:
   - Psychological Horror
@@ -6613,8 +6618,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking-V2-Hightop
+  fallback: DavidAU/Qwen3.6-21B-IQ-Ultra-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Surreal Literature
@@ -6641,8 +6646,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.6-21B-IQ-Ultra-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-MTP
   modality: ''
   genres:
   - Thriller-Suspense
@@ -6694,8 +6699,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/MN-CaptainErisNebula-12B-Chimera-v1.1-heretic-uncensored-abliterated
+  fallback: EldritchLabs/MN-Crimson-Cafe-12B
   modality: ''
   genres:
   - Dark Romance
@@ -6824,8 +6829,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Rocinante-X-12B-v1-Heretic-Uncensored
+  fallback: EldritchLabs/MN-Crimson-Cafe-12B
   modality: ''
   genres:
   - Paranormal Romance
@@ -6901,8 +6906,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: Tinyllama-15M-stories
+  fallback: None (Testing Only)
   modality: ''
   genres:
   - Children's Story
@@ -6921,8 +6926,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic
+  fallback: DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-MTP
   modality: ''
   genres:
   - Dystopian Fiction
@@ -6968,8 +6973,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: KoboldAI/LLaMA2-13B-TiefighterLR
+  fallback: TheDrummer:Cydonia-24b-v4.1
   modality: ''
   genres:
   - Adventure Fantasy
@@ -7022,8 +7027,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Vortex5/Shadow-Siren-26B-A4B
+  fallback: DavidAU/MN-CaptainErisNebula-12B-Chimera-v1.1-heretic-uncensored-abliterated
   modality: ''
   genres:
   - Gothic Romance
@@ -7156,8 +7161,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: FallenMerick/MN-Violet-Lotus-12B
+  fallback: TheDrummer/UnslopNemo-12B-v1
   modality: ''
   genres:
   - Literary Romance
@@ -7320,8 +7325,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Mistral-Nemo-Inst-2407-12B-Thinking-Uncensored-HERETIC-HI-Claude-Opus
+  fallback: DavidAU/Rocinante-X-12B-v1-Heretic-Uncensored
   modality: ''
   genres:
   - Psychological Horror
@@ -7378,8 +7383,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: TheDrummer/UnslopNemo-12B-v1
+  fallback: EVA-UNIT-01/EVA-Yi-1.5-9B-32K-V1
   modality: ''
   genres:
   - Literary Romance
@@ -7422,8 +7427,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-MTP
+  fallback: Gemma 4 31B
   modality: ''
   genres:
   - Dystopian Fiction
@@ -7510,8 +7515,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: chuanli11/Llama-3.2-3B-Instruct-uncensored
+  fallback: DavidAU/L3-Dark-Planet-8B-HERETIC-Uncensored-Abliterated
   modality: ''
   genres:
   - Transgressional Fiction
@@ -7553,8 +7558,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: huihui-ai/Llama-3.2-3B-Instruct-abliterated
+  fallback: DavidAU/L3-Dark-Planet-8B-HERETIC-Uncensored-Abliterated
   modality: ''
   genres:
   - Transgressional Fiction
@@ -7633,8 +7638,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder
+  fallback: DavidAU/Qwen3-Short-Story-Instruct-Uncensored-262K-ctx-4B
   modality: ''
   genres:
   - Adventure Fiction
@@ -7659,8 +7664,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-4-31B-it-Mystery-Fine-Tune-HERETIC-UNCENSORED-Thinking
+  fallback: DavidAU/Gemma-3-27b-it-Gemini-Deep-Reasoning
   modality: ''
   genres:
   - Philosophical Mystery
@@ -7739,8 +7744,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-13B-Deckard-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic
   modality: ''
   genres:
   - General Literary Fiction
@@ -7776,8 +7781,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: nightmedia/Qwen3.6-27B-Architect-Polaris2-Fable-B-F451-Tess
+  fallback: DavidAU/Qwen3.5-27B-HERETIC-Polaris-Advanced-Thinking-Alpha-uncensored
   modality: ''
   genres:
   - Dystopian Fiction
@@ -7816,8 +7821,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: philipjohnbasile/Qwen3.6-27B-Fable-Fusion-711-MTPLX-8bit
+  fallback: DavidAU/Qwen3.6-27B-Heretic2-Uncensored-Finetune-Thinking
   modality: ''
   genres:
   - Dystopian Fiction
@@ -7973,8 +7978,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: MiMo V2.6 Flash
+  fallback: Gemini 3.8 Flash
   modality: ''
   genres:
   - General Literary Fiction
@@ -7998,8 +8003,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: K2 Horizon 375B - A23B
+  fallback: Kimi K3
   modality: ''
   genres:
   - Legal Thriller
@@ -8054,8 +8059,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Command A+
+  fallback: Mistral Large 4
   modality: ''
   genres:
   - Financial Thriller
@@ -8121,7 +8126,7 @@ models:
   uncensored: false
   can_run_locally: false
   comparable: GLM-5.3-Flash
-  fallback: ''
+  fallback: MiMo V2.6 Flash
   modality: ''
   genres:
   - Techno-Thriller
@@ -8146,8 +8151,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Naphula/Goetia-26B-A4B-v1.6
+  fallback: DavidAU/Mistral-Small-3.2-46B-The-Brilliant-Raconteur-II-Instruct-2506
   modality: ''
   genres:
   - Epic Quest Fantasy
@@ -8176,8 +8181,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Gemini 2.5 Flash Lite
+  fallback: Gemma 4 31B
   modality: ''
   genres:
   - General Literary Fiction
@@ -8203,8 +8208,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Gemini 3.8 Flash
+  fallback: GLM 5.3 Flash
   modality: ''
   genres:
   - Speculative Fiction
@@ -8228,8 +8233,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: TheDrummer/UnslopNemo-12B-v4.1
+  fallback: TheDrummer/UnslopNemo-12B-v4
   modality: ''
   genres:
   - Amateur Sleuth Mystery
@@ -8259,8 +8264,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Pareto Latest
+  fallback: DeepSeek V4 Pro 0813
   modality: ''
   genres:
   - Philosophical Fiction
@@ -8286,8 +8291,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: ggml-org/stories15M_MOE
+  fallback: None (Testing Only)
   modality: ''
   genres:
   - Children's Story
@@ -8459,8 +8464,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/MN-CaptainErisNebula-12B-Chimera-v1.1-heretic-uncensored-abliterated
+  fallback: Vortex5/Shadow-Siren-26B-A4B
   modality: ''
   genres:
   - Erotic Fiction
@@ -8535,8 +8540,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Llama3.2-24B-A3B-II-Dark-Champion-INSTRUCT-Heretic-Abliterated-Uncensored
+  fallback: e-n-v-y/Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf
   modality: ''
   genres:
   - Grimdark Fantasy
@@ -8578,8 +8583,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-4-31B-it-Mystery-Fine-Tune-HERETIC-UNCENSORED-Thinking
+  fallback: Gryphe/Pantheon-Reasoning-31B-1.1
   modality: ''
   genres:
   - Literary Thriller
@@ -8607,8 +8612,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Gemma3-27B-it-vl-Polaris-HI16-Heretic-Uncensored-INSTRUCT
+  fallback: DavidAU/Mistral-Small-3.2-46B-The-Brilliant-Raconteur-II-Instruct-2506
   modality: ''
   genres:
   - Historical Epic Drama
@@ -8695,8 +8700,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: e-n-v-y/Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf
+  fallback: DavidAU/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking
   modality: ''
   genres:
   - Dark Fantasy
@@ -8724,8 +8729,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: e-n-v-y/L3.3-Electra-R1-70b-Elarablated-v0.1
+  fallback: Naphula/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA
   modality: ''
   genres:
   - Dark Academia
@@ -8870,8 +8875,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: FLUX 3 Video Image-to-Video
+  fallback: 'LTX-2.5: Text to Video'
   modality: Video
   genres:
   - Animated Book Covers & Trailer Shots (All Genres)
@@ -8913,8 +8918,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: GPT Image 2
+  fallback: 'Qwen-Image 3.0: Text to Image'
   modality: Image
   genres:
   - Character Consistency Sheets
@@ -8940,8 +8945,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Nano Banana Pro
+  fallback: FLUX.2 Pro
   modality: Image
   genres:
   - Book Covers & Stylized Illustrations (All Genres)
@@ -8966,8 +8971,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: 'Wan 3.0: Text to Video'
+  fallback: 'LTX-2.5: Text to Video'
   modality: Video
   genres:
   - Book Trailers & Cinematic Sequences (All Genres)
@@ -8992,8 +8997,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: 'Qwen-Image 3.0: Text to Image'
+  fallback: FLUX.2 Pro
   modality: Image
   genres:
   - Book Covers & Typography Design (All Genres)
@@ -9018,8 +9023,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: 'Wan 3.0: Text to Video'
+  fallback: 'Seedance 2.5: Text to Video'
   modality: Video
   genres:
   - Book Trailers & Multi-Shot Cinematic Scenes (All Genres)
@@ -9044,8 +9049,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: FLUX.2 Pro
+  fallback: 'Ideogram v4: Text to Image'
   modality: Image
   genres:
   - Book Covers & Visual Art (All Genres)
@@ -9087,8 +9092,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: Fish Audio S2 Pro
+  fallback: Gemini 3.1 Flash TTS Preview
   modality: Speech
   genres:
   - Audiobook Narration (All Genres)
@@ -9113,8 +9118,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: 'MiniMax Music 3: Text to Music'
+  fallback: Lyria 3 Pro Preview
   modality: Music
   genres:
   - Book Trailer Scores & Soundtrack Music (All Genres)
@@ -9139,8 +9144,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: 'Stability Audio 2.5: Audio Inpainting'
+  fallback: ACE-Step 1.5 Music Generation AIO
   modality: Sound
   genres:
   - Sound Effects & Ambient Soundscapes (All Genres)
@@ -9165,8 +9170,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: 'Seedance 2.5: Text to Video'
+  fallback: 'LTX-2.5: Text to Video'
   modality: Video
   genres:
   - Book Trailers & Atmospheric Scenes (All Genres)
@@ -9191,8 +9196,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: ACE-Step 1.5 Music Generation AIO
+  fallback: Lyria 3 Pro Preview
   modality: Music
   genres:
   - Book Trailer Songs & Vocal Soundtracks (All Genres)
@@ -9217,8 +9222,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Chatterbox
+  fallback: Gemini 3.1 Flash TTS Preview
   modality: Speech
   genres:
   - Audiobook Narration & Multi-Speaker Dramatization (All Genres)
@@ -9243,8 +9248,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Qwen3.8 Omni Flash
+  fallback: MiMo V2.6 Flash
   modality: ''
   genres:
   - Techno-Thriller
@@ -9267,8 +9272,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Nemotron 3 Nano Omni
+  fallback: MiMo V2.6 Flash
   modality: ''
   genres:
   - Contemporary Fiction
@@ -9309,8 +9314,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: 'Stable Audio 2.5: Text to Audio'
+  fallback: 'Stable Audio 2.5: Text to Audio'
   modality: Sound
   genres:
   - Audiobook Sound Design & Audio Repair (All Genres)
@@ -9335,8 +9340,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: ACE-Step 1.5 Music Generation AIO
+  fallback: 'MiniMax Music 3: Text to Music'
   modality: Music
   genres:
   - Book Trailer Scores & Instrumental Soundtracks (All Genres)
@@ -9429,8 +9434,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: KoboldAI/LLaMA2-13B-Tiefighter
+  fallback: TheDrummer:Cydonia-24b-v4.1
   modality: ''
   genres:
   - Adventure Fantasy
@@ -9456,8 +9461,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: 'TheDrummer: UnslopNemo 12B'
+  fallback: TheDrummer/UnslopNemo-12B-v4
   modality: ''
   genres:
   - Amateur Sleuth Mystery
@@ -9487,8 +9492,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: TheDrummer/UnslopNemo-12B-v4.1
+  fallback: 'TheDrummer: UnslopNemo 12B'
   modality: ''
   genres:
   - Romantic Adventure
@@ -9513,8 +9518,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: TheDrummer/UnslopNemo-12B-v4.1
+  fallback: Gemma 4 26B-A4B
   modality: ''
   genres:
   - Slice-of-Life Fiction
@@ -9540,8 +9545,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: FallenMerick/MN-Violet-Lotus-12B
+  fallback: TheDrummer/UnslopNemo-12B-v4.1
   modality: ''
   genres:
   - Sensual Romance
@@ -9654,8 +9659,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3-Great-Bowels-Of-Horror-FREAKSTORM-6B
+  fallback: DavidAU/L3-Dark-Planet-8B-HERETIC-Uncensored-Abliterated
   modality: ''
   genres:
   - Monster
@@ -9687,8 +9692,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-3-12b-it-vl-Deepseek-v3.1-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Police Procedural
@@ -9721,8 +9726,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Gemma-3-4B-VL-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-THINKING
   modality: ''
   genres:
   - Police Procedural
@@ -9751,8 +9756,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-4-E4B-it-The-DECKARD-V2-Strong-HERETIC-UNCENSORED-Thinking
+  fallback: DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking
   modality: ''
   genres:
   - Biographical Fiction
@@ -9784,8 +9789,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-13B-Deckard-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3.5-21B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Philosophical Fiction
@@ -9817,8 +9822,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3-24B-MOE-6x-4B-Star-Trek-AwayTeam-Instruct
+  fallback: DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-256k-ctx-36B
   modality: ''
   genres:
   - First Contact
@@ -9849,8 +9854,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Gemma3-27B-it-vl-GLM-4.7-Uncensored-Heretic-Deep-Reasoning
+  fallback: DavidAU/Qwen3.5-27B-Deckard-PKD-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Virtual Reality
@@ -9885,8 +9890,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Dolphin-Mistral-GLM-4.7-Flash-24B-Venice-Edition-Thinking-Uncensored
+  fallback: DavidAU/Qwen3.6-27B-Heretic2-Uncensored-Finetune-Thinking
   modality: ''
   genres:
   - Techno-Thriller
@@ -9919,8 +9924,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-4-31B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking
+  fallback: DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Deckard-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Virtual Reality
@@ -9963,8 +9968,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic
+  fallback: DavidAU/Gemma3-27B-it-vl-Polaris-HI16-Heretic-Uncensored-INSTRUCT
   modality: ''
   genres:
   - Literary Realism
@@ -10000,8 +10005,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking-V2-Hightop
+  fallback: DavidAU/Qwen3.6-21B-IQ-Ultra-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Surreal Literature
@@ -10028,8 +10033,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3.6-9B-Heretic-Uncensored-Thinking-Sweet-Madness
   modality: ''
   genres:
   - Weird Fiction
@@ -10055,8 +10060,8 @@ models:
   open_weights: true
   uncensored: true
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Dolphin-Mistral-GLM-4.7-Flash-24B-Venice-Edition-Thinking-Uncensored
+  fallback: Mistral Large 4
   modality: ''
   genres:
   - Legal Thriller
@@ -10082,8 +10087,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: Gemini 3 Flash Preview
+  fallback: DavidAU/Llama3.3-8B-Instruct-Thinking-Claude-4.5-Opus-High-Reasoning
   modality: ''
   genres:
   - Solarpunk
@@ -10117,8 +10122,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/gemma-3-12b-it-vl-Gemini-3-Pro-Preview-Heretic-Uncensored-Thinking
+  fallback: DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking
   modality: ''
   genres:
   - Alternate History
@@ -10155,8 +10160,8 @@ models:
   open_weights: true
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-THINKING-HERETIC-UNCENSORED
+  fallback: DavidAU/Qwen3.5-27B-Claude-4.6-OS-INSTRUCT
   modality: ''
   genres:
   - Hard Science Fiction
@@ -10300,8 +10305,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: 'Wan 3.0: Image to Video'
+  fallback: 'Seedance 2.5: Text to Video'
   modality: Video
   genres:
   - Book Trailers & Visual Pre-Viz (All Genres)
@@ -10326,8 +10331,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: Z-Image-Turbo Text to Image
+  fallback: 'Ideogram v4: Text to Image'
   modality: Image
   genres:
   - Book Covers & Visual Art (All Genres)
@@ -10352,8 +10357,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Fish Audio S2 Pro
+  fallback: Chatterbox
   modality: Speech
   genres:
   - Audiobook Narration (All Genres)
@@ -10408,8 +10413,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: MiMo-V2.6-Flash
+  fallback: GPT-6 Luna
   modality: ''
   genres:
   - Contemporary Fiction
@@ -10435,8 +10440,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Kimi K3.1 Pro
+  fallback: DeepSeek V4 Pro 0813
   modality: ''
   genres:
   - Hard Science Fiction
@@ -10462,8 +10467,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Gemini 4 Carbon
+  fallback: MiMo-V2.6 Pro
   modality: ''
   genres:
   - Financial Thriller
@@ -10491,8 +10496,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Gemini 4 Argon
+  fallback: Kimi K3.1 Pro
   modality: ''
   genres:
   - Financial Thriller
@@ -10517,8 +10522,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: true
-  comparable: ''
-  fallback: ''
+  comparable: 'Ideogram v4: Text to Image'
+  fallback: FLUX.2 Pro
   modality: Image
   genres:
   - Comic Grids
@@ -10545,8 +10550,8 @@ models:
   open_weights: false
   uncensored: false
   can_run_locally: false
-  comparable: ''
-  fallback: ''
+  comparable: Nemotron 3 Nano Omni
+  fallback: MiMo V2.6 Flash
   modality: ''
   genres:
   - Contemporary Fiction

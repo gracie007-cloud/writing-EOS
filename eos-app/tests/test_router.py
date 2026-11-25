@@ -70,7 +70,8 @@ def test_every_model_component_has_a_line_of_experts(W, R):
 
 def test_experts_run_primary_then_comparable(W, R):
     assert [(s, m.name) for s, m in experts(W.by_step["NEW-14"], R)] == [("primary", "Claude Fable 5.1"), ("comparable", "Kimi K3")]
-    assert [(s, m.name) for s, m in experts(W.by_step["NEW-13"], R)] == [("primary", "GLM 5.3 Flash")]   # open-weight primary
+    assert [(s, m.name) for s, m in experts(W.by_step["NEW-13"], R)] == [("primary", "GLM 5.3 Flash"),
+                                                                          ("fallback", "MiMo V2.6 Flash")]   # catalog pairing
 
 
 def test_each_provider_has_its_route(R, RT):
@@ -94,8 +95,9 @@ def test_mature_text_both_experts_refused_goes_to_venice(W, R, RT):
     assert choose_checker(cont, writer, R, RT, mature=True, refused=refused).name == "Venice Uncensored"
     with pytest.raises(RoutingError):                                # Venice is only for mature text
         choose_checker(cont, writer, R, RT, mature=False, refused=refused)
-    with pytest.raises(RoutingError):
-        choose_checker(cont, writer, R, RT, mature=True, refused=refused, down={model(R, "Venice Uncensored").key})
+    # with Venice down, the writer's own Comparable (an uncensored model on Featherless) judges it
+    other = choose_checker(cont, writer, R, RT, mature=True, refused=refused, down={model(R, "Venice Uncensored").key})
+    assert other.name == writer.comparable and other.ident != writer.ident
 
 
 def test_prose_writers_use_genre_fine_tunes_and_mature_text_needs_one(W, R, RT):
