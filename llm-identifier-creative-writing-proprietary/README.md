@@ -13,15 +13,18 @@ The registry build (`python -m eos_app.registry … --proprietary <this file>`, 
 | Provider | Rows | In the app |
 | :--- | :--- | :--- |
 | Concentrate AI | 36 | 28 were already in the roster and get genre tags. 8 routes the roster lacked are added: Claude Fable 5 and 5.2, Gemini 4 Carbon, Hydrogen and Neon, Kimi K3.1 Pro and Pro Highspeed, and Qwen3.8 Omni Flash (a second route beside its OpenRouter one). |
-| OpenRouter | 13 | 12 were already in the roster and get genre tags, and Fish Audio S2 Pro gets its ID (`fish-audio/s2-pro`). Gemini 3.1 Flash TTS Preview is reported, not added: the roster lists "Gemini 3.1 Flash TTS" with no ID. |
-| Comfy Cloud | 13 | Reported, not added. These are media workflows named for newer versions than the roster's ID-less rows (for example FLUX.2 Pro vs FLUX.2, Seedance 2.5 vs 2.0, Wan 3.0 vs 2.2, LTX-2.5 vs LTX-2). Say which roster row each one replaces. |
+| OpenRouter | 13 | 12 were already in the roster and get genre tags, and Fish Audio S2 Pro gets its ID (`fish-audio/s2-pro`). Gemini 3.1 Flash TTS Preview and Lyria 3 Pro Preview are added as media models. |
+| Comfy Cloud | 13 | Image, video, music and sound workflows, each with its ID (the workflow name). The ones the roster also lists match it; the rest (for example FLUX.2 Pro and Qwen-Image 3.0) are added. *Narrative Components* names them for the media components (2026-11-25). |
 
 A model this catalog adds counts as frontier when either checkbox is ticked.
 
-### Two side effects
+### Media models
 
-* **Sonar Deep Research enters the mature tier.** The roster ticks Uncensored for it, and this catalog gives it genre tags, so it now qualifies on OpenRouter. If that tick was not meant, untick it in the roster.
-* **Pareto Latest keeps its leading tilde.** Its ID, `~unbiased/pareto-latest`, is an OpenRouter "latest" alias. The Notes column asks whether the tilde is a typo, so confirm it on OpenRouter.
+This catalog is where the Author keeps every media model (2026-11-25), so the build adds its media rows with their type (Image, Video, Music, Sound, Speech) instead of reporting them.
+
+### Pareto Latest
+
+Its ID is `~unbiased/pareto-latest`, with the leading tilde: that is OpenRouter's ID for it (confirmed by the Author, 2026-11-25).
 
 ## Columns
 

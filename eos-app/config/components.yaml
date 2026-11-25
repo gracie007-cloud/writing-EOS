@@ -949,8 +949,8 @@ components:
   modality: Image
   candidates:
     primary: FLUX.2
-    comparable: Qwen-Image
-    fallback: Z-Image Turbo
+    comparable: 'Qwen-Image: Text to Image'
+    fallback: Z-Image-Turbo Text to Image
 - step: NEW-19
   name: Map Maker
   database_name: Map Maker
@@ -967,8 +967,8 @@ components:
   modality: Image
   candidates:
     primary: Nano Banana Pro
-    comparable: Qwen-Image
-    fallback: Z-Image Turbo
+    comparable: 'Qwen-Image: Text to Image'
+    fallback: Z-Image-Turbo Text to Image
 - step: NEW-20
   name: Visual Consistency Check
   database_name: Visual Consistency Check
@@ -990,7 +990,7 @@ components:
   - NEW-26
   candidates:
     primary: Qwen3.8 Omni Flash
-    comparable: MiMo-V2-Omni
+    comparable: MiMo V2.6 Flash
     fallback: Nemotron 3 Nano Omni
 - step: '18'
   name: Logic Check
@@ -1813,8 +1813,8 @@ components:
   modality: Image
   candidates:
     primary: FLUX.2
-    comparable: Qwen-Image
-    fallback: Z-Image Turbo
+    comparable: 'Qwen-Image: Text to Image'
+    fallback: Z-Image-Turbo Text to Image
 - step: NEW-07
   name: Typesetting
   database_name: Retail Formatting / Typesetting / ISBN / Front-&-Back Matter
@@ -1909,8 +1909,8 @@ components:
   modality: Image
   candidates:
     primary: GPT Image 2
-    comparable: Ideogram
-    fallback: Qwen-Image
+    comparable: 'Ideogram v4: Text to Image'
+    fallback: 'Qwen-Image: Text to Image'
 - step: NEW-10
   name: Launch Plan
   database_name: Author Bio / Platform / ARC / Pricing / Distribution
@@ -1957,8 +1957,8 @@ components:
   modality: Image
   candidates:
     primary: FLUX.2
-    comparable: Qwen-Image
-    fallback: Z-Image Turbo
+    comparable: 'Qwen-Image: Text to Image'
+    fallback: Z-Image-Turbo Text to Image
 - step: '41'
   name: Audiobook Script
   database_name: Audiobook Script
@@ -1988,8 +1988,8 @@ components:
   category: Sales & Marketing
   modality: Speech
   candidates:
-    primary: ElevenLabs v3
-    comparable: Gemini 3.1 Flash TTS
+    primary: Fish Audio S2 Pro
+    comparable: Gemini 3.1 Flash TTS Preview
     fallback: Chatterbox
 - step: NEW-25
   name: Narration Check
@@ -2009,7 +2009,7 @@ components:
   - NEW-24
   candidates:
     primary: Qwen3.8 Omni Flash
-    comparable: MiMo-V2-Omni
+    comparable: MiMo V2.6 Flash
     fallback: Nemotron 3 Nano Omni
 - step: '42'
   name: Book Trailer
@@ -2040,9 +2040,9 @@ components:
   category: Sales & Marketing
   modality: Music
   candidates:
-    primary: Lyria 3 Pro
-    comparable: MiniMax Music 3
-    fallback: ACE-Step
+    primary: Lyria 3 Pro Preview
+    comparable: 'MiniMax Music 3: Text to Music'
+    fallback: ACE-Step 1.5 Music Generation AIO
 - step: NEW-28
   name: Sound Effects
   database_name: Sound Effects
@@ -2057,9 +2057,8 @@ components:
   category: Sales & Marketing
   modality: Sound
   candidates:
-    primary: ElevenLabs Sound Effects
-    comparable: Stable Audio Open
-    fallback: Stability Text To Audio
+    primary: 'Stable Audio 2.5: Text to Audio'
+    comparable: 'Stability Audio 2.5: Audio Inpainting'
 - step: NEW-26
   name: Trailer Video
   database_name: Trailer Video
@@ -2076,9 +2075,9 @@ components:
   category: Sales & Marketing
   modality: Video
   candidates:
-    primary: Seedance 2.0
-    comparable: Wan 2.2
-    fallback: LTX-2
+    primary: 'Seedance 2.5: Text to Video'
+    comparable: 'Wan 3.0: Text to Video'
+    fallback: 'LTX-2.5: Text to Video'
 - step: NEW-29
   name: Trailer Assembly
   database_name: Trailer Assembly

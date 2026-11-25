@@ -32,10 +32,10 @@ def model(R, name):
 
 def test_the_registry_holds_every_roster_model_with_a_provider(R):
     # the roster, with the models the three Notion catalogs and the register add (D33)
-    assert Counter(m.provider for m in R.models) == {"Hugging Face": 166, "Featherless AI": 83, "Concentrate AI": 50,
-                                                      "OpenRouter": 25, "Unsloth Desktop": 8, "ElevenLabs": 3,
-                                                      "Comfy Cloud": 11}
-    assert {m.modality for m in R.models} == {"", "Image", "Video", "Speech", "Music", "Sound", "Speech-to-text"}
+    # the live roster of 2026-11-25 (418 rows); ElevenLabs is no longer in it
+    assert Counter(m.provider for m in R.models) == {"Hugging Face": 253, "Featherless AI": 85, "Concentrate AI": 50,
+                                                      "OpenRouter": 23, "Unsloth Desktop": 8, "Comfy Cloud": 15}
+    assert {m.modality for m in R.models} == {"", "Image", "Video", "Speech", "Music", "Sound"}
     assert len({m.key for m in R.models}) == len(R.models)
 
 
@@ -56,7 +56,7 @@ def test_model_cells_are_read_without_their_notes(cell, name):
 
 
 def test_spellings_from_both_databases_resolve_to_one_model(R):
-    assert R.resolve("MiMo-V2.6-Pro (least-gap — not parity)") is R.resolve("MiMo-2.6-Pro") is model(R, "MiMo-2.6 Pro")
+    assert R.resolve("MiMo-V2.6-Pro (least-gap — not parity)") is R.resolve("MiMo-2.6-Pro") is model(R, "MiMo-V2.6 Pro")
     assert R.resolve("GLM-5.3-Flash") is model(R, "GLM 5.3 Flash")
     assert R.resolve("Kimi  K3") is model(R, "Kimi K3")
     assert least_gap("None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)")
@@ -81,10 +81,10 @@ def test_each_provider_has_its_route(R, RT):
 
 
 def test_a_checker_steps_past_the_model_that_wrote_the_text(W, R, RT):
-    canon = W.by_step["19.3"]                     # Canon Check: MiMo-2.6 Pro, GPT-6.1 Sol, DeepSeek V4 Pro 0813
-    assert [m.name for _, m in experts(canon, R)] == ["MiMo-2.6 Pro", "GPT-6.1 Sol", "DeepSeek V4 Pro 0813"]
-    assert choose_checker(canon, model(R, "MiMo-2.6 Pro"), R, RT).name == "GPT-6.1 Sol"
-    assert choose_checker(canon, model(R, "Gemini 4 Argon"), R, RT).name == "MiMo-2.6 Pro"
+    canon = W.by_step["19.3"]                     # Canon Check: MiMo-V2.6 Pro, GPT-6.1 Sol, DeepSeek V4 Pro 0813
+    assert [m.name for _, m in experts(canon, R)] == ["MiMo-V2.6 Pro", "GPT-6.1 Sol", "DeepSeek V4 Pro 0813"]
+    assert choose_checker(canon, model(R, "MiMo-V2.6 Pro"), R, RT).name == "GPT-6.1 Sol"
+    assert choose_checker(canon, model(R, "Gemini 4 Argon"), R, RT).name == "MiMo-V2.6 Pro"
 
 
 def test_mature_text_both_experts_refused_goes_to_venice(W, R, RT):
@@ -133,34 +133,40 @@ def test_editing_tools_run_on_their_own_experts_not_the_genre_fine_tunes(W, R, R
 
 def test_media_components_use_media_models_through_their_providers(W, R, RT):
     cover, narration = W.by_step["NEW-22"], W.by_step["NEW-24"]
-    assert cover.makes_media and [m.name for m in writer_models(cover, R, RT)] == ["GPT Image 2", "Ideogram", "Qwen-Image"]
+    assert cover.makes_media and [m.name for m in writer_models(cover, R, RT)] == [
+        "GPT Image 2", "Ideogram v4: Text to Image", "Qwen-Image: Text to Image"]
     assert [route(m, RT) for m in writer_models(cover, R, RT)] == ["openrouter", "comfy_cloud", "comfy_cloud"]
-    assert [route(m, RT) for m in writer_models(narration, R, RT)] == ["elevenlabs", "openrouter", "featherless"]
+    # narration: Fish Audio S2 Pro, Gemini 3.1 Flash TTS Preview, Chatterbox (ElevenLabs left the roster)
+    assert [route(m, RT) for m in writer_models(narration, R, RT)] == ["openrouter", "openrouter", "featherless"]
 
 
 def test_mature_media_runs_only_on_open_models_on_comfy_cloud(W, R, RT):
-    assert [m.name for m in writer_models(W.by_step["NEW-26"], R, RT, mature=True)] == ["Wan 2.2", "LTX-2"]
-    assert [m.name for m in writer_models(W.by_step["NEW-22"], R, RT, mature=True)] == ["Qwen-Image"]
+    assert [m.name for m in writer_models(W.by_step["NEW-26"], R, RT, mature=True)] == [
+        "Wan 3.0: Text to Video", "LTX-2.5: Text to Video"]
+    assert [m.name for m in writer_models(W.by_step["NEW-22"], R, RT, mature=True)] == ["Qwen-Image: Text to Image"]
     assert [m.name for m in writer_models(W.by_step["NEW-24"], R, RT, mature=True)] == ["Chatterbox"]
-    assert [m.name for m in writer_models(W.by_step["NEW-18"], R, RT, mature=True)] == ["FLUX.2", "Qwen-Image", "Z-Image Turbo"]
+    assert [m.name for m in writer_models(W.by_step["NEW-18"], R, RT, mature=True)] == [
+        "Qwen-Image: Text to Image", "Z-Image-Turbo Text to Image"]           # FLUX.2 is on Hugging Face, not Comfy
 
 
-def test_sound_effects_has_three_experts_and_mature_work_stays_on_the_open_one(W, R, RT):
+def test_sound_effects_leads_with_stable_audio_and_mature_work_stays_on_the_open_one(W, R, RT):
     sfx = W.by_step["NEW-28"]
-    assert [m.name for m in writer_models(sfx, R, RT)] == ["ElevenLabs Sound Effects", "Stable Audio Open", "Stability Text To Audio"]
-    assert [m.name for m in writer_models(sfx, R, RT, mature=True)] == ["Stable Audio Open"]
+    assert [m.name for m in writer_models(sfx, R, RT)] == ["Stable Audio 2.5: Text to Audio",
+                                                          "Stability Audio 2.5: Audio Inpainting"]
+    assert [m.name for m in writer_models(sfx, R, RT, mature=True)] == ["Stable Audio 2.5: Text to Audio"]
 
 
 def test_music_leads_with_lyria_and_keeps_an_open_model_for_mature_work(W, R, RT):
     music = W.by_step["NEW-27"]
-    assert [m.name for m in writer_models(music, R, RT)] == ["Lyria 3 Pro", "MiniMax Music 3", "ACE-Step"]
+    assert [m.name for m in writer_models(music, R, RT)] == ["Lyria 3 Pro Preview", "MiniMax Music 3: Text to Music",
+                                                            "ACE-Step 1.5 Music Generation AIO"]
     assert [route(m, RT) for m in writer_models(music, R, RT)] == ["openrouter", "comfy_cloud", "comfy_cloud"]
-    assert [m.name for m in writer_models(music, R, RT, mature=True)] == ["ACE-Step"]
+    assert [m.name for m in writer_models(music, R, RT, mature=True)] == ["ACE-Step 1.5 Music Generation AIO"]
 
 
 def test_media_checkers_run_on_omni_models(W, R):
     for step in ("NEW-20", "NEW-25"):
-        assert [m.name for _, m in experts(W.by_step[step], R)] == ["Qwen3.8 Omni Flash", "MiMo-V2-Omni", "Nemotron 3 Nano Omni"]
+        assert [m.name for _, m in experts(W.by_step[step], R)] == ["Qwen3.8 Omni Flash", "MiMo V2.6 Flash", "Nemotron 3 Nano Omni"]
 
 
 def test_an_open_mature_fallback_stops_mature_judging_with_a_reason(W, R, RT):
@@ -181,12 +187,14 @@ def also_on(R, name, provider, model_id):
 
 
 def test_a_model_with_no_provider_id_is_never_chosen(W, R, RT):
-    cover = W.by_step["NEW-22"]                             # GPT Image 2 has an ID; Ideogram and Qwen-Image do not yet
+    cover = W.by_step["NEW-22"]
     assert choose_writer(cover, R, RT).name == "GPT Image 2"
-    with pytest.raises(RoutingError, match="Ideogram has no provider model ID yet"):
-        choose_writer(cover, R, RT, down={model(R, "GPT Image 2").key})
-    with pytest.raises(RoutingError, match="FLUX.2 has no provider model ID yet"):
-        choose_writer(W.by_step["NEW-18"], R, RT)
+    assert choose_writer(cover, R, RT, down={model(R, "GPT Image 2").key}).name == "Ideogram v4: Text to Image"
+    no_id = [replace(m, model_id="") if m.name in ("Ideogram v4: Text to Image", "Qwen-Image: Text to Image") else m
+             for m in R.models]
+    reg = Registry(R.version, no_id, {m.key: m for m in no_id}, [])
+    with pytest.raises(RoutingError, match="Ideogram v4: Text to Image has no provider model ID yet"):
+        choose_writer(cover, reg, RT, down={model(R, "GPT Image 2").key})
 
 
 def test_an_outage_is_met_by_the_same_model_on_another_provider_first(W, R, RT):
@@ -201,9 +209,9 @@ def test_an_outage_is_met_by_the_same_model_on_another_provider_first(W, R, RT):
 
 
 def test_a_checker_never_judges_its_own_model_on_another_route(W, R, RT):
-    canon = W.by_step["19.3"]                               # MiMo-2.6 Pro, GPT-6.1 Sol, DeepSeek V4 Pro 0813
-    reg, twin = also_on(R, "MiMo-2.6 Pro", "OpenRouter", "xiaomi/mimo-2.6-pro")
-    assert twin.ident == model(R, "MiMo-2.6 Pro").ident and twin.key != model(R, "MiMo-2.6 Pro").key
+    canon = W.by_step["19.3"]                               # MiMo-V2.6 Pro, GPT-6.1 Sol, DeepSeek V4 Pro 0813
+    reg, twin = also_on(R, "MiMo-V2.6 Pro", "OpenRouter", "xiaomi/mimo-2.6-pro")
+    assert twin.ident == model(R, "MiMo-V2.6 Pro").ident and twin.key != model(R, "MiMo-V2.6 Pro").key
     assert choose_checker(canon, twin, reg, RT).name == "GPT-6.1 Sol"                         # the writer's model, skipped
     assert choose_checker(canon, model(R, "GPT-6.1 Sol"), reg, RT, down_providers={"Concentrate AI"}) is twin
 

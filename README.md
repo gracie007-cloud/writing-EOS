@@ -9,7 +9,7 @@ This repository holds the **rule-keeping engine**, tested, and the documents it 
 | Part | What it does |
 |---|---|
 | Order of work | Follows the *Narrative Components* database: what runs next, never before its inputs, never past a gate the Author has not approved |
-| Model registry and router | Each component's line of experts (Primary, Comparable, Fallback), provider routes, the rule that a checker never judges its own model's work, and the mature tier: 64 uncensored models on Featherless AI and OpenRouter, chosen by the book's pen name and subgenre (D33) |
+| Model registry and router | Each component's line of experts (Primary, Comparable, Fallback), provider routes, the rule that a checker never judges its own model's work, and the mature tier: 62 uncensored models on Featherless AI and OpenRouter, chosen by the book's pen name and subgenre (D33) |
 | Readiness report | Which components could run today, what an outage would stop, what is still open |
 | Story Blueprint formulas | Conflict Fit, Structure Fit and the gates of the Story Blueprint, as code |
 | Dry run | Builds the prompts of Idea Intake through Story Pitch from their allowed inputs, picks their models, stops at the three gates, prices the run, and sends nothing |

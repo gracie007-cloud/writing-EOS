@@ -17,16 +17,16 @@
 | **C2** canvas | **Repository copy brought up to date.** The 12 files that had changed on the live canvas since 22 October are in `canvas-source/eos-design/project/`, each matching the live file's SHA-256. `canvas-source/eos-build/src/` is still the October input: do not run `build.py` until it is brought up to date from the boards. |
 | **D1** first real run | **Dry run done.** `python -m eos_app.dryrun` builds the seven prompts of the slice from each agent's allowed inputs (one definition per agent in `config/agents/`, refused if it asks for more), picks every model through the router, stops at all three gates, and prices the run, sending nothing. Endpoints for Concentrate AI, OpenRouter and Featherless AI were checked against each provider's documentation; the five models' IDs match Concentrate's catalog. Result: 7 prompts, 10 planned calls, 3 gate stops, at most $0.44. Before the live run: Target Audience (decision 5), and decision 6, the spending cap. It ran here on the test vault; run it on your library from your computer. |
 | **B1, B2** IDs and second routes | **Partly closed by the Proprietary & Open/Near Frontier Models catalog** (exported to `llm-identifier-creative-writing-proprietary/`). It adds eight Concentrate AI routes (Claude Fable 5 and 5.2; Gemini 4 Carbon, Hydrogen and Neon; Kimi K3.1 Pro and Pro Highspeed; Qwen3.8 Omni Flash beside its OpenRouter route) and fills Fish Audio S2 Pro's ID. Visual Consistency Check and Narration Check no longer stop when OpenRouter is down. Its 14 media rows (Comfy Cloud, and Gemini 3.1 Flash TTS Preview) use newer names than the roster's ID-less rows (e.g. FLUX.2 Pro vs FLUX.2, Seedance 2.5 vs 2.0), so they are reported, not matched. **Yours:** say which roster row each one replaces. |
-| **B10** look-alike names | One more found and handled: a roster row named for `Qwen3-VL-12B…NEO-MAX-GGUF` carries the ID of `Qwen3-VL-32B-Gemini-Heretic` (register W41). The newer sources name it, and the registry build reports it. **Yours:** correct it in the roster, with the other six. |
+| **B10** look-alike names | One more found and handled: a roster row named for `Qwen3-VL-12B…NEO-MAX-GGUF` carries the ID of `Qwen3-VL-32B-Gemini-Heretic` (register W41). **Corrected in Notion on 2026-11-25**, with the Llama-3.2-8X3B Horror and Hathor_Tahsin v0.9 rows, which held another model's ID; the build now reports no mismatched names. One row is still listed twice (Qwen3.5-9B-Deckard-Claude-DIMOE on Featherless). |
+| **C1** roster copy | **Refreshed from live Notion (2026-11-25).** The repository's roster export was a 12 November copy (293 rows); it now matches the live *LLM Identifier - Master List* (418 rows). Sonar Deep Research is not uncensored there; ElevenLabs is no longer in the roster. Media models come from the Proprietary catalog. In *Narrative Components* the 11 media components now name the current models (Fish Audio S2 Pro leads narration; Stable Audio 2.5 leads sound effects; MiMo V2.6 Flash replaces MiMo-V2-Omni). |
 
-Today: 285 tests pass. Readiness: 110 ready, 1 degraded, 6 blocked, 6 code only, unchanged except that only three
-components now have no route for mature material (Cover Art, Audiobook Narration, Music: media needing an open
-model), down from 90.
+Today: 285 tests pass. Readiness: 116 ready, 1 degraded, 0 blocked, 6 code only. Every component has a route for
+mature material (90 had none before D33). Mature tier: 62 models on 64 routes. An outage of Comfy Cloud would stop
+3 components (Map Maker, Sound Effects, Trailer Video).
 
 **Still yours:** the 18 model IDs (B1), second-provider rows (B2), the Jev row (B8), the roster rows (B10), the six
 models the register verified that no Notion source lists yet (UnslopNemo v1, v3, v4, v4.1, C09, W69), and decisions
-4, 5 and 6. **New, yours:** the roster ticks Uncensored for Sonar Deep Research (Perplexity); now that the proprietary catalog gives it
-genres, it is in the mature tier on OpenRouter (64 models, 66 routes). Untick it in the roster if that was not meant. **New, yours:** the push gate (D10) will flag the uploaded register and catalog files on a machine where
+4, 5 and 6. **New, yours:** the push gate (D10) will flag the uploaded register and catalog files on a machine where
 your library is present; whether to allow those paths is your call.
 
 ## Status on 2026-11-12
@@ -54,8 +54,8 @@ https://github.com/gracie007-cloud/writing-EOS. 260 tests pass (228 before).
 | **C2** canvas | **Done for routing and for what was approved but never drawn.** *Blueprint:* experts, routes, lanes, gates, hosting, the mature rules and the build status. *Model Lab:* how a step gets its experts, the roster's real models, judging by model. *Library:* a Reference lists tab for the five lists under development. *Finish and publish:* interior art, cover art, marketing visuals, narration, music, sound, trailer video and assembly. *Home, Story Blueprint, Chapters, Recipes, Autonomy:* every "model family" phrase replaced. **Not drawn yet:** the editing suite as its own panel in the Editor, and Visual References and Map Maker in the World step. The usability pass on each board is still to do. The quality tiers were taken off the canvas after decision 3. |
 | **D1** first real run | Not started. **Waits on decision 6.** |
 
-**Run `python -m eos_app.readiness` from `eos-app/` at any time** to see the current state. Today: 110 ready,
-1 degraded, 6 blocked, 6 code only. An outage of Concentrate AI would stop 106 components, 17 of them inside every
+**Run `python -m eos_app.readiness` from `eos-app/` at any time** to see the current state. Today: 116 ready,
+1 degraded, 0 blocked, 6 code only. An outage of Concentrate AI would stop 106 components, 17 of them inside every
 chapter.
 
 **What changed in the numbers.** The audit counted components whose experts all sit on one provider (111). The

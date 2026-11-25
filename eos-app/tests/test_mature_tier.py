@@ -58,6 +58,10 @@ def named(R, name, provider):
     return next(m for m in R.models if m.name == name and m.provider == provider)
 
 
+def tier_models(R, RT):
+    return [m for m in R.models if mature_ok(m, RT)]
+
+
 def subgenre(row):
     return row["minor_subgenre"] or row["major_subgenre"]
 
@@ -161,8 +165,8 @@ def test_the_corrected_qwen3_vl_row_is_the_32b_model_featherless_serves(R):
 
 def test_readiness_sizes_the_mature_tier(W, R, RT):
     rep = report(W, R, RT)
-    # Sonar Deep Research joins (roster ticks it uncensored; the proprietary catalog gave it genres)
-    assert rep["mature_models"] == 64 and dict(rep["mature_tier"]) == {"Featherless AI": 63, "OpenRouter": 3}
+    assert rep["mature_models"] == 62 and dict(rep["mature_tier"]) == {"Featherless AI": 62, "OpenRouter": 2}
+    assert "Sonar Deep Research" not in {m.name for m in tier_models(R, RT)}       # not uncensored in Notion
     assert rep["fine_tune_bases"] == 42
 
 
@@ -173,12 +177,12 @@ def test_the_open_weight_catalog_adds_routes_and_ids_but_not_the_uncensored_mark
     cydonia = named(R, "TheDrummer:Cydonia-24b-v4.1", "Featherless AI")
     assert cydonia.model_id == "TheDrummer/Cydonia-24B-v4.1" and not cydonia.fine_tune_base
     assert named(R, "Chatterbox", "Featherless AI").model_id == "ResembleAI/chatterbox"   # an empty ID filled
-    assert any("Z-Image-Turbo Text to Image" in p and "not added" in p for p in R.problems)  # media: reported only
+    assert named(R, "Z-Image-Turbo Text to Image", "Comfy Cloud").modality == "Image"       # the roster names it now
     tiefighter = named(R, "KoboldAI/LLaMA2-13B-TiefighterLR", "Featherless AI")              # markup stripped
     assert not tiefighter.uncensored
 
 
-def test_the_proprietary_catalog_adds_concentrate_routes_and_reports_unmatched_media(R):
+def test_the_proprietary_catalog_adds_concentrate_routes_and_its_media_models(R):
     with open(PROPRIETARY, encoding="utf-8", newline="") as f:
         rows = list(csv.DictReader(f))
     assert len(rows) == 62
@@ -188,4 +192,5 @@ def test_the_proprietary_catalog_adds_concentrate_routes_and_reports_unmatched_m
     omni = [m.provider for m in R.models if m.name == "Qwen3.8 Omni Flash"]
     assert sorted(omni) == ["Concentrate AI", "OpenRouter"]                       # a second route to one model
     assert named(R, "Fish Audio S2 Pro", "OpenRouter").model_id == "fish-audio/s2-pro"   # an empty ID filled
-    assert sum("proprietary catalog" in p and "not added" in p for p in R.problems) == 14  # media: reported only
+    assert not any("not added" in p for p in R.problems)                 # every media model is added (2026-11-25)
+    assert named(R, "FLUX.2 Pro", "Comfy Cloud").modality == "Image"
