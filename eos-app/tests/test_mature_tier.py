@@ -153,10 +153,10 @@ def test_venice_uncensored_never_judges_text_its_own_model_wrote(W, R, RT):
         choose_checker(cont, dolphin, R, RT, mature=True, refused=refused)
 
 
-def test_a_mistyped_roster_row_takes_the_name_the_newer_sources_give_it(R):
+def test_the_corrected_qwen3_vl_row_is_the_32b_model_featherless_serves(R):
     row = named(R, "DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking", "Featherless AI")
-    assert row.register_id == "W41" and "Space Opera" in row.genres
-    assert any("Qwen3-VL-12B-Thinking-Brainstorm20x-NEO-MAX-GGUF" in p and "renamed" in p for p in R.problems)
+    assert row.register_id == "W41" and "Space Opera" in row.genres and row.uncensored
+    assert not any("renamed" in p for p in R.problems)          # corrected in Notion (2026-11-25), nothing to rename
 
 
 def test_readiness_sizes_the_mature_tier(W, R, RT):

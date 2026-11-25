@@ -40,8 +40,9 @@ def test_the_registry_holds_every_roster_model_with_a_provider(R):
 
 
 def test_mistyped_roster_rows_are_reported_not_guessed(R):
-    assert sum("listed twice" in p for p in R.problems) == 5
-    assert sum("disagree" in p for p in R.problems) == 5
+    # the three rows that held another model's ID were corrected in Notion (2026-11-25); one row is listed twice
+    assert sum("listed twice" in p for p in R.problems) == 1
+    assert sum("disagree" in p for p in R.problems) == 0
 
 
 @pytest.mark.parametrize("cell, name", [

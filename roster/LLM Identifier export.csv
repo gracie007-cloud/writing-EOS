@@ -163,7 +163,7 @@ DavidAU/Qwen3-53B-A3B-2507-TOTAL-RECALL-v2-MASTER-CODER,Hugging Face,DavidAU/Qwe
 DavidAU/Mistral-Small-3.2-46B-The-Brilliant-Raconteur-II-Instruct-2506,Hugging Face,DavidAU/Mistral-Small-3.2-46B-The-Brilliant-Raconteur-II-Instruct-2506,No,Yes,Yes,Yes,N/A,,,Yes,No
 DavidAU/Llama-3.2-8X3B-GATED-MOE-Reasoning-Dark-Champion-Instruct-uncensored-abliterated-18.4B-GGUF,Hugging Face,DavidAU/Llama-3.2-8X3B-GATED-MOE-Reasoning-Dark-Champion-Instruct-uncensored-abliterated-18.4B-GGUF,No,Yes,Yes,Yes,,,,Yes,No
 DavidAU/Llama-3.2-8X3B-GATED-MOE-NEO-Reasoning-Dark-Champion-uncensored-18.4B-IMAT-GGUF,Hugging Face,DavidAU/Llama-3.2-8X3B-GATED-MOE-NEO-Reasoning-Dark-Champion-uncensored-18.4B-IMAT-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
-DavidAU/Llama-3.2-8X3B-GATED-MOE-Horror-Reasoning-Dark-Champion-uncensored-18.4B-IMAT-GGUF,Hugging Face,DavidAU/Llama-3.2-8X3B-GATED-MOE-NEO-Reasoning-Dark-Champion-uncensored-18.4B-IMAT-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
+DavidAU/Llama-3.2-8X3B-GATED-MOE-Horror-Reasoning-Dark-Champion-uncensored-18.4B-IMAT-GGUF,Hugging Face,DavidAU/Llama-3.2-8X3B-GATED-MOE-Horror-Reasoning-Dark-Champion-uncensored-18.4B-IMAT-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
 DavidAU/Qwen3-Jan-V1-4B-Grand-Horror-Day1-to-Day7-Evolved-Imatrix-GGUF,Hugging Face,DavidAU/Qwen3-Jan-V1-4B-Grand-Horror-Day1-to-Day7-Evolved-Imatrix-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
 DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder,Hugging Face,DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder,No,Yes,No,Yes,N/A,,,Yes,No
 DavidAU/Qwen3-MOE-6x0.6B-3.6B-Writing-On-Fire-Uncensored,Hugging Face,DavidAU/Qwen3-MOE-6x0.6B-3.6B-Writing-On-Fire-Uncensored,No,Yes,Yes,Yes,N/A,,,Yes,No
@@ -179,7 +179,7 @@ DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-D-256k-ctx-36B,Hugging Face,Davi
 DavidAU/L3.2-Rogue-Creative-Instruct-DARK-HORROR-Uncensored-Abliterated-7B,Hugging Face,DavidAU/L3.2-Rogue-Creative-Instruct-DARK-HORROR-Uncensored-Abliterated-7B,No,Yes,Yes,Yes,N/A,,,Yes,No
 DavidAU/Gemma-3-The-Grand-Horror-27B-GGUF,Hugging Face,DavidAU/Gemma-3-The-Grand-Horror-27B-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
 DavidAU/Qwen3-VL-12B-Instruct-Brainstorm20x-NEO-MAX-GGUF,Hugging Face,DavidAU/Qwen3-VL-12B-Instruct-Brainstorm20x-NEO-MAX-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
-DavidAU/Qwen3-VL-12B-Thinking-Brainstorm20x-NEO-MAX-GGUF,Featherless AI,DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,Yes
+DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking,Featherless AI,DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking,No,Yes,Yes,Yes,N/A,,,Yes,Yes
 DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF,Hugging Face,DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
 DavidAU/Qwen3-4B-Hivemind-Instruct-NEO-MAX-Imatrix-GGUF,Hugging Face,DavidAU/Qwen3-4B-Hivemind-Instruct-NEO-MAX-Imatrix-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
 DavidAU/Qwen3-24B-A4B-Freedom-Thinking-Abliterated-Heretic-NEO-Imatrix-GGUF,Hugging Face,DavidAU/Qwen3-24B-A4B-Freedom-Thinking-Abliterated-Heretic-NEO-Imatrix-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
@@ -284,7 +284,7 @@ mradermacher/Shadow-Siren-26B-A4B-GGUF,Hugging Face,mradermacher/Shadow-Siren-26
 mradermacher/Tower-Plus-72B-ultra-uncensored-heretic-i1-GGUF,Hugging Face,mradermacher/Tower-Plus-72B-ultra-uncensored-heretic-i1-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
 mradermacher/Tower-Plus-72B-ultra-uncensored-heretic-GGUF,Hugging Face,mradermacher/Tower-Plus-72B-ultra-uncensored-heretic-GGUF,No,Yes,Yes,Yes,N/A,,,Yes,No
 backyardai/L3-8B-Stheno-v3.3-32K-GGUF,Hugging Face,backyardai/L3-8B-Stheno-v3.3-32K-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
-bartowski/Hathor_Tahsin-L3-8B-v0.9-GGUF,Hugging Face,backyardai/L3-8B-Stheno-v3.3-32K-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
+bartowski/Hathor_Tahsin-L3-8B-v0.9-GGUF,Hugging Face,bartowski/Hathor_Tahsin-L3-8B-v0.9-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
 mradermacher/Hathor_Tahsin-L3-8B-v0.85-i1-GGUF,Hugging Face,mradermacher/Hathor_Tahsin-L3-8B-v0.85-i1-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
 Nitral-AI/Hathor_Tahsin-L3-8B-v0.85,Featherless AI,Nitral-AI/Hathor_Tahsin-L3-8B-v0.85,No,Yes,No,Yes,N/A,,,Yes,Yes
 mradermacher/Hathor_Tahsin-L3-8B-v0.85-GGUF,Hugging Face,mradermacher/Hathor_Tahsin-L3-8B-v0.85-GGUF,No,Yes,No,Yes,N/A,,,Yes,No

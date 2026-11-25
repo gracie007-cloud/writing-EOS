@@ -6,23 +6,9 @@ source: 'Notion LLM Identifier (export); Notion LLM Identifier for Creative Writ
   Notion LLM Identifier for Creative Writing: Open-Weight & Fine-Tuned Models (export); Notion LLM Identifier for Creative
   Writing: Proprietary & Open/Near Frontier Models (export); registry.json (verified 2026-11-14)'
 problems:
-- 'Hugging Face: the name ''DavidAU/Llama-3.2-8X3B-GATED-MOE-Horror-Reasoning-Dark-Champion-uncensored-18.4B-IMAT-GGUF'' and
-  the ID ''DavidAU/Llama-3.2-8X3B-GATED-MOE-NEO-Reasoning-Dark-Champion-uncensored-18.4B-IMAT-GGUF'' disagree (an ID copied
-  from another row?)'
-- 'Hugging Face: ''DavidAU/Llama-3.2-8X3B-GATED-MOE-NEO-Reasoning-Dark-Champion-uncensored-18.4B-IMAT-GGUF'' is listed twice
-  (rows ''DavidAU/Llama-3.2-8X3B-GATED-MOE-NEO-Reasoning-Dark-Champion-uncensored-18.4B-IMAT-GGUF'' and ''DavidAU/Llama-3.2-8X3B-GATED-MOE-Horror-Reasoning-Dark-Champion-uncensored-18.4B-IMAT-GGUF'');
-  the first is kept'
-- 'Featherless AI: the name ''DavidAU/Qwen3-VL-12B-Thinking-Brainstorm20x-NEO-MAX-GGUF'' and the ID ''DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking''
-  disagree (an ID copied from another row?)'
 - 'Featherless AI: ''DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking'' is listed twice (rows ''DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking''
   and ''DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking''); the first is kept'
-- 'Hugging Face: the name ''bartowski/Hathor_Tahsin-L3-8B-v0.9-GGUF'' and the ID ''backyardai/L3-8B-Stheno-v3.3-32K-GGUF''
-  disagree (an ID copied from another row?)'
-- 'Hugging Face: ''backyardai/L3-8B-Stheno-v3.3-32K-GGUF'' is listed twice (rows ''backyardai/L3-8B-Stheno-v3.3-32K-GGUF''
-  and ''bartowski/Hathor_Tahsin-L3-8B-v0.9-GGUF''); the first is kept'
 - 'OpenRouter: ''Fish Audio S2 Pro'' has no provider model ID yet; fill it from the provider''s model list'
-- 'Featherless AI: the row named ''DavidAU/Qwen3-VL-12B-Thinking-Brainstorm20x-NEO-MAX-GGUF'' holds the ID ''DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking'';
-  renamed ''DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking'' from the mature catalog (correct the roster)'
 - 'OpenRouter: ''Fish Audio S2 Pro'' had no provider model ID; ''fish-audio/s2-pro'' taken from the proprietary catalog'
 - 'register W69: ''DavidAU/LFM2.5-2.6B-Qwen3.8-Turbo-Brilliance-Power-X12-NEO-MAX-GGUF'' is in neither Notion source; added
   on Hugging Face from the register (add it to the roster)'
@@ -3479,6 +3465,23 @@ models:
   served_context: null
   register_id: ''
   same_as: ''
+- key: hugging-face-davidau-llama-3-2-8x3b-gated-moe-horror-reasoning-dark-champion-uncensored-18-4b-imat-gguf
+  name: DavidAU/Llama-3.2-8X3B-GATED-MOE-Horror-Reasoning-Dark-Champion-uncensored-18.4B-IMAT-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/Llama-3.2-8X3B-GATED-MOE-Horror-Reasoning-Dark-Champion-uncensored-18.4B-IMAT-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-jan-v1-4b-grand-horror-day1-to-day7-evolved-imatrix-gguf
   name: DavidAU/Qwen3-Jan-V1-4B-Grand-Horror-Day1-to-Day7-Evolved-Imatrix-GGUF
   provider: Hugging Face
@@ -6768,6 +6771,23 @@ models:
   name: backyardai/L3-8B-Stheno-v3.3-32K-GGUF
   provider: Hugging Face
   model_id: backyardai/L3-8B-Stheno-v3.3-32K-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
+- key: hugging-face-bartowski-hathor-tahsin-l3-8b-v0-9-gguf
+  name: bartowski/Hathor_Tahsin-L3-8B-v0.9-GGUF
+  provider: Hugging Face
+  model_id: bartowski/Hathor_Tahsin-L3-8B-v0.9-GGUF
   frontier: false
   open_weights: true
   uncensored: false
