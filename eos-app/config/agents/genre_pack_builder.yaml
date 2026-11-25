@@ -1,0 +1,13 @@
+# Genre Pack Builder (step 4.1): a draft genre pack for the Author to approve (FR-GP-3).
+step: "4.1"
+id: genre_pack_builder
+prompt: prompts/genre_pack_builder.md
+inputs:
+  - {from: step.2, label: Story Setup, required: true}
+  - {from: decision.genre_path, label: Genre path the Author confirmed, required: true}
+  - {from: library.genres, label: Narrative Genres Pool entry for the book's subgenre}
+  - {from: library.content_levels, label: Content levels for the book's genre path}
+output: [genre_path, reader_promises, tropes, beats, pacing, content_ceiling, cites]
+temperature: 0.3
+max_tokens: 2500
+context_budget_tokens: 12000

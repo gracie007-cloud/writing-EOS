@@ -157,6 +157,41 @@ never copied into the app (D10).
 
 It asks the router which models each component could actually call and sends nothing to any model. A component is **ready**, **degraded** (it would run, but on a later expert or with no second expert to cross-check) or **blocked** (nothing it could call). The report also counts what an outage of each provider would stop, and lists what is still open: no route for mature material, a Mature Fallback left open, writers nothing checks, and Jev's missing roster row. It sizes the mature tier: its models and routes per provider, the subgenres they cover, and the fine-tune bases recorded but never called.
 
+## Dry run of the first slice (fixes plan D1)
+
+The first stretch of the Flow Order, Story Pitch and the six components it needs, built end to end **without
+sending anything**:
+
+    python -m eos_app.dryrun --project "..\projects\dry-run" --library "..\library" ^
+        --braindump braindump.md --brainstorm brainstorm.md --manuscript-type Novel ^
+        --genre-path "Primary > Secondary > Major > Minor" --pen-name "<pen name>"
+
+- **Agent definitions** (`config/agents/*.yaml`, one per agent, requirements §6.7) list each agent's inputs: the
+  Author's material, the outputs of the steps it needs, the gate decisions before it, and library slices. Loading
+  refuses an input its component may not have (its `needs` in components.yaml, its `read_by` in library_map.yaml).
+- **The prompt builder** (`eos_app/prompts.py`) builds each prompt from those inputs only, from a versioned
+  template in `prompts/`, labels every part for Show prompt, keeps it inside the agent's context budget (optional
+  blocks are left out lowest priority first, and recorded), and refuses answer-key paths and anything shaped like a
+  key. Library slices go through `prompt_view`, chosen for the book: only the pen name taken at the gate, only the
+  content levels for the book's genre path.
+- **Requests** (`eos_app/clients.py`): the exact request for each call, built for Concentrate AI, OpenRouter and
+  Featherless AI (endpoints in `routing.yaml`, checked against each provider's documentation). The header names the
+  .env variable that holds the key; the key itself is never read.
+- **Cost**: `config/prices.yaml`, per million tokens, each line with its source and date. Featherless AI is a flat
+  subscription. The estimate is a worst case: every step at its full answer budget.
+
+It walks the slice in Flow Order, picks each component's models through the router (the Primary, and for the Full
+tier a second expert that cross-checks), and stops at each of the three gates: manuscript type, pen name, adapted
+premise. A dry run cannot take your decisions, so the genre path and pen name the later prompts read are stand-ins
+you name on the command line, marked as such everywhere; earlier steps' outputs are placeholders.
+
+It writes into the project folder, which lives outside the app and is never committed (it names your library, D10):
+`runs/<date>/runs.jsonl` (one record per planned call, status "not sent"), `prompts/dry-run/NN-<agent>.md` (Show
+prompt with the requests) and `dry-run.html` (a card per step with Proceed and My alternative, and the gate stops).
+
+Today: 7 prompts, 10 planned calls on Concentrate AI, 3 gate stops, at most $0.44. One item before a live run:
+Target Audience is on the Full tier with one expert (decision 5).
+
 ## Shared library
 
 Your eight pools live once, beside your projects, in `Projects-Writing EOS\library\`:

@@ -23,3 +23,6 @@ eos-bakeoff/.harness-local-history.git/
 __pycache__/
 *.pyc
 .pytest_cache/
+
+# Project folders: dry runs and books name the library (pen names, the braindump), so they stay out (D10).
+projects/

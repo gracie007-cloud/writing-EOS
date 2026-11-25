@@ -4,7 +4,7 @@ An internal application for writing a novel with a team of models. "EOS" stands 
 
 ## Where it stands
 
-This repository holds the **rule-keeping engine**, tested, and the documents it is built from. It does not yet send a prompt to a model or show a screen; that is the next stage of the build (see the fixes plan, Group D).
+This repository holds the **rule-keeping engine**, tested, and the documents it is built from. It builds the prompts of the first stretch of work and shows them on a page, but it does not yet send a prompt to a model: the **dry run** of that slice is done, and the first live run waits on the Author's word and a spending cap (fixes plan, D1).
 
 | Part | What it does |
 |---|---|
@@ -12,6 +12,7 @@ This repository holds the **rule-keeping engine**, tested, and the documents it 
 | Model registry and router | Each component's line of experts (Primary, Comparable, Fallback), provider routes, the rule that a checker never judges its own model's work, and the mature tier: 62 uncensored models on Featherless AI and OpenRouter, chosen by the book's pen name and subgenre (D33) |
 | Readiness report | Which components could run today, what an outage would stop, what is still open |
 | Story Blueprint formulas | Conflict Fit, Structure Fit and the gates of the Story Blueprint, as code |
+| Dry run | Builds the prompts of Idea Intake through Story Pitch from their allowed inputs, picks their models, stops at the three gates, prices the run, and sends nothing |
 | Humanize | Rewrites toward the pen name's voice with dialogue and locked lines protected |
 | Shared library | Reads the Author's pools (characters, pen names, genres, themes and more) without changing them |
 | Story Bible | The twelve elements and who owns each |
@@ -43,8 +44,9 @@ Python 3.11 or newer.
 ```bash
 cd eos-app
 pip install -r requirements.txt
-python -m pytest                     # 272 tests; no network, no model calls
+python -m pytest                     # 283 tests; no network, no model calls
 python -m eos_app.readiness          # what could run today, and what stands in the way
+python -m eos_app.dryrun --help      # the first slice, built and priced, nothing sent
 
 cd ../eos-bakeoff/eos-bakeoff
 python -m pytest                     # the harness's own 74 tests

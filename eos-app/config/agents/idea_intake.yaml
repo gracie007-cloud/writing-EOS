@@ -1,0 +1,12 @@
+# Idea Intake (Narrative Components step 1). One agent, one file (requirements §6.7).
+step: "1"
+id: idea_intake
+prompt: prompts/idea_intake.md
+inputs:                       # the only things this agent receives (harness rule 2); highest priority first
+  - {from: author.braindump, label: Story braindump (material), required: true}
+  - {from: author.brainstorm, label: Author brainstorm (intent)}
+  - {from: library.story_pitches, label: "Story Pitch Pool (writing topics, not doctrine)"}
+output: [working_title, premise_seed, material, intent, open_questions, related_pitches]
+temperature: 0.4
+max_tokens: 1500
+context_budget_tokens: 12000

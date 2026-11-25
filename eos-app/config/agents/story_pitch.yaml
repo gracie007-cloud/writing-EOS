@@ -1,0 +1,15 @@
+# Story Pitch (step 5): the Pitch Profile (FR-DEV-14, Appendix C1) that Stage 0 scores.
+step: "5"
+id: story_pitch
+prompt: prompts/story_pitch.md
+inputs:
+  - {from: decision.adapted_premise, label: Adapted premise the Author approved, required: true}
+  - {from: step.1, label: Idea Intake (material and intent kept apart), required: true}
+  - {from: step.NEW-13, label: Reader Contract, required: true}
+  - {from: step.3.5, label: Premise Adapter}
+  - {from: library.themes, label: Themes and their fit for the book's genre path}
+  - {from: library.story_pitches, label: "Story Pitch Pool (writing topics, not doctrine)"}
+output: [signals, implied_pillars, candidate_themes, pitch_lines]
+temperature: 0.5
+max_tokens: 2000
+context_budget_tokens: 14000

@@ -40,3 +40,13 @@ mature:
   # Mature media: only open-weight models on these providers. Comfy's terms ban only illegal content; fal.ai's ban
   # sexually explicit content and OpenRouter defers to models that refuse it (checked 2026-10-22).
   media_providers: [Comfy Cloud, Featherless AI]   # Featherless: Chatterbox narration (the Author, 2026-10-22)
+
+# Where each route that serves chat completions is called (all OpenAI-compatible) and the .env variable that holds
+# its key, checked against each provider's own documentation on 2026-11-25. A route with no URL cannot be called:
+# the dry run says so. Keys live in .env only and never appear in a prompt, a request preview or a run record.
+# Media routes (ElevenLabs, Comfy Cloud, Hugging Face video) are not chat completions and get their own clients.
+endpoints:
+  concentrate: {url: "https://api.concentrate.ai/v1/chat/completions", key_env: CONCENTRATE_API_KEY}
+  openrouter: {url: "https://openrouter.ai/api/v1/chat/completions", key_env: OPENROUTER_API_KEY}
+  featherless: {url: "https://api.featherless.ai/v1/chat/completions", key_env: FEATHERLESS_API_KEY}
+  unsloth_desktop: {url: null, key_env: UNSLOTH_DESKTOP_API_KEY}   # local (D30); not in use while local work waits

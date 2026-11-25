@@ -1,0 +1,11 @@
+# Prices in USD per million tokens, by model key (config/models.yaml), for the cost estimate before a run
+# (FR-GEN-2). Each line gives its source and the day it was read. Featherless AI is a flat monthly subscription
+# (concurrency-based, unlimited requests), so a call there costs nothing extra and needs no line here.
+# A model with no line has no estimate: the dry run lists it.
+concentrate-ai-claude-fable-5-1: {input: 10.0, output: 50.0}   # Claude Fable 5.1 · concentrate.ai/models, 2026-11-25
+concentrate-ai-kimi-k3: {input: 0.6, output: 14.0}   # Kimi K3 · concentrate.ai/models, 2026-11-25
+concentrate-ai-gpt-6-1-sol: {input: 2.0, output: 10.0}   # GPT-6.1 Sol · concentrate.ai/models, 2026-11-25
+concentrate-ai-mimo-v2-6-pro: {input: 0.39, output: 0.78}   # MiMo-2.6 Pro · concentrate.ai/models, 2026-11-25
+concentrate-ai-glm-5-3-flash: {input: 0.05, output: 0.2}   # GLM 5.3 Flash · concentrate.ai/models, 2026-11-25
+openrouter-thedrummer-unslopnemo-12b: {input: 0.4, output: 0.4}   # TheDrummer: UnslopNemo 12B · openrouter.ai model page, 2026-11-25
+openrouter-cognitivecomputations-dolphin-mistral-24b-venice-edition: {input: 0.2, output: 0.9}   # Venice Uncensored · openrouter.ai model page, 2026-11-25
