@@ -27,6 +27,7 @@ experiments/     worked examples
 docs/            requirements and architecture, proposals, reports and the fixes implementation plan
 roster/          the export of the model roster LLM Identifier
 llm-identifier-creative-writing-abliterated/   the mature catalog (Notion: Abliterated & Uncensored Models)
+llm-identifier-creative-writing-open-weight/   the open-weight catalog (Notion: Open-Weight & Fine-Tuned Models)
 llm-identifier-creative-writing/               204 GGUF bases for later fine-tuning; not called by the app
 llm-identifier-creative-writing-base-models/   the README for that catalog
 registry.json, routing.json                    the model register and its pen name routing table (2026-11-14)
@@ -34,7 +35,7 @@ REGISTER.md, VERIFICATION.md                   the same register to read, and ho
 tools/           the gate that runs before every push
 ```
 
-`eos-app/config/models.yaml` is built from the roster, the mature catalog and `registry.json`; the app reads
+`eos-app/config/models.yaml` is built from the roster, both catalogs and `registry.json`; the app reads
 `routing.json` where it is. See `eos-app/README.md`, *Models and routing*.
 
 ## Run it
@@ -44,7 +45,7 @@ Python 3.11 or newer.
 ```bash
 cd eos-app
 pip install -r requirements.txt
-python -m pytest                     # 283 tests; no network, no model calls
+python -m pytest                     # 284 tests; no network, no model calls
 python -m eos_app.readiness          # what could run today, and what stands in the way
 python -m eos_app.dryrun --help      # the first slice, built and priced, nothing sent
 

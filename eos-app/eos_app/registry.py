@@ -3,7 +3,8 @@
 `config/models.yaml` is the app's copy of the Author's model sources, built by one command:
 
     python -m eos_app.registry "<LLM Identifier export.csv>" \\
-        [--mature "<Abliterated & Uncensored Models export.csv>"] [--register ../registry.json]
+        [--mature "<Abliterated & Uncensored Models export.csv>"] [--open "<Open-Weight & Fine-Tuned Models export.csv>"] \\
+        [--register ../registry.json]
 
 - The **roster** *LLM Identifier* (Notion, CSV export): every model with a provider, its provider model ID, the
   roster's checkboxes, its Comparable Equivalent Model and Fallback Model (the experts the Author lines up beside it:
@@ -15,6 +16,9 @@
   lacks is added on the catalog's provider. Its Genres, Genre Category and Pen Name columns become the model's genre
   tags (its pen names are not copied: they stay outside the app, D10). A row on Hugging Face that is not served through Inference Providers is a GGUF kept as a **fine-tune base**:
   it is recorded and never called (the Author, 2026-11-25).
+- The **open-weight catalog** *LLM Identifier for Creative Writing: Open-Weight & Fine-Tuned Models* (Notion, CSV
+  export; the repository's copy is `llm-identifier-creative-writing-open-weight/open_weight_models.csv`): the same
+  folding without the uncensored mark, so its routes, genre tags and IDs reach the prose lane.
 - The **register** `registry.json` (verified against the provider APIs on 2026-11-14): the context each provider
   actually serves, the register ID (W01 to W77, C01 to C10), the Genre Matrix subgenres each model serves, and the
   same model's OpenRouter route.
@@ -243,21 +247,37 @@ def _claim(models: list, provider: str, name: str, mid: str, problems: list, sou
     return None
 
 
-def _mature(models: list, rows: list, problems: list) -> None:
-    """Fold the mature catalog in: every row is uncensored; its genre tags join the model's."""
+TEXT_MODALITIES = {"", "Text", "Text-to-Text", "Image-Text-to-Text", "Image-Video-Text-to-Text",
+                   "Omni (Text-Image-Audio)"}
+MEDIA_MODALITIES = {"Text-to-Image": "Image", "Text-to-Speech (Audio)": "Speech", "Image": "Image", "Video": "Video",
+                    "Speech": "Speech", "Music": "Music", "Sound": "Sound", "Speech-to-Text": "Speech-to-text"}
+
+
+def _catalog(models: list, rows: list, problems: list, *, uncensored: bool, source: str) -> None:
+    """Fold a Notion catalog in. Its genre tags and categories join the model's; a route it names that the roster
+    lacks is added; an ID the roster left empty is filled. The mature catalog also marks every model uncensored.
+    A Hugging Face row not served through Inference Providers is a fine-tune base (never called). A media row that
+    matches no roster row is reported, not added: media models are named per workflow and need the Author's ID."""
     for r in rows:
         name, mid, provider = r["Model Name"].strip(), _cell(r, "Provider Model ID"), _cell(r, "Provider")
         if not provider:
-            problems.append(f"mature catalog: {name!r} has no provider")
+            problems.append(f"{source}: {name!r} has no provider")
             continue
+        modality = _cell(r, "Modality")
+        media = MEDIA_MODALITIES.get(modality, "") if modality not in TEXT_MODALITIES else ""
         base = provider == "Hugging Face" and not _yes(r.get("Via Inference Providers"))
         mine = _rows_for(models, name, mid)
         if not any(m["provider"] == provider for m in mine) and (claimed := _claim(models, provider, name, mid,
-                                                                                  problems, "mature catalog")):
+                                                                                  problems, source)):
             mine.append(claimed)
         if not any(m["provider"] == provider for m in mine):
+            if media:
+                problems.append(f"{source}: the {media.lower()} model {name!r} on {provider} matches no roster "
+                                f"row; not added (confirm its name and ID in the roster)")
+                continue
             new = {"key": _key(provider, mid or name), "name": name, "provider": provider, "model_id": mid,
-                   "frontier": False, "open_weights": _yes(r.get("Open-Weights Model")), "uncensored": True,
+                   "frontier": _yes(r.get("Open/Near Frontier Model")),
+                   "open_weights": _yes(r.get("Open-Weights Model")), "uncensored": uncensored,
                    "can_run_locally": _yes(r.get("Can Run Locally")),
                    "comparable": _cell(r, "Comparable Equivalent Model"), "fallback": _cell(r, "Fallback Model"),
                    "modality": "", "genres": [], "genre_categories": [], "fine_tune_base": False,
@@ -265,11 +285,16 @@ def _mature(models: list, rows: list, problems: list) -> None:
             models.append(new)
             mine.append(new)
         for m in mine:
-            m["uncensored"] = True
+            if uncensored:
+                m["uncensored"] = True
             m["genres"] = _merge(m["genres"], _split(r.get("Genres")))
             m["genre_categories"] = _merge(m["genre_categories"], CATEGORY.findall(r.get("Genre Category") or ""))
             if m["provider"] == provider:
                 m["fine_tune_base"] = m["fine_tune_base"] or base
+                if not m["model_id"] and mid:
+                    m["model_id"] = mid
+                    problems.append(f"{provider}: {m['name']!r} had no provider model ID; {mid!r} taken from the "
+                                    f"{source}")
 
 
 def _register(models: list, register: dict, problems: list) -> None:
@@ -329,15 +354,18 @@ def _fits(register: dict, rows: list) -> list:
     return out
 
 
-def build(export_csv, mature_csv=None, register_json=None) -> dict:
+def build(export_csv, mature_csv=None, register_json=None, open_csv=None) -> dict:
     """models.yaml content. Duplicate rows and rows whose name and ID disagree are reported, not guessed at: the
     first row for an ID is kept."""
     problems = []
     models = _roster(_read_csv(export_csv), problems)
     sources = ["Notion LLM Identifier (export)"]
     if mature_csv:
-        _mature(models, _read_csv(mature_csv), problems)
+        _catalog(models, _read_csv(mature_csv), problems, uncensored=True, source="mature catalog")
         sources.append("Notion LLM Identifier for Creative Writing: Abliterated & Uncensored Models (export)")
+    if open_csv:
+        _catalog(models, _read_csv(open_csv), problems, uncensored=False, source="open-weight catalog")
+        sources.append("Notion LLM Identifier for Creative Writing: Open-Weight & Fine-Tuned Models (export)")
     if register_json:
         _register(models, json.loads(Path(register_json).read_text(encoding="utf-8")), problems)
         sources.append("registry.json (verified 2026-11-14)")
@@ -364,8 +392,8 @@ MODELS_HEAD = ("# Writing EOS model registry (FR-ML-1, D33): the app's copy of t
                "# Built by `python -m eos_app.registry`; do not edit by hand.\n")
 
 
-def write(export_csv, mature_csv=None, register_json=None, out=MODELS_PATH) -> dict:
-    doc = build(export_csv, mature_csv, register_json)
+def write(export_csv, mature_csv=None, register_json=None, open_csv=None, out=MODELS_PATH) -> dict:
+    doc = build(export_csv, mature_csv, register_json, open_csv)
     Path(out).write_text(dump(doc, MODELS_HEAD), encoding="utf-8")
     return doc
 
@@ -383,9 +411,10 @@ def main(argv) -> int:
     p = argparse.ArgumentParser(prog="python -m eos_app.registry", description=__doc__.split("\n\n")[0])
     p.add_argument("roster", help="Notion export of the LLM Identifier roster (CSV)")
     p.add_argument("--mature", help="Notion export of the Abliterated & Uncensored Models catalog (CSV)")
+    p.add_argument("--open", help="Notion export of the Open-Weight & Fine-Tuned Models catalog (CSV)")
     p.add_argument("--register", help="registry.json")
     a = p.parse_args(argv)
-    d = write(a.roster, a.mature, a.register)
+    d = write(a.roster, a.mature, a.register, a.open)
     print(f"models: {len(d['models'])}")
     for line in d["problems"]:
         print("-", line)

@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[2]
 ROSTER = ROOT / "roster" / "LLM Identifier export.csv"
 MATURE = ROOT / "llm-identifier-creative-writing-abliterated" / "abliterated_models.csv"
 REGISTER, ROUTING = ROOT / "registry.json", ROOT / "routing.json"
+OPEN = ROOT / "llm-identifier-creative-writing-open-weight" / "open_weight_models.csv"
 
 
 @pytest.fixture(scope="module")
@@ -68,7 +69,7 @@ def mature_led_row(table, ids, R, RT):
 
 
 def test_the_shipped_registry_is_exactly_what_the_tool_builds_from_the_sources():
-    built = registry.build(ROSTER, MATURE, REGISTER)
+    built = registry.build(ROSTER, MATURE, REGISTER, OPEN)
     shipped = yaml.safe_load(registry.MODELS_PATH.read_text(encoding="utf-8"))
     assert built["models"] == shipped["models"] and built["problems"] == shipped["problems"]
     assert len(registry.load_fits()) == 538                              # one per Genre Matrix row with a model
@@ -85,7 +86,7 @@ def test_every_catalog_model_is_uncensored_on_the_catalogs_provider(R, catalog):
 
 def test_hugging_face_ggufs_are_fine_tune_bases_and_never_called(R, RT, W):
     bases = [m for m in R.models if m.fine_tune_base]
-    assert len(bases) == 22 and {m.provider for m in bases} == {"Hugging Face"}
+    assert len(bases) == 42 and {m.provider for m in bases} == {"Hugging Face"}
     assert all("fine-tune base" in unusable(m) for m in bases)
     assert not any(mature_ok(m, RT) for m in bases)
 
@@ -159,5 +160,17 @@ def test_a_mistyped_roster_row_takes_the_name_the_newer_sources_give_it(R):
 
 def test_readiness_sizes_the_mature_tier(W, R, RT):
     rep = report(W, R, RT)
-    assert rep["mature_models"] == 62 and dict(rep["mature_tier"]) == {"Featherless AI": 62, "OpenRouter": 2}
-    assert rep["fine_tune_bases"] == 22
+    assert rep["mature_models"] == 63 and dict(rep["mature_tier"]) == {"Featherless AI": 63, "OpenRouter": 2}
+    assert rep["fine_tune_bases"] == 42
+
+
+def test_the_open_weight_catalog_adds_routes_and_ids_but_not_the_uncensored_mark(R):
+    with open(OPEN, encoding="utf-8", newline="") as f:
+        rows = list(csv.DictReader(f))
+    assert len(rows) == 68
+    cydonia = named(R, "TheDrummer:Cydonia-24b-v4.1", "Featherless AI")
+    assert cydonia.model_id == "TheDrummer/Cydonia-24B-v4.1" and not cydonia.fine_tune_base
+    assert named(R, "Chatterbox", "Featherless AI").model_id == "ResembleAI/chatterbox"   # an empty ID filled
+    assert any("Z-Image-Turbo Text to Image" in p and "not added" in p for p in R.problems)  # media: reported only
+    tiefighter = named(R, "KoboldAI/LLaMA2-13B-TiefighterLR", "Featherless AI")              # markup stripped
+    assert not tiefighter.uncensored

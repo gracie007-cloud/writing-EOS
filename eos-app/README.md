@@ -108,13 +108,17 @@ The database does not record what a component takes in, its code parts, what a c
   a model the roster lacks is added, and its Genres and Genre Category become the model's genre tags. A Hugging Face
   row not served through Inference Providers is a GGUF kept to fine-tune later: recorded as `fine_tune_base` and
   never called;
+- the **open-weight catalog** *Open-Weight & Fine-Tuned Models*
+  (`..\llm-identifier-creative-writing-open-weight\open_weight_models.csv`): folded in the same way without the
+  uncensored mark: its routes, genre tags and missing IDs reach the prose lane; its Hugging Face GGUFs are fine-tune
+  bases; a media row that matches no roster row is reported, not added;
 - the **register** `..\registry.json` (verified against the providers on 2026-11-14): the context each provider
   actually serves (`served_context`: size every request to it), the register ID (W01 to W77, C01 to C10), the
   Genre Matrix subgenres each model serves, and a model's second route on OpenRouter.
 
 Export the roster and the mature catalog from Notion as CSV and rebuild:
 
-    python -m eos_app.registry "..\roster\LLM Identifier export.csv" --mature "..\llm-identifier-creative-writing-abliterated\abliterated_models.csv" --register ..\registry.json
+    python -m eos_app.registry "..\roster\LLM Identifier export.csv" --mature "..\llm-identifier-creative-writing-abliterated\abliterated_models.csv" --open "..\llm-identifier-creative-writing-open-weight\open_weight_models.csv" --register ..\registry.json
 
 The build lists rows that look mistyped (an ID copied from another row, a model listed twice) and the models the
 register verified that neither Notion source lists yet. Where a newer source names a mistyped roster row, the row

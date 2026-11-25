@@ -76,7 +76,8 @@ def test_one_provider_going_down_is_counted_component_by_component(W, R, RT, rep
     stopped = rep["outage"]["Concentrate AI"]
     per_chapter = {c.step for c in chapter_loop(W)}
     assert len(stopped) == 106 and sum(c.step in per_chapter for c in stopped) == 17
-    assert [len(rep["outage"][p]) for p in ("OpenRouter", "ElevenLabs", "Featherless AI", "Comfy Cloud")] == [4, 1, 0, 0]
+    assert [len(rep["outage"][p]) for p in ("OpenRouter", "ElevenLabs", "Featherless AI", "Comfy Cloud")] == [4, 0, 0, 0]
+    # Chatterbox (ID from the open-weight catalog) gives narration a second provider beside ElevenLabs
     # a second route for the two workhorse models keeps their components running
     twins = [replace(m, key=f"openrouter-{m.model_id}", provider="OpenRouter")
              for m in R.models if m.name in ("Claude Fable 5.1", "Kimi K3")]
@@ -90,7 +91,7 @@ def test_open_items_are_named(rep, W):
     assert "Mature Fallback still open (2): Visual Consistency Check, Narration Check" in text
     assert "Writers nothing checks (3): Character Interview, Proofread, Music" in text
     # D33: a text component with no mature expert hands the passage to the mature tier; only media lacks a route
-    assert "No route for mature material (3): Cover Art, Audiobook Narration, Music" in text
-    assert ("Mature tier: 62 models, 64 routes (Featherless AI 62, OpenRouter 2), fitted to 218 subgenres · "
-            "22 fine-tune bases recorded, never called") in text
+    assert "No route for mature material (2): Cover Art, Music" in text
+    assert ("Mature tier: 63 models, 65 routes (Featherless AI 63, OpenRouter 2), fitted to 228 subgenres · "
+            "42 fine-tune bases recorded, never called") in text
     assert "Concentrate AI: 106 components (17 of them run in every chapter)" in text
