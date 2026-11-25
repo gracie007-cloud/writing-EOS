@@ -31,8 +31,9 @@ def model(R, name):
 
 
 def test_the_registry_holds_every_roster_model_with_a_provider(R):
-    assert Counter(m.provider for m in R.models) == {"Hugging Face": 153, "Featherless AI": 47, "Concentrate AI": 42,
-                                                      "OpenRouter": 25, "Unsloth Desktop": 7, "ElevenLabs": 3,
+    # the roster, with the mature catalog's and the register's models it lacks (D33)
+    assert Counter(m.provider for m in R.models) == {"Hugging Face": 161, "Featherless AI": 75, "Concentrate AI": 42,
+                                                      "OpenRouter": 25, "Unsloth Desktop": 8, "ElevenLabs": 3,
                                                       "Comfy Cloud": 11}
     assert {m.modality for m in R.models} == {"", "Image", "Video", "Speech", "Music", "Sound", "Speech-to-text"}
     assert len({m.key for m in R.models}) == len(R.models)
@@ -99,12 +100,13 @@ def test_mature_text_both_experts_refused_goes_to_venice(W, R, RT):
 def test_prose_writers_use_genre_fine_tunes_and_mature_text_needs_one(W, R, RT):
     draft = W.by_step["32"]
     assert draft.writes_prose and not W.by_step["33"].writes_prose
-    assert choose_writer(draft, R, RT, genre="Space Opera").name == "Claude Fable 5.1"      # nothing tagged yet: stand-in
-    with pytest.raises(RoutingError):
-        writer_models(draft, R, RT, genre="Space Opera", mature=True)
-    tuned = replace(model(R, "DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic"), genre="Space Opera")
+    assert choose_writer(draft, R, RT, genre="Epistolary Cookery").name == "Claude Fable 5.1"   # nothing fitted: stand-in
+    with pytest.raises(RoutingError, match="no mature-tier model is fitted to Epistolary Cookery"):
+        writer_models(draft, R, RT, genre="Epistolary Cookery", mature=True)
+    tuned = replace(model(R, "DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic"),
+                    genres=("Epistolary Cookery",))
     reg = Registry(R.version, [tuned] + R.models, {**R.by_key, tuned.key: tuned}, [])
-    pick = choose_writer(draft, reg, RT, genre="Space Opera", mature=True)
+    pick = choose_writer(draft, reg, RT, genre="Epistolary Cookery", mature=True)
     assert pick is tuned and route(pick, RT) == "featherless"
 
 
@@ -207,11 +209,14 @@ def test_a_checker_never_judges_its_own_model_on_another_route(W, R, RT):
 
 def test_a_tagged_fine_tune_leads_and_the_components_experts_stay_as_the_safety_net(W, R, RT):
     draft = W.by_step["32"]
-    tuned = replace(model(R, "DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic"), genre="Space Opera")
-    reg = Registry(R.version, [tuned] + R.models, {**R.by_key, tuned.key: tuned}, [])
-    assert [m.name for m in writer_models(draft, reg, RT, genre="Space Opera")] == [tuned.name, "Claude Fable 5.1", "Kimi K3"]
-    assert choose_writer(draft, reg, RT, genre="Space Opera", down={tuned.key}).name == "Claude Fable 5.1"
-    assert writer_models(draft, reg, RT, genre="Space Opera", mature=True) == [tuned]         # never the stand-ins
+    tuned = replace(model(R, "DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic"),
+                    genres=("Epistolary Cookery",))
+    others = [m for m in R.models if m.ident != tuned.ident]                 # the same model on no other route
+    reg = Registry(R.version, [tuned] + others, {m.key: m for m in [tuned] + others}, [])
+    assert [m.name for m in writer_models(draft, reg, RT, genre="Epistolary Cookery")] == [tuned.name, "Claude Fable 5.1",
+                                                                                              "Kimi K3"]
+    assert choose_writer(draft, reg, RT, genre="Epistolary Cookery", down={tuned.key}).name == "Claude Fable 5.1"
+    assert writer_models(draft, reg, RT, genre="Epistolary Cookery", mature=True) == [tuned]   # never the stand-ins
 
 
 def test_a_model_on_a_provider_outside_the_lane_is_not_called(W, R, RT):

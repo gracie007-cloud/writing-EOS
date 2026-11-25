@@ -6,19 +6,23 @@ tries them in that order. A model listed in the roster under more than one provi
 provider is down the router tries the model's next route before it moves to the next expert.
 
 Three lanes. Building Blocks, Sales & Marketing, the editing tools and the evaluation components use the general
-lane: the experts above. Prose Writing components that write prose use the prose lane: a model fine-tuned for the
-book's genre, via Featherless AI or Unsloth Desktop, then the component's own experts as the safety net (never for
-mature text). Media components use the media lane: their experts, each making what the component makes (image,
-video, speech, music, sound). Each lane lists its providers in routing.yaml; a model on a provider outside its lane
-is never called for that lane.
+lane: the experts above. Prose Writing components that write prose use the prose lane: the register's writers for
+the book's pen name and subgenre (lead writers, then strong adjacent fits; routing.json, read from outside the app,
+D10), then the models tagged for the subgenre, then the component's own experts as the safety net (never for mature
+text). Media components use the media lane: their experts, each making what the component makes (image, video,
+speech, music, sound). Each lane lists its providers in routing.yaml; a model on a provider outside its lane is
+never called for that lane.
 
 Checks the router enforces:
 - P8: an evaluation component never runs on the same model that wrote what it judges, whatever provider serves it.
-- P10: mature text is written only by an Uncensored model on a mature provider; mature media only by an open model on
-  Comfy Cloud, the one media provider whose terms allow lawful mature content (fal.ai and OpenRouter don't). An
-  evaluation component tries its own experts first; if they refuse mature text, its Mature Fallback (a database
+- P10, D33: mature text is written only by the mature tier: an uncensored model served by an inference provider or an
+  aggregator (Featherless AI, OpenRouter). A text component whose experts include none hands the mature passage to
+  the mature tier for the book's pen name and subgenre. Mature media only by an open model on Comfy Cloud, the one
+  media provider whose terms allow lawful mature content (fal.ai and OpenRouter don't), or Chatterbox on Featherless.
+  An evaluation component tries its own experts first; if they refuse mature text, its Mature Fallback (a database
   column) takes over.
-- A model with no provider model ID cannot be called, so it is never chosen.
+- A model with no provider model ID cannot be called, and a fine-tune base (a GGUF kept to fine-tune later) is not
+  served for inference, so neither is ever chosen.
 """
 
 from __future__ import annotations
@@ -96,11 +100,29 @@ def lane_providers(c, routing: Routing, mature: bool = False) -> list:
 
 
 def mature_ok(model, routing: Routing) -> bool:
-    return model.uncensored and model.provider in routing.mature_writer_providers
+    return model.uncensored and model.provider in routing.mature_writer_providers and not model.fine_tune_base
 
 
-def writer_models(c, reg: Registry, routing: Routing, genre: str | None = None, mature: bool = False) -> list:
-    """The models that may write for this component, in the order the router tries them."""
+def genre_writers(reg: Registry, genre: str | None, pen_name: str | None = None) -> list:
+    """The models fitted to the book: the register's writers for this pen name and subgenre first, then every model
+    tagged for the subgenre, each followed by its other routes. Fine-tune bases are left out."""
+    if not genre:
+        return []
+    fitted = reg.fit_writers(pen_name, genre) if pen_name else []
+    tagged = [m for m in reg.for_genre(genre) if m.ident not in {f.ident for f in fitted}]
+    home = sorted(fitted + tagged, key=lambda m: bool(m.same_as))     # a model's own row before a second route to it
+    return [m for m in with_routes(home, reg) if not m.fine_tune_base]
+
+
+def mature_tier(reg: Registry, routing: Routing, genre: str | None, pen_name: str | None = None) -> list:
+    """The mature tier for the book: its fitted models that may write mature text (P10, D33)."""
+    return [m for m in genre_writers(reg, genre, pen_name) if mature_ok(m, routing)]
+
+
+def writer_models(c, reg: Registry, routing: Routing, genre: str | None = None, mature: bool = False,
+                  pen_name: str | None = None) -> list:
+    """The models that may write for this component, in the order the router tries them. genre is the book's
+    subgenre (its minor subgenre, or major where its path has none); pen_name selects the register's writers."""
     if c.is_evaluation:
         raise RoutingError(f"{c.name} is an evaluation component; use choose_checker")
     line = [m for _, m in experts(c, reg)]
@@ -115,20 +137,21 @@ def writer_models(c, reg: Registry, routing: Routing, genre: str | None = None, 
                                f"experts{' for mature media' if mature else ''}")
         return models
     if c.writes_prose:
-        tuned = [m for m in (reg.for_genre(genre) if genre else []) if m.provider in routing.prose_providers]
         if mature:
-            tuned = [m for m in tuned if mature_ok(m, routing)]
+            tuned = mature_tier(reg, routing, genre, pen_name)
             if not tuned:
-                raise RoutingError(f"{c.name}: no mature-tier model is tagged for {genre or 'this genre'} "
-                                   f"(Uncensored, on {', '.join(routing.mature_writer_providers)})")
+                raise RoutingError(f"{c.name}: no mature-tier model is fitted to {genre or 'this genre'} "
+                                   f"(uncensored, on {', '.join(routing.mature_writer_providers)})")
             return tuned
+        tuned = [m for m in genre_writers(reg, genre, pen_name) if m.provider in routing.prose_providers]
         stand_ins = [m for m in with_routes(line, reg) if m.provider in routing.general_providers]
         return tuned + [m for m in stand_ins if m.key not in {t.key for t in tuned}]   # the safety net stays
     models = with_routes(line, reg)
     if mature:
-        models = [m for m in models if mature_ok(m, routing)]
+        models = [m for m in models if mature_ok(m, routing)] or mature_tier(reg, routing, genre, pen_name)
         if not models:
-            raise RoutingError(f"{c.name}: mature text needs a mature-tier model, and none is assigned")
+            raise RoutingError(f"{c.name}: mature text needs a mature-tier model: none of its experts is one, and "
+                               f"none is fitted to {genre or 'the book (give its subgenre)'}")
         return models
     models = [m for m in models if m.provider in routing.general_providers]
     if not models:
@@ -141,15 +164,17 @@ def unusable(m, down=(), down_providers=()) -> str:
     """Why this model cannot be called right now; '' when it can."""
     if not m.model_id:
         return f"{m.name} has no provider model ID yet"
+    if m.fine_tune_base:
+        return f"{m.name} is a fine-tune base, not served for inference"
     if m.provider in down_providers:
         return f"{m.name} is on {m.provider}, which is down"
     return f"{m.name} is down" if m.key in down else ""
 
 
 def choose_writer(c, reg: Registry, routing: Routing, genre: str | None = None, mature: bool = False, down=(),
-                  down_providers=()):
+                  down_providers=(), pen_name: str | None = None):
     reasons = []
-    for m in writer_models(c, reg, routing, genre, mature):
+    for m in writer_models(c, reg, routing, genre, mature, pen_name):
         why = unusable(m, down, down_providers)
         if not why:
             return m

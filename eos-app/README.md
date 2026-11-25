@@ -100,25 +100,49 @@ The database does not record what a component takes in, its code parts, what a c
 
 ## Models and routing
 
-`config/models.yaml` is the app's copy of your roster *LLM Identifier*: every model with a provider, its ID, its boxes
-(Frontier, Open-Weights, Uncensored, Can Run Locally), its Comparable and Fallback models and the Genre it is
-fine-tuned for. Export the roster from Notion as CSV and rebuild it:
+`config/models.yaml` is the app's copy of three sources, joined (decision D33):
+- your roster *LLM Identifier*: every model with a provider, its ID, its boxes (Frontier, Open-Weights, Uncensored,
+  Can Run Locally) and its Comparable and Fallback models;
+- the **mature catalog** *LLM Identifier for Creative Writing: Abliterated & Uncensored Models*
+  (`..\llm-identifier-creative-writing-abliterated\abliterated_models.csv`): every model in it is marked uncensored,
+  a model the roster lacks is added, and its Genres and Genre Category become the model's genre tags. A Hugging Face
+  row not served through Inference Providers is a GGUF kept to fine-tune later: recorded as `fine_tune_base` and
+  never called;
+- the **register** `..\registry.json` (verified against the providers on 2026-11-14): the context each provider
+  actually serves (`served_context`: size every request to it), the register ID (W01 to W77, C01 to C10), the
+  Genre Matrix subgenres each model serves, and a model's second route on OpenRouter.
 
-    python -m eos_app.registry "..\roster\LLM Identifier export.csv"
+Export the roster and the mature catalog from Notion as CSV and rebuild:
 
-The build lists roster rows that look mistyped (an ID copied from the row above, a model listed twice).
+    python -m eos_app.registry "..\roster\LLM Identifier export.csv" --mature "..\llm-identifier-creative-writing-abliterated\abliterated_models.csv" --register ..\registry.json
+
+The build lists rows that look mistyped (an ID copied from another row, a model listed twice) and the models the
+register verified that neither Notion source lists yet. Where a newer source names a mistyped roster row, the row
+takes that name and the build says so; correct the roster to match.
+
+The register's routing table, `..\routing.json` (which models write for each pen name in each Genre Matrix path, by
+role), is read from the repository root when the app loads, like the library pools. It names pen names, so it is
+never copied into the app (D10).
 
 `eos_app/router.py` picks the model for each call (`config/routing.yaml`):
 - **Experts:** each component's Primary, then its Comparable, then its Fallback (the database's Fallback Model, or the Primary's roster Fallback when that is empty). A cheaper comparable model goes first.
 - **Routes:** a model listed in the roster under two providers has two routes. When a provider is down, the router tries the same model's other route before it moves to the next expert. To give a model a second route, add a roster row with the same Model Name and the other provider.
 - **No ID, no call:** a model with no provider model ID is never chosen.
 - **Lanes:** each lane's providers are listed in `routing.yaml` and enforced.
-- **Prose:** writers in Prose Writing use the model fine-tuned for the book's genre (Featherless AI or Unsloth
-  Desktop), with the component's own experts behind it as the safety net; until a fine-tune is tagged, those
-  experts do the work. Mature text goes only to an Uncensored model on Featherless AI.
+- **Prose:** writers in Prose Writing use the register's writers for the book's pen name and subgenre (lead
+  writers, then strong adjacent fits, in the register's order), then every model tagged for the subgenre, with the
+  component's own experts behind them as the safety net. Pass `pen_name=` and `genre=` (the minor subgenre, or the
+  major where the path has none) to `writer_models()` or `choose_writer()`.
+- **Mature tier (P10, D33):** mature text goes only to an uncensored model served by an inference provider or an
+  aggregator: Featherless AI or OpenRouter. Local models and fine-tune bases are not in it. A prose writer uses the
+  tier's models fitted to the book and never its general experts; any other text component with no mature expert
+  hands the passage to the tier for the book's pen name and subgenre. A model's own row leads and its OpenRouter
+  route follows, as a second route on an outage.
+- **Fine-tune bases** (Hugging Face GGUFs) are never chosen on any lane.
 - **Checkers:** the 21 evaluation components (each lists what it `judges` in components.yaml) never run on the
   model that wrote the text, whichever provider serves it; for mature text their experts refuse, their
-  `mature_fallback` takes over.
+  `mature_fallback` takes over. Two routes to one set of weights count as one model: Venice Uncensored on OpenRouter
+  is `dphn/Dolphin-Mistral-24B-Venice-Edition`, so it never judges text that model wrote on Featherless AI.
 - **Editing tools:** Proofreader and Edit Coach run on their own experts, not the genre fine-tunes; Self-Edit
   Reports is code.
 - **Media:** image, video, speech, music and sound components use only models that make what they make (the
@@ -131,7 +155,7 @@ The build lists roster rows that look mistyped (an ID copied from the row above,
     python -m eos_app.readiness          # the summary and everything that needs attention
     python -m eos_app.readiness --all    # every component
 
-It asks the router which models each component could actually call and sends nothing to any model. A component is **ready**, **degraded** (it would run, but on a later expert or with no second expert to cross-check) or **blocked** (nothing it could call). The report also counts what an outage of each provider would stop, and lists what is still open: no route for mature material, a Mature Fallback left open, writers nothing checks, and Jev's missing roster row.
+It asks the router which models each component could actually call and sends nothing to any model. A component is **ready**, **degraded** (it would run, but on a later expert or with no second expert to cross-check) or **blocked** (nothing it could call). The report also counts what an outage of each provider would stop, and lists what is still open: no route for mature material, a Mature Fallback left open, writers nothing checks, and Jev's missing roster row. It sizes the mature tier: its models and routes per provider, the subgenres they cover, and the fine-tune bases recorded but never called.
 
 ## Shared library
 

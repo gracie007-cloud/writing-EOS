@@ -89,5 +89,8 @@ def test_open_items_are_named(rep, W):
     assert not rep["jev_in_roster"] and "Jev (typesafe/jev-1.14) has no row in the roster" in text
     assert "Mature Fallback still open (2): Visual Consistency Check, Narration Check" in text
     assert "Writers nothing checks (3): Character Interview, Proofread, Music" in text
-    assert "No route for mature material (90)" in text
+    # D33: a text component with no mature expert hands the passage to the mature tier; only media lacks a route
+    assert "No route for mature material (3): Cover Art, Audiobook Narration, Music" in text
+    assert ("Mature tier: 62 models, 64 routes (Featherless AI 62, OpenRouter 2), fitted to 218 subgenres · "
+            "22 fine-tune bases recorded, never called") in text
     assert "Concentrate AI: 106 components (17 of them run in every chapter)" in text

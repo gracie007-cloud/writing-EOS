@@ -1,7 +1,9 @@
-# Writing EOS model registry: the app's copy of the Notion roster LLM Identifier (FR-ML-1).
-# Built by `python -m eos_app.registry <export.csv>`; do not edit by hand.
-version: '2026-10-22'
-source: Notion LLM Identifier (export)
+# Writing EOS model registry (FR-ML-1, D33): the app's copy of the Notion roster LLM Identifier, joined
+# with the mature catalog (Abliterated & Uncensored Models) and the 2026-11-14 register.
+# Built by `python -m eos_app.registry`; do not edit by hand.
+version: '2026-11-25'
+source: 'Notion LLM Identifier (export); Notion LLM Identifier for Creative Writing: Abliterated & Uncensored Models (export);
+  registry.json (verified 2026-11-14)'
 problems:
 - 'Featherless AI: the name ''DavidAU/Qwen3-VL-12B-Thinking-Brainstorm20x-NEO-MAX-GGUF'' and the ID ''DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking''
   disagree (an ID copied from another row?)'
@@ -42,6 +44,20 @@ problems:
 - 'Comfy Cloud: ''Stable Audio Open'' has no provider model ID yet; fill it from the provider''s model list'
 - 'OpenRouter: ''Fish Audio S2 Pro'' has no provider model ID yet; fill it from the provider''s model list'
 - 'Comfy Cloud: ''Stability Text To Audio'' has no provider model ID yet; fill it from the provider''s model list'
+- 'Featherless AI: the row named ''DavidAU/Qwen3-VL-12B-Thinking-Brainstorm20x-NEO-MAX-GGUF'' holds the ID ''DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking'';
+  renamed ''DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking'' from the mature catalog (correct the roster)'
+- 'register W50: ''TheDrummer/UnslopNemo-12B-v4.1'' is in neither Notion source; added on Featherless AI from the register
+  (add it to the roster)'
+- 'register W51: ''TheDrummer/UnslopNemo-12B-v4'' is in neither Notion source; added on Featherless AI from the register (add
+  it to the roster)'
+- 'register W52: ''TheDrummer/UnslopNemo-12B-v3'' is in neither Notion source; added on Featherless AI from the register (add
+  it to the roster)'
+- 'register W53: ''TheDrummer/UnslopNemo-12B-v1'' is in neither Notion source; added on Featherless AI from the register (add
+  it to the roster)'
+- 'register W69: ''DavidAU/LFM2.5-2.6B-Qwen3.8-Turbo-Brilliance-Power-X12-NEO-MAX-GGUF'' is in neither Notion source; added
+  on Hugging Face from the register (add it to the roster)'
+- 'register C09: ''DavidAU/Qwen2.5-7B-Instruct-1M-Thinking-Claude-Gemini-GPT5.2-DISTILL'' is in neither Notion source; added
+  on Featherless AI from the register (add it to the roster)'
 models:
 - key: concentrate-ai-claude-fable-5-1
   name: Claude Fable 5.1
@@ -53,8 +69,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: Kimi  K3
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-claude-haiku-5-5
   name: Claude Haiku 5.5
   provider: Concentrate AI
@@ -65,8 +86,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-claude-opus-5
   name: Claude Opus 5
   provider: Concentrate AI
@@ -77,8 +103,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-claude-opus-5-5
   name: Claude Opus 5.5
   provider: Concentrate AI
@@ -89,8 +120,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: Kimi  K3
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-claude-sonnet-5-5
   name: Claude Sonnet 5.5
   provider: Concentrate AI
@@ -101,8 +137,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-command-a
   name: Command A
   provider: Concentrate AI
@@ -113,8 +154,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-deepseek-v4-flash-0423
   name: DeepSeek V4 Flash 0423
   provider: Concentrate AI
@@ -125,8 +171,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-deepseek-v4-flash-0731
   name: DeepSeek V4 Flash 0731
   provider: Concentrate AI
@@ -137,8 +188,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-deepseek-v4-flash-vision-exp
   name: DeepSeek V4 Flash Vision Exp
   provider: Concentrate AI
@@ -149,8 +205,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-deepseek-v4-pro-0813
   name: DeepSeek V4 Pro 0813
   provider: Concentrate AI
@@ -161,8 +222,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-deepseek-v4-1-flash
   name: DeepSeek V4.1 Flash
   provider: Concentrate AI
@@ -173,8 +239,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-deepseek-v4-1-flash-1017
   name: DeepSeek V4.1 Flash 1017
   provider: Concentrate AI
@@ -185,8 +256,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-gemini-3-flash-preview
   name: Gemini 3 Flash Preview
   provider: Concentrate AI
@@ -197,8 +273,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-gemini-3-5-flash-lite
   name: Gemini 3.5 Flash Lite
   provider: Concentrate AI
@@ -209,8 +290,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-gemini-3-8-flash
   name: Gemini 3.8 Flash
   provider: Concentrate AI
@@ -221,8 +307,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-gemini-4-argon
   name: Gemini 4 Argon
   provider: Concentrate AI
@@ -233,8 +324,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-gemma-4-26b
   name: Gemma 4 26B-A4B
   provider: Concentrate AI
@@ -245,8 +341,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-gemma-4-31b
   name: Gemma 4 31B
   provider: Concentrate AI
@@ -257,8 +358,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-glm-5-3-flash
   name: GLM 5.3 Flash
   provider: Concentrate AI
@@ -269,8 +375,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-glm-5-3
   name: GLM-5.3
   provider: Concentrate AI
@@ -281,8 +392,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-gpt-5-nano
   name: GPT-5 Nano
   provider: Concentrate AI
@@ -293,8 +409,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-gpt-5-2
   name: GPT-5.2
   provider: Concentrate AI
@@ -305,8 +426,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-gpt-5-4-nano
   name: GPT-5.4 Nano
   provider: Concentrate AI
@@ -317,8 +443,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-gpt-5-6-luna
   name: GPT-5.6 Luna
   provider: Concentrate AI
@@ -329,8 +460,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-gpt-5-6-sol
   name: GPT-5.6 Sol
   provider: Concentrate AI
@@ -341,8 +477,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-gpt-6-astra
   name: GPT-6 Astra
   provider: Concentrate AI
@@ -353,8 +494,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-gpt-6-luna
   name: GPT-6 Luna
   provider: Concentrate AI
@@ -365,8 +511,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: GLM-5.3-Flash
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-gpt-6-1-sol
   name: GPT-6.1 Sol
   provider: Concentrate AI
@@ -377,8 +528,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: MiMo-2.6-Pro
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-gpt-oss-120b
   name: gpt-oss-120b
   provider: Concentrate AI
@@ -389,8 +545,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-grok-4-7
   name: Grok 4.7
   provider: Concentrate AI
@@ -401,8 +562,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-hy4-preview
   name: HY4 Preview
   provider: Concentrate AI
@@ -413,8 +579,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-kimi-k3
   name: Kimi K3
   provider: Concentrate AI
@@ -425,8 +596,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-ling-3-1-flash
   name: Ling 3.1 Flash
   provider: Concentrate AI
@@ -437,8 +613,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-mercury-2-5
   name: Mercury 2.5
   provider: Concentrate AI
@@ -449,8 +630,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-mimo-v2-6-flash
   name: MiMo V2.6 Flash
   provider: Concentrate AI
@@ -461,8 +647,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-mimo-v2-6-pro
   name: MiMo-2.6 Pro
   provider: Concentrate AI
@@ -473,8 +664,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-mistral-large-4
   name: Mistral Large 4
   provider: Concentrate AI
@@ -485,8 +681,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-muse-spark-open
   name: Muse Spark Open
   provider: Concentrate AI
@@ -497,8 +698,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-muse-wonder
   name: Muse Wonder
   provider: Concentrate AI
@@ -509,8 +715,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-nemotron-3-nano-30b
   name: Nemotron 3 Nano 30B A3B
   provider: Concentrate AI
@@ -521,8 +732,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-qwen3-8-27b
   name: Qwen 3.8 27B
   provider: Concentrate AI
@@ -533,8 +749,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: concentrate-ai-qwen3-8-max
   name: Qwen 3.8 Max
   provider: Concentrate AI
@@ -545,8 +766,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-reflection-beam-1-0-501b-a23b
   name: Beam 1.0 501B A23B
   provider: OpenRouter
@@ -557,8 +783,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-cohere-command-a-plus
   name: Command A+
   provider: OpenRouter
@@ -569,8 +800,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-deepseek-deepseek-v3-2
   name: DeepSeek V3.2
   provider: OpenRouter
@@ -581,8 +817,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-google-gemini-2-5-flash-lite
   name: Gemini 2.5 Flash Lite
   provider: OpenRouter
@@ -593,8 +834,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-google-gemini-3-7-flash
   name: Gemini 3.7 Flash
   provider: OpenRouter
@@ -605,8 +851,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-google-gemma-3-27b-it
   name: Gemma 3 27B
   provider: OpenRouter
@@ -617,8 +868,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-ibm-granite-granite-4-2-8b
   name: Granite 4.2 8B
   provider: OpenRouter
@@ -629,8 +885,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-meta-llama-llama-4-scout
   name: Llama 4 Scout
   provider: OpenRouter
@@ -641,8 +902,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-minimax-minimax-m3
   name: MiniMax-M3
   provider: OpenRouter
@@ -653,8 +919,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-cohere-north-mini-code-free
   name: North Mini Code
   provider: OpenRouter
@@ -665,8 +936,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-unbiased-pareto-26-10
   name: Pareto 26.10
   provider: OpenRouter
@@ -677,8 +953,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-unbiased-pareto-latest
   name: Pareto Latest
   provider: OpenRouter
@@ -689,8 +970,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-upstage-solar-mini4
   name: Solar Mini 4
   provider: OpenRouter
@@ -701,8 +987,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-perplexity-sonar-deep-research
   name: Sonar Deep Research
   provider: OpenRouter
@@ -713,8 +1004,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-stepfun-step-5-preview
   name: Step 5 Preview
   provider: OpenRouter
@@ -725,20 +1021,44 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-thedrummer-unslopnemo-12b
   name: 'TheDrummer: UnslopNemo 12B'
   provider: OpenRouter
   model_id: thedrummer/unslopnemo-12b
   frontier: false
   open_weights: true
-  uncensored: false
+  uncensored: true
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Amateur Sleuth Mystery
+  - Village Mystery
+  - Whimsical Mystery
+  - Romantic Comedy Mystery
+  - Cozy Fantasy Romance
+  - Cozy Sci-Fi
+  - Romantic Adventure
+  - Exploration Fantasy
+  - Nautical Fantasy
+  genre_categories:
+  - C
+  - D
+  - E
+  - F
+  - G
+  fine_tune_base: false
+  served_context: null
+  register_id: W50
+  same_as: TheDrummer/UnslopNemo-12B-v4.1
 - key: openrouter-cognitivecomputations-dolphin-mistral-24b-venice-edition
   name: Venice Uncensored
   provider: OpenRouter
@@ -749,8 +1069,23 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Legal Thriller
+  - Courtroom Drama
+  - Legal Social Commentary
+  - Financial Thriller
+  - Political Romance
+  - Conspiracy Fiction
+  - Corporate Science Fiction
+  - Biopunk
+  genre_categories:
+  - F
+  - D
+  fine_tune_base: false
+  served_context: null
+  register_id: W57
+  same_as: dphn/Dolphin-Mistral-24B-Venice-Edition
 - key: unsloth-desktop-davidau-gemma-4-e2b-it-the-deckard-expresso-one-universe-heretic-uncensored-thinking
   name: DavidAU/gemma-4-E2B-it-The-DECKARD-Expresso-ONE-Universe-HERETIC-UNCENSORED-Thinking
   provider: Unsloth Desktop
@@ -761,8 +1096,25 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Whimsical Mystery
+  - Fable
+  - Moral Tales
+  - Cozy Fiction
+  - Slice-of-Life Fiction
+  - Parody
+  - Satire
+  - Transgressional Fiction
+  - Noir Fiction
+  - Crime Noir
+  genre_categories:
+  - E
+  - A
+  fine_tune_base: false
+  served_context: null
+  register_id: W02
+  same_as: ''
 - key: unsloth-desktop-davidau-gemma-4-e2b-it-the-deckard-heretic-uncensored-thinking
   name: DavidAU/gemma-4-E2B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking
   provider: Unsloth Desktop
@@ -773,8 +1125,23 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Dramatic Monologue
+  - Epistolary Fiction
+  - Fable
+  - Moral Tales
+  - Whimsical Mystery
+  - Cozy Fiction
+  - Slice-of-Life Fiction
+  - Transgressional Fiction
+  genre_categories:
+  - E
+  - B
+  fine_tune_base: false
+  served_context: null
+  register_id: W01
+  same_as: ''
 - key: unsloth-desktop-davidau-gemma-4-e4b-it-the-deckard-claude-opus-expresso-universe-heretic-uncensored-thinking
   name: DavidAU/gemma-4-E4B-it-The-DECKARD-Claude-Opus-Expresso-Universe-HERETIC-UNCENSORED-Thinking
   provider: Unsloth Desktop
@@ -785,8 +1152,26 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Transgressional Fiction
+  - Slasher
+  - Psychological Horror
+  - Psychological Thriller-Suspense
+  - Dramatic Monologue
+  - Dark Comedy
+  - Horror Comedy
+  - Weird Fiction
+  - Epistolary Fiction
+  - Fable
+  - Moral Tales
+  genre_categories:
+  - A
+  - E
+  fine_tune_base: false
+  served_context: null
+  register_id: W07
+  same_as: ''
 - key: unsloth-desktop-davidau-gemma-4-e4b-it-the-deckard-expresso-universe-heretic-uncensored-thinking
   name: DavidAU/gemma-4-E4B-it-The-DECKARD-Expresso-Universe-HERETIC-UNCENSORED-Thinking
   provider: Unsloth Desktop
@@ -797,8 +1182,28 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Romantic Comedy
+  - Romantic Adventure
+  - Dramatic Monologue
+  - Epistolary Fiction
+  - Fable
+  - Moral Tales
+  - Animal Fiction
+  - Whimsical Mystery
+  - Biographical Fiction
+  - Allegory
+  - Philosophical Fiction
+  - Whimsical
+  - Cozy Fiction
+  genre_categories:
+  - E
+  - C
+  fine_tune_base: false
+  served_context: null
+  register_id: W06
+  same_as: ''
 - key: unsloth-desktop-davidau-gemma-4-e4b-it-the-deckard-heretic-uncensored-thinking
   name: DavidAU/gemma-4-E4B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking
   provider: Unsloth Desktop
@@ -809,8 +1214,30 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Dramatic Monologue
+  - Epistolary Fiction
+  - Fable
+  - Moral Tales
+  - Animal Fiction
+  - Whimsical Mystery
+  - Biographical Fiction
+  - Allegory
+  - Amateur Sleuth Mystery
+  - Village Mystery
+  - Small-Town Life
+  - Fairy Tales
+  - Fairy Tales Retellings
+  - Modern Fairy Tales
+  - Literary Nonsense
+  - Slice-of-Life Fiction
+  genre_categories:
+  - E
+  fine_tune_base: false
+  served_context: null
+  register_id: W03
+  same_as: ''
 - key: unsloth-desktop-davidau-gemma-4-e4b-it-the-deckard-v2-strong-heretic-uncensored-thinking
   name: DavidAU/gemma-4-E4B-it-The-DECKARD-V2-Strong-HERETIC-UNCENSORED-Thinking
   provider: Unsloth Desktop
@@ -821,8 +1248,34 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Dramatic Monologue
+  - Epistolary Fiction
+  - Fable
+  - Moral Tales
+  - Animal Fiction
+  - Whimsical Mystery
+  - Biographical Fiction
+  - Allegory
+  - Existential Fiction
+  - Philosophical Fiction
+  - Amateur Sleuth Mystery
+  - Village Mystery
+  - Small-Town Life
+  - Fairy Tales
+  - Fairy Tales Retellings
+  - Modern Fairy Tales
+  - Literary Nonsense
+  - Slice-of-Life Fiction
+  - Transgressional Fiction
+  genre_categories:
+  - E
+  - B
+  fine_tune_base: false
+  served_context: null
+  register_id: W04
+  same_as: ''
 - key: unsloth-desktop-davidau-gemma-4-e4b-it-the-deckard-v3-expresso-heretic-uncensored-thinking
   name: DavidAU/gemma-4-E4B-it-The-DECKARD-V3-Expresso-HERETIC-UNCENSORED-Thinking
   provider: Unsloth Desktop
@@ -833,8 +1286,33 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Dramatic Monologue
+  - Epistolary Fiction
+  - Fable
+  - Moral Tales
+  - Animal Fiction
+  - Whimsical Mystery
+  - Biographical Fiction
+  - Allegory
+  - Transgressional Fiction
+  - Amateur Sleuth Mystery
+  - Village Mystery
+  - Small-Town Life
+  - Fairy Tales
+  - Fairy Tales Retellings
+  - Modern Fairy Tales
+  - Literary Nonsense
+  - Slice-of-Life Fiction
+  - Romantic Comedy
+  genre_categories:
+  - E
+  - C
+  fine_tune_base: false
+  served_context: null
+  register_id: W05
+  same_as: ''
 - key: featherless-ai-chuanli11-llama-3-2-3b-instruct-uncensored
   name: chuanli11/Llama-3.2-3B-Instruct-uncensored
   provider: Featherless AI
@@ -845,8 +1323,25 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Transgressional Fiction
+  - Dark Romance
+  - Grimdark Fantasy
+  - Noir Fiction
+  - Neo-Noir
+  - Hard-boiled Fiction
+  - Gothic Horror
+  - Southern Gothic
+  - Folk Horror
+  genre_categories:
+  - A
+  - C
+  - F
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W66
+  same_as: ''
 - key: featherless-ai-davidau-dolphin-mistral-glm-4-7-flash-24b-venice-edition-thinking-uncensored
   name: DavidAU/Dolphin-Mistral-GLM-4.7-Flash-24B-Venice-Edition-Thinking-Uncensored
   provider: Featherless AI
@@ -857,8 +1352,22 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Heist Fiction
+  - Assassination Thriller
+  - Conspiracy Thriller
+  - Conspiracy Fiction
+  - Espionage Thriller
+  - Techno-Thriller
+  - Legal Thriller
+  - Financial Thriller
+  genre_categories:
+  - F
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W58
+  same_as: ''
 - key: featherless-ai-davidau-gemma-3-12b-it-vl-deepseek-v3-1-heretic-uncensored-thinking
   name: DavidAU/gemma-3-12b-it-vl-Deepseek-v3.1-Heretic-Uncensored-Thinking
   provider: Featherless AI
@@ -869,8 +1378,25 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Police Procedural
+  - True Crime
+  - Detective Stories
+  - Amateur Sleuth Mystery
+  - Medical Thriller
+  - Eco-Thriller
+  - Military Fiction
+  - Military Thriller
+  - Crime Fiction
+  - FBI Agents
+  genre_categories:
+  - F
+  - D
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W20
+  same_as: ''
 - key: featherless-ai-davidau-gemma-3-12b-it-vl-gemini-3-pro-preview-heretic-uncensored-thinking
   name: DavidAU/gemma-3-12b-it-vl-Gemini-3-Pro-Preview-Heretic-Uncensored-Thinking
   provider: Featherless AI
@@ -881,8 +1407,26 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Alternate History
+  - Speculative Historical Fiction
+  - Historical Adventure
+  - Colonization
+  - First Contact
+  - Space Exploration
+  - Exploration Fantasy
+  - Generational Stories
+  - Multi-generational Saga
+  - Mystery Detective
+  - Multi-Generational Saga
+  genre_categories:
+  - G
+  - D
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W19
+  same_as: ''
 - key: featherless-ai-davidau-gemma-3-12b-it-vl-glm-4-7-flash-heretic-uncensored-thinking
   name: DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-Heretic-Uncensored-Thinking
   provider: Featherless AI
@@ -893,8 +1437,25 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Techno-Thriller
+  - Cyberpunk
+  - Post-Cyberpunk
+  - Heist Fiction
+  - Hard Science Fiction
+  - Robot & Android Science Fiction
+  - AI Science Fiction
+  - Virtual Reality
+  - Genetic Engineering
+  - Biopunk
+  genre_categories:
+  - D
+  - F
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W25
+  same_as: ''
 - key: featherless-ai-davidau-gemma-3-12b-it-vl-glm-4-7-flash-instruct-thinking-hybrid-heretic-uncensored
   name: DavidAU/gemma-3-12b-it-vl-GLM-4.7-Flash-INSTRUCT-Thinking-Hybrid-Heretic-Uncensored
   provider: Featherless AI
@@ -905,8 +1466,25 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Techno-Thriller
+  - Heist Fiction
+  - Cyberpunk
+  - Post-Cyberpunk
+  - Hard Science Fiction
+  - Robot & Android Science Fiction
+  - AI Science Fiction
+  - Virtual Reality
+  - Espionage Thriller
+  - Conspiracy Thriller
+  genre_categories:
+  - D
+  - F
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W24
+  same_as: ''
 - key: featherless-ai-davidau-gemma-3-12b-it-vl-gpt-5-1-high-heretic-uncensored-thinking
   name: DavidAU/gemma-3-12b-it-vl-GPT-5.1-High-Heretic-Uncensored-Thinking
   provider: Featherless AI
@@ -917,8 +1495,23 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Corporate Science Fiction
+  - Techno-Thriller
+  - Financial Thriller
+  - Heist Fiction
+  - Conspiracy Fiction
+  - Conspiracy Thriller
+  - AI Science Fiction
+  - Robot & Android Science Fiction
+  genre_categories:
+  - D
+  - F
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W21
+  same_as: ''
 - key: featherless-ai-davidau-gemma-3-12b-it-vl-highiq-polaris-heretic-uncensored-thinking
   name: DavidAU/gemma-3-12b-it-vl-HighIQ-Polaris-Heretic-Uncensored-Thinking
   provider: Featherless AI
@@ -929,8 +1522,27 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Classic Whodunit
+  - Classic Detective
+  - Whodunit
+  - Intellectual Adventure
+  - Philosophical Mystery
+  - Alternate History
+  - Speculative Historical Fiction
+  - Philosophical Adventure
+  - Existential Fiction
+  - Heist Fiction
+  - Techno-Thriller
+  genre_categories:
+  - F
+  - B
+  - G
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W23
+  same_as: ''
 - key: featherless-ai-davidau-gemma-3-1b-it-glm-4-7-flash-heretic-uncensored-thinking
   name: DavidAU/Gemma-3-1B-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking
   provider: Featherless AI
@@ -941,8 +1553,20 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Heist Fiction
+  - Whodunit
+  - Transgressional Fiction
+  - Conspiracy Thriller
+  - Cozy Mystery
+  genre_categories:
+  - F
+  - E
+  fine_tune_base: false
+  served_context: 32768
+  register_id: C04
+  same_as: ''
 - key: featherless-ai-davidau-gemma-4-31b-it-mystery-fine-tune-heretic-uncensored-thinking
   name: DavidAU/gemma-4-31B-it-Mystery-Fine-Tune-HERETIC-UNCENSORED-Thinking
   provider: Featherless AI
@@ -953,8 +1577,25 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Mystery-Suspense Fiction
+  - Whodunit
+  - Literary Mystery
+  - Psychological Mystery
+  - Dystopian Fiction
+  - Classic Whodunit
+  - Historical Mystery
+  - Crime Fiction
+  - Detective Stories
+  - Amateur Sleuth Mystery
+  genre_categories:
+  - F
+  - B
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W09
+  same_as: ''
 - key: featherless-ai-davidau-gemma-4-31b-it-the-deckard-heretic-uncensored-thinking
   name: DavidAU/gemma-4-31B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking
   provider: Featherless AI
@@ -965,8 +1606,25 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Philosophical Fiction
+  - AI Science Fiction
+  - Robot & Android Science Fiction
+  - Time Travel
+  - Metafiction
+  - Satirical Fiction
+  - Philosophical Mystery
+  - Existential Fiction
+  - Biographical Fiction
+  - Alternate History
+  genre_categories:
+  - B
+  - D
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W08
+  same_as: ''
 - key: featherless-ai-davidau-gemma-the-writer-9b-heretic-uncensored-abliterated
   name: DavidAU/Gemma-The-Writer-9B-HERETIC-Uncensored-Abliterated
   provider: Featherless AI
@@ -977,8 +1635,33 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Sensual Romance
+  - Beach Reads
+  - New Adult Fiction
+  - Slice-of-Life Fiction
+  - Small Town & Rural
+  - Coming-of-Age
+  - Epistolary Fiction
+  - Dramatic Monologue
+  - Cozy Fiction
+  - Whimsical Mystery
+  - War Fiction
+  - Western Drama
+  - Erotic Fiction
+  - Erotic Romance
+  - Horror Mystery
+  - New Adult Romance
+  - Gothic Horror
+  genre_categories:
+  - C
+  - E
+  - A
+  fine_tune_base: false
+  served_context: 16384
+  register_id: W26
+  same_as: ''
 - key: featherless-ai-davidau-gemma3-27b-it-vl-glm-4-7-uncensored-heretic-deep-reasoning
   name: DavidAU/Gemma3-27B-it-vl-GLM-4.7-Uncensored-Heretic-Deep-Reasoning
   provider: Featherless AI
@@ -989,8 +1672,24 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Techno-Thriller
+  - Cyberpunk
+  - Post-Cyberpunk
+  - Hard Science Fiction
+  - Heist Fiction
+  - Biopunk
+  - Genetic Engineering
+  - AI Science Fiction
+  - Robot & Android Science Fiction
+  genre_categories:
+  - D
+  - F
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W17
+  same_as: ''
 - key: featherless-ai-davidau-l3-dark-planet-8b-heretic-uncensored-abliterated
   name: DavidAU/L3-Dark-Planet-8B-HERETIC-Uncensored-Abliterated
   provider: Featherless AI
@@ -1001,8 +1700,34 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Transgressional Fiction
+  - Slasher
+  - Psychological Horror
+  - Thriller-Suspense
+  - Domestic Noir
+  - Crime Noir
+  - Hard-boiled Fiction
+  - Dark Romance
+  - Apocalyptic
+  - Post-Apocalyptic
+  - Grimdark Fantasy
+  - Serial Killers
+  - True Crime
+  - Organized Crime
+  - Southern Gothic
+  - Weird Fiction
+  - Vampire Fantasy
+  - Psychological Thriller-Suspense
+  genre_categories:
+  - A
+  - F
+  - C
+  fine_tune_base: false
+  served_context: 8192
+  register_id: W62
+  same_as: ''
 - key: featherless-ai-davidau-llama-3-3-8b-instruct-thinking-claude-haiku-4-5-high-reasoning-1700x
   name: DavidAU/Llama-3.3-8B-Instruct-Thinking-Claude-Haiku-4.5-High-Reasoning-1700x
   provider: Featherless AI
@@ -1013,8 +1738,20 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Speculative Fiction
+  - Contemporary Speculative Fiction
+  - Near-Future Fiction
+  - Climate Fiction (Cli-Fi)
+  - Mystery Thriller
+  - Psychological Thriller-Suspense
+  - Time Travel
+  genre_categories: []
+  fine_tune_base: false
+  served_context: 8192
+  register_id: C05
+  same_as: ''
 - key: featherless-ai-davidau-llama3-3-8b-instruct-thinking-claude-4-5-opus-high-reasoning
   name: DavidAU/Llama3.3-8B-Instruct-Thinking-Claude-4.5-Opus-High-Reasoning
   provider: Featherless AI
@@ -1025,8 +1762,25 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Hard Science Fiction
+  - Hard Sci-Fi
+  - Techno-Thriller
+  - Space Exploration
+  - Colonization
+  - Near-Future Sci-Fi
+  - Eco-Thriller
+  - Climate Fiction (Cli-Fi)
+  - Medical Thriller
+  - Mystery Thriller
+  - Heist Fiction
+  - Time Travel
+  genre_categories: []
+  fine_tune_base: false
+  served_context: 8192
+  register_id: W59
+  same_as: ''
 - key: featherless-ai-davidau-llama3-3-8b-instruct-thinking-heretic-uncensored-claude-4-5-opus-high-reasoning
   name: DavidAU/Llama3.3-8B-Instruct-Thinking-Heretic-Uncensored-Claude-4.5-Opus-High-Reasoning
   provider: Featherless AI
@@ -1037,8 +1791,33 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Gothic Horror
+  - Gothic Fiction
+  - Occult Mystery
+  - Occult Detective
+  - Occult
+  - Weird Fiction
+  - Techno-Thriller
+  - Hard Science Fiction
+  - Serial Killers
+  - Transgressional Fiction
+  - Epistolary Fiction
+  - Psychological Horror
+  - Domestic Noir
+  - Conspiracy Thriller
+  - Medical Thriller
+  - Folk Horror
+  - Grimdark Fantasy
+  - Hard Sci-Fi
+  genre_categories:
+  - A
+  - F
+  fine_tune_base: false
+  served_context: 8192
+  register_id: W60
+  same_as: ''
 - key: featherless-ai-davidau-mistral-nemo-2407-12b-thinking-claude-gemini-gpt5-2-uncensored-heretic
   name: DavidAU/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC
   provider: Featherless AI
@@ -1049,8 +1828,37 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Psychological Horror
+  - Ghost Story
+  - Gothic Horror
+  - Slasher
+  - Whimsical Mystery
+  - Romantic Adventure
+  - Cozy Mystery
+  - Slice-of-Life Fiction
+  - Sensual Romance
+  - New Adult Fiction
+  - Dark Romance
+  - Horror Mystery
+  - Supernatural Mystery
+  - Domestic Noir
+  - Weird Fiction
+  - Eco-Thriller
+  - Folk Horror
+  - Transgressional Fiction
+  - Exploration Fantasy
+  - Nautical Fantasy
+  - New Adult Romance
+  genre_categories:
+  - A
+  - C
+  - E
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W49
+  same_as: ''
 - key: featherless-ai-davidau-mistral-nemo-inst-2407-12b-thinking-uncensored-heretic-hi-claude-opus
   name: DavidAU/Mistral-Nemo-Inst-2407-12B-Thinking-Uncensored-HERETIC-HI-Claude-Opus
   provider: Featherless AI
@@ -1061,8 +1869,31 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Crime Fiction
+  - Detective Stories
+  - Psychological Horror
+  - Psychological Thriller-Suspense
+  - Slasher
+  - Horror Mystery
+  - True Crime
+  - Domestic Noir
+  - Serial Killers
+  - Whimsical Mystery
+  - Cozy Mystery
+  - Gothic Horror
+  - Occult Mystery
+  - Dark Romance
+  - Eco-Thriller
+  - Medical Thriller
+  genre_categories:
+  - F
+  - A
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W48
+  same_as: ''
 - key: featherless-ai-davidau-mn-captainerisnebula-12b-chimera-v1-1-heretic-uncensored-abliterated
   name: DavidAU/MN-CaptainErisNebula-12B-Chimera-v1.1-heretic-uncensored-abliterated
   provider: Featherless AI
@@ -1073,8 +1904,34 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Dark Romance
+  - Mafia Romance
+  - Organized Crime
+  - Demon Romance
+  - Faustian Saga
+  - Vampire Romance
+  - Paranormal Romance
+  - Gothic Romance
+  - Gothic Romantic Mystery
+  - Philosophical Mystery
+  - Urban Fantasy
+  - Transgressional Fiction
+  - Werewolf & Shifter Romance
+  - Psychological Thriller-Suspense
+  - Assassination Thriller
+  - Conspiracy Fiction
+  - Erotic Romance
+  - Southern Gothic
+  - Grimdark Fantasy
+  genre_categories:
+  - C
+  - A
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W47
+  same_as: ''
 - key: featherless-ai-davidau-mn-captainerisnebula-chimera-v1-1-thinking-claudeopus4-5-12b-heretic-uncensored
   name: DavidAU/MN-CaptainErisNebula-Chimera-v1.1-THINKING-ClaudeOpus4.5-12B-heretic-uncensored
   provider: Featherless AI
@@ -1085,8 +1942,35 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Psychological Horror
+  - Gothic Horror
+  - Ghost Story
+  - Dark Romance
+  - Speculative Fiction
+  - Time Travel
+  - Philosophical Mystery
+  - Faustian Saga
+  - Demon Romance
+  - Horror Mystery
+  - Occult Detective
+  - Mafia Romance
+  - Vampire Romance
+  - Paranormal Romance
+  - Urban Fantasy
+  - Erotic Fiction
+  - Domestic Noir
+  - Weird Fiction
+  - Contemporary Speculative Fiction
+  genre_categories:
+  - A
+  - C
+  - F
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W46
+  same_as: ''
 - key: featherless-ai-davidau-qwen3-short-story-instruct-uncensored-262k-ctx-4b
   name: DavidAU/Qwen3-Short-Story-Instruct-Uncensored-262K-ctx-4B
   provider: Featherless AI
@@ -1097,10 +1981,29 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Transgressional Fiction
+  - Absurdist Fiction
+  - Dark Comedy
+  - Tragicomedy
+  - Fable
+  - Moral Tales
+  - Whimsical Mystery
+  - Parody
+  - Slice-of-Life Fiction
+  - Fairy Tales Retellings
+  - Literary Nonsense
+  - Horror Comedy
+  - Mashup Fiction
+  genre_categories:
+  - E
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W44
+  same_as: ''
 - key: featherless-ai-davidau-qwen3-vl-32b-gemini-heretic-uncensored-thinking
-  name: DavidAU/Qwen3-VL-12B-Thinking-Brainstorm20x-NEO-MAX-GGUF
+  name: DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking
   provider: Featherless AI
   model_id: DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking
   frontier: false
@@ -1109,8 +2012,35 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Colonization
+  - Space Exploration
+  - Conspiracy Thriller
+  - Alternate History
+  - War Fiction
+  - Military Thriller
+  - Eco-Thriller
+  - Climate Fiction (Cli-Fi)
+  - Galactic Empire
+  - Space Opera
+  - Occult Detective
+  - Serial Killers
+  - True Crime
+  - Historical Mystery
+  - Cyberpunk
+  - Folk Horror
+  - Grimdark Fantasy
+  - Heist Fiction
+  - Occult Mystery
+  genre_categories:
+  - D
+  - G
+  - F
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W41
+  same_as: ''
 - key: featherless-ai-davidau-qwen3-5-21b-claude-4-6-opus-deckard-heretic-uncensored-thinking
   name: DavidAU/Qwen3.5-21B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
   provider: Featherless AI
@@ -1121,8 +2051,33 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Philosophical Fiction
+  - Philosophical Mystery
+  - Allegory
+  - AI Science Fiction
+  - Robot & Android Science Fiction
+  - Metafiction
+  - Satire
+  - Time Travel
+  - Biographical Fiction
+  - Dystopian Fiction
+  - Social Science Fiction
+  - Existential Fiction
+  - Literary Mystery
+  - Gothic Romantic Mystery
+  - Dark Academia
+  - Transgressional Fiction
+  - Techno-Thriller
+  - Whimsical Mystery
+  genre_categories:
+  - B
+  - D
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W32
+  same_as: ''
 - key: featherless-ai-davidau-qwen3-5-27b-claude-4-6-os-instruct
   name: DavidAU/Qwen3.5-27B-Claude-4.6-OS-INSTRUCT
   provider: Featherless AI
@@ -1133,8 +2088,22 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Hard Sci-Fi
+  - Hard Science Fiction
+  - Techno-Thriller
+  - Heist Fiction
+  - Conspiracy Fiction
+  - Medical Thriller
+  - Eco-Thriller
+  - Climate Fiction (Cli-Fi)
+  - Alternate History
+  genre_categories: []
+  fine_tune_base: false
+  served_context: 32768
+  register_id: C10
+  same_as: ''
 - key: featherless-ai-davidau-qwen3-5-2b-claude-4-6-os-auto-variable-heretic-uncensored-thinking
   name: DavidAU/Qwen3.5-2B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING
   provider: Featherless AI
@@ -1145,8 +2114,25 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Police Procedural
+  - Techno-Thriller
+  - Medical Thriller
+  - Eco-Thriller
+  - Transgressional Fiction
+  - Folklore
+  - Heist Fiction
+  - Urban Fantasy
+  - Epistolary Fiction
+  - Historical Mystery
+  genre_categories:
+  - F
+  - D
+  fine_tune_base: false
+  served_context: 32768
+  register_id: C07
+  same_as: ''
 - key: featherless-ai-davidau-qwen3-5-9b-claude-4-6-highiq-instruct-heretic-uncensored
   name: DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-INSTRUCT-HERETIC-UNCENSORED
   provider: Featherless AI
@@ -1157,8 +2143,32 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Romantic Adventure
+  - Romantic Drama
+  - Literary Romance
+  - Speculative Fiction
+  - Crime Fiction
+  - Detective Stories
+  - Thriller-Suspense
+  - Contemporary Fiction
+  - Women's Fiction
+  - Domestic Noir
+  - Urban Fantasy
+  - Historical Romance
+  - War Fiction
+  - Medical Romance
+  - Near-Future Sci-Fi
+  - Space Exploration
+  genre_categories:
+  - C
+  - F
+  - B
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W36
+  same_as: ''
 - key: featherless-ai-davidau-qwen3-5-9b-claude-4-6-highiq-thinking-heretic-uncensored
   name: DavidAU/Qwen3.5-9B-Claude-4.6-HighIQ-THINKING-HERETIC-UNCENSORED
   provider: Featherless AI
@@ -1169,8 +2179,31 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Hard Science Fiction
+  - Techno-Thriller
+  - Police Procedural
+  - Medical Thriller
+  - Eco-Thriller
+  - Mystery Thriller
+  - Whodunit
+  - Heist Fiction
+  - Conspiracy Fiction
+  - Time Travel
+  - Genetic Engineering
+  - Corporate Science Fiction
+  - Military Sci-Fi
+  - Financial Thriller
+  - Hard Sci-Fi
+  - Classic Whodunit
+  genre_categories:
+  - D
+  - F
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W35
+  same_as: ''
 - key: featherless-ai-davidau-qwen3-5-9b-claude-4-6-os-heretic-uncensored-instruct
   name: DavidAU/Qwen3.5-9B-Claude-4.6-OS-HERETIC-UNCENSORED-INSTRUCT
   provider: Featherless AI
@@ -1181,8 +2214,31 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Romantic Adventure
+  - Thriller-Suspense
+  - Crime Fiction
+  - Detective Stories
+  - Speculative Fiction
+  - Contemporary Fiction
+  - Women's Fiction
+  - Domestic Noir
+  - Romantic Drama
+  - Literary Romance
+  - Urban Fantasy
+  - Historical Romance
+  - War Fiction
+  - Medical Romance
+  - Near-Future Sci-Fi
+  - Space Exploration
+  genre_categories:
+  - C
+  - F
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W37
+  same_as: ''
 - key: featherless-ai-davidau-qwen3-5-9b-deckard-claude-dimoe-uncensored-heretic-thinking
   name: DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking
   provider: Featherless AI
@@ -1193,8 +2249,31 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Hard-boiled Fiction
+  - Noir Fiction
+  - Courtroom Drama
+  - Legal Drama
+  - Satire
+  - Psychological Fiction
+  - Police Procedural
+  - Techno-Thriller
+  - Metafiction
+  - Dramatic Monologue
+  - Domestic Noir
+  - Conspiracy Fiction
+  - Dark Academia
+  - Transgressional Fiction
+  - Epistolary Fiction
+  - Heist Fiction
+  genre_categories:
+  - F
+  - B
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W31
+  same_as: ''
 - key: featherless-ai-davidau-qwen3-5-9b-the-deckard-pro-writer-uncensored-heretic
   name: DavidAU/Qwen3.5-9B-The-Deckard-Pro-Writer-Uncensored-Heretic
   provider: Featherless AI
@@ -1205,8 +2284,33 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - General Literary Fiction
+  - Literary Mystery
+  - Literary Thriller
+  - Literary Romance
+  - Romantic Drama
+  - Psychological Fiction
+  - Gothic Fiction
+  - Southern Gothic
+  - Literary Realism
+  - Slice-of-Life Fiction
+  - Coming-of-Age
+  - Epistolary Fiction
+  - Biographical Fiction
+  - Historical Drama
+  - Dark Academia
+  - Metafiction
+  - Upmarket Women's Fiction
+  - Transgressional Fiction
+  genre_categories:
+  - B
+  - C
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W30
+  same_as: ''
 - key: featherless-ai-davidau-qwen3-6-21b-iq-ultra-heretic-uncensored-thinking
   name: DavidAU/Qwen3.6-21B-IQ-Ultra-Heretic-Uncensored-Thinking
   provider: Featherless AI
@@ -1217,8 +2321,38 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Psychological Horror
+  - Thriller-Suspense
+  - Crime Fiction
+  - Gothic Fiction
+  - Ghost Story
+  - First Contact
+  - Space Exploration
+  - Near-Future Sci-Fi
+  - Alternate History
+  - Dystopian Fiction
+  - General Literary Fiction
+  - Romantic Fiction
+  - Historical Drama
+  - War Fiction
+  - Adventure Fiction
+  - Mystery Thriller
+  - Dark Romance
+  - Erotica
+  - Gothic Horror
+  - All
+  - Erotic Fiction
+  genre_categories:
+  - A
+  - D
+  - F
+  - C
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W74
+  same_as: ''
 - key: featherless-ai-davidau-qwen3-6-27b-f451-and-tri-polar-ultra-pro-writer-uncensored-heretic
   name: DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic
   provider: Featherless AI
@@ -1229,8 +2363,36 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Dystopian Fiction
+  - Anti-Utopian Fiction
+  - Literary Realism
+  - Speculative Historical Fiction
+  - Alternate History
+  - Social Science Fiction
+  - Allegory
+  - Utopian Fiction
+  - General Literary Fiction
+  - Domestic Noir
+  - Social Drama
+  - Psychological Realism
+  - Dystopian Fantasy
+  - Climate Fiction (Cli-Fi)
+  - Near-Future Fiction
+  - Political Fiction
+  - Political Commentary
+  - Literary Mystery
+  - Bildungsroman
+  - Historical Drama
+  genre_categories:
+  - B
+  - D
+  - G
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W72
+  same_as: ''
 - key: featherless-ai-davidau-qwen3-6-27b-fable-fusion-711-uncensored-heretic-nm-dau-mtp
   name: DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-MTP
   provider: Featherless AI
@@ -1241,8 +2403,51 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Dystopian Fiction
+  - Anti-Utopian Fiction
+  - Social Science Fiction
+  - Allegory
+  - Utopian Fiction
+  - Literary Realism
+  - Speculative Historical Fiction
+  - Alternate History
+  - General Literary Fiction
+  - Hard Science Fiction
+  - Techno-Thriller
+  - Heist Fiction
+  - Conspiracy Fiction
+  - Medical Thriller
+  - Eco-Thriller
+  - Time Travel
+  - Philosophical Fiction
+  - AI Science Fiction
+  - Metafiction
+  - Gothic Fiction
+  - Noir Fiction
+  - Psychological Fiction
+  - First Contact
+  - Space Exploration
+  - Colonization
+  - Romantic Fiction
+  - Adventure Fiction
+  - War Fiction
+  - Historical Drama
+  - Dark Romance
+  - Erotica
+  - All
+  - Erotic Fiction
+  genre_categories:
+  - B
+  - D
+  - F
+  - G
+  - C
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W71
+  same_as: ''
 - key: featherless-ai-davidau-qwen3-6-27b-heretic2-uncensored-finetune-thinking
   name: DavidAU/Qwen3.6-27B-Heretic2-Uncensored-Finetune-Thinking
   provider: Featherless AI
@@ -1253,8 +2458,32 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Thriller-Suspense
+  - Crime Fiction
+  - Speculative Fiction
+  - Historical Drama
+  - Romantic Fiction
+  - War Fiction
+  - Adventure Fiction
+  - Mystery Thriller
+  - Techno-Thriller
+  - Grimdark Fantasy
+  - Domestic Noir
+  - Serial Killers
+  - Transgressional Fiction
+  - All
+  - Dark Romance
+  genre_categories:
+  - F
+  - D
+  - A
+  - C
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W73
+  same_as: ''
 - key: featherless-ai-davidau-qwen3-6-9b-heretic-uncensored-thinking-sweet-madness
   name: DavidAU/Qwen3.6-9B-Heretic-Uncensored-Thinking-Sweet-Madness
   provider: Featherless AI
@@ -1265,8 +2494,26 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Surreal Literature
+  - Absurdist Fiction
+  - Stream-of-Consciousness
+  - Psychotropic Literature
+  - Weird Fiction
+  - Post-Modern Literature
+  - Existential Fiction
+  - Dramatic Monologue
+  - Dark Comedy
+  - Prose Poem
+  genre_categories:
+  - A
+  - B
+  - E
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W77
+  same_as: ''
 - key: featherless-ai-davidau-rocinante-x-12b-v1-heretic-uncensored
   name: DavidAU/Rocinante-X-12B-v1-Heretic-Uncensored
   provider: Featherless AI
@@ -1277,8 +2524,39 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Urban Fantasy
+  - Dark Romance
+  - Mafia Romance
+  - Vampire Romance
+  - Paranormal Romance
+  - Sensual Romance
+  - New Adult Romance
+  - Erotic Romance
+  - Whimsical Mystery
+  - Romantic Comedy Mystery
+  - Slice-of-Life Fiction
+  - Small Town & Rural
+  - Philosophical Mystery
+  - Gothic Romance
+  - Romantic Adventure
+  - Demon Romance
+  - Faustian Saga
+  - Werewolf & Shifter Romance
+  - Contemporary Fiction
+  - Women's Fiction
+  - Cozy Mystery with Animals
+  - Transgressional Fiction
+  - Cyberpunk
+  - New Adult Fiction
+  genre_categories:
+  - C
+  - E
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W70
+  same_as: ''
 - key: featherless-ai-e-n-v-y-legion-v2-1-llama-70b-elarablated-v0-8-hf
   name: e-n-v-y/Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf
   provider: Featherless AI
@@ -1289,8 +2567,19 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Southern Gothic
+  - Psychological Horror
+  - Psychological Gothic
+  - Erotic Literature
+  - Grimdark Fantasy
+  - Dark/Rogue Epic Fantasy
+  genre_categories: []
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W64
+  same_as: ''
 - key: featherless-ai-fallenmerick-mn-violet-lotus-12b
   name: FallenMerick/MN-Violet-Lotus-12B
   provider: Featherless AI
@@ -1301,8 +2590,21 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Literary Romance
+  - Romantic Drama
+  - Second Chance Romance
+  - Love Triangle Romance
+  - Contemporary Women's Fiction
+  - Feel-Good Fiction
+  - LGBTQ+ Literature
+  - Cross-Cultural Fiction
+  genre_categories: []
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W54
+  same_as: ''
 - key: featherless-ai-gryphe-pantheon-reasoning-31b-1-1
   name: Gryphe/Pantheon-Reasoning-31B-1.1
   provider: Featherless AI
@@ -1313,8 +2615,22 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Philosophical Mystery
+  - Intellectual Adventure
+  - Whodunit
+  - Classic Detective
+  - Classic Whodunit
+  - Psychological Adventure
+  - Psychological Mystery
+  - Epic Quest Fantasy
+  - Adventure Fantasy
+  genre_categories: []
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W11
+  same_as: ''
 - key: featherless-ai-huihui-ai-llama-3-2-3b-instruct-abliterated
   name: huihui-ai/Llama-3.2-3B-Instruct-abliterated
   provider: Featherless AI
@@ -1325,8 +2641,22 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Transgressional Fiction
+  - Crime Noir
+  - Domestic Noir
+  - Neo-Noir
+  - True Crime
+  - Existential Fiction
+  - Surreal Literature
+  genre_categories:
+  - A
+  - F
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W65
+  same_as: ''
 - key: featherless-ai-ifm-k2-horizon-375b-a23b
   name: K2 Horizon 375B - A23B
   provider: Featherless AI
@@ -1337,8 +2667,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: featherless-ai-mantis2024-dirty-muse-writer-v01-uncensored-erotica-nsfw
   name: Mantis2024/Dirty-Muse-Writer-v01-Uncensored-Erotica-NSFW
   provider: Featherless AI
@@ -1349,8 +2684,21 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Erotic Fiction
+  - Erotic Romance
+  - Erotic Literature
+  - Sensual Romance
+  - Dark Romance
+  - Mafia Romance
+  - Erotica
+  genre_categories:
+  - C
+  fine_tune_base: false
+  served_context: 16384
+  register_id: W27
+  same_as: ''
 - key: featherless-ai-naphula-goetia-26b-a4b-v1-3-absolute-heretic-ara
   name: Naphula/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA
   provider: Featherless AI
@@ -1361,8 +2709,22 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Grimdark Fantasy
+  - Dark Romance
+  - Dark/Rogue Epic Fantasy
+  - Gothic Romance
+  - Faustian Saga
+  - Transgressional Fiction
+  genre_categories:
+  - A
+  - C
+  - G
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W14
+  same_as: ''
 - key: featherless-ai-nitral-ai-hathor-tahsin-l3-8b-v0-85
   name: Nitral-AI/Hathor_Tahsin-L3-8B-v0.85
   provider: Featherless AI
@@ -1373,20 +2735,48 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Paranormal Romance
+  - Werewolf & Shifter Romance
+  - Romantasy
+  - Witch & Wizard Romance
+  - Urban Fantasy Romance
+  - Paranormal Cozy Mystery
+  - Cozy Witch Mysteries
+  genre_categories: []
+  fine_tune_base: false
+  served_context: 8192
+  register_id: W63
+  same_as: ''
 - key: featherless-ai-vortex5-shadow-siren-26b-a4b
   name: Vortex5/Shadow-Siren-26B-A4B
   provider: Featherless AI
   model_id: Vortex5/Shadow-Siren-26B-A4B
   frontier: false
   open_weights: true
-  uncensored: false
+  uncensored: true
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Dark Romance
+  - Mafia Romance
+  - Vampire Romance
+  - Gothic Romantic Mystery
+  - Paranormal Romance
+  - Demon Romance
+  - Faustian Saga
+  - Neo-Noir
+  genre_categories:
+  - C
+  - A
+  - F
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W15
+  same_as: ''
 - key: hugging-face-agnes-ai-agnes-3-0-flash
   name: Agnes-3.0-Flash
   provider: Hugging Face
@@ -1397,8 +2787,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-arliai-phi-3-5-mini-3-8b-arliai-rpmax-v1-1-gguf
   name: ArliAI/Phi-3.5-mini-3.8B-ArliAI-RPMax-v1.1-GGUF
   provider: Hugging Face
@@ -1409,8 +2804,23 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Literary Romance
+  - Romantic Comedy
+  - Contemporary Women's Fiction
+  - Slice-of-Life Fiction
+  - Romantasy
+  - Paranormal Romance
+  - Bildungsroman
+  - Coming-of-Age
+  - Whimsical Mystery
+  - Romantic Comedy Mystery
+  genre_categories: []
+  fine_tune_base: true
+  served_context: null
+  register_id: W68
+  same_as: ''
 - key: hugging-face-backyardai-l3-8b-stheno-v3-3-32k-gguf
   name: backyardai/L3-8B-Stheno-v3.3-32K-GGUF
   provider: Hugging Face
@@ -1421,8 +2831,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-bartowski-e-n-v-y-legion-v2-1-llama-70b-elarablated-v0-8-hf-gguf
   name: bartowski/e-n-v-y_Legion-V2.1-LLaMa-70B-Elarablated-v0.8-hf-GGUF
   provider: Hugging Face
@@ -1433,8 +2848,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-bartowski-llama-3-1-70b-instruct-lorablated-creative-writer-gguf
   name: bartowski/Llama-3.1-70B-Instruct-Lorablated-Creative-Writer-GGUF
   provider: Hugging Face
@@ -1445,8 +2865,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-bartowski-naphula-goetia-26b-a4b-v1-7-gguf
   name: bartowski/Naphula_Goetia-26B-A4B-v1.7-GGUF
   provider: Hugging Face
@@ -1457,20 +2882,45 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-ernie-21b-a3b-claude-4-5-high-opus-thinking
   name: DavidAU/ERNIE-21B-A3B-Claude-4.5-High-OPUS-Thinking
   provider: Hugging Face
   model_id: DavidAU/ERNIE-21B-A3B-Claude-4.5-High-OPUS-Thinking
   frontier: false
   open_weights: true
-  uncensored: false
+  uncensored: true
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Philosophical Fiction
+  - Philosophical Adventure
+  - Zen or Buddhist Fiction
+  - Existential Fiction
+  - Post-Colonial Literature
+  - Immigrant Literature
+  - Feminist Literature
+  - Allegory
+  - Fable
+  - Moral Tales
+  - Social Science Fiction
+  - Utopian Fiction
+  genre_categories:
+  - B
+  - D
+  - H
+  fine_tune_base: false
+  served_context: null
+  register_id: W67
+  same_as: ''
 - key: hugging-face-davidau-ernie-21b-a3b-glm-4-7-flash-thinking
   name: DavidAU/ERNIE-21B-A3B-GLM-4.7-Flash-Thinking
   provider: Hugging Face
@@ -1481,8 +2931,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-ernie-21b-a3b-thinking-gemini-3-pro-high-reasoning-v2
   name: DavidAU/ERNIE-21B-A3B-Thinking-Gemini-3-Pro-High-Reasoning-V2
   provider: Hugging Face
@@ -1493,8 +2948,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-ernie-4-5-37b-a3b-thinking-brainstorm20x
   name: DavidAU/ERNIE-4.5-37B-A3B-Thinking-Brainstorm20x
   provider: Hugging Face
@@ -1505,8 +2965,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-fimbulvetr-11b-ultra-quality-plus-imatrix-gguf
   name: DavidAU/Fimbulvetr-11B-Ultra-Quality-plus-imatrix-GGUF
   provider: Hugging Face
@@ -1517,8 +2982,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-gemma-3-12b-it-vl-polaris-glm-4-7-flash-var-thinking-instruct-heretic-uncensored
   name: DavidAU/gemma-3-12b-it-vl-Polaris-GLM-4.7-Flash-VAR-Thinking-Instruct-Heretic-Uncensored
   provider: Hugging Face
@@ -1529,8 +2999,22 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Heist Fiction
+  - Techno-Thriller
+  - Whodunit
+  - Conspiracy Thriller
+  - Cyberpunk
+  - Intellectual Adventure
+  - Espionage Thriller
+  genre_categories:
+  - F
+  - D
+  fine_tune_base: false
+  served_context: null
+  register_id: W22
+  same_as: ''
 - key: hugging-face-davidau-gemma-3-27b-it-gemini-deep-reasoning
   name: DavidAU/Gemma-3-27b-it-Gemini-Deep-Reasoning
   provider: Hugging Face
@@ -1541,8 +3025,22 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Classic Detective
+  - Classic Whodunit
+  - Whodunit
+  - Literary Mystery
+  - Psychological Mystery
+  - Philosophical Mystery
+  - Alternate History
+  - First Contact
+  - Colonization
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: W18
+  same_as: ''
 - key: hugging-face-davidau-gemma-3-4b-it-max-horror-uncensored-dbl-x-imatrix-gguf
   name: DavidAU/Gemma-3-4b-it-MAX-HORROR-Uncensored-DBL-X-Imatrix-GGUF
   provider: Hugging Face
@@ -1553,8 +3051,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-gemma-3-4b-it-vl-heretic-4-horsemen-uncensored
   name: DavidAU/gemma-3-4b-it-vl-Heretic-4-Horsemen-Uncensored
   provider: Hugging Face
@@ -1565,8 +3068,22 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Police Procedural
+  - Crime Noir
+  - Techno-Thriller
+  - Conspiracy Thriller
+  - Heist Fiction
+  - Psychological Thriller-Suspense
+  - Cyberpunk
+  genre_categories:
+  - F
+  - D
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-gemma-3-4b-vl-it-gemini-pro-heretic-uncensored-thinking
   name: DavidAU/Gemma-3-4B-VL-it-Gemini-Pro-Heretic-Uncensored-Thinking
   provider: Hugging Face
@@ -1577,8 +3094,21 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Alternate History
+  - Speculative Historical Fiction
+  - Space Exploration
+  - Colonization
+  - Historical Mystery
+  - Exploration Fantasy
+  genre_categories:
+  - D
+  - G
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-gemma-3-4b-vl-it-glm-4-7-flash-heretic-uncensored-thinking
   name: DavidAU/Gemma-3-4B-VL-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking
   provider: Hugging Face
@@ -1589,8 +3119,22 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Techno-Thriller
+  - Cyberpunk
+  - Hard Science Fiction
+  - AI Science Fiction
+  - Heist Fiction
+  - Conspiracy Thriller
+  - Virtual Reality
+  genre_categories:
+  - D
+  - F
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-gemma-3-it-4b-uncensored-dbl-x-gguf
   name: DavidAU/Gemma-3-it-4B-Uncensored-DBL-X-GGUF
   provider: Hugging Face
@@ -1601,8 +3145,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-gemma-3-it-vl-40b-gemini-heretic-uncensored-thinking
   name: DavidAU/gemma-3-it-vl-40B-Gemini-Heretic-Uncensored-Thinking
   provider: Hugging Face
@@ -1613,8 +3162,26 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Historical Epic Drama
+  - Alternate History
+  - Speculative Historical Fiction
+  - Space Opera
+  - Galactic Empire
+  - Colonization
+  - First Contact
+  - Multi-generational Saga
+  - Epic Fantasy
+  - Historical Mystery
+  genre_categories:
+  - G
+  - D
+  - B
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-gemma-3-the-grand-horror-27b-gguf
   name: DavidAU/Gemma-3-The-Grand-Horror-27B-GGUF
   provider: Hugging Face
@@ -1625,8 +3192,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-gemma-4-19b-a4b-it-instruct-heretic-uncensored
   name: DavidAU/gemma-4-19B-A4B-it-INSTRUCT-Heretic-Uncensored
   provider: Hugging Face
@@ -1637,8 +3209,26 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Contemporary Fiction
+  - Romantic Drama
+  - Literary Romance
+  - Thriller-Suspense
+  - Crime Fiction
+  - Domestic Noir
+  - Historical Romance
+  - Women's Fiction
+  - Urban Fantasy
+  - Detective Stories
+  genre_categories:
+  - B
+  - C
+  - F
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-gemma-4-19b-a4b-it-the-deckard-heretic-uncensored-thinking
   name: DavidAU/gemma-4-19B-A4B-it-The-DECKARD-Heretic-Uncensored-Thinking
   provider: Hugging Face
@@ -1649,8 +3239,27 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Philosophical Fiction
+  - AI Science Fiction
+  - Robot & Android Science Fiction
+  - Metafiction
+  - Existential Fiction
+  - Philosophical Mystery
+  - Literary Mystery
+  - Satirical Fiction
+  - Biographical Fiction
+  - Alternate History
+  - Dramatic Monologue
+  genre_categories:
+  - B
+  - D
+  - F
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-gemma-4-31b-it-grand-horror-x-intense-heretic-uncensored-thinking
   name: DavidAU/gemma-4-31B-it-Grand-Horror-X-INTENSE-HERETIC-UNCENSORED-Thinking
   provider: Hugging Face
@@ -1661,8 +3270,24 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Slasher
+  - Gothic Horror
+  - Victorian Era Horror
+  - Folk Horror
+  - Psychological Horror
+  - Psychological Gothic
+  - Weird Fiction
+  - Cosmic Horror
+  - Erotic Fiction
+  - Monster
+  genre_categories:
+  - A
+  fine_tune_base: false
+  served_context: null
+  register_id: W10
+  same_as: ''
 - key: hugging-face-davidau-gemma-4-31b-it-mystery-fine-tune-heretic-uncensored-thinking-instruct-gguf
   name: DavidAU/gemma-4-31B-it-Mystery-Fine-Tune-HERETIC-UNCENSORED-Thinking-Instruct-GGUF
   provider: Hugging Face
@@ -1673,8 +3298,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-gemma-4-e4b-it-the-deckard-expresso-universe-heretic-uncensored-thinking-gguf
   name: DavidAU/gemma-4-E4B-it-The-DECKARD-Expresso-Universe-HERETIC-UNCENSORED-Thinking-GGUF
   provider: Hugging Face
@@ -1685,8 +3315,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-gemma-the-writer-9b-gguf
   name: DavidAU/Gemma-The-Writer-9B-GGUF
   provider: Hugging Face
@@ -1697,8 +3332,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-gemma-the-writer-j-gutenberg-10b-gguf
   name: DavidAU/Gemma-The-Writer-J.GutenBerg-10B-GGUF
   provider: Hugging Face
@@ -1709,8 +3349,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-gemma-the-writer-mighty-sword-9b-gguf
   name: DavidAU/Gemma-The-Writer-Mighty-Sword-9B-GGUF
   provider: Hugging Face
@@ -1721,8 +3366,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-gemma-the-writer-n-restless-quill-10b-uncensored-gguf
   name: DavidAU/Gemma-The-Writer-N-Restless-Quill-10B-Uncensored-GGUF
   provider: Hugging Face
@@ -1733,8 +3383,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-gemma-the-writer-n-restless-quill-v2-enhanced32-10b-uncensored-gguf
   name: DavidAU/Gemma-The-Writer-N-Restless-Quill-V2-Enhanced32-10B-Uncensored-GGUF
   provider: Hugging Face
@@ -1745,8 +3400,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-gemma3-27b-it-vl-polaris-hi16-heretic-uncensored-instruct
   name: DavidAU/Gemma3-27B-it-vl-Polaris-HI16-Heretic-Uncensored-INSTRUCT
   provider: Hugging Face
@@ -1757,8 +3417,25 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Alternate History
+  - Speculative Historical Fiction
+  - Historical Epic Drama
+  - General Literary Fiction
+  - Literary Realism
+  - Intellectual Adventure
+  - Classic Whodunit
+  - Political Romance
+  - Literary Thriller
+  genre_categories:
+  - B
+  - G
+  - F
+  fine_tune_base: false
+  served_context: null
+  register_id: W16
+  same_as: ''
 - key: hugging-face-davidau-glm-4-7-flash-grande-heretic-uncensored-42b-a3b-gguf
   name: DavidAU/GLM-4.7-Flash-Grande-Heretic-UNCENSORED-42B-A3B-GGUF
   provider: Hugging Face
@@ -1769,8 +3446,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-glm-4-7-flash-uncensored-heretic-neo-code-imatrix-max-gguf
   name: DavidAU/GLM-4.7-Flash-Uncensored-Heretic-NEO-CODE-Imatrix-MAX-GGUF
   provider: Hugging Face
@@ -1781,8 +3463,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-l3-8b-stheno-v3-2-ultra-neo-v1-imatrix-gguf
   name: DavidAU/L3-8B-Stheno-v3.2-Ultra-NEO-V1-IMATRIX-GGUF
   provider: Hugging Face
@@ -1793,8 +3480,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-l3-dark-planet-8b-gguf
   name: DavidAU/L3-Dark-Planet-8B
   provider: Hugging Face
@@ -1805,8 +3497,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-l3-dark-mistress-the-guilty-pen-uncensored-17-4b-gguf
   name: DavidAU/L3-Dark_Mistress-The_Guilty_Pen-Uncensored-17.4B-GGUF
   provider: Hugging Face
@@ -1817,8 +3514,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-llama-3-1-128k-dark-planet-uncensored-8b-gguf
   name: DavidAU/Llama-3.1-128k-Dark-Planet-Uncensored-8B-GGUF
   provider: Hugging Face
@@ -1829,8 +3531,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-llama-3-3-8b-thinking-gemini-flash-11000x-128k
   name: DavidAU/Llama-3.3-8B-Thinking-Gemini-Flash-11000x-128k
   provider: Hugging Face
@@ -1841,8 +3548,24 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Solarpunk
+  - Climate Fiction (Cli-Fi)
+  - Eco-Thriller
+  - Corporate Science Fiction
+  - Techno-Thriller
+  - Space Exploration
+  - Colonization
+  - Utopian Fiction
+  - Near-Future Sci-Fi
+  - Heist Fiction
+  - Conspiracy Fiction
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: W61
+  same_as: ''
 - key: hugging-face-davidau-m-metaphors-of-madness-19-4b-gguf
   name: DavidAU/M-Metaphors-Of-Madness-19.4B-GGUF
   provider: Hugging Face
@@ -1853,8 +3576,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-mistral-moe-4x7b-dark-multiverse-24b-gguf
   name: DavidAU/Mistral-MOE-4X7B-Dark-MultiVerse-24B-GGUF
   provider: Hugging Face
@@ -1865,8 +3593,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-mistral-moe-4x7b-dark-multiverse-uncensored-enhanced32-24b-gguf
   name: DavidAU/Mistral-MOE-4X7B-Dark-MultiVerse-Uncensored-Enhanced32-24B-gguf
   provider: Hugging Face
@@ -1877,8 +3610,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-mistral-nemo-instruct-2407-13-35b-brainstorm-5x-form-11-gguf
   name: DavidAU/Mistral-Nemo-Instruct-2407-13.35B-BRAINSTORM-5x-FORM-11-GGUF
   provider: Hugging Face
@@ -1889,8 +3627,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-mistral-small-3-2-46b-the-brilliant-raconteur-ii-instruct-2506
   name: DavidAU/Mistral-Small-3.2-46B-The-Brilliant-Raconteur-II-Instruct-2506
   provider: Hugging Face
@@ -1901,8 +3644,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-mistral-small-instruct-2409-22b-neo-imatrix-gguf
   name: DavidAU/Mistral-Small-Instruct-2409-22B-NEO-Imatrix-GGUF
   provider: Hugging Face
@@ -1913,8 +3661,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-mn-dark-horror-the-cliffhanger-18-5b-gguf
   name: DavidAU/MN-Dark-Horror-The-Cliffhanger-18.5B-GGUF
   provider: Hugging Face
@@ -1925,8 +3678,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-mn-dark-planet-kaboom-21b-gguf
   name: DavidAU/MN-Dark-Planet-Kaboom-21B-GGUF
   provider: Hugging Face
@@ -1937,8 +3695,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-mn-dark-planet-titan-12b-gguf
   name: DavidAU/MN-Dark-Planet-TITAN-12B-GGUF
   provider: Hugging Face
@@ -1949,8 +3712,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-mn-darkest-universe-29b-gguf
   name: DavidAU/MN-DARKEST-UNIVERSE-29B-GGUF
   provider: Hugging Face
@@ -1961,8 +3729,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-mn-grand-23-5b-gutenberg-uncensored-v2-glm4-7-thinking-neo-imatrix-gguf
   name: DavidAU/MN-GRAND-23.5B-Gutenberg-UNCENSORED-V2-GLM4.7-Thinking-NEO-Imatrix-GGUF
   provider: Hugging Face
@@ -1973,8 +3746,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-mn-grand-gutenberg-lyra4-lyra-12b-darkness-gguf
   name: DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-12B-DARKNESS-GGUF
   provider: Hugging Face
@@ -1985,8 +3763,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-mn-grand-gutenberg-lyra4-lyra-12b-madness-gguf
   name: DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-12B-MADNESS-GGUF
   provider: Hugging Face
@@ -1997,8 +3780,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-mn-grand-gutenberg-lyra4-lyra-23-5b-gguf
   name: DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-23.5B-GGUF
   provider: Hugging Face
@@ -2009,8 +3797,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-mn-grand-gutenberg-lyra4-lyra-23b-v2-gguf
   name: DavidAU/MN-GRAND-Gutenberg-Lyra4-Lyra-23B-V2-GGUF
   provider: Hugging Face
@@ -2021,8 +3814,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-mn-oblivion-26b-uncensored-neo-imatrix-gguf
   name: DavidAU/MN-Oblivion-26B-UNCENSORED-NEO-Imatrix-GGUF
   provider: Hugging Face
@@ -2033,8 +3831,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-mn-wordstorm-pt3-rcm-pov-nightmare-18-5b-instruct-gguf
   name: DavidAU/MN-WORDSTORM-pt3-RCM-POV-Nightmare-18.5B-Instruct-GGUF
   provider: Hugging Face
@@ -2045,8 +3848,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-mn-wordstorm-pt4-rcm-cliffhanger-18-5b-instruct-gguf
   name: DavidAU/MN-WORDSTORM-pt4-RCM-Cliffhanger-18.5B-Instruct-GGUF
   provider: Hugging Face
@@ -2057,8 +3865,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-mn-wordstorm-pt5-rcm-extra-intense-18-5b-instruct-gguf
   name: DavidAU/MN-WORDSTORM-pt5-RCM-Extra-Intense-18.5B-Instruct-GGUF
   provider: Hugging Face
@@ -2069,8 +3882,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-horror-instruct-uncensored-262k-ctx-4b
   name: DavidAU/Qwen3-Horror-Instruct-Uncensored-262K-ctx-4B
   provider: Hugging Face
@@ -2081,8 +3899,29 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Monster
+  - Slasher
+  - Psychological Horror
+  - Horror Comedy
+  - Occult
+  - Weird Fiction
+  - Transgressional Fiction
+  - Gothic Horror
+  - Dark Romance
+  - Folk Horror
+  - Southern Gothic
+  - Serial Killers
+  - Eco-Dystopian
+  - Vampire Fantasy
+  - Grimdark Fantasy
+  genre_categories:
+  - A
+  fine_tune_base: false
+  served_context: null
+  register_id: W43
+  same_as: ''
 - key: hugging-face-davidau-qwen3-jan-v1-4b-grand-horror-day1-to-day7-evolved-imatrix-gguf
   name: DavidAU/Qwen3-Jan-V1-4B-Grand-Horror-Day1-to-Day7-Evolved-Imatrix-GGUF
   provider: Hugging Face
@@ -2093,8 +3932,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-moe-4x0-6b-2-4b-writing-thunder
   name: DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder
   provider: Hugging Face
@@ -2105,8 +3949,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-moe-4x0-6b-2-4b-writing-thunder-v1-2
   name: DavidAU/Qwen3-MOE-4x0.6B-2.4B-Writing-Thunder-V1.2
   provider: Hugging Face
@@ -2117,8 +3966,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-moe-4x1-7b-6-8b-lucys-song-uncensored
   name: DavidAU/Qwen3-MOE-4x1.7B-6.8B-Lucys-Song-Uncensored
   provider: Hugging Face
@@ -2129,8 +3983,24 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Sensual Romance
+  - Dark Romance
+  - Romantic Drama
+  - Paranormal Romance
+  - Fairy Tales Retellings
+  - Literary Fantasy
+  - Slice-of-Life Fiction
+  - Dramatic Monologue
+  - Erotic Romance
+  genre_categories:
+  - C
+  - B
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-moe-6x0-6b-3-6b-writing-on-fire-uncensored
   name: DavidAU/Qwen3-MOE-6x0.6B-3.6B-Writing-On-Fire-Uncensored
   provider: Hugging Face
@@ -2141,8 +4011,24 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Absurdist Fiction
+  - Dark Comedy
+  - Parody
+  - Pulp Fiction
+  - Mashup Fiction
+  - Horror Comedy
+  - Cozy Fiction
+  - Slice-of-Life Fiction
+  - Adventure Fiction
+  genre_categories:
+  - E
+  - A
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-moe-6x1-7b-10-2b-shining-madness-uncensored
   name: DavidAU/Qwen3-MOE-6x1.7B-10.2B-Shining-Madness-Uncensored
   provider: Hugging Face
@@ -2153,8 +4039,26 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Psychological Horror
+  - Surreal Literature
+  - Psychotropic Literature
+  - Weird Fiction
+  - Absurdist Fiction
+  - Stream-of-Consciousness
+  - Dramatic Monologue
+  - Slasher
+  - Dark Comedy
+  - Transgressional Fiction
+  - Ghost Story
+  genre_categories:
+  - A
+  - B
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-moe-6x6b-star-trek-universe-alpha-256k-ctx-36b
   name: DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-256k-ctx-36B
   provider: Hugging Face
@@ -2165,8 +4069,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-moe-6x6b-star-trek-universe-alpha-d-256k-ctx-36b
   name: DavidAU/Qwen3-MOE-6x6B-Star-Trek-Universe-Alpha-D-256k-ctx-36B
   provider: Hugging Face
@@ -2177,8 +4086,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-the-josiefied-omega-directive-22b-uncensored-abliterated-gguf
   name: DavidAU/Qwen3-The-Josiefied-Omega-Directive-22B-uncensored-abliterated-GGUF
   provider: Hugging Face
@@ -2189,8 +4103,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-the-xiaolong-josiefied-omega-directive-22b-uncensored-abliterated-gguf
   name: DavidAU/Qwen3-The-Xiaolong-Josiefied-Omega-Directive-22B-uncensored-abliterated-GGUF
   provider: Hugging Face
@@ -2201,8 +4120,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-the-xiaolong-omega-directive-22b-uncensored-abliterated-gguf
   name: DavidAU/Qwen3-The-Xiaolong-Omega-Directive-22B-uncensored-abliterated-GGUF
   provider: Hugging Face
@@ -2213,8 +4137,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-vl-12b-instruct-brainstorm20x-neo-max-gguf
   name: DavidAU/Qwen3-VL-12B-Instruct-Brainstorm20x-NEO-MAX-GGUF
   provider: Hugging Face
@@ -2225,8 +4154,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-vl-32b-gemini-heretic-uncensored-thinking
   name: DavidAU/Qwen3-VL-32B-Gemini-Heretic-Uncensored-Thinking
   provider: Hugging Face
@@ -2237,8 +4171,35 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Colonization
+  - Space Exploration
+  - Conspiracy Thriller
+  - Alternate History
+  - War Fiction
+  - Military Thriller
+  - Eco-Thriller
+  - Climate Fiction (Cli-Fi)
+  - Galactic Empire
+  - Space Opera
+  - Occult Detective
+  - Serial Killers
+  - True Crime
+  - Historical Mystery
+  - Cyberpunk
+  - Folk Horror
+  - Grimdark Fantasy
+  - Heist Fiction
+  - Occult Mystery
+  genre_categories:
+  - D
+  - G
+  - F
+  fine_tune_base: false
+  served_context: null
+  register_id: W41
+  same_as: ''
 - key: hugging-face-davidau-qwen3-vl-8b-glm-4-7-flash-heretic-uncensored-thinking
   name: DavidAU/Qwen3-VL-8B-GLM-4.7-Flash-Heretic-Uncensored-Thinking
   provider: Hugging Face
@@ -2249,8 +4210,30 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Police Procedural
+  - True Crime
+  - Occult Detective
+  - Techno-Thriller
+  - Hard Science Fiction
+  - Medical Thriller
+  - Eco-Thriller
+  - Heist Fiction
+  - Gothic Horror
+  - Conspiracy Thriller
+  - Serial Killers
+  - Historical Mystery
+  - Folklore
+  - Urban Fantasy
+  - Cyberpunk
+  genre_categories:
+  - F
+  - D
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-13b-deckard-heretic-uncensored-thinking
   name: DavidAU/Qwen3.5-13B-Deckard-Heretic-Uncensored-Thinking
   provider: Hugging Face
@@ -2261,8 +4244,28 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Philosophical Fiction
+  - Literary Mystery
+  - AI Science Fiction
+  - Robot & Android Science Fiction
+  - Psychological Fiction
+  - Neo-Noir
+  - Metafiction
+  - Existential Fiction
+  - Dark Academia
+  - Biographical Fiction
+  - Epistolary Fiction
+  - Gothic Romantic Mystery
+  genre_categories:
+  - B
+  - D
+  - F
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-13b-glm-4-7-flash-deepseek-polaris-grande-deep-thinking
   name: DavidAU/Qwen3.5-13B-GLM-4.7-Flash-DeepSeek-Polaris-Grande-Deep-Thinking
   provider: Hugging Face
@@ -2273,8 +4276,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-21b-glm-4-7-flash-deckard-heretic-uncensored-thinking
   name: DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Deckard-Heretic-Uncensored-Thinking
   provider: Hugging Face
@@ -2285,8 +4293,32 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Virtual Reality
+  - Cyberpunk
+  - AI Science Fiction
+  - Robot & Android Science Fiction
+  - Techno-Thriller
+  - Post-Cyberpunk
+  - Near-Future Fiction
+  - Psychological Fiction
+  - Psychological Mystery
+  - Dystopian Fiction
+  - Corporate Science Fiction
+  - Genetic Engineering
+  - Metafiction
+  - Conspiracy Fiction
+  - Grimdark Fantasy
+  - Transgressional Fiction
+  genre_categories:
+  - D
+  - F
+  - A
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-21b-glm-4-7-flash-heretic-uncensored-thinking
   name: DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Heretic-Uncensored-Thinking
   provider: Hugging Face
@@ -2297,8 +4329,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-27b-claude-4-6-os-auto-variable-heretic-uncensored-thinking
   name: DavidAU/Qwen3.5-27B-Claude-4.6-OS-Auto-Variable-Heretic-Uncensored-Thinking
   provider: Hugging Face
@@ -2309,8 +4346,30 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Techno-Thriller
+  - Hard Science Fiction
+  - Heist Fiction
+  - Serial Killers
+  - Medical Thriller
+  - Conspiracy Thriller
+  - Eco-Thriller
+  - Grimdark Fantasy
+  - Biopunk
+  - Corporate Science Fiction
+  - Assassination Thriller
+  - Domestic Noir
+  - Transgressional Fiction
+  - Hard Sci-Fi
+  genre_categories:
+  - F
+  - D
+  - A
+  fine_tune_base: false
+  served_context: null
+  register_id: W39
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-27b-deckard-pkd-heretic-uncensored-thinking
   name: DavidAU/Qwen3.5-27B-Deckard-PKD-Heretic-Uncensored-Thinking
   provider: Hugging Face
@@ -2321,8 +4380,40 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Virtual Reality
+  - AI Science Fiction
+  - Robot & Android Science Fiction
+  - Alternate Reality Fantasy
+  - Dystopian Fiction
+  - Anti-Utopian Fiction
+  - Psychological Fiction
+  - Psychological Mystery
+  - Metafiction
+  - Psychotropic Literature
+  - Existential Fiction
+  - Conspiracy Fiction
+  - Religious & Inspirational Fiction
+  - Spiritual Fiction
+  - Neo-Noir
+  - Noir Fiction
+  - Cyberpunk
+  - Near-Future Fiction
+  - Surreal Literature
+  - Post-Modern Literature
+  - Time Travel
+  - Corporate Science Fiction
+  - Dark Academia
+  - Spiritual-Religious Fiction
+  genre_categories:
+  - D
+  - B
+  - F
+  fine_tune_base: false
+  served_context: null
+  register_id: W33
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-27b-gemini3-pro-high-reasoning-compact-thinking
   name: DavidAU/Qwen3.5-27B-Gemini3-Pro-High-Reasoning-Compact-Thinking
   provider: Hugging Face
@@ -2333,8 +4424,25 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Alternate History
+  - Colonization
+  - Space Exploration
+  - Speculative Historical Fiction
+  - Epic Sagas
+  - Multi-generational Family Saga
+  - Conspiracy Fiction
+  - Dystopian Fiction
+  - Utopian Fiction
+  - Galactic Empire
+  - Space Opera
+  - Time Travel
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: C06
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-27b-heretic-polaris-advanced-thinking-alpha-uncensored
   name: DavidAU/Qwen3.5-27B-HERETIC-Polaris-Advanced-Thinking-Alpha-uncensored
   provider: Hugging Face
@@ -2345,8 +4453,33 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Literary Realism
+  - General Literary Fiction
+  - Speculative Historical Fiction
+  - Alternate History
+  - Social Science Fiction
+  - Allegory
+  - Dystopian Fiction
+  - Utopian Fiction
+  - Regional Fiction
+  - Southern Fiction
+  - Social Realism
+  - Social Drama
+  - Coming-of-Age
+  - Domestic Fiction
+  - Historical Drama
+  - Literary Fiction Set in the Past
+  - Naturalism
+  genre_categories:
+  - B
+  - G
+  - H
+  fine_tune_base: false
+  served_context: null
+  register_id: W40
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-40b-claude-4-5-opus-high-reasoning-thinking
   name: DavidAU/Qwen3.5-40B-Claude-4.5-Opus-High-Reasoning-Thinking
   provider: Hugging Face
@@ -2357,8 +4490,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-40b-claude-4-6-opus-deckard-heretic-uncensored-thinking
   name: DavidAU/Qwen3.5-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
   provider: Hugging Face
@@ -2369,8 +4507,30 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - General Literary Fiction
+  - Philosophical Fiction
+  - Literary Mystery
+  - Literary Thriller
+  - Dystopian Fiction
+  - AI Science Fiction
+  - Alternate History
+  - Speculative Historical Fiction
+  - Social Science Fiction
+  - Psychological Realism
+  - Biographical Fiction
+  - Metafiction
+  - Dark Academia
+  - Gothic Fiction
+  genre_categories:
+  - B
+  - D
+  - G
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-40b-roughhouse-claude-4-6-opus-polar-deckard-uncensored-heretic-thinking
   name: DavidAU/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking
   provider: Hugging Face
@@ -2381,8 +4541,30 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Transgressional Fiction
+  - Grimdark Fantasy
+  - Psychological Horror
+  - Slasher
+  - Crime Noir
+  - Hard-boiled Fiction
+  - Domestic Noir
+  - Serial Killers
+  - Dark Romance
+  - Cyberpunk
+  - Conspiracy Thriller
+  - Surreal Literature
+  - Satire
+  - Underground Comix
+  genre_categories:
+  - A
+  - F
+  - B
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-4b-claude-4-6-os-auto-variable-heretic-uncensored-thinking
   name: DavidAU/Qwen3.5-4B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING
   provider: Hugging Face
@@ -2393,8 +4575,26 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Police Procedural
+  - Medical Thriller
+  - Techno-Thriller
+  - Heist Fiction
+  - Transgressional Fiction
+  - Folklore
+  - Occult
+  - Urban Fantasy
+  - Epistolary Fiction
+  - Historical Mystery
+  - Eco-Thriller
+  genre_categories:
+  - F
+  - D
+  fine_tune_base: false
+  served_context: null
+  register_id: C08
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-4b-deckard-heretic-uncensored-thinking
   name: DavidAU/Qwen3.5-4B-Deckard-HERETIC-UNCENSORED-Thinking
   provider: Hugging Face
@@ -2405,8 +4605,29 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Biographical Fiction
+  - Dramatic Monologue
+  - Philosophical Fiction
+  - AI Science Fiction
+  - Robot & Android Science Fiction
+  - Metafiction
+  - Epistolary Fiction
+  - Existential Fiction
+  - Allegory
+  - Gothic Romantic Mystery
+  - Dark Academia
+  - Literary Mystery
+  - Urban Fantasy
+  - Transgressional Fiction
+  genre_categories:
+  - B
+  - D
+  fine_tune_base: false
+  served_context: null
+  register_id: W28
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-9b-claude-4-6-opus-deckard-v4-2-uncensored-heretic-thinking
   name: DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking
   provider: Hugging Face
@@ -2417,8 +4638,29 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Philosophical Fiction
+  - AI Science Fiction
+  - Robot & Android Science Fiction
+  - Philosophical Mystery
+  - Metafiction
+  - Allegory
+  - Biographical Fiction
+  - Existential Fiction
+  - Time Travel
+  - Satire
+  - Literary Mystery
+  - Gothic Romantic Mystery
+  - Transgressional Fiction
+  - Dark Academia
+  genre_categories:
+  - B
+  - D
+  fine_tune_base: false
+  served_context: null
+  register_id: W29
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-9b-claude-4-6-opus-deckard-v4-2-uncensored-heretic-thinking-gguf
   name: DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking-GGUF
   provider: Hugging Face
@@ -2429,8 +4671,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-9b-claude-4-6-os-auto-variable-heretic-uncensored-thinking
   name: DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING
   provider: Hugging Face
@@ -2441,8 +4688,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-9b-claude-4-6-os-auto-variable-heretic-uncensored-thinking-max-neocode-imatrix-gguf
   name: DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING-MAX-NEOCODE-Imatrix-GGUF
   provider: Hugging Face
@@ -2453,8 +4705,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-9b-claude-4-6-os-auto-variable-thinking
   name: DavidAU/Qwen3.5-9B-Claude-4.6-OS-Auto-Variable-THINKING
   provider: Hugging Face
@@ -2465,8 +4722,25 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Hard Sci-Fi
+  - Hard Science Fiction
+  - Techno-Thriller
+  - Space Exploration
+  - Colonization
+  - Medical Thriller
+  - Eco-Thriller
+  - Climate Fiction (Cli-Fi)
+  - Near-Future Sci-Fi
+  - Mystery Thriller
+  - Historical Mystery
+  - Epistolary Fiction
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: W34
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-9b-star-trek-tng-ds9-heretic-uncensored-thinking
   name: DavidAU/Qwen3.5-9B-Star-Trek-TNG-DS9-Heretic-Uncensored-Thinking
   provider: Hugging Face
@@ -2477,8 +4751,28 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - First Contact
+  - Space Exploration
+  - Social Science Fiction
+  - Colonization
+  - Military Sci-Fi
+  - Time Travel
+  - Utopian Fiction
+  - Speculative Fiction
+  - AI Science Fiction
+  - Genetic Engineering
+  - Alternate Reality Fantasy
+  - Political Intrigue
+  - Alien Science Fiction
+  - Science Fiction Romance
+  genre_categories:
+  - D
+  fine_tune_base: false
+  served_context: null
+  register_id: W38
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-9b-star-trek-tng-ds9-heretic-uncensored-thinking-max-neocode-gguf
   name: DavidAU/Qwen3.5-9B-Star-Trek-TNG-DS9-Heretic-Uncensored-Thinking-MAX-NEOCODE-GGUF
   provider: Hugging Face
@@ -2489,8 +4783,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-5-9b-the-defiant-fable-uncensored-heretic-neo-imatrix-max-mtp-gguf
   name: DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF
   provider: Hugging Face
@@ -2501,8 +4800,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-6-12b-iq-ultra-heretic-uncensored-thinking
   name: DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking
   provider: Hugging Face
@@ -2513,8 +4817,24 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Surreal Literature
+  - Ghost Story
+  - Psychological Horror
+  - Psychotropic Literature
+  - Weird Fiction
+  - Absurdist Fiction
+  - Post-Modern Fiction
+  - Existential Fiction
+  - Dark Comedy
+  genre_categories:
+  - A
+  - B
+  fine_tune_base: false
+  served_context: null
+  register_id: W76
+  same_as: ''
 - key: hugging-face-davidau-qwen3-6-12b-iq-ultra-heretic-uncensored-thinking-v2-hightop
   name: DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking-V2-Hightop
   provider: Hugging Face
@@ -2525,8 +4845,23 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Weird Fiction
+  - Surreal Literature
+  - Psychotropic Literature
+  - Monster
+  - Absurdist Fiction
+  - Dark Comedy
+  - Transgressional Fiction
+  - Horror Mystery
+  genre_categories:
+  - A
+  - E
+  fine_tune_base: false
+  served_context: null
+  register_id: W75
+  same_as: ''
 - key: hugging-face-davidau-qwen3-6-27b-fable-fusion-711-uncensored-heretic-nm-dau-neo-max-mtp-gguf
   name: DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-NEO-MAX-MTP-GGUF
   provider: Hugging Face
@@ -2537,8 +4872,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-6-27b-heretic-uncensored-finetune-neo-code-di-imatrix-max-gguf
   name: DavidAU/Qwen3.6-27B-Heretic-Uncensored-FINETUNE-NEO-CODE-Di-IMatrix-MAX-GGUF
   provider: Hugging Face
@@ -2549,8 +4889,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-6-27b-neo-code-di-imatrix-max-gguf
   name: DavidAU/Qwen3.6-27B-NEO-CODE-Di-IMatrix-MAX-GGUF
   provider: Hugging Face
@@ -2561,8 +4906,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-6-40b-claude-4-6-opus-deckard-heretic-uncensored-thinking
   name: DavidAU/Qwen3.6-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking
   provider: Hugging Face
@@ -2573,8 +4923,32 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - General Literary Fiction
+  - Literary Realism
+  - Philosophical Fiction
+  - Dystopian Fiction
+  - Alternate History
+  - Speculative Historical Fiction
+  - Hard Science Fiction
+  - Social Science Fiction
+  - Literary Mystery
+  - Literary Thriller
+  - Multi-generational Family Saga
+  - Biographical Fiction
+  - Political Fiction
+  - Critical Essay
+  - Historical Biography
+  genre_categories:
+  - B
+  - D
+  - G
+  - H
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-6-40b-claude-4-6-opus-deckard-heretic-uncensored-thinking-neo-code-di-imatrix-max-gguf
   name: DavidAU/Qwen3.6-40B-Claude-4.6-Opus-Deckard-Heretic-Uncensored-Thinking-NEO-CODE-Di-IMatrix-MAX-GGUF
   provider: Hugging Face
@@ -2585,8 +4959,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-qwen3-8-27b-turbo-fable-cold-fusion-735-882-heretic-uncensored-neo-coder-max-mtp-gguf
   name: DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF
   provider: Hugging Face
@@ -2597,8 +4976,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-davidau-tiefighter-holodeck-holomax-mythomax-f1-v1-compos-20b-gguf
   name: DavidAU/TieFighter-Holodeck-Holomax-Mythomax-F1-V1-COMPOS-20B-gguf
   provider: Hugging Face
@@ -2609,8 +4993,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-day078-qwen3-30b-a3b-abliterated-erotic-q4-k-m-gguf
   name: day078/Qwen3-30B-A3B-abliterated-erotic-Q4_K_M-GGUF
   provider: Hugging Face
@@ -2621,8 +5010,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-e-n-v-y-l3-3-electra-r1-70b-elarablated-v0-1
   name: e-n-v-y/L3.3-Electra-R1-70b-Elarablated-v0.1
   provider: Hugging Face
@@ -2633,8 +5027,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-eldritchlabs-mn-crimson-cafe-12b
   name: EldritchLabs/MN-Crimson-Cafe-12B
   provider: Hugging Face
@@ -2645,8 +5044,24 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Gothic Romance
+  - Dark Romanticism
+  - Paranormal Romance
+  - Vampire Romance
+  - Gothic Romantic Mystery
+  - Family Saga
+  - Multi-Generational Saga
+  - Upstairs-Downstairs Drama
+  - Historical Romance
+  - Victorian Fiction
+  - Regency Romance
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: W55
+  same_as: ''
 - key: hugging-face-eva-unit-01-eva-yi-1-5-9b-32k-v1
   name: EVA-UNIT-01/EVA-Yi-1.5-9B-32K-V1
   provider: Hugging Face
@@ -2657,8 +5072,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-ggml-org-stories15m-moe
   name: ggml-org/stories15M_MOE
   provider: Hugging Face
@@ -2669,8 +5089,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-itlwas-eva-yi-1-5-9b-32k-v1-q4-k-m-gguf
   name: KoboldAI/LLaMA2-13B-Tiefighter
   provider: Hugging Face
@@ -2681,8 +5106,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-medvedko-mistral-nemo-2407-12b-thinking-claude-gemini-gpt5-2-uncensored-heretic-q4-k-m-gguf
   name: Medvedko/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC-Q4_K_M-GGUF
   provider: Hugging Face
@@ -2693,8 +5123,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-modelcloud-tinyllama-15m-stories
   name: Tinyllama-15M-stories
   provider: Hugging Face
@@ -2705,8 +5140,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-motif-technologies-motif-3
   name: Motif 3
   provider: Hugging Face
@@ -2717,8 +5157,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-dirty-muse-writer-v01-uncensored-erotica-nsfw-i1-gguf
   name: mradermacher/Dirty-Muse-Writer-v01-Uncensored-Erotica-NSFW-i1-GGUF
   provider: Hugging Face
@@ -2729,8 +5174,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-eva-yi-1-5-9b-32k-v1-gguf
   name: mradermacher/EVA-Yi-1.5-9B-32K-V1-GGUF
   provider: Hugging Face
@@ -2741,8 +5191,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-eva-yi-1-5-9b-32k-v1-i1-gguf
   name: mradermacher/EVA-Yi-1.5-9B-32K-V1-i1-GGUF
   provider: Hugging Face
@@ -2753,8 +5208,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-fimbulvetr-grande-v2-19b-gguf
   name: mradermacher/Fimbulvetr-Grande-V2-19B-GGUF
   provider: Hugging Face
@@ -2765,8 +5225,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-fimbulvetr-grande-v2-19b-i1-gguf
   name: mradermacher/Fimbulvetr-Grande-V2-19B-i1-GGUF
   provider: Hugging Face
@@ -2777,8 +5242,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-gemma-2-2b-arliai-rpmax-v1-1-i1-gguf
   name: mradermacher/Gemma-2-2B-ArliAI-RPMax-v1.1-i1-GGUF
   provider: Hugging Face
@@ -2789,8 +5259,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-gemma-2-9b-arliai-rpmax-v1-1-gguf
   name: mradermacher/Gemma-2-9B-ArliAI-RPMax-v1.1-GGUF
   provider: Hugging Face
@@ -2801,8 +5276,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-gemma-2-9b-arliai-rpmax-v1-1-i1-gguf
   name: mradermacher/Gemma-2-9B-ArliAI-RPMax-v1.1-i1-GGUF
   provider: Hugging Face
@@ -2813,8 +5293,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-goetia-26b-a4b-v1-3-absolute-heretic-ara-gguf
   name: mradermacher/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA-GGUF
   provider: Hugging Face
@@ -2825,8 +5310,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-goetia-26b-a4b-v1-3-absolute-heretic-ara-i1-gguf
   name: mradermacher/Goetia-26B-A4B-v1.3-Absolute-Heretic-ARA-i1-GGUF
   provider: Hugging Face
@@ -2837,8 +5327,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-goetia-26b-a4b-v1-6-i1-gguf
   name: mradermacher/Goetia-26B-A4B-v1.6-i1-GGUF
   provider: Hugging Face
@@ -2849,8 +5344,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-goetia-26b-a4b-v1-7-i1-gguf
   name: mradermacher/Goetia-26B-A4B-v1.7-i1-GGUF
   provider: Hugging Face
@@ -2861,8 +5361,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-l3-dark-planet-8b-wordstorm-b4-i1-gguf
   name: mradermacher/L3-Dark-Planet-8B-wordstorm-b4-i1-GGUF
   provider: Hugging Face
@@ -2873,8 +5378,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-l3-dark-planet-8b-wordstorm-r4-gguf
   name: mradermacher/L3-Dark-Planet-8B-wordstorm-r4-GGUF
   provider: Hugging Face
@@ -2885,8 +5395,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-loki-v2-75b-8b-erotica-1024k-i1-gguf
   name: mradermacher/Loki-v2.75b-8b-EROTICA-1024k-i1-GGUF
   provider: Hugging Face
@@ -2897,8 +5412,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-mistral-nemo-2407-12b-thinking-claude-gemini-gpt5-2-uncensored-heretic-i1-gguf
   name: mradermacher/Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC-i1-GGUF
   provider: Hugging Face
@@ -2909,8 +5429,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-mistral-nemo-instruct-2407-12b-thinking-m-claude-opus-high-reasoning-i1-gguf
   name: mradermacher/Mistral-Nemo-Instruct-2407-12B-Thinking-M-Claude-Opus-High-Reasoning-i1-GGUF
   provider: Hugging Face
@@ -2921,8 +5446,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-mn-violet-lotus-12b-gguf
   name: mradermacher/MN-Violet-Lotus-12B-GGUF
   provider: Hugging Face
@@ -2933,8 +5463,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-mn-violet-lotus-12b-i1-gguf
   name: mradermacher/MN-Violet-Lotus-12B-i1-GGUF
   provider: Hugging Face
@@ -2945,8 +5480,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-mn-wordstorm-pt5-rcm-extra-intense-18-5b-instruct-i1-gguf
   name: mradermacher/MN-WORDSTORM-pt5-RCM-Extra-Intense-18.5B-Instruct-i1-GGUF
   provider: Hugging Face
@@ -2957,8 +5497,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-qwen3-30b-a3b-abliterated-erotic-gguf
   name: mradermacher/Qwen3-30B-A3B-abliterated-erotic-GGUF
   provider: Hugging Face
@@ -2969,8 +5514,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-qwen3-30b-a3b-abliterated-erotic-i1-gguf
   name: mradermacher/Qwen3-30B-A3B-abliterated-erotic-i1-GGUF
   provider: Hugging Face
@@ -2981,8 +5531,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-qwen3-5-40b-roughhouse-claude-4-6-opus-polar-deckard-uncensored-heretic-thinking-gguf
   name: mradermacher/Qwen3.5-40B-RoughHouse-Claude-4.6-Opus-Polar-Deckard-Uncensored-Heretic-Thinking-GGUF
   provider: Hugging Face
@@ -2993,8 +5548,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-qwen3-5-9b-deckard-claude-dimoe-uncensored-heretic-thinking-gguf
   name: mradermacher/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking-GGUF
   provider: Hugging Face
@@ -3005,8 +5565,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-qwen3-5-9b-deckard-claude-dimoe-uncensored-heretic-thinking-i1-gguf
   name: mradermacher/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking-i1-GGUF
   provider: Hugging Face
@@ -3017,8 +5582,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-shadow-siren-26b-a4b-gguf
   name: mradermacher/Shadow-Siren-26B-A4B-GGUF
   provider: Hugging Face
@@ -3029,8 +5599,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-shadow-siren-26b-a4b-i1-gguf
   name: mradermacher/Shadow-Siren-26B-A4B-i1-GGUF
   provider: Hugging Face
@@ -3041,8 +5616,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-tower-plus-72b-ultra-uncensored-heretic-gguf
   name: mradermacher/Tower-Plus-72B-ultra-uncensored-heretic-GGUF
   provider: Hugging Face
@@ -3053,8 +5633,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-mradermacher-tower-plus-72b-ultra-uncensored-heretic-i1-gguf
   name: mradermacher/Tower-Plus-72B-ultra-uncensored-heretic-i1-GGUF
   provider: Hugging Face
@@ -3065,8 +5650,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-naphula-goetia-26b-a4b-v1-6
   name: Naphula/Goetia-26B-A4B-v1.6
   provider: Hugging Face
@@ -3077,8 +5667,33 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Historical Epic Drama
+  - Victorian Literature
+  - Victorian Fiction
+  - Period Piece
+  - Regency Romance
+  - Literary Fantasy
+  - Epic Sagas
+  - High Fantasy
+  - Alternate History
+  - Speculative Historical Fiction
+  - Space Opera
+  - Hard Science Fiction
+  - Galactic Empire
+  - General Literary Fiction
+  - Literary Realism
+  - Family Saga
+  - Generational Stories
+  genre_categories:
+  - G
+  - B
+  - D
+  fine_tune_base: false
+  served_context: null
+  register_id: W12
+  same_as: ''
 - key: hugging-face-naphula-goetia-26b-a4b-v1-7
   name: Naphula/Goetia-26B-A4B-v1.7
   provider: Hugging Face
@@ -3089,20 +5704,55 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Literary Thriller
+  - Mystery-Suspense Fiction
+  - Weird Fiction
+  - Occult
+  - Supernatural Fiction
+  - Psychological Gothic
+  - Neo-Noir
+  - Crime Noir
+  - Conspiracy Thriller
+  - Espionage Thriller
+  genre_categories:
+  - F
+  - A
+  fine_tune_base: false
+  served_context: null
+  register_id: W13
+  same_as: ''
 - key: hugging-face-nightmedia-qwen3-6-27b-architect-polaris2-fable-b-f451-tess
   name: nightmedia/Qwen3.6-27B-Architect-Polaris2-Fable-B-F451-Tess
   provider: Hugging Face
   model_id: nightmedia/Qwen3.6-27B-Architect-Polaris2-Fable-B-F451-Tess
   frontier: false
   open_weights: true
-  uncensored: false
+  uncensored: true
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Dystopian Fiction
+  - Anti-Utopian Fiction
+  - Utopian Fiction
+  - Social Science Fiction
+  - Philosophical Literary Fiction
+  - Philosophical Adventure
+  - Allegory
+  - Fable
+  - Moral Tales
+  - Alternate History
+  - Speculative Historical Fiction
+  genre_categories:
+  - B
+  - D
+  fine_tune_base: false
+  served_context: null
+  register_id: W45
+  same_as: ''
 - key: hugging-face-owenarli-gemma-2-2b-arliai-rpmax-v1-1-gguf
   name: OwenArli/Gemma-2-2B-ArliAI-RPMax-v1.1-GGUF
   provider: Hugging Face
@@ -3113,8 +5763,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-phil2sat-goetia-26b-a4b-v1-3-absolute-heretic-restored-i-compact-mxfp4-gguf
   name: Phil2Sat/Goetia-26B-A4B-v1.3-Absolute-Heretic-Restored-I-Compact-MXFP4-GGUF
   provider: Hugging Face
@@ -3125,8 +5780,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-philipjohnbasile-qwen3-6-27b-fable-fusion-711-mtplx-8bit
   name: philipjohnbasile/Qwen3.6-27B-Fable-Fusion-711-MTPLX-8bit
   provider: Hugging Face
@@ -3137,8 +5797,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-quantfactory-eva-yi-1-5-9b-32k-v1-gguf
   name: QuantFactory/EVA-Yi-1.5-9B-32K-V1-GGUF
   provider: Hugging Face
@@ -3149,8 +5814,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-quantfactory-gemma-2-2b-arliai-rpmax-v1-1-gguf
   name: QuantFactory/Gemma-2-2B-ArliAI-RPMax-v1.1-GGUF
   provider: Hugging Face
@@ -3161,8 +5831,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-quantfactory-hathor-tahsin-l3-8b-v0-85-gguf
   name: QuantFactory/Hathor_Tahsin-L3-8B-v0.85-GGUF
   provider: Hugging Face
@@ -3173,8 +5848,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-quantfactory-mn-12b-celeste-v1-9-gguf
   name: QuantFactory/MN-12B-Celeste-V1.9-GGUF
   provider: Hugging Face
@@ -3185,8 +5865,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-richarderkhov-nitral-ai-hathor-tahsin-l3-8b-v0-85-gguf
   name: RichardErkhov/Nitral-AI_-_Hathor_Tahsin-L3-8B-v0.85-gguf
   provider: Hugging Face
@@ -3197,8 +5882,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-thedrummer-cydonia-24b-v4-1
   name: TheDrummer:Cydonia-24b-v4.1
   provider: Hugging Face
@@ -3209,8 +5899,23 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres:
+  - Epic Quest Fantasy
+  - Adventure Fantasy
+  - Sword & Sorcery
+  - Survival Fiction
+  - Robinsonade
+  - Historical Naval Fiction
+  - Revisionist Western
+  - Historical Adventure
+  - Nautical Fiction
+  - Pirate Science Fiction
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: W56
+  same_as: ''
 - key: openrouter-openai-gpt-image-2
   name: GPT Image 2
   provider: OpenRouter
@@ -3221,8 +5926,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Image
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: comfy-cloud-ideogram
   name: Ideogram
   provider: Comfy Cloud
@@ -3233,8 +5943,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Image
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: comfy-cloud-flux-2
   name: FLUX.2
   provider: Comfy Cloud
@@ -3245,8 +5960,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Image
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-nano-banana-pro
   name: Nano Banana Pro
   provider: OpenRouter
@@ -3257,8 +5977,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Image
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: elevenlabs-eleven-v3
   name: ElevenLabs v3
   provider: ElevenLabs
@@ -3269,8 +5994,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Speech
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-gemini-3-1-flash-tts
   name: Gemini 3.1 Flash TTS
   provider: OpenRouter
@@ -3281,8 +6011,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Speech
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: elevenlabs-elevenlabs-sound-effects
   name: ElevenLabs Sound Effects
   provider: ElevenLabs
@@ -3293,8 +6028,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Sound
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: comfy-cloud-seedance-2-0
   name: Seedance 2.0
   provider: Comfy Cloud
@@ -3305,8 +6045,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Video
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: hugging-face-wan-3-0
   name: Wan 3.0
   provider: Hugging Face
@@ -3317,8 +6062,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Video
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: elevenlabs-elevenlabs-scribe
   name: ElevenLabs Scribe
   provider: ElevenLabs
@@ -3329,8 +6079,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Speech-to-text
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: comfy-cloud-qwen-image
   name: Qwen-Image
   provider: Comfy Cloud
@@ -3341,8 +6096,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Image
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: comfy-cloud-z-image-turbo
   name: Z-Image Turbo
   provider: Comfy Cloud
@@ -3353,8 +6113,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Image
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: comfy-cloud-wan-2-2
   name: Wan 2.2
   provider: Comfy Cloud
@@ -3365,8 +6130,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Video
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: comfy-cloud-ltx-2
   name: LTX-2
   provider: Comfy Cloud
@@ -3377,8 +6147,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Video
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: comfy-cloud-minimax-music-3
   name: MiniMax Music 3
   provider: Comfy Cloud
@@ -3389,8 +6164,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Music
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: comfy-cloud-ace-step
   name: ACE-Step
   provider: Comfy Cloud
@@ -3401,8 +6181,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Music
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: featherless-ai-chatterbox
   name: Chatterbox
   provider: Featherless AI
@@ -3413,8 +6198,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Speech
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: comfy-cloud-stable-audio-open
   name: Stable Audio Open
   provider: Comfy Cloud
@@ -3425,8 +6215,13 @@ models:
   can_run_locally: true
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Sound
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-fish-audio-s2-pro
   name: Fish Audio S2 Pro
   provider: OpenRouter
@@ -3437,8 +6232,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Speech
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-qwen-qwen3-8-omni-flash
   name: Qwen3.8 Omni Flash
   provider: OpenRouter
@@ -3449,8 +6249,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-xiaomi-mimo-v2-omni
   name: MiMo-V2-Omni
   provider: OpenRouter
@@ -3461,8 +6266,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-nvidia-nemotron-3-nano-omni-30b-a3b-reasoning-free
   name: Nemotron 3 Nano Omni
   provider: OpenRouter
@@ -3473,8 +6283,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: comfy-cloud-stability-text-to-audio
   name: Stability Text To Audio
   provider: Comfy Cloud
@@ -3485,8 +6300,13 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Sound
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: openrouter-google-lyria-3-pro-preview
   name: Lyria 3 Pro
   provider: OpenRouter
@@ -3497,5 +6317,1164 @@ models:
   can_run_locally: false
   comparable: ''
   fallback: ''
-  genre: ''
   modality: Music
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
+- key: featherless-ai-davidau-ernie-21b-a3b-claude-4-5-high-opus-thinking
+  name: DavidAU/ERNIE-21B-A3B-Claude-4.5-High-OPUS-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/ERNIE-21B-A3B-Claude-4.5-High-OPUS-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Philosophical Fiction
+  - Philosophical Adventure
+  - Zen or Buddhist Fiction
+  - Existential Fiction
+  - Post-Colonial Literature
+  - Immigrant Literature
+  - Feminist Literature
+  - Allegory
+  - Fable
+  - Moral Tales
+  - Social Science Fiction
+  - Utopian Fiction
+  genre_categories:
+  - B
+  - D
+  - H
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W67
+  same_as: ''
+- key: featherless-ai-davidau-gemma-3-12b-it-vl-polaris-glm-4-7-flash-var-thinking-instruct-heretic-uncensored
+  name: DavidAU/gemma-3-12b-it-vl-Polaris-GLM-4.7-Flash-VAR-Thinking-Instruct-Heretic-Uncensored
+  provider: Featherless AI
+  model_id: DavidAU/gemma-3-12b-it-vl-Polaris-GLM-4.7-Flash-VAR-Thinking-Instruct-Heretic-Uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Heist Fiction
+  - Techno-Thriller
+  - Whodunit
+  - Conspiracy Thriller
+  - Cyberpunk
+  - Intellectual Adventure
+  - Espionage Thriller
+  genre_categories:
+  - F
+  - D
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W22
+  same_as: ''
+- key: featherless-ai-davidau-gemma-4-31b-it-grand-horror-x-intense-heretic-uncensored-thinking
+  name: DavidAU/gemma-4-31B-it-Grand-Horror-X-INTENSE-HERETIC-UNCENSORED-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/gemma-4-31B-it-Grand-Horror-X-INTENSE-HERETIC-UNCENSORED-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Slasher
+  - Gothic Horror
+  - Victorian Era Horror
+  - Folk Horror
+  - Psychological Horror
+  - Psychological Gothic
+  - Weird Fiction
+  - Cosmic Horror
+  - Erotic Fiction
+  - Monster
+  genre_categories:
+  - A
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W10
+  same_as: ''
+- key: featherless-ai-davidau-gemma3-27b-it-vl-polaris-hi16-heretic-uncensored-instruct
+  name: DavidAU/Gemma3-27B-it-vl-Polaris-HI16-Heretic-Uncensored-INSTRUCT
+  provider: Featherless AI
+  model_id: DavidAU/Gemma3-27B-it-vl-Polaris-HI16-Heretic-Uncensored-INSTRUCT
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Alternate History
+  - Speculative Historical Fiction
+  - Historical Epic Drama
+  - General Literary Fiction
+  - Literary Realism
+  - Intellectual Adventure
+  - Classic Whodunit
+  - Political Romance
+  - Literary Thriller
+  genre_categories:
+  - B
+  - G
+  - F
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W16
+  same_as: ''
+- key: hugging-face-davidau-l3-darkest-planet-16b-heretic-uncensored-abliterated
+  name: DavidAU/L3-Darkest-Planet-16B-HERETIC-Uncensored-Abliterated
+  provider: Hugging Face
+  model_id: DavidAU/L3-Darkest-Planet-16B-HERETIC-Uncensored-Abliterated
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Dark Fantasy
+  - Grimdark Fantasy
+  - Gothic Horror
+  - Psychological Horror
+  - Slasher
+  - Transgressional Fiction
+  - Southern Gothic
+  - Weird Fiction
+  - Dark Romance
+  - Crime Noir
+  - Hard-boiled Fiction
+  - Vampire Fantasy
+  - Post-Apocalyptic
+  genre_categories:
+  - A
+  - C
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
+- key: hugging-face-davidau-l3-2-rogue-creative-instruct-dark-horror-uncensored-abliterated-7b
+  name: DavidAU/L3.2-Rogue-Creative-Instruct-DARK-HORROR-Uncensored-Abliterated-7B
+  provider: Hugging Face
+  model_id: DavidAU/L3.2-Rogue-Creative-Instruct-DARK-HORROR-Uncensored-Abliterated-7B
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Gothic Horror
+  - Psychological Horror
+  - Slasher
+  - Monster
+  - Folk Horror
+  - Occult
+  - Supernatural Horror
+  - Weird Fiction
+  - Cosmic Horror
+  - Transgressional Fiction
+  - Victorian Era Horror
+  - Ghost Story
+  genre_categories:
+  - A
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
+- key: hugging-face-davidau-lfm2-12b-a1b-speeddemon-the-deckard-ii-heretic-uncensored
+  name: DavidAU/LFM2-12B-A1B-SpeedDemon-The-Deckard-II-HERETIC-Uncensored
+  provider: Hugging Face
+  model_id: DavidAU/LFM2-12B-A1B-SpeedDemon-The-Deckard-II-HERETIC-Uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Dramatic Monologue
+  - Epistolary Fiction
+  - Fable
+  - Moral Tales
+  - Whimsical Mystery
+  - Cozy Fiction
+  - Slice-of-Life Fiction
+  - Satire
+  - Parody
+  - Amateur Sleuth Mystery
+  - Transgressional Fiction
+  genre_categories:
+  - E
+  - F
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
+- key: featherless-ai-davidau-lfm2-5-1-2b-thinking-claude-4-6-opus-heretic-uncensored-distill
+  name: DavidAU/LFM2.5-1.2B-Thinking-Claude-4.6-Opus-Heretic-Uncensored-DISTILL
+  provider: Featherless AI
+  model_id: DavidAU/LFM2.5-1.2B-Thinking-Claude-4.6-Opus-Heretic-Uncensored-DISTILL
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Whodunit
+  - Heist Fiction
+  - Epistolary Fiction
+  - Dramatic Monologue
+  - Transgressional Fiction
+  - Mystery Thriller
+  - Serial Killers
+  - Techno-Thriller
+  - Folklore
+  - Dystopian
+  - Conspiracy Fiction
+  genre_categories:
+  - F
+  - A
+  fine_tune_base: false
+  served_context: 32768
+  register_id: C01
+  same_as: ''
+- key: featherless-ai-davidau-lfm2-5-1-2b-thinking-gemini-pro-1000-heretic-uncensored-distill
+  name: DavidAU/LFM2.5-1.2B-Thinking-Gemini-Pro-1000-Heretic-Uncensored-DISTILL
+  provider: Featherless AI
+  model_id: DavidAU/LFM2.5-1.2B-Thinking-Gemini-Pro-1000-Heretic-Uncensored-DISTILL
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Alternate History
+  - Colonization
+  - Space Exploration
+  - Speculative Historical Fiction
+  - Epic Sagas
+  - Multi-generational Saga
+  - Conspiracy Fiction
+  - Dystopian Fiction
+  - Utopian Fiction
+  - Galactic Empire
+  - Space Opera
+  - Time Travel
+  - Historical Thrillers
+  - Folklore-Inspired Fiction
+  - Dieselpunk
+  - Steampunk
+  - Apocalyptic
+  - Post-Apocalyptic
+  - Exploration Fantasy
+  - Multi-generational Family Saga
+  genre_categories:
+  - D
+  - G
+  fine_tune_base: false
+  served_context: 32768
+  register_id: C03
+  same_as: ''
+- key: featherless-ai-davidau-lfm2-5-1-2b-thinking-superminds-7x-heretic-uncensored-distill
+  name: DavidAU/LFM2.5-1.2B-Thinking-SuperMinds-7x-Heretic-Uncensored-DISTILL
+  provider: Featherless AI
+  model_id: DavidAU/LFM2.5-1.2B-Thinking-SuperMinds-7x-Heretic-Uncensored-DISTILL
+  frontier: false
+  open_weights: false
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Mystery Thriller
+  - Heist Fiction
+  - Conspiracy Fiction
+  - Techno-Thriller
+  - Speculative Fiction
+  - Supernatural Thriller
+  - Espionage Fiction
+  - Serial Killers
+  - Courtly Intrigue
+  - Domestic Noir
+  - Folklore
+  genre_categories:
+  - F
+  - D
+  fine_tune_base: false
+  served_context: 32768
+  register_id: C02
+  same_as: ''
+- key: hugging-face-davidau-llama3-2-24b-a3b-ii-dark-champion-instruct-heretic-abliterated-uncensored
+  name: DavidAU/Llama3.2-24B-A3B-II-Dark-Champion-INSTRUCT-Heretic-Abliterated-Uncensored
+  provider: Hugging Face
+  model_id: DavidAU/Llama3.2-24B-A3B-II-Dark-Champion-INSTRUCT-Heretic-Abliterated-Uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Dark Fantasy
+  - Grimdark Fantasy
+  - Dark/Rogue Epic Fantasy
+  - Sword & Sorcery
+  - Gothic Horror
+  - Dark Romance
+  - Mafia Romance
+  - Paranormal Romance
+  - Urban Fantasy
+  - Pulp Fiction
+  - Transgressional Fiction
+  genre_categories:
+  - A
+  - G
+  - C
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
+- key: hugging-face-davidau-llama3-2-30b-a3b-ii-dark-champion-instruct-heretic-abliterated-uncensored
+  name: DavidAU/Llama3.2-30B-A3B-II-Dark-Champion-INSTRUCT-Heretic-Abliterated-Uncensored
+  provider: Hugging Face
+  model_id: DavidAU/Llama3.2-30B-A3B-II-Dark-Champion-INSTRUCT-Heretic-Abliterated-Uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Grimdark Fantasy
+  - Dark/Rogue Epic Fantasy
+  - High Fantasy
+  - Sword & Sorcery
+  - Gothic Horror
+  - Horror Fantasy
+  - Crime Noir
+  - Hard-boiled Fiction
+  - Assassination Thriller
+  - Organized Crime
+  - Dark Romance
+  genre_categories:
+  - A
+  - G
+  - F
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
+- key: hugging-face-davidau-qwen3-42b-a3b-stranger-thoughts-deep20x-abliterated-uncensored
+  name: DavidAU/Qwen3-42B-A3B-Stranger-Thoughts-Deep20x-Abliterated-Uncensored
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3-42B-A3B-Stranger-Thoughts-Deep20x-Abliterated-Uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Weird Fiction
+  - Surreal Literature
+  - Cosmic Horror
+  - Psychological Horror
+  - Psychotropic Literature
+  - Metaphysical Speculative Fiction
+  - Science Fiction Horror
+  - Dark Fantasy
+  - Occult Mystery
+  - Gothic Fiction
+  - Speculative Fiction
+  genre_categories:
+  - A
+  - D
+  - B
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
+- key: hugging-face-davidau-qwen3-48b-a4b-savant-commander-distill-12x-closed-open-heretic-uncensored
+  name: DavidAU/Qwen3-48B-A4B-Savant-Commander-Distill-12X-Closed-Open-Heretic-Uncensored
+  provider: Hugging Face
+  model_id: DavidAU/Qwen3-48B-A4B-Savant-Commander-Distill-12X-Closed-Open-Heretic-Uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Hard Science Fiction
+  - Techno-Thriller
+  - Conspiracy Fiction
+  - Alternate History
+  - Intellectual Adventure
+  - Espionage Thriller
+  - Whodunit
+  - Philosophical Fiction
+  - Argumentative
+  - Expository
+  - Historical Biography
+  genre_categories:
+  - D
+  - F
+  - H
+  fine_tune_base: true
+  served_context: null
+  register_id: ''
+  same_as: ''
+- key: unsloth-desktop-davidau-qwen3-great-bowels-of-horror-freakstorm-6b
+  name: DavidAU/Qwen3-Great-Bowels-Of-Horror-FREAKSTORM-6B
+  provider: Unsloth Desktop
+  model_id: DavidAU/Qwen3-Great-Bowels-Of-Horror-FREAKSTORM-6B
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Slasher
+  - Horror Fantasy
+  - Psychological Horror
+  - Folk Horror
+  - Occult
+  - Weird Fiction
+  - Cosmic Horror
+  - Grimdark Fantasy
+  - Dark Romance
+  - Gothic Romance
+  - Transgressional Fiction
+  - Horror Comedy
+  - Southern Gothic
+  - Serial Killers
+  - Eco-Dystopian
+  - Vampire Fantasy
+  - Noir Fiction
+  - Monster
+  genre_categories:
+  - A
+  fine_tune_base: false
+  served_context: null
+  register_id: W42
+  same_as: ''
+- key: featherless-ai-davidau-qwen3-horror-instruct-uncensored-262k-ctx-4b
+  name: DavidAU/Qwen3-Horror-Instruct-Uncensored-262K-ctx-4B
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3-Horror-Instruct-Uncensored-262K-ctx-4B
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Monster
+  - Slasher
+  - Psychological Horror
+  - Horror Comedy
+  - Occult
+  - Weird Fiction
+  - Transgressional Fiction
+  - Gothic Horror
+  - Dark Romance
+  - Folk Horror
+  - Southern Gothic
+  - Serial Killers
+  - Eco-Dystopian
+  - Vampire Fantasy
+  - Grimdark Fantasy
+  genre_categories:
+  - A
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W43
+  same_as: ''
+- key: featherless-ai-davidau-qwen3-vl-8b-glm-4-7-flash-heretic-uncensored-thinking
+  name: DavidAU/Qwen3-VL-8B-GLM-4.7-Flash-Heretic-Uncensored-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3-VL-8B-GLM-4.7-Flash-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Police Procedural
+  - True Crime
+  - Occult Detective
+  - Techno-Thriller
+  - Hard Science Fiction
+  - Medical Thriller
+  - Eco-Thriller
+  - Heist Fiction
+  - Gothic Horror
+  - Conspiracy Thriller
+  - Serial Killers
+  - Historical Mystery
+  - Folklore
+  - Urban Fantasy
+  - Cyberpunk
+  genre_categories:
+  - F
+  - D
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
+- key: featherless-ai-davidau-qwen3-5-4b-claude-4-6-os-auto-variable-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.5-4B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.5-4B-Claude-4.6-OS-Auto-Variable-HERETIC-UNCENSORED-THINKING
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Police Procedural
+  - Medical Thriller
+  - Techno-Thriller
+  - Heist Fiction
+  - Transgressional Fiction
+  - Folklore
+  - Occult
+  - Urban Fantasy
+  - Epistolary Fiction
+  - Historical Mystery
+  - Eco-Thriller
+  genre_categories:
+  - F
+  - D
+  fine_tune_base: false
+  served_context: 32768
+  register_id: C08
+  same_as: ''
+- key: featherless-ai-davidau-qwen3-5-4b-deckard-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.5-4B-Deckard-HERETIC-UNCENSORED-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.5-4B-Deckard-HERETIC-UNCENSORED-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Biographical Fiction
+  - Dramatic Monologue
+  - Philosophical Fiction
+  - AI Science Fiction
+  - Robot & Android Science Fiction
+  - Metafiction
+  - Epistolary Fiction
+  - Existential Fiction
+  - Allegory
+  - Gothic Romantic Mystery
+  - Dark Academia
+  - Literary Mystery
+  - Urban Fantasy
+  - Transgressional Fiction
+  genre_categories:
+  - B
+  - D
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W28
+  same_as: ''
+- key: featherless-ai-davidau-qwen3-5-9b-claude-4-6-opus-deckard-v4-2-uncensored-heretic-thinking
+  name: DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.5-9B-Claude-4.6-Opus-Deckard-V4.2-Uncensored-Heretic-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Philosophical Fiction
+  - AI Science Fiction
+  - Robot & Android Science Fiction
+  - Philosophical Mystery
+  - Metafiction
+  - Allegory
+  - Biographical Fiction
+  - Existential Fiction
+  - Time Travel
+  - Satire
+  - Literary Mystery
+  - Gothic Romantic Mystery
+  - Transgressional Fiction
+  - Dark Academia
+  genre_categories:
+  - B
+  - D
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W29
+  same_as: ''
+- key: featherless-ai-davidau-qwen3-5-9b-star-trek-tng-ds9-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.5-9B-Star-Trek-TNG-DS9-Heretic-Uncensored-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.5-9B-Star-Trek-TNG-DS9-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - First Contact
+  - Space Exploration
+  - Social Science Fiction
+  - Colonization
+  - Military Sci-Fi
+  - Time Travel
+  - Utopian Fiction
+  - Speculative Fiction
+  - AI Science Fiction
+  - Genetic Engineering
+  - Alternate Reality Fantasy
+  - Political Intrigue
+  - Alien Science Fiction
+  - Science Fiction Romance
+  genre_categories:
+  - D
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W38
+  same_as: ''
+- key: featherless-ai-davidau-qwen3-5-21b-glm-4-7-flash-deckard-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Deckard-Heretic-Uncensored-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.5-21B-GLM-4.7-Flash-Deckard-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Virtual Reality
+  - Cyberpunk
+  - AI Science Fiction
+  - Robot & Android Science Fiction
+  - Techno-Thriller
+  - Post-Cyberpunk
+  - Near-Future Fiction
+  - Psychological Fiction
+  - Psychological Mystery
+  - Dystopian Fiction
+  - Corporate Science Fiction
+  - Genetic Engineering
+  - Metafiction
+  - Conspiracy Fiction
+  - Grimdark Fantasy
+  - Transgressional Fiction
+  genre_categories:
+  - D
+  - F
+  - A
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
+- key: featherless-ai-davidau-qwen3-5-27b-claude-4-6-os-auto-variable-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.5-27B-Claude-4.6-OS-Auto-Variable-Heretic-Uncensored-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.5-27B-Claude-4.6-OS-Auto-Variable-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Techno-Thriller
+  - Hard Science Fiction
+  - Heist Fiction
+  - Serial Killers
+  - Medical Thriller
+  - Conspiracy Thriller
+  - Eco-Thriller
+  - Grimdark Fantasy
+  - Biopunk
+  - Corporate Science Fiction
+  - Assassination Thriller
+  - Domestic Noir
+  - Transgressional Fiction
+  - Hard Sci-Fi
+  genre_categories:
+  - F
+  - D
+  - A
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W39
+  same_as: ''
+- key: featherless-ai-davidau-qwen3-5-27b-deckard-pkd-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.5-27B-Deckard-PKD-Heretic-Uncensored-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.5-27B-Deckard-PKD-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Virtual Reality
+  - AI Science Fiction
+  - Robot & Android Science Fiction
+  - Alternate Reality Fantasy
+  - Dystopian Fiction
+  - Anti-Utopian Fiction
+  - Psychological Fiction
+  - Psychological Mystery
+  - Metafiction
+  - Psychotropic Literature
+  - Existential Fiction
+  - Conspiracy Fiction
+  - Religious & Inspirational Fiction
+  - Spiritual Fiction
+  - Neo-Noir
+  - Noir Fiction
+  - Cyberpunk
+  - Near-Future Fiction
+  - Surreal Literature
+  - Post-Modern Literature
+  - Time Travel
+  - Corporate Science Fiction
+  - Dark Academia
+  - Spiritual-Religious Fiction
+  genre_categories:
+  - D
+  - B
+  - F
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W33
+  same_as: ''
+- key: featherless-ai-davidau-qwen3-5-27b-heretic-polaris-advanced-thinking-alpha-uncensored
+  name: DavidAU/Qwen3.5-27B-HERETIC-Polaris-Advanced-Thinking-Alpha-uncensored
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.5-27B-HERETIC-Polaris-Advanced-Thinking-Alpha-uncensored
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Literary Realism
+  - General Literary Fiction
+  - Speculative Historical Fiction
+  - Alternate History
+  - Social Science Fiction
+  - Allegory
+  - Dystopian Fiction
+  - Utopian Fiction
+  - Regional Fiction
+  - Southern Fiction
+  - Social Realism
+  - Social Drama
+  - Coming-of-Age
+  - Domestic Fiction
+  - Historical Drama
+  - Literary Fiction Set in the Past
+  - Naturalism
+  genre_categories:
+  - B
+  - G
+  - H
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W40
+  same_as: ''
+- key: featherless-ai-davidau-qwen3-6-12b-iq-ultra-heretic-uncensored-thinking
+  name: DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Surreal Literature
+  - Ghost Story
+  - Psychological Horror
+  - Psychotropic Literature
+  - Weird Fiction
+  - Absurdist Fiction
+  - Post-Modern Fiction
+  - Existential Fiction
+  - Dark Comedy
+  genre_categories:
+  - A
+  - B
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W76
+  same_as: ''
+- key: featherless-ai-davidau-qwen3-6-12b-iq-ultra-heretic-uncensored-thinking-v2-hightop
+  name: DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking-V2-Hightop
+  provider: Featherless AI
+  model_id: DavidAU/Qwen3.6-12B-IQ-Ultra-Heretic-Uncensored-Thinking-V2-Hightop
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Weird Fiction
+  - Surreal Literature
+  - Psychotropic Literature
+  - Monster
+  - Absurdist Fiction
+  - Dark Comedy
+  - Transgressional Fiction
+  - Horror Mystery
+  genre_categories:
+  - A
+  - E
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W75
+  same_as: ''
+- key: featherless-ai-dphn-dolphin-mistral-24b-venice-edition
+  name: dphn/Dolphin-Mistral-24B-Venice-Edition
+  provider: Featherless AI
+  model_id: dphn/Dolphin-Mistral-24B-Venice-Edition
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Legal Thriller
+  - Courtroom Drama
+  - Legal Social Commentary
+  - Financial Thriller
+  - Political Romance
+  - Conspiracy Fiction
+  - Corporate Science Fiction
+  - Biopunk
+  genre_categories:
+  - F
+  - D
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W57
+  same_as: ''
+- key: featherless-ai-naphula-goetia-26b-a4b-v1-6
+  name: Naphula/Goetia-26B-A4B-v1.6
+  provider: Featherless AI
+  model_id: Naphula/Goetia-26B-A4B-v1.6
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Historical Epic Drama
+  - Victorian Literature
+  - Victorian Fiction
+  - Period Piece
+  - Regency Romance
+  - Literary Fantasy
+  - Epic Sagas
+  - High Fantasy
+  - Alternate History
+  - Speculative Historical Fiction
+  - Space Opera
+  - Hard Science Fiction
+  - Galactic Empire
+  - General Literary Fiction
+  - Literary Realism
+  - Family Saga
+  - Generational Stories
+  genre_categories:
+  - G
+  - B
+  - D
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W12
+  same_as: ''
+- key: featherless-ai-naphula-goetia-26b-a4b-v1-7
+  name: Naphula/Goetia-26B-A4B-v1.7
+  provider: Featherless AI
+  model_id: Naphula/Goetia-26B-A4B-v1.7
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Literary Thriller
+  - Mystery-Suspense Fiction
+  - Weird Fiction
+  - Occult
+  - Supernatural Fiction
+  - Psychological Gothic
+  - Neo-Noir
+  - Crime Noir
+  - Conspiracy Thriller
+  - Espionage Thriller
+  genre_categories:
+  - F
+  - A
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W13
+  same_as: ''
+- key: featherless-ai-nightmedia-qwen3-6-27b-architect-polaris2-fable-b-f451-tess
+  name: nightmedia/Qwen3.6-27B-Architect-Polaris2-Fable-B-F451-Tess
+  provider: Featherless AI
+  model_id: nightmedia/Qwen3.6-27B-Architect-Polaris2-Fable-B-F451-Tess
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Dystopian Fiction
+  - Anti-Utopian Fiction
+  - Utopian Fiction
+  - Social Science Fiction
+  - Philosophical Literary Fiction
+  - Philosophical Adventure
+  - Allegory
+  - Fable
+  - Moral Tales
+  - Alternate History
+  - Speculative Historical Fiction
+  genre_categories:
+  - B
+  - D
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W45
+  same_as: ''
+- key: featherless-ai-thedrummer-unslopnemo-12b-v4-1
+  name: TheDrummer/UnslopNemo-12B-v4.1
+  provider: Featherless AI
+  model_id: TheDrummer/UnslopNemo-12B-v4.1
+  frontier: false
+  open_weights: true
+  uncensored: true
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Whimsical Mystery
+  - Romantic Adventure
+  - Exploration Fantasy
+  - Nautical Fantasy
+  - Cozy Sci-Fi
+  - Cozy Fantasy Romance
+  - Amateur Sleuth Mystery
+  - Village Mystery
+  - Romantic Comedy Mystery
+  genre_categories: []
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W50
+  same_as: ''
+- key: featherless-ai-thedrummer-unslopnemo-12b-v4
+  name: TheDrummer/UnslopNemo-12B-v4
+  provider: Featherless AI
+  model_id: TheDrummer/UnslopNemo-12B-v4
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Romantic Adventure
+  - Whimsical Mystery
+  - Exploration Fantasy
+  - Nautical Fantasy
+  - Cozy Sci-Fi
+  - Amateur Sleuth Mystery
+  genre_categories: []
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W51
+  same_as: ''
+- key: featherless-ai-thedrummer-unslopnemo-12b-v3
+  name: TheDrummer/UnslopNemo-12B-v3
+  provider: Featherless AI
+  model_id: TheDrummer/UnslopNemo-12B-v3
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Slice-of-Life Fiction
+  - Small Town & Rural
+  - Small-Town Life
+  - Coming-of-Age Epic
+  - Cozy Fiction
+  - Feel-Good Fiction
+  - Culinary Fiction
+  - City Life
+  genre_categories: []
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W52
+  same_as: ''
+- key: featherless-ai-thedrummer-unslopnemo-12b-v1
+  name: TheDrummer/UnslopNemo-12B-v1
+  provider: Featherless AI
+  model_id: TheDrummer/UnslopNemo-12B-v1
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Sensual Romance
+  - Beach Reads
+  - New Adult Fiction
+  - Chick-Lit
+  - Lighthearted Women's Fiction
+  - Second Chance Romance
+  - Love Triangle Romance
+  - Vacation Romance
+  - Dark Comedy
+  - Satire
+  genre_categories: []
+  fine_tune_base: false
+  served_context: 32768
+  register_id: W53
+  same_as: ''
+- key: hugging-face-davidau-lfm2-5-2-6b-qwen3-8-turbo-brilliance-power-x12-neo-max-gguf
+  name: DavidAU/LFM2.5-2.6B-Qwen3.8-Turbo-Brilliance-Power-X12-NEO-MAX-GGUF
+  provider: Hugging Face
+  model_id: DavidAU/LFM2.5-2.6B-Qwen3.8-Turbo-Brilliance-Power-X12-NEO-MAX-GGUF
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: true
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Cozy Mystery
+  - Standard Cozy Mystery
+  - Village Mystery
+  - Culinary Cozy Mystery
+  - Bookstory Cozy Mystery
+  - Cozy Mystery with Animals
+  - 1920s Historical Cozy Mystery
+  - Christian Cozy Mystery
+  - Cozy Fiction
+  - Cozy Fantasy
+  - Whimsical Mystery
+  - Feel-Good Fiction
+  - Slice-of-Life Fiction
+  - General Literary Fiction
+  genre_categories: []
+  fine_tune_base: true
+  served_context: null
+  register_id: W69
+  same_as: ''
+- key: featherless-ai-davidau-qwen2-5-7b-instruct-1m-thinking-claude-gemini-gpt5-2-distill
+  name: DavidAU/Qwen2.5-7B-Instruct-1M-Thinking-Claude-Gemini-GPT5.2-DISTILL
+  provider: Featherless AI
+  model_id: DavidAU/Qwen2.5-7B-Instruct-1M-Thinking-Claude-Gemini-GPT5.2-DISTILL
+  frontier: false
+  open_weights: true
+  uncensored: false
+  can_run_locally: false
+  comparable: ''
+  fallback: ''
+  modality: ''
+  genres:
+  - Multi-generational Family Saga
+  - Multi-Generational Family Saga
+  - Family Saga
+  - Multi-Generational Saga
+  - Epic Sagas
+  - Epic Quest Fantasy
+  - Galactic Empire
+  - Space Opera
+  - Speculative Fiction
+  - Conspiracy Fiction
+  - Time Travel
+  - Dystopian Fiction
+  - Utopian Fiction
+  - Whodunit
+  - Classic Whodunit
+  genre_categories: []
+  fine_tune_base: false
+  served_context: 32768
+  register_id: C09
+  same_as: ''
