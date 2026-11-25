@@ -948,7 +948,7 @@ components:
   gate_after: Author approves the reference sheets
   modality: Image
   candidates:
-    primary: FLUX.2
+    primary: FLUX.2 Pro
     comparable: 'Qwen-Image: Text to Image'
     fallback: Z-Image-Turbo Text to Image
 - step: NEW-19
@@ -1812,7 +1812,7 @@ components:
   category: Sales & Marketing
   modality: Image
   candidates:
-    primary: FLUX.2
+    primary: FLUX.2 Pro
     comparable: 'Qwen-Image: Text to Image'
     fallback: Z-Image-Turbo Text to Image
 - step: NEW-07
@@ -1956,7 +1956,7 @@ components:
   category: Sales & Marketing
   modality: Image
   candidates:
-    primary: FLUX.2
+    primary: FLUX.2 Pro
     comparable: 'Qwen-Image: Text to Image'
     fallback: Z-Image-Turbo Text to Image
 - step: '41'

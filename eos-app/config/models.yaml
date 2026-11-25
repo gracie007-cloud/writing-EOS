@@ -6,8 +6,6 @@ source: 'Notion LLM Identifier (export); Notion LLM Identifier for Creative Writ
   Notion LLM Identifier for Creative Writing: Open-Weight & Fine-Tuned Models (export); Notion LLM Identifier for Creative
   Writing: Proprietary & Open/Near Frontier Models (export); registry.json (verified 2026-11-14)'
 problems:
-- 'Featherless AI: ''DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking'' is listed twice (rows ''DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking''
-  and ''DavidAU/Qwen3.5-9B-Deckard-Claude-DIMOE-Uncensored-Heretic-Thinking''); the first is kept'
 - 'OpenRouter: ''Fish Audio S2 Pro'' has no provider model ID yet; fill it from the provider''s model list'
 - 'OpenRouter: ''Fish Audio S2 Pro'' had no provider model ID; ''fish-audio/s2-pro'' taken from the proprietary catalog'
 - 'register W69: ''DavidAU/LFM2.5-2.6B-Qwen3.8-Turbo-Brilliance-Power-X12-NEO-MAX-GGUF'' is in neither Notion source; added

@@ -6,7 +6,7 @@ from dataclasses import replace
 import pytest
 
 from eos_app.registry import Registry, RegistryError, candidate_name, least_gap, load_models
-from eos_app.router import (RoutingError, choose_checker, choose_writer, experts, load_routing, route,
+from eos_app.router import (checker_models, RoutingError, choose_checker, choose_writer, experts, load_routing, route,
                             same_model_report, writer_models)
 from eos_app.workflow import load_components
 
@@ -40,8 +40,8 @@ def test_the_registry_holds_every_roster_model_with_a_provider(R):
 
 
 def test_mistyped_roster_rows_are_reported_not_guessed(R):
-    # the three rows that held another model's ID were corrected in Notion (2026-11-25); one row is listed twice
-    assert sum("listed twice" in p for p in R.problems) == 1
+    # corrected in Notion (2026-11-25): three rows that held another model's ID, and a duplicate row removed
+    assert sum("listed twice" in p for p in R.problems) == 0
     assert sum("disagree" in p for p in R.problems) == 0
 
 
@@ -146,7 +146,7 @@ def test_mature_media_runs_only_on_open_models_on_comfy_cloud(W, R, RT):
     assert [m.name for m in writer_models(W.by_step["NEW-22"], R, RT, mature=True)] == ["Qwen-Image: Text to Image"]
     assert [m.name for m in writer_models(W.by_step["NEW-24"], R, RT, mature=True)] == ["Chatterbox"]
     assert [m.name for m in writer_models(W.by_step["NEW-18"], R, RT, mature=True)] == [
-        "Qwen-Image: Text to Image", "Z-Image-Turbo Text to Image"]           # FLUX.2 is on Hugging Face, not Comfy
+        "Qwen-Image: Text to Image", "Z-Image-Turbo Text to Image"]           # FLUX.2 Pro is not open-weight
 
 
 def test_sound_effects_leads_with_stable_audio_and_mature_work_stays_on_the_open_one(W, R, RT):
@@ -164,9 +164,18 @@ def test_music_leads_with_lyria_and_keeps_an_open_model_for_mature_work(W, R, RT
     assert [m.name for m in writer_models(music, R, RT, mature=True)] == ["ACE-Step 1.5 Music Generation AIO"]
 
 
-def test_media_checkers_run_on_omni_models(W, R):
+def test_media_checkers_run_on_omni_models(W, R, RT):
     for step in ("NEW-20", "NEW-25"):
         assert [m.name for _, m in experts(W.by_step[step], R)] == ["Qwen3.8 Omni Flash", "MiMo V2.6 Flash", "Nemotron 3 Nano Omni"]
+        assert [m.provider for m in checker_models(W.by_step[step], R, RT)][:2] == ["Concentrate AI", "OpenRouter"]
+
+
+def test_media_is_called_on_comfy_cloud_first(W, R, RT):
+    # the Author, 2026-11-25: a media model's Comfy Cloud version first, then Concentrate AI, then OpenRouter
+    assert [m.provider for m in writer_models(W.by_step["NEW-18"], R, RT)] == ["Comfy Cloud"] * 3
+    assert writer_models(W.by_step["NEW-18"], R, RT)[0].name == "FLUX.2 Pro"
+    reg, twin = also_on(R, "GPT Image 2", "Comfy Cloud", "GPT Image 2")       # were it listed on Comfy Cloud too
+    assert writer_models(W.by_step["NEW-22"], reg, RT)[0] is twin
 
 
 def test_an_open_mature_fallback_stops_mature_judging_with_a_reason(W, R, RT):

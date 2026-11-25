@@ -70,8 +70,10 @@ def test_one_provider_going_down_is_counted_component_by_component(W, R, RT, rep
     stopped = rep["outage"]["Concentrate AI"]
     per_chapter = {c.step for c in chapter_loop(W)}
     assert len(stopped) == 106 and sum(c.step in per_chapter for c in stopped) == 17
-    assert [len(rep["outage"][p]) for p in ("OpenRouter", "Featherless AI", "Comfy Cloud")] == [0, 0, 3]
-    assert [c.name for c in rep["outage"]["Comfy Cloud"]] == ["Map Maker", "Sound Effects", "Trailer Video"]
+    assert [len(rep["outage"][p]) for p in ("OpenRouter", "Featherless AI", "Comfy Cloud")] == [0, 0, 6]
+    # media is called on Comfy Cloud first (the Author, 2026-11-25), so these have no expert elsewhere
+    assert [c.name for c in rep["outage"]["Comfy Cloud"]] == ["Visual References", "Map Maker", "Interior Art",
+                                                              "Marketing Visuals", "Sound Effects", "Trailer Video"]
     # a second route for the two workhorse models keeps their components running
     twins = [replace(m, key=f"openrouter-{m.model_id}", provider="OpenRouter")
              for m in R.models if m.name in ("Claude Fable 5.1", "Kimi K3")]

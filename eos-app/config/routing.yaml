@@ -27,7 +27,9 @@ lanes:
     providers: [Featherless AI, Unsloth Desktop, OpenRouter]
     interim: component_candidates
   media:
-    providers: [OpenRouter, Hugging Face, ElevenLabs, Comfy Cloud, Featherless AI]
+    # In order: a media model on more than one of these is called on the first (the Author, 2026-11-25: Comfy
+    # Cloud, then Concentrate AI, then OpenRouter).
+    providers: [Comfy Cloud, Concentrate AI, OpenRouter, Featherless AI, Hugging Face]
 
 # Mature content (P10, D33).
 mature:

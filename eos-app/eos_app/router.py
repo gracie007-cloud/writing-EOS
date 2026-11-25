@@ -81,11 +81,13 @@ def experts(c, reg: Registry) -> list:
     return line
 
 
-def with_routes(models, reg: Registry) -> list:
-    """Each model followed by the same model on its other providers, so an outage is met by another route first."""
+def with_routes(models, reg: Registry, order=()) -> list:
+    """Each model followed by the same model on its other providers, so an outage is met by another route first.
+    With order (a list of providers), a model's routes are tried in that order; providers not in it come last."""
+    rank = {p: i for i, p in enumerate(order)}
     out, seen = [], set()
     for m in models:
-        for r in reg.routes(m):
+        for r in sorted(reg.routes(m), key=lambda x: rank.get(x.provider, len(rank))) if order else reg.routes(m):
             if r.key not in seen:
                 seen.add(r.key)
                 out.append(r)
@@ -131,7 +133,8 @@ def writer_models(c, reg: Registry, routing: Routing, genre: str | None = None, 
         if wrong:
             raise RoutingError(f"{c.name} makes {c.modality.lower()}, but {'; '.join(wrong)}")
         allowed = lane_providers(c, routing, mature)
-        models = [m for m in with_routes(line, reg) if m.provider in allowed and (m.open_weights or not mature)]
+        models = [m for m in with_routes(line, reg, routing.media_providers)    # Comfy Cloud first (Author, 2026-11-25)
+                  if m.provider in allowed and (m.open_weights or not mature)]
         if not models:          # mature: only open models on a provider whose terms allow lawful mature media
             raise RoutingError(f"{c.name}: no {'open ' if mature else ''}model on {', '.join(allowed)} among its "
                                f"experts{' for mature media' if mature else ''}")
@@ -186,7 +189,9 @@ def checker_models(judge, reg: Registry, routing: Routing) -> list:
     """An evaluation component's experts, with their routes, on the general lane."""
     if not judge.is_evaluation:
         raise RoutingError(f"{judge.name} judges nothing; it is not an evaluation component")
-    return [m for m in with_routes([m for _, m in experts(judge, reg)], reg) if m.provider in routing.general_providers]
+    # a checker's model on both general providers is called on Concentrate AI first (the Author, 2026-11-25)
+    return [m for m in with_routes([m for _, m in experts(judge, reg)], reg, routing.general_providers)
+            if m.provider in routing.general_providers]
 
 
 def choose_checker(judge, writer, reg: Registry, routing: Routing, mature: bool = False, refused=(), down=(),
