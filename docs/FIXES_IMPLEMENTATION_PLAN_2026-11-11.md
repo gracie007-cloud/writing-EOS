@@ -5,11 +5,28 @@
 | **Date** | 2026-11-11 |
 | **Basis** | An audit of the project as it stands today: every check below was run against the real files, not recalled |
 | **Scope** | `eos-app/` (engine, config, tests), the model roster export, the bake-off harness, the requirements document, the design canvas, the package |
-| **Status** | Stages 0 and 1 carried out on 2026-11-12 (section 0). The rest waits on the six decisions in section 4. |
+| **Status** | Stages 0 and 1 carried out on 2026-11-12; B3 closed and the canvas copy brought up to date on 2026-11-25 (section 0). The rest waits on decisions 4, 5 and 6 in section 4 and on your roster pass. |
 
 ---
 
-## 0. Status on 2026-11-12
+## 0. Status on 2026-11-25
+
+| Finding | Status |
+|---|---|
+| **B3** mature books | **Done** (requirements v0.30, D33), by another route than decision 2 proposed. Your rule (2026-11-25): the mature tier is the uncensored models an inference provider or an aggregator serves, Featherless AI or OpenRouter. It is built from the roster, the Notion catalog *Abliterated & Uncensored Models* and the 2026-11-14 register, which supply the genre tags the roster never had. Prose writers are chosen by the book's pen name and subgenre; any other text component with no mature expert hands the passage to the tier. **All 17 model-routed components of the chapter loop now have a mature route.** The tier holds 62 models on 64 routes. Hugging Face GGUFs are fine-tune bases and are never called. |
+| **C2** canvas | **Repository copy brought up to date.** The 12 files that had changed on the live canvas since 22 October are in `canvas-source/eos-design/project/`, each matching the live file's SHA-256. `canvas-source/eos-build/src/` is still the October input: do not run `build.py` until it is brought up to date from the boards. |
+| **B10** look-alike names | One more found and handled: a roster row named for `Qwen3-VL-12B…NEO-MAX-GGUF` carries the ID of `Qwen3-VL-32B-Gemini-Heretic` (register W41). The newer sources name it, and the registry build reports it. **Yours:** correct it in the roster, with the other six. |
+
+Today: 272 tests pass. Readiness: 110 ready, 1 degraded, 6 blocked, 6 code only, unchanged except that only three
+components now have no route for mature material (Cover Art, Audiobook Narration, Music: media needing an open
+model), down from 90.
+
+**Still yours:** the 18 model IDs (B1), second-provider rows (B2), the Jev row (B8), the roster rows (B10), the six
+models the register verified that no Notion source lists yet (UnslopNemo v1, v3, v4, v4.1, C09, W69), and decisions
+4, 5 and 6. **New, yours:** the push gate (D10) will flag the uploaded register and catalog files on a machine where
+your library is present; whether to allow those paths is your call.
+
+## Status on 2026-11-12
 
 The corrections that did not need a decision from you are done, tested and published to
 https://github.com/gracie007-cloud/writing-EOS. 260 tests pass (228 before).
@@ -230,7 +247,7 @@ Stages 1 and 2 run side by side: I correct the code while you correct the roster
 ## 4. What I need from you
 
 1. **Version history.** May I put the project under git and make the first commit, leaving out `.env`, `library/` and any answer key?
-2. **Mature route.** Extend Mature Fallback to the writing components that handle scene content (recommended), or keep mature books blocked until genre fine-tunes exist?
+2. **Mature route.** ~~Extend Mature Fallback to the writing components that handle scene content (recommended), or keep mature books blocked until genre fine-tunes exist?~~ **Answered 2026-11-25 (D33):** the mature tier is the uncensored models on Featherless AI and OpenRouter, fitted by pen name and subgenre.
 3. **Quality tiers.** ~~Retire them (recommended) or keep them?~~ **Answered 2026-11-12: retired** (D32).
 4. **Unchecked writers.** A checker for Character Interview, Proofread, Music, Sound Effects, or leave them unchecked?
 5. **Target Audience.** A Comparable model, or Light tier?
