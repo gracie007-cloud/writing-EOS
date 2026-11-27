@@ -5,9 +5,7 @@ version: '2026-11-27'
 source: 'Notion LLM Identifier (export); Notion LLM Identifier for Creative Writing: Abliterated & Uncensored Models (export);
   Notion LLM Identifier for Creative Writing: Open-Weight & Fine-Tuned Models (export); Notion LLM Identifier for Creative
   Writing: Proprietary & Open/Near Frontier Models (export)'
-problems:
-- 'OpenRouter: ''Fish Audio S2 Pro'' has no provider model ID yet; fill it from the provider''s model list'
-- 'OpenRouter: ''Fish Audio S2 Pro'' had no provider model ID; ''fish-audio/s2-pro'' taken from the proprietary catalog'
+problems: []
 models:
 - key: concentrate-ai-deepseek-v4-flash-0731
   name: DeepSeek V4 Flash 0731

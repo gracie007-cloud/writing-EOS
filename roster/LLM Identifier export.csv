@@ -396,7 +396,7 @@ ACE-Step 1.5 Music Generation AIO,Comfy Cloud,ACE-Step 1.5 Music Generation AIO,
 Stable Audio 2.5: Text to Audio,Comfy Cloud,Stable Audio 2.5: Text to Audio,No,Yes,No,Yes,N/A,,Sound,Yes,No
 Wan 3.0: Text to Video,Comfy Cloud,Wan3.0: Text to Video,No,Yes,No,Yes,N/A,,Video,Yes,No
 MiniMax Music 3: Text to Music,Comfy Cloud,MiniMax Music 3: Text to Music,Yes,No,No,Yes,N/A,,Music,Yes,No
-Fish Audio S2 Pro,OpenRouter,,No,Yes,No,No,None,,Speech,Yes,No
+Fish Audio S2 Pro,OpenRouter,fish-audio/s2-pro,No,Yes,No,No,None,,Speech,Yes,No
 Nemotron 3 Nano Omni,OpenRouter,nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free,No,Yes,No,No,None,,,Yes,No
 Qwen3.8 Omni Flash,OpenRouter,qwen/qwen3.8-omni-flash,No,Yes,No,No,None,,,Yes,No
 mradermacher/Llama-3.1-70B-Instruct-Lorablated-Creative-Writer-GGUF,Hugging Face,mradermacher/Llama-3.1-70B-Instruct-Lorablated-Creative-Writer-GGUF,No,Yes,No,Yes,N/A,,,Yes,No
