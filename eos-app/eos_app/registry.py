@@ -1,22 +1,43 @@
-"""Model registry (requirements FR-ML-1, D22).
+"""Model registry (requirements FR-ML-1, D22, D33).
 
-`config/models.yaml` is the app's copy of the Author's Notion roster *LLM Identifier*: every model with a provider,
-its provider model ID, the roster's checkboxes, its Comparable Equivalent Model and Fallback Model (the experts the
-Author lines up beside it: a Mixture of Experts, not model families), and the genre it is fine-tuned for. It is
-built from an export of the roster in Notion's own CSV layout:
+`config/models.yaml` is the app's copy of the Author's model sources, built by one command:
 
-    python -m eos_app.registry "<path to the LLM Identifier export.csv>"
+    python -m eos_app.registry "<LLM Identifier export.csv>" \\
+        [--mature "<Abliterated & Uncensored Models export.csv>"] [--open "<Open-Weight & Fine-Tuned Models export.csv>"] \\
+        [--proprietary "<Proprietary & Open/Near Frontier Models export.csv>"]
 
-Model IDs live in config/models.yaml only (the export sits outside the app). Rows with no provider belong to other
-uses of the roster and are left out. The build reports roster rows that look mistyped.
+- The **roster** *LLM Identifier* (Notion, CSV export): every model with a provider, its provider model ID, the
+  roster's checkboxes, its Comparable Equivalent Model and Fallback Model (the experts the Author lines up beside it:
+  a Mixture of Experts, not model families). Rows with no provider belong to other uses of the roster and are left
+  out.
+- The **mature catalog** *LLM Identifier for Creative Writing: Abliterated & Uncensored Models* (Notion, CSV export;
+  the repository's copy is `llm-identifier-creative-writing-abliterated/abliterated_models.csv`). Every row is an
+  uncensored model, so each one is marked uncensored on every route the roster gives it, and a model the roster
+  lacks is added on the catalog's provider. Its Genres, Genre Category and Pen Name columns become the model's genre
+  tags (its pen names are not copied: they stay outside the app, D10). A row on Hugging Face that is not served through Inference Providers is a GGUF kept as a **fine-tune base**:
+  it is recorded and never called (the Author, 2026-11-25).
+- The **open-weight catalog** *LLM Identifier for Creative Writing: Open-Weight & Fine-Tuned Models* (Notion, CSV
+  export; the repository's copy is `llm-identifier-creative-writing-open-weight/open_weight_models.csv`): the same
+  folding without the uncensored mark, so its routes, genre tags and IDs reach the prose lane.
+- The **proprietary catalog** *LLM Identifier for Creative Writing: Proprietary & Open/Near Frontier Models* (Notion,
+  CSV export; the repository's copy is `llm-identifier-creative-writing-proprietary/proprietary_models.csv`): folded
+  the same way, without the uncensored mark. A model it adds is frontier when either checkbox is ticked.
+- Each catalog's Comparable Equivalent Model and Fallback Model become the model's own pairing.
+
+The 2026-11-14 register (`registry.json`, `routing.json`, `REGISTER.md`, `VERIFICATION.md`) was found incorrect by the
+Author (2026-11-25) and deleted (2026-11-27). Prose writers are chosen by the catalogs' genre tags, not
+by pen name, until a correct pen-name source exists. Model IDs live in config/models.yaml only. The build reports
+rows that look mistyped and pairings that name no model.
 """
 
 from __future__ import annotations
 
+import argparse
 import csv
+import json
 import re
 import sys
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
 
@@ -24,6 +45,15 @@ import yaml
 
 CONFIG = Path(__file__).resolve().parent.parent / "config"
 MODELS_PATH = CONFIG / "models.yaml"
+REPO = CONFIG.parent.parent
+DRAFTING_ROLES = ("lead", "adjacent")        # roles a pen-name fit may draft in, once a correct source exists
+
+# One model served on two providers: the second route is the same weights, so P8 and outages treat it as one model.
+# From the catalogs' own notes ("same weights as ... on Featherless AI; both routes are used", the Author 2026-11-25).
+SAME_MODELS = (("OpenRouter", "thedrummer/unslopnemo-12b", "Featherless AI", "TheDrummer/UnslopNemo-12B-v4.1"),
+               ("OpenRouter", "cognitivecomputations/dolphin-mistral-24b-venice-edition",
+                "Featherless AI", "dphn/Dolphin-Mistral-24B-Venice-Edition"))
+CATEGORY = re.compile(r"Category ([A-H])\b")
 
 
 class RegistryError(ValueError):
@@ -42,14 +72,19 @@ class Model:
     can_run_locally: bool
     comparable: str = ""
     fallback: str = ""
-    genre: str = ""
     modality: str = ""        # Image, Video, Speech, Music, Sound, Speech-to-text; empty for a text model
+    genres: tuple = ()        # subgenres it is tuned or fitted for (mature catalog Genres; register paths)
+    genre_categories: tuple = ()   # the catalog's Category A to H, as letters
+    fine_tune_base: bool = False   # a GGUF kept to fine-tune later: never called
+    served_context: int | None = None   # tokens the provider serves (register); size every request to this
+    register_id: str = ""     # W01 to W77, C01 to C10
+    same_as: str = ""         # the roster name of the model this row is another route to
 
     @property
     def ident(self) -> str:
-        """Which model this is, whatever provider serves it: its roster name. Two roster rows with one name are one
-        model reached by two routes; P8 compares models by this, never by route."""
-        return " ".join(self.name.casefold().split())
+        """Which model this is, whatever provider serves it: its roster name, or the name of the model it is another
+        route to. P8 compares models by this, never by route."""
+        return " ".join((self.same_as or self.name).casefold().split())
 
 
 @dataclass
@@ -58,6 +93,7 @@ class Registry:
     models: list
     by_key: dict
     problems: list
+    fits: list = field(default_factory=list)      # pen name and genre path → models by role (none yet)
 
     def resolve(self, text: str | None):
         """The model a cell names, or None when it names none. Accepts the Narrative Components and roster
@@ -84,7 +120,30 @@ class Registry:
         return [model] + [m for m in self.models if m.ident == model.ident and m.key != model.key]
 
     def for_genre(self, genre: str) -> list:
-        return [m for m in self.models if m.genre and _norm(m.genre) == _norm(genre)]
+        """Models tagged for this subgenre, in roster order."""
+        g = _norm(genre)
+        return [m for m in self.models if any(_norm(t) == g for t in m.genres)]
+
+    def named(self, ref: str) -> list:
+        """The rows for a model named in the routing table (its roster name or provider model ID)."""
+        r = ref.casefold()
+        return [m for m in self.models if r in (m.name.casefold(), m.model_id.casefold())]
+
+    def fit_writers(self, pen_name: str, genre: str, roles=DRAFTING_ROLES) -> list:
+        """The models the register puts on this pen name's rows for this subgenre (minor, or major where the row has
+        no minor), lead writers first, each in the register's order. Every row the subgenre sits on counts."""
+        p, g = _norm(pen_name), _norm(genre)
+        rows = [f for f in self.fits if _norm(f["pen_name"]) == p
+                and g == _norm(f["path"][3] or f["path"][2] or "")]
+        out, seen = [], set()
+        for role in roles:
+            for f in rows:
+                for ref in f.get(role, []):
+                    for m in self.named(ref["model"]):
+                        if m.key not in seen:
+                            seen.add(m.key)
+                            out.append(m)
+        return out
 
 
 def _norm(s: str) -> str:
@@ -115,12 +174,29 @@ def _cell(r, column) -> str:
     return "" if v in ("None", "N/A") else v
 
 
-def build(export_csv) -> dict:
-    """models.yaml content from a roster export. Duplicate rows and rows whose name and ID disagree are reported,
-    not guessed at: the first row for an ID is kept."""
-    with open(export_csv, encoding="utf-8-sig", newline="") as f:
-        rows = list(csv.DictReader(f))
-    models, seen, problems = [], {}, []
+def _split(cell: str) -> list:
+    return [x.strip() for x in str(cell or "").split(",") if x.strip()]
+
+
+def _key(provider: str, ref: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", f"{provider} {ref}".lower()).strip("-")
+
+
+def _merge(old: list, new) -> list:
+    out = list(old)
+    for x in new:
+        if x and x not in out:
+            out.append(x)
+    return out
+
+
+def _read_csv(path) -> list:
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        return list(csv.DictReader(f))
+
+
+def _roster(rows: list, problems: list) -> list:
+    models, seen = [], {}
     for r in rows:
         provider = (r.get("Provider") or "").strip()
         if not provider:
@@ -136,36 +212,204 @@ def build(export_csv) -> dict:
             continue
         seen[key] = name
         models.append({
-            "key": re.sub(r"[^a-z0-9]+", "-", f"{provider} {mid or name}".lower()).strip("-"),
-            "name": name, "provider": provider, "model_id": mid,
+            "key": _key(provider, mid or name), "name": name, "provider": provider, "model_id": mid,
             "frontier": _yes(r.get("Frontier Model")), "open_weights": _yes(r.get("Open-Weights Model")),
             "uncensored": _yes(r.get("Uncensored Model")), "can_run_locally": _yes(r.get("Can Run Locally")),
             "comparable": _cell(r, "Comparable Equivalent Model"), "fallback": _cell(r, "Fallback Model"),
-            "genre": _cell(r, "Genre"), "modality": _cell(r, "Modality"),
+            "modality": _cell(r, "Modality"), "genres": [], "genre_categories": [],
+            "fine_tune_base": False, "served_context": None, "register_id": "", "same_as": "",
         })
-    return {"version": date.today().isoformat(), "source": "Notion LLM Identifier (export)", "problems": problems,
+    return models
+
+
+def _mistyped(m: dict) -> bool:
+    """A roster row whose name is a repository other than its ID: the ID was copied from another row."""
+    return "/" in m["name"] and m["name"] != m["model_id"]
+
+
+def _rows_for(models: list, *refs) -> list:
+    """The rows for a model, by name, or by ID where the row's name does not contradict its ID."""
+    want = {r.casefold() for r in refs if r}
+    return [m for m in models if m["name"].casefold() in want
+            or (m["model_id"].casefold() in want and not _mistyped(m))]
+
+
+def _claim(models: list, provider: str, name: str, mid: str, problems: list, source: str):
+    """A mistyped roster row that holds this model's ID on this provider: the newer source names it, so the row
+    takes that name (and is reported) instead of a second row being added."""
+    for m in models:
+        if m["provider"] == provider and m["model_id"].casefold() == (mid or name).casefold() and _mistyped(m):
+            problems.append(f"{provider}: the row named {m['name']!r} holds the ID {m['model_id']!r}; renamed "
+                            f"{name!r} from the {source} (correct the roster)")
+            m["name"] = name
+            return m
+    return None
+
+
+TEXT_MODALITIES = {"", "Text", "Text-to-Text", "Image-Text-to-Text", "Image-Video-Text-to-Text",
+                   "Image-Video-Audio-Text-to-Text", "Omni (Text-Image-Audio)", "Omni (Text-Image-Video-Audio)"}
+MEDIA_MODALITIES = {"Text-to-Image": "Image", "Text-to-Speech (Audio)": "Speech", "Image": "Image", "Video": "Video",
+                    "Speech": "Speech", "Music": "Music", "Sound": "Sound", "Speech-to-Text": "Speech-to-text"}
+
+
+def _check_pairings(models: list, problems: list) -> None:
+    """Report each Comparable or Fallback that names no model in the registry, so the Author can correct it; the
+    router leaves such a pairing out rather than guessing."""
+    reg = Registry("", [], {}, [])
+    reg.models = [Model(**{k: tuple(v) if isinstance(v, list) else v for k, v in m.items()}) for m in models]
+    seen = {}
+    for m in models:
+        for col in ("comparable", "fallback"):
+            v = m[col]
+            if not v or (col, v) in seen:
+                continue
+            try:
+                reg.resolve(v)
+                seen[(col, v)] = None
+            except RegistryError as e:
+                seen[(col, v)] = str(e)
+    for (col, v), err in seen.items():
+        if err:
+            users = sorted({m["name"] for m in models if m[col] == v})
+            problems.append(f"{col}: {v!r} names no model in the registry; used by {', '.join(users)}")
+
+
+def _named(cell) -> str:
+    """A Comparable or Fallback cell's model name, or '' when it names none ('N/A', 'None')."""
+    v = " ".join((cell or "").split())
+    return "" if v.casefold() in ("", "n/a", "none") else v
+
+
+def _catalog(models: list, rows: list, problems: list, *, uncensored: bool, source: str,
+             media_source: bool = False) -> None:
+    """Fold a Notion catalog in. Its genre tags and categories join the model's; a route it names that the roster
+    lacks is added; an ID the roster left empty is filled. The mature catalog also marks every model uncensored.
+    A Hugging Face row not served through Inference Providers is a fine-tune base (never called). A media row that
+    matches no roster row is reported, not added: media models are named per workflow and need the Author's ID. The
+    proprietary catalog is the exception (`media_source`): the Author keeps every media model there (2026-11-25), so its
+    media rows are added with their modality."""
+    for r in rows:
+        name, mid, provider = r["Model Name"].strip(), _cell(r, "Provider Model ID"), _cell(r, "Provider")
+        if not provider:
+            problems.append(f"{source}: {name!r} has no provider")
+            continue
+        modality = _cell(r, "Modality")
+        media = MEDIA_MODALITIES.get(modality, "") if modality not in TEXT_MODALITIES else ""
+        base = provider == "Hugging Face" and not _yes(r.get("Via Inference Providers"))
+        mine = _rows_for(models, name, mid)
+        if not any(m["provider"] == provider for m in mine) and (claimed := _claim(models, provider, name, mid,
+                                                                                  problems, source)):
+            mine.append(claimed)
+        if not any(m["provider"] == provider for m in mine):
+            if media and not media_source:
+                problems.append(f"{source}: the {media.lower()} model {name!r} on {provider} matches no roster "
+                                f"row; not added (confirm its name and ID in the roster)")
+                continue
+            new = {"key": _key(provider, mid or name), "name": name, "provider": provider, "model_id": mid,
+                   "frontier": _yes(r.get("Open/Near Frontier Model")) or _yes(r.get("Proprietary Model")),
+                   "open_weights": _yes(r.get("Open-Weights Model")), "uncensored": uncensored,
+                   "can_run_locally": _yes(r.get("Can Run Locally")),
+                   "comparable": _cell(r, "Comparable Equivalent Model"), "fallback": _cell(r, "Fallback Model"),
+                   "modality": media, "genres": [], "genre_categories": [], "fine_tune_base": False,
+                   "served_context": None, "register_id": "", "same_as": ""}
+            models.append(new)
+            mine.append(new)
+        comparable, fallback = _named(r.get("Comparable Equivalent Model")), _named(r.get("Fallback Model"))
+        for m in mine:
+            if uncensored:
+                m["uncensored"] = True
+            if comparable:                       # the catalogs carry the Author's latest pairing (2026-11-25)
+                m["comparable"] = comparable
+            if fallback:
+                m["fallback"] = fallback
+            m["genres"] = _merge(m["genres"], _split(r.get("Genres")))
+            m["genre_categories"] = _merge(m["genre_categories"], CATEGORY.findall(r.get("Genre Category") or ""))
+            if m["provider"] == provider:
+                m["fine_tune_base"] = m["fine_tune_base"] or base
+                if not m["model_id"] and mid:
+                    m["model_id"] = mid
+                    problems.append(f"{provider}: {m['name']!r} had no provider model ID; {mid!r} taken from the "
+                                    f"{source}")
+
+
+def _same_models(models: list, problems: list) -> None:
+    """Mark a second route to the same weights (SAME_MODELS): one name, and uncensored on every route if on one."""
+    for prov, mid, home_prov, home_mid in SAME_MODELS:
+        route = [m for m in models if m["provider"] == prov and m["model_id"].casefold() == mid.casefold()]
+        home = [m for m in models if m["provider"] == home_prov and m["model_id"].casefold() == home_mid.casefold()]
+        if not (route and home):
+            problems.append(f"same model: {mid!r} on {prov} or {home_mid!r} on {home_prov} is not in the registry")
+            continue
+        uncensored = any(m["uncensored"] for m in route + home)
+        for m in route:
+            m["same_as"] = home[0]["name"]
+        for m in route + home:
+            m["uncensored"] = uncensored
+
+
+def build(export_csv, mature_csv=None, open_csv=None, proprietary_csv=None) -> dict:
+    """models.yaml content. Duplicate rows and rows whose name and ID disagree are reported, not guessed at: the
+    first row for an ID is kept."""
+    problems = []
+    models = _roster(_read_csv(export_csv), problems)
+    sources = ["Notion LLM Identifier (export)"]
+    if mature_csv:
+        _catalog(models, _read_csv(mature_csv), problems, uncensored=True, source="mature catalog")
+        sources.append("Notion LLM Identifier for Creative Writing: Abliterated & Uncensored Models (export)")
+    if open_csv:
+        _catalog(models, _read_csv(open_csv), problems, uncensored=False, source="open-weight catalog")
+        sources.append("Notion LLM Identifier for Creative Writing: Open-Weight & Fine-Tuned Models (export)")
+    if proprietary_csv:
+        _catalog(models, _read_csv(proprietary_csv), problems, uncensored=False, source="proprietary catalog",
+                 media_source=True)
+        sources.append("Notion LLM Identifier for Creative Writing: Proprietary & Open/Near Frontier Models (export)")
+    _same_models(models, problems)
+    if len({m["key"] for m in models}) != len(models):
+        raise RegistryError("two models share a key")
+    _check_pairings(models, problems)
+    return {"version": date.today().isoformat(), "source": "; ".join(sources), "problems": problems,
             "models": models}
 
 
-def write(export_csv, out=MODELS_PATH) -> dict:
-    doc = build(export_csv)
-    head = ("# Writing EOS model registry: the app's copy of the Notion roster LLM Identifier (FR-ML-1).\n"
-            "# Built by `python -m eos_app.registry <export.csv>`; do not edit by hand.\n")
-    Path(out).write_text(head + yaml.safe_dump(doc, sort_keys=False, allow_unicode=True, width=120), encoding="utf-8")
+def dump(doc: dict, head: str) -> str:
+    return head + yaml.safe_dump(doc, sort_keys=False, allow_unicode=True, width=120)
+
+
+MODELS_HEAD = ("# Writing EOS model registry (FR-ML-1, D33): the app's copy of the Notion roster LLM Identifier, joined\n"
+               "# with the mature, open-weight and proprietary catalogs (the 2026-11-14 register is superseded).\n"
+               "# Built by `python -m eos_app.registry`; do not edit by hand.\n")
+
+
+def write(export_csv, mature_csv=None, open_csv=None, proprietary_csv=None, out=MODELS_PATH) -> dict:
+    doc = build(export_csv, mature_csv, open_csv, proprietary_csv)
+    Path(out).write_text(dump(doc, MODELS_HEAD), encoding="utf-8")
     return doc
 
 
-def load_models(path=MODELS_PATH) -> Registry:
+def load_models(path=MODELS_PATH, fits=()) -> Registry:
+    """The registry. fits (pen name and genre path → models by role) is empty: its only source, the 2026-11-14
+    register, is superseded (the Author, 2026-11-25), so prose writers are chosen by the catalogs' genre tags."""
     raw = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
-    models = [Model(**m) for m in raw["models"]]
+    models = [Model(**{k: tuple(v) if isinstance(v, list) else v for k, v in m.items()}) for m in raw["models"]]
     by_key = {m.key: m for m in models}
     if len(by_key) != len(models):
         raise RegistryError("two models share a key")
-    return Registry(raw["version"], models, by_key, raw.get("problems", []))
+    return Registry(raw["version"], models, by_key, raw.get("problems", []), list(fits))
+
+
+def main(argv) -> int:
+    p = argparse.ArgumentParser(prog="python -m eos_app.registry", description=__doc__.split("\n\n")[0])
+    p.add_argument("roster", help="Notion export of the LLM Identifier roster (CSV)")
+    p.add_argument("--mature", help="Notion export of the Abliterated & Uncensored Models catalog (CSV)")
+    p.add_argument("--open", help="Notion export of the Open-Weight & Fine-Tuned Models catalog (CSV)")
+    p.add_argument("--proprietary", help="Notion export of the Proprietary & Open/Near Frontier Models catalog (CSV)")
+    a = p.parse_args(argv)
+    d = write(a.roster, a.mature, a.open, a.proprietary)
+    print(f"models: {len(d['models'])}")
+    for line in d["problems"]:
+        print("-", line)
+    return 0
 
 
 if __name__ == "__main__":
-    d = write(sys.argv[1])
-    print(f"models: {len(d['models'])}")
-    for p in d["problems"]:
-        print("-", p)
+    sys.exit(main(sys.argv[1:]))

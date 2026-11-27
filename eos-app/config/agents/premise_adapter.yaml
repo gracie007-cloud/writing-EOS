@@ -1,0 +1,13 @@
+# Premise Adapter (step 3.5). Its gate: the Author approves the adapted premise. P2: the braindump adapts to the pen name.
+step: "3.5"
+id: premise_adapter
+prompt: prompts/premise_adapter.md
+inputs:
+  - {from: decision.pen_name, label: Pen name the Author picked, required: true}
+  - {from: library.pen_names, label: The pen name's profile, required: true}
+  - {from: step.NEW-13, label: Reader Contract, required: true}
+  - {from: step.3, label: Pen Name and Style}
+output: [adapted_premise, what_changed, kept_from_braindump, voice_notes]
+temperature: 0.7
+max_tokens: 1500
+context_budget_tokens: 10000

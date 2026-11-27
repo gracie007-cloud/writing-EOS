@@ -6,7 +6,7 @@ from dataclasses import replace
 import pytest
 
 from eos_app.registry import Registry, RegistryError, candidate_name, least_gap, load_models
-from eos_app.router import (RoutingError, choose_checker, choose_writer, experts, load_routing, route,
+from eos_app.router import (checker_models, RoutingError, choose_checker, choose_writer, experts, load_routing, route,
                             same_model_report, writer_models)
 from eos_app.workflow import load_components
 
@@ -31,16 +31,19 @@ def model(R, name):
 
 
 def test_the_registry_holds_every_roster_model_with_a_provider(R):
-    assert Counter(m.provider for m in R.models) == {"Hugging Face": 153, "Featherless AI": 47, "Concentrate AI": 42,
-                                                      "OpenRouter": 25, "Unsloth Desktop": 7, "ElevenLabs": 3,
-                                                      "Comfy Cloud": 11}
-    assert {m.modality for m in R.models} == {"", "Image", "Video", "Speech", "Music", "Sound", "Speech-to-text"}
+    # the roster, with the models the three Notion catalogs and the register add (D33)
+    # the live roster of 2026-11-25 (418 rows); ElevenLabs is not in it, but the proprietary catalog adds SFX v3
+    assert Counter(m.provider for m in R.models) == {"Hugging Face": 252, "Featherless AI": 85, "Concentrate AI": 51,
+                                                      "OpenRouter": 23, "Unsloth Desktop": 8, "Comfy Cloud": 15,
+                                                      "ElevenLabs": 1}        # SFX v3, from the proprietary catalog (2026-11-27)
+    assert {m.modality for m in R.models} == {"", "Image", "Video", "Speech", "Music", "Sound"}
     assert len({m.key for m in R.models}) == len(R.models)
 
 
 def test_mistyped_roster_rows_are_reported_not_guessed(R):
-    assert sum("listed twice" in p for p in R.problems) == 5
-    assert sum("disagree" in p for p in R.problems) == 5
+    # corrected in Notion (2026-11-25): three rows that held another model's ID, and a duplicate row removed
+    assert sum("listed twice" in p for p in R.problems) == 0
+    assert sum("disagree" in p for p in R.problems) == 0
 
 
 @pytest.mark.parametrize("cell, name", [
@@ -54,7 +57,7 @@ def test_model_cells_are_read_without_their_notes(cell, name):
 
 
 def test_spellings_from_both_databases_resolve_to_one_model(R):
-    assert R.resolve("MiMo-V2.6-Pro (least-gap — not parity)") is R.resolve("MiMo-2.6-Pro") is model(R, "MiMo-2.6 Pro")
+    assert R.resolve("MiMo-V2.6-Pro (least-gap — not parity)") is R.resolve("MiMo-2.6-Pro") is model(R, "MiMo-V2.6 Pro")
     assert R.resolve("GLM-5.3-Flash") is model(R, "GLM 5.3 Flash")
     assert R.resolve("Kimi  K3") is model(R, "Kimi K3")
     assert least_gap("None genuinely comparable — least-gap: MiMo-V2.6-Pro (not parity)")
@@ -68,7 +71,8 @@ def test_every_model_component_has_a_line_of_experts(W, R):
 
 def test_experts_run_primary_then_comparable(W, R):
     assert [(s, m.name) for s, m in experts(W.by_step["NEW-14"], R)] == [("primary", "Claude Fable 5.1"), ("comparable", "Kimi K3")]
-    assert [(s, m.name) for s, m in experts(W.by_step["NEW-13"], R)] == [("primary", "GLM 5.3 Flash")]   # open-weight primary
+    assert [(s, m.name) for s, m in experts(W.by_step["NEW-13"], R)] == [("primary", "GLM 5.3 Flash"),
+                                                                          ("fallback", "MiMo V2.6 Flash")]   # catalog pairing
 
 
 def test_each_provider_has_its_route(R, RT):
@@ -79,10 +83,10 @@ def test_each_provider_has_its_route(R, RT):
 
 
 def test_a_checker_steps_past_the_model_that_wrote_the_text(W, R, RT):
-    canon = W.by_step["19.3"]                     # Canon Check: MiMo-2.6 Pro, GPT-6.1 Sol, DeepSeek V4 Pro 0813
-    assert [m.name for _, m in experts(canon, R)] == ["MiMo-2.6 Pro", "GPT-6.1 Sol", "DeepSeek V4 Pro 0813"]
-    assert choose_checker(canon, model(R, "MiMo-2.6 Pro"), R, RT).name == "GPT-6.1 Sol"
-    assert choose_checker(canon, model(R, "Gemini 4 Argon"), R, RT).name == "MiMo-2.6 Pro"
+    canon = W.by_step["19.3"]                     # Canon Check: MiMo-V2.6 Pro, GPT-6.1 Sol, DeepSeek V4 Pro 0813
+    assert [m.name for _, m in experts(canon, R)] == ["MiMo-V2.6 Pro", "GPT-6.1 Sol", "DeepSeek V4 Pro 0813"]
+    assert choose_checker(canon, model(R, "MiMo-V2.6 Pro"), R, RT).name == "GPT-6.1 Sol"
+    assert choose_checker(canon, model(R, "Gemini 4 Argon"), R, RT).name == "MiMo-V2.6 Pro"
 
 
 def test_mature_text_both_experts_refused_goes_to_venice(W, R, RT):
@@ -92,19 +96,21 @@ def test_mature_text_both_experts_refused_goes_to_venice(W, R, RT):
     assert choose_checker(cont, writer, R, RT, mature=True, refused=refused).name == "Venice Uncensored"
     with pytest.raises(RoutingError):                                # Venice is only for mature text
         choose_checker(cont, writer, R, RT, mature=False, refused=refused)
-    with pytest.raises(RoutingError):
-        choose_checker(cont, writer, R, RT, mature=True, refused=refused, down={model(R, "Venice Uncensored").key})
+    # with Venice down, the writer's own Comparable (an uncensored model on Featherless) judges it
+    other = choose_checker(cont, writer, R, RT, mature=True, refused=refused, down={model(R, "Venice Uncensored").key})
+    assert other.name == writer.comparable and other.ident != writer.ident
 
 
 def test_prose_writers_use_genre_fine_tunes_and_mature_text_needs_one(W, R, RT):
     draft = W.by_step["32"]
     assert draft.writes_prose and not W.by_step["33"].writes_prose
-    assert choose_writer(draft, R, RT, genre="Space Opera").name == "Claude Fable 5.1"      # nothing tagged yet: stand-in
-    with pytest.raises(RoutingError):
-        writer_models(draft, R, RT, genre="Space Opera", mature=True)
-    tuned = replace(model(R, "DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic"), genre="Space Opera")
+    assert choose_writer(draft, R, RT, genre="Epistolary Cookery").name == "Claude Fable 5.1"   # nothing fitted: stand-in
+    with pytest.raises(RoutingError, match="no mature-tier model is fitted to Epistolary Cookery"):
+        writer_models(draft, R, RT, genre="Epistolary Cookery", mature=True)
+    tuned = replace(model(R, "DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic"),
+                    genres=("Epistolary Cookery",))
     reg = Registry(R.version, [tuned] + R.models, {**R.by_key, tuned.key: tuned}, [])
-    pick = choose_writer(draft, reg, RT, genre="Space Opera", mature=True)
+    pick = choose_writer(draft, reg, RT, genre="Epistolary Cookery", mature=True)
     assert pick is tuned and route(pick, RT) == "featherless"
 
 
@@ -130,34 +136,50 @@ def test_editing_tools_run_on_their_own_experts_not_the_genre_fine_tunes(W, R, R
 
 def test_media_components_use_media_models_through_their_providers(W, R, RT):
     cover, narration = W.by_step["NEW-22"], W.by_step["NEW-24"]
-    assert cover.makes_media and [m.name for m in writer_models(cover, R, RT)] == ["GPT Image 2", "Ideogram", "Qwen-Image"]
+    assert cover.makes_media and [m.name for m in writer_models(cover, R, RT)] == [
+        "GPT Image 2", "Ideogram v4: Text to Image", "Qwen-Image: Text to Image"]
     assert [route(m, RT) for m in writer_models(cover, R, RT)] == ["openrouter", "comfy_cloud", "comfy_cloud"]
-    assert [route(m, RT) for m in writer_models(narration, R, RT)] == ["elevenlabs", "openrouter", "featherless"]
+    # narration: Fish Audio S2 Pro, Gemini 3.1 Flash TTS Preview, Chatterbox (ElevenLabs left the roster)
+    assert [route(m, RT) for m in writer_models(narration, R, RT)] == ["openrouter", "openrouter", "featherless"]
 
 
 def test_mature_media_runs_only_on_open_models_on_comfy_cloud(W, R, RT):
-    assert [m.name for m in writer_models(W.by_step["NEW-26"], R, RT, mature=True)] == ["Wan 2.2", "LTX-2"]
-    assert [m.name for m in writer_models(W.by_step["NEW-22"], R, RT, mature=True)] == ["Qwen-Image"]
+    assert [m.name for m in writer_models(W.by_step["NEW-26"], R, RT, mature=True)] == [
+        "Wan 3.0: Text to Video", "LTX-2.5: Text to Video"]
+    assert [m.name for m in writer_models(W.by_step["NEW-22"], R, RT, mature=True)] == ["Qwen-Image: Text to Image"]
     assert [m.name for m in writer_models(W.by_step["NEW-24"], R, RT, mature=True)] == ["Chatterbox"]
-    assert [m.name for m in writer_models(W.by_step["NEW-18"], R, RT, mature=True)] == ["FLUX.2", "Qwen-Image", "Z-Image Turbo"]
+    assert [m.name for m in writer_models(W.by_step["NEW-18"], R, RT, mature=True)] == [
+        "Qwen-Image: Text to Image", "Z-Image-Turbo Text to Image"]           # FLUX.2 Pro is not open-weight
 
 
-def test_sound_effects_has_three_experts_and_mature_work_stays_on_the_open_one(W, R, RT):
+def test_sound_effects_leads_with_stable_audio_and_mature_work_stays_on_the_open_one(W, R, RT):
     sfx = W.by_step["NEW-28"]
-    assert [m.name for m in writer_models(sfx, R, RT)] == ["ElevenLabs Sound Effects", "Stable Audio Open", "Stability Text To Audio"]
-    assert [m.name for m in writer_models(sfx, R, RT, mature=True)] == ["Stable Audio Open"]
+    assert [m.name for m in writer_models(sfx, R, RT)] == ["Stable Audio 2.5: Text to Audio",
+                                                          "Stability Audio 2.5: Audio Inpainting",
+                                                          "ElevenLabs SFX v3"]   # the Fallback off Comfy Cloud
+    assert [m.name for m in writer_models(sfx, R, RT, mature=True)] == ["Stable Audio 2.5: Text to Audio"]
 
 
 def test_music_leads_with_lyria_and_keeps_an_open_model_for_mature_work(W, R, RT):
     music = W.by_step["NEW-27"]
-    assert [m.name for m in writer_models(music, R, RT)] == ["Lyria 3 Pro", "MiniMax Music 3", "ACE-Step"]
+    assert [m.name for m in writer_models(music, R, RT)] == ["Lyria 3 Pro Preview", "MiniMax Music 3: Text to Music",
+                                                            "ACE-Step 1.5 Music Generation AIO"]
     assert [route(m, RT) for m in writer_models(music, R, RT)] == ["openrouter", "comfy_cloud", "comfy_cloud"]
-    assert [m.name for m in writer_models(music, R, RT, mature=True)] == ["ACE-Step"]
+    assert [m.name for m in writer_models(music, R, RT, mature=True)] == ["ACE-Step 1.5 Music Generation AIO"]
 
 
-def test_media_checkers_run_on_omni_models(W, R):
+def test_media_checkers_run_on_omni_models(W, R, RT):
     for step in ("NEW-20", "NEW-25"):
-        assert [m.name for _, m in experts(W.by_step[step], R)] == ["Qwen3.8 Omni Flash", "MiMo-V2-Omni", "Nemotron 3 Nano Omni"]
+        assert [m.name for _, m in experts(W.by_step[step], R)] == ["Qwen3.8 Omni Flash", "MiMo V2.6 Flash", "Nemotron 3 Nano Omni"]
+        assert [m.provider for m in checker_models(W.by_step[step], R, RT)][:2] == ["Concentrate AI", "OpenRouter"]
+
+
+def test_media_is_called_on_comfy_cloud_first(W, R, RT):
+    # the Author, 2026-11-25: a media model's Comfy Cloud version first, then Concentrate AI, then OpenRouter
+    assert [m.provider for m in writer_models(W.by_step["NEW-18"], R, RT)] == ["Comfy Cloud"] * 3
+    assert writer_models(W.by_step["NEW-18"], R, RT)[0].name == "FLUX.2 Pro"
+    reg, twin = also_on(R, "GPT Image 2", "Comfy Cloud", "GPT Image 2")       # were it listed on Comfy Cloud too
+    assert writer_models(W.by_step["NEW-22"], reg, RT)[0] is twin
 
 
 def test_an_open_mature_fallback_stops_mature_judging_with_a_reason(W, R, RT):
@@ -178,12 +200,14 @@ def also_on(R, name, provider, model_id):
 
 
 def test_a_model_with_no_provider_id_is_never_chosen(W, R, RT):
-    cover = W.by_step["NEW-22"]                             # GPT Image 2 has an ID; Ideogram and Qwen-Image do not yet
+    cover = W.by_step["NEW-22"]
     assert choose_writer(cover, R, RT).name == "GPT Image 2"
-    with pytest.raises(RoutingError, match="Ideogram has no provider model ID yet"):
-        choose_writer(cover, R, RT, down={model(R, "GPT Image 2").key})
-    with pytest.raises(RoutingError, match="FLUX.2 has no provider model ID yet"):
-        choose_writer(W.by_step["NEW-18"], R, RT)
+    assert choose_writer(cover, R, RT, down={model(R, "GPT Image 2").key}).name == "Ideogram v4: Text to Image"
+    no_id = [replace(m, model_id="") if m.name in ("Ideogram v4: Text to Image", "Qwen-Image: Text to Image") else m
+             for m in R.models]
+    reg = Registry(R.version, no_id, {m.key: m for m in no_id}, [])
+    with pytest.raises(RoutingError, match="Ideogram v4: Text to Image has no provider model ID yet"):
+        choose_writer(cover, reg, RT, down={model(R, "GPT Image 2").key})
 
 
 def test_an_outage_is_met_by_the_same_model_on_another_provider_first(W, R, RT):
@@ -198,20 +222,23 @@ def test_an_outage_is_met_by_the_same_model_on_another_provider_first(W, R, RT):
 
 
 def test_a_checker_never_judges_its_own_model_on_another_route(W, R, RT):
-    canon = W.by_step["19.3"]                               # MiMo-2.6 Pro, GPT-6.1 Sol, DeepSeek V4 Pro 0813
-    reg, twin = also_on(R, "MiMo-2.6 Pro", "OpenRouter", "xiaomi/mimo-2.6-pro")
-    assert twin.ident == model(R, "MiMo-2.6 Pro").ident and twin.key != model(R, "MiMo-2.6 Pro").key
+    canon = W.by_step["19.3"]                               # MiMo-V2.6 Pro, GPT-6.1 Sol, DeepSeek V4 Pro 0813
+    reg, twin = also_on(R, "MiMo-V2.6 Pro", "OpenRouter", "xiaomi/mimo-2.6-pro")
+    assert twin.ident == model(R, "MiMo-V2.6 Pro").ident and twin.key != model(R, "MiMo-V2.6 Pro").key
     assert choose_checker(canon, twin, reg, RT).name == "GPT-6.1 Sol"                         # the writer's model, skipped
     assert choose_checker(canon, model(R, "GPT-6.1 Sol"), reg, RT, down_providers={"Concentrate AI"}) is twin
 
 
 def test_a_tagged_fine_tune_leads_and_the_components_experts_stay_as_the_safety_net(W, R, RT):
     draft = W.by_step["32"]
-    tuned = replace(model(R, "DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic"), genre="Space Opera")
-    reg = Registry(R.version, [tuned] + R.models, {**R.by_key, tuned.key: tuned}, [])
-    assert [m.name for m in writer_models(draft, reg, RT, genre="Space Opera")] == [tuned.name, "Claude Fable 5.1", "Kimi K3"]
-    assert choose_writer(draft, reg, RT, genre="Space Opera", down={tuned.key}).name == "Claude Fable 5.1"
-    assert writer_models(draft, reg, RT, genre="Space Opera", mature=True) == [tuned]         # never the stand-ins
+    tuned = replace(model(R, "DavidAU/Qwen3.6-27B-F451-AND-TRI-Polar-Ultra-Pro-Writer-Uncensored-Heretic"),
+                    genres=("Epistolary Cookery",))
+    others = [m for m in R.models if m.ident != tuned.ident]                 # the same model on no other route
+    reg = Registry(R.version, [tuned] + others, {m.key: m for m in [tuned] + others}, [])
+    assert [m.name for m in writer_models(draft, reg, RT, genre="Epistolary Cookery")] == [tuned.name, "Claude Fable 5.1",
+                                                                                              "Kimi K3"]
+    assert choose_writer(draft, reg, RT, genre="Epistolary Cookery", down={tuned.key}).name == "Claude Fable 5.1"
+    assert writer_models(draft, reg, RT, genre="Epistolary Cookery", mature=True) == [tuned]   # never the stand-ins
 
 
 def test_a_model_on_a_provider_outside_the_lane_is_not_called(W, R, RT):

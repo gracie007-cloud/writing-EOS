@@ -1,0 +1,12 @@
+# Story Setup (step 2). Its gate: the Author confirms the manuscript type (and the genre path it proposes).
+step: "2"
+id: story_setup
+prompt: prompts/story_setup.md
+inputs:
+  - {from: step.1, label: Idea Intake, required: true}
+  - {from: author.manuscript_type, label: Manuscript type the Author has in mind}
+  - {from: library.content_levels, label: Content levels for the book's genre path}
+output: [manuscript_type, manuscript_type_reason, genre_path, length_target_words, content_levels_suggested, questions_for_author]
+temperature: 0.2
+max_tokens: 1200
+context_budget_tokens: 8000

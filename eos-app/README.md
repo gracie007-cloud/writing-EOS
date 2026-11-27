@@ -100,25 +100,60 @@ The database does not record what a component takes in, its code parts, what a c
 
 ## Models and routing
 
-`config/models.yaml` is the app's copy of your roster *LLM Identifier*: every model with a provider, its ID, its boxes
-(Frontier, Open-Weights, Uncensored, Can Run Locally), its Comparable and Fallback models and the Genre it is
-fine-tuned for. Export the roster from Notion as CSV and rebuild it:
+`config/models.yaml` is the app's copy of five sources, joined (decision D33):
+- your roster *LLM Identifier*: every model with a provider, its ID, its boxes (Frontier, Open-Weights, Uncensored,
+  Can Run Locally) and its Comparable and Fallback models;
+- the **mature catalog** *LLM Identifier for Creative Writing: Abliterated & Uncensored Models*
+  (`..\llm-identifier-creative-writing-abliterated\abliterated_models.csv`): every model in it is marked uncensored,
+  a model the roster lacks is added, and its Genres and Genre Category become the model's genre tags. A Hugging Face
+  row not served through Inference Providers is a GGUF kept to fine-tune later: recorded as `fine_tune_base` and
+  never called;
+- the **open-weight catalog** *Open-Weight & Fine-Tuned Models*
+  (`..\llm-identifier-creative-writing-open-weight\open_weight_models.csv`): folded in the same way without the
+  uncensored mark: its routes, genre tags and missing IDs reach the prose lane; its Hugging Face GGUFs are fine-tune
+  bases; a media row that matches no roster row is reported, not added;
+- the **proprietary catalog** *Proprietary & Open/Near Frontier Models*
+  (`..\llm-identifier-creative-writing-proprietary\proprietary_models.csv`): folded in the same way, without the
+  uncensored mark. It adds the Concentrate AI routes the roster lacks (e.g. Claude Fable 5 and 5.2, Gemini 4 Carbon,
+  Hydrogen and Neon, Kimi K3.1 Pro); a model it adds is frontier when either of its checkboxes is ticked;
+- each model's **Comparable and Fallback** come from the catalogs where they name one (the Author's latest pairing):
+  a component with no Fallback of its own takes its Primary's, and a checker whose experts refuse mature text
+  turns to the writer's own Comparable, then Fallback, when they may take it (never the writer's model, P8). A
+  pairing that names no model in the registry is reported by the build and left out;
+- two **same-model pairs** the catalogs' notes record (UnslopNemo 12B and Venice / Dolphin, each on OpenRouter and
+  Featherless AI): one model on two routes, so P8 and outages treat it as one.
 
-    python -m eos_app.registry "..\roster\LLM Identifier export.csv"
+The 14 November register (`registry.json`, `routing.json`, `REGISTER.md`, `VERIFICATION.md`) was found incorrect by
+the Author (2026-11-25) and deleted (2026-11-27). Base models for fine-tuning live only in the Notion database *Base
+Models for Fine-Tuning* and are never called.
 
-The build lists roster rows that look mistyped (an ID copied from the row above, a model listed twice).
+Export the roster and the catalogs from Notion as CSV and rebuild:
+
+    python -m eos_app.registry "..\roster\LLM Identifier export.csv" --mature "..\llm-identifier-creative-writing-abliterated\abliterated_models.csv" --open "..\llm-identifier-creative-writing-open-weight\open_weight_models.csv" --proprietary "..\llm-identifier-creative-writing-proprietary\proprietary_models.csv"
+
+The build lists rows that look mistyped (an ID copied from another row, a model listed twice) and pairings that
+name no model. Where a newer source names a mistyped roster row, the row takes that name and the build says so;
+correct the roster to match.
 
 `eos_app/router.py` picks the model for each call (`config/routing.yaml`):
 - **Experts:** each component's Primary, then its Comparable, then its Fallback (the database's Fallback Model, or the Primary's roster Fallback when that is empty). A cheaper comparable model goes first.
 - **Routes:** a model listed in the roster under two providers has two routes. When a provider is down, the router tries the same model's other route before it moves to the next expert. To give a model a second route, add a roster row with the same Model Name and the other provider.
 - **No ID, no call:** a model with no provider model ID is never chosen.
 - **Lanes:** each lane's providers are listed in `routing.yaml` and enforced.
-- **Prose:** writers in Prose Writing use the model fine-tuned for the book's genre (Featherless AI or Unsloth
-  Desktop), with the component's own experts behind it as the safety net; until a fine-tune is tagged, those
-  experts do the work. Mature text goes only to an Uncensored model on Featherless AI.
+- **Prose:** writers in Prose Writing are every model the catalogs tag for the book's subgenre, with the component's
+  own experts behind them as the safety net. Pass `genre=` (the minor subgenre, or the major where the path has
+  none) to `writer_models()` or `choose_writer()`. A pen name does not change the choice yet: its only source was the
+  superseded register.
+- **Mature tier (P10, D33):** mature text goes only to an uncensored model served by an inference provider or an
+  aggregator: Featherless AI or OpenRouter. Local models and fine-tune bases are not in it. A prose writer uses the
+  tier's models fitted to the book and never its general experts; any other text component with no mature expert
+  hands the passage to the tier for the book's pen name and subgenre. A model's own row leads and its OpenRouter
+  route follows, as a second route on an outage.
+- **Fine-tune bases** (Hugging Face GGUFs) are never chosen on any lane.
 - **Checkers:** the 21 evaluation components (each lists what it `judges` in components.yaml) never run on the
   model that wrote the text, whichever provider serves it; for mature text their experts refuse, their
-  `mature_fallback` takes over.
+  `mature_fallback` takes over. Two routes to one set of weights count as one model: Venice Uncensored on OpenRouter
+  is `dphn/Dolphin-Mistral-24B-Venice-Edition`, so it never judges text that model wrote on Featherless AI.
 - **Editing tools:** Proofreader and Edit Coach run on their own experts, not the genre fine-tunes; Self-Edit
   Reports is code.
 - **Media:** image, video, speech, music and sound components use only models that make what they make (the
@@ -131,7 +166,43 @@ The build lists roster rows that look mistyped (an ID copied from the row above,
     python -m eos_app.readiness          # the summary and everything that needs attention
     python -m eos_app.readiness --all    # every component
 
-It asks the router which models each component could actually call and sends nothing to any model. A component is **ready**, **degraded** (it would run, but on a later expert or with no second expert to cross-check) or **blocked** (nothing it could call). The report also counts what an outage of each provider would stop, and lists what is still open: no route for mature material, a Mature Fallback left open, writers nothing checks, and Jev's missing roster row.
+It asks the router which models each component could actually call and sends nothing to any model. A component is **ready**, **degraded** (it would run, but on a later expert or with no second expert to cross-check) or **blocked** (nothing it could call). The report also counts what an outage of each provider would stop, and lists what is still open: no route for mature material, a Mature Fallback left open, writers nothing checks, and Jev's missing roster row. It sizes the mature tier: its models and routes per provider, the subgenres they cover, and the fine-tune bases recorded but never called.
+
+## Dry run of the first slice (fixes plan D1)
+
+The first stretch of the Flow Order, Story Pitch and the six components it needs, built end to end **without
+sending anything**:
+
+    python -m eos_app.dryrun --project "..\projects\dry-run" --library "..\library" ^
+        --braindump braindump.md --brainstorm brainstorm.md --manuscript-type Novel ^
+        --genre-path "Primary > Secondary > Major > Minor" --pen-name "<pen name>"
+
+- **Agent definitions** (`config/agents/*.yaml`, one per agent, requirements §6.7) list each agent's inputs: the
+  Author's material, the outputs of the steps it needs, the gate decisions before it, and library slices. Loading
+  refuses an input its component may not have (its `needs` in components.yaml, its `read_by` in library_map.yaml).
+- **The prompt builder** (`eos_app/prompts.py`) builds each prompt from those inputs only, from a versioned
+  template in `prompts/`, labels every part for Show prompt, keeps it inside the agent's context budget (optional
+  blocks are left out lowest priority first, and recorded), and refuses answer-key paths and anything shaped like a
+  key. Library slices go through `prompt_view`, chosen for the book: only the pen name taken at the gate, only the
+  content levels for the book's genre path.
+- **Requests** (`eos_app/clients.py`): the exact request for each call, built for Concentrate AI, OpenRouter and
+  Featherless AI (endpoints in `routing.yaml`, checked against each provider's documentation). The header names the
+  .env variable that holds the key; the key itself is never read.
+- **Cost**: `config/prices.yaml`, per million tokens, each line with its source and date. Featherless AI is a flat
+  subscription. The estimate is a worst case: every step at its full answer budget.
+
+It walks the slice in Flow Order, picks each component's models through the router (the Primary, and for the Full
+tier a second expert that cross-checks), and stops at each of the three gates: manuscript type, pen name, adapted
+premise. A dry run cannot take your decisions, so the genre path and pen name the later prompts read are stand-ins
+you name on the command line, marked as such everywhere; earlier steps' outputs are placeholders.
+
+It writes into the project folder, which lives outside the app and is never committed (it names your library, D10):
+`runs/<date>/runs.jsonl` (one record per planned call, status "not sent"), `prompts/dry-run/NN-<agent>.md` (Show
+prompt with the requests) and `dry-run.html` (a card per step with Proceed and My alternative, and the gate stops).
+
+Today: 7 prompts, 11 planned calls on Concentrate AI, 3 gate stops. Target Audience now has its cross-check
+(MiMo V2.6 Flash, GLM 5.3 Flash's Fallback in the catalogs), so nothing is left open before a live run except
+the spending cap (decision 6).
 
 ## Shared library
 

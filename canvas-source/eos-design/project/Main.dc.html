@@ -278,8 +278,8 @@ tagBg: t.bg, tagFg: t.fg, tagRing: t.ring, undoLabel: undone ? 'Redo' : 'Undo',
 toggle: function () { var u = Object.assign({}, self.state.undone); u[id] = !undone; self.setState({ undone: u }); } };
 };
 var digest = [
-DG('d1', 'Needs review', 'Chapters · Plan · Autonomous', 'Chapter 2 brief: chose the shorter of two scene orders', 'The agent was not sure (0.71) and the checker disagreed, so it went ahead as provisional. Nothing in Chapter 2 is drafted until you look.', 'decision rec · Chapter Brief · synthesis · checker: verdict pool, other family · disagreed', true),
-DG('d2', 'Decided', 'Writing tools · Mentions · Delegated', 'A capitalised word on the timetable is a common word, not a character', 'Sure (0.96), and a checker from another model family agreed. Nothing was added to the Story Bible.', 'decision rec · Name Sorter · extraction · checker agreed'),
+DG('d1', 'Needs review', 'Chapters · Plan · Autonomous', 'Chapter 2 brief: chose the shorter of two scene orders', 'The agent was not sure (0.71) and the checker disagreed, so it went ahead as provisional. Nothing in Chapter 2 is drafted until you look.', 'decision rec · Chapter Brief · synthesis · checker: a different model · disagreed', true),
+DG('d2', 'Decided', 'Writing tools · Mentions · Delegated', 'A capitalised word on the timetable is a common word, not a character', 'Sure (0.96), and a checker on a different model agreed. Nothing was added to the Story Bible.', 'decision rec · Name Sorter · extraction · checker agreed'),
 DG('d3', 'Decided', 'Chapters · Plan · Autonomous', 'Repaired scene plan 3, which had dropped a must-not', '“[Antagonist]” was missing from its must-nots; the plan was sent back, fixed and checked again.', 'decision rec · contract X1 repair · Scene Plan and Setting Notes · checker agreed'),
 DG('d4', 'Decided', 'Writing tools · Creative Reserve · Autonomous', 'Filed the scene order you didn’t use to the Creative Reserve', 'Reserve only: nothing in canon changed.', 'decision rec · Reserve filing · code + synthesis · checker agreed')
 ];

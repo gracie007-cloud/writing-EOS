@@ -1,6 +1,7 @@
 # How the app's own router (D22) picks a model for a component and where it sends the call. The Author's rules,
-# 2026-10-22. Model facts (provider, ID, checkboxes, experts) come from config/models.yaml.
-version: "2026-10-22"
+# 2026-10-22; the mature tier as the Author set it on 2026-11-25 (D33). Model facts (provider, ID, checkboxes,
+# experts, genre tags, fine-tune bases) come from config/models.yaml; pen name fits from no source yet (the register was deleted, 2026-11-27).
+version: "2026-11-25"
 
 # Each roster provider and the route the router calls.
 providers:
@@ -14,23 +15,39 @@ providers:
 
 # Lanes. Building Blocks, Sales & Marketing and the evaluation components (the checkers) use the general lane: the
 # component's line of experts (Primary, Comparable, Fallback). Prose Writing components that write use the prose
-# lane: a model fine-tuned for the book's genre, via Featherless AI or Unsloth Desktop, then the component's own
-# experts as the safety net (the only choice until a fine-tune is tagged for the genre).
+# lane: the models the catalogs tag for the book's subgenre, then the component's own experts as the safety net.
+# OpenRouter carries a fine-tune's second route where the catalogs record one (Dolphin Venice, UnslopNemo).
+# A fine-tune base (a GGUF kept to fine-tune later) is never called on any lane (the Author, 2026-11-25).
 # The router enforces each list: a model on a provider outside its lane is never called for that lane.
 lanes:
   general:
     providers: [Concentrate AI, OpenRouter]
   prose:
-    providers: [Featherless AI, Unsloth Desktop]
+    providers: [Featherless AI, Unsloth Desktop, OpenRouter]
     interim: component_candidates
   media:
-    providers: [OpenRouter, Hugging Face, ElevenLabs, Comfy Cloud, Featherless AI]
+    # In order: a media model on more than one of these is called on the first (the Author, 2026-11-25: Comfy
+    # Cloud, then Concentrate AI, then OpenRouter). ElevenLabs: SFX v3, Sound Effects' Fallback (the Author, 2026-11-27).
+    providers: [Comfy Cloud, Concentrate AI, OpenRouter, Featherless AI, Hugging Face, ElevenLabs]
 
-# Mature content (P10).
+# Mature content (P10, D33).
 mature:
-  # A writer of mature text must have the Uncensored box ticked and be hosted by one of these providers.
+  # A writer of mature text must be uncensored (the roster's Uncensored box, or a row in the Abliterated &
+  # Uncensored Models catalog) and served by an inference provider or an aggregator: the mature tier (the Author,
+  # 2026-11-25). Local models and Hugging Face GGUFs are not in it. A text component with no mature expert hands a
+  # mature passage to the mature tier for the book's pen name and subgenre.
   # An evaluation component's own Mature Fallback (components.yaml) takes over when its experts refuse mature text.
-  writer_providers: [Featherless AI]
+  writer_providers: [Featherless AI, OpenRouter]
   # Mature media: only open-weight models on these providers. Comfy's terms ban only illegal content; fal.ai's ban
   # sexually explicit content and OpenRouter defers to models that refuse it (checked 2026-10-22).
   media_providers: [Comfy Cloud, Featherless AI]   # Featherless: Chatterbox narration (the Author, 2026-10-22)
+
+# Where each route that serves chat completions is called (all OpenAI-compatible) and the .env variable that holds
+# its key, checked against each provider's own documentation on 2026-11-25. A route with no URL cannot be called:
+# the dry run says so. Keys live in .env only and never appear in a prompt, a request preview or a run record.
+# Media routes (ElevenLabs, Comfy Cloud, Hugging Face video) are not chat completions and get their own clients.
+endpoints:
+  concentrate: {url: "https://api.concentrate.ai/v1/chat/completions", key_env: CONCENTRATE_API_KEY}
+  openrouter: {url: "https://openrouter.ai/api/v1/chat/completions", key_env: OPENROUTER_API_KEY}
+  featherless: {url: "https://api.featherless.ai/v1/chat/completions", key_env: FEATHERLESS_API_KEY}
+  unsloth_desktop: {url: null, key_env: UNSLOTH_DESKTOP_API_KEY}   # local (D30); not in use while local work waits

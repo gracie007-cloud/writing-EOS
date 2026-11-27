@@ -1,6 +1,6 @@
 # LLM Identifier for Creative Writing (Open-Weight & Fine-Tuned Models)
 
-A structured, Notion-ready catalog of **68 unique open-weight base and fine-tuned models** evaluated for creative writing across manuscript formats, modalities, pen names, genre categories, and subgenres. Designed to populate the Notion database **"LLM Identifier for Creative Writing: Base Models for Fine-Tuning."**
+A structured, Notion-ready catalog of **68 unique open-weight base and fine-tuned models** evaluated for creative writing across manuscript formats, modalities, pen names, genre categories, and subgenres. Designed to populate the Notion database **"LLM Identifier for Creative Writing: Open-Weight & Fine-Tuned Models."** (The separate *Base Models for Fine-Tuning* database holds the fine-tune bases, such as W69.)
 
 ## Dataset Overview
 
@@ -60,3 +60,27 @@ A structured, Notion-ready catalog of **68 unique open-weight base and fine-tune
 * **Cross-File Overlaps:** Four models also appear in the companion **Abliterated & Uncensored** CSV (`DavidAU/Qwen3-Great-Bowels-Of-Horror-FREAKSTORM-6B`, `Naphula/Goetia-26B-A4B-v1.6`, `Naphula/Goetia-26B-A4B-v1.7`, and `nightmedia/Qwen3.6-27B-Architect-Polaris2-Fable-B-F451-Tess`). Skip or merge these if importing both CSVs into the same Notion database.
 * **Tag Hygiene:** Fixed spelling and punctuation errors (`Galactice Empire`, `Conspirarcy Fiction`, `Children's’ Literature`, unclosed parentheses, trailing commas, and within-row duplicates) and extracted all parenthetical role qualifiers into the `Notes` column.
 * **Importing to Notion:** Set `Genre Category`, `Manuscript Format`, `Pen Name`, and `Genres` to **Multi-select**, `Modality` to **Select**, and `Notes` to **Text**.
+
+## In the Writing EOS app
+
+* **File:** `open_weight_models.csv` (UTF-8, Notion's column names)
+* **Exported:** 25 November 2026, from the database's table view. Notion's export markup was removed: bold tags around two names and backslash escapes (`\_`, `\[`). Multi-select columns are comma-separated; checkboxes are `Yes` / `No`.
+
+### What the app does with it
+
+The registry build (`python -m eos_app.registry … --open <this file>`, see `eos-app/README.md`) folds it in as it does the mature catalog, **without** marking anything uncensored:
+
+| Provider | Rows | In the app |
+| :--- | :--- | :--- |
+| Featherless AI | 25 | Called. A route the roster lacked is added (e.g. Cydonia 24B, Crimson Cafe 12B, Tiefighter 13B, Hathor 8B on Featherless). |
+| Concentrate AI | 13 | Already in the roster; genre tags added. |
+| OpenRouter | 8 | Already in the roster; genre tags added. |
+| Hugging Face | 20 | **Fine-tune bases**: "Via Inference Providers" is unticked, so they are recorded and never called. |
+| Unsloth Desktop | 1 | Local; not used while local work waits. |
+| Comfy Cloud | 1 | Z-Image Turbo. Not added: its "Provider Model ID" reads like a workflow name, and the roster already lists Z-Image Turbo without an ID. Confirm the ID in the roster. |
+
+Its genre tags join each model's, so the prose lane can pick these models for a book's subgenre. An ID the roster left empty is filled from here (Chatterbox: `ResembleAI/chatterbox`), which gives audiobook narration a second provider beside ElevenLabs.
+
+### Columns
+
+As the Abliterated catalog's, plus **Open/Near Frontier Model** (checkbox) and **Modality** (Text-to-Text, Image-Text-to-Text, Image-Video-Text-to-Text, Omni, Text-to-Speech, Text-to-Image). Text modalities are text models to the app; Text-to-Speech is Speech and Text-to-Image is Image.

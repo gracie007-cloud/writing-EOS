@@ -1,0 +1,14 @@
+# Target Audience (step NEW-13): the Reader Contract that Genre Writing Guide, Point of View and Reader, Premise
+# Adapter and Story Pitch all read.
+step: "NEW-13"
+id: target_audience
+prompt: prompts/target_audience.md
+inputs:
+  - {from: step.1, label: Idea Intake, required: true}
+  - {from: decision.pen_name, label: Pen name the Author picked, required: true}
+  - {from: step.3, label: Pen Name and Style}
+  - {from: step.4.1, label: Draft genre pack}
+output: [primary_reader, age_band, reader_expectations, must_not, reading_experience, contract_summary]
+temperature: 0.2
+max_tokens: 1200
+context_budget_tokens: 8000

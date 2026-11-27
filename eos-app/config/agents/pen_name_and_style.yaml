@@ -1,0 +1,14 @@
+# Pen Name and Style (step 3). Its gate: the Author picks the pen name. P2: the pen name governs.
+step: "3"
+id: pen_name_and_style
+prompt: prompts/pen_name_and_style.md
+inputs:
+  - {from: step.2, label: Story Setup, required: true}
+  - {from: step.4.1, label: Draft genre pack, required: true}
+  - {from: library.pen_names, label: Pen names with rows in the book's genre, required: true}
+  - {from: library.genres, label: Narrative Genres Pool entry for the book's subgenre}
+  - {from: library.content_levels, label: Content levels for the book's genre path}
+output: [shortlist, recommendation, recommendation_reason]
+temperature: 0.6
+max_tokens: 2000
+context_budget_tokens: 14000

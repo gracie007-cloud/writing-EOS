@@ -11,7 +11,8 @@ model ID. Nothing is sent to any model. A component is
 - blocked   nothing it could call.
 
 Notes say what does not stop a normal run but should be known: every expert on one provider, no route for mature
-material, work that nothing checks.
+material, work that nothing checks. The report also sizes the mature tier (D33): the uncensored models an inference
+provider or aggregator serves, and the fine-tune bases recorded but never called.
 """
 
 from __future__ import annotations
@@ -21,7 +22,7 @@ from collections import Counter
 from dataclasses import dataclass
 
 from .registry import Registry, RegistryError, load_models
-from .router import RoutingError, Routing, checker_models, experts, load_routing, unusable, writer_models
+from .router import RoutingError, Routing, checker_models, experts, load_routing, mature_ok, unusable, writer_models
 from .workflow import Workflow, chapter_loop, load_components
 
 
@@ -46,13 +47,30 @@ def usable(c, reg: Registry, routing: Routing, down_providers=()) -> list:
         return []
 
 
+def mature_tier_models(reg: Registry, routing: Routing) -> list:
+    """Every route that could write mature text today for a book in some subgenre (P10, D33): each tagged model's
+    routes, including a second route that carries no tags of its own."""
+    out, seen = [], set()
+    for m in reg.models:
+        if m.genres:
+            for r in reg.routes(m):
+                if r.key not in seen and mature_ok(r, routing) and not unusable(r):
+                    seen.add(r.key)
+                    out.append(r)
+    return out
+
+
 def has_mature_route(c, reg: Registry, routing: Routing) -> bool:
+    """An evaluation component has its Mature Fallback; media has an open model on a mature media provider; any
+    other text component has a mature expert or hands the passage to the mature tier for the book's subgenre."""
     if c.is_evaluation:
         return bool(c.mature_fallback)
     try:
-        return any(not unusable(m) for m in writer_models(c, reg, routing, mature=True))
+        if any(not unusable(m) for m in writer_models(c, reg, routing, mature=True)):
+            return True
     except RoutingError:
-        return False
+        pass
+    return not c.makes_media and bool(mature_tier_models(reg, routing))
 
 
 def component_readiness(c, w: Workflow, reg: Registry, routing: Routing) -> Readiness:
@@ -94,8 +112,13 @@ def report(w: Workflow, reg: Registry, routing: Routing) -> dict:
         jev = bool(reg.resolve(w.jev_model))
     except RegistryError:
         jev = False
+    tier = mature_tier_models(reg, routing)
     return {"components": rows, "counts": Counter(r.state for r in rows), "jev_in_roster": jev,
-            "outage": {p: stopped_by_outage(w, reg, routing, p) for p in routing.providers}}
+            "outage": {p: stopped_by_outage(w, reg, routing, p) for p in routing.providers},
+            "mature_tier": Counter(m.provider for m in tier),
+            "mature_models": len({m.ident for m in tier}),
+            "mature_subgenres": len({g for m in tier for g in m.genres}),
+            "fine_tune_bases": sum(1 for m in reg.models if m.fine_tune_base)}
 
 
 def render(rep: dict, w: Workflow, everything: bool = False) -> str:
@@ -115,6 +138,10 @@ def render(rep: dict, w: Workflow, everything: bool = False) -> str:
             inside = sum(1 for c in stopped if c.step in per_chapter)
             out.append(f"  {p}: {len(stopped)} components ({inside} of them run in every chapter)")
     out.append("")
+    tier = rep["mature_tier"]
+    out.append(f"Mature tier: {rep['mature_models']} models, {sum(tier.values())} routes (" +
+               (", ".join(f"{p} {n}" for p, n in tier.most_common()) or "no provider") + f"), fitted to {rep['mature_subgenres']} subgenres · "
+               f"{rep['fine_tune_bases']} fine-tune bases recorded, never called")
     for needle, title in (("no model may handle mature material", "No route for mature material"),
                           ("its Mature Fallback is still open", "Mature Fallback still open"),
                           ("nothing checks its work", "Writers nothing checks")):

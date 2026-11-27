@@ -118,7 +118,7 @@ a{color:#1F4E79}a:hover{color:#12244A}
 <section style="display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 16px; background: #F2F7FD; box-shadow: inset 0 0 0 1px #C9DDF1">
 <span style="flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: #FFFFFF; color: #2E75B6"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z M9 12l2 2 4-4"></path></svg></span>
 <span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; font-weight: 700">An agent may decide only when</span>
-<ol style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 13px; line-height: 1.5; color: #4B5B73"><li>its confidence clears the section’s bar,</li><li>a checker from a different model family agrees, and</li><li>it has earned the level in the Model Lab by agreeing with your own past choices.</li></ol>
+<ol style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 13px; line-height: 1.5; color: #4B5B73"><li>its confidence clears the section’s bar,</li><li>a checker on a different model agrees, and</li><li>it has earned the level in the Model Lab by agreeing with your own past choices.</li></ol>
 <span style="font-size: 12px; line-height: 1.5; color: #5F6E84">You can set a level that hasn’t been earned; those decisions are marked in your digest.</span></span>
 </section>
 <section style="display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 16px; background: #F2F7FD; box-shadow: inset 0 0 0 1px #C9DDF1">
@@ -196,7 +196,7 @@ R('workshop', 'Workshop proposals', 'Agents may settle: sending story seeds from
 ] }
 ];
 var counts = { sup: 0, del: 0, auto: 0 };
-var yamlLines = ['default: supervised', 'eligibility:', '  confidence: section threshold (calibrated)', '  checker: different family must agree', '  earned: delegated ≥20 · 85% · cal ≤10', '         autonomous ≥50 · 95% · undo <5%', 'breakers: undo 2/10 · contradicted · 25 unseen', 'sections:'];
+var yamlLines = ['default: supervised', 'eligibility:', '  confidence: section threshold (calibrated)', '  checker: a different model must agree', '  earned: delegated ≥20 · 85% · cal ≤10', '         autonomous ≥50 · 95% · undo <5%', 'breakers: undo 2/10 · contradicted · 25 unseen', 'sections:'];
 var groups = groupsDef.map(function (g) {
 return { name: g.name, rows: g.rows.map(function (r) {
 var lvl = r.locked ? 'sup' : (st.levels[r.id] || 'sup');
