@@ -584,8 +584,9 @@ components:
   - CD-11
   category: Prose Writing
   candidates:
-    primary: Claude Fable 5.1
-    comparable: Kimi K3
+    primary: Claude Fable 5.2
+    comparable: Kimi K3.1 Pro Highspeed
+    fallback: MiniMax-M3
 - step: PROP-03
   name: Creative Reserve
   database_name: Creative Reserve / Name Parking Garage Filer
@@ -1844,8 +1845,9 @@ components:
   category: Prose Writing
   gate_after: Author signs off the proof
   candidates:
-    primary: Claude Fable 5.1
-    comparable: Kimi K3
+    primary: Gemini 4 Carbon
+    comparable: Kimi K3.1 Pro
+    fallback: GPT-6.1 Sol
 - step: '40'
   name: Blurb
   database_name: Book Blurb
@@ -2059,6 +2061,7 @@ components:
   candidates:
     primary: 'Stable Audio 2.5: Text to Audio'
     comparable: 'Stability Audio 2.5: Audio Inpainting'
+    fallback: ElevenLabs SFX v3
 - step: NEW-26
   name: Trailer Video
   database_name: Trailer Video

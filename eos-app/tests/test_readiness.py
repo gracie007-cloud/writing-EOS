@@ -68,16 +68,17 @@ def test_a_ready_component_still_says_what_it_lacks(rep):
 def test_one_provider_going_down_is_counted_component_by_component(W, R, RT, rep):
     stopped = rep["outage"]["Concentrate AI"]
     per_chapter = {c.step for c in chapter_loop(W)}
-    assert len(stopped) == 106 and sum(c.step in per_chapter for c in stopped) == 17
-    assert [len(rep["outage"][p]) for p in ("OpenRouter", "Featherless AI", "Comfy Cloud")] == [0, 0, 6]
-    # media is called on Comfy Cloud first (the Author, 2026-11-25), so these have no expert elsewhere
+    assert len(stopped) == 105 and sum(c.step in per_chapter for c in stopped) == 17
+    assert [len(rep["outage"][p]) for p in ("OpenRouter", "Featherless AI", "Comfy Cloud")] == [0, 0, 5]
+    # media is called on Comfy Cloud first (the Author, 2026-11-25), so these have no expert elsewhere; Sound Effects
+    # falls back to ElevenLabs SFX v3 (the Author, 2026-11-27)
     assert [c.name for c in rep["outage"]["Comfy Cloud"]] == ["Visual References", "Map Maker", "Interior Art",
-                                                              "Marketing Visuals", "Sound Effects", "Trailer Video"]
+                                                              "Marketing Visuals", "Trailer Video"]
     # a second route for the two workhorse models keeps their components running
     twins = [replace(m, key=f"openrouter-{m.model_id}", provider="OpenRouter")
              for m in R.models if m.name in ("Claude Fable 5.1", "Kimi K3")]
     reg = Registry(R.version, R.models + twins, {m.key: m for m in R.models + twins}, [])
-    assert len(stopped_by_outage(W, reg, RT, "Concentrate AI")) < 106 - 40
+    assert len(stopped_by_outage(W, reg, RT, "Concentrate AI")) < 105 - 40
 
 
 def test_open_items_are_named(rep, W):
@@ -89,4 +90,4 @@ def test_open_items_are_named(rep, W):
     assert "No route for mature material" not in text
     assert ("Mature tier: 62 models, 64 routes (Featherless AI 62, OpenRouter 2), fitted to 212 subgenres · "
             "40 fine-tune bases recorded, never called") in text
-    assert "Concentrate AI: 106 components (17 of them run in every chapter)" in text
+    assert "Concentrate AI: 105 components (17 of them run in every chapter)" in text

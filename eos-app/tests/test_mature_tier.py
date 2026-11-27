@@ -174,7 +174,7 @@ def test_the_open_weight_catalog_adds_routes_and_ids_but_not_the_uncensored_mark
 def test_the_proprietary_catalog_adds_concentrate_routes_and_its_media_models(R):
     with open(PROPRIETARY, encoding="utf-8", newline="") as f:
         rows = list(csv.DictReader(f))
-    assert len(rows) == 63                                       # + Nemotron Lightning 3.5 30B A3B (2026-11-25)
+    assert len(rows) == 64                                       # + Nemotron (2026-11-25), ElevenLabs SFX v3 (2026-11-27)
     for name in ("Claude Fable 5", "Claude Fable 5.2", "Gemini 4 Neon", "Kimi K3.1 Pro", "Qwen3.8 Omni Flash"):
         m = named(R, name, "Concentrate AI")
         assert m.frontier and not m.uncensored and m.genres

@@ -1,7 +1,7 @@
 # Writing EOS model registry (FR-ML-1, D33): the app's copy of the Notion roster LLM Identifier, joined
 # with the mature, open-weight and proprietary catalogs (the 2026-11-14 register is superseded).
 # Built by `python -m eos_app.registry`; do not edit by hand.
-version: '2026-11-25'
+version: '2026-11-27'
 source: 'Notion LLM Identifier (export); Notion LLM Identifier for Creative Writing: Abliterated & Uncensored Models (export);
   Notion LLM Identifier for Creative Writing: Open-Weight & Fine-Tuned Models (export); Notion LLM Identifier for Creative
   Writing: Proprietary & Open/Near Frontier Models (export)'
@@ -10226,6 +10226,23 @@ models:
   served_context: null
   register_id: ''
   same_as: ''
+- key: elevenlabs-eleven-text-to-sound-v3
+  name: ElevenLabs SFX v3
+  provider: ElevenLabs
+  model_id: eleven_text_to_sound_v3
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: 'Stable Audio 2.5: Text to Audio'
+  fallback: 'Stability Audio 2.5: Audio Inpainting'
+  modality: Sound
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: comfy-cloud-flux-3-video-image-to-video
   name: FLUX 3 Video Image-to-Video
   provider: Comfy Cloud
@@ -10443,6 +10460,23 @@ models:
   served_context: null
   register_id: ''
   same_as: ''
+- key: concentrate-ai-nemotron-lightning-3-5-30b
+  name: Nemotron Lightning 3.5 30B A3B
+  provider: Concentrate AI
+  model_id: nemotron-lightning-3.5-30b
+  frontier: true
+  open_weights: false
+  uncensored: false
+  can_run_locally: false
+  comparable: Solar Mini 4
+  fallback: Gemma 4 26B-A4B
+  modality: ''
+  genres: []
+  genre_categories: []
+  fine_tune_base: false
+  served_context: null
+  register_id: ''
+  same_as: ''
 - key: comfy-cloud-qwen-image-3-0-text-to-image
   name: 'Qwen-Image 3.0: Text to Image'
   provider: Comfy Cloud
@@ -10492,23 +10526,6 @@ models:
   - C
   - D
   - E
-  fine_tune_base: false
-  served_context: null
-  register_id: ''
-  same_as: ''
-- key: concentrate-ai-nemotron-lightning-3-5-30b
-  name: Nemotron Lightning 3.5 30B A3B
-  provider: Concentrate AI
-  model_id: nemotron-lightning-3.5-30b
-  frontier: true
-  open_weights: false
-  uncensored: false
-  can_run_locally: false
-  comparable: Solar Mini 4
-  fallback: Gemma 4 26B-A4B
-  modality: ''
-  genres: []
-  genre_categories: []
   fine_tune_base: false
   served_context: null
   register_id: ''

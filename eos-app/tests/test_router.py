@@ -32,9 +32,10 @@ def model(R, name):
 
 def test_the_registry_holds_every_roster_model_with_a_provider(R):
     # the roster, with the models the three Notion catalogs and the register add (D33)
-    # the live roster of 2026-11-25 (418 rows); ElevenLabs is no longer in it
+    # the live roster of 2026-11-25 (418 rows); ElevenLabs is not in it, but the proprietary catalog adds SFX v3
     assert Counter(m.provider for m in R.models) == {"Hugging Face": 252, "Featherless AI": 85, "Concentrate AI": 51,
-                                                      "OpenRouter": 23, "Unsloth Desktop": 8, "Comfy Cloud": 15}
+                                                      "OpenRouter": 23, "Unsloth Desktop": 8, "Comfy Cloud": 15,
+                                                      "ElevenLabs": 1}        # SFX v3, from the proprietary catalog (2026-11-27)
     assert {m.modality for m in R.models} == {"", "Image", "Video", "Speech", "Music", "Sound"}
     assert len({m.key for m in R.models}) == len(R.models)
 
@@ -154,7 +155,8 @@ def test_mature_media_runs_only_on_open_models_on_comfy_cloud(W, R, RT):
 def test_sound_effects_leads_with_stable_audio_and_mature_work_stays_on_the_open_one(W, R, RT):
     sfx = W.by_step["NEW-28"]
     assert [m.name for m in writer_models(sfx, R, RT)] == ["Stable Audio 2.5: Text to Audio",
-                                                          "Stability Audio 2.5: Audio Inpainting"]
+                                                          "Stability Audio 2.5: Audio Inpainting",
+                                                          "ElevenLabs SFX v3"]   # the Fallback off Comfy Cloud
     assert [m.name for m in writer_models(sfx, R, RT, mature=True)] == ["Stable Audio 2.5: Text to Audio"]
 
 

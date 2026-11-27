@@ -27,8 +27,8 @@ lanes:
     interim: component_candidates
   media:
     # In order: a media model on more than one of these is called on the first (the Author, 2026-11-25: Comfy
-    # Cloud, then Concentrate AI, then OpenRouter).
-    providers: [Comfy Cloud, Concentrate AI, OpenRouter, Featherless AI, Hugging Face]
+    # Cloud, then Concentrate AI, then OpenRouter). ElevenLabs: SFX v3, Sound Effects' Fallback (the Author, 2026-11-27).
+    providers: [Comfy Cloud, Concentrate AI, OpenRouter, Featherless AI, Hugging Face, ElevenLabs]
 
 # Mature content (P10, D33).
 mature:
