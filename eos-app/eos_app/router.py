@@ -7,8 +7,8 @@ provider is down the router tries the model's next route before it moves to the 
 
 Three lanes. Building Blocks, Sales & Marketing, the editing tools and the evaluation components use the general
 lane: the experts above. Prose Writing components that write prose use the prose lane: the register's writers for
-the book's pen name and subgenre (lead writers, then strong adjacent fits; routing.json, read from outside the app,
-D10), then the models tagged for the subgenre, then the component's own experts as the safety net (never for mature
+the book's subgenre (the models the catalogs tag for it; pen-name fits only once a correct source exists, read from
+outside the app, D10), then then the component's own experts as the safety net (never for mature
 text). Media components use the media lane: their experts, each making what the component makes (image, video,
 speech, music, sound). Each lane lists its providers in routing.yaml; a model on a provider outside its lane is
 never called for that lane.

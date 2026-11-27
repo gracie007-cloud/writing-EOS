@@ -1,6 +1,6 @@
 """The mature tier (P10, D33): the Abliterated & Uncensored Models catalog, the 2026-11-14 register and its routing
 table, joined with the roster; mature text only on an inference provider or aggregator; fine-tune bases never called.
-Pen names are taken from routing.json at run time, never written here (D10)."""
+Pen names are never written here (D10)."""
 import csv
 import json
 from pathlib import Path

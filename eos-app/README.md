@@ -123,8 +123,8 @@ The database does not record what a component takes in, its code parts, what a c
 - two **same-model pairs** the catalogs' notes record (UnslopNemo 12B and Venice / Dolphin, each on OpenRouter and
   Featherless AI): one model on two routes, so P8 and outages treat it as one.
 
-The 14 November register (`..\registry.json`, `..\routing.json`, `REGISTER.md`, `VERIFICATION.md`) is **not used**:
-the Author found it incorrect (2026-11-25). Base models for fine-tuning live only in the Notion database *Base
+The 14 November register (`registry.json`, `routing.json`, `REGISTER.md`, `VERIFICATION.md`) was found incorrect by
+the Author (2026-11-25) and deleted (2026-11-27). Base models for fine-tuning live only in the Notion database *Base
 Models for Fine-Tuning* and are never called.
 
 Export the roster and the catalogs from Notion as CSV and rebuild:

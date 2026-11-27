@@ -31,8 +31,6 @@ llm-identifier-creative-writing-open-weight/   the open-weight catalog (Notion: 
 llm-identifier-creative-writing-proprietary/   the proprietary catalog (Notion: Proprietary & Open/Near Frontier Models)
 llm-identifier-creative-writing/               204 GGUF bases for later fine-tuning; not called by the app
 llm-identifier-creative-writing-base-models/   the README for that catalog
-registry.json, routing.json                    the 14 November register: superseded, not used by the app (2026-11-25)
-REGISTER.md, VERIFICATION.md                   the same register to read: superseded
 tools/           the gate that runs before every push
 ```
 

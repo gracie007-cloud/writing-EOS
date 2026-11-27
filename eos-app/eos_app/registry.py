@@ -24,8 +24,8 @@
   the same way, without the uncensored mark. A model it adds is frontier when either checkbox is ticked.
 - Each catalog's Comparable Equivalent Model and Fallback Model become the model's own pairing.
 
-The 2026-11-14 register (`registry.json`, `routing.json`, `REGISTER.md`, `VERIFICATION.md` at the repository root) is
-**not used**: the Author found it incorrect (2026-11-25). Prose writers are chosen by the catalogs' genre tags, not
+The 2026-11-14 register (`registry.json`, `routing.json`, `REGISTER.md`, `VERIFICATION.md`) was found incorrect by the
+Author (2026-11-25) and deleted (2026-11-27). Prose writers are chosen by the catalogs' genre tags, not
 by pen name, until a correct pen-name source exists. Model IDs live in config/models.yaml only. The build reports
 rows that look mistyped and pairings that name no model.
 """

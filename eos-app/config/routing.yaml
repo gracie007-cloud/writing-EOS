@@ -1,6 +1,6 @@
 # How the app's own router (D22) picks a model for a component and where it sends the call. The Author's rules,
 # 2026-10-22; the mature tier as the Author set it on 2026-11-25 (D33). Model facts (provider, ID, checkboxes,
-# experts, genre tags, fine-tune bases) come from config/models.yaml; pen name fits from routing.json (outside the app, D10).
+# experts, genre tags, fine-tune bases) come from config/models.yaml; pen name fits from no source yet (the register was deleted, 2026-11-27).
 version: "2026-11-25"
 
 # Each roster provider and the route the router calls.
@@ -15,9 +15,8 @@ providers:
 
 # Lanes. Building Blocks, Sales & Marketing and the evaluation components (the checkers) use the general lane: the
 # component's line of experts (Primary, Comparable, Fallback). Prose Writing components that write use the prose
-# lane: the register's writers for the book's pen name and subgenre (routing.json), then models tagged for the
-# subgenre, then the component's own experts as the safety net. OpenRouter carries a fine-tune's second route where
-# the register verified one (Dolphin Venice, Cydonia, UnslopNemo).
+# lane: the models the catalogs tag for the book's subgenre, then the component's own experts as the safety net.
+# OpenRouter carries a fine-tune's second route where the catalogs record one (Dolphin Venice, UnslopNemo).
 # A fine-tune base (a GGUF kept to fine-tune later) is never called on any lane (the Author, 2026-11-25).
 # The router enforces each list: a model on a provider outside its lane is never called for that lane.
 lanes:
