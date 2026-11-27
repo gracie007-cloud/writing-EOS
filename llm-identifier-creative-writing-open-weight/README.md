@@ -1,6 +1,6 @@
 # LLM Identifier for Creative Writing (Open-Weight & Fine-Tuned Models)
 
-A structured, Notion-ready catalog of **68 unique open-weight base and fine-tuned models** evaluated for creative writing across manuscript formats, modalities, pen names, genre categories, and subgenres. Designed to populate the Notion database **"LLM Identifier for Creative Writing: Base Models for Fine-Tuning."**
+A structured, Notion-ready catalog of **68 unique open-weight base and fine-tuned models** evaluated for creative writing across manuscript formats, modalities, pen names, genre categories, and subgenres. Designed to populate the Notion database **"LLM Identifier for Creative Writing: Open-Weight & Fine-Tuned Models."** (The separate *Base Models for Fine-Tuning* database holds the fine-tune bases, such as W69.)
 
 ## Dataset Overview
 

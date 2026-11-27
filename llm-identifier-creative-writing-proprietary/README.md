@@ -1,12 +1,12 @@
 # LLM Identifier for Creative Writing (Proprietary & Open/Near Frontier Models)
 
-A structured, Notion-ready catalog of **62 unique proprietary and open/near-frontier models** spanning text, multimodal, image, video, speech (TTS), music, and sound-design workflows for creative writing and multimedia book production. Designed to populate the Notion database **"LLM Identifier for Creative Writing: Base Models for Fine-Tuning."**
+A structured, Notion-ready catalog of **63 unique proprietary and open/near-frontier models** spanning text, multimodal, image, video, speech (TTS), music, and sound-design workflows for creative writing and multimedia book production. Designed to populate the Notion database **"LLM Identifier for Creative Writing: Proprietary & Open/Near Frontier Models."**
 
 ## Dataset Overview
 
-* **Total Unique Models:** 62 (0 duplicate rows)
+* **Total Unique Models:** 63 (0 duplicate rows)
 * **Composition:**
-  * **45 Text & Multimodal LLMs:** 7 pre-mapped (`Beam 1.0 501B A23B`, `Claude Fable 5/5.2`, `Claude Opus 5/5.5`, `Claude Sonnet 5.5`, `Claude Haiku 5.5`) + 38 mapped across Google Gemini 2.5–4, OpenAI GPT-5/6, Moonshot Kimi K3/K3.1, Mistral Large 4, Meta Muse, Xiaomi MiMo-V2.6, Tencent HY4, StepFun Step 5, inclusionAI Ling 3.1, xAI Grok 4.7, Alibaba Qwen 3.8, Perplexity Sonar, Inception Mercury 2.5, Upstage Solar Mini 4, MiniMax-M3, and Unbiased Pareto.
+  * **46 Text & Multimodal LLMs:** 7 pre-mapped (`Beam 1.0 501B A23B`, `Claude Fable 5/5.2`, `Claude Opus 5/5.5`, `Claude Sonnet 5.5`, `Claude Haiku 5.5`) + 39 mapped across Google Gemini 2.5–4, OpenAI GPT-5/6, Moonshot Kimi K3/K3.1 Pro, Mistral Large 4, Meta Muse, Xiaomi MiMo-V2.6, Tencent HY4, StepFun Step 5, inclusionAI Ling 3.1, xAI Grok 4.7, Alibaba Qwen 3.8, Perplexity Sonar, Inception Mercury 2.5, Upstage Solar Mini 4, MiniMax-M3, NVIDIA Nemotron Lightning 3.5 (added 25 November 2026), and Unbiased Pareto.
   * **17 Multimedia Production Models:** 5 Image (`FLUX.2 Pro`, `GPT Image 2`, `Ideogram v4`, `Nano Banana Pro`, `Qwen-Image 3.0`), 5 Video (`FLUX 3 Video`, `LTX-2.5`, `Seedance 2.5`, `Wan 3.0 T2V/I2V`), 2 Speech/TTS (`Fish Audio S2 Pro`, `Gemini 3.1 Flash TTS Preview`), 3 Music (`ACE-Step 1.5`, `Lyria 3 Pro Preview`, `MiniMax Music 3`), and 2 Sound/SFX (`Stable Audio 2.5`, `Stability Audio 2.5 Inpainting`).
 * **Providers Covered:** Concentrate AI, OpenRouter, and Comfy Cloud
 
@@ -34,8 +34,9 @@ A structured, Notion-ready catalog of **62 unique proprietary and open/near-fron
 ## Data Cleanup & Notion Import Notes
 
 * **Schema Fixes:** Corrected a column shift on `FLUX 3 Video Image-to-Video` (`Video` moved from `Manuscript Format` to `Modality`), trimmed trailing whitespace on `Mistral Large 4`, and normalized double spaces in `Fallback Model` (`Kimi K3`).
+* **Pairings (25 November 2026):** Comparable and Fallback cells that named `Kimi K3.1` now name `Kimi K3.1 Pro`, and Claude Haiku 5.5's Comparable is `Nemotron Lightning 3.5 30B A3B`. Both columns are now text, not select.
 * **Tag Hygiene:** Fixed minor punctuation typos in the 7 pre-populated `Genres` cells and moved all parenthetical role qualifiers into `Notes`.
-* **ID Check:** Verify `Provider Model ID` for `Pareto Latest` (`~unbiased/pareto-latest` carries a leading `~` from the source export).
+* **ID Check:** `Pareto Latest` is `~unbiased/pareto-latest`; the leading `~` is part of OpenRouter's ID (confirmed 25 November 2026).
 * **Importing to Notion:** Set `Genre Category`, `Manuscript Format`, `Pen Name`, and `Genres` to **Multi-select**, `Modality` to **Select**, and `Notes` to **Text**.
 
 ## In the Writing EOS app
@@ -50,7 +51,7 @@ The registry build (`python -m eos_app.registry … --proprietary <this file>`, 
 
 | Provider | Rows | In the app |
 | :--- | :--- | :--- |
-| Concentrate AI | 36 | 28 were already in the roster and get genre tags. 8 routes the roster lacked are added: Claude Fable 5 and 5.2, Gemini 4 Carbon, Hydrogen and Neon, Kimi K3.1 Pro and Pro Highspeed, and Qwen3.8 Omni Flash (a second route beside its OpenRouter one). |
+| Concentrate AI | 37 | 28 were already in the roster and get genre tags. 9 routes the roster lacked are added: Claude Fable 5 and 5.2, Gemini 4 Carbon, Hydrogen and Neon, Kimi K3.1 Pro and Pro Highspeed, Nemotron Lightning 3.5 30B A3B, and Qwen3.8 Omni Flash (a second route beside its OpenRouter one). |
 | OpenRouter | 13 | 12 were already in the roster and get genre tags, and Fish Audio S2 Pro gets its ID (`fish-audio/s2-pro`). Gemini 3.1 Flash TTS Preview and Lyria 3 Pro Preview are added as media models. |
 | Comfy Cloud | 13 | Image, video, music and sound workflows, each with its ID (the workflow name). The ones the roster also lists match it; the rest (for example FLUX.2 Pro and Qwen-Image 3.0) are added. *Narrative Components* names them for the media components (2026-11-25). |
 
